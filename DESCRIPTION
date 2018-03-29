@@ -13,3 +13,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
+URL: https://github.com/ijlyttle/altair
+BugReports: https://github.com/ijlyttle/altair/issues
