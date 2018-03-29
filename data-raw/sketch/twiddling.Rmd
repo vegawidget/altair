@@ -1,0 +1,43 @@
+---
+title: Twiddling Around
+output: html_document
+---
+
+```{r}
+library("altair")
+library("reticulate")
+```
+
+Here's how we could make a chart-spec using Python:
+
+```{python}
+import altair as alt
+from vega_datasets import data
+
+iris = data.iris()
+
+p2 = alt.Chart(iris).mark_point().encode(
+    x='petalLength',
+    y='petalWidth',
+    color='species'
+)
+
+p3 = p2.to_dict()
+```
+
+Here's an equivalent way using R.
+
+Note that we seem to have to use `r_to_py()` - so we might consider exporting that function from __reticulate__. We also may wish to import the __json__ python package.
+
+```{r}
+p <- altair$Chart(r_to_py(iris))$mark_point()$encode(
+    x = "Petal.Length",
+    y = "Petal.Width",
+    color = "Species"
+)
+
+js <- import("json")
+tmp <- js$dumps(p$to_dict())
+```
+
+
