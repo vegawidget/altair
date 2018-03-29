@@ -28,4 +28,10 @@ devtools::install_github("ijlyttle/altair")
 Acknowledgements
 ----------------
 
-T
+This package does not contribute much new; it rests on these foundations:
+
+-   [Altair](https://altair-viz.github.io)
+-   [Reticulate](https://rstudio.github.io/reticulat)
+-   [Vega-Lite](%3Chttps://vega.github.io/vega-lite)
+-   [D3](https://d3js.org)
+-   \[vegalite R 📦\] (<https://vega.github.io/vega-lite>)
