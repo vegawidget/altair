@@ -43,5 +43,6 @@ This package does not contribute much new; it rests on these foundations:
 - [Reticulate](https://rstudio.github.io/reticulate): R framework to work with Python
 - [Vega-Lite](https://vega.github.io/vega-lite): A grammar of interactive graphics
 - [D3](https://d3js.org): Data-driven documents
-- [vegalite
-(https://vega.github.io/vega-lite): Native R intergave to Vega-Lite
+- [vegalite](https://vega.github.io/vega-lite): Native R interface to Vega-Lite
+
+
