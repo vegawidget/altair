@@ -7,7 +7,11 @@ Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself
   <https://rstudio.github.io/reticulate/> to manage the interface between R
   and Python.
 Authors@R: c(
-  person(given = "Ian", family = "Lyttle", email = "ian.lyttle@schneider-electric.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9962-4849"))
+  person(given = "Ian", family = "Lyttle", email = "ian.lyttle@schneider-electric.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9962-4849")),
+  person("Kanit", "Wongsuphasawat,", comment = "Vega-Lite library", role = c("aut")),
+  person("Jeffrey", "Heer", comment = "Vega-Lite library", role = c("aut")),
+  person("Arvind", "Satyanarayan", comment = "Vega-Lite library", role = c("aut")),
+  person("Mike", "Bostock", comment = "D3 library", role = c("aut")),
   )
 License: MIT + file LICENSE
 Encoding: UTF-8
