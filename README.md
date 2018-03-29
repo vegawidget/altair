@@ -30,8 +30,8 @@ Acknowledgements
 
 This package does not contribute much new; it rests on these foundations:
 
--   [Altair](https://altair-viz.github.io)
--   [Reticulate](https://rstudio.github.io/reticulat)
--   [Vega-Lite](%3Chttps://vega.github.io/vega-lite)
--   [D3](https://d3js.org)
--   \[vegalite R 📦\] (<https://vega.github.io/vega-lite>)
+-   [Altair](https://altair-viz.github.io): Python interface to Vega-Lite
+-   [Reticulate](https://rstudio.github.io/reticulate): R framework to work with Python
+-   [Vega-Lite](https://vega.github.io/vega-lite): A grammar of interactive graphics
+-   [D3](https://d3js.org): Data-driven documents
+-   \[vegalite (<https://vega.github.io/vega-lite>): Native R intergave to Vega-Lite
