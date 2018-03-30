@@ -10,7 +10,7 @@ library("reticulate")
 
 Here's how we could make a chart-spec using Python:
 
-```{python}
+```{python eval = FALSE}
 import altair as alt
 from vega_datasets import data
 
@@ -30,7 +30,9 @@ Here's an equivalent way using R.
 Note that we seem to have to use `r_to_py()` - so we might consider exporting that function from __reticulate__. We also may wish to import the __json__ python package.
 
 ```{r}
-p <- altair$Chart(r_to_py(iris))$mark_point()$encode(
+
+
+p <- altair$Chart(r_to_py(iris[1:3, ]))$mark_point()$encode(
     x = "Petal.Length",
     y = "Petal.Width",
     color = "Species"
@@ -54,6 +56,10 @@ We now need a function that binds the widget to R. This function is called `vega
 
 Finally, we need a Javascript-binding bit of code.
 
+If I've done this right, then this should work:
 
+```{r}
+vegalite(p)
+```
 
 

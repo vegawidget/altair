@@ -8,11 +8,19 @@
 vegalite <- function(chart, width = NULL, height = NULL) {
 
   # create chart-spec as JSON
-  spec <- json$dumps(chart$to_dict())
+  spec <- jsonlite::toJSON(chart$to_dict(), auto_unbox = TRUE, pretty = TRUE)
+
+  tmpfile <- tempfile(fileext = ".json")
+
+  chart$savechart(tmpfile)
+
+  text <- readr::read_file(tmpfile)
+
+  print(text)
 
   htmlwidgets::createWidget(
     "vegalite",
-    spec,
+    text,
     width = width,
     height = height,
     package = "altair"
