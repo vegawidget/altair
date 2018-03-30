@@ -7,6 +7,7 @@ output: html_document
 library("altair")
 library("reticulate")
 library("dplyr")
+library("magrittr")
 
 knitr::opts_chunk$set(comment = "")
 ```
@@ -24,13 +25,11 @@ p2 = alt.Chart(iris).mark_point().encode(
     y='petalWidth',
     color='species'
 )
-
-p3 = p2.to_dict()
 ```
 
 Here's an equivalent way using R.
 
-Note that we seem to have to use `r_to_py()` - so we might consider exporting that function from __reticulate__. We also may wish to import the __json__ python package.
+Note that we seem to have to use `r_to_py()` - so we might consider exporting that function from __reticulate__. 
 
 ```{r}
 iris_new <- 
@@ -48,9 +47,6 @@ p <- altair$Chart(r_to_py(iris_new))$mark_point()$encode(
     y = "petal_width",
     color = "species"
 )
-
-js <- import("json")
-tmp <- js$dumps(p$to_dict())
 ```
 
 ## htmlwidget
@@ -65,12 +61,79 @@ Let's start with what we will need for files. We have an Rmd that downloads the 
 
 We now need a function that binds the widget to R. This function is called `vegalite()`, and it takes an `altair$Chart()` object as its main argument.
 
-Finally, we need a Javascript-binding bit of code.
+Finally, we need a Javascript-binding bit of code. I only partly understand it, but it works.
 
 If I've done this right, then this should work:
 
 ```{r}
 vegalite(p)
+```
+
+## And now for something completely different
+
+Let's follow this [Altair tutorial on selection interactions](https://altair-viz.github.io/user_guide/selections.html).
+
+```{r}
+plot <- altair$Chart(r_to_py(mtcars))$mark_point()$encode(
+    x = 'mpg:Q',
+    y = 'hp:Q',
+    color = 'cyl:N'
+)
+
+vegalite(plot)
+```
+
+Now, let's create a brush and bind it to the plot.
+
+```{r}
+brush <- altair$selection_interval()  # selection of type "interval"
+
+plot <- plot$properties(selection = brush)
+
+vegalite(plot)
+```
+
+Let's make the brush do something interesting:
+
+```{r}
+plot <- 
+  altair$Chart(r_to_py(mtcars))$mark_point()$encode(
+    x = 'mpg:Q',
+    y = 'hp:Q',
+    color = altair$condition(brush, 'cyl:N', altair$value('lightgray'))
+  )$properties(selection = brush)
+
+vegalite(plot)
+```
+
+```{r}
+# also twiddling with some code-styling
+plot_basic <-
+  altair$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    y = 'hp:Q',
+    color = altair$condition(brush, 'cyl:N', altair$value('lightgray'))
+  )$properties(
+    width = 250,
+    height = 250,
+    selection = brush
+  )
+
+plot_left <- 
+  plot_basic$encode(
+    x = 'disp:Q'
+  )
+
+plot_right <- 
+  plot_basic$encode(
+    x = 'mpg:Q'
+  )
+
+plot_compound <- altair$hconcat(plot_left, plot_right)
+
+vegalite(plot_compound)
 ```
 
 
