@@ -23,11 +23,11 @@ Let's establish the files we will download, and where we will download them to.
 downloads <-
   tribble(
     ~path_local,                    ~path_remote,
-    "vega/vega-min.js",             "https://cdn.jsdelivr.net/npm/vega@3",
+    "vega/vega-min.js",             "https://cdn.jsdelivr.net/npm/vega@3.2.1",
     "vega/LICENSE",                 "https://raw.githubusercontent.com/vega/vega/master/LICENSE",
-    "vega-lite/vega-lite-min.js",   "https://cdn.jsdelivr.net/npm/vega-lite@2",
+    "vega-lite/vega-lite-min.js",   "https://cdn.jsdelivr.net/npm/vega-lite@2.3.1",
     "vega-lite/LICENSE",            "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",
-    "vega-embed/vega-embed-min.js", "https://cdn.jsdelivr.net/npm/vega-embed@3",
+    "vega-embed/vega-embed-min.js", "https://cdn.jsdelivr.net/npm/vega-embed@3.2.0",
     "vega-embed/LICENSE",           "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE"
   )
 ```
@@ -52,3 +52,5 @@ get_file <- function(path_local, path_remote, lib_dir) {
 ``` r
 pwalk(downloads, get_file, lib_dir = lib_dir)
 ```
+
+We also have to write out a yaml manifest. It might be an idea to automate this, as well.

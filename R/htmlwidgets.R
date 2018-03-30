@@ -16,8 +16,6 @@ vegalite <- function(chart, width = NULL, height = NULL) {
 
   text <- readr::read_file(tmpfile)
 
-  print(text)
-
   htmlwidgets::createWidget(
     "vegalite",
     text,

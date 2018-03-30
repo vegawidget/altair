@@ -6,6 +6,9 @@ output: html_document
 ```{r}
 library("altair")
 library("reticulate")
+library("dplyr")
+
+knitr::opts_chunk$set(comment = "")
 ```
 
 Here's how we could make a chart-spec using Python:
@@ -30,12 +33,20 @@ Here's an equivalent way using R.
 Note that we seem to have to use `r_to_py()` - so we might consider exporting that function from __reticulate__. We also may wish to import the __json__ python package.
 
 ```{r}
-
-
-p <- altair$Chart(r_to_py(iris[1:3, ]))$mark_point()$encode(
-    x = "Petal.Length",
-    y = "Petal.Width",
-    color = "Species"
+iris_new <- 
+  iris %>%
+  rename(
+    sepal_length = Sepal.Length,
+    sepal_width = Sepal.Width,
+    petal_length = Petal.Length,
+    petal_width = Petal.Width,
+    species = Species
+  )
+  
+p <- altair$Chart(r_to_py(iris_new))$mark_point()$encode(
+    x = "petal_length",
+    y = "petal_width",
+    color = "species"
 )
 
 js <- import("json")
