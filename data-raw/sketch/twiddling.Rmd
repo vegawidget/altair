@@ -40,4 +40,20 @@ js <- import("json")
 tmp <- js$dumps(p$to_dict())
 ```
 
+## htmlwidget
+
+To be an htmlwidget, we need three things:
+
+1. A collection of library files, with a manifest.
+2. A function to bind the widget to R.
+3. Some to bind the widget to Javascript.
+
+Let's start with what we will need for files. We have an Rmd that downloads the files and puts them into place. 
+
+We now need a function that binds the widget to R. This function is called `vegalite()`, and it takes an `altair$Chart()` object as its main argument.
+
+Finally, we need a Javascript-binding bit of code.
+
+
+
 

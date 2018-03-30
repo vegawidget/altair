@@ -1,6 +1,6 @@
 Package: altair
 Version: 0.0.0.9000
-Title: R interface to 'Altair'
+Title: R Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a Python interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
   This package uses the 'Reticulate' framework 
@@ -23,4 +23,13 @@ ByteCompile: true
 URL: https://github.com/ijlyttle/altair
 BugReports: https://github.com/ijlyttle/altair/issues
 Imports: 
-    reticulate
+    reticulate,
+    htmlwidgets
+Suggests: 
+    httr,
+    rprojroot,
+    tibble,
+    purrr,
+    readr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
