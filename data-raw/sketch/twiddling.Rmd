@@ -106,6 +106,8 @@ plot <-
 vegalite(plot)
 ```
 
+For our next trick, link a couple of plots together.
+
 ```{r}
 # also twiddling with some code-styling
 plot_basic <-
@@ -136,4 +138,6 @@ plot_compound <- altair$hconcat(plot_left, plot_right)
 vegalite(plot_compound)
 ```
 
+## Your turn
 
+Have a look at the [Altair documentation](https://altair-viz.github.io/) to see what is possible.
