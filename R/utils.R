@@ -13,7 +13,7 @@
 #'
 has_altair <- function() {
 
-  empty_chart <- altair$Chart()
+  empty_chart <- alt$Chart()
 
   assertthat::assert_that(
     assertthat::are_equal(

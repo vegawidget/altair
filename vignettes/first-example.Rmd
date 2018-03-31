@@ -1,0 +1,173 @@
+---
+title: "First Example"
+author: "Ian Lyttle"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Let's make a chart, then we'll look at the bits-and-pieces we used to put it together.
+
+```{r}
+library("altair")
+
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )
+
+vegalite(plot)
+```
+
+### Installation
+
+The first part of the code block is a call to load the package: 
+
+```r
+library("altair")
+```
+
+This assumes that your computer has a Python installation and an Altair installation. Please see the [Altair installation page](https://altair-viz.github.io/getting_started/installation.html) for more information on how to get up-and-running.
+
+Once you have Altair working to your satisfaction in your Python environment, note the path on your computer to that Python executable. From Python:
+
+```python
+# Python
+import sys
+
+sys.executable
+```
+
+It might return something like `'/path/to/bin/python3.6'`; you can use this value to set an environment variable to specify which Python environment to use. You might consider putting a line like this into your `.Renviron` file:
+
+```r
+RETICULATE_PYTHON="/path/to/bin/python3.6" # *your* path will be different
+```
+
+For a more-detailed look at the ins-and-outs of Python installations, please see the reticulate [page on Python Version Configuration](https://rstudio.github.io/reticulate/articles/versions.html).
+
+When you restart your R session, the following code should "just work".
+
+```{r test-installation}
+library("altair")
+
+has_altair()
+```
+
+### Chart object
+
+The next part of the code block creates a chart object:
+
+```{r create-chart}
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )
+```
+
+There's a few things going on here. The first is that the altair (R) package exposes the Altair (Python) library using the variable `alt`. In the [Altair documentation](https://altair-viz.github.io/getting_started/overview.html), the convention is to expose the Altair library through the varaiable `alt`:
+
+```{python}
+# Python
+import altair as alt
+```
+
+Accordingly, we expose the "same" variable, by default, as a part of the package-loading process. 
+
+The next step is to create the chart itself. In Python, we would use language like this:
+
+```python
+# Python
+plot = alt.Chart(...)
+```
+
+Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. It exposes Python objects as an R [Reference Class](http://adv-r.had.co.nz/OO-essentials.html#rc) object. Here, this means that wherever you see a `.` in the Altair Python documentation, use a `$` in your R code:
+
+```r
+plot <- alt$Chart(...)
+```
+
+The argument to the `Chart()` function also merits some explanation. In Python, the function expect its data argument to be a Pandas Dataframe. The reticulate package offers us a function `r_to_py()`, which we re-export in this package. This function and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
+
+In our case, we are converting dataframes. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
+
+At this point, you have an Altair chart. You can poke around a bit to see what it "is":
+
+```{r}
+class(plot)
+```
+
+You can examine the chart by printing it (supressing the output here because it's a bit verbose):
+
+```{r results="hide"}
+plot
+```
+
+## Adding a mark
+
+```{r add-mark}
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )
+```
+
+In Vega, "mark" is a similar concept to "geom" in ggplot2. In this case, we are saying we want to represent our data using points.
+
+In Python, methods can be "chained" using the `.` operator (`$` in our case), a little bit like how we use the `%>%` operator in R. To specify that we want points, we append `$mark_point()` to our Chart object.
+
+Please note that there is nothing magical about the way that I have chosen to format the code. This is simply my way of trying to make it look (a little bit) like how we might "pipe" the code. In the future, it may be interesting to wrap operators like `$foo` using functions that could be piped, `alt_foo(chart, ...)`.
+
+## Adding encoding
+
+```{r add-encoding}
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )
+```
+
+In Vega, "encoding" plays a similar role to "aesthetics" in ggplot2. We are mapping variables in the data to scales in the plot.
+
+What we see here is, in fact, a shorthand. As explained in the [Altair documentation](https://altair-viz.github.io/user_guide/encoding.html#encoding-shorthands), there's a longer version:
+
+```{r add-encoding-long}
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    x = alt$X("mpg", type = "quantitative"),
+    y = alt$Y("hp", type = "quantitative"),
+    color = alt$Color("cyl", type = "nominal") 
+  )
+```
+
+Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/encoding.html#data-types), `"quantitative"`, `"nominal"`, `"ordinal"`, and `"temporal"`. As a side note, the variable `cyl` could be called `"ordinal"`, but I think the default color scale for `"nominal"` works better in this case. It remains an exercise for the author to figure out how to specify color scales.
+
+## Displaying
+
+Now that we have specified our chart, it remains to display it. This package provides a function `vegalite()` that takes a Chart object then renders and embeds it as an [htmlwidget](https://www.htmlwidgets.org).
+
+```{r display}
+vegalite(plot)
+```
+
+

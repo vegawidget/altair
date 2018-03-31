@@ -48,6 +48,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/first-example.html">First Example</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -103,7 +115,7 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ijlyttle/altair"</span>)</a></code></pre></div>
 <p>It is necessary to have a working Altair installation on your computer. As a first step, I would recommend that you follow the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair installation instructions</a>. When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.</p>
 <p>In your <code>.Renviron</code> file, I would suggest that you use this Python path as the value of <code>RETICULATE_PYTHON</code>, for example:</p>
-<pre><code>RETICULATE_PYTHON="/your/path/to/python3"</code></pre>
+<pre><code>RETICULATE_PYTHON="/your/path/to/python3.6"</code></pre>
 <p>This is where the reticulate package will look first for Python on your computer.</p>
 <p>Of course, once you have edited your <code>.Renviron</code> file, restart R for the changes to take effect.</p>
 </div>
@@ -113,13 +125,17 @@
 <p>This package provides a simple pass-through to the Altiar API.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">plot &lt;-<span class="st"> </span>altair<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="reference/reticulate.html">r_to_py</a></span>(mtcars))<span class="op">$</span><span class="kw">mark_point</span>()<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="dt">x =</span> <span class="st">'mpg:Q'</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="dt">y =</span> <span class="st">'hp:Q'</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="dt">color =</span> <span class="st">'cyl:N'</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(plot)</a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3">plot &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw"><a href="reference/reticulate.html">r_to_py</a></span>(mtcars)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  )<span class="op">$</span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">y =</span> <span class="st">"hp:Q"</span>,</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="dt">color =</span> <span class="st">"cyl:N"</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">  )</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(plot)</a></code></pre></div>
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>

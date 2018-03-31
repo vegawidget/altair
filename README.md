@@ -58,7 +58,7 @@ installation.
 In your `.Renviron` file, I would suggest that you use this Python path
 as the value of `RETICULATE_PYTHON`, for example:
 
-    RETICULATE_PYTHON="/your/path/to/python3"
+    RETICULATE_PYTHON="/your/path/to/python3.6"
 
 This is where the reticulate package will look first for Python on your
 computer.

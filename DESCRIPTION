@@ -32,6 +32,9 @@ Suggests:
     rprojroot,
     tibble,
     purrr,
-    readr
+    readr,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr
