@@ -27,7 +27,7 @@ plot <-
     color = "cyl:N"
   )
 
-vegalite(plot)
+vegalite(plot, height = 400)
 ```
 
 ### Installation
@@ -167,7 +167,7 @@ Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/e
 Now that we have specified our chart, it remains to display it. This package provides a function `vegalite()` that takes a Chart object then renders and embeds it as an [htmlwidget](https://www.htmlwidgets.org).
 
 ```{r display}
-vegalite(plot)
+vegalite(plot, height = 400)
 ```
 
 
