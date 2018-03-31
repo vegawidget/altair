@@ -42,7 +42,7 @@ iris_new <-
     species = Species
   )
   
-p <- altair$Chart(r_to_py(iris_new))$mark_point()$encode(
+p <- alt$Chart(r_to_py(iris_new))$mark_point()$encode(
     x = "petal_length",
     y = "petal_width",
     color = "species"
@@ -74,7 +74,7 @@ vegalite(p)
 Let's follow this [Altair tutorial on selection interactions](https://altair-viz.github.io/user_guide/selections.html).
 
 ```{r}
-plot <- altair$Chart(r_to_py(mtcars))$mark_point()$encode(
+plot <- alt$Chart(r_to_py(mtcars))$mark_point()$encode(
     x = 'mpg:Q',
     y = 'hp:Q',
     color = 'cyl:N'
@@ -86,7 +86,7 @@ vegalite(plot)
 Now, let's create a brush and bind it to the plot.
 
 ```{r}
-brush <- altair$selection_interval()  # selection of type "interval"
+brush <- alt$selection_interval()  # selection of type "interval"
 
 plot <- plot$properties(selection = brush)
 
@@ -97,10 +97,10 @@ Let's make the brush do something interesting:
 
 ```{r}
 plot <- 
-  altair$Chart(r_to_py(mtcars))$mark_point()$encode(
+  alt$Chart(r_to_py(mtcars))$mark_point()$encode(
     x = 'mpg:Q',
     y = 'hp:Q',
-    color = altair$condition(brush, 'cyl:N', altair$value('lightgray'))
+    color = alt$condition(brush, 'cyl:N', alt$value('lightgray'))
   )$properties(selection = brush)
 
 vegalite(plot)
@@ -111,12 +111,12 @@ For our next trick, link a couple of plots together.
 ```{r}
 # also twiddling with some code-styling
 plot_basic <-
-  altair$Chart(
+  alt$Chart(
     r_to_py(mtcars)
   )$mark_point(
   )$encode(
     y = 'hp:Q',
-    color = altair$condition(brush, 'cyl:N', altair$value('lightgray'))
+    color = alt$condition(brush, 'cyl:N', alt$value('lightgray'))
   )$properties(
     width = 250,
     height = 250,
@@ -133,7 +133,7 @@ plot_right <-
     x = 'mpg:Q'
   )
 
-plot_compound <- altair$hconcat(plot_left, plot_right)
+plot_compound <- alt$hconcat(plot_left, plot_right)
 
 vegalite(plot_compound)
 ```

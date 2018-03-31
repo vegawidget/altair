@@ -17,10 +17,10 @@ NULL
 #'
 #' Uses the reticulate framework to access the Altair API
 #'
-#' @export altair
+#' @export alt
 #'
-altair <- NULL
+alt <- NULL
 
 .onLoad <- function(libname, pkgname) {
-  altair <<- reticulate::import("altair", delay_load = TRUE)
+  alt <<- reticulate::import("altair", delay_load = TRUE)
 }

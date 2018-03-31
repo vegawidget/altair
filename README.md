@@ -73,11 +73,15 @@ This package provides a simple pass-through to the Altiar API.
 ``` r
 library("altair")
 
-plot <- altair$Chart(r_to_py(mtcars))$mark_point()$encode(
-    x = 'mpg:Q',
-    y = 'hp:Q',
-    color = 'cyl:N'
-)
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )
 
 vegalite(plot)
 ```
