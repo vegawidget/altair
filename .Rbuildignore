@@ -4,4 +4,6 @@
 ^README\.Rmd$
 ^data-raw$
 ^\.travis\.yml$
+^_pkgdown\.yml$
+^docs$
 ^CODE_OF_CONDUCT\.md$

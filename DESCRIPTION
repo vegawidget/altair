@@ -24,7 +24,8 @@ URL: https://github.com/ijlyttle/altair
 BugReports: https://github.com/ijlyttle/altair/issues
 Imports: 
     reticulate,
-    htmlwidgets
+    htmlwidgets,
+    rlang (>= 0.1.2)
 Suggests: 
     httr,
     rprojroot,

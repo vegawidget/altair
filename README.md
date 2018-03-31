@@ -11,10 +11,10 @@ status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org
 
 The goal of altair is to provide an interface to the
 [Altair](https://altair-viz.github.io) Python package, which builds
-Vega-Lite visualizations. This is a short term solution - I am a big fan
-of the native R interface to build Vega-Lite visualizations that Bob
-Rudis (@hrbrmstr) and coworkers are building with the
-[vegalite](https://vega.github.io/vega-lite) package.
+Vega-Lite visualizations. I am a big fan of the native R interface to
+build Vega-Lite visualizations that Bob Rudis
+([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers are building
+with the [vegalite](https://github.com/hrbrmstr/vegalite) package.
 
 ## Development plan
 
@@ -65,6 +65,35 @@ computer.
 
 Of course, once you have edited your `.Renviron` file, restart R for the
 changes to take effect.
+
+## Example
+
+This package provides a simple pass-through to the Altiar API.
+
+``` r
+library("altair")
+
+plot <- altair$Chart(r_to_py(mtcars))$mark_point()$encode(
+    x = 'mpg:Q',
+    y = 'hp:Q',
+    color = 'cyl:N'
+)
+
+vegalite(plot)
+```
+
+Some things to keep in mind:
+
+  - Where you see a `.` in the Python examples, use a `$` instead.
+
+  - Any data-frames you provide as arguments need to wrapped by
+    `r_to_py()`.
+
+  - In your data-frames, columns that contain dots, i.e. `Sepal.Width`
+    will prevent Altair from compiling a chart spec.
+
+I’d like to sort out how to get the `vegalite()` function to “do the
+right thing” when knitting to a non-html format.
 
 ## Acknowledgements
 
