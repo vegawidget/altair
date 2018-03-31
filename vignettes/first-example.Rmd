@@ -102,6 +102,8 @@ The argument to the `Chart()` function also merits some explanation. In Python, 
 
 In our case, we are converting dataframes. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
 
+**One important note** - if your data-frame has variables that have dots in their names (think `iris` and `"Sepal.Width"`), this will cause you grief in Altair. My advice to you is to rename such variables before introducing such data to Altair.
+
 At this point, you have an Altair chart. You can poke around a bit to see what it "is":
 
 ```{r}
@@ -160,7 +162,7 @@ plot <-
   )
 ```
 
-Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/encoding.html#data-types), `"quantitative"`, `"nominal"`, `"ordinal"`, and `"temporal"`. As a side note, the variable `cyl` could be called `"ordinal"`, but I think the default color scale for `"nominal"` works better in this case. It remains an exercise for the author to figure out how to specify color scales.
+Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/encoding.html#data-types), `"quantitative"`, `"nominal"`, `"ordinal"`, and `"temporal"`. As a side note, the variable `cyl` could be called `"ordinal"`, but I think the default color scale for `"nominal"` works better in this case. It remains an exercise for the author of this article to figure out how to specify color scales.
 
 ## Displaying
 

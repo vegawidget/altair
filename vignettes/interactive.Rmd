@@ -1,0 +1,110 @@
+---
+title: "Interactive Examples"
+author: "Ian Lyttle"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is based on the [linked-brush scatter-plot example](https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot) found in the Altair documentation.
+
+A goal of Vega-Lite is to implement a declaritive grammmar not only of visualization, but also of interaction. The core concept of this interactive grammar is the *selection* object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.
+
+Let's start again with our basic plot from the [first example](first-example.html):
+
+```{r}
+library("altair")
+
+plot_static <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )$mark_point(
+  )
+
+vegalite(plot_static, height = 400)
+```
+
+Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selecton, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).
+
+```{r}
+brush <- alt$selection_interval()
+```
+
+We can create a new chart where the brush is bound using the selection property:
+
+```{r}
+plot_brush <- 
+  plot_static$properties(
+    selection = brush
+  )
+
+vegalite(plot_brush, height = 400)
+```
+
+You can click-and-drag to draw a selection-box, then move it around. So far, so good, but it does not really *do* much. Let's change that. 
+
+We need to "tell" the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the `condition()` method to specify a light-gray color for observations that are not selected.
+
+```{r}
+plot_selection <-
+  alt$Chart(
+    r_to_py(mtcars)
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color =  alt$condition(brush, 'cyl:N', alt$value('lightgray'))
+  )$mark_point(
+  )$properties(
+    selection = brush
+  ) 
+
+# vegalite(plot_selection, height = 400)
+```
+
+This works, but it appears there is an easier way. It appears that you can call the `encode()` method to overwrite specific encondings for an existing chart. Thus, we have a chart where you can "see" the effect of your selection.
+
+```{r}
+plot_selection <- 
+  plot_brush$encode(
+    color = alt$condition(brush, 'cyl:N', alt$value('lightgray'))
+  )
+
+vegalite(plot_selection, height = 400)
+```
+
+Not too shabby, eh!
+
+The capabilities become more-apparent when we combine charts. Let's create charts that look at different aspects of the data. We will use `plot_selection` as our base-chart, then modify as needed.
+
+```{r}
+plot_mpg <- 
+  plot_selection$properties(
+    width = 250,
+    height = 250
+  )
+
+plot_disp <- 
+  plot_mpg$encode(
+    x = "disp:Q"
+  )
+```
+
+In essence, `plot_mpg` is a smaller version of `plot_selection`; `plot_disp` is derived from `plot_mpg`, showing displacement on its x-axis, rather than mpg. It remains to compose these into a compound chart and display:
+
+```{r}
+plot_compound <- alt$hconcat(plot_mpg, plot_disp)
+
+vegalite(plot_compound, height = 350)
+```
+
+You can select observations from either side. This is just a taste of what we can do using Vega-Lite, using the Altair API.
