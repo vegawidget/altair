@@ -37,12 +37,24 @@ In the longer-term future it may be interesting to provide a proper R interface 
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+
+For this package, only a development version is available, from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("ijlyttle/altair")
 ```
+It is necessary to have a working Altair installation on your computer. As a first step, I would recommend that you follow the [Altair installation instructions](https://altair-viz.github.io/getting_started/installation.html). When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.
+
+In your `.Renviron` file, I would suggest that you use this Python path as the value of `RETICULATE_PYTHON`, for example:
+
+```
+RETICULATE_PYTHON="/your/path/to/python3"
+```
+
+This is where the reticulate package will look first for Python on your computer.
+
+Of course, once you have edited your `.Renviron` file, restart R for the changes to take effect.
 
 ## Acknowledgements
 
