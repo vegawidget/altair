@@ -16,6 +16,10 @@ build Vega-Lite visualizations that Bob Rudis
 ([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers are building
 with the [vegalite](https://github.com/hrbrmstr/vegalite) package.
 
+In this documentation, the capitalized word **Altair** shall refer to
+the Python API; the lower-case word **altair** shall refer to this R
+package.
+
 ## Development plan
 
 For the foreseeable future, this package is going to be very rough. At
@@ -98,6 +102,12 @@ Some things to keep in mind:
 
 I’d like to sort out how to get the `vegalite()` function to “do the
 right thing” when knitting to a non-html format.
+
+## Articles
+
+  - [First Example]()
+  - [Interactive Examples]()
+  - [Manifesto]()
 
 ## Acknowledgements
 

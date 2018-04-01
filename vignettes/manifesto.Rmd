@@ -16,4 +16,4 @@ knitr::opts_chunk$set(
 )
 ```
 
-A few short thoughts on what this packges does, could do, and what it is not meant to do.
+The purpose of this package is to be a minimal and faithful interface to the [Python Altair](https://altair-viz.github.io) API. 
