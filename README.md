@@ -2,46 +2,24 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build
-status](https://travis-ci.org/ijlyttle/altair.svg?branch=master)](https://travis-ci.org/ijlyttle/altair)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org/package=altair)
+[![Travis build
+status](https://travis-ci.org/ijlyttle/altair.svg?branch=master)](https://travis-ci.org/ijlyttle/altair)
 
 # altair
 
-The goal of altair is to provide an interface to the
-[Altair](https://altair-viz.github.io) Python package, which builds
-Vega-Lite visualizations. I am a big fan of the native R interface to
-build Vega-Lite visualizations that Bob Rudis
-([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers are building
-with the [vegalite](https://github.com/hrbrmstr/vegalite) package.
+The goal of altair is to help you build
+[Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the
+[reticulate](https://rstudio.github.io/reticulate) package, it provides
+an interface to the [Altair](https://altair-viz.github.io) Python
+library. I am a big fan of the efforts to build a native R interface to
+Vega-Lite, by Bob Rudis ([@hrbrmstr](https://github.com/hrbrmstr)) and
+coworkers: the [vegalite](https://github.com/hrbrmstr/vegalite) package.
 
 In this documentation, the capitalized word **Altair** shall refer to
 the Python API; the lower-case word **altair** shall refer to this R
 package.
-
-## Development plan
-
-For the foreseeable future, this package is going to be very rough. At
-the moment, you are able to muck around with Vega-Lite 2.0. This means:
-
-1.  You can create charts by accessing the Python **Altair** API using
-    **reticulate**.
-2.  You can display charts using the `vegalite()` htmlwidget.
-
-There’s really not much beyond that. Here’s what I have in mind for the
-near future:
-
-1.  Tooltips.
-2.  A proper installation procedure for the Altair Python package, a
-    function like `install_altair()`.
-
-In the longer-term future it may be interesting to provide a proper R
-interface to the Python API. I have no idea what that looks like,
-although we might take some inspiration from the
-[keras](https://keras.rstudio.com/) package. I have started a
-[manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
-to outline some high-level ideas.
 
 ## Installation
 
@@ -70,7 +48,7 @@ import sys
 sys.executable
 ```
 
-It might return something like ‘/path/to/bin/python3.6’; you can use
+It might return something like `/path/to/bin/python3.6`; you can use
 this value to set an environment variable to specify which Python
 environment to use. You might consider putting a line like this into
 your `.Renviron`
@@ -114,8 +92,32 @@ Some things to keep in mind:
   - In your data-frames, columns that contain dots, i.e. `Sepal.Width`
     will prevent Altair from compiling a chart spec.
 
-I’d like to sort out how to get the `vegalite()` function to “do the
-right thing” when knitting to a non-html format.
+Also, I’d like to sort out how to get the `vegalite()` function to “do
+the right thing” when knitting to a non-html format.
+
+## Development plan
+
+For the foreseeable future, this package is going to be very rough. At
+the moment, you are able to muck around with Vega-Lite 2.0. This means:
+
+1.  You can create charts by accessing the Python **Altair** API using
+    **reticulate**.
+2.  You can display charts using the `vegalite()` htmlwidget.
+
+There’s really not much beyond that. Here’s what I have in mind for the
+near future:
+
+1.  Tightening up existing capabilites.
+2.  A proper installation procedure for the Altair Python package, a
+    function like `install_altair()`.
+3.  Tooltips.
+
+In the longer-term future it may be interesting to provide a proper R
+interface to the Python API. I have no idea what that looks like,
+although we might take some inspiration from the
+[keras](https://keras.rstudio.com/) package. I have started a
+[manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
+to outline some high-level ideas.
 
 ## Articles
 
