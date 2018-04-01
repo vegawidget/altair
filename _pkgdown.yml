@@ -1,3 +1,25 @@
 template:
   params:
     bootswatch: sandstone
+
+reference:
+  - title: "Installation"
+    desc: >
+      Functions to help install the Python Altair library
+    contents:
+      - has_altair
+  - title: "Chart construction"
+    desc: >
+      Functions and objects to help construct charts
+    contents:
+      - alt
+      - r_to_py
+  - title: "htmlwidgets"
+    desc: >
+      Functions for rendering charts in RMarkdown documents or Shiny apps
+    contents:
+      - vegalite
+      - renderVegalite
+      - vegaliteOutput
+
+

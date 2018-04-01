@@ -112,7 +112,7 @@
 <li>Tooltips.</li>
 <li>A proper installation procedure for the Altair Python package, a function like <code>install_altair()</code>.</li>
 </ol>
-<p>In the longer-term future it may be interesting to provide a proper R interface to the Python API. I have no idea what that looks like, although we might take some inspiration from the <a href="https://keras.rstudio.com/">keras</a> package.</p>
+<p>In the longer-term future it may be interesting to provide a proper R interface to the Python API. I have no idea what that looks like, although we might take some inspiration from the <a href="https://keras.rstudio.com/">keras</a> package. I have started a <a href="https://ijlyttle.github.io/altair/articles/manifesto.html">manifesto</a> to outline some high-level ideas.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -121,8 +121,13 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ijlyttle/altair"</span>)</a></code></pre></div>
 <p>It is necessary to have a working Altair installation on your computer. As a first step, I would recommend that you follow the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair installation instructions</a>. When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.</p>
-<p>In your <code>.Renviron</code> file, I would suggest that you use this Python path as the value of <code>RETICULATE_PYTHON</code>, for example:</p>
-<pre><code>RETICULATE_PYTHON="/your/path/to/python3.6"</code></pre>
+<p>You can do this from your Python environment by:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Python</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">sys.executable</a></code></pre></div>
+<p>It might return something like ‘/path/to/bin/python3.6’; you can use this value to set an environment variable to specify which Python environment to use. You might consider putting a line like this into your <code>.Renviron</code> file:</p>
+<pre><code>RETICULATE_PYTHON="/your/path/to/python3.6" # your path will be different</code></pre>
 <p>This is where the reticulate package will look first for Python on your computer.</p>
 <p>Of course, once you have edited your <code>.Renviron</code> file, restart R for the changes to take effect.</p>
 </div>
@@ -130,19 +135,19 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This package provides a simple pass-through to the Altiar API.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">plot &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw"><a href="reference/reticulate.html">r_to_py</a></span>(mtcars)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">y =</span> <span class="st">"hp:Q"</span>,</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="dt">color =</span> <span class="st">"cyl:N"</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  )</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(plot)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">plot &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw"><a href="reference/reticulate.html">r_to_py</a></span>(mtcars)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  )<span class="op">$</span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    <span class="dt">y =</span> <span class="st">"hp:Q"</span>,</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="dt">color =</span> <span class="st">"cyl:N"</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">  )</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(plot)</a></code></pre></div>
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
@@ -154,10 +159,11 @@
 <div id="articles" class="section level2">
 <h2 class="hasAnchor">
 <a href="#articles" class="anchor"></a>Articles</h2>
+<p>The documentation for this package includes some articles:</p>
 <ul>
-<li><a href="">First Example</a></li>
-<li><a href="">Interactive Examples</a></li>
-<li><a href="">Manifesto</a></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/first-example.html">First Example</a>: A walkthrough to get a first chart to work.</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/interactive.html">Interactive Examples</a>: A set of examples that work towards linked-brushing of two scatterplots.</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/manifesto.html">Manifesto</a>: A collection of ideas on where this package might go (and where I want to keep it from going).</p></li>
 </ul>
 </div>
 <div id="acknowledgements" class="section level2">
