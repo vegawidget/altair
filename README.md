@@ -39,7 +39,9 @@ near future:
 In the longer-term future it may be interesting to provide a proper R
 interface to the Python API. I have no idea what that looks like,
 although we might take some inspiration from the
-[keras](https://keras.rstudio.com/) package.
+[keras](https://keras.rstudio.com/) package. I have started a
+[manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
+to outline some high-level ideas.
 
 ## Installation
 
@@ -59,10 +61,22 @@ When you get vegalite plots to render in your Python environment, I
 would suggest you determine the path to your particular Python
 installation.
 
-In your `.Renviron` file, I would suggest that you use this Python path
-as the value of `RETICULATE_PYTHON`, for example:
+You can do this from your Python environment by:
 
-    RETICULATE_PYTHON="/your/path/to/python3.6"
+``` python
+# Python
+import sys
+
+sys.executable
+```
+
+It might return something like ‘/path/to/bin/python3.6’; you can use
+this value to set an environment variable to specify which Python
+environment to use. You might consider putting a line like this into
+your `.Renviron`
+    file:
+
+    RETICULATE_PYTHON="/your/path/to/python3.6" # your path will be different
 
 This is where the reticulate package will look first for Python on your
 computer.
@@ -105,9 +119,20 @@ right thing” when knitting to a non-html format.
 
 ## Articles
 
-  - [First Example]()
-  - [Interactive Examples]()
-  - [Manifesto]()
+The documentation for this package includes some articles:
+
+  - [First
+    Example](https://ijlyttle.github.io/altair/articles/first-example.html):
+    A walkthrough to get a first chart to work.
+
+  - [Interactive
+    Examples](https://ijlyttle.github.io/altair/articles/interactive.html):
+    A set of examples that work towards linked-brushing of two
+    scatterplots.
+
+  - [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html):
+    A collection of ideas on where this package might go (and where I
+    want to keep it from going).
 
 ## Acknowledgements
 
