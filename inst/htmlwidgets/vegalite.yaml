@@ -3,6 +3,8 @@ dependencies:
     version: 3.2.1
     src: htmlwidgets/lib/vega
     script:
+      - promise.min.js
+      - symbol.min.js
       - vega-min.js
   - name: vega-lite
     version: 2.3.1

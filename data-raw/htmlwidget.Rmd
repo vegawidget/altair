@@ -25,6 +25,8 @@ Let's establish the files we will download, and where we will download them to.
 downloads <-
   tribble(
     ~path_local,                    ~path_remote,
+    "vega/promise.min.js",          "https://vega.github.io/vega/assets/promise.min.js",
+    "vega/symbol.min.js",           "https://vega.github.io/vega/assets/symbol.min.js",
     "vega/vega-min.js",             "https://cdn.jsdelivr.net/npm/vega@3.2.1",
     "vega/LICENSE",                 "https://raw.githubusercontent.com/vega/vega/master/LICENSE",
     "vega-lite/vega-lite-min.js",   "https://cdn.jsdelivr.net/npm/vega-lite@2.3.1",
