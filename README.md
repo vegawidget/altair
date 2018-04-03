@@ -151,6 +151,11 @@ foundations:
   - [vegalite](https://github.com/hrbrmstr/vegalite): Native R interface
     to Vega-Lite
 
+A particular debt is owed to the
+[vegalite](https://github.com/hrbrmstr/vegalite) project as it provided
+a lot of the inspiration for figuring out how to get an htmlwidget to
+work.
+
 ## Code of conduct
 
 Please note that this project is released with a [Contributor Code of
