@@ -4,7 +4,7 @@ author: "Ian Lyttle"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r setup, include = FALSE}
@@ -64,7 +64,7 @@ plot_selection <-
   )$encode(
     x = "mpg:Q",
     y = "hp:Q",
-    color =  alt$condition(brush, 'cyl:N', alt$value('lightgray'))
+    color =  alt$condition(brush, "cyl:N", alt$value("lightgray"))
   )$mark_point(
   )$properties(
     selection = brush
@@ -78,7 +78,7 @@ This works, but it appears there is an easier way. It appears that you can call 
 ```{r}
 plot_selection <- 
   plot_brush$encode(
-    color = alt$condition(brush, 'cyl:N', alt$value('lightgray'))
+    color = alt$condition(brush, "cyl:N", alt$value("lightgray"))
   )
 
 vegalite(plot_selection, height = 400)

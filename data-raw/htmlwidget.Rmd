@@ -21,6 +21,8 @@ lib_dir <- file.path(find_package_root_file(), "inst", "htmlwidgets", "lib")
 
 Let's establish the files we will download, and where we will download them to.
 
+Here's a [reference](https://vega.github.io/vega/usage/#ie) to a solution to the promise-and-symbol issue that Alicia Schep brought to our attention. 
+
 ```{r}
 downloads <-
   tribble(

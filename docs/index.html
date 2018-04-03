@@ -124,7 +124,7 @@
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">plot &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw"><a href="reference/reticulate.html">r_to_py</a></span>(mtcars)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw"><a href="reference/r_to_py.html">r_to_py</a></span>(mtcars)</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
 <a class="sourceLine" id="cb4-7" data-line-number="7">  )<span class="op">$</span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
@@ -136,7 +136,7 @@
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
-<li><p>Any data-frames you provide as arguments need to wrapped by <code><a href="reference/reticulate.html">r_to_py()</a></code>.</p></li>
+<li><p>Any data-frames you provide as arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
 <li><p>In your data-frames, columns that contain dots, i.e. <code>Sepal.Width</code> will prevent Altair from compiling a chart spec.</p></li>
 </ul>
 <p>Also, I’d like to sort out how to get the <code><a href="reference/vegalite.html">vegalite()</a></code> function to “do the right thing” when knitting to a non-html format.</p>

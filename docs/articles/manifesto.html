@@ -88,7 +88,7 @@
       <h1>Manifesto</h1>
                         <h4 class="author">Ian Lyttle</h4>
             
-            <h4 class="date">2018-04-02</h4>
+            <h4 class="date">2018-04-03</h4>
       
       <small>Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/manifesto.Rmd"><code>vignettes/manifesto.Rmd</code></a></small>
 
@@ -109,7 +109,7 @@
 </ol>
 <p>The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">alt_chart &lt;-<span class="st"> </span><span class="cf">function</span>(data, ...) {</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  alt<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="../reference/reticulate.html">r_to_py</a></span>(data), ...)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  alt<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="../reference/r_to_py.html">r_to_py</a></span>(data), ...)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">}</a></code></pre></div>
 <p>I think this approach would support piping, but at the cost of risking namespace collisions, as detailed in this <a href="https://github.com/g2inR/g2r/issues/1">discussion</a> on ideas for porting the <a href="https://antv.alipay.com/zh-cn/g2/3.x/index.html">g2 visualization library</a>.</p>
 <p>Another thing to consider is how much effort it would take to provide full coverage of the Python API.</p>
