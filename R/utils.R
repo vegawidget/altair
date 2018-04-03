@@ -24,3 +24,15 @@ has_altair <- function() {
 
   TRUE
 }
+
+#' Convert an R object to Python
+#'
+#' See [reticulate::r_to_py()] for more details.
+#'
+#' @name r_to_py
+#' @keywords internal
+#' @export
+#' @importFrom reticulate r_to_py
+#'
+NULL
+

@@ -1,16 +1,3 @@
-#' Reticulate helpers
-#'
-#'
-#' @name reticulate
-#' @aliases               r_to_py
-#' @importFrom reticulate r_to_py
-#' @export                r_to_py
-#'
-#' @seealso [reticulate::r_to_py()]
-#'
-NULL
-
-
 # reference: https://rstudio.github.io/reticulate/articles/package.html
 
 #' Altair object
