@@ -34,7 +34,7 @@ plot_static <-
   )$mark_point(
   )
 
-knitr::knit_print(plot_static)
+vegalite(plot_static, height = 400)
 ```
 
 Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selecton, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).

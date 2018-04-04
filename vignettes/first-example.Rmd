@@ -92,7 +92,7 @@ The next step is to create the chart itself. In Python, we would use language li
 plot = alt.Chart(...)
 ```
 
-Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. It exposes Python objects as an R [Reference Class](http://adv-r.had.co.nz/OO-essentials.html#rc) object. Here, this means that wherever you see a `.` in the Altair Python documentation, use a `$` in your R code:
+Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. It exposes Python objects as R S3 objects that behave like [Reference Class](http://adv-r.had.co.nz/OO-essentials.html#rc) objects. In practical terms, wherever you see a `.` in the Altair Python documentation, use a `$` in your R code:
 
 ```r
 plot <- alt$Chart(...)
