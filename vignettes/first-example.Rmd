@@ -3,6 +3,8 @@ title: "First Example"
 author: "Ian Lyttle"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
