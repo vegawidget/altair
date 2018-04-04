@@ -22,6 +22,7 @@ Let's start again with our basic plot from the [first example](first-example.htm
 
 ```{r}
 library("altair")
+library("htmlwidgets")
 
 plot_static <- 
   alt$Chart(
@@ -33,7 +34,7 @@ plot_static <-
   )$mark_point(
   )
 
-vegalite(plot_static, height = 400)
+knitr::knit_print(plot_static)
 ```
 
 Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selecton, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).

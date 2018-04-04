@@ -10,13 +10,16 @@ vegalite <- function(chart, width = NULL, height = NULL) {
   # create chart-spec as JSON
   spec <- chart$to_json()
 
-  htmlwidgets::createWidget(
-    "vegalite",
-    spec,
-    width = width,
-    height = height,
-    package = "altair"
-  )
+  vegalite <-
+    htmlwidgets::createWidget(
+      "vegalite",
+      spec,
+      width = width,
+      height = height,
+      package = "altair"
+    )
+
+  vegalite
 }
 
 #' Shiny output for vegalite
