@@ -16,4 +16,11 @@ dependencies:
     src: htmlwidgets/lib/vega-embed
     script:
       - vega-embed-min.js
+  - name: vega-tooltip
+    version: 0.7.0
+    src: htmlwidgets/lib/vega-tooltip
+    script:
+      - vega-tooltip.min.js
+    style:
+      - vega-tooltip.min.css
 
