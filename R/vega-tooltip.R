@@ -1,4 +1,4 @@
-#' Create a Vega tooltip spec
+#' Create a Vega tooltip
 #'
 #' Leaving out the specification of JavaScript functions for now, because I don't
 #' know how to handle them (yet).
@@ -8,28 +8,26 @@
 #'   - `FALSE`: include only those fields specified in `fields`.
 #'      Use this with empty `fields` to suppress tooltip.
 #'   - `NULL`: include only those fields encoded in the chart.
-#' @param fields        `data.frame`, used if `showAllFields == FALSE`.
-#'   One row for each field to include in tooltip, with variables:
-#'   - `field` (`character`) The unique name of the field. With Vega-Lite,
-#'      this is the field you provided to each encoding channel.
-#'   - `title` (`character`) A custom title for the field.
-#'   - `formatType` (`character`) Tells what kind of field this is
-#'      (for formatting the field value in the tooltip)
-#'      Supported values: `"number"`, `"time"`, and `"string"`.
-#'   - `format` (`character`) A string specifier for formatting the field value
-#'      in the tooltip. If `formatType` is `"number"`, you can provide a
-#'      [number format string-specifier](https://github.com/d3/d3-format#locale_format).
-#'      If `formatType` is `"time"`, you can provide a
-#'      [time format string-specifier](https://github.com/d3/d3-time-format#locale_format).
-#'      If `formatType` is `"string"`, there is no need to provide a format.
-#'   - `aggregate` (`character`) If your Vega-Lite visualization has multiple
-#'     aggregations of the same field, you can specify the aggregation
-#'     to identify the particular aggregated field.
-#'     Supported values: [Vega-Lite aggregate operations](https://vega.github.io/vega-lite/docs/aggregate.html#supported-aggregation-operations)
+#' @param fields        `list`, tooltip specification to use if `showAllFields == FALSE`.
+#'   Use [add_field()] to specify.
 #' @param delay         `numeric` number of milliseconds tooltip display
 #'     should be delayed.
+#' @param onAppear      `JS_EVAL` object created using [htmlwidgets::JS()],
+#'     a function with arguments: `event`, `item`.
+#'     Callback when tooltip first appears
+#'     (when mouse moves over a new item in visualization).
+#' @param onMove        `JS_EVAL` object created using [htmlwidgets::JS()],
+#'     a function with arguments: `event`, `item`.
+#'     Callback when tooltip moves
+#'     (e.g., when mouse moves within a bar).
+#' @param onDisappear   `JS_EVAL` object created using [htmlwidgets::JS()],
+#'     a function with arguments: `event`, `item`.
+#'     Callback when tooltip disappears
+#'     (when mouse moves out an item).
 #' @param colorTheme    `character` color theme picker
-#' @param sort          `character` specify sorting fields on either
+#' @param sort          `character` or  `JS_EVAL` object created using
+#'    [htmlwidgets::JS()],
+#'    specify sorting fields on either
 #'    `"title"`, or `"value"`, using sorting orders:
 #'    - dates and strings are sorted ascending, numbers descending
 #'    - dates appear first, then numbers, then strings
@@ -40,12 +38,16 @@
 #' @export
 #'
 vega_tooltip <- function(showAllFields = FALSE,
-                         fields = data.frame(),
+                         fields = NULL,
                          delay = 100,
+                         onAppear = NULL,
+                         onMove = NULL,
+                         onDisappear = NULL,
                          colorTheme = c("light", "dark"),
                          sort = c("title", "value")) {
 
   # input validation
+  # TODO: needs more
   colorTheme <- match.arg(colorTheme)
   sort <- match.arg(sort)
 
@@ -54,6 +56,9 @@ vega_tooltip <- function(showAllFields = FALSE,
       showAllFields = showAllFields,
       fields = fields,
       delay = delay,
+      onAppear = onAppear,
+      onMove = onMove,
+      onDisappear = onDisappear,
       colorTheme = colorTheme,
       sort = sort
     ),
@@ -61,16 +66,100 @@ vega_tooltip <- function(showAllFields = FALSE,
   )
 }
 
+#' Add a field to a Vega tooltip
+#'
+#' TODO: get documentation sorted out - show something working for now
+#'
+#' @rdname add_field
+#'
+#' @param tooltip `vega_tooltip` object, created using [vega_tooltip()]
+#' @inheritParams tooltip_field
+#'
+#' @return `vega_tooltip` object
+#' @export
+#'
 add_field <- function(x) {
   UseMethod("add_field")
 }
 
+#' @export
+#'
 add_field.default <- function(x) {
   "Unknown class"
 }
 
+#' @export
+#'
 add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
                                    formatType = NULL, format = NULL,
+                                   valueAccessor = NULL, render = NULL,
                                    aggregate = NULL) {
 
+  field_new <- tooltip_field(
+    field = field,
+    title = title,
+    formatType = formatType,
+    format = format,
+    valueAccessor = valueAccessor,
+    render = render,
+    aggregate = aggregate
+  )
+
+  # TODO: figure out if we need to defend against this
+  if (is.null(tooltip$fields)) {
+    tooltip$fields <- field_new
+  } else {
+    tooltip$fields <- list(tooltip$fields, field_new)
+  }
+
+  tooltip
+}
+
+#' Create a field specification for a Vega tooltip
+#'
+#' @param field         `character`, the unique name of the field.
+#'   With Vega-Lite, this is the field you provided to each encoding channel.
+#' @param title         `character` or `JS_EVAL` object created using
+#'   [htmlwidgets::JS()], a custom title for the field,
+#'   or an accessor function that generates it from the scenegraph datum.
+#' @param formatType    `character`, tells what kind of field this is
+#'   (for formatting the field value in the tooltip)
+#'   Supported values: `"number"`, `"time"`, and `"string"`.
+#' @param format        `character` or `JS_EVAL` object created using
+#'   [htmlwidgets::JS()]
+#'   - **string**:  a string specifier for formatting the field value
+#'      in the tooltip. If `formatType` is `"number"`, you can provide a
+#'      [number format string-specifier](https://github.com/d3/d3-format#locale_format).
+#'      If `formatType` is `"time"`, you can provide a
+#'      [time format string-specifier](https://github.com/d3/d3-time-format#locale_format).
+#'      If `formatType` is `"string"`, there is no need to provide a format.
+#'    - **function**: function that returns a string, in which case `formatType` is ignored.
+#' @param valueAccessor `JS_EVAL` object created using [htmlwidgets::JS()]
+#' @param render        `JS_EVAL` object created using [htmlwidgets::JS()]
+#' @param aggregate     `character`
+#'
+#' @keywords internal
+#' @export
+tooltip_field <- function(field = NULL, title = NULL,
+                          formatType = NULL, format = NULL,
+                          valueAccessor = NULL, render = NULL,
+                          aggregate = NULL) {
+
+  # TODO: validate inputs
+
+  # create a temporary list
+  result <- list(
+    field = field,
+    title = title,
+    formatType = formatType,
+    format = format,
+    valueAccessor = valueAccessor,
+    render = render,
+    aggregate = aggregate
+  )
+
+  # remove the null elements
+  result[vapply(result, is.null, logical(1))] <- NULL
+
+  result
 }

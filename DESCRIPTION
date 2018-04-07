@@ -27,16 +27,15 @@ Imports:
     htmlwidgets,
     rlang (>= 0.1.2),
     assertthat,
-    jsonlite,
     magrittr
-Suggests:
+Suggests: 
     httr,
     rprojroot,
-    tibble,
     purrr,
     readr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tibble
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

@@ -4,7 +4,8 @@
 \alias{vega_tooltip}
 \title{Create a Vega tooltip spec}
 \usage{
-vega_tooltip(showAllFields = FALSE, fields = data.frame(), delay = 100,
+vega_tooltip(showAllFields = FALSE, fields = NULL, delay = 100,
+  onAppear = NULL, onMove = NULL, onDisappear = NULL,
   colorTheme = c("light", "dark"), sort = c("title", "value"))
 }
 \arguments{
@@ -16,33 +17,32 @@ Use this with empty \code{fields} to suppress tooltip.
 \item \code{NULL}: include only those fields encoded in the chart.
 }}
 
-\item{fields}{\code{data.frame}, used if \code{showAllFields == FALSE}.
-One row for each field to include in tooltip, with variables:
-\itemize{
-\item \code{field} (\code{character}) The unique name of the field. With Vega-Lite,
-this is the field you provided to each encoding channel.
-\item \code{title} (\code{character}) A custom title for the field.
-\item \code{formatType} (\code{character}) Tells what kind of field this is
-(for formatting the field value in the tooltip)
-Supported values: \code{"number"}, \code{"time"}, and \code{"string"}.
-\item \code{format} (\code{character}) A string specifier for formatting the field value
-in the tooltip. If \code{formatType} is \code{"number"}, you can provide a
-\href{https://github.com/d3/d3-format#locale_format}{number format string-specifier}.
-If \code{formatType} is \code{"time"}, you can provide a
-\href{https://github.com/d3/d3-time-format#locale_format}{time format string-specifier}.
-If \code{formatType} is \code{"string"}, there is no need to provide a format.
-\item \code{aggregate} (\code{character}) If your Vega-Lite visualization has multiple
-aggregations of the same field, you can specify the aggregation
-to identify the particular aggregated field.
-Supported values: \href{https://vega.github.io/vega-lite/docs/aggregate.html#supported-aggregation-operations}{Vega-Lite aggregate operations}
-}}
+\item{fields}{\code{list}, tooltip specification to use if \code{showAllFields == FALSE}.
+Use \code{\link[=add_field]{add_field()}} to specify.}
 
 \item{delay}{\code{numeric} number of milliseconds tooltip display
 should be delayed.}
 
+\item{onAppear}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+a function with arguments: \code{event}, \code{item}.
+Callback when tooltip first appears
+(when mouse moves over a new item in visualization).}
+
+\item{onMove}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+a function with arguments: \code{event}, \code{item}.
+Callback when tooltip moves
+(e.g., when mouse moves within a bar).}
+
+\item{onDisappear}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+a function with arguments: \code{event}, \code{item}.
+Callback when tooltip disappears
+(when mouse moves out an item).}
+
 \item{colorTheme}{\code{character} color theme picker}
 
-\item{sort}{\code{character} specify sorting fields on either
+\item{sort}{\code{character} or  \code{JS_EVAL} object created using
+\code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+specify sorting fields on either
 \code{"title"}, or \code{"value"}, using sorting orders:
 \itemize{
 \item dates and strings are sorted ascending, numbers descending
