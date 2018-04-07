@@ -37,6 +37,7 @@
 #' @return S3 object with class `vega_tooltip`
 #'
 #' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options)
+#' @export
 #'
 vega_tooltip <- function(showAllFields = FALSE,
                          fields = data.frame(),
@@ -45,6 +46,8 @@ vega_tooltip <- function(showAllFields = FALSE,
                          sort = c("title", "value")) {
 
   # input validation
+  colorTheme <- match.arg(colorTheme)
+  sort <- match.arg(sort)
 
   structure(
     list(
@@ -57,7 +60,6 @@ vega_tooltip <- function(showAllFields = FALSE,
     class = "vega_tooltip"
   )
 }
-
 
 add_field <- function(x) {
   UseMethod("add_field")

@@ -1,18 +1,20 @@
 #' Create a vegalite htmlwidget
 #'
 #' @param chart   chart object created using `altair$Chart()`
-#' @param tooltip tooltip specification
+#' @param tooltip `vega_tooltip` object to specify tooltip.
+#'   The default is an empty call to `vega_toolip()`,
+#'   which will result in no tooltip displaying.
 #' @inheritParams htmlwidgets::createWidget
 #'
 #' @export
 #'
-vegalite <- function(chart, tooltip = NULL, width = NULL, height = NULL) {
+vegalite <- function(chart, tooltip = vega_tooltip(), width = NULL, height = NULL) {
 
   # create chart-spec, tool-options as JSON
   x <-
     list(
       spec = chart$to_json(),
-      tooltip_options = jsonlite::toJSON(tooltip, auto_unbox = TRUE)
+      tooltip_options = jsonlite::toJSON(unclass(tooltip), auto_unbox = TRUE)
     )
 
   vegalite <-
