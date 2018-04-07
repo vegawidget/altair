@@ -34,7 +34,9 @@ downloads <-
     "vega-lite/vega-lite-min.js",   "https://cdn.jsdelivr.net/npm/vega-lite@2.3.1",
     "vega-lite/LICENSE",            "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",
     "vega-embed/vega-embed-min.js", "https://cdn.jsdelivr.net/npm/vega-embed@3.2.0",
-    "vega-embed/LICENSE",           "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE"
+    "vega-embed/LICENSE",           "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE",
+    "vega-tooltip/vega-tooltip.min.js", "https://cdn.jsdelivr.net/npm/vega-tooltip@0.7.0",
+    "vega-tooltip/vega-tooltip.min.css", "https://cdn.jsdelivr.net/npm/vega-tooltip@0.7.0/build/vega-tooltip.min.css"
   )
 ```
 
