@@ -14,6 +14,7 @@ HTMLWidgets.widget({
 
         vegaEmbed(el, spec).then(function(result) {
           // access view as result.view
+          vegaTooltip.vegaLite(result.view, spec);
         }).catch(console.error);
       },
 
