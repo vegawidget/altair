@@ -29,7 +29,7 @@ plot <-
     color = "cyl:N"
   )
 
-vegalite(plot, height = 400)
+vegalite(plot, tooltip = list(showAllFields = NULL), height = 400)
 ```
 
 ### Installation

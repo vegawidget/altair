@@ -4,10 +4,12 @@
 \alias{vegalite}
 \title{Create a vegalite htmlwidget}
 \usage{
-vegalite(chart, width = NULL, height = NULL)
+vegalite(chart, tooltip = NULL, width = NULL, height = NULL)
 }
 \arguments{
 \item{chart}{chart object created using \code{altair$Chart()}}
+
+\item{tooltip}{tooltip specification}
 
 \item{width}{Fixed width for widget (in css units). The default is
 \code{NULL}, which results in intelligent automatic sizing based on the

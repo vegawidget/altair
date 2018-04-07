@@ -26,8 +26,10 @@ Imports:
     reticulate,
     htmlwidgets,
     rlang (>= 0.1.2),
-    assertthat
-Suggests: 
+    assertthat,
+    jsonlite,
+    magrittr
+Suggests:
     httr,
     rprojroot,
     tibble,
