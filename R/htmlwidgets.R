@@ -14,7 +14,7 @@ vegalite <- function(chart, tooltip = vega_tooltip(), width = NULL, height = NUL
   x <-
     list(
       spec = chart$to_json(),
-      tooltip_options = jsonlite::toJSON(unclass(tooltip), auto_unbox = TRUE)
+      tooltip_options = unclass(tooltip)
     )
 
   vegalite <-
