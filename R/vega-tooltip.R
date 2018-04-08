@@ -1,8 +1,5 @@
 #' Create a Vega tooltip
 #'
-#' Leaving out the specification of JavaScript functions for now, because I don't
-#' know how to handle them (yet).
-#'
 #' @param showAllFields `logical`, indicates which fields to include in tooltip.
 #'   - `TRUE`: include all fields in the data.
 #'   - `FALSE`: include only those fields specified in `fields`.
@@ -34,7 +31,8 @@
 #'
 #' @return S3 object with class `vega_tooltip`
 #'
-#' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options)
+#' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options),
+#'   [add_field()]
 #' @export
 #'
 vega_tooltip <- function(showAllFields = FALSE,
@@ -69,6 +67,27 @@ vega_tooltip <- function(showAllFields = FALSE,
   structure(
     list_tmp,
     class = "vega_tooltip"
+  )
+}
+
+#' @rdname vega_tooltip
+#' @param ... other arguments passed to [vega_tooltip()]
+#' @export
+#'
+vega_tooltip_encoding <- function(showAllFields = NULL, ...) {
+  vega_tooltip(
+    showAllFields = showAllFields,
+    ...
+  )
+}
+
+#' @rdname vega_tooltip
+#' @export
+#'
+vega_tooltip_all <- function(showAllFields = TRUE, ...) {
+  vega_tooltip(
+    showAllFields = showAllFields,
+    ...
   )
 }
 

@@ -2,11 +2,17 @@
 % Please edit documentation in R/vega-tooltip.R
 \name{vega_tooltip}
 \alias{vega_tooltip}
+\alias{vega_tooltip_encoding}
+\alias{vega_tooltip_all}
 \title{Create a Vega tooltip}
 \usage{
 vega_tooltip(showAllFields = FALSE, fields = NULL, delay = 100,
   onAppear = NULL, onMove = NULL, onDisappear = NULL,
   colorTheme = c("light", "dark"), sort = c("title", "value"))
+
+vega_tooltip_encoding(showAllFields = NULL, ...)
+
+vega_tooltip_all(showAllFields = TRUE, ...)
 }
 \arguments{
 \item{showAllFields}{\code{logical}, indicates which fields to include in tooltip.
@@ -48,14 +54,16 @@ specify sorting fields on either
 \item dates and strings are sorted ascending, numbers descending
 \item dates appear first, then numbers, then strings
 }}
+
+\item{...}{other arguments passed to \code{\link[=vega_tooltip]{vega_tooltip()}}}
 }
 \value{
 S3 object with class \code{vega_tooltip}
 }
 \description{
-Leaving out the specification of JavaScript functions for now, because I don't
-know how to handle them (yet).
+Create a Vega tooltip
 }
 \seealso{
-\href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation}
+\href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation},
+\code{\link[=add_field]{add_field()}}
 }

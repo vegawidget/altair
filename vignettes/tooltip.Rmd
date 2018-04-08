@@ -28,21 +28,11 @@ vegalite(plot_basic, height = 400)
 ```
 
 ```{r toolip-basic}
-# TODO: create sugar-function
-vegalite(
-  plot_basic, 
-  tooltip = vega_tooltip(showAllFields = NULL),
-  height = 400
-)
+vegalite(plot_basic, tooltip = vega_tooltip_encoding(), height = 400)
 ```
 
 ```{r tooltip-all}
-# TODO: create sugar-function
-vegalite(
-  plot_basic, 
-  tooltip = vega_tooltip(showAllFields = TRUE),
-  height = 400
-)
+vegalite(plot_basic, tooltip = vega_tooltip_all(), height = 400)
 ```
 
 ```{r tooltip-composition}
@@ -57,5 +47,7 @@ examine(tooltip)
 ```{r tooltip-test}
 vegalite(plot_basic, tooltip = tooltip, height = 400)
 ```
+
+
 
 
