@@ -1,5 +1,7 @@
 # altair 0.1.9000
 
-* Adds a `NEWS.md` file to track changes to the package.
+* adds tooltip-capability to `vegalite()` renderer with functions `vega_tooltip()`, `add_fields()`, with friends: `vega_tooltip_encoding()` and `vega_tooltip_all()`. (#4)
 
-* Achieves minimal functionality.
+* adds a `NEWS.md` file to track changes to the package
+
+* achieves minimal functionality
