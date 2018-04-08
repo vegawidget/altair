@@ -73,18 +73,19 @@ vega_tooltip <- function(showAllFields = FALSE,
 #' @rdname add_field
 #'
 #' @param tooltip `vega_tooltip` object, created using [vega_tooltip()]
+#' @param ...     other arguments (not supported)
 #' @inheritParams tooltip_field
 #'
 #' @return `vega_tooltip` object
 #' @export
 #'
-add_field <- function(x) {
+add_field <- function(tooltip, ...) {
   UseMethod("add_field")
 }
 
 #' @export
 #'
-add_field.default <- function(x) {
+add_field.default <- function(tooltip, ...) {
   "Unknown class"
 }
 
@@ -93,7 +94,7 @@ add_field.default <- function(x) {
 add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
                                    formatType = NULL, format = NULL,
                                    valueAccessor = NULL, render = NULL,
-                                   aggregate = NULL) {
+                                   aggregate = NULL, ...) {
 
   field_new <- tooltip_field(
     field = field,

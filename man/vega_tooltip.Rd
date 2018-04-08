@@ -2,7 +2,7 @@
 % Please edit documentation in R/vega-tooltip.R
 \name{vega_tooltip}
 \alias{vega_tooltip}
-\title{Create a Vega tooltip spec}
+\title{Create a Vega tooltip}
 \usage{
 vega_tooltip(showAllFields = FALSE, fields = NULL, delay = 100,
   onAppear = NULL, onMove = NULL, onDisappear = NULL,

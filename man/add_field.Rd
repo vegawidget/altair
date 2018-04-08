@@ -4,10 +4,12 @@
 \alias{add_field}
 \title{Add a field to a Vega tooltip}
 \usage{
-add_field(x)
+add_field(tooltip, ...)
 }
 \arguments{
 \item{tooltip}{\code{vega_tooltip} object, created using \code{\link[=vega_tooltip]{vega_tooltip()}}}
+
+\item{...}{other arguments (not supported)}
 }
 \value{
 \code{vega_tooltip} object
