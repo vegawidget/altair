@@ -51,7 +51,7 @@ vega_tooltip <- function(showAllFields = FALSE,
   colorTheme <- match.arg(colorTheme)
   sort <- match.arg(sort)
 
-  structure(
+  list_tmp <-
     list(
       showAllFields = showAllFields,
       fields = fields,
@@ -61,7 +61,13 @@ vega_tooltip <- function(showAllFields = FALSE,
       onDisappear = onDisappear,
       colorTheme = colorTheme,
       sort = sort
-    ),
+    )
+
+  # remove the null elements
+  list_tmp[vapply(list_tmp, is.null, logical(1))] <- NULL
+
+  structure(
+    list_tmp,
     class = "vega_tooltip"
   )
 }
@@ -69,8 +75,6 @@ vega_tooltip <- function(showAllFields = FALSE,
 #' Add a field to a Vega tooltip
 #'
 #' TODO: get documentation sorted out - show something working for now
-#'
-#' @rdname add_field
 #'
 #' @param tooltip `vega_tooltip` object, created using [vega_tooltip()]
 #' @param ...     other arguments (not supported)
@@ -89,6 +93,7 @@ add_field.default <- function(tooltip, ...) {
   "Unknown class"
 }
 
+#' @rdname add_field
 #' @export
 #'
 add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
@@ -106,7 +111,6 @@ add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
     aggregate = aggregate
   )
 
-  # TODO: figure out if we need to defend against this
   if (is.null(tooltip$fields)) {
     tooltip$fields <- field_new
   } else {

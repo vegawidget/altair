@@ -1,0 +1,61 @@
+---
+title: "Tooltips"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+This will eventually be a wonderfully-elucidating article on integrating tooltips into Vega-Lite renderings.
+
+For now, it is a way to test if things are working or not.
+
+Let's start out with a basic chart:
+
+```{r basic-chart}
+library("altair")
+
+plot_basic <-
+  alt$Chart(
+    r_to_py(mtcars)
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )$mark_point()
+
+vegalite(plot_basic, height = 400)
+```
+
+```{r toolip-basic}
+# TODO: create sugar-function
+vegalite(
+  plot_basic, 
+  tooltip = vega_tooltip(showAllFields = NULL),
+  height = 400
+)
+```
+
+```{r tooltip-all}
+# TODO: create sugar-function
+vegalite(
+  plot_basic, 
+  tooltip = vega_tooltip(showAllFields = TRUE),
+  height = 400
+)
+```
+
+```{r tooltip-composition}
+tooltip <- 
+  vega_tooltip() %>%
+  add_field(field = "mpg", title = "MPG") %>%
+  add_field(field = "hp", title = "HP")
+
+examine(tooltip)
+```
+
+```{r tooltip-test}
+vegalite(plot_basic, tooltip = tooltip, height = 400)
+```
+
+
