@@ -36,7 +36,7 @@ vegalite(plot_basic, tooltip = vega_tooltip_all(), height = 400)
 ```
 
 ```{r tooltip-composition}
-tooltip <- 
+tooltip_custom <- 
   vega_tooltip() %>%
   add_field(field = "mpg", title = "MPG") %>%
   add_field(field = "hp", title = "HP")
@@ -45,7 +45,7 @@ examine(tooltip)
 ```
 
 ```{r tooltip-test}
-vegalite(plot_basic, tooltip = tooltip, height = 400)
+vegalite(plot_basic, tooltip = tooltip_custom, height = 400)
 ```
 
 
