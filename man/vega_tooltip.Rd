@@ -29,17 +29,17 @@ Use \code{\link[=add_field]{add_field()}} to specify.}
 \item{delay}{\code{numeric} number of milliseconds tooltip display
 should be delayed.}
 
-\item{onAppear}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+\item{onAppear}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}},
 a function with arguments: \code{event}, \code{item}.
 Callback when tooltip first appears
 (when mouse moves over a new item in visualization).}
 
-\item{onMove}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+\item{onMove}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}},
 a function with arguments: \code{event}, \code{item}.
 Callback when tooltip moves
 (e.g., when mouse moves within a bar).}
 
-\item{onDisappear}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}},
+\item{onDisappear}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}},
 a function with arguments: \code{event}, \code{item}.
 Callback when tooltip disappears
 (when mouse moves out an item).}
@@ -63,7 +63,21 @@ S3 object with class \code{vega_tooltip}
 \description{
 Create a Vega tooltip
 }
+\examples{
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
+\dontrun{
+  vegalite(plot_basic, tooltip = vega_tooltip_encoding())
+}
+}
 \seealso{
 \href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation},
-\code{\link[=add_field]{add_field()}}
+\code{\link[=add_field]{add_field()}}, \code{\link[=vegalite]{vegalite()}}
 }

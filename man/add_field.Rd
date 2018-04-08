@@ -20,7 +20,7 @@ add_field(tooltip, ...)
 With Vega-Lite, this is the field you provided to each encoding channel.}
 
 \item{title}{\code{character} or \code{JS_EVAL} object created using
-\code{\link[htmlwidgets:JS]{htmlwidgets::JS()}}, a custom title for the field,
+\code{\link[=JS]{JS()}}, a custom title for the field,
 or an accessor function that generates it from the scenegraph datum.}
 
 \item{formatType}{\code{character}, tells what kind of field this is
@@ -28,7 +28,7 @@ or an accessor function that generates it from the scenegraph datum.}
 Supported values: \code{"number"}, \code{"time"}, and \code{"string"}.}
 
 \item{format}{\code{character} or \code{JS_EVAL} object created using
-\code{\link[htmlwidgets:JS]{htmlwidgets::JS()}}
+\code{\link[=JS]{JS()}}
 \itemize{
 \item \strong{string}:  a string specifier for formatting the field value
 in the tooltip. If \code{formatType} is \code{"number"}, you can provide a
@@ -39,9 +39,9 @@ If \code{formatType} is \code{"string"}, there is no need to provide a format.
 \item \strong{function}: function that returns a string, in which case \code{formatType} is ignored.
 }}
 
-\item{valueAccessor}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}}}
+\item{valueAccessor}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}}}
 
-\item{render}{\code{JS_EVAL} object created using \code{\link[htmlwidgets:JS]{htmlwidgets::JS()}}}
+\item{render}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}}}
 
 \item{aggregate}{\code{character}}
 }
@@ -50,4 +50,23 @@ If \code{formatType} is \code{"string"}, there is no need to provide a format.
 }
 \description{
 TODO: get documentation sorted out - show something working for now
+}
+\examples{
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
+  tooltip_custom <-
+    vega_tooltip() \%>\%
+    add_field(field = "mpg", title = "MPG") \%>\%
+    add_field(field = "hp", title = "HP")
+
+\dontrun{
+  vegalite(plot_basic, tooltip = tooltip_custom)
+}
 }

@@ -88,6 +88,9 @@
     <li>
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
+    <li>
+      <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -122,7 +125,7 @@
     <p>Create a vegalite htmlwidget</p>
     
 
-    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>(), <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,6 +133,12 @@
     <tr>
       <th>chart</th>
       <td><p>chart object created using <code>altair$Chart()</code></p></td>
+    </tr>
+    <tr>
+      <th>tooltip</th>
+      <td><p><code>vega_tooltip</code> object to specify tooltip.
+The default is an empty call to <code>vega_toolip()</code>,
+which will result in no tooltip displaying.</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -146,12 +155,25 @@ widget's container.</p></td>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
+    <span class='no'>alt</span>$<span class='fu'>Chart</span>(
+      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>mtcars</span>)
+    )$<span class='fu'>encode</span>(
+      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"mpg:Q"</span>,
+      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
+      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
+    )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

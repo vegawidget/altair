@@ -9,15 +9,15 @@
 #'   Use [add_field()] to specify.
 #' @param delay         `numeric` number of milliseconds tooltip display
 #'     should be delayed.
-#' @param onAppear      `JS_EVAL` object created using [htmlwidgets::JS()],
+#' @param onAppear      `JS_EVAL` object created using [JS()],
 #'     a function with arguments: `event`, `item`.
 #'     Callback when tooltip first appears
 #'     (when mouse moves over a new item in visualization).
-#' @param onMove        `JS_EVAL` object created using [htmlwidgets::JS()],
+#' @param onMove        `JS_EVAL` object created using [JS()],
 #'     a function with arguments: `event`, `item`.
 #'     Callback when tooltip moves
 #'     (e.g., when mouse moves within a bar).
-#' @param onDisappear   `JS_EVAL` object created using [htmlwidgets::JS()],
+#' @param onDisappear   `JS_EVAL` object created using [JS()],
 #'     a function with arguments: `event`, `item`.
 #'     Callback when tooltip disappears
 #'     (when mouse moves out an item).
@@ -32,7 +32,20 @@
 #' @return S3 object with class `vega_tooltip`
 #'
 #' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options),
-#'   [add_field()]
+#'   [add_field()], [vegalite()]
+#' @examples
+#'   plot_basic <-
+#'     alt$Chart(
+#'       r_to_py(mtcars)
+#'     )$encode(
+#'       x = "mpg:Q",
+#'       y = "hp:Q",
+#'       color = "cyl:N"
+#'     )$mark_point()
+#'
+#' \dontrun{
+#'   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
+#' }
 #' @export
 #'
 vega_tooltip <- function(showAllFields = FALSE,
@@ -100,6 +113,24 @@ vega_tooltip_all <- function(showAllFields = TRUE, ...) {
 #' @inheritParams tooltip_field
 #'
 #' @return `vega_tooltip` object
+#' @examples
+#'   plot_basic <-
+#'     alt$Chart(
+#'       r_to_py(mtcars)
+#'     )$encode(
+#'       x = "mpg:Q",
+#'       y = "hp:Q",
+#'       color = "cyl:N"
+#'     )$mark_point()
+#'
+#'   tooltip_custom <-
+#'     vega_tooltip() %>%
+#'     add_field(field = "mpg", title = "MPG") %>%
+#'     add_field(field = "hp", title = "HP")
+#'
+#' \dontrun{
+#'   vegalite(plot_basic, tooltip = tooltip_custom)
+#' }
 #' @export
 #'
 add_field <- function(tooltip, ...) {
@@ -144,13 +175,13 @@ add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
 #' @param field         `character`, the unique name of the field.
 #'   With Vega-Lite, this is the field you provided to each encoding channel.
 #' @param title         `character` or `JS_EVAL` object created using
-#'   [htmlwidgets::JS()], a custom title for the field,
+#'   [JS()], a custom title for the field,
 #'   or an accessor function that generates it from the scenegraph datum.
 #' @param formatType    `character`, tells what kind of field this is
 #'   (for formatting the field value in the tooltip)
 #'   Supported values: `"number"`, `"time"`, and `"string"`.
 #' @param format        `character` or `JS_EVAL` object created using
-#'   [htmlwidgets::JS()]
+#'   [JS()]
 #'   - **string**:  a string specifier for formatting the field value
 #'      in the tooltip. If `formatType` is `"number"`, you can provide a
 #'      [number format string-specifier](https://github.com/d3/d3-format#locale_format).
@@ -158,8 +189,8 @@ add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
 #'      [time format string-specifier](https://github.com/d3/d3-time-format#locale_format).
 #'      If `formatType` is `"string"`, there is no need to provide a format.
 #'    - **function**: function that returns a string, in which case `formatType` is ignored.
-#' @param valueAccessor `JS_EVAL` object created using [htmlwidgets::JS()]
-#' @param render        `JS_EVAL` object created using [htmlwidgets::JS()]
+#' @param valueAccessor `JS_EVAL` object created using [JS()]
+#' @param render        `JS_EVAL` object created using [JS()]
 #' @param aggregate     `character`
 #'
 #' @keywords internal

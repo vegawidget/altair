@@ -27,12 +27,25 @@ has_altair <- function() {
 
 #' Convert an R object to Python
 #'
+#' This function is re-exported from the reticulate package.
 #' See [reticulate::r_to_py()] for more details.
 #'
 #' @name r_to_py
 #' @keywords internal
 #' @export
 #' @importFrom reticulate r_to_py
+#'
+NULL
+
+#' Mark character strings as literal JavaScript code
+#'
+#' This function is re-exported from the htmlwidgets package.
+#' See [htmlwidgets::JS()] for more details.
+#'
+#' @name JS
+#' @keywords internal
+#' @export
+#' @importFrom htmlwidgets JS
 #'
 NULL
 

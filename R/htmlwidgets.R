@@ -1,3 +1,6 @@
+
+
+
 #' Create a vegalite htmlwidget
 #'
 #' @param chart   chart object created using `altair$Chart()`
@@ -6,6 +9,19 @@
 #'   which will result in no tooltip displaying.
 #' @inheritParams htmlwidgets::createWidget
 #'
+#' @examples
+#'   plot_basic <-
+#'     alt$Chart(
+#'       r_to_py(mtcars)
+#'     )$encode(
+#'       x = "mpg:Q",
+#'       y = "hp:Q",
+#'       color = "cyl:N"
+#'     )$mark_point()
+#'
+#' \dontrun{
+#'   vegalite(plot_basic)
+#' }
 #' @export
 #'
 vegalite <- function(chart, tooltip = vega_tooltip(), width = NULL, height = NULL) {

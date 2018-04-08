@@ -24,3 +24,17 @@ widget's container.}
 \description{
 Create a vegalite htmlwidget
 }
+\examples{
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
+\dontrun{
+  vegalite(plot_basic)
+}
+}
