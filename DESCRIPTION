@@ -22,13 +22,13 @@ LazyData: true
 ByteCompile: true
 URL: https://github.com/ijlyttle/altair
 BugReports: https://github.com/ijlyttle/altair/issues
-Imports: 
+Imports:
     reticulate,
     htmlwidgets,
     rlang (>= 0.1.2),
     assertthat,
     magrittr
-Suggests: 
+Suggests:
     httr,
     rprojroot,
     purrr,
@@ -36,7 +36,8 @@ Suggests:
     knitr,
     rmarkdown,
     tibble,
-    listviewer
+    listviewer,
+    testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
