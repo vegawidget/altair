@@ -1,6 +1,6 @@
 #' Examine a specification
 #'
-#' This is a wrapper to [listviewer::jsonedit()].
+#' This is a wrapper to [listviewer::jsonedit()]. Defaults `mode` to `"view"`.
 #'
 #' @inheritParams listviewer::jsonedit
 #'
@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-examine <- function(listdata = NULL, mode = "tree",
+examine <- function(listdata = NULL, mode = "view",
                     modes = c("code", "form", "text", "tree", "view"), ...,
                     width = NULL, height = NULL, elementId = NULL) {
   UseMethod("examine")
@@ -16,7 +16,7 @@ examine <- function(listdata = NULL, mode = "tree",
 
 #' @export
 #'
-examine.default <- function(listdata = NULL, mode = "tree",
+examine.default <- function(listdata = NULL, mode = "view",
                             modes = c("code", "form", "text", "tree", "view"), ...,
                             width = NULL, height = NULL, elementId = NULL) {
   .examine(
@@ -30,7 +30,7 @@ examine.default <- function(listdata = NULL, mode = "tree",
   )
 }
 
-examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
+examine.vega_tooltip <- function(listdata = NULL, mode = "view",
                                  modes = c("code", "form", "text", "tree", "view"), ...,
                                  width = NULL, height = NULL, elementId = NULL) {
   NextMethod()
@@ -38,7 +38,7 @@ examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
 
 
 # internal function
-.examine <- function(listdata = NULL, mode = "tree",
+.examine <- function(listdata = NULL, mode = "view",
                      modes = c("code", "form", "text", "tree", "view"), ...,
                      width = NULL, height = NULL, elementId = NULL) {
 

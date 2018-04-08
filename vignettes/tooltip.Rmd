@@ -41,7 +41,7 @@ tooltip_custom <-
   add_field(field = "mpg", title = "MPG") %>%
   add_field(field = "hp", title = "HP")
 
-examine(tooltip)
+examine(tooltip_custom)
 ```
 
 ```{r tooltip-test}
