@@ -7,9 +7,11 @@ r:
   - devel
 sudo: false
 cache: packages
+
+# env:
+#  global:
+#    - RETICULATE_PYTHON=""
+
 before_install:
-  - pip3 install altair==2.0.0rc1
-addons:
-  apt:
-    packages:
-      - python3.6
+  - which pyhton3
+
