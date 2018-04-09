@@ -19,6 +19,7 @@ addons:
     packages:
     # Travis-ci has a known issue with Python3.5 and 3.6
     - python3.6
+    - python3.6-dev
 
 
 env:
