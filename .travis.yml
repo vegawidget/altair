@@ -8,4 +8,4 @@ r:
 sudo: false
 cache: packages
 before_install:
-  - pip install altair==2.0.0rc1
+  - pip3 install altair==2.0.0rc1
