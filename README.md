@@ -92,8 +92,8 @@ Some things to keep in mind:
   - In your data-frames, columns that contain dots, i.e. `Sepal.Width`
     will prevent Altair from compiling a chart spec.
 
-Also, I’d like to sort out how to get the `vegalite()` function to “do
-the right thing” when knitting to a non-html format.
+Also, it mat remain to sort out how to get the `vegalite()` function to
+“do the right thing” when knitting to a non-html format.
 
 ## Development plan
 
