@@ -18,7 +18,7 @@ addons:
     sources:
     # apt source hosting Python3.5 and 3.6
     #- deadsnakes
-    sourceline: 'ppa:jonathonf/python-3.6'
+    - sourceline: 'ppa:jonathonf/python-3.6'
     packages:
     # Travis-ci has a known issue with Python3.5 and 3.6
     - python3.6
