@@ -153,8 +153,7 @@ foundations:
 
 A particular debt is owed to the
 [vegalite](https://github.com/hrbrmstr/vegalite) project as it provided
-a lot of the inspiration for figuring out how to get an htmlwidget to
-work.
+a lot of the inspiration for this package.
 
 ## Code of conduct
 
