@@ -27,7 +27,7 @@ In this documentation, the capitalized word **Altair** shall refer to the Python
 
 ## Installation
 
-For this package, only a development version is available, from [GitHub](https://github.com/):
+For this package a development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")

@@ -28,11 +28,11 @@ env:
     - RETICULATE_PYTHON="/opt/pyenv/shims/python3.6"
 
 before_install:
-  - which python3.6
+  - which python3.6 | ls -l
   - python3.6 --version
-  - which pip3.6
+  - which pip3.6 | ls -l
 
 before_script:
-  - python3.6 -m pip install altair==2.0.0rc1
+  - pip3.6 install altair==2.0.0rc1
 
 

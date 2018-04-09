@@ -25,7 +25,7 @@ package.
 
 ## Installation
 
-For this package, only a development version is available, from
+For this package a development version is available from
 [GitHub](https://github.com/):
 
 ``` r
