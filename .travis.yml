@@ -30,7 +30,7 @@ addons:
 before_install:
   - which python3.6
   - python3.6 --version
-  - sudo -E curl https://bootstrap.pypa.io/ez_setup.py -o - | python3.6 && python3.6 -m easy_install pip
+  - sudo curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
   # - pip3 install --user --upgrade pip
   # - pip3 --version
   - python3.6 -m pip -V
