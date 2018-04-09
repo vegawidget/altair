@@ -114,8 +114,8 @@ near future:
 
 In the longer-term future it may be interesting to provide a proper R
 interface to the Python API; there are already some [encouraging first
-steps](https://github.com/ijlyttle/altair/issues/15) towards this. I
-have started a
+steps](https://github.com/ijlyttle/altair/issues/15) towards this. This
+package has a
 [manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
 to outline some high-level ideas.
 
