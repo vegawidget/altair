@@ -35,7 +35,7 @@ called for side-effects
 }
 \description{
 Use this function to interactvely examine a specification, using
-\code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. This has been adpated to examing a Vega-Lite
-tooltip specification, it could aso be adapted to examine an Altair
+\code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. Although this has been adpated to examing a Vega-Lite
+tooltip specification, it could also be adapted to examine an Altair
 chart specification.
 }
