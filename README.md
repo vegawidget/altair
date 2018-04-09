@@ -113,9 +113,9 @@ near future:
 3.  Tooltips.
 
 In the longer-term future it may be interesting to provide a proper R
-interface to the Python API. I have no idea what that looks like,
-although we might take some inspiration from the
-[keras](https://keras.rstudio.com/) package. I have started a
+interface to the Python API; there are already some [encouraging first
+steps](https://github.com/ijlyttle/altair/issues/15) towards this. I
+have started a
 [manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
 to outline some high-level ideas.
 
