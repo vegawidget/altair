@@ -13,5 +13,5 @@ cache: packages
 #    - RETICULATE_PYTHON=""
 
 before_install:
-  - which pyhton3
+  - which python3
 
