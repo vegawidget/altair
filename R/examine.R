@@ -1,6 +1,9 @@
 #' Examine a specification
 #'
-#' This is a wrapper to [listviewer::jsonedit()]. Defaults `mode` to `"view"`.
+#' Use this function to interactvely examine a specification, using
+#' [listviewer::jsonedit()]. This has been adpated to examing a Vega-Lite
+#' tooltip specification, it could aso be adapted to examine an Altair
+#' chart specification.
 #'
 #' @inheritParams listviewer::jsonedit
 #'

@@ -4,10 +4,41 @@
 \alias{add_field}
 \title{Add a field to a Vega tooltip}
 \usage{
-add_field(tooltip, ...)
+add_field(tooltip, field = NULL, title = NULL, formatType = NULL,
+  format = NULL, valueAccessor = NULL, render = NULL, aggregate = NULL,
+  ...)
 }
 \arguments{
 \item{tooltip}{\code{vega_tooltip} object, created using \code{\link[=vega_tooltip]{vega_tooltip()}}}
+
+\item{field}{\code{character}, the unique name of the field.
+With Vega-Lite, this is the field you provided to each encoding channel.}
+
+\item{title}{\code{character} or \code{JS_EVAL} object created using
+\code{\link[=JS]{JS()}}, a custom title for the field,
+or an accessor function that generates it from the scenegraph datum.}
+
+\item{formatType}{\code{character}, tells what kind of field this is
+(for formatting the field value in the tooltip)
+Supported values: \code{"number"}, \code{"time"}, and \code{"string"}.}
+
+\item{format}{\code{character} or \code{JS_EVAL} object created using
+\code{\link[=JS]{JS()}}
+\itemize{
+\item \strong{string}:  a string specifier for formatting the field value
+in the tooltip. If \code{formatType} is \code{"number"}, you can provide a
+\href{https://github.com/d3/d3-format#locale_format}{number format string-specifier}.
+If \code{formatType} is \code{"time"}, you can provide a
+\href{https://github.com/d3/d3-time-format#locale_format}{time format string-specifier}.
+If \code{formatType} is \code{"string"}, there is no need to provide a format.
+\item \strong{function}: function that returns a string, in which case \code{formatType} is ignored.
+}}
+
+\item{valueAccessor}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}}}
+
+\item{render}{\code{JS_EVAL} object created using \code{\link[=JS]{JS()}}}
+
+\item{aggregate}{\code{character}}
 
 \item{...}{other arguments (not supported)}
 }
@@ -15,7 +46,14 @@ add_field(tooltip, ...)
 \code{vega_tooltip} object
 }
 \description{
-TODO: get documentation sorted out - show something working for now
+This function is used to add custom fields to a tooltip specification
+created using \code{\link[=vega_tooltip]{vega_tooltip()}}, according to the options
+detailed in the \href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation}.
+}
+\details{
+This function both takes and returns a tooltip specification,
+so that it can be used in a "pipeline" that creates a
+tooltip specification, then adds fields to it.
 }
 \examples{
   plot_basic <-
@@ -35,4 +73,9 @@ TODO: get documentation sorted out - show something working for now
 \dontrun{
   vegalite(plot_basic, tooltip = tooltip_custom)
 }
+
+}
+\seealso{
+\href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation},
+\code{\link[=vega_tooltip]{vega_tooltip()}}
 }

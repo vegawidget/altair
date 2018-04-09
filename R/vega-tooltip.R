@@ -1,6 +1,7 @@
 #' Create a Vega tooltip
 #'
-#' This function creates a Vega tooltip-specification.
+#' This function creates a Vega tooltip-specification according to the options
+#' detailed in the [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options).
 #'
 #' This function is called `vega_tooltip()` because the tooltip specification
 #' made for the Vega JavaScript library; it is independent from the Altair
@@ -80,7 +81,7 @@
 #' }
 #'
 #' tooltip_custom <-
-#'   vegalite_tooltip() %>%
+#'   vega_tooltip() %>%
 #'   add_field(field = "mpg", title = "MPG") %>%
 #'   add_field(field = "hp", title = "HP")
 #'
@@ -148,13 +149,21 @@ vega_tooltip_all <- function(showAllFields = TRUE, ...) {
 
 #' Add a field to a Vega tooltip
 #'
-#' TODO: get documentation sorted out - show something working for now
+#' This function is used to add custom fields to a tooltip specification
+#' created using [vega_tooltip()], according to the options
+#' detailed in the [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options).
+#'
+#' This function both takes and returns a tooltip specification,
+#' so that it can be used in a "pipeline" that creates a
+#' tooltip specification, then adds fields to it.
 #'
 #' @param tooltip `vega_tooltip` object, created using [vega_tooltip()]
 #' @param ...     other arguments (not supported)
 #' @inheritParams tooltip_field
 #'
 #' @return `vega_tooltip` object
+#' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options),
+#'   [vega_tooltip()]
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -173,15 +182,22 @@ vega_tooltip_all <- function(showAllFields = TRUE, ...) {
 #' \dontrun{
 #'   vegalite(plot_basic, tooltip = tooltip_custom)
 #' }
+#'
 #' @export
 #'
-add_field <- function(tooltip, ...) {
+add_field <- function(tooltip, field = NULL, title = NULL,
+                      formatType = NULL, format = NULL,
+                      valueAccessor = NULL, render = NULL,
+                      aggregate = NULL, ...) {
   UseMethod("add_field")
 }
 
 #' @export
 #'
-add_field.default <- function(tooltip, ...) {
+add_field.default <- function(tooltip, field = NULL, title = NULL,
+                              formatType = NULL, format = NULL,
+                              valueAccessor = NULL, render = NULL,
+                              aggregate = NULL, ...) {
   "Unknown class"
 }
 
@@ -191,6 +207,8 @@ add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
                                    formatType = NULL, format = NULL,
                                    valueAccessor = NULL, render = NULL,
                                    aggregate = NULL, ...) {
+
+  # TODO: check to see that `tooltip$showAllFields == FALSE`, warn otherwise
 
   field_new <- tooltip_field(
     field = field,

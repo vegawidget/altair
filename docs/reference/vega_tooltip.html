@@ -27,7 +27,8 @@
 <script src="../pkgdown.js"></script>
 <meta property="og:title" content="Create a Vega tooltip — vega_tooltip" />
 
-<meta property="og:description" content="Create a Vega tooltip" />
+<meta property="og:description" content="This function creates a Vega tooltip-specification according to the options
+detailed in the Vega tooltip documentation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,7 +123,8 @@
     </div>
 
     
-    <p>Create a Vega tooltip</p>
+    <p>This function creates a Vega tooltip-specification according to the options
+detailed in the <a href='https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options'>Vega tooltip documentation</a>.</p>
     
 
     <pre class="usage"><span class='fu'>vega_tooltip</span>(<span class='kw'>showAllFields</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>delay</span> <span class='kw'>=</span> <span class='fl'>100</span>,
@@ -200,10 +202,37 @@ specify sorting fields on either
 
     <p>S3 object with class <code>vega_tooltip</code></p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is called <code>vega_tooltip()</code> because the tooltip specification
+made for the Vega JavaScript library; it is independent from the Altair
+Python package.</p>
+<p>A tooltip specification is separate from a chart specification; they are
+combined when they are both rendered into an htmlwidget, using <code><a href='vegalite.html'>vegalite()</a></code>.
+One conseqence of this is that you can have exactly one tooltip
+specification per chart, even a compound chart.</p>
+<p>There are three versions of this function, each will result in a different
+default behavior of the tooltip:</p>
+<dl class='dl-horizontal'>
+<dt><code>vega_tooltip()</code></dt><dd><p>no tooltip is displayed,
+absent the use of <code><a href='add_field.html'>add_field()</a></code></p></dd>
+<dt><code>vega_tooltip_encoding()</code></dt><dd><p>tooltip displays all the variables
+in the chart's encoding</p></dd>
+<dt><code>vega_tooltip_all()</code></dt><dd><p>tooltip displays all the variables
+in the chart's data</p></dd>
+</dl>
+    <p>To customize the fields in a tooltip specification, begin with with a
+specification with no fields, using <code>vega_tooltip()</code>. To add fields
+(variables) to the specification, pipe this to the <code><a href='add_field.html'>add_field()</a></code> function
+for as many fields as you wish to add. See the included example that
+composes <code>tooltip_custom</code>.</p>
+<p>You can use the <code><a href='examine.html'>examine()</a></code> function to interactively examine
+a tooltip specification.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options'>Vega tooltip documentation</a>,
-<code><a href='add_field.html'>add_field()</a></code>, <code><a href='vegalite.html'>vegalite()</a></code></p></div>
+<code><a href='add_field.html'>add_field()</a></code>, <code><a href='vegalite.html'>vegalite()</a></code>, <code><a href='examine.html'>examine()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -216,7 +245,14 @@ specify sorting fields on either
       <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
     )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
   <span class='fu'><a href='vegalite.html'>vegalite</a></span>(<span class='no'>plot_basic</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'>vega_tooltip_encoding</span>())
-<span class='co'># }</span></pre>
+<span class='co'># }</span><div class='input'>
+<span class='no'>tooltip_custom</span> <span class='kw'>&lt;-</span>
+  <span class='fu'>vega_tooltip</span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_field.html'>add_field</a></span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"MPG"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_field.html'>add_field</a></span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"hp"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"HP"</span>)</div><span class='co'># NOT RUN {</span>
+  <span class='fu'><a href='vegalite.html'>vegalite</a></span>(<span class='no'>plot_basic</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='no'>tooltip_custom</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -224,6 +260,8 @@ specify sorting fields on either
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

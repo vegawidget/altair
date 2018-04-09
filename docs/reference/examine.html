@@ -27,7 +27,10 @@
 <script src="../pkgdown.js"></script>
 <meta property="og:title" content="Examine a specification — examine" />
 
-<meta property="og:description" content="This is a wrapper to listviewer::jsonedit(). Defaults mode to "view"." />
+<meta property="og:description" content="Use this function to interactvely examine a specification, using
+listviewer::jsonedit(). This has been adpated to examing a Vega-Lite
+tooltip specification, it could aso be adapted to examine an Altair
+chart specification." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,10 +125,13 @@
     </div>
 
     
-    <p>This is a wrapper to <code><a href='http://www.rdocumentation.org/packages/listviewer/topics/jsonedit'>listviewer::jsonedit()</a></code>. Defaults <code>mode</code> to <code>"view"</code>.</p>
+    <p>Use this function to interactvely examine a specification, using
+<code><a href='http://www.rdocumentation.org/packages/listviewer/topics/jsonedit'>listviewer::jsonedit()</a></code>. This has been adpated to examing a Vega-Lite
+tooltip specification, it could aso be adapted to examine an Altair
+chart specification.</p>
     
 
-    <pre class="usage"><span class='fu'>examine</span>(<span class='kw'>listdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"view"</span>, <span class='kw'>modes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"code"</span>, <span class='st'>"form"</span>, <span class='st'>"text"</span>,
+    <pre class="usage"><span class='fu'>examine</span>(<span class='kw'>listdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>modes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"code"</span>, <span class='st'>"form"</span>, <span class='st'>"text"</span>,
   <span class='st'>"tree"</span>, <span class='st'>"view"</span>), <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>

@@ -27,7 +27,9 @@
 <script src="../pkgdown.js"></script>
 <meta property="og:title" content="Add a field to a Vega tooltip — add_field" />
 
-<meta property="og:description" content="TODO: get documentation sorted out - show something working for now" />
+<meta property="og:description" content="This function is used to add custom fields to a tooltip specification
+created using vega_tooltip(), according to the options
+detailed in the Vega tooltip documentation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,15 +124,14 @@
     </div>
 
     
-    <p>TODO: get documentation sorted out - show something working for now</p>
+    <p>This function is used to add custom fields to a tooltip specification
+created using <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>, according to the options
+detailed in the <a href='https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options'>Vega tooltip documentation</a>.</p>
     
 
-    <pre class="usage"><span class='fu'>add_field</span>(<span class='no'>tooltip</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for vega_tooltip</span>
-<span class='fu'>add_field</span>(<span class='no'>tooltip</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>valueAccessor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>render</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>add_field</span>(<span class='no'>tooltip</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>valueAccessor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>render</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,10 +139,6 @@
     <tr>
       <th>tooltip</th>
       <td><p><code>vega_tooltip</code> object, created using <code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments (not supported)</p></td>
     </tr>
     <tr>
       <th>field</th>
@@ -185,11 +182,26 @@ If <code>formatType</code> is <code>"string"</code>, there is no need to provide
       <th>aggregate</th>
       <td><p><code>character</code></p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguments (not supported)</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>vega_tooltip</code> object</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function both takes and returns a tooltip specification,
+so that it can be used in a "pipeline" that creates a
+tooltip specification, then adds fields to it.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options'>Vega tooltip documentation</a>,
+<code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -207,7 +219,8 @@ If <code>formatType</code> is <code>"string"</code>, there is no need to provide
     <span class='fu'>add_field</span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"MPG"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>add_field</span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"hp"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"HP"</span>)</div><span class='co'># NOT RUN {</span>
   <span class='fu'><a href='vegalite.html'>vegalite</a></span>(<span class='no'>plot_basic</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='no'>tooltip_custom</span>)
-<span class='co'># }</span></pre>
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -215,6 +228,10 @@ If <code>formatType</code> is <code>"string"</code>, there is no need to provide
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -14,7 +14,7 @@
 #'
 #' @param chart   chart object created using [`alt`]`$Chart()`
 #' @param tooltip `vega_tooltip` object to specify tooltip.
-#'   The default is an empty call to [vega_toolip()],
+#'   The default is an empty call to [vega_tooltip()],
 #'   which will result in no tooltip displaying.
 #' @inheritParams htmlwidgets::createWidget
 #' @seealso [vega_tooltip()]

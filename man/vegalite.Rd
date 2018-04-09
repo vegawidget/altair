@@ -10,7 +10,7 @@ vegalite(chart, tooltip = vega_tooltip(), width = NULL, height = NULL)
 \item{chart}{chart object created using \code{\link{alt}}\code{$Chart()}}
 
 \item{tooltip}{\code{vega_tooltip} object to specify tooltip.
-The default is an empty call to \code{\link[=vega_toolip]{vega_toolip()}},
+The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
 which will result in no tooltip displaying.}
 
 \item{width}{Fixed width for widget (in css units). The default is

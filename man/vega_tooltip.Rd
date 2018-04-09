@@ -61,7 +61,8 @@ specify sorting fields on either
 S3 object with class \code{vega_tooltip}
 }
 \description{
-This function creates a Vega tooltip-specification.
+This function creates a Vega tooltip-specification according to the options
+detailed in the \href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation}.
 }
 \details{
 This function is called \code{vega_tooltip()} because the tooltip specification
@@ -109,7 +110,7 @@ a tooltip specification.
 }
 
 tooltip_custom <-
-  vegalite_tooltip() \%>\%
+  vega_tooltip() \%>\%
   add_field(field = "mpg", title = "MPG") \%>\%
   add_field(field = "hp", title = "HP")
 
