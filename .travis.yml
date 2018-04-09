@@ -5,10 +5,8 @@ r:
 #  - oldrel
   - release
 #  - devel
-sudo: false
+sudo: required
 cache: packages
-
-python: "3.6"
 
 # inspiration:
 #  https://github.com/mushkevych/scheduler/blob/2.0/.travis.yml
