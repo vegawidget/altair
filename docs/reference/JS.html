@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a field specification for a Vega tooltip — tooltip_field • altair</title>
+<title>Mark character strings as literal JavaScript code — JS • altair</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,10 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Create a field specification for a Vega tooltip — tooltip_field" />
+<meta property="og:title" content="Mark character strings as literal JavaScript code — JS" />
 
-<meta property="og:description" content="Create a field specification for a Vega tooltip" />
+<meta property="og:description" content="This function is re-exported from the htmlwidgets package.
+See htmlwidgets::JS() for more details." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,71 +118,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a field specification for a Vega tooltip</h1>
-    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vega-tooltip.R'><code>R/vega-tooltip.R</code></a></small>
+    <h1>Mark character strings as literal JavaScript code</h1>
+    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
     </div>
 
     
-    <p>Create a field specification for a Vega tooltip</p>
+    <p>This function is re-exported from the htmlwidgets package.
+See <code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>htmlwidgets::JS()</a></code> for more details.</p>
     
 
-    <pre class="usage"><span class='fu'>tooltip_field</span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formatType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>valueAccessor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>render</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>aggregate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>field</th>
-      <td><p><code>character</code>, the unique name of the field.
-With Vega-Lite, this is the field you provided to each encoding channel.</p></td>
-    </tr>
-    <tr>
-      <th>title</th>
-      <td><p><code>character</code> or <code>JS_EVAL</code> object created using
-<code><a href='JS.html'>JS()</a></code>, a custom title for the field,
-or an accessor function that generates it from the scenegraph datum.</p></td>
-    </tr>
-    <tr>
-      <th>formatType</th>
-      <td><p><code>character</code>, tells what kind of field this is
-(for formatting the field value in the tooltip)
-Supported values: <code>"number"</code>, <code>"time"</code>, and <code>"string"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>format</th>
-      <td><p><code>character</code> or <code>JS_EVAL</code> object created using
-<code><a href='JS.html'>JS()</a></code></p><ul>
-<li><p><strong>string</strong>:  a string specifier for formatting the field value
-in the tooltip. If <code>formatType</code> is <code>"number"</code>, you can provide a
-<a href='https://github.com/d3/d3-format#locale_format'>number format string-specifier</a>.
-If <code>formatType</code> is <code>"time"</code>, you can provide a
-<a href='https://github.com/d3/d3-time-format#locale_format'>time format string-specifier</a>.
-If <code>formatType</code> is <code>"string"</code>, there is no need to provide a format.</p></li>
-<li><p><strong>function</strong>: function that returns a string, in which case <code>formatType</code> is ignored.</p></li>
-</ul></td>
-    </tr>
-    <tr>
-      <th>valueAccessor</th>
-      <td><p><code>JS_EVAL</code> object created using <code><a href='JS.html'>JS()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>render</th>
-      <td><p><code>JS_EVAL</code> object created using <code><a href='JS.html'>JS()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>aggregate</th>
-      <td><p><code>character</code></p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='fu'>JS</span>(<span class='no'>...</span>)</pre>
+        
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>htmlwidgets::JS()</a></code></p></div>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

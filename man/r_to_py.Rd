@@ -7,4 +7,7 @@
 This function is re-exported from the reticulate package.
 See \code{\link[reticulate:r_to_py]{reticulate::r_to_py()}} for more details.
 }
+\seealso{
+\code{\link[reticulate:r_to_py]{reticulate::r_to_py()}}
+}
 \keyword{internal}

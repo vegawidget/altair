@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-examine <- function(listdata = NULL, mode = "view",
+examine <- function(listdata = NULL, mode = "tree",
                     modes = c("code", "form", "text", "tree", "view"), ...,
                     width = NULL, height = NULL, elementId = NULL) {
   UseMethod("examine")
@@ -16,7 +16,7 @@ examine <- function(listdata = NULL, mode = "view",
 
 #' @export
 #'
-examine.default <- function(listdata = NULL, mode = "view",
+examine.default <- function(listdata = NULL, mode = "tree",
                             modes = c("code", "form", "text", "tree", "view"), ...,
                             width = NULL, height = NULL, elementId = NULL) {
   .examine(
@@ -30,15 +30,20 @@ examine.default <- function(listdata = NULL, mode = "view",
   )
 }
 
-examine.vega_tooltip <- function(listdata = NULL, mode = "view",
+#' @export
+#'
+examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
                                  modes = c("code", "form", "text", "tree", "view"), ...,
                                  width = NULL, height = NULL, elementId = NULL) {
+
+  listdata <- jsonlite::toJSON(unclass(listdata), auto_unbox = TRUE)
+
   NextMethod()
 }
 
 
 # internal function
-.examine <- function(listdata = NULL, mode = "view",
+.examine <- function(listdata = NULL, mode = "tree",
                      modes = c("code", "form", "text", "tree", "view"), ...,
                      width = NULL, height = NULL, elementId = NULL) {
 

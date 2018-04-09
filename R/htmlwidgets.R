@@ -1,6 +1,3 @@
-
-
-
 #' Create a vegalite htmlwidget
 #'
 #' @param chart   chart object created using `altair$Chart()`

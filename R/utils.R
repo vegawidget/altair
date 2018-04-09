@@ -32,6 +32,7 @@ has_altair <- function() {
 #'
 #' @name r_to_py
 #' @keywords internal
+#' @seealso [reticulate::r_to_py()]
 #' @export
 #' @importFrom reticulate r_to_py
 #'
@@ -44,8 +45,16 @@ NULL
 #'
 #' @name JS
 #' @keywords internal
+#' @seealso [htmlwidgets::JS()]
 #' @export
-#' @importFrom htmlwidgets JS
 #'
-NULL
+JS <- function(...) {
+
+  x <- htmlwidgets::JS(...)
+  class(x) <- c(class(x), "character")
+
+  x
+}
+
+
 
