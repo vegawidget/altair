@@ -51,10 +51,10 @@ sys.executable
 It might return something like `/path/to/bin/python3.6`; you can use
 this value to set an environment variable to specify which Python
 environment to use. You might consider putting a line like this into
-your `.Renviron`
-    file:
+your `.Renviron` file:
 
-    RETICULATE_PYTHON="/your/path/to/python3.6" # your path will be different
+    # your path will be different
+    RETICULATE_PYTHON="/your/path/to/python3.6" 
 
 This is where the reticulate package will look first for Python on your
 computer.
