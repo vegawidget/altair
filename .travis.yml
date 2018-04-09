@@ -31,9 +31,8 @@ addons:
 before_install:
   - which python3.6
   - python3.6 --version
-  - curl https://bootstrap.pypa.io/get-pip.py | sudo -E python3.6
+  - pip3 install --user --upgrade pip
   - python3.6 -m pip -V
-  - python3.6 -m pip install --ignore-installed --user setuptools pip --upgrade
   - python3.6 -m pip install --user altair==2.0.0rc1
 
 #before_script:
