@@ -9,3 +9,7 @@ sudo: false
 cache: packages
 before_install:
   - pip3 install altair==2.0.0rc1
+addons:
+  apt:
+    packages:
+      - python3.6
