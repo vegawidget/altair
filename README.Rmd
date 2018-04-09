@@ -107,7 +107,7 @@ The documentation for this package includes some articles:
 
 - [Interactive Examples](https://ijlyttle.github.io/altair/articles/interactive.html): A set of examples that work towards linked-brushing of two scatterplots.
 
-- [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html): A collection of ideas on where this package might go (and where I want to keep it from going).
+- [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html): A collection of ideas on where this package might go (and where it might want to avoid).
 
 ## Acknowledgements
 

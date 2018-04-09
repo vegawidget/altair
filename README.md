@@ -133,8 +133,8 @@ The documentation for this package includes some articles:
     scatterplots.
 
   - [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html):
-    A collection of ideas on where this package might go (and where I
-    want to keep it from going).
+    A collection of ideas on where this package might go (and where it
+    might want to avoid).
 
 ## Acknowledgements
 

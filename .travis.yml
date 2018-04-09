@@ -21,6 +21,7 @@ addons:
     - python3.6
     - python3-setuptools
     - python3-dev
+    - python3-pip
 
 env:
   global:
