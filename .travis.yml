@@ -8,9 +8,23 @@ r:
 sudo: false
 cache: packages
 
-env:
-  global:
-    - RETICULATE_PYTHON="/usr/bin/python3"
+# inspiration:
+#  https://github.com/mushkevych/scheduler/blob/2.0/.travis.yml
+#  https://github.com/rstudio/reticulate/blob/master/.travis.yml
+addons:
+  apt:
+    sources:
+    # apt source hosting Python3.5 and 3.6
+    - deadsnakes
+    packages:
+    # Travis-ci has a known issue with Python3.5 and 3.6
+    - python3.6
+    - python3-setuptools
+    - python3-dev
+
+#env:
+#  global:
+#    - RETICULATE_PYTHON="/usr/bin/python3"
 
 # before_install:
 #   - which python3
