@@ -2,22 +2,25 @@
 #'
 #' This function renders an Altair chart as a Vega-Lite htmlwidget.
 #'
+#' Use this function to render a chart as an htmlwidget.
+#' To include a tooltip the rendering of your chart, use one of the
+#' [vega_tooltip()] functions as the value for the `tooltip` argument.
+#'
+#' Keep in mind that you can include exactly **one** tooltip specification
+#' and exactly **one** chart specification
+#' in a rendering; the tooltip will be applied to the entire chart,
+#' even if it is compound chart.
+#'
 #' This function is called `vegalite()` is because it returns an htmlwidget
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
-#'
-#' To include a tooltip the rendering of your chart, use one of the
-#' [vega_tooltip()] functions as the value for the `tooltip` argument.
-#' Keep in mind that you can make exactly **one** tooltip specification
-#' in a rendering; this specification will be applied to the entire chart,
-#' even if it is compound chart.
 #'
 #' @param chart   chart object created using [`alt`]`$Chart()`
 #' @param tooltip `vega_tooltip` object to specify tooltip.
 #'   The default is an empty call to [vega_tooltip()],
 #'   which will result in no tooltip displaying.
 #' @inheritParams htmlwidgets::createWidget
-#' @seealso [vega_tooltip()]
+#' @seealso [alt], [vega_tooltip()]
 #'
 #' @examples
 #'   plot_basic <-

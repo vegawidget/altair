@@ -51,9 +51,15 @@ created using \code{\link[=vega_tooltip]{vega_tooltip()}}, according to the opti
 detailed in the \href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation}.
 }
 \details{
-This function both takes and returns a tooltip specification,
-so that it can be used in a "pipeline" that creates a
+This function both takes and returns a tooltip specification;
+it can be used in a "pipeline" that creates a
 tooltip specification, then adds fields to it.
+
+When making a tooltip specification with custom fields,
+use the \code{\link[=vega_tooptip]{vega_tooptip()}} function to create the tooltip.
+This function, when called with its default
+\code{showAllFields = FALSE}, suppresses the default fields, allowing you
+to propose custom fields.
 }
 \examples{
   plot_basic <-

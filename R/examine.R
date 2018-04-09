@@ -8,6 +8,15 @@
 #' @inheritParams listviewer::jsonedit
 #'
 #' @return called for side-effects
+#' @examples
+#' tooltip_custom <-
+#'   vega_tooltip() %>%
+#'   add_field(field = "mpg", title = "MPG") %>%
+#'   add_field(field = "hp", title = "HP")
+#'
+#' \dontrun{
+#'   examine(tooltip_custom)
+#' }
 #'
 #' @export
 #'

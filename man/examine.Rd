@@ -39,3 +39,14 @@ Use this function to interactvely examine a specification, using
 tooltip specification, it could also be adapted to examine an Altair
 chart specification.
 }
+\examples{
+tooltip_custom <-
+  vega_tooltip() \%>\%
+  add_field(field = "mpg", title = "MPG") \%>\%
+  add_field(field = "hp", title = "HP")
+
+\dontrun{
+  examine(tooltip_custom)
+}
+
+}

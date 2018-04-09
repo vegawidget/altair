@@ -25,15 +25,18 @@ widget's container.}
 This function renders an Altair chart as a Vega-Lite htmlwidget.
 }
 \details{
+Use this function to render a chart as an htmlwidget.
+To include a tooltip the rendering of your chart, use one of the
+\code{\link[=vega_tooltip]{vega_tooltip()}} functions as the value for the \code{tooltip} argument.
+
+Keep in mind that you can include exactly \strong{one} tooltip specification
+and exactly \strong{one} chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is compound chart.
+
 This function is called \code{vegalite()} is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.
-
-To include a tooltip the rendering of your chart, use one of the
-\code{\link[=vega_tooltip]{vega_tooltip()}} functions as the value for the \code{tooltip} argument.
-Keep in mind that you can make exactly \strong{one} tooltip specification
-in a rendering; this specification will be applied to the entire chart,
-even if it is compound chart.
 }
 \examples{
   plot_basic <-
@@ -50,5 +53,5 @@ even if it is compound chart.
 }
 }
 \seealso{
-\code{\link[=vega_tooltip]{vega_tooltip()}}
+\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}
 }

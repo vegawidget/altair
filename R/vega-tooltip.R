@@ -153,9 +153,15 @@ vega_tooltip_all <- function(showAllFields = TRUE, ...) {
 #' created using [vega_tooltip()], according to the options
 #' detailed in the [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options).
 #'
-#' This function both takes and returns a tooltip specification,
-#' so that it can be used in a "pipeline" that creates a
+#' This function both takes and returns a tooltip specification;
+#' it can be used in a "pipeline" that creates a
 #' tooltip specification, then adds fields to it.
+#'
+#' When making a tooltip specification with custom fields,
+#' use the [vega_tooptip()] function to create the tooltip.
+#' This function, when called with its default
+#' `showAllFields = FALSE`, suppresses the default fields, allowing you
+#' to propose custom fields.
 #'
 #' @param tooltip `vega_tooltip` object, created using [vega_tooltip()]
 #' @param ...     other arguments (not supported)
