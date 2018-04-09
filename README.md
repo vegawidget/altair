@@ -110,7 +110,6 @@ near future:
 1.  Tightening up existing capabilites.
 2.  A proper installation procedure for the Altair Python package, a
     function like `install_altair()`.
-3.  Tooltips.
 
 In the longer-term future it may be interesting to provide a proper R
 interface to the Python API; there are already some [encouraging first

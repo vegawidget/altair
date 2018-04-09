@@ -95,7 +95,6 @@ There's really not much beyond that. Here's what I have in mind for the near fut
 
 1. Tightening up existing capabilites.
 1. A proper installation procedure for the Altair Python package, a function like `install_altair()`.
-1. Tooltips.
 
 In the longer-term future it may be interesting to provide a proper R interface to the Python API; there are already some [encouraging first steps](https://github.com/ijlyttle/altair/issues/15) towards this. This package has a [manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html) to outline some high-level ideas.
 

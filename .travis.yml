@@ -30,6 +30,7 @@ env:
 before_install:
   - which python3.6
   - python3.6 --version
+  - which pip3.6
 
 before_script:
   - python3.6 -m pip install altair==2.0.0rc1
