@@ -32,8 +32,8 @@ before_install:
   - python3.6 --version
   - sudo curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
   - python3.6 -m pip -V
-  - python3.6 -m pip install --user altair==2.0.0rc1
+  - sudo python3.6 -m pip install altair==2.0.0rc1
 
-#before_script:
-
+before_script:
+  - R -e 'reticulate::py_discover_config()'
 
