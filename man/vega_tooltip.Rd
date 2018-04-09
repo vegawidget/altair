@@ -61,7 +61,38 @@ specify sorting fields on either
 S3 object with class \code{vega_tooltip}
 }
 \description{
-Create a Vega tooltip
+This function creates a Vega tooltip-specification.
+}
+\details{
+This function is called \code{vega_tooltip()} because the tooltip specification
+made for the Vega JavaScript library; it is independent from the Altair
+Python package.
+
+A tooltip specification is separate from a chart specification; they are
+combined when they are both rendered into an htmlwidget, using \code{\link[=vegalite]{vegalite()}}.
+One conseqence of this is that you can have exactly one tooltip
+specification per chart, even a compound chart.
+
+There are three versions of this function, each will result in a different
+default behavior of the tooltip:
+
+\describe{
+\item{\code{vega_tooltip()}}{no tooltip is displayed,
+absent the use of \code{\link[=add_field]{add_field()}}}
+\item{\code{vega_tooltip_encoding()}}{tooltip displays all the variables
+in the chart's encoding}
+\item{\code{vega_tooltip_all()}}{tooltip displays all the variables
+in the chart's data}
+}
+
+To customize the fields in a tooltip specification, begin with with a
+specification with no fields, using \code{vega_tooltip()}. To add fields
+(variables) to the specification, pipe this to the \code{\link[=add_field]{add_field()}} function
+for as many fields as you wish to add. See the included example that
+composes \code{tooltip_custom}.
+
+You can use the \code{\link[=examine]{examine()}} function to interactively examine
+a tooltip specification.
 }
 \examples{
   plot_basic <-
@@ -76,8 +107,18 @@ Create a Vega tooltip
 \dontrun{
   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 }
+
+tooltip_custom <-
+  vegalite_tooltip() \%>\%
+  add_field(field = "mpg", title = "MPG") \%>\%
+  add_field(field = "hp", title = "HP")
+
+\dontrun{
+  vegalite(plot_basic, tooltip = tooltip_custom)
+}
+
 }
 \seealso{
 \href{https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options}{Vega tooltip documentation},
-\code{\link[=add_field]{add_field()}}, \code{\link[=vegalite]{vegalite()}}
+\code{\link[=add_field]{add_field()}}, \code{\link[=vegalite]{vegalite()}}, \code{\link[=examine]{examine()}}
 }

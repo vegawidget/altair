@@ -1,5 +1,37 @@
 #' Create a Vega tooltip
 #'
+#' This function creates a Vega tooltip-specification.
+#'
+#' This function is called `vega_tooltip()` because the tooltip specification
+#' made for the Vega JavaScript library; it is independent from the Altair
+#' Python package.
+#'
+#' A tooltip specification is separate from a chart specification; they are
+#' combined when they are both rendered into an htmlwidget, using [vegalite()].
+#' One conseqence of this is that you can have exactly one tooltip
+#' specification per chart, even a compound chart.
+#'
+#' There are three versions of this function, each will result in a different
+#' default behavior of the tooltip:
+#'
+#' \describe{
+#'   \item{`vega_tooltip()`}{no tooltip is displayed,
+#'     absent the use of [add_field()]}
+#'   \item{`vega_tooltip_encoding()`}{tooltip displays all the variables
+#'     in the chart's encoding}
+#'   \item{`vega_tooltip_all()`}{tooltip displays all the variables
+#'     in the chart's data}
+#' }
+#'
+#' To customize the fields in a tooltip specification, begin with with a
+#' specification with no fields, using `vega_tooltip()`. To add fields
+#' (variables) to the specification, pipe this to the [add_field()] function
+#' for as many fields as you wish to add. See the included example that
+#' composes `tooltip_custom`.
+#'
+#' You can use the [examine()] function to interactively examine
+#' a tooltip specification.
+#'
 #' @param showAllFields `logical`, indicates which fields to include in tooltip.
 #'   - `TRUE`: include all fields in the data.
 #'   - `FALSE`: include only those fields specified in `fields`.
@@ -32,7 +64,7 @@
 #' @return S3 object with class `vega_tooltip`
 #'
 #' @seealso [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options),
-#'   [add_field()], [vegalite()]
+#'   [add_field()], [vegalite()], [examine()]
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -46,6 +78,16 @@
 #' \dontrun{
 #'   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 #' }
+#'
+#' tooltip_custom <-
+#'   vegalite_tooltip() %>%
+#'   add_field(field = "mpg", title = "MPG") %>%
+#'   add_field(field = "hp", title = "HP")
+#'
+#' \dontrun{
+#'   vegalite(plot_basic, tooltip = tooltip_custom)
+#' }
+#'
 #' @export
 #'
 vega_tooltip <- function(showAllFields = FALSE,
@@ -143,7 +185,6 @@ add_field.default <- function(tooltip, ...) {
   "Unknown class"
 }
 
-#' @rdname add_field
 #' @export
 #'
 add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,

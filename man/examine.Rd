@@ -4,7 +4,7 @@
 \alias{examine}
 \title{Examine a specification}
 \usage{
-examine(listdata = NULL, mode = "view", modes = c("code", "form", "text",
+examine(listdata = NULL, mode = "tree", modes = c("code", "form", "text",
   "tree", "view"), ..., width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{

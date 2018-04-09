@@ -1,10 +1,23 @@
-#' Create a vegalite htmlwidget
+#' Create a Vega-Lite htmlwidget
 #'
-#' @param chart   chart object created using `altair$Chart()`
+#' This function renders an Altair chart as a Vega-Lite htmlwidget.
+#'
+#' This function is called `vegalite()` is because it returns an htmlwidget
+#' that uses the Vega-Lite JavaScript library, rather than the
+#' Altair Python package.
+#'
+#' To include a tooltip the rendering of your chart, use one of the
+#' [vega_tooltip()] functions as the value for the `tooltip` argument.
+#' Keep in mind that you can make exactly **one** tooltip specification
+#' in a rendering; this specification will be applied to the entire chart,
+#' even if it is compound chart.
+#'
+#' @param chart   chart object created using [`alt`]`$Chart()`
 #' @param tooltip `vega_tooltip` object to specify tooltip.
-#'   The default is an empty call to `vega_toolip()`,
+#'   The default is an empty call to [vega_toolip()],
 #'   which will result in no tooltip displaying.
 #' @inheritParams htmlwidgets::createWidget
+#' @seealso [vega_tooltip()]
 #'
 #' @examples
 #'   plot_basic <-
@@ -42,7 +55,7 @@ vegalite <- function(chart, tooltip = vega_tooltip(), width = NULL, height = NUL
   vegalite
 }
 
-#' Shiny output for vegalite
+#' Shiny output for Vega-Lite
 #'
 #' @inheritParams htmlwidgets::shinyWidgetOutput
 #'
@@ -58,7 +71,7 @@ vegaliteOutput <- function(outputId, width = "100%", height = "400px") {
   )
 }
 
-#' Render a shiny output for vegalite
+#' Render a shiny output for Vega-Lite
 #'
 #' @inheritParams htmlwidgets::shinyRenderWidget
 #'
