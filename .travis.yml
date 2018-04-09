@@ -34,6 +34,7 @@ before_install:
   - python3.6 --version
 
 before_script:
+  - python3.6 -m pip install setuptools pip --upgrade
   - python3.6 -m pip install --ignore-installed --user travis altair==2.0.0rc1
 
 
