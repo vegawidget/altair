@@ -33,7 +33,7 @@ For this package, only a development version is available, from [GitHub](https:/
 # install.packages("devtools")
 devtools::install_github("ijlyttle/altair")
 ```
-It is necessary to have a working Altair installation on your computer. As a first step, I would recommend that you follow the [Altair installation instructions](https://altair-viz.github.io/getting_started/installation.html). When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.
+It is necessary to have a working Altair installation on your computer. As a first step, you may wish to  follow the [Altair installation instructions](https://altair-viz.github.io/getting_started/installation.html). When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.
 
 You can do this from your Python environment by:
 

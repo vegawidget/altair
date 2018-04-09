@@ -8,10 +8,10 @@ r:
 sudo: false
 cache: packages
 
-# env:
-#  global:
-#    - RETICULATE_PYTHON=""
+env:
+  global:
+    - RETICULATE_PYTHON="/usr/bin/python3"
 
-before_install:
-  - which python3
+# before_install:
+#   - which python3
 
