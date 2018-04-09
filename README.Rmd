@@ -57,7 +57,7 @@ Of course, once you have edited your `.Renviron` file, restart R for the changes
 
 ## Example
 
-This package provides a simple pass-through to the Altiar API. 
+This package provides a pass-through to the Altiar API. 
 
 ```{r example, eval=FALSE}
 library("altair")

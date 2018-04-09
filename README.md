@@ -64,7 +64,7 @@ changes to take effect.
 
 ## Example
 
-This package provides a simple pass-through to the Altiar API.
+This package provides a pass-through to the Altiar API.
 
 ``` r
 library("altair")
