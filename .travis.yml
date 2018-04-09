@@ -17,12 +17,13 @@ addons:
   apt:
     sources:
     # apt source hosting Python3.5 and 3.6
-    - deadsnakes
+    #- deadsnakes
+    sourceline: 'ppa:jonathonf/python-3.6'
     packages:
     # Travis-ci has a known issue with Python3.5 and 3.6
     - python3.6
-    - python3-setuptools
-    - python3-pip
+    #- python3-setuptools
+    #- python3-pip
 
 #env:
 #  global:
@@ -31,8 +32,10 @@ addons:
 before_install:
   - which python3.6
   - python3.6 --version
-  - pip3 install --user --upgrade pip
-  - pip3 --version
+  - curl https://bootstrap.pypa.io/ez_setup.py -o - | python3.6 && python3.6 -m easy_install pip
+  # - pip3 install --user --upgrade pip
+  # - pip3 --version
+  - python3.6 -m pip -V
   - python3.6 -m pip install --user altair==2.0.0rc1
 
 #before_script:
