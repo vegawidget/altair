@@ -2,7 +2,7 @@
 % Please edit documentation in R/htmlwidgets.R
 \name{vegaliteOutput}
 \alias{vegaliteOutput}
-\title{Shiny output for vegalite}
+\title{Shiny output for Vega-Lite}
 \usage{
 vegaliteOutput(outputId, width = "100\%", height = "400px")
 }
@@ -18,5 +18,5 @@ string and have \code{"px"} appended.}
 string and have \code{"px"} appended.}
 }
 \description{
-Shiny output for vegalite
+Shiny output for Vega-Lite
 }

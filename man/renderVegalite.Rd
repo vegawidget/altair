@@ -2,7 +2,7 @@
 % Please edit documentation in R/htmlwidgets.R
 \name{renderVegalite}
 \alias{renderVegalite}
-\title{Render a shiny output for vegalite}
+\title{Render a shiny output for Vega-Lite}
 \usage{
 renderVegalite(expr, env = parent.frame(), quoted = FALSE)
 }
@@ -15,5 +15,5 @@ renderVegalite(expr, env = parent.frame(), quoted = FALSE)
 is useful if you want to save an expression in a variable.}
 }
 \description{
-Render a shiny output for vegalite
+Render a shiny output for Vega-Lite
 }

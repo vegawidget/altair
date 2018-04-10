@@ -85,6 +85,9 @@
     <li>
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
+    <li>
+      <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -138,8 +141,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-chart-construction" class="hasAnchor"><a href="#section-chart-construction" class="anchor"></a>Chart construction</h2>
-          <p class="section-desc"><p>Functions and objects to help construct charts</p></p>
+          <h2 id="section-charts" class="hasAnchor"><a href="#section-charts" class="anchor"></a>Charts</h2>
+          <p class="section-desc"><p>Functions and objects to construct chart-specifications</p></p>
         </th>
       </tr>
       <tr>
@@ -158,8 +161,28 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-htmlwidgets" class="hasAnchor"><a href="#section-htmlwidgets" class="anchor"></a>htmlwidgets</h2>
-          <p class="section-desc"><p>Functions for rendering charts in RMarkdown documents or Shiny apps</p></p>
+          <h2 id="section-tooltips" class="hasAnchor"><a href="#section-tooltips" class="anchor"></a>Tooltips</h2>
+          <p class="section-desc"><p>Functions to create tooltip-specifications</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="vega_tooltip.html">vega_tooltip()</a></code> <code><a href="vega_tooltip.html">vega_tooltip_encoding()</a></code> <code><a href="vega_tooltip.html">vega_tooltip_all()</a></code> </p>
+        </td>
+        <td><p>Create a Vega tooltip-specification</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="add_field.html">add_field()</a></code> </p>
+        </td>
+        <td><p>Add a field to a Vega tooltip-specification</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-rendering" class="hasAnchor"><a href="#section-rendering" class="anchor"></a>Rendering</h2>
+          <p class="section-desc"><p>Functions for rendering chart- and tooltip-specifications into htmlwidgets</p></p>
         </th>
       </tr>
       <tr>
@@ -167,19 +190,19 @@
         <td>
           <p><code><a href="vegalite.html">vegalite()</a></code> </p>
         </td>
-        <td><p>Create a vegalite htmlwidget</p></td>
+        <td><p>Create a Vega-Lite htmlwidget</p></td>
       </tr><tr>
         <!--  -->
         <td>
           <p><code><a href="renderVegalite.html">renderVegalite()</a></code> </p>
         </td>
-        <td><p>Render a shiny output for vegalite</p></td>
+        <td><p>Render a shiny output for Vega-Lite</p></td>
       </tr><tr>
         <!--  -->
         <td>
           <p><code><a href="vegaliteOutput.html">vegaliteOutput()</a></code> </p>
         </td>
-        <td><p>Shiny output for vegalite</p></td>
+        <td><p>Shiny output for Vega-Lite</p></td>
       </tr>
     </tbody>
     </table>
@@ -189,8 +212,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-installation">Installation</a></li>
-      <li><a href="#section-chart-construction">Chart construction</a></li>
-      <li><a href="#section-htmlwidgets">htmlwidgets</a></li>
+      <li><a href="#section-charts">Charts</a></li>
+      <li><a href="#section-tooltips">Tooltips</a></li>
+      <li><a href="#section-rendering">Rendering</a></li>
     </ul>
   </div>
 </div>

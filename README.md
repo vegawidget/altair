@@ -13,9 +13,11 @@ The goal of altair is to help you build
 [Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the
 [reticulate](https://rstudio.github.io/reticulate) package, it provides
 an interface to the [Altair](https://altair-viz.github.io) Python
-library. I am a big fan of the efforts to build a native R interface to
-Vega-Lite, by Bob Rudis ([@hrbrmstr](https://github.com/hrbrmstr)) and
-coworkers: the [vegalite](https://github.com/hrbrmstr/vegalite) package.
+library. This approach is different from efforts to build a native R
+interface to Vega-Lite, by Bob Rudis
+([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers: the
+[vegalite](https://github.com/hrbrmstr/vegalite) package, which has
+inspired this effort.
 
 In this documentation, the capitalized word **Altair** shall refer to
 the Python API; the lower-case word **altair** shall refer to this R
@@ -23,7 +25,7 @@ package.
 
 ## Installation
 
-For this package, only a development version is available, from
+For this package a development version is available from
 [GitHub](https://github.com/):
 
 ``` r
@@ -32,17 +34,15 @@ devtools::install_github("ijlyttle/altair")
 ```
 
 It is necessary to have a working Altair installation on your computer.
-As a first step, I would recommend that you follow the [Altair
-installation
+As a first step, you may wish to follow the [Altair installation
 instructions](https://altair-viz.github.io/getting_started/installation.html).
-When you get vegalite plots to render in your Python environment, I
-would suggest you determine the path to your particular Python
-installation.
-
-You can do this from your Python environment by:
+Once you have Altair install in your Python environment, you can
+determine the path to your particular Python installation:
 
 ``` python
 # Python
+
+import altair # make sure this works
 import sys
 
 sys.executable
@@ -51,10 +51,10 @@ sys.executable
 It might return something like `/path/to/bin/python3.6`; you can use
 this value to set an environment variable to specify which Python
 environment to use. You might consider putting a line like this into
-your `.Renviron`
-    file:
+your `.Renviron` file:
 
-    RETICULATE_PYTHON="/your/path/to/python3.6" # your path will be different
+    # your path will be different
+    RETICULATE_PYTHON="/your/path/to/python3.6" 
 
 This is where the reticulate package will look first for Python on your
 computer.
@@ -64,7 +64,7 @@ changes to take effect.
 
 ## Example
 
-This package provides a simple pass-through to the Altiar API.
+This package provides a pass-through to the Altiar API.
 
 ``` r
 library("altair")
@@ -86,36 +86,40 @@ Some things to keep in mind:
 
   - Where you see a `.` in the Python examples, use a `$` instead.
 
-  - Any data-frames you provide as arguments need to wrapped by
+  - Any data frames you provide as arguments need to wrapped by
     `r_to_py()`.
 
-  - In your data-frames, columns that contain dots, i.e. `Sepal.Width`
-    will prevent Altair from compiling a chart spec.
+  - In your data frames, columns that contain dots, i.e. `Sepal.Width`,
+    will prevent Altair from compiling a chart specification.
 
-Also, I’d like to sort out how to get the `vegalite()` function to “do
-the right thing” when knitting to a non-html format.
+Also, it remains to sort out how to get the `vegalite()` function to “do
+the right thing” when knitting to a non-html format, and to render
+inline in an RMarkdown notebook.
 
 ## Development plan
 
 For the foreseeable future, this package is going to be very rough. At
 the moment, you are able to muck around with Vega-Lite 2.0. This means:
 
-1.  You can create charts by accessing the Python **Altair** API using
-    **reticulate**.
-2.  You can display charts using the `vegalite()` htmlwidget.
+1.  You can create chart-specificatiobs by accessing the Python
+    **Altair** API using **reticulate**.
+2.  You can create tooltip-specifications using `vega_tooltip()`, and
+    `add_fields()`. Or you create a default tooltip-specification using
+    `vega_tooltip_encoding()` or `vega_tooltip_all()`.
+3.  You can render a chart-specification and tooltip-specification into
+    an htmlwidget, using `vegalite()`.
 
-There’s really not much beyond that. Here’s what I have in mind for the
-near future:
+There’s really not much beyond that. Here are some ideas for the near
+future:
 
 1.  Tightening up existing capabilites.
 2.  A proper installation procedure for the Altair Python package, a
     function like `install_altair()`.
-3.  Tooltips.
 
 In the longer-term future it may be interesting to provide a proper R
-interface to the Python API. I have no idea what that looks like,
-although we might take some inspiration from the
-[keras](https://keras.rstudio.com/) package. I have started a
+interface to the Python API; there are already some [encouraging first
+steps](https://github.com/ijlyttle/altair/issues/15) towards this. This
+package has a
 [manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
 to outline some high-level ideas.
 
@@ -132,9 +136,15 @@ The documentation for this package includes some articles:
     A set of examples that work towards linked-brushing of two
     scatterplots.
 
+  - [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html):
+    In the Vega world, tooltips and charts are specified seperately.
+    This article explains how to integrate tooltips with charts, and
+    shows a few tooltip-customization
+    options.
+
   - [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html):
-    A collection of ideas on where this package might go (and where I
-    want to keep it from going).
+    A collection of ideas on where this package might go (and where it
+    might want to avoid).
 
 ## Acknowledgements
 
@@ -151,10 +161,9 @@ foundations:
   - [vegalite](https://github.com/hrbrmstr/vegalite): Native R interface
     to Vega-Lite
 
-A particular debt is owed to the
-[vegalite](https://github.com/hrbrmstr/vegalite) project as it provided
-a lot of the inspiration for figuring out how to get an htmlwidget to
-work.
+A particular debt is owed to the folks behind the
+[vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided
+a lot of the inspiration for this package.
 
 ## Code of conduct
 

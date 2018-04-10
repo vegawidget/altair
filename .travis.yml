@@ -1,5 +1,39 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
-sudo: false
+language: r
+r:
+#  - oldrel
+  - release
+#  - devel
+sudo: required
 cache: packages
+
+# inspiration:
+#  https://github.com/mushkevych/scheduler/blob/2.0/.travis.yml
+#  https://github.com/rstudio/reticulate/blob/master/.travis.yml
+addons:
+  apt:
+    sources:
+    # apt source hosting Python3.5 and 3.6
+    - sourceline: 'ppa:jonathonf/python-3.6'
+    packages:
+    # Travis-ci has a known issue with Python3.5 and 3.6
+    - python3.6
+    - python3.6-dev
+
+env:
+  global:
+    - RETICULATE_PYTHON="/usr/bin/python3.6"
+
+# inspiration:
+#  https://stackoverflow.com/questions/42662104/how-to-install-pip-for-python-3-6-on-ubuntu-16-10/44662468#44662468
+before_install:
+  - which python3.6
+  - python3.6 --version
+  - sudo curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
+  - python3.6 -m pip -V
+  - sudo python3.6 -m pip install altair==2.0.0rc1
+
+before_script:
+  - R -e 'reticulate::py_discover_config()'
+

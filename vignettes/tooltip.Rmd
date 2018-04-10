@@ -1,0 +1,91 @@
+---
+title: "Tooltips"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Tooltips are a [hot topic](https://github.com/altair-viz/altair/issues/240) within the Altair, Vega-Lite, and Vega community. They way tooltips are specified and rendered today may change tommorow. The purpose of this article is to focus on how things work today.
+
+The most important thing to keep in mind is that the specification of the tooltip is *seperate* from the specification of the chart; they come together in the rendering process. Accordingly, a tooltip specification is associated with an entire chart. I imagine that this applies also to compound charts: you can provide exactly one tooltip specification.
+
+## Show no tooltips
+
+Let's start out with a basic chart. We have two steps here: the first step is to create a chart object using Altair methods, using `alt$Chart()`, and so on; the second step is to render the chart using `vegalite()`.
+
+```{r basic-chart}
+library("altair")
+
+plot_basic <-
+  alt$Chart(
+    r_to_py(mtcars)
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )$mark_point()
+
+vegalite(plot_basic, height = 400)
+```
+
+You will notice that the rendering does not produce tooltips. What you may not have noticed is that the `vegalite()` function has a `tooltip` argument; its default is an empty call to a helper function, `vegalite_tooltip()`. An empty call to this function tells the renderer not to produce tooltips.
+
+## Show encoding variables
+
+The `vegalite_tooltip()` function has a couple of friends, one of which is `vega_tooltip_encoding()`. This function is used to tell the renderer to include tooltip information for only those variables that are encoded in your plot. Here's an example:
+
+```{r toolip-basic}
+vegalite(plot_basic, tooltip = vega_tooltip_encoding(), height = 400)
+```
+
+## Show all variables
+
+The other friend to `vega_tooltip()` is `vega_tooltip_all()`, which tells the renderer to include tooltip information for *all* the variables in the data - not only those encoded in the chart: 
+
+```{r tooltip-all}
+vegalite(plot_basic, tooltip = vega_tooltip_all(), height = 400)
+```
+
+## Customize
+
+These first cases should cover a lot of ground. If you want to customize the tooltips, you would start with an "empty" tooltip specification, using `vega_tooltip()`. For each variable that you wish to include in the tooltip, you would add a field, using the function `add_field()`. Following [tidyverse custom](http://tidyverse.tidyverse.org/articles/manifesto.html#compose-simple-functions-with-the-pipe), you can compose a tooltip specification using the pipe operator, `%>%`:
+
+```{r tooltip-composition}
+tooltip_custom <- 
+  vega_tooltip() %>%
+  add_field(field = "mpg", title = "MPG") %>%
+  add_field(field = "hp", title = "HP")
+
+vegalite(plot_basic, tooltip = tooltip_custom, height = 400)
+```
+
+
+### More options
+
+For more options, check out the documentation for [Vega Tooltips](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md). In keeping with the philosophy of this package, you should be able to map very easily between the options described in the Vega-tooltips and the arguments to `vega_tooltip()` and `add_field()`.
+
+### JavaScript
+
+Some of the tooltip options expect JavaScript functions. For example, the `vega_tooltip()` function has an argument, `onAppear` that asks for a JavaScript function to be called when a tooltip first appears. Consider this customization:
+
+```{r}
+tooltip_callback <-
+  vega_tooltip_encoding(
+    onAppear = JS("function(title,value){console.log('appear')}")
+  )
+
+vegalite(plot_basic, tooltip = tooltip_callback, height = 400)
+```
+
+If you open this in your favorite broswer, open its JavaScript console, then cause a tooltip to appear in this plot, you should see the word "appear" appear in the console. 
+
+
+### Helper functions
+
+It may be useful to examine a tooltip specification, perhaps for debugging. The `examine()` function is provided to help you do this. It is a thin wrapper around the `listviewer::jsonedit()` function.
+
+```{r tooltip-examine}
+examine(tooltip_callback, height = 300, width = "100%")
+```
+

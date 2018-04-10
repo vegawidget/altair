@@ -29,7 +29,12 @@ plot <-
     color = "cyl:N"
   )
 
-vegalite(plot, height = 400)
+vegalite(plot, tooltip = vega_tooltip(showAllFields = NULL), height = 400)
+```
+
+```{r}
+vegalite(plot, tooltip = list(showAllFields = NULL, 
+   onAppear = htmlwidgets::JS("function(title,value){console.log('appear')}")), height = 400)
 ```
 
 ### Installation
