@@ -37,7 +37,7 @@ Suggests:
     knitr,
     rmarkdown,
     tibble,
-    listviewer,
+    listviewer (>= 2.0.0),
     testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
