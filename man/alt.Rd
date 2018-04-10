@@ -9,6 +9,26 @@
 alt
 }
 \description{
-Uses the reticulate framework to access the Altair API
+Uses the reticulate framework to access the Altair API.
+}
+\details{
+The Altair Python library is exposed through the \code{alt} object.
+You can create and add to chart using its methods and classes,
+as outlined in the
+\href{https://altair-viz.github.io/index.html}{Altair Python documentation}.
+
+In this package, use the \code{$} operator wherever you see the \code{.} operator
+in Python.
+}
+\examples{
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
 }
 \keyword{datasets}

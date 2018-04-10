@@ -2,12 +2,16 @@
 % Please edit documentation in R/htmlwidgets.R
 \name{vegalite}
 \alias{vegalite}
-\title{Create a vegalite htmlwidget}
+\title{Create a Vega-Lite htmlwidget}
 \usage{
-vegalite(chart, width = NULL, height = NULL)
+vegalite(chart, tooltip = vega_tooltip(), width = NULL, height = NULL)
 }
 \arguments{
-\item{chart}{chart object created using \code{altair$Chart()}}
+\item{chart}{chart object created using \code{\link{alt}}\code{$Chart()}}
+
+\item{tooltip}{\code{vega_tooltip} object to specify tooltip.
+The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
+which will result in no tooltip displaying.}
 
 \item{width}{Fixed width for widget (in css units). The default is
 \code{NULL}, which results in intelligent automatic sizing based on the
@@ -18,5 +22,36 @@ widget's container.}
 widget's container.}
 }
 \description{
-Create a vegalite htmlwidget
+This function renders an Altair chart as a Vega-Lite htmlwidget.
+}
+\details{
+Use this function to render a chart as an htmlwidget.
+To include a tooltip the rendering of your chart, use one of the
+\code{\link[=vega_tooltip]{vega_tooltip()}} functions as the value for the \code{tooltip} argument.
+
+Keep in mind that you can include exactly \strong{one} tooltip specification
+and exactly \strong{one} chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is compound chart.
+
+This function is called \code{vegalite()} is because it returns an htmlwidget
+that uses the Vega-Lite JavaScript library, rather than the
+Altair Python package.
+}
+\examples{
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
+\dontrun{
+  vegalite(plot_basic)
+}
+}
+\seealso{
+\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}
 }

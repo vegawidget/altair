@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a vegalite htmlwidget — vegalite • altair</title>
+<title>Create a Vega-Lite htmlwidget — vegalite • altair</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Create a vegalite htmlwidget — vegalite" />
+<meta property="og:title" content="Create a Vega-Lite htmlwidget — vegalite" />
 
-<meta property="og:description" content="Create a vegalite htmlwidget" />
+<meta property="og:description" content="This function renders an Altair chart as a Vega-Lite htmlwidget." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -88,6 +88,9 @@
     <li>
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
+    <li>
+      <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -114,22 +117,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a vegalite htmlwidget</h1>
+    <h1>Create a Vega-Lite htmlwidget</h1>
     <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/htmlwidgets.R'><code>R/htmlwidgets.R</code></a></small>
     </div>
 
     
-    <p>Create a vegalite htmlwidget</p>
+    <p>This function renders an Altair chart as a Vega-Lite htmlwidget.</p>
     
 
-    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>(), <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>chart</th>
-      <td><p>chart object created using <code>altair$Chart()</code></p></td>
+      <td><p>chart object created using <code><a href='alt.html'>alt</a></code><code>$Chart()</code></p></td>
+    </tr>
+    <tr>
+      <th>tooltip</th>
+      <td><p><code>vega_tooltip</code> object to specify tooltip.
+The default is an empty call to <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>,
+which will result in no tooltip displaying.</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -145,13 +154,47 @@ widget's container.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>Use this function to render a chart as an htmlwidget.
+To include a tooltip the rendering of your chart, use one of the
+<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions as the value for the <code>tooltip</code> argument.</p>
+<p>Keep in mind that you can include exactly <strong>one</strong> tooltip specification
+and exactly <strong>one</strong> chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is compound chart.</p>
+<p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
+that uses the Vega-Lite JavaScript library, rather than the
+Altair Python package.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
+    <span class='no'>alt</span>$<span class='fu'>Chart</span>(
+      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>mtcars</span>)
+    )$<span class='fu'>encode</span>(
+      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"mpg:Q"</span>,
+      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
+      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
+    )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

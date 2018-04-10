@@ -22,6 +22,10 @@ lib_dir <- file.path(find_package_root_file(), "inst", "htmlwidgets", "lib")
 Let’s establish the files we will download, and where we will download
 them to.
 
+Here’s a [reference](https://vega.github.io/vega/usage/#ie) to a
+solution to the promise-and-symbol issue that Alicia Schep brought to
+our attention.
+
 ``` r
 downloads <-
   tribble(
@@ -33,7 +37,9 @@ downloads <-
     "vega-lite/vega-lite-min.js",   "https://cdn.jsdelivr.net/npm/vega-lite@2.3.1",
     "vega-lite/LICENSE",            "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",
     "vega-embed/vega-embed-min.js", "https://cdn.jsdelivr.net/npm/vega-embed@3.2.0",
-    "vega-embed/LICENSE",           "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE"
+    "vega-embed/LICENSE",           "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE",
+    "vega-tooltip/vega-tooltip.min.js", "https://cdn.jsdelivr.net/npm/vega-tooltip@0.7.0",
+    "vega-tooltip/vega-tooltip.min.css", "https://cdn.jsdelivr.net/npm/vega-tooltip@0.7.0/build/vega-tooltip.min.css"
   )
 ```
 
