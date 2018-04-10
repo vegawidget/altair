@@ -86,26 +86,31 @@ Some things to keep in mind:
 
   - Where you see a `.` in the Python examples, use a `$` instead.
 
-  - Any data-frames you provide as arguments need to wrapped by
+  - Any data frames you provide as arguments need to wrapped by
     `r_to_py()`.
 
-  - In your data-frames, columns that contain dots, i.e. `Sepal.Width`
-    will prevent Altair from compiling a chart spec.
+  - In your data frames, columns that contain dots, i.e. `Sepal.Width`,
+    will prevent Altair from compiling a chart specification.
 
-Also, it mat remain to sort out how to get the `vegalite()` function to
-“do the right thing” when knitting to a non-html format.
+Also, it remains to sort out how to get the `vegalite()` function to “do
+the right thing” when knitting to a non-html format, and to render
+inline in an RMarkdown notebook.
 
 ## Development plan
 
 For the foreseeable future, this package is going to be very rough. At
 the moment, you are able to muck around with Vega-Lite 2.0. This means:
 
-1.  You can create charts by accessing the Python **Altair** API using
-    **reticulate**.
-2.  You can display charts using the `vegalite()` htmlwidget.
+1.  You can create chart-specificatiobs by accessing the Python
+    **Altair** API using **reticulate**.
+2.  You can create tooltip-specifications using `vega_tooltip()`, and
+    `add_fields()`. Or you create a default tooltip-specification using
+    `vega_tooltip_encoding()` or `vega_tooltip_all()`.
+3.  You can render a chart-specification and tooltip-specification into
+    an htmlwidget, using the `vegalite()`.
 
-There’s really not much beyond that. Here’s what I have in mind for the
-near future:
+There’s really not much beyond that. Here are some ideas for the near
+future:
 
 1.  Tightening up existing capabilites.
 2.  A proper installation procedure for the Altair Python package, a
@@ -131,6 +136,12 @@ The documentation for this package includes some articles:
     A set of examples that work towards linked-brushing of two
     scatterplots.
 
+  - [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html):
+    In the Vega world, tooltips and charts are specified seperately.
+    This article explains how to integrate tooltips with charts, and
+    shows a few tooltip-customization
+    options.
+
   - [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html):
     A collection of ideas on where this package might go (and where it
     might want to avoid).
@@ -150,8 +161,8 @@ foundations:
   - [vegalite](https://github.com/hrbrmstr/vegalite): Native R interface
     to Vega-Lite
 
-A particular debt is owed to the
-[vegalite](https://github.com/hrbrmstr/vegalite) project as it provided
+A particular debt is owed to the folks behind the
+[vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided
 a lot of the inspiration for this package.
 
 ## Code of conduct

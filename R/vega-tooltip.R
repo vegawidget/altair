@@ -1,4 +1,4 @@
-#' Create a Vega tooltip
+#' Create a Vega tooltip-specification
 #'
 #' This function creates a Vega tooltip-specification according to the options
 #' detailed in the [Vega tooltip documentation](https://github.com/vega/vega-tooltip/blob/master/docs/customizing_your_tooltip.md#options).
@@ -147,7 +147,7 @@ vega_tooltip_all <- function(showAllFields = TRUE, ...) {
   )
 }
 
-#' Add a field to a Vega tooltip
+#' Add a field to a Vega tooltip-specification
 #'
 #' This function is used to add custom fields to a tooltip specification
 #' created using [vega_tooltip()], according to the options

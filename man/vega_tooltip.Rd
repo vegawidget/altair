@@ -4,7 +4,7 @@
 \alias{vega_tooltip}
 \alias{vega_tooltip_encoding}
 \alias{vega_tooltip_all}
-\title{Create a Vega tooltip}
+\title{Create a Vega tooltip-specification}
 \usage{
 vega_tooltip(showAllFields = FALSE, fields = NULL, delay = 100,
   onAppear = NULL, onMove = NULL, onDisappear = NULL,

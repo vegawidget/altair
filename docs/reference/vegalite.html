@@ -156,18 +156,20 @@ widget's container.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
+    <p>Use this function to render a chart as an htmlwidget.
+To include a tooltip the rendering of your chart, use one of the
+<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions as the value for the <code>tooltip</code> argument.</p>
+<p>Keep in mind that you can include exactly <strong>one</strong> tooltip specification
+and exactly <strong>one</strong> chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is compound chart.</p>
+<p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.</p>
-<p>To include a tooltip the rendering of your chart, use one of the
-<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions as the value for the <code>tooltip</code> argument.
-Keep in mind that you can make exactly <strong>one</strong> tooltip specification
-in a rendering; this specification will be applied to the entire chart,
-even if it is compound chart.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></div>
+    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

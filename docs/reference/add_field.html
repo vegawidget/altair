@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a field to a Vega tooltip — add_field • altair</title>
+<title>Add a field to a Vega tooltip-specification — add_field • altair</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Add a field to a Vega tooltip — add_field" />
+<meta property="og:title" content="Add a field to a Vega tooltip-specification — add_field" />
 
 <meta property="og:description" content="This function is used to add custom fields to a tooltip specification
 created using vega_tooltip(), according to the options
@@ -119,7 +119,7 @@ detailed in the Vega tooltip documentation." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a field to a Vega tooltip</h1>
+    <h1>Add a field to a Vega tooltip-specification</h1>
     <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vega-tooltip.R'><code>R/vega-tooltip.R</code></a></small>
     </div>
 
@@ -194,9 +194,14 @@ If <code>formatType</code> is <code>"string"</code>, there is no need to provide
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function both takes and returns a tooltip specification,
-so that it can be used in a "pipeline" that creates a
+    <p>This function both takes and returns a tooltip specification;
+it can be used in a "pipeline" that creates a
 tooltip specification, then adds fields to it.</p>
+<p>When making a tooltip specification with custom fields,
+use the <code>vega_tooptip()</code> function to create the tooltip.
+This function, when called with its default
+<code>showAllFields = FALSE</code>, suppresses the default fields, allowing you
+to propose custom fields.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

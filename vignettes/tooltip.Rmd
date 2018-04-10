@@ -10,7 +10,7 @@ Tooltips are a [hot topic](https://github.com/altair-viz/altair/issues/240) with
 
 The most important thing to keep in mind is that the specification of the tooltip is *seperate* from the specification of the chart; they come together in the rendering process. Accordingly, a tooltip specification is associated with an entire chart. I imagine that this applies also to compound charts: you can provide exactly one tooltip specification.
 
-## No tooltips
+## Show no tooltips
 
 Let's start out with a basic chart. We have two steps here: the first step is to create a chart object using Altair methods, using `alt$Chart()`, and so on; the second step is to render the chart using `vegalite()`.
 
@@ -47,7 +47,7 @@ The other friend to `vega_tooltip()` is `vega_tooltip_all()`, which tells the re
 vegalite(plot_basic, tooltip = vega_tooltip_all(), height = 400)
 ```
 
-## Customization
+## Customize
 
 These first cases should cover a lot of ground. If you want to customize the tooltips, you would start with an "empty" tooltip specification, using `vega_tooltip()`. For each variable that you wish to include in the tooltip, you would add a field, using the function `add_field()`. Following [tidyverse custom](http://tidyverse.tidyverse.org/articles/manifesto.html#compose-simple-functions-with-the-pipe), you can compose a tooltip specification using the pipe operator, `%>%`:
 

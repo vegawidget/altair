@@ -100,29 +100,31 @@
 <div id="altair" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#altair" class="anchor"></a>altair</h1></div>
-<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite">Vega-Lite</a> visualizations. Using the <a href="https://rstudio.github.io/reticulate">reticulate</a> package, it provides an interface to the <a href="https://altair-viz.github.io">Altair</a> Python library. I am a big fan of the efforts to build a native R interface to Vega-Lite, by Bob Rudis (<a href="https://github.com/hrbrmstr">@hrbrmstr</a>) and coworkers: the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package.</p>
+<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite">Vega-Lite</a> visualizations. Using the <a href="https://rstudio.github.io/reticulate">reticulate</a> package, it provides an interface to the <a href="https://altair-viz.github.io">Altair</a> Python library. This approach is different from efforts to build a native R interface to Vega-Lite, by Bob Rudis (<a href="https://github.com/hrbrmstr">@hrbrmstr</a>) and coworkers: the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, which has inspired this effort.</p>
 <p>In this documentation, the capitalized word <strong>Altair</strong> shall refer to the Python API; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>For this package, only a development version is available, from <a href="https://github.com/">GitHub</a>:</p>
+<p>For this package a development version is available from <a href="https://github.com/">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ijlyttle/altair"</span>)</a></code></pre></div>
-<p>It is necessary to have a working Altair installation on your computer. As a first step, I would recommend that you follow the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair installation instructions</a>. When you get vegalite plots to render in your Python environment, I would suggest you determine the path to your particular Python installation.</p>
-<p>You can do this from your Python environment by:</p>
+<p>It is necessary to have a working Altair installation on your computer. As a first step, you may wish to follow the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair installation instructions</a>. Once you have Altair install in your Python environment, you can determine the path to your particular Python installation:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Python</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">import</span> sys</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">sys.executable</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="im">import</span> altair <span class="co"># make sure this works</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">sys.executable</a></code></pre></div>
 <p>It might return something like <code>/path/to/bin/python3.6</code>; you can use this value to set an environment variable to specify which Python environment to use. You might consider putting a line like this into your <code>.Renviron</code> file:</p>
-<pre><code>RETICULATE_PYTHON="/your/path/to/python3.6" # your path will be different</code></pre>
+<pre><code># your path will be different
+RETICULATE_PYTHON="/your/path/to/python3.6" </code></pre>
 <p>This is where the reticulate package will look first for Python on your computer.</p>
 <p>Of course, once you have edited your <code>.Renviron</code> file, restart R for the changes to take effect.</p>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This package provides a simple pass-through to the Altiar API.</p>
+<p>This package provides a pass-through to the Altiar API.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">plot &lt;-<span class="st"> </span></a>
@@ -139,26 +141,26 @@
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
-<li><p>Any data-frames you provide as arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
-<li><p>In your data-frames, columns that contain dots, i.e. <code>Sepal.Width</code> will prevent Altair from compiling a chart spec.</p></li>
+<li><p>Any data frames you provide as arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
+<li><p>In your data frames, columns that contain dots, i.e. <code>Sepal.Width</code>, will prevent Altair from compiling a chart specification.</p></li>
 </ul>
-<p>Also, I’d like to sort out how to get the <code><a href="reference/vegalite.html">vegalite()</a></code> function to “do the right thing” when knitting to a non-html format.</p>
+<p>Also, it remains to sort out how to get the <code><a href="reference/vegalite.html">vegalite()</a></code> function to “do the right thing” when knitting to a non-html format, and to render inline in an RMarkdown notebook.</p>
 </div>
 <div id="development-plan" class="section level2">
 <h2 class="hasAnchor">
 <a href="#development-plan" class="anchor"></a>Development plan</h2>
 <p>For the foreseeable future, this package is going to be very rough. At the moment, you are able to muck around with Vega-Lite 2.0. This means:</p>
 <ol style="list-style-type: decimal">
-<li>You can create charts by accessing the Python <strong>Altair</strong> API using <strong>reticulate</strong>.</li>
-<li>You can display charts using the <code><a href="reference/vegalite.html">vegalite()</a></code> htmlwidget.</li>
+<li>You can create chart-specificatiobs by accessing the Python <strong>Altair</strong> API using <strong>reticulate</strong>.</li>
+<li>You can create tooltip-specifications using <code><a href="reference/vega_tooltip.html">vega_tooltip()</a></code>, and <code>add_fields()</code>. Or you create a default tooltip-specification using <code><a href="reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> or <code><a href="reference/vega_tooltip.html">vega_tooltip_all()</a></code>.</li>
+<li>You can render a chart-specification and tooltip-specification into an htmlwidget, using the <code><a href="reference/vegalite.html">vegalite()</a></code>.</li>
 </ol>
-<p>There’s really not much beyond that. Here’s what I have in mind for the near future:</p>
+<p>There’s really not much beyond that. Here are some ideas for the near future:</p>
 <ol style="list-style-type: decimal">
 <li>Tightening up existing capabilites.</li>
 <li>A proper installation procedure for the Altair Python package, a function like <code>install_altair()</code>.</li>
-<li>Tooltips.</li>
 </ol>
-<p>In the longer-term future it may be interesting to provide a proper R interface to the Python API. I have no idea what that looks like, although we might take some inspiration from the <a href="https://keras.rstudio.com/">keras</a> package. I have started a <a href="https://ijlyttle.github.io/altair/articles/manifesto.html">manifesto</a> to outline some high-level ideas.</p>
+<p>In the longer-term future it may be interesting to provide a proper R interface to the Python API; there are already some <a href="https://github.com/ijlyttle/altair/issues/15">encouraging first steps</a> towards this. This package has a <a href="https://ijlyttle.github.io/altair/articles/manifesto.html">manifesto</a> to outline some high-level ideas.</p>
 </div>
 <div id="articles" class="section level2">
 <h2 class="hasAnchor">
@@ -167,7 +169,8 @@
 <ul>
 <li><p><a href="https://ijlyttle.github.io/altair/articles/first-example.html">First Example</a>: A walkthrough to get a first chart to work.</p></li>
 <li><p><a href="https://ijlyttle.github.io/altair/articles/interactive.html">Interactive Examples</a>: A set of examples that work towards linked-brushing of two scatterplots.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/manifesto.html">Manifesto</a>: A collection of ideas on where this package might go (and where I want to keep it from going).</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/tooltip.html">Tooltips</a>: In the Vega world, tooltips and charts are specified seperately. This article explains how to integrate tooltips with charts, and shows a few tooltip-customization options.</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/manifesto.html">Manifesto</a>: A collection of ideas on where this package might go (and where it might want to avoid).</p></li>
 </ul>
 </div>
 <div id="acknowledgements" class="section level2">
@@ -186,7 +189,7 @@
 <li>
 <a href="https://github.com/hrbrmstr/vegalite">vegalite</a>: Native R interface to Vega-Lite</li>
 </ul>
-<p>A particular debt is owed to the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> project as it provided a lot of the inspiration for figuring out how to get an htmlwidget to work.</p>
+<p>A particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, as it provided a lot of the inspiration for this package.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
