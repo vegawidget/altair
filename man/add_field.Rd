@@ -56,7 +56,7 @@ it can be used in a "pipeline" that creates a
 tooltip specification, then adds fields to it.
 
 When making a tooltip specification with custom fields,
-use the \code{\link[=vega_tooptip]{vega_tooptip()}} function to create the tooltip.
+use the \code{\link[=vega_tooltip]{vega_tooltip()}} function to create the tooltip.
 This function, when called with its default
 \code{showAllFields = FALSE}, suppresses the default fields, allowing you
 to propose custom fields.
