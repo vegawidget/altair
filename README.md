@@ -107,7 +107,7 @@ the moment, you are able to muck around with Vega-Lite 2.0. This means:
     `add_fields()`. Or you create a default tooltip-specification using
     `vega_tooltip_encoding()` or `vega_tooltip_all()`.
 3.  You can render a chart-specification and tooltip-specification into
-    an htmlwidget, using the `vegalite()`.
+    an htmlwidget, using `vegalite()`.
 
 There’s really not much beyond that. Here are some ideas for the near
 future:

@@ -91,7 +91,7 @@ For the foreseeable future, this package is going to be very rough. At the momen
 
 1. You can create chart-specificatiobs by accessing the Python **Altair** API using **reticulate**.
 1. You can create tooltip-specifications using `vega_tooltip()`, and `add_fields()`. Or you create a default tooltip-specification using `vega_tooltip_encoding()` or `vega_tooltip_all()`.
-1. You can render a chart-specification and tooltip-specification into an htmlwidget, using the `vegalite()`.
+1. You can render a chart-specification and tooltip-specification into an htmlwidget, using `vegalite()`.
 
 There's really not much beyond that. Here are some ideas for the near future:
 
