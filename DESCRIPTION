@@ -7,14 +7,27 @@ Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself
   <https://rstudio.github.io/reticulate> to manage the interface between R
   and Python.
 Authors@R: c(
-  person(given = "Ian", family = "Lyttle", email = "ian.lyttle@schneider-electric.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9962-4849")),
-  person("Jake", "Vanderplas", comment = "Altair library", role = c("aut")),
-  person("Brian", "Granger", comment = "Altair library", role = c("aut")),
-  person("Kanit", "Wongsuphasawat", comment = "Vega-Lite library", role = c("aut")),
-  person("Dominik", "Moritz", comment = "Vega-Lite library", role = c("aut")),
-  person("Jeffrey", "Heer", comment = "Vega-Lite library", role = c("aut")),
-  person("Arvind", "Satyanarayan", comment = "Vega-Lite library", role = c("aut")),
-  person("Mike", "Bostock", comment = "D3 library", role = c("aut"))
+  person(
+    given = "Ian", 
+    family = "Lyttle", 
+    email = "ian.lyttle@schneider-electric.com", 
+    role = c("aut", "cre"), 
+    comment = c(ORCID = "0000-0001-9962-4849")
+  ),
+  person(
+    "Alicia", 
+    "Schep",
+    email = "aschep@gmail.com",
+    role = c("ctb"),
+    comment = c(ORCID = "orcid.org/0000-0002-3915-0618")
+  ),
+  person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
+  person("Brian", "Granger", comment = "Altair library", role = c("ctb")),
+  person("Kanit", "Wongsuphasawat", comment = "Vega-Lite library", role = c("ctb")),
+  person("Dominik", "Moritz", comment = "Vega-Lite library", role = c("ctb")),
+  person("Jeffrey", "Heer", comment = "Vega-Lite library", role = c("ctb")),
+  person("Arvind", "Satyanarayan", comment = "Vega-Lite library", role = c("ctb")),
+  person("Mike", "Bostock", comment = "D3 library", role = c("ctb"))
   )
 License: MIT + file LICENSE
 Encoding: UTF-8
