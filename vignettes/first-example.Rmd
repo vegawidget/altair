@@ -2,7 +2,7 @@
 title: "First Example"
 author: "Ian Lyttle"
 date: "`r Sys.Date()`"
-output: html_notebook
+output: html_document
 ---
 
 ```{r setup, include = FALSE}

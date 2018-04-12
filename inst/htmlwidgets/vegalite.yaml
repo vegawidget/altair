@@ -15,7 +15,7 @@ dependencies:
     version: 3.2.0
     src: htmlwidgets/lib/vega-embed
     script:
-      - vega-embed-mod.js
+      - vega-embed-modified.js
   - name: vega-tooltip
     version: 0.7.0
     src: htmlwidgets/lib/vega-tooltip
