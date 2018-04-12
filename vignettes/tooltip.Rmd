@@ -3,7 +3,7 @@ title: "Tooltips"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 Tooltips are a [hot topic](https://github.com/altair-viz/altair/issues/240) within the Altair, Vega-Lite, and Vega community. They way tooltips are specified and rendered today may change tommorow. The purpose of this article is to focus on how things work today.
