@@ -2,9 +2,7 @@
 title: "First Example"
 author: "Ian Lyttle"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_document
-editor_options: 
-  chunk_output_type: console
+output: html_notebook
 ---
 
 ```{r setup, include = FALSE}
@@ -31,6 +29,7 @@ plot <-
 
 vegalite(plot, tooltip = vega_tooltip(showAllFields = NULL), height = 400)
 ```
+
 
 ```{r}
 vegalite(plot, tooltip = list(showAllFields = NULL, 
