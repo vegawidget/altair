@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Creating a chart
+
 Let's make a chart, then we'll look at the bits-and-pieces we used to put it together.
 
 ```{r}
@@ -29,12 +31,7 @@ plot <-
     color = "cyl:N"
   )
 
-vegalite(plot, tooltip = vega_tooltip(showAllFields = NULL), height = 400)
-```
-
-```{r}
-vegalite(plot, tooltip = list(showAllFields = NULL, 
-   onAppear = htmlwidgets::JS("function(title,value){console.log('appear')}")), height = 400)
+vegalite(plot, height = 400)
 ```
 
 ### Installation
@@ -111,18 +108,6 @@ In our case, we are converting dataframes. Although the reticulate documentation
 
 **One important note** - if your data-frame has variables that have dots in their names (think `iris` and `"Sepal.Width"`), this will cause you grief in Altair. My advice to you is to rename such variables before introducing such data to Altair.
 
-At this point, you have an Altair chart. You can poke around a bit to see what it "is":
-
-```{r}
-class(plot)
-```
-
-You can examine the chart by printing it (supressing the output here because it's a bit verbose):
-
-```{r results="hide"}
-plot
-```
-
 ## Adding a mark
 
 ```{r add-mark}
@@ -171,7 +156,8 @@ plot <-
 
 Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/encoding.html#data-types), `"quantitative"`, `"nominal"`, `"ordinal"`, and `"temporal"`. As a side note, the variable `cyl` could be called `"ordinal"`, but I think the default color scale for `"nominal"` works better in this case. It remains an exercise for the author of this article to figure out how to specify color scales.
 
-## Displaying
+
+## Displaying and Examining
 
 Now that we have specified our chart, it remains to display it. This package provides a function `vegalite()` that takes a Chart object then renders and embeds it as an [htmlwidget](https://www.htmlwidgets.org).
 
@@ -179,4 +165,8 @@ Now that we have specified our chart, it remains to display it. This package pro
 vegalite(plot, height = 400)
 ```
 
+You can examine the chart-specification by using the `examine()` function, which wraps `listviewer::jsonedit()`. To use this function, you will need to install the **listviewer** package.
 
+```{r examine, out.height=350}
+examine(plot)
+```
