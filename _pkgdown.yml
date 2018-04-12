@@ -3,28 +3,29 @@ template:
     bootswatch: sandstone
 
 reference:
-  - title: "Installation"
+  - title: Installation
     desc: >
       Functions to help install the Python Altair library
     contents:
       - has_altair
-  - title: "Charts"
+  - title: Charts
     desc: >
       Functions and objects to construct chart-specifications
     contents:
       - alt
       - r_to_py
-  - title: "Tooltips"
+  - title: Tooltips
     desc: >
       Functions to create tooltip-specifications
     contents:
       - vega_tooltip
       - add_field
-  - title: "Rendering"
+  - title: Examining and Rendering
     desc: >
-      Functions for rendering chart- and tooltip-specifications
-      into htmlwidgets
+      Functions for examining chart- and tooltip-specifications,
+      and rendering them into htmlwidgets
     contents:
+      - examine
       - vegalite
       - renderVegalite
       - vegaliteOutput

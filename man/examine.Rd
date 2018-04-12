@@ -35,15 +35,28 @@ called for side-effects
 }
 \description{
 Use this function to interactvely examine a specification, using
-\code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. Although this has been adpated to examing a Vega-Lite
-tooltip specification, it could also be adapted to examine an Altair
-chart specification.
+\code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. It can be used to examine a chart-specification
+(built using \code{\link{alt}}$Chart()) or a tooltip-specification
+(built using \code{\link[=vega_tooltip]{vega_tooltip()}}).
 }
 \examples{
-tooltip_custom <-
-  vega_tooltip() \%>\%
-  add_field(field = "mpg", title = "MPG") \%>\%
-  add_field(field = "hp", title = "HP")
+  plot_basic <-
+    alt$Chart(
+      r_to_py(mtcars)
+    )$encode(
+      x = "mpg:Q",
+      y = "hp:Q",
+      color = "cyl:N"
+    )$mark_point()
+
+\dontrun{
+  examine(plot_basic)
+}
+
+  tooltip_custom <-
+    vega_tooltip() \%>\%
+    add_field(field = "mpg", title = "MPG") \%>\%
+    add_field(field = "hp", title = "HP")
 
 \dontrun{
   examine(tooltip_custom)

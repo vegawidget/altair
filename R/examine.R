@@ -1,18 +1,31 @@
 #' Examine a specification
 #'
 #' Use this function to interactvely examine a specification, using
-#' [listviewer::jsonedit()]. Although this has been adpated to examing a Vega-Lite
-#' tooltip specification, it could also be adapted to examine an Altair
-#' chart specification.
+#' [listviewer::jsonedit()]. It can be used to examine a chart-specification
+#' (built using [`alt`]$Chart()) or a tooltip-specification
+#' (built using [vega_tooltip()]).
 #'
 #' @inheritParams listviewer::jsonedit
 #'
 #' @return called for side-effects
 #' @examples
-#' tooltip_custom <-
-#'   vega_tooltip() %>%
-#'   add_field(field = "mpg", title = "MPG") %>%
-#'   add_field(field = "hp", title = "HP")
+#'   plot_basic <-
+#'     alt$Chart(
+#'       r_to_py(mtcars)
+#'     )$encode(
+#'       x = "mpg:Q",
+#'       y = "hp:Q",
+#'       color = "cyl:N"
+#'     )$mark_point()
+#'
+#' \dontrun{
+#'   examine(plot_basic)
+#' }
+#'
+#'   tooltip_custom <-
+#'     vega_tooltip() %>%
+#'     add_field(field = "mpg", title = "MPG") %>%
+#'     add_field(field = "hp", title = "HP")
 #'
 #' \dontrun{
 #'   examine(tooltip_custom)
@@ -31,7 +44,13 @@ examine <- function(listdata = NULL, mode = "tree",
 examine.default <- function(listdata = NULL, mode = "tree",
                             modes = c("code", "form", "text", "tree", "view"), ...,
                             width = NULL, height = NULL, elementId = NULL) {
-  .examine(
+
+  if (!requireNamespace("listviewer", quietly = TRUE)) {
+    stop("Package \"listviewer\" needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+
+  listviewer::jsonedit(
     listdata = listdata,
     mode = mode,
     modes = modes,
@@ -53,24 +72,16 @@ examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
   NextMethod()
 }
 
+#' @export
+#'
+examine.altair.vegalite.v2.api.Chart <- function(listdata = NULL, mode = "tree",
+                                                 modes = c("code", "form", "text", "tree", "view"), ...,
+                                                 width = NULL, height = NULL, elementId = NULL) {
 
-# internal function
-.examine <- function(listdata = NULL, mode = "tree",
-                     modes = c("code", "form", "text", "tree", "view"), ...,
-                     width = NULL, height = NULL, elementId = NULL) {
+  listdata <-
+    jsonlite::toJSON(listdata$to_json(validate = FALSE), auto_unbox = TRUE)
 
-  if (!requireNamespace("listviewer", quietly = TRUE)) {
-    stop("Package \"listviewer\" needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
-
-  listviewer::jsonedit(
-    listdata = listdata,
-    mode = mode,
-    modes = modes,
-    ...,
-    width = width,
-    height = height,
-    elementId = elementId
-  )
+  NextMethod()
 }
+
+
