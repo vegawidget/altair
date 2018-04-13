@@ -5,7 +5,7 @@ dependencies:
     script:
       - promise.min.js
       - symbol.min.js
-      - vega-min.js
+      - vega.js
   - name: vega-lite
     version: 2.3.1
     src: htmlwidgets/lib/vega-lite
@@ -15,7 +15,7 @@ dependencies:
     version: 3.2.0
     src: htmlwidgets/lib/vega-embed
     script:
-      - vega-embed-min.js
+      - vega-embed-modified.js
   - name: vega-tooltip
     version: 0.7.0
     src: htmlwidgets/lib/vega-tooltip
