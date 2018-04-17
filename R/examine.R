@@ -67,7 +67,9 @@ examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
                                  modes = c("code", "form", "text", "tree", "view"), ...,
                                  width = NULL, height = NULL, elementId = NULL) {
 
-  listdata <- jsonlite::toJSON(unclass(listdata), auto_unbox = TRUE)
+  jsontemp <- listdata$to_json(validate = FALSE)
+
+  listdata <- jsonlite::fromJSON(jsontemp)
 
   NextMethod()
 }
@@ -78,10 +80,29 @@ examine.altair.vegalite.v2.api.Chart <- function(listdata = NULL, mode = "tree",
                                                  modes = c("code", "form", "text", "tree", "view"), ...,
                                                  width = NULL, height = NULL, elementId = NULL) {
 
-  listdata <-
-    jsonlite::toJSON(listdata$to_json(validate = FALSE), auto_unbox = TRUE)
+  jsontemp <- listdata$to_json(validate = FALSE)
+
+  listdata <- jsonlite::fromJSON(jsontemp)
 
   NextMethod()
 }
 
+#' @export
+#'
+examine.python.builtin.object <- function(listdata = NULL, mode = "tree",
+                                                 modes = c("code", "form", "text", "tree", "view"), ...,
+                                                 width = NULL, height = NULL, elementId = NULL) {
+
+  # used for compound charts - it would be great if they had a Python class that
+  # we could detect
+
+  # TODO - this seems really smelly to me
+  if (!("list" %in% class(listdata))){
+    jsontemp <- listdata$to_json(validate = FALSE)
+
+    listdata <- jsonlite::fromJSON(jsontemp)
+  }
+
+  NextMethod()
+}
 
