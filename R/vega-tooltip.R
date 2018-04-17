@@ -227,9 +227,9 @@ add_field.vega_tooltip <- function(tooltip, field = NULL, title = NULL,
   )
 
   if (is.null(tooltip$fields)) {
-    tooltip$fields <- field_new
+    tooltip$fields <- list(field_new)
   } else {
-    tooltip$fields <- list(tooltip$fields, field_new)
+    tooltip$fields <- c(tooltip$fields, list(field_new))
   }
 
   tooltip
