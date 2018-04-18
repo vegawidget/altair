@@ -4,7 +4,8 @@
 \alias{vegalite}
 \title{Create a Vega-Lite htmlwidget}
 \usage{
-vegalite(chart, tooltip = vega_tooltip(), width = NULL, height = NULL)
+vegalite(chart, tooltip = vega_tooltip(), embed = vega_embed(),
+  width = NULL, height = NULL)
 }
 \arguments{
 \item{chart}{chart object created using \code{\link{alt}}\code{$Chart()}}
@@ -12,6 +13,9 @@ vegalite(chart, tooltip = vega_tooltip(), width = NULL, height = NULL)
 \item{tooltip}{\code{vega_tooltip} object to specify tooltip.
 The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
 which will result in no tooltip displaying.}
+
+\item{embed}{\code{list} with emmbed options.
+The default is an empty call to \code{\link[=vega_embed]{vega_embed()}}.}
 
 \item{width}{Fixed width for widget (in css units). The default is
 \code{NULL}, which results in intelligent automatic sizing based on the

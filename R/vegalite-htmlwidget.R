@@ -19,9 +19,10 @@
 #' @param tooltip `vega_tooltip` object to specify tooltip.
 #'   The default is an empty call to [vega_tooltip()],
 #'   which will result in no tooltip displaying.
+#' @param embed   `list` with emmbed options.
+#'   The default is an empty call to [vega_embed()].
 #' @inheritParams htmlwidgets::createWidget
 #' @seealso [alt], [vega_tooltip()]
-#'
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -37,13 +38,17 @@
 #' }
 #' @export
 #'
-vegalite <- function(chart, tooltip = vega_tooltip(), width = NULL, height = NULL) {
+vegalite <- function(chart,
+                     tooltip = vega_tooltip(),
+                     embed = vega_embed(),
+                     width = NULL, height = NULL) {
 
   # create chart-spec, tool-options as JSON
   x <-
     list(
       spec = chart$to_json(),
-      tooltip_options = unclass(tooltip)
+      tooltip_options = unclass(tooltip),
+      embed_options = as.list(unclass(embed))
     )
 
   vegalite <-
