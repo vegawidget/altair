@@ -67,9 +67,8 @@ examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
                                  modes = c("code", "form", "text", "tree", "view"), ...,
                                  width = NULL, height = NULL, elementId = NULL) {
 
-  jsontemp <- listdata$to_json(validate = FALSE)
-
-  listdata <- jsonlite::fromJSON(jsontemp)
+  # need to do this so JS functions show up
+  listdata <- jsonlite::toJSON(unclass(listdata), auto_unbox = TRUE)
 
   NextMethod()
 }
