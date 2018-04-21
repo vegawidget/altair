@@ -40,7 +40,9 @@
 #' @param config `character` or `list` a URL string** from which to load
 #'   a Vega/Vega-Lite or Vega-Lite configuration file, or a `list` of
 #'   Vega/Vega-Lite configurations to override the default configuration
-#'   options.
+#'   options. If `config` is a URL, it will be subject to standard browser
+#'   security restrictions. Typically this URL will point to a file on the same
+#'   host and port number as the web page itself.
 #' @param editorUrl	`character`, URL at which to open embedded Vega specs
 #'   in a Vega editor. Defaults to `"http://vega.github.io/editor/"`.
 #'   Internally, Vega-Embed uses
@@ -55,10 +57,6 @@
 #' @param runAsync	`logical`, use
 #'   [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync)
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
-=======
-#' @param actions `logical` or `list` of logicals
-#'   Vega-Embed default is all TRUE.
->>>>>>> 54d68646fa8b19cf28e2f2a81fc9b6b49120dbf8
 #'
 #' @return `list`
 #' @export
