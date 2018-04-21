@@ -25,21 +25,34 @@
 #' vegalite(scatter_plot + line_plot)
 NULL
 
+is_altair_chart <- function(x) {
+  inherits(x, "altair.vegalite.v2.api.TopLevelMixin")
+}
+
 #' @rdname altair_concatenation
 #' @export
-"|.altair.vegalite.v2.schema.core.VegaLiteSchema" <- function(e1, e2) {
+"|.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+ if (!is_altair_chart(e2)) {
+   stop("Second argument to | is not an Altair Chart")
+ }
  alt$hconcat(e1,e2)
 }
 
 #' @rdname altair_concatenation
 #' @export
-"+.altair.vegalite.v2.schema.core.VegaLiteSchema" <- function(e1, e2) {
+"+.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+  if (!is_altair_chart(e2)) {
+    stop("Second argument to + is not an Altair Chart")
+  }
   alt$layer(e1,e2)
 }
 
 #' @rdname altair_concatenation
 #' @export
-"&.altair.vegalite.v2.schema.core.VegaLiteSchema" <- function(e1, e2) {
+"&.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+  if (!is_altair_chart(e2)) {
+    stop("Second argument to & is not an Altair Chart")
+  }
   alt$vconcat(e1,e2)
 }
 
