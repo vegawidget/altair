@@ -56,5 +56,16 @@ JS <- function(...) {
   x
 }
 
+list_remove_null <- function(x) {
+
+  # determine which elements are NULL
+  is_null <- vapply(x, is.null, logical(1))
+
+  # remove them by settiing them to NULL (!?!)
+  x[is_null] <- NULL
+
+  x
+}
+
 
 

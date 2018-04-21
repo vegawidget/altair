@@ -26,15 +26,16 @@
 #' @param padding	`list`, sets the view padding in pixels.
 #' See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_padding)
 #' for details.
-#' @param actions `logical` or `list`, determines if action links
+#' @param actions `logical` or named vector of logicals, determines if action links
 #'   ("Export as PNG/SVG", "View Source", "Open in Vega Editor")
 #'   are included with the embedded view.
 #'   If the value is `TRUE` (default), all action links will be shown
-#'   and none if the value is `FALSE`. This property can be a list that maps
+#'   and none if the value is `FALSE`. This property can be a named vector of
+#'   logicals that maps
 #'   keys (`export`, `source`, `editor`) to logical values for determining
 #'   if each action link should be shown. Unspecified keys will be true by
 #'   default. For example, if `actions` is
-#'   `list(export =  FALSE, source = TRUE)`, the embedded visualization will
+#'   `c(export =  FALSE, source = TRUE)`, the embedded visualization will
 #'   have two links – "View Source" and "Open in Vega Editor".
 #' @param config `character` or `list` a URL string** from which to load
 #'   a Vega/Vega-Lite or Vega-Lite configuration file, or a `list` of
@@ -60,11 +61,74 @@
 #' @return `list`
 #' @export
 #'
-vega_embed <- function(actions = TRUE) {
+vega_embed <- function(renderer = c("canvas", "svg"),
+                       actions = TRUE,
+                       mode = NULL,
+                       logLevel = NULL,
+                       loader = NULL,
+                       onBeforeParse = NULL,
+                       width = NULL,
+                       height = NULL,
+                       padding = NULL,
+                       config = NULL,
+                       editorUrl = NULL,
+                       sourceHeader = NULL,
+                       sourceFooter = NULL,
+                       runAsync = NULL) {
+
+  renderer <- match.arg(renderer)
+
+  # coerce to logical, preserve names
+  names_actions <- names(actions)
+  actions <- as.list(as.logical(actions))
+  names(actions) <- names_actions
+
+  names_actions_legal <- c("export", "source", "editor")
+
+  # unnamed must be scalar
+  if (!rlang::is_named(actions)) {
+    assertthat::assert_that(
+      rlang::is_scalar_atomic(actions),
+      msg = ("if `actions` is unnamed, it must be scalar")
+    )
+  }
+
+  # names have to be unique and proper
+  if (rlang::is_named(actions)) {
+    assertthat::assert_that(identical(names_actions, unique(names_actions)))
+    assertthat::assert_that(
+      all(names_actions %in% names_actions_legal),
+      msg = paste(
+        "`actions` has illegal name",
+        paste("provided names:", paste(names_actions, collapse = ", ")),
+        paste("legal names:", paste(names_actions_legal, collapse = ", ")),
+        sep = "\n"
+      )
+    )
+  }
+
+  options <-
+    list(
+      mode = mode,
+      renderer = renderer,
+      logLevel = logLevel,
+      loader = loader,
+      onBeforeParse = onBeforeParse,
+      width = width,
+      height = height,
+      padding = padding,
+      actions = actions,
+      config = config,
+      editorUrl = editorUrl,
+      sourceHeader = sourceHeader,
+      sourceFooter = sourceFooter,
+      runAsync = runAsync
+    )
 
   embed_options <-
-    list(
-      actions = actions
+    structure(
+      list_remove_null(options),
+      class = "vega_embed"
     )
 
   embed_options
