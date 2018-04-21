@@ -1,5 +1,6 @@
 #' Vega embed options
 #'
+<<<<<<< HEAD
 #' @param mode `character` if specified, tells Vega-Embed to parse the spec
 #'   as vega or vega-lite. Vega-Embed will parse the `$schema` url if the mode
 #'   is not specified. Vega-Embed will default to vega if neither mode,
@@ -54,6 +55,10 @@
 #' @param runAsync	`logical`, use
 #'   [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync)
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
+=======
+#' @param actions `logical` or `list` of logicals
+#'   Vega-Embed default is all TRUE.
+>>>>>>> 54d68646fa8b19cf28e2f2a81fc9b6b49120dbf8
 #'
 #' @return `list`
 #' @export

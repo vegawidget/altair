@@ -7,6 +7,7 @@
 vega_embed(actions = TRUE)
 }
 \arguments{
+<<<<<<< HEAD
 \item{actions}{\code{logical} or \code{list}, determines if action links
 ("Export as PNG/SVG", "View Source", "Open in Vega Editor")
 are included with the embedded view.
@@ -74,6 +75,10 @@ immediately before the closing `` tag.}
 \item{runAsync}{\code{logical}, use
 \href{https://vega.github.io/vega/docs/api/view/#view_runAsync}{runAsync}
 instead of \href{https://vega.github.io/vega/docs/api/view/#view_run}{run}.}
+=======
+\item{actions}{\code{logical} or \code{list} of logicals
+Vega-Embed default is all TRUE.}
+>>>>>>> 54d68646fa8b19cf28e2f2a81fc9b6b49120dbf8
 }
 \value{
 \code{list}
