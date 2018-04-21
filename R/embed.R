@@ -39,7 +39,9 @@
 #' @param config `character` or `list` a URL string** from which to load
 #'   a Vega/Vega-Lite or Vega-Lite configuration file, or a `list` of
 #'   Vega/Vega-Lite configurations to override the default configuration
-#'   options.
+#'   options. If `config` is a URL, it will be subject to standard browser
+#'   security restrictions. Typically this URL will point to a file on the same
+#'   host and port number as the web page itself.
 #' @param editorUrl	`character`, URL at which to open embedded Vega specs
 #'   in a Vega editor. Defaults to `"http://vega.github.io/editor/"`.
 #'   Internally, Vega-Embed uses
