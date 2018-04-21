@@ -37,4 +37,22 @@ scatter_plot <- base$mark_point()
 line_plot <- base$mark_line()
 
 vegalite(scatter_plot + line_plot)
+
+# Horizontal Concatenation
+base2 = alt$Chart(r_to_py(beaver2))$encode(
+x = alt$X('time'),
+y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
+)
+
+scatter_plot2 <- base2$mark_point()
+line_plot2 <- base2$mark_line()
+
+combined_plot <- (scatter_plot + line_plot)$properties(title = "Beaver 1", width = 200)
+combined_plot2 <- (scatter_plot2 + line_plot2)$properties(title = "Beaver 2", width = 200)
+
+vegalite(combined_plot | combined_plot2, height = 400)
+
+# Vertical Concatenation
+
+vegalite(combined_plot & combined_plot2, height = 600)
 }
