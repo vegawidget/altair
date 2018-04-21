@@ -32,8 +32,8 @@ plot <-
   )
 
 
-vegalite(plot, embed = vega_embed(actions = FALSE), height = 400)
-#vegalite(plot, height = 400)
+#vegalite(plot, embed = vega_embed(actions = FALSE), height = 400)
+vegalite(plot, height = 400)
 ```
 
 ### Installation
