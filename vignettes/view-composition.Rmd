@@ -122,7 +122,7 @@ hist_plot <- alt$Chart(
   )$mark_bar(
   )$encode(
     alt$X("temp:Q", bin=TRUE),
-    alt$Y(aggregate='count', type='quantitative', field = alt$Undefined)
+    y = 'count()'
   )$properties(width = 200, height = 200)
 
 hist_plot2 <- alt$Chart(
@@ -130,7 +130,7 @@ hist_plot2 <- alt$Chart(
   )$mark_bar(
   )$encode(
     alt$X("temp:Q", bin=TRUE),
-    alt$Y(aggregate='count', type='quantitative', field = alt$Undefined)
+    y = 'count()'
   )$properties(width = 200, height = 200)
 
 vegalite((combined_plot | hist_plot) & (combined_plot2 | hist_plot2), height = 600)
