@@ -1,0 +1,186 @@
+---
+title: "View Composition"
+author: "Alicia Schep"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Combining multiple data displays
+
+Vega-lite and Altair have several methods to help combine different views of these data.  
+
+* [**Layering**](#layer): Combine several displays on the same set of axes
+* [**Horizontal Concatenation**](#hconcat): Position several displays next to each other, horizontally.
+* [**Vertical Concatenation**](#vconcat): Position several displays next to each other, vertically
+* [**Faceting**](#facet): Create panels showing the same view of different subsets of the data
+* [**Repeating**](#repeat): Create panels that differ in the encoding of one or more channels
+
+For the first three methods, Altair has functions that take in two chart objects. Those chart objects can either be a simple chart made by `alt$Chart`, or a compound chart made by any of the methods above.  Altair and this R package also provides operators for these methods:
+
+| Operation  | Function Syntax | Operator Syntax |
+| ------------- | ------------- | ------------- |
+| Layering  | `alt$layer(chart1, chart2)`  | `chart1 + chart2`  |
+| Horizontal Concatenation  | `alt$hconcat(chart1, chart2)`  | `chart1 | chart2`  |
+| Vertical Concatenation  | `alt$vconcat(chart1, chart2)`  | `chart1 & chart2`  |
+
+In contrast, faceting and repeating are methods for Chart objects, so if you had created a chart called `chart1` you would call them using `chart1$`:
+
+| Operation  | Function Syntax |
+| ------------- | ------------- |
+| Faceting | `chart1$facet(...)`  |
+| Repeating  | ``chart1$`repeat`(...)``  |
+
+Note that for "repeat", backticks are required around the word `repeat`. This is because `repeat` is a [reserved word](http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) in R!
+
+## Layered charts {#layer}
+
+Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the `+` operator or the `alt$layer` function. A common use case is to add more than one mark for the same set of encodings.  For example, you could combine points and a line for time-series data. Here is an example using the "beaver1" data, which has body temparature for a beaver over time:
+
+```{r}
+library(altair)
+base <- alt$Chart(r_to_py(beaver1))$encode(
+  x = alt$X("time"),
+  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
+)
+
+scatter_plot <- base$mark_point()
+line_plot <- base$mark_line()
+
+vegalite(scatter_plot + line_plot, height = 400)
+```
+
+This layered plot could also have been made using:
+
+```{r, results = FALSE}
+alt$layer(scatter_plot, line_plot)
+```
+
+Passing the result of that function to `vegalite` would give the same output as using `+`.
+
+## Horizontal concatenation {#hconcat}
+
+We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the `|` operator:
+
+```{r}
+base2 <- alt$Chart(r_to_py(beaver2))$encode(
+  x = alt$X("time"),
+  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
+)
+
+scatter_plot2 <- base2$mark_point()
+line_plot2 <- base2$mark_line()
+
+combined_plot <- (scatter_plot + line_plot)$properties(title = "Beaver 1", width = 200)
+combined_plot2 <- (scatter_plot2 + line_plot2)$properties(title = "Beaver 2", width = 200)
+
+vegalite(combined_plot | combined_plot2, height = 400)
+```
+
+This plot could also have been made using:
+
+```{r, results = FALSE}
+alt$hconcat(combined_plot, combined_plot2)
+```
+
+Passing the result of that function to `vegalite` would give the same output as using `|`.
+
+## Vertical concatenation {#vconcat}
+
+Those two plots could alternatively have been concatenated vertically using `&`:
+
+```{r}
+combined_plot <- combined_plot$properties(height = 200)
+combined_plot2 <- combined_plot2$properties(height = 200)
+
+vegalite(combined_plot & combined_plot2, height = 600)
+```
+
+This plot could also have been made using:
+
+```{r, results = FALSE}
+alt$vconcat(combined_plot, combined_plot2)
+```
+
+Passing the result of that function to `vegalite` would give the same output as using `&`.
+
+## Combining vertical and horizontal concatenation
+
+Compound plots can be combined to create more elaborate composed views. Here is an example of combining two plots for each beaver into a compound plot with four panels:
+
+```{r}
+hist_plot <- alt$Chart(
+  r_to_py(beaver1)
+  )$mark_bar(
+  )$encode(
+    alt$X("temp:Q", bin = TRUE),
+    y = "count()"
+  )$properties(width = 200, height = 200)
+
+hist_plot2 <- alt$Chart(
+  r_to_py(beaver2)
+  )$mark_bar(
+  )$encode(
+    alt$X("temp:Q", bin = TRUE),
+    y = "count()"
+  )$properties(width = 200, height = 200)
+
+vegalite((combined_plot | hist_plot) & (combined_plot2 | hist_plot2), height = 600)
+```
+
+Note the use of parentheses to make sure the order of operations is correct.  
+
+## Faceting {#facet}
+
+Faceting will likely be familiar to R users comfortable with ggplot2. Faceting creates sub-panels for different subsets of the data. Faceting is specified in similar ways to encoding, using `$facet()` instead of `$encode()`.  Here is an example of faceting with the mtcars data set, with the rows split by cylinders and the columns by gears:
+
+```{r}
+plot <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q"
+  )$properties(height = 150, width = 150
+  )
+  
+
+vegalite(plot$facet(row = "cyl:N", column = "gear:N"), height = 600)
+```
+
+## Repeating {#repeat}
+
+Repeating is a little different than faceting. Repeating creates panels based on different encodings, with the same data in each panel. To create a repeating plot, you specify the encodings with ``alt$`repeat`("column")`` or  ``alt$`repeat`("row")`` instead of an actual column variable. Then the encodings to use for the column or row are specified when calling ``$`repeat`()`` on the chart object. Note the use of the backticks around "repeat"; these backticks are necessary because `repeat` is a reserved word in R. 
+
+Here is an example of creating plots with different x and y axes for the mtcars dataset:
+
+```{r}
+plot2 <- 
+  alt$Chart(
+    r_to_py(mtcars)
+  )$mark_point(
+  )$encode(
+    alt$X(alt$`repeat`("column"), type="quantitative"),
+    alt$Y(alt$`repeat`("row"), type="quantitative")
+  )$properties(height = 150, width = 150
+  )$`repeat`(
+    row = c("mpg", "qsec"),
+    column = c("hp", "wt")
+  )
+
+vegalite(plot2, height = 450)
+```
+
+## More information
+
+For more information on view composition in Vega-lite and Altair, check out the [Vega-lite](https://vega.github.io/vega-lite/docs/composition.html) or [Altair](https://altair-viz.github.io/user_guide/compound_charts.html#) documentation about the subject!
+
