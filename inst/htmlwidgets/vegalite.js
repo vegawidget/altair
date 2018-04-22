@@ -18,9 +18,6 @@ HTMLWidgets.widget({
           // access view as result.view
           vegaTooltip.vegaLite(result.view, chart_spec, tooltip_options);
 
-          var temp = result.view.run();
-          console.log(temp.width());
-          console.log(temp.height());
         }).catch(console.error);
       },
 

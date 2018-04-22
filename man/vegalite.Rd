@@ -8,7 +8,7 @@ vegalite(chart, tooltip = vega_tooltip(), embed = vega_embed(),
   width = NULL, height = NULL)
 }
 \arguments{
-\item{chart}{chart object created using \code{\link{alt}}\code{$Chart()}}
+\item{chart}{an Altair plot object}
 
 \item{tooltip}{\code{vega_tooltip} object to specify tooltip.
 The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
