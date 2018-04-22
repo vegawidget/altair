@@ -57,10 +57,6 @@ vegalite <- function(chart,
       x,
       width = width,
       height = height,
-      sizingPolicy = htmlwidgets::sizingPolicy(
-        browser.defaultWidth = "auto",
-        browser.defaultHeight = "auto"
-      ),
       package = "altair"
     )
 
