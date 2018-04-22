@@ -15,7 +15,7 @@
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
 #'
-#' @param chart   chart object created using [`alt`]`$Chart()`
+#' @param chart   an Altair plot object
 #' @param tooltip `vega_tooltip` object to specify tooltip.
 #'   The default is an empty call to [vega_tooltip()],
 #'   which will result in no tooltip displaying.
@@ -46,9 +46,9 @@ vegalite <- function(chart,
   # create chart-spec, tool-options as JSON
   x <-
     list(
-      spec = chart$to_json(),
+      chart_spec = chart$to_json(),
       tooltip_options = unclass(tooltip),
-      embed_options = as.list(unclass(embed))
+      embed_options = unclass(embed)
     )
 
   vegalite <-

@@ -1,0 +1,48 @@
+---
+title: "Rendering Charts"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+The `vegalite()` function sets up the rendering process.
+
+- `chart`: chart specification
+- `tooltip`: tooltip specification
+- `embed`: embedding specification
+- `width`, `height`: container dimensions
+
+Talk about buildings and plots of land.
+
+Talk about automatic sizing of charts, but only single charts.
+
+## Embedding specificaiton
+
+Let's look at a basic chart with default embedding:
+
+```{r basic}
+library("altair")
+
+plot_basic <-
+  alt$Chart(
+    data = r_to_py(mtcars) 
+  )$encode(
+    x = "mpg:Q",
+    y = "hp:Q",
+    color = "cyl:N"
+  )$mark_point()
+
+vegalite(plot_basic)
+```
+
+```{r actions-false}
+vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+```
+
+```{r actions-custom}
+vegalite(
+  plot_basic, 
+  embed = vega_embed(renderer = "svg", actions = only_actions(export = TRUE))
+)
+```
