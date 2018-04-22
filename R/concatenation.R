@@ -15,7 +15,7 @@
 #'
 #' # Examples using the beaver1 and beaver2 body temperature data sets
 #' # Layering Charts
-#' base = alt$Chart(r_to_py(beaver1))$encode(
+#' base <- alt$Chart(r_to_py(beaver1))$encode(
 #'   x = alt$X('time'),
 #'   y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
 #' )
@@ -26,9 +26,9 @@
 #' combined_plot <- scatter_plot + line_plot
 #'
 #' # Horizontal Concatenation
-#' base2 = alt$Chart(r_to_py(beaver2))$encode(
-#' x = alt$X('time'),
-#' y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
+#' base2 <- alt$Chart(r_to_py(beaver2))$encode(
+#'   x = alt$X('time'),
+#'   y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
 #' )
 #'
 #' scatter_plot2 <- base2$mark_point()
@@ -53,10 +53,10 @@ is_altair_chart <- function(x) {
 #' @rdname altair_concatenation
 #' @export
 "|.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
- if (!is_altair_chart(e2)) {
-   stop("Second argument to | is not an Altair Chart")
- }
- alt$hconcat(e1,e2)
+  if (!is_altair_chart(e2)) {
+    stop("Second argument to | is not an Altair Chart")
+  }
+  alt$hconcat(e1, e2)
 }
 
 #' @rdname altair_concatenation
@@ -65,7 +65,7 @@ is_altair_chart <- function(x) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to + is not an Altair Chart")
   }
-  alt$layer(e1,e2)
+  alt$layer(e1, e2)
 }
 
 #' @rdname altair_concatenation
@@ -74,7 +74,7 @@ is_altair_chart <- function(x) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to & is not an Altair Chart")
   }
-  alt$vconcat(e1,e2)
+  alt$vconcat(e1, e2)
 }
 
 

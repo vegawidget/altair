@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Combining multiple data displays
 
-Vegalite and Altair have several methods to help combine different views of these data.  
+Vega-lite and Altair have several methods to help combine different views of these data.  
 
 * [**Layering**](#layer): Combine several displays on the same set of axes
 * [**Horizontal Concatenation**](#hconcat): Position several displays next to each other, horizontally.
@@ -47,9 +47,9 @@ Layering involves combining multiple displays on the same set of axes. Two chart
 
 ```{r}
 library(altair)
-base = alt$Chart(r_to_py(beaver1))$encode(
-    x = alt$X('time'),
-    y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
+base <- alt$Chart(r_to_py(beaver1))$encode(
+  x = alt$X("time"),
+  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
 )
 
 scatter_plot <- base$mark_point()
@@ -64,16 +64,16 @@ This layered plot could also have been made using:
 alt$layer(scatter_plot, line_plot)
 ```
 
-Passing the result of that function to vegalite would give the same output as using `+`.
+Passing the result of that function to `vegalite` would give the same output as using `+`.
 
 ## Horizontal Concatenation {#hconcat}
 
 We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the `|` operator:
 
 ```{r}
-base2 = alt$Chart(r_to_py(beaver2))$encode(
-    x = alt$X('time'),
-    y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
+base2 <- alt$Chart(r_to_py(beaver2))$encode(
+  x = alt$X("time"),
+  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
 )
 
 scatter_plot2 <- base2$mark_point()
@@ -91,7 +91,7 @@ This plot could also have been made using:
 alt$hconcat(combined_plot, combined_plot2)
 ```
 
-Passing the result of that function to vegalite would give the same output as using `|`.
+Passing the result of that function to `vegalite` would give the same output as using `|`.
 
 ## Vertical Concatenation {#vconcat}
 
@@ -110,7 +110,7 @@ This plot could also have been made using:
 alt$vconcat(combined_plot, combined_plot2)
 ```
 
-Passing the result of that function to vegalite would give the same output as using `&`.
+Passing the result of that function to `vegalite` would give the same output as using `&`.
 
 ## Combining vertical and horizontal concatenation
 
@@ -121,16 +121,16 @@ hist_plot <- alt$Chart(
   r_to_py(beaver1)
   )$mark_bar(
   )$encode(
-    alt$X("temp:Q", bin=TRUE),
-    y = 'count()'
+    alt$X("temp:Q", bin = TRUE),
+    y = "count()"
   )$properties(width = 200, height = 200)
 
 hist_plot2 <- alt$Chart(
   r_to_py(beaver2)
   )$mark_bar(
   )$encode(
-    alt$X("temp:Q", bin=TRUE),
-    y = 'count()'
+    alt$X("temp:Q", bin = TRUE),
+    y = "count()"
   )$properties(width = 200, height = 200)
 
 vegalite((combined_plot | hist_plot) & (combined_plot2 | hist_plot2), height = 600)
@@ -161,7 +161,7 @@ vegalite(plot$facet(row = "cyl:N", column = "gear:N"), height = 600)
 
 Repeating is a little different than faceting. Repeating creates panels based on different encodings, with the same data in each panel. To create a repeating plot, you specify the encodings with ``alt$`repeat`("column")`` or  ``alt$`repeat`("row")`` instead of an actual column variable. Then the encodings to use for the column or row are specified when calling ``$`repeat`()`` on the chart object. Note the use of the backticks around "repeat"; these backticks are necessary because `repeat` is a reserved word in R. 
 
-Here is an example of creating plots iwth different x and y axes for the mtcars dataset:
+Here is an example of creating plots with different x and y axes for the mtcars dataset:
 
 ```{r}
 plot2 <- 
@@ -169,12 +169,12 @@ plot2 <-
     r_to_py(mtcars)
   )$mark_point(
   )$encode(
-    alt$X(alt$`repeat`("column"), type='quantitative'),
-    alt$Y(alt$`repeat`("row"), type='quantitative')
+    alt$X(alt$`repeat`("column"), type="quantitative"),
+    alt$Y(alt$`repeat`("row"), type="quantitative")
   )$properties(height = 150, width = 150
   )$`repeat`(
-    row=c('mpg', 'qsec'),
-    column=c('hp', 'wt')
+    row = c("mpg", "qsec"),
+    column = c("hp", "wt")
   )
 
 vegalite(plot2, height = 450)
@@ -182,5 +182,5 @@ vegalite(plot2, height = 450)
 
 ## More Information
 
-For more information on view composition in vegalite and Altair, check out the [vegalite](https://vega.github.io/vega-lite/docs/composition.html) or [Altair](https://altair-viz.github.io/user_guide/compound_charts.html#) documentation about the subject!
+For more information on view composition in Vega-lite and Altair, check out the [Vega-lite](https://vega.github.io/vega-lite/docs/composition.html) or [Altair](https://altair-viz.github.io/user_guide/compound_charts.html#) documentation about the subject!
 

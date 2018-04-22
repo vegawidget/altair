@@ -27,8 +27,9 @@ Altair plots can be concatenated using the following operators:
 }
 \examples{
 
+# Examples using the beaver1 and beaver2 body temperature data sets
 # Layering Charts
-base = alt$Chart(r_to_py(beaver1))$encode(
+base <- alt$Chart(r_to_py(beaver1))$encode(
   x = alt$X('time'),
   y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
 )
@@ -39,9 +40,9 @@ line_plot <- base$mark_line()
 combined_plot <- scatter_plot + line_plot
 
 # Horizontal Concatenation
-base2 = alt$Chart(r_to_py(beaver2))$encode(
-x = alt$X('time'),
-y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
+base2 <- alt$Chart(r_to_py(beaver2))$encode(
+  x = alt$X('time'),
+  y = alt$Y('temp', scale = alt$Scale(zero = FALSE))
 )
 
 scatter_plot2 <- base2$mark_point()
@@ -55,4 +56,6 @@ hconcat_plot <- combined_plot | combined_plot2
 # Vertical Concatenation
 
 vconcat_plot <- combined_plot & combined_plot2
+
+# Use vegalite function to render combined_plot, hconcat_plot, or vconcat_plot
 }
