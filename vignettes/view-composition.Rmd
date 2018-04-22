@@ -41,7 +41,7 @@ In contrast, faceting and repeating are methods for Chart objects, so if you had
 
 Note that for "repeat", backticks are required around the word `repeat`. This is because `repeat` is a [reserved word](http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) in R!
 
-## Layered Charts {#layer}
+## Layered charts {#layer}
 
 Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the `+` operator or the `alt$layer` function. A common use case is to add more than one mark for the same set of encodings.  For example, you could combine points and a line for time-series data. Here is an example using the "beaver1" data, which has body temparature for a beaver over time:
 
@@ -66,7 +66,7 @@ alt$layer(scatter_plot, line_plot)
 
 Passing the result of that function to `vegalite` would give the same output as using `+`.
 
-## Horizontal Concatenation {#hconcat}
+## Horizontal concatenation {#hconcat}
 
 We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the `|` operator:
 
@@ -93,7 +93,7 @@ alt$hconcat(combined_plot, combined_plot2)
 
 Passing the result of that function to `vegalite` would give the same output as using `|`.
 
-## Vertical Concatenation {#vconcat}
+## Vertical concatenation {#vconcat}
 
 Those two plots could alternatively have been concatenated vertically using `&`:
 
@@ -180,7 +180,7 @@ plot2 <-
 vegalite(plot2, height = 450)
 ```
 
-## More Information
+## More information
 
 For more information on view composition in Vega-lite and Altair, check out the [Vega-lite](https://vega.github.io/vega-lite/docs/composition.html) or [Altair](https://altair-viz.github.io/user_guide/compound_charts.html#) documentation about the subject!
 
