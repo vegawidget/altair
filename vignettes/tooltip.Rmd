@@ -26,7 +26,7 @@ plot_basic <-
     color = "cyl:N"
   )$mark_point()
 
-vegalite(plot_basic, embed = vega_embed(renderer = "svg"), height = 400)
+vegalite(plot_basic, height = 400)
 ```
 
 You will notice that the rendering does not produce tooltips. What you may not have noticed is that the `vegalite()` function has a `tooltip` argument; its default is an empty call to a helper function, `vegalite_tooltip()`. An empty call to this function tells the renderer not to produce tooltips.
