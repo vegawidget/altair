@@ -33,7 +33,7 @@ plot_basic <-
     color = "cyl:N"
   )$mark_point()
 
-vegalite(plot_basic)
+vegalite(plot_basic, height = 400)
 ```
 
 ```{r actions-false}

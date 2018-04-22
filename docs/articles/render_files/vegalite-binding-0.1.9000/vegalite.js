@@ -17,6 +17,11 @@ HTMLWidgets.widget({
         vegaEmbed(el, chart_spec, opt = embed_options).then(function(result) {
           // access view as result.view
           vegaTooltip.vegaLite(result.view, chart_spec, tooltip_options);
+
+          el.setAttribute("foo", "bar");
+
+          console.log(el);
+
         }).catch(console.error);
       },
 
