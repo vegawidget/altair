@@ -23,12 +23,15 @@ in Python.
 \examples{
   plot_basic <-
     alt$Chart(
-      r_to_py(mtcars)
+      r_to_py(vega_data$cars())
     )$encode(
-      x = "mpg:Q",
-      y = "hp:Q",
-      color = "cyl:N"
+      x = "Miles_per_Gallon:Q",
+      y = "Horsepower:Q",
+      color = "Origin:N"
     )$mark_point()
 
+}
+\seealso{
+\href{https://altair-viz.github.io/index.html}{Altair Python documentation}
 }
 \keyword{datasets}
