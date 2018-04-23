@@ -11,6 +11,14 @@
 #' in a rendering; the tooltip will be applied to the entire chart,
 #' even if it is compound chart.
 #'
+#' To specify embedding-options, use the [vega_embed()] function with the
+#' `embed` argument. Within [vega_embed()], to specify rendering the chart
+#' as `"canvas"` (default) or `"svg"`, use the `renderer` argument.
+#' Similarly, use the `actions` argument to specify to include the action
+#' links for `export`, `source`, and `editor`. If `actions` is a scalar
+#' `TRUE` (the default), all the links are shown; if a scalar `FALSE`, none
+#' are shown. Use a named list of locicals otherwise.
+#'
 #' This function is called `vegalite()` is because it returns an htmlwidget
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
@@ -22,7 +30,7 @@
 #' @param embed   `list` with emmbed options.
 #'   The default is an empty call to [vega_embed()].
 #' @inheritParams htmlwidgets::createWidget
-#' @seealso [alt], [vega_tooltip()]
+#' @seealso [alt], [vega_tooltip()], [vega_embed()], [only_actions()]
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -42,6 +50,10 @@ vegalite <- function(chart,
                      tooltip = vega_tooltip(),
                      embed = vega_embed(),
                      width = NULL, height = NULL) {
+
+  # if width or height is not null, construct an autosize spec
+
+  # if this is not a Chart or a LayeredChart, warn that autosize will not work
 
   # create chart-spec, tool-options as JSON
   x <-
