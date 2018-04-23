@@ -38,6 +38,14 @@ and exactly \strong{one} chart specification
 in a rendering; the tooltip will be applied to the entire chart,
 even if it is compound chart.
 
+To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} function with the
+\code{embed} argument. Within \code{\link[=vega_embed]{vega_embed()}}, to specify rendering the chart
+as \code{"canvas"} (default) or \code{"svg"}, use the \code{renderer} argument.
+Similarly, use the \code{actions} argument to specify to include the action
+links for \code{export}, \code{source}, and \code{editor}. If \code{actions} is a scalar
+\code{TRUE} (the default), all the links are shown; if a scalar \code{FALSE}, none
+are shown. Use a named list of locicals otherwise.
+
 This function is called \code{vegalite()} is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.
@@ -57,5 +65,5 @@ Altair Python package.
 }
 }
 \seealso{
-\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}
+\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}, \code{\link[=vega_embed]{vega_embed()}}, \code{\link[=only_actions]{only_actions()}}
 }
