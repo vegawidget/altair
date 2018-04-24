@@ -10,41 +10,43 @@ vegalite(chart, tooltip = vega_tooltip(), embed = vega_embed(),
 \arguments{
 \item{chart}{an Altair plot object}
 
-\item{tooltip}{\code{vega_tooltip} object to specify tooltip.
-The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
-which will result in no tooltip displaying.}
+\item{tooltip}{\code{vega_tooltip} object to specify tooltip -
+the default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
+which will result in no tooltip displaying}
 
-\item{embed}{\code{list} with emmbed options.
-The default is an empty call to \code{\link[=vega_embed]{vega_embed()}}.}
+\item{embed}{\code{vega_embed} object to specify embedding options -
+the default is an empty call to \code{\link[=vega_embed]{vega_embed()}},
+which will result in a canvas-rendering and all actions-links being
+included}
 
-\item{width}{Fixed width for widget (in css units). The default is
-\code{NULL}, which results in intelligent automatic sizing based on the
-widget's container.}
+\item{width}{\code{integer}, if specified, the total rendered width (in pixels)
+of the chart - valid only for single-view charts and layered charts}
 
-\item{height}{Fixed height for widget (in css units). The default is
-\code{NULL}, which results in intelligent automatic sizing based on the
-widget's container.}
+\item{height}{\code{integer}, if specified, the total rendered height (in pixels)
+of the chart - valid only for single-view charts and layered charts}
 }
 \description{
-This function renders an Altair chart as a Vega-Lite htmlwidget.
+Use this function to render a chart as an htmlwidget.
 }
 \details{
-Use this function to render a chart as an htmlwidget.
-To include a tooltip the rendering of your chart, use one of the
-\code{\link[=vega_tooltip]{vega_tooltip()}} functions as the value for the \code{tooltip} argument.
-
+To include a tooltip in your chart-rendering, use one of the
+\code{\link[=vega_tooltip]{vega_tooltip()}} functions with the \code{tooltip} argument.
 Keep in mind that you can include exactly \strong{one} tooltip specification
 and exactly \strong{one} chart specification
 in a rendering; the tooltip will be applied to the entire chart,
-even if it is compound chart.
+even if it is a compound chart.
 
 To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} function with the
-\code{embed} argument. Within \code{\link[=vega_embed]{vega_embed()}}, to specify rendering the chart
-as \code{"canvas"} (default) or \code{"svg"}, use the \code{renderer} argument.
-Similarly, use the \code{actions} argument to specify to include the action
-links for \code{export}, \code{source}, and \code{editor}. If \code{actions} is a scalar
-\code{TRUE} (the default), all the links are shown; if a scalar \code{FALSE}, none
-are shown. Use a named list of locicals otherwise.
+\code{embed} argument. Its most-important options are:
+\itemize{
+\item \code{renderer}, to specify \code{"canvas"} (default) or \code{"svg"}
+\item \code{actions},  to specific action-links
+for \code{export}, \code{source}, and \code{editor}
+}
+
+If actions is a single \code{TRUE} (default) or \code{FALSE}, all the links
+are shown (or not). Use a named list to be more specific, see
+\code{\link[=vega_embed]{vega_embed()}} and \code{\link[=only_actions]{only_actions()}}.
 
 This function is called \code{vegalite()} is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the

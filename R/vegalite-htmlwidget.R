@@ -1,35 +1,44 @@
 #' Create a Vega-Lite htmlwidget
 #'
-#' This function renders an Altair chart as a Vega-Lite htmlwidget.
-#'
 #' Use this function to render a chart as an htmlwidget.
-#' To include a tooltip the rendering of your chart, use one of the
-#' [vega_tooltip()] functions as the value for the `tooltip` argument.
 #'
+#' To include a tooltip in your chart-rendering, use one of the
+#' [vega_tooltip()] functions with the `tooltip` argument.
 #' Keep in mind that you can include exactly **one** tooltip specification
 #' and exactly **one** chart specification
 #' in a rendering; the tooltip will be applied to the entire chart,
-#' even if it is compound chart.
+#' even if it is a compound chart.
 #'
 #' To specify embedding-options, use the [vega_embed()] function with the
-#' `embed` argument. Within [vega_embed()], to specify rendering the chart
-#' as `"canvas"` (default) or `"svg"`, use the `renderer` argument.
-#' Similarly, use the `actions` argument to specify to include the action
-#' links for `export`, `source`, and `editor`. If `actions` is a scalar
-#' `TRUE` (the default), all the links are shown; if a scalar `FALSE`, none
-#' are shown. Use a named list of locicals otherwise.
+#' `embed` argument. Its most-important options are:
+#'
+#' - `renderer`, to specify `"canvas"` (default) or `"svg"`
+#' - `actions`,  to specific action-links
+#'    for `export`, `source`, and `editor`
+#'
+#' If actions is a single `TRUE` (default) or `FALSE`, all the links
+#' are shown (or not). Use a named list to be more specific, see
+#' [vega_embed()] and [only_actions()].
+#'
+#'
+#'
 #'
 #' This function is called `vegalite()` is because it returns an htmlwidget
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
 #'
 #' @param chart   an Altair plot object
-#' @param tooltip `vega_tooltip` object to specify tooltip.
-#'   The default is an empty call to [vega_tooltip()],
-#'   which will result in no tooltip displaying.
-#' @param embed   `list` with emmbed options.
-#'   The default is an empty call to [vega_embed()].
-#' @inheritParams htmlwidgets::createWidget
+#' @param tooltip `vega_tooltip` object to specify tooltip -
+#'   the default is an empty call to [vega_tooltip()],
+#'   which will result in no tooltip displaying
+#' @param embed   `vega_embed` object to specify embedding options -
+#'   the default is an empty call to [vega_embed()],
+#'   which will result in a canvas-rendering and all actions-links being
+#'   included
+#' @param width   `integer`, if specified, the total rendered width (in pixels)
+#'   of the chart - valid only for single-view charts and layered charts
+#' @param height  `integer`, if specified, the total rendered height (in pixels)
+#'   of the chart - valid only for single-view charts and layered charts
 #' @seealso [alt], [vega_tooltip()], [vega_embed()], [only_actions()]
 #' @examples
 #'   plot_basic <-
