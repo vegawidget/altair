@@ -18,9 +18,11 @@ HTMLWidgets.widget({
           // access view as result.view
           vegaTooltip.vegaLite(result.view, chart_spec, tooltip_options);
 
-          el.setAttribute("foo", "bar");
-
-          console.log(el);
+          // idea: post-facto setting of the width and height style of the
+          // enclosing element
+          //
+          el.removeAttribute("style");
+          // console.log(el);
 
         }).catch(console.error);
       },

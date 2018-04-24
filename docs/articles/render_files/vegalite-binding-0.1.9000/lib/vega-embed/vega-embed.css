@@ -14,3 +14,8 @@ https://raw.githubusercontent.com/altair-viz/altair/169c498537571b16f7852d31564b
   cursor: pointer;
 }
 
+.vega-actions {
+  padding-bottom: 10px;  /* proposed by Ian Lyttle */
+}
+
+
