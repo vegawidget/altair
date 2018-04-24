@@ -93,12 +93,14 @@ vegalite <- function(chart,
                      embed = vega_embed(),
                      width = NULL, height = NULL) {
 
+  # keep in mind that only functions will return a copy
+  chart_copy <- chart$copy()
 
   # if width or height is specified, autosize the chart
   if (!is.null(c(width, height))) {
 
     # if this is not a Chart or a LayeredChart, warn that autosize will not work
-    if (!is_simple_chart(chart)) {
+    if (!is_simple_chart(chart_copy)) {
       warning(
         "Specifying the rendered width or height of a ",
         "contatenated or faceted chart has no effect."
@@ -106,31 +108,31 @@ vegalite <- function(chart,
     }
 
     # do we need to create config?
-    if (is_undefined(chart$config)) {
-      chart$config <- alt$Config()
+    if (is_undefined(chart_copy$config)) {
+      chart_copy$config <- alt$Config()
     }
 
     # do we need to create an autosize?
-    if (is_undefined(chart$config$autosize)) {
-      chart$config$autosize <- alt$AutoSizeParams()
+    if (is_undefined(chart_copy$config$autosize)) {
+      chart_copy$config$autosize <- alt$AutoSizeParams()
     }
 
     # set autosize parameters
-    chart$config$autosize$contains <- "padding"
-    chart$config$autosize$type <- "fit"
+    chart_copy$config$autosize$contains <- "padding"
+    chart_copy$config$autosize$type <- "fit"
 
     # do we need to create a view?
-    if (is_undefined(chart$config$view)) {
-      chart$config$view <- alt$ViewConfig()
+    if (is_undefined(chart_copy$config$view)) {
+      chart_copy$config$view <- alt$ViewConfig()
     }
 
     # set width and height parameters
     if (!is.null(width)) {
-      chart$config$view$width <- width
+      chart_copy$config$view$width <- width
     }
 
     if (!is.null(height)) {
-      chart$config$view$height <- height
+      chart_copy$config$view$height <- height
     }
 
   }
@@ -138,7 +140,7 @@ vegalite <- function(chart,
   # create chart-spec, tool-options as JSON
   x <-
     list(
-      chart_spec = chart$to_json(),
+      chart_spec = chart_copy$to_json(),
       tooltip_options = unclass(tooltip),
       embed_options = unclass(embed)
     )

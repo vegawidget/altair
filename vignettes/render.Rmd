@@ -6,18 +6,29 @@ editor_options:
   chunk_output_type: inline
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
 The `vegalite()` function sets up the rendering process.
 
-- `chart`: chart specification
-- `tooltip`: tooltip specification
-- `embed`: embedding specification
-- `width`, `height`: container dimensions
+- `chart`: [Chart specification](#chart)
+- `tooltip`: [Tooltip specification](#tooltip)
+- `embed`: [Embedding specification](#embedding)
+- `width`, `height`: [Chart dimensions](#dimensions)
 
 Talk about buildings and plots of land.
 
 Talk about automatic sizing of charts, but only single charts.
 
-## Embedding specificaiton
+## Chart specification {#chart}
+
+## Tooltip {#tooltip}
+
+## Embedding specificaiton {#embedding}
 
 Let's look at a basic chart with default embedding:
 

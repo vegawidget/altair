@@ -25,8 +25,4 @@ dependencies:
       - vega-tooltip.min.js
     style:
       - vega-tooltip.min.css
-  - name: vega-sizing
-    version: 0.0.1
-    src: htmlwidgets/lib/vega-sizing
-    script:
-      - vega-sizing.js
+

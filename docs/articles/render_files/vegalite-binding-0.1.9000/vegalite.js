@@ -18,11 +18,11 @@ HTMLWidgets.widget({
           // access view as result.view
           vegaTooltip.vegaLite(result.view, chart_spec, tooltip_options);
 
-          // idea: post-facto setting of the width and height style of the
-          // enclosing element
+          // By removing the style (width and height) of the
+          // enclosing element, we let the "chart" decide the space it
+          // will occupy.
           //
           el.removeAttribute("style");
-          // console.log(el);
 
         }).catch(console.error);
       },

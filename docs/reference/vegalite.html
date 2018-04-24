@@ -27,7 +27,7 @@
 <script src="../pkgdown.js"></script>
 <meta property="og:title" content="Create a Vega-Lite htmlwidget — vegalite" />
 
-<meta property="og:description" content="This function renders an Altair chart as a Vega-Lite htmlwidget." />
+<meta property="og:description" content="Use this function to render a chart as an htmlwidget." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -89,6 +89,9 @@
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
     <li>
+      <a href="../articles/render.html">Rendering Charts</a>
+    </li>
+    <li>
       <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
@@ -122,58 +125,89 @@
     <div class="page-header">
     <h1>Create a Vega-Lite htmlwidget</h1>
     <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vegalite-htmlwidget.R'><code>R/vegalite-htmlwidget.R</code></a></small>
-    <div class="hidden name"><code>vegalite.Rd</code></div>
     </div>
 
     
-    <p>This function renders an Altair chart as a Vega-Lite htmlwidget.</p>
+    <p>Use this function to render a chart as an htmlwidget.</p>
     
 
-    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>(), <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>(), <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(),
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>chart</th>
-      <td><p>chart object created using <code><a href='alt.html'>alt</a></code><code>$Chart()</code></p></td>
+      <td><p>an Altair plot object</p></td>
     </tr>
     <tr>
       <th>tooltip</th>
-      <td><p><code>vega_tooltip</code> object to specify tooltip.
-The default is an empty call to <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>,
-which will result in no tooltip displaying.</p></td>
+      <td><p><code>vega_tooltip</code> object to specify tooltip options -
+the default is an empty call to <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>,
+which will result in no tooltip being displayed</p></td>
+    </tr>
+    <tr>
+      <th>embed</th>
+      <td><p><code>vega_embed</code> object to specify embedding options -
+the default is an empty call to <code><a href='vega_embed.html'>vega_embed()</a></code>,
+which will result in a canvas-rendering and all actions-links being
+included</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>Fixed width for widget (in css units). The default is
-<code>NULL</code>, which results in intelligent automatic sizing based on the
-widget's container.</p></td>
+      <td><p><code>integer</code>, if specified, the total rendered width (in pixels)
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification</p></td>
     </tr>
     <tr>
       <th>height</th>
-      <td><p>Fixed height for widget (in css units). The default is
-<code>NULL</code>, which results in intelligent automatic sizing based on the
-widget's container.</p></td>
+      <td><p><code>integer</code>, if specified, the total rendered height (in pixels)
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Use this function to render a chart as an htmlwidget.
-To include a tooltip the rendering of your chart, use one of the
-<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions as the value for the <code>tooltip</code> argument.</p>
-<p>Keep in mind that you can include exactly <strong>one</strong> tooltip specification
-and exactly <strong>one</strong> chart specification
-in a rendering; the tooltip will be applied to the entire chart,
-even if it is compound chart.</p>
-<p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
+    <p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.</p>
+<p>To include a tooltip in your chart-rendering, use one of the
+<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions with the <code>tooltip</code> argument.
+Keep in mind that you can include exactly <strong>one</strong> tooltip specification
+and exactly <strong>one</strong> chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is a compound chart.</p>
+<p>To specify embedding-options, use the <code><a href='vega_embed.html'>vega_embed()</a></code> function with the
+<code>embed</code> argument. Its most-important options are:</p><ul>
+<li><p><code>renderer</code>, to specify <code>"canvas"</code> (default) or <code>"svg"</code></p></li>
+<li><p><code>actions</code>,  to specify action-links
+for <code>export</code>, <code>source</code>, and <code>editor</code></p></li>
+</ul>
+    <p>If <code>actions</code> is <code>TRUE</code> (default) or <code>FALSE</code>, all the links
+are shown (or not). Use a named list to be more specific, see
+<code><a href='vega_embed.html'>vega_embed()</a></code> and <code><a href='only_actions.html'>only_actions()</a></code>.</p>
+<p>The arguments <code>width</code> and <code>height</code> are used to override the width and height
+determined using the <code>chart</code> specification. However, there are some
+important provisions:</p><ul>
+<li><p>Specifying <code>width</code> and <code>height</code> in <code>vegalite()</code> is
+<a href='https://vega.github.io/vega-lite/docs/size.html#limitations'>effective only for single-view charts and layered charts</a>.
+It will not work for contatenated, faceted, or repeated charts.</p></li>
+<li><p>In the chart specification, the default interpretation of width and height
+is to describe the dimensions of the
+<strong>plotting rectangle</strong>, not including the space used by the axes, labels,
+etc. When <code>width</code> and <code>height</code> are specified using <code>vegalite()</code>,
+the meanings change to describe the dimensions of the <strong>entire</strong> rendered chart,
+including axes, labels, etc.</p></li>
+<li><p>Keep in mind that the action-links are not a part of the rendered chart,
+so you may have to account for them yourself. You might expect
+the height of the action-links to be 25-30 pixels.</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_tooltip.html'>vega_tooltip()</a></code></p></div>
+    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>, <code><a href='vega_embed.html'>vega_embed()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -185,7 +219,21 @@ Altair Python package.</p>
       <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
       <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
     )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
+  <span class='co'># default: no tooltips, rendered using canvas,</span>
+  <span class='co'>#   all action-links, chart-specification determines size</span>
   <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>)
+
+  <span class='co'># tooltip showing encoding variables</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip_encoding</a></span>())
+
+  <span class='co'># render using SVG</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='st'>"svg"</span>))
+
+  <span class='co'># do not include action-links</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
+
+  <span class='co'># specify dimensions of rendered-chart</span>
+  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>200</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
