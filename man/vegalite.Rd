@@ -10,9 +10,9 @@ vegalite(chart, tooltip = vega_tooltip(), embed = vega_embed(),
 \arguments{
 \item{chart}{an Altair plot object}
 
-\item{tooltip}{\code{vega_tooltip} object to specify tooltip -
+\item{tooltip}{\code{vega_tooltip} object to specify tooltip options -
 the default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
-which will result in no tooltip displaying}
+which will result in no tooltip being displayed}
 
 \item{embed}{\code{vega_embed} object to specify embedding options -
 the default is an empty call to \code{\link[=vega_embed]{vega_embed()}},
@@ -20,10 +20,12 @@ which will result in a canvas-rendering and all actions-links being
 included}
 
 \item{width}{\code{integer}, if specified, the total rendered width (in pixels)
-of the chart - valid only for single-view charts and layered charts}
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification}
 
 \item{height}{\code{integer}, if specified, the total rendered height (in pixels)
-of the chart - valid only for single-view charts and layered charts}
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification}
 }
 \description{
 Use this function to render a chart as an htmlwidget.
