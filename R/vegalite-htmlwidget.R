@@ -51,9 +51,47 @@ vegalite <- function(chart,
                      embed = vega_embed(),
                      width = NULL, height = NULL) {
 
-  # if width or height is not null, construct an autosize spec
 
-  # if this is not a Chart or a LayeredChart, warn that autosize will not work
+  # if width or height is specified, autosize the chart
+  if (!is.null(c(width, height))) {
+
+    # if this is not a Chart or a LayeredChart, warn that autosize will not work
+    if (!is_simple_chart(chart)) {
+      warning(
+        "Specifying the rendered width or height of a ",
+        "contatenated or faceted chart has no effect."
+      )
+    }
+
+    # do we need to create config?
+    if (is_undefined(chart$config)) {
+      chart$config <- alt$Config()
+    }
+
+    # do we need to create an autosize?
+    if (is_undefined(chart$config$autosize)) {
+      chart$config$autosize <- alt$AutoSizeParams()
+    }
+
+    # set autosize parameters
+    chart$config$autosize$contains <- "padding"
+    chart$config$autosize$type <- "fit"
+
+    # do we need to create a view?
+    if (is_undefined(chart$config$view)) {
+      chart$config$view <- alt$ViewConfig()
+    }
+
+    # set width and height parameters
+    if (!is.null(width)) {
+      chart$config$view$width <- width
+    }
+
+    if (!is.null(height)) {
+      chart$config$view$height <- height
+    }
+
+  }
 
   # create chart-spec, tool-options as JSON
   x <-
