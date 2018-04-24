@@ -56,14 +56,15 @@ The arguments \code{width} and \code{height} are used to override the width and 
 determined using the \code{chart} specification. However, there are some
 important provisions:
 \itemize{
-\item Specifying \code{width} and \code{height} here is \href{https://vega.github.io/vega-lite/docs/size.html#limitations}{effective only for single-viewcharts and layered charts}.
+\item Specifying \code{width} and \code{height} in \code{vegalite()} is
+\href{https://vega.github.io/vega-lite/docs/size.html#limitations}{effective only for single-view charts and layered charts}.
 It will not work for contatenated, faceted, or repeated charts.
-\item The default interpretation of width and height in the chart specification
-is that these parameters describe the dimensions of the
+\item In the chart specification, the default interpretation of width and height
+is to describe the dimensions of the
 \strong{plotting rectangle}, not including the space used by the axes, labels,
-etc. When \code{width} and \code{height} are specified here, the meanings change to
-describe the dimensions of the \strong{entire} rendered chart, including axes,
-labels, etc.
+etc. When \code{width} and \code{height} are specified using \code{vegalite()},
+the meanings change to describe the dimensions of the \strong{entire} rendered chart,
+including axes, labels, etc.
 \item Keep in mind that the action-links are not a part of the rendered chart,
 so you may have to account for them yourself. You might expect
 the height of the action-links to be 25-30 pixels.
@@ -80,11 +81,11 @@ the height of the action-links to be 25-30 pixels.
     )$mark_point()
 
 \dontrun{
-  # defaults: no tooltips, rendered using canvas,
+  # default: no tooltips, rendered using canvas,
   #   all action-links, chart-specification determines size
   vegalite(plot_basic)
 
-  # use tooltip to show encoding variables
+  # tooltip showing encoding variables
   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 
   # render using SVG

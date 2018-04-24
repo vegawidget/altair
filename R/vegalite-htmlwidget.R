@@ -28,33 +28,36 @@
 #' determined using the `chart` specification. However, there are some
 #' important provisions:
 #'
-#' - Specifying `width` and `height` here is [effective only for single-view
-#' charts and layered charts](https://vega.github.io/vega-lite/docs/size.html#limitations).
+#' - Specifying `width` and `height` in `vegalite()` is
+#' [effective only for single-view charts and layered charts](
+#' https://vega.github.io/vega-lite/docs/size.html#limitations).
 #' It will not work for contatenated, faceted, or repeated charts.
 #'
-#' - The default interpretation of width and height in the chart specification
-#' is that these parameters describe the dimensions of the
+#' - In the chart specification, the default interpretation of width and height
+#' is to describe the dimensions of the
 #' **plotting rectangle**, not including the space used by the axes, labels,
-#' etc. When `width` and `height` are specified here, the meanings change to
-#' describe the dimensions of the **entire** rendered chart, including axes,
-#' labels, etc.
+#' etc. When `width` and `height` are specified using `vegalite()`,
+#' the meanings change to describe the dimensions of the **entire** rendered chart,
+#' including axes, labels, etc.
 #'
 #' - Keep in mind that the action-links are not a part of the rendered chart,
 #' so you may have to account for them yourself. You might expect
 #' the height of the action-links to be 25-30 pixels.
 #'
 #' @param chart   an Altair plot object
-#' @param tooltip `vega_tooltip` object to specify tooltip -
+#' @param tooltip `vega_tooltip` object to specify tooltip options -
 #'   the default is an empty call to [vega_tooltip()],
-#'   which will result in no tooltip displaying
+#'   which will result in no tooltip being displayed
 #' @param embed   `vega_embed` object to specify embedding options -
 #'   the default is an empty call to [vega_embed()],
 #'   which will result in a canvas-rendering and all actions-links being
 #'   included
 #' @param width   `integer`, if specified, the total rendered width (in pixels)
-#'   of the chart - valid only for single-view charts and layered charts
+#'   of the chart - valid only for single-view charts and layered charts;
+#'   the default is to use the chart specification
 #' @param height  `integer`, if specified, the total rendered height (in pixels)
-#'   of the chart - valid only for single-view charts and layered charts
+#'   of the chart - valid only for single-view charts and layered charts;
+#'   the default is to use the chart specification
 #' @seealso [alt], [vega_tooltip()], [vega_embed()]
 #' @examples
 #'   plot_basic <-
@@ -67,11 +70,11 @@
 #'     )$mark_point()
 #'
 #' \dontrun{
-#'   # defaults: no tooltips, rendered using canvas,
+#'   # default: no tooltips, rendered using canvas,
 #'   #   all action-links, chart-specification determines size
 #'   vegalite(plot_basic)
 #'
-#'   # use tooltip to show encoding variables
+#'   # tooltip showing encoding variables
 #'   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 #'
 #'   # render using SVG
