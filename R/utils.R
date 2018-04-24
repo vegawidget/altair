@@ -67,5 +67,17 @@ list_remove_null <- function(x) {
   x
 }
 
+is_simple_chart <- function(x) {
+
+  class_simple_chart <-
+    c("altair.vegalite.v2.api.Chart", "altair.vegalite.v2.api.LayerChart")
+
+  inherits(x, class_simple_chart)
+}
+
+is_undefined <- function(x) {
+  inherits(x, "altair.utils.schemapi.UndefinedType")
+}
+
 
 
