@@ -2,6 +2,10 @@
 #'
 #' Use this function to render a chart as an htmlwidget.
 #'
+#' This function is called `vegalite()` is because it returns an htmlwidget
+#' that uses the Vega-Lite JavaScript library, rather than the
+#' Altair Python package.
+#'
 #' To include a tooltip in your chart-rendering, use one of the
 #' [vega_tooltip()] functions with the `tooltip` argument.
 #' Keep in mind that you can include exactly **one** tooltip specification
@@ -13,19 +17,31 @@
 #' `embed` argument. Its most-important options are:
 #'
 #' - `renderer`, to specify `"canvas"` (default) or `"svg"`
-#' - `actions`,  to specific action-links
+#' - `actions`,  to specify action-links
 #'    for `export`, `source`, and `editor`
 #'
-#' If actions is a single `TRUE` (default) or `FALSE`, all the links
+#' If `actions` is `TRUE` (default) or `FALSE`, all the links
 #' are shown (or not). Use a named list to be more specific, see
 #' [vega_embed()] and [only_actions()].
 #'
+#' The arguments `width` and `height` are used to override the width and height
+#' determined using the `chart` specification. However, there are some
+#' important provisions:
 #'
+#' - Specifying `width` and `height` here is [effective only for single-view
+#' charts and layered charts](https://vega.github.io/vega-lite/docs/size.html#limitations).
+#' It will not work for contatenated, faceted, or repeated charts.
 #'
+#' - The default interpretation of width and height in the chart specification
+#' is that these parameters describe the dimensions of the
+#' **plotting rectangle**, not including the space used by the axes, labels,
+#' etc. When `width` and `height` are specified here, the meanings change to
+#' describe the dimensions of the **entire** rendered chart, including axes,
+#' labels, etc.
 #'
-#' This function is called `vegalite()` is because it returns an htmlwidget
-#' that uses the Vega-Lite JavaScript library, rather than the
-#' Altair Python package.
+#' - Keep in mind that the action-links are not a part of the rendered chart,
+#' so you may have to account for them yourself. You might expect
+#' the height of the action-links to be 25-30 pixels.
 #'
 #' @param chart   an Altair plot object
 #' @param tooltip `vega_tooltip` object to specify tooltip -
@@ -39,7 +55,7 @@
 #'   of the chart - valid only for single-view charts and layered charts
 #' @param height  `integer`, if specified, the total rendered height (in pixels)
 #'   of the chart - valid only for single-view charts and layered charts
-#' @seealso [alt], [vega_tooltip()], [vega_embed()], [only_actions()]
+#' @seealso [alt], [vega_tooltip()], [vega_embed()]
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -51,7 +67,21 @@
 #'     )$mark_point()
 #'
 #' \dontrun{
+#'   # defaults: no tooltips, rendered using canvas,
+#'   #   all action-links, chart-specification determines size
 #'   vegalite(plot_basic)
+#'
+#'   # use tooltip to show encoding variables
+#'   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
+#'
+#'   # render using SVG
+#'   vegalite(plot_basic, embed = vega_embed(renderer = "svg"))
+#'
+#'   # do not include action-links
+#'   vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+#'
+#'   # specify dimensions of rendered-chart
+#'   vegalite(plot_basic, width = 300, height = 200)
 #' }
 #' @export
 #'

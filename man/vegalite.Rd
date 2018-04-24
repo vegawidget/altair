@@ -29,6 +29,10 @@ of the chart - valid only for single-view charts and layered charts}
 Use this function to render a chart as an htmlwidget.
 }
 \details{
+This function is called \code{vegalite()} is because it returns an htmlwidget
+that uses the Vega-Lite JavaScript library, rather than the
+Altair Python package.
+
 To include a tooltip in your chart-rendering, use one of the
 \code{\link[=vega_tooltip]{vega_tooltip()}} functions with the \code{tooltip} argument.
 Keep in mind that you can include exactly \strong{one} tooltip specification
@@ -40,17 +44,30 @@ To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} fu
 \code{embed} argument. Its most-important options are:
 \itemize{
 \item \code{renderer}, to specify \code{"canvas"} (default) or \code{"svg"}
-\item \code{actions},  to specific action-links
+\item \code{actions},  to specify action-links
 for \code{export}, \code{source}, and \code{editor}
 }
 
-If actions is a single \code{TRUE} (default) or \code{FALSE}, all the links
+If \code{actions} is \code{TRUE} (default) or \code{FALSE}, all the links
 are shown (or not). Use a named list to be more specific, see
 \code{\link[=vega_embed]{vega_embed()}} and \code{\link[=only_actions]{only_actions()}}.
 
-This function is called \code{vegalite()} is because it returns an htmlwidget
-that uses the Vega-Lite JavaScript library, rather than the
-Altair Python package.
+The arguments \code{width} and \code{height} are used to override the width and height
+determined using the \code{chart} specification. However, there are some
+important provisions:
+\itemize{
+\item Specifying \code{width} and \code{height} here is \href{https://vega.github.io/vega-lite/docs/size.html#limitations}{effective only for single-viewcharts and layered charts}.
+It will not work for contatenated, faceted, or repeated charts.
+\item The default interpretation of width and height in the chart specification
+is that these parameters describe the dimensions of the
+\strong{plotting rectangle}, not including the space used by the axes, labels,
+etc. When \code{width} and \code{height} are specified here, the meanings change to
+describe the dimensions of the \strong{entire} rendered chart, including axes,
+labels, etc.
+\item Keep in mind that the action-links are not a part of the rendered chart,
+so you may have to account for them yourself. You might expect
+the height of the action-links to be 25-30 pixels.
+}
 }
 \examples{
   plot_basic <-
@@ -63,9 +80,23 @@ Altair Python package.
     )$mark_point()
 
 \dontrun{
+  # defaults: no tooltips, rendered using canvas,
+  #   all action-links, chart-specification determines size
   vegalite(plot_basic)
+
+  # use tooltip to show encoding variables
+  vegalite(plot_basic, tooltip = vega_tooltip_encoding())
+
+  # render using SVG
+  vegalite(plot_basic, embed = vega_embed(renderer = "svg"))
+
+  # do not include action-links
+  vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+
+  # specify dimensions of rendered-chart
+  vegalite(plot_basic, width = 300, height = 200)
 }
 }
 \seealso{
-\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}, \code{\link[=vega_embed]{vega_embed()}}, \code{\link[=only_actions]{only_actions()}}
+\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}, \code{\link[=vega_embed]{vega_embed()}}
 }
