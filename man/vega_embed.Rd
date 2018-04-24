@@ -24,7 +24,7 @@ logicals that maps
 keys (\code{export}, \code{source}, \code{editor}) to logical values for determining
 if each action link should be shown. Unspecified keys will be true by
 default. For example, if \code{actions} is
-\code{c(export = FALSE, source = TRUE)}, the embedded visualization will
+\code{list(export = FALSE, source = TRUE)}, the embedded visualization will
 have two links – "View Source" and "Open in Vega Editor".}
 
 \item{mode}{\code{character} if specified, tells Vega-Embed to parse the spec
@@ -90,4 +90,33 @@ The most common options to set are \code{renderer}, to specify \code{"canvas"}
 or \code{"svg"}, and \code{actions}, to specify the inclusion of \code{export}, \code{source},
 and \code{editor} links. This documentation is adapted from the
 \href{https://github.com/vega/vega-embed#options}{vega-embed documentation}.
+}
+\details{
+The default \code{renderer} is \code{"canvas"}.
+
+The default for \code{actions} is \code{TRUE}, which means that all three action links
+will be included.
+\itemize{
+\item To suppress all action links, call with \code{actions = FALSE}.
+\item To suppress a given action link, call with a list:
+\code{actions = list(editor = FALSE)}.
+\item To specify which link(s) to include, call using the \code{only_actions()}
+function: \code{actions = only_actions(export = TRUE)}.
+}
+
+It is ineffective to set the \code{width} and \code{height} parameters here, as they
+will be overridden by the values in the chart specification.
+}
+\examples{
+# Set the renderer
+embed_options <- vega_embed(renderer = "svg")
+
+# Specify the action links
+embed_options <- vega_embed(actions = FALSE)
+embed_options <- vega_embed(actions = list(editor = FALSE))
+embed_options <- vega_embed(actions = only_actions(export = TRUE))
+
+}
+\seealso{
+\code{\link[=vegalite]{vegalite()}}, \code{\link[=only_actions]{only_actions()}}
 }

@@ -6,6 +6,20 @@
 #' and `editor` links. This documentation is adapted from the
 #' [vega-embed documentation](https://github.com/vega/vega-embed#options).
 #'
+#' The default `renderer` is `"canvas"`.
+#'
+#' The default for `actions` is `TRUE`, which means that all three action links
+#' will be included.
+#'
+#' - To suppress all action links, call with `actions = FALSE`.
+#' - To suppress a given action link, call with a list:
+#'   `actions = list(editor = FALSE)`.
+#' - To specify which link(s) to include, call using the `only_actions()`
+#'   function: `actions = only_actions(export = TRUE)`.
+#'
+#' It is ineffective to set the `width` and `height` parameters here, as they
+#' will be overridden by the values in the chart specification.
+#'
 #'
 #' @param mode `character` if specified, tells Vega-Embed to parse the spec
 #'   as vega or vega-lite. Vega-Embed will parse the `$schema` url if the mode
@@ -42,7 +56,7 @@
 #'   keys (`export`, `source`, `editor`) to logical values for determining
 #'   if each action link should be shown. Unspecified keys will be true by
 #'   default. For example, if `actions` is
-#'   `c(export =  FALSE, source = TRUE)`, the embedded visualization will
+#'   `list(export =  FALSE, source = TRUE)`, the embedded visualization will
 #'   have two links – "View Source" and "Open in Vega Editor".
 #' @param config `character` or `list` a URL string** from which to load
 #'   a Vega/Vega-Lite or Vega-Lite configuration file, or a `list` of
@@ -64,6 +78,16 @@
 #' @param runAsync	`logical`, indicating to use
 #'   [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync)
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
+#'
+#' @seealso [vegalite()], [only_actions()]
+#' @examples
+#' # Set the renderer
+#' embed_options <- vega_embed(renderer = "svg")
+#'
+#' # Specify the action links
+#' embed_options <- vega_embed(actions = FALSE)
+#' embed_options <- vega_embed(actions = list(editor = FALSE))
+#' embed_options <- vega_embed(actions = only_actions(export = TRUE))
 #'
 #' @return `vega_embed` object
 #' @export
