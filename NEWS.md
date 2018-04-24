@@ -1,6 +1,5 @@
 # altair 0.1.9000
 
-
 * makes Vega datasets available as `vega_data` (#25)
 
 * `width` and `height` arguments to `vegalite()` are used now to specify the *total* width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) `width` and `height` apply to the chart only, they do not take into account any action-links (#18)
