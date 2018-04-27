@@ -7,5 +7,5 @@
 ^_pkgdown\.yml$
 ^docs$
 ^CODE_OF_CONDUCT\.md$
-^vignettes/*.Rmd$
+^vignettes/.*.\Rmd$
 ^pkgdown$
