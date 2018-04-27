@@ -1,0 +1,38 @@
+---
+title: "Field guide to Python issues"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, 
+
+## Reticulate
+
+### Proxies and certificates
+
+## Installation
+
+### MacOS
+
+### Windows
+
+### Linux (Ubuntu)
+
+## Accessing objects
+
+### Altair object
+
+### Vega-datasets object
+
+## Odds and ends
+
+### Dots in variables
