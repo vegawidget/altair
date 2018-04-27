@@ -16,6 +16,7 @@ reference:
       Functions and objects to construct chart-specifications
     contents:
       - alt
+      - vega_data
       - r_to_py
       - altair_concatenation
   - title: Tooltips

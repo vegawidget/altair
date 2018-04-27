@@ -10,6 +10,8 @@
 
   * `vegalite()` strips the `style` attribute from the `<div/>` for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (#16, #18)
 
+* adds concatenation operators for charts: `|`, `&`, `+` (#22, @aliciaschep)
+
 * adds function `vega_embed()`, with friend `only_actions()`, to support embedding options in `vegalite()` (#16)
 
 * updates css for embedding, makes the action-links look much better (#20, @aliciaschep)
