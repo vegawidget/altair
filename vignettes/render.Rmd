@@ -13,47 +13,157 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `vegalite()` function sets up the rendering process.
+The `vegalite()` function renders a chart specification into an HTML `<div/>`.
 
-- `chart`: [Chart specification](#chart)
-- `tooltip`: [Tooltip specification](#tooltip)
-- `embed`: [Embedding specification](#embedding)
-- `width`, `height`: [Chart dimensions](#dimensions)
+* [**Chart specification**](#chart) (`chart`)
+* [**Tooltip specification**](#tooltip) (`tooltip`)
+* [**Embedding specification**](#embedding) (`embed`) 
+* [**Chart dimensions**](#dimensions) (`width`, `height`) 
 
-Talk about buildings and plots of land.
+In this article, we will render a chart a bunch of different ways, each highlighting a different aspect of the rendering process. Let's define our base chart:
 
-Talk about automatic sizing of charts, but only single charts.
+```{r base-chart}
+library("altair")
+library("tibble")
+
+cars <- vega_data$cars()
+
+base_chart <- 
+  alt$Chart(r_to_py(cars))$
+  encode(
+    x = "Miles_per_Gallon:Q",
+    y = "Horsepower:Q",
+    color = "Origin:N"    
+  )$
+  mark_point()
+```
+
 
 ## Chart specification {#chart}
 
-## Tooltip {#tooltip}
+The simplest useful call to `vegalite()` has only the chart specification: 
+
+```{r vega-chart}
+vegalite(base_chart)
+```
+
+As you can see, this renders the chart using some defaults:
+
+- The size of the plotting area is 400 $\times$ 300 pixels.
+- There are no tooltips.
+- The chart is rendered using canvas.
+- There are action links to export, to view source of, and to edit the chart.
+
+You might have noticed that we did not set the size of the chart anywhere, to see where this is specified within the chart, we can use the `examine()` function: 
+
+```{r examine-default, out.height=300}
+examine(base_chart)
+```
+
+By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.. 
+
+## Tooltip specification {#tooltip}
+
+The `tooltip` argument expects a `vega_tooltip` object, which is made by the `vega_tooltip()` family of functions. The default is an empty call to `vega_tooltip()`, which results in no tooltips being displayed.
+
+To display a tooltip that contains only the encoding variables, use the `vega_tooltip_encoding()` function:
+
+```{r tooltip-encoding}
+vegalite(base_chart, tooltip = vega_tooltip_encoding())
+```
+
+To display a tooltip that contains all variables in the data, use the `vega_tooltip_all()` function:
+
+```{r tooltip-all}
+vegalite(base_chart, tooltip = vega_tooltip_all())
+```
+
+Finally, to build a custom tooltip, use the `vega_tooltip()` function with `add_field()`:
+
+```{r}
+tooltip_custom <- 
+  vega_tooltip() %>%
+  add_field(field = "Name") %>%
+  add_field(field = "Origin") %>%
+  add_field(field = "Horsepower") %>%
+  add_field(field = "Miles_per_Gallon", title = "Miles per Gallon")
+
+vegalite(base_chart, tooltip = tooltip_custom)
+```
+
+You can examine a tooltip specification using the `examine()` funciton.
+
+For more information on the options, see the [Tooltip article](tooltip.html) and the Vega Tooltip documentation. One thing to keep in mind is that you get exactly one tooltip-specification in a rendering, regardless if the chart is a single chart or a repeated chart.
 
 ## Embedding specificaiton {#embedding}
 
-Let's look at a basic chart with default embedding:
+The `embed` argument expects a `vega_embed` object, which is made by the `vega_embed()` function. 
 
-```{r basic}
-library("altair")
+If `embed` is `NULL`, `vegalite()` sets it to `getOption("altair.embed_options")` which you can specify in your `.Rprofile`, as described in greater detail below. If `embed` is still `NULL`, this will result in the [vega-embed defaults](https://github.com/vega/vega-embed#options) being used: canvas rendering and action-links added below the chart. 
 
-plot_basic <-
-  alt$Chart(
-    data = r_to_py(mtcars) 
-  )$encode(
-    x = "mpg:Q",
-    y = "hp:Q",
-    color = "cyl:N"
-  )$mark_point()
+The principal arguments to `vega_embed()` deal with rendering and action-links: `renderer` and `actions`. 
 
-vegalite(plot_basic, height = 200, width = 500)
-```
+To exclude all the action-links, set `actions = FALSE`:
 
 ```{r actions-false}
-vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+vegalite(base_chart, embed = vega_embed(actions = FALSE))
 ```
+
+Here's another example, rendering using SVG and using the `only_actions()` function to include only the "export" action-link:
 
 ```{r actions-custom}
 vegalite(
-  plot_basic, 
+  base_chart, 
   embed = vega_embed(renderer = "svg", actions = only_actions(export = TRUE))
 )
 ```
+
+As with chart specifications and tooltip specifications, you can `examine()` embedding specifications.
+
+If there is a default that you would like to use, you can set an option in your `.Rprofile` file. For example:
+
+```r
+options(
+  repos = c(CRAN = "https://cloud.r-project.org/"),
+  ...
+  altair.embed_options =
+    altair::vega_embed(actions = altair::only_actions(export = TRUE))
+)
+```
+
+## Chart dimensions {#dimensions}
+
+Let's look at a couple of charts where we specify the size. For the first, we take our `base_chart` and add `width` and `height` to the chart specification - this will dictate the size of the plotting rectangle.
+
+```{r}
+base_chart_size <- base_chart$properties(width = 300, height = 300)
+
+vegalite(base_chart_size)
+```
+
+Contrast this with setting the size using `vegalite()`, which will dictate the size of the overall chart.
+
+```{r}
+vegalite(base_chart_size, width = 300, height = 300)
+```
+
+In a chart specification, the default interpretation of `width` and `height` is that they refer to the dimensions of the plotting rectangle. Vega-Lite provides a way to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire rendered chart, including axes, labels, etc.. 
+
+In the `vegalite()` function, the default value of `width` and `height` is `NULL`. In terms of rendering, the consequnces are:
+
+- The dimensions in the chart specification are respected.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dicate the size of its enclosure.
+
+If you need to specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegalite()` function. If one of these is not null:
+
+- The non-null dimensions overwrite the values in chart specification.
+- The chart specification is modified to "autosize" the chart so the entire chart conforms to the specifications.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dicate the size of its enclosure. However, because you have specified the size of the chart, you have also specified the size of the enclosure.
+
+There are two important caveats:
+
+1. You cannot specify "autosize" (thus you cannot specify overall dimensions) for any faceted, repeated, or concantenated chart [[reference](https://vega.github.io/vega-lite/docs/size.html#limitations)].
+
+2. The overall chart size does not take into account the action-links. If you supress the links, this is not a concern.
+
+To a great extent, this philosophy is driven by the priciple that a Vega-Lite chart determines its own size, and resists attempts to impose size restriction from outside.

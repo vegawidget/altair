@@ -25,6 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Examine a specification — examine" />
 
 <meta property="og:description" content="Use this function to interactvely examine a specification, using
@@ -41,8 +46,6 @@ listviewer::jsonedit(). It can be used to examine a chart-specification
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -127,15 +130,18 @@ listviewer::jsonedit(). It can be used to examine a chart-specification
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Examine a specification</h1>
-    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/examine.R'><code>R/examine.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/examine.R'><code>R/examine.R</code></a></small>
+    <div class="hidden name"><code>examine.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Use this function to interactvely examine a specification, using
 <code><a href='http://www.rdocumentation.org/packages/listviewer/topics/jsonedit'>listviewer::jsonedit()</a></code>. It can be used to examine a chart-specification
 (built using <code><a href='alt.html'>alt</a></code>$Chart()) or a tooltip-specification
 (built using <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>).</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>examine</span>(<span class='kw'>listdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>modes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"code"</span>, <span class='st'>"form"</span>, <span class='st'>"text"</span>,
   <span class='st'>"tree"</span>, <span class='st'>"view"</span>), <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>

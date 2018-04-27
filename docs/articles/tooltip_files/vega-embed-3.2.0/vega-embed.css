@@ -14,11 +14,10 @@ https://raw.githubusercontent.com/altair-viz/altair/169c498537571b16f7852d31564b
   cursor: pointer;
 }
 
-/* Gives a little space below vega-actions,
-   useful if dimensions are removed from enclosing div.
-*/
-.vega-actions {
-  padding-bottom: 10px;
+/* Gives a little space below embedded charts */
+
+.vega-embed {
+  margin-bottom: 10px;
 }
 
 

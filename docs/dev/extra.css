@@ -1,0 +1,5 @@
+/* adds some margin to html-widgets */
+
+.html-widget {
+  margin-bottom: 10px;
+}

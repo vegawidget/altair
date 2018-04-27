@@ -82,7 +82,7 @@ immediately before the closing `` tag.}
 instead of \href{https://vega.github.io/vega/docs/api/view/#view_run}{run}.}
 }
 \value{
-\code{vega_embed} object
+S3 object with class \code{vega_embed}
 }
 \description{
 Use this function to specify embedding-options to the vegalite renderer.

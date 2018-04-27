@@ -9,3 +9,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^vignettes/first-example.Rmd$
 ^vignettes/interactive.Rmd$
+^pkgdown$

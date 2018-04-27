@@ -24,6 +24,11 @@
 #' are shown (or not). Use a named list to be more specific, see
 #' [vega_embed()] and [only_actions()].
 #'
+#' If `embed` is `NULL`, `vegalite()` sets `embed` to the value of
+#' `getOption("altair.embed_options")`. If that is null, the
+#' [vega-embed](https://github.com/vega/vega-embed#api-reference)
+#' defaults are used.
+#'
 #' The arguments `width` and `height` are used to override the width and height
 #' determined using the `chart` specification. However, there are some
 #' important provisions:
@@ -90,8 +95,13 @@
 #'
 vegalite <- function(chart,
                      tooltip = vega_tooltip(),
-                     embed = vega_embed(),
+                     embed = NULL,
                      width = NULL, height = NULL) {
+
+  # if `emmbed` is NULL, check for option
+  if (is.null(embed)) {
+    embed <- getOption("altair.embed_options")
+  }
 
   # keep in mind that only functions will return a copy
   chart_copy <- chart$copy()

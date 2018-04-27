@@ -4,7 +4,7 @@
 \alias{add_field}
 \title{Add a field to a Vega tooltip-specification}
 \usage{
-add_field(tooltip, field = NULL, title = NULL, formatType = NULL,
+add_field(tooltip, field = NULL, title = field, formatType = NULL,
   format = NULL, valueAccessor = NULL, render = NULL, aggregate = NULL,
   ...)
 }

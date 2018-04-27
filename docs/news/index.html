@@ -25,6 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Changelog" />
 
 
@@ -35,8 +40,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -86,6 +89,9 @@
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
     <li>
+      <a href="../articles/render.html">Rendering Charts</a>
+    </li>
+    <li>
       <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
@@ -125,8 +131,12 @@
 <h1 class="page-header">
 <a href="#altair-0-1-9000" class="anchor"></a>altair 0.1.9000</h1>
 <ul>
+<li><p>makes Vega datasets available as <code>vega_data</code> (<a href='https://github.com/ijlyttle/altair/issues/25'>#25</a>)</p></li>
+<li><p><code>width</code> and <code>height</code> arguments to <code><a href="../reference/vegalite.html">vegalite()</a></code> are used now to specify the <em>total</em> width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) <code>width</code> and <code>height</code> apply to the chart only, they do not take into account any action-links (<a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p><code><a href="../reference/vegalite.html">vegalite()</a></code> renderer strips the <code>style</code> attribute from the <code>&lt;div/&gt;</code> for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>, <a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p>adds function <code><a href="../reference/vega_embed.html">vega_embed()</a></code>, with friend <code><a href="../reference/only_actions.html">only_actions()</a></code>, to support embedding options in <code><a href="../reference/vegalite.html">vegalite()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>)</p></li>
 <li><p>updates css for embedding, makes the action-links look much better (<a href='https://github.com/ijlyttle/altair/issues/20'>#20</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
-<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code><a href="../reference/vega_tooltip.html">vega_tooltip()</a></code>, <code>add_fields()</code>, and friends: <code><a href="../reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> and <code><a href="../reference/vega_tooltip.html">vega_tooltip_all()</a></code>. (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>)</p></li>
+<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code><a href="../reference/vega_tooltip.html">vega_tooltip()</a></code>, <code>add_fields()</code>, and friends: <code><a href="../reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> and <code><a href="../reference/vega_tooltip.html">vega_tooltip_all()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds a <code>NEWS.md</code> file to track changes to the package</p></li>
 <li><p>achieves minimal functionality</p></li>
 </ul>

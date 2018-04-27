@@ -4,8 +4,8 @@
 \alias{vegalite}
 \title{Create a Vega-Lite htmlwidget}
 \usage{
-vegalite(chart, tooltip = vega_tooltip(), embed = vega_embed(),
-  width = NULL, height = NULL)
+vegalite(chart, tooltip = vega_tooltip(), embed = NULL, width = NULL,
+  height = NULL)
 }
 \arguments{
 \item{chart}{an Altair plot object}
@@ -53,6 +53,11 @@ for \code{export}, \code{source}, and \code{editor}
 If \code{actions} is \code{TRUE} (default) or \code{FALSE}, all the links
 are shown (or not). Use a named list to be more specific, see
 \code{\link[=vega_embed]{vega_embed()}} and \code{\link[=only_actions]{only_actions()}}.
+
+If \code{embed} is \code{NULL}, \code{vegalite()} sets \code{embed} to the value of
+\code{getOption("altair.embed_options")}. If that is null, the
+\href{https://github.com/vega/vega-embed#api-reference}{vega-embed}
+defaults are used.
 
 The arguments \code{width} and \code{height} are used to override the width and height
 determined using the \code{chart} specification. However, there are some

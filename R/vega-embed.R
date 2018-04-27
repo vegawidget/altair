@@ -89,7 +89,7 @@
 #' embed_options <- vega_embed(actions = list(editor = FALSE))
 #' embed_options <- vega_embed(actions = only_actions(export = TRUE))
 #'
-#' @return `vega_embed` object
+#' @return S3 object with class `vega_embed`
 #' @export
 #'
 vega_embed <- function(renderer = c("canvas", "svg"),

@@ -25,6 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Vega embed options — vega_embed" />
 
 <meta property="og:description" content="Use this function to specify embedding-options to the vegalite renderer.
@@ -42,8 +47,6 @@ vega-embed documentation." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -128,9 +131,11 @@ vega-embed documentation." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Vega embed options</h1>
-    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vega-embed.R'><code>R/vega-embed.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vega-embed.R'><code>R/vega-embed.R</code></a></small>
+    <div class="hidden name"><code>vega_embed.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Use this function to specify embedding-options to the vegalite renderer.
 The most common options to set are <code>renderer</code>, to specify <code>"canvas"</code>
@@ -138,6 +143,7 @@ or <code>"svg"</code>, and <code>actions</code>, to specify the inclusion of <co
 and <code>editor</code> links. This documentation is adapted from the
 <a href='https://github.com/vega/vega-embed#options'>vega-embed documentation</a>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>vega_embed</span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"canvas"</span>, <span class='st'>"svg"</span>), <span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>logLevel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>loader</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>onBeforeParse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -250,7 +256,7 @@ instead of <a href='https://vega.github.io/vega/docs/api/view/#view_run'>run</a>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>vega_embed</code> object</p>
+    <p>S3 object with class <code>vega_embed</code></p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
