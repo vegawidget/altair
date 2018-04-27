@@ -60,7 +60,7 @@ You might have noticed that we did not set the size of the chart anywhere, to se
 examine(base_chart)
 ```
 
-By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.. 
+By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.
 
 ## Tooltip specification {#tooltip}
 
@@ -133,7 +133,7 @@ options(
 
 ## Chart dimensions {#dimensions}
 
-Let's look at a couple of charts where we specify the size. For the first, we take our `base_chart` and add `width` and `height` to the chart specification - this will dictate the size of the plotting rectangle.
+Let's look at a couple of charts where we specify the size. First, we take our `base_chart` and add `width` and `height` to the chart specification, which will dictate the size of the *plotting rectangle*:
 
 ```{r}
 base_chart_size <- base_chart$properties(width = 300, height = 300)
@@ -141,29 +141,29 @@ base_chart_size <- base_chart$properties(width = 300, height = 300)
 vegalite(base_chart_size)
 ```
 
-Contrast this with setting the size using `vegalite()`, which will dictate the size of the overall chart.
+Contrast this with setting the dimensions using `vegalite()`, which will dictate the size of the *entire chart*:
 
 ```{r}
 vegalite(base_chart_size, width = 300, height = 300)
 ```
 
-In a chart specification, the default interpretation of `width` and `height` is that they refer to the dimensions of the plotting rectangle. Vega-Lite provides a way to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire rendered chart, including axes, labels, etc.. 
+In a chart specification, the default interpretation of `width` and `height` refers to the dimensions of the plotting rectangle. Using the chart specification, there is also a way to to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire chart, including axes, labels, etc. This is how `vegalite()` uses its `width` and `height` arguments to specify the dimensions of the entire chart. 
 
-In the `vegalite()` function, the default value of `width` and `height` is `NULL`. In terms of rendering, the consequnces are:
+In the `vegalite()` function, the default value of `width` and `height` is `NULL`. For rendering, this means:
 
 - The dimensions in the chart specification are respected.
-- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dicate the size of its enclosure.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dictate the size of its enclosure.
 
-If you need to specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegalite()` function. If one of these is not null:
+To specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegalite()` function. For rendering, this means:
 
-- The non-null dimensions overwrite the values in chart specification.
-- The chart specification is modified to "autosize" the chart so the entire chart conforms to the specifications.
-- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dicate the size of its enclosure. However, because you have specified the size of the chart, you have also specified the size of the enclosure.
+- The non-null dimensions overwrite the values in the chart specification.
+- The chart specification is modified to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) the chart, so the entire chart conforms to the new specifications.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dictate the size of its enclosure. However, because you have specified the size of the chart, you have also specified the size of its enclosure.
 
 There are two important caveats:
 
-1. You cannot specify "autosize" (thus you cannot specify overall dimensions) for any faceted, repeated, or concantenated chart [[reference](https://vega.github.io/vega-lite/docs/size.html#limitations)].
+1. You [cannot specify "autosize"](https://vega.github.io/vega-lite/docs/size.html#limitations), thus you cannot specify the overall dimensions for any faceted, repeated, or concantenated chart.
 
-2. The overall chart size does not take into account the action-links. If you supress the links, this is not a concern.
+2. The overall chart size does not take into account action-links, which generally add a height of 15-20 pixels. If you supress the links, this is not a concern. 
 
-To a great extent, this philosophy is driven by the priciple that a Vega-Lite chart determines its own size, and resists attempts to impose size restriction from outside.
+This philosophy is driven by the idea that a Vega-Lite chart likes to determine its own size, and tends to resist attempts to impose size restrictions from the outside.
