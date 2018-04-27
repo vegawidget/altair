@@ -2,6 +2,9 @@ template:
   params:
     bootswatch: sandstone
 
+development:
+  mode: devel
+
 reference:
   - title: Installation
     desc: >
@@ -23,11 +26,13 @@ reference:
       - add_field
   - title: Examining and Rendering
     desc: >
-      Functions for examining chart- and tooltip-specifications,
-      and rendering them into htmlwidgets
+      Functions for examining chart-, embedding-, and tooltip-specifications,
+      and for rendering them into htmlwidgets
     contents:
       - examine
       - vegalite
+      - vega_embed
+      - only_actions
       - renderVegalite
       - vegaliteOutput
 

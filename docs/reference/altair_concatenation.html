@@ -25,6 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Altair plot concatenation — altair_concatenation" />
 
 <meta property="og:description" content="Altair plots can be concatenated using the following operators:
@@ -39,8 +44,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -81,9 +84,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/concatenation.html">View Composition</a>
-    </li>
-    <li>
       <a href="../articles/first-example.html">First Example</a>
     </li>
     <li>
@@ -91,6 +91,9 @@
     </li>
     <li>
       <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+    <li>
+      <a href="../articles/render.html">Rendering Charts</a>
     </li>
     <li>
       <a href="../articles/tooltip.html">Tooltips</a>
@@ -125,14 +128,16 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Altair plot concatenation</h1>
-    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/concatenation.R'><code>R/concatenation.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/concatenation.R'><code>R/concatenation.R</code></a></small>
     <div class="hidden name"><code>altair_concatenation.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Altair plots can be concatenated using the following operators:
 <code>+</code>, <code>|</code>, and <code>&amp;</code></p>
     
+    </div>
 
     <pre class="usage"># S3 method for altair.vegalite.v2.api.TopLevelMixin
 |(e1, e2)

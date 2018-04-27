@@ -22,7 +22,6 @@ Let's start again with our basic plot from the [first example](first-example.htm
 
 ```{r}
 library("altair")
-library("htmlwidgets")
 
 plot_static <- 
   alt$Chart(
@@ -34,7 +33,7 @@ plot_static <-
   )$mark_point(
   )
 
-vegalite(plot_static, height = 400)
+vegalite(plot_static)
 ```
 
 Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selecton, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).
@@ -51,7 +50,7 @@ plot_brush <-
     selection = brush
   )
 
-vegalite(plot_brush, height = 400)
+vegalite(plot_brush)
 ```
 
 You can click-and-drag to draw a selection-box, then move it around. So far, so good, but it does not really *do* much. Let's change that. 
@@ -82,7 +81,7 @@ plot_selection <-
     color = alt$condition(brush, "cyl:N", alt$value("lightgray"))
   )
 
-vegalite(plot_selection, height = 400)
+vegalite(plot_selection)
 ```
 
 Not too shabby, eh!
@@ -105,9 +104,9 @@ plot_disp <-
 In essence, `plot_mpg` is a smaller version of `plot_selection`; `plot_disp` is derived from `plot_mpg`, showing displacement on its x-axis, rather than mpg. It remains to compose these into a compound chart and display:
 
 ```{r}
-plot_compound <- alt$hconcat(plot_mpg, plot_disp)
+plot_compound <- (plot_mpg | plot_disp)
 
-vegalite(plot_compound, height = 350)
+vegalite(plot_compound)
 ```
 
 You can select observations from either side. This is just a taste of what we can do using Vega-Lite, using the Altair API.

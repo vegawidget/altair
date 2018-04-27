@@ -3,7 +3,7 @@ title: "Tooltips"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 Tooltips are a [hot topic](https://github.com/altair-viz/altair/issues/240) within the Altair, Vega-Lite, and Vega community. They way tooltips are specified and rendered today may change tommorow. The purpose of this article is to focus on how things work today.
@@ -26,7 +26,7 @@ plot_basic <-
     color = "cyl:N"
   )$mark_point()
 
-vegalite(plot_basic, height = 400)
+vegalite(plot_basic)
 ```
 
 You will notice that the rendering does not produce tooltips. What you may not have noticed is that the `vegalite()` function has a `tooltip` argument; its default is an empty call to a helper function, `vegalite_tooltip()`. An empty call to this function tells the renderer not to produce tooltips.
@@ -36,7 +36,7 @@ You will notice that the rendering does not produce tooltips. What you may not h
 The `vegalite_tooltip()` function has a couple of friends, one of which is `vega_tooltip_encoding()`. This function is used to tell the renderer to include tooltip information for only those variables that are encoded in your plot. Here's an example:
 
 ```{r toolip-basic}
-vegalite(plot_basic, tooltip = vega_tooltip_encoding(), height = 400)
+vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 ```
 
 ## Show all variables
@@ -44,7 +44,7 @@ vegalite(plot_basic, tooltip = vega_tooltip_encoding(), height = 400)
 The other friend to `vega_tooltip()` is `vega_tooltip_all()`, which tells the renderer to include tooltip information for *all* the variables in the data - not only those encoded in the chart: 
 
 ```{r tooltip-all}
-vegalite(plot_basic, tooltip = vega_tooltip_all(), height = 400)
+vegalite(plot_basic, tooltip = vega_tooltip_all())
 ```
 
 ## Customize
@@ -57,7 +57,7 @@ tooltip_custom <-
   add_field(field = "mpg", title = "MPG") %>%
   add_field(field = "hp", title = "HP")
 
-vegalite(plot_basic, tooltip = tooltip_custom, height = 400)
+vegalite(plot_basic, tooltip = tooltip_custom)
 ```
 
 
@@ -75,7 +75,7 @@ tooltip_callback <-
     onAppear = JS("function(title,value){console.log('appear')}")
   )
 
-vegalite(plot_basic, tooltip = tooltip_callback, height = 400)
+vegalite(plot_basic, tooltip = tooltip_callback)
 ```
 
 If you open this in your favorite broswer, open its JavaScript console, then cause a tooltip to appear in this plot, you should see the word "appear" appear in the console. 
@@ -85,7 +85,7 @@ If you open this in your favorite broswer, open its JavaScript console, then cau
 
 It may be useful to examine a tooltip specification, perhaps for debugging. The `examine()` function is provided to help you do this. It is a thin wrapper around the `listviewer::jsonedit()` function.
 
-```{r tooltip-examine}
-examine(tooltip_callback, height = 300, width = "100%")
+```{r tooltip-examine, out.height=300}
+examine(tooltip_callback)
 ```
 

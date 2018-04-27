@@ -25,6 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Altair object — alt" />
 
 <meta property="og:description" content="Uses the reticulate framework to access the Altair API." />
@@ -38,8 +43,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -89,6 +92,9 @@
       <a href="../articles/manifesto.html">Manifesto</a>
     </li>
     <li>
+      <a href="../articles/render.html">Rendering Charts</a>
+    </li>
+    <li>
       <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
@@ -121,13 +127,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Altair object</h1>
-    <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/zzz.R'><code>R/zzz.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/zzz.R'><code>R/zzz.R</code></a></small>
     <div class="hidden name"><code>alt.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Uses the reticulate framework to access the Altair API.</p>
     
+    </div>
 
     <pre class="usage"><span class='no'>alt</span></pre>
         
@@ -144,15 +152,19 @@ as outlined in the
 <p>In this package, use the <code>$</code> operator wherever you see the <code>.</code> operator
 in Python.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://altair-viz.github.io/index.html'>Altair Python documentation</a></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
     <span class='no'>alt</span>$<span class='fu'>Chart</span>(
-      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>mtcars</span>)
+      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>vega_data</span>$<span class='fu'>cars</span>())
     )$<span class='fu'>encode</span>(
-      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"mpg:Q"</span>,
-      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
-      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
+      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Miles_per_Gallon:Q"</span>,
+      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Horsepower:Q"</span>,
+      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
     )$<span class='fu'>mark_point</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -162,6 +174,8 @@ in Python.</p>
       <li><a href="#format">Format</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

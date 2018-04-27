@@ -1,6 +1,5 @@
 ---
 title: "First Example"
-author: "Ian Lyttle"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
@@ -31,7 +30,7 @@ plot <-
     color = "cyl:N"
   )
 
-vegalite(plot, height = 400)
+vegalite(plot)
 ```
 
 ### Installation
@@ -159,14 +158,14 @@ Altair recognizes [four types of data](https://altair-viz.github.io/user_guide/e
 
 ## Displaying and Examining
 
-Now that we have specified our chart, it remains to display it. This package provides a function `vegalite()` that takes a Chart object then renders and embeds it as an [htmlwidget](https://www.htmlwidgets.org).
+Now that we have specified our chart, it remains to display it. This package provides a function `vegalite()` that takes a chart object then renders and embeds it as an [htmlwidget](https://www.htmlwidgets.org).
 
 ```{r display}
-vegalite(plot, height = 400)
+vegalite(plot)
 ```
 
-You can examine the chart-specification by using the `examine()` function, which wraps `listviewer::jsonedit()`. To use this function, you will need to install the **listviewer** package.
+You can examine the chart-specification by using the `examine()` function, which wraps `listviewer::jsonedit()`. To use this function, you will need to install the **listviewer** package from CRAN.
 
-```{r examine, out.height=350}
+```{r examine, out.height=300}
 examine(plot)
 ```

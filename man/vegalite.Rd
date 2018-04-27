@@ -4,39 +4,78 @@
 \alias{vegalite}
 \title{Create a Vega-Lite htmlwidget}
 \usage{
-vegalite(chart, tooltip = vega_tooltip(), width = NULL, height = NULL)
+vegalite(chart, tooltip = vega_tooltip(), embed = NULL, width = NULL,
+  height = NULL)
 }
 \arguments{
-\item{chart}{chart object created using \code{\link{alt}}\code{$Chart()}}
+\item{chart}{an Altair plot object}
 
-\item{tooltip}{\code{vega_tooltip} object to specify tooltip.
-The default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
-which will result in no tooltip displaying.}
+\item{tooltip}{\code{vega_tooltip} object to specify tooltip options -
+the default is an empty call to \code{\link[=vega_tooltip]{vega_tooltip()}},
+which will result in no tooltip being displayed}
 
-\item{width}{Fixed width for widget (in css units). The default is
-\code{NULL}, which results in intelligent automatic sizing based on the
-widget's container.}
+\item{embed}{\code{vega_embed} object to specify embedding options -
+the default is an empty call to \code{\link[=vega_embed]{vega_embed()}},
+which will result in a canvas-rendering and all actions-links being
+included}
 
-\item{height}{Fixed height for widget (in css units). The default is
-\code{NULL}, which results in intelligent automatic sizing based on the
-widget's container.}
+\item{width}{\code{integer}, if specified, the total rendered width (in pixels)
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification}
+
+\item{height}{\code{integer}, if specified, the total rendered height (in pixels)
+of the chart - valid only for single-view charts and layered charts;
+the default is to use the chart specification}
 }
 \description{
-This function renders an Altair chart as a Vega-Lite htmlwidget.
+Use this function to render a chart as an htmlwidget.
 }
 \details{
-Use this function to render a chart as an htmlwidget.
-To include a tooltip the rendering of your chart, use one of the
-\code{\link[=vega_tooltip]{vega_tooltip()}} functions as the value for the \code{tooltip} argument.
-
-Keep in mind that you can include exactly \strong{one} tooltip specification
-and exactly \strong{one} chart specification
-in a rendering; the tooltip will be applied to the entire chart,
-even if it is compound chart.
-
 This function is called \code{vegalite()} is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.
+
+To include a tooltip in your chart-rendering, use one of the
+\code{\link[=vega_tooltip]{vega_tooltip()}} functions with the \code{tooltip} argument.
+Keep in mind that you can include exactly \strong{one} tooltip specification
+and exactly \strong{one} chart specification
+in a rendering; the tooltip will be applied to the entire chart,
+even if it is a compound chart.
+
+To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} function with the
+\code{embed} argument. Its most-important options are:
+\itemize{
+\item \code{renderer}, to specify \code{"canvas"} (default) or \code{"svg"}
+\item \code{actions},  to specify action-links
+for \code{export}, \code{source}, and \code{editor}
+}
+
+If \code{actions} is \code{TRUE} (default) or \code{FALSE}, all the links
+are shown (or not). Use a named list to be more specific, see
+\code{\link[=vega_embed]{vega_embed()}} and \code{\link[=only_actions]{only_actions()}}.
+
+If \code{embed} is \code{NULL}, \code{vegalite()} sets \code{embed} to the value of
+\code{getOption("altair.embed_options")}. If that is null, the
+\href{https://github.com/vega/vega-embed#api-reference}{vega-embed}
+defaults are used.
+
+The arguments \code{width} and \code{height} are used to override the width and height
+determined using the \code{chart} specification. However, there are some
+important provisions:
+\itemize{
+\item Specifying \code{width} and \code{height} in \code{vegalite()} is
+\href{https://vega.github.io/vega-lite/docs/size.html#limitations}{effective only for single-view charts and layered charts}.
+It will not work for contatenated, faceted, or repeated charts.
+\item In the chart specification, the default interpretation of width and height
+is to describe the dimensions of the
+\strong{plotting rectangle}, not including the space used by the axes, labels,
+etc. When \code{width} and \code{height} are specified using \code{vegalite()},
+the meanings change to describe the dimensions of the \strong{entire} rendered chart,
+including axes, labels, etc.
+\item Keep in mind that the action-links are not a part of the rendered chart,
+so you may have to account for them yourself. You might expect
+the height of the action-links to be 25-30 pixels.
+}
 }
 \examples{
   plot_basic <-
@@ -49,9 +88,23 @@ Altair Python package.
     )$mark_point()
 
 \dontrun{
+  # default: no tooltips, rendered using canvas,
+  #   all action-links, chart-specification determines size
   vegalite(plot_basic)
+
+  # tooltip showing encoding variables
+  vegalite(plot_basic, tooltip = vega_tooltip_encoding())
+
+  # render using SVG
+  vegalite(plot_basic, embed = vega_embed(renderer = "svg"))
+
+  # do not include action-links
+  vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+
+  # specify dimensions of rendered-chart
+  vegalite(plot_basic, width = 300, height = 200)
 }
 }
 \seealso{
-\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}
+\link{alt}, \code{\link[=vega_tooltip]{vega_tooltip()}}, \code{\link[=vega_embed]{vega_embed()}}
 }
