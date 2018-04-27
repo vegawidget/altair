@@ -1,6 +1,6 @@
 # altair 0.1.9000
 
-* makes Vega datasets available as `vega_data` (#25)
+* makes Vega datasets available as `vega_data` (#25) 
 
 * significant changes to the rendering function `vegalite()`:
 
