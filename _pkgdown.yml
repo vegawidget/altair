@@ -3,7 +3,7 @@ template:
     bootswatch: sandstone
 
 development:
-  mode: devel
+  mode: unreleased
 
 reference:
   - title: Installation

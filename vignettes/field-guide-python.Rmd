@@ -1,5 +1,5 @@
 ---
-title: "Field-Guide to Python Issues"
+title: "Field Guide to Python Issues"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options:
@@ -13,15 +13,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
-
-* [**Python installation**](#python): installing Python
-* [**Proxies and certificates**](#proxies): letting Python know how to communicate with the world
-* [**Python environment**](#python-env)
-* [**Altair installation**](#altair): installing Altair into your Python environment
-* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
-* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
-
 There are four foundations upon which this package rests: 
 
 - the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
@@ -31,11 +22,22 @@ There are four foundations upon which this package rests:
 
 This article deals with the first two items; the [rendering article](render.html) deals with the other two.
 
-Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate. However, thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call after `install.packages()`. 
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
+
+* [**Python installation**](#python): installing Python
+* [**Proxies and certificates**](#proxies): letting Python know how to communicate with the world
+* [**Python environment**](#python-env): setting up a Python environment with a "standard" name
+* [**Altair installation**](#altair): installing Altair into your Python environment
+* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
+* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
+
+Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
+
+Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to `install_github()`. This is the focus of the [Altair installation](#altair) section, to which you can skip if you already have a working Conda environment called `"r-reticulate"`.
 
 ## Python {#python}
 
-To make installation a little easier, we recommend (until its next CRAN release) using the dev version of **reticulate**:
+We recommend (until its next CRAN release) using the dev version of **reticulate**:
 
 ```r
 # install.packages("devtools")
@@ -52,7 +54,79 @@ TODO: talk about the choice between Conda and Miniconda.
 
 ## Proxies and certificates {#proxies}
 
-Before you can *do* anything with your Conda installation, like set up a new environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall).
+Before you can *do* anything with your Conda installation, like set up a new environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall). There will be three pieces of information you may need to distribute to different places on your computer:
+
+- location of your certificate file: `/path/to/your/certificate/file.crt`
+- address of your proxy: `http://<your.proxy.ip.address>:<port>`
+- list of addresses for which proxy not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
+
+If you use a proxy, you have likely modified your `.Renviron` file to set the proxy and no-proxy variables. If you have the **usethis** package installed, it is very easy to view and edit:
+
+```r
+usethis::edit_r_environ() # it has a friend: edit_r_profile()
+```
+
+```r
+system.file("cacert.pem", package = "openssl")
+```
+
+### R settings
+
+In your `~/.Rprofile` file:
+
+```
+reticulate::use_condaenv("r-reticulate")
+```
+
+```
+# specifies addresses for which proxy is not to be used
+no_proxy = "127.0.0.1,localhost,<other.hostnames.go.here>"
+
+# specifies the proxy addresses
+https_proxy = "http://<your.proxy.ip.address>:<port>"
+http_proxy = "${https_proxy}"
+
+HTTPS_PROXY = "${https_proxy}"
+HTTP_PROXY = "${http_proxy}"
+
+# defines the path to your certificate file 
+SSL_CERT_FILE = "/path/to/your/certificate/file.crt"
+REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
+```
+
+### System settings
+
+In your `~/.bash_profile` file:
+
+```
+# specifies addresses for which proxy is not to be used
+export NO_PROXY="127.0.0.1,localhost,<other.hostnames.go.here>"
+
+# specifies the proxy addresses
+export https_proxy=http://<your.proxy.ip.address>:<port>
+export http_proxy=${https_proxy}
+
+export HTTPS_PROXY=${https_proxy}
+export HTTP_PROXY=${http_proxy}
+
+# defines the path to your certificate file 
+export SSL_CERT_FILE=/path/to/your/certificate/file.crt
+export REQUESTS_CA_BUNDLE=${SSL_CERT_FILE}
+```
+
+### Conda settings
+
+In your `~/.condarc` file:
+
+```
+# specifies addresses for which proxy is not to be used
+ssl_verify: /path/to/your/certificate/file.crt
+
+# specifies the proxy addresses
+proxy_servers:
+  http: http://<your.proxy.ip.address>:<port>
+  https: http://<your.proxy.ip.address>:<port>
+```
 
 ## Python environment {#python-env}
 
