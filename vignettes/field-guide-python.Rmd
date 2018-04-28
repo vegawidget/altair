@@ -1,5 +1,5 @@
 ---
-title: "Field guide to Python issues"
+title: "Field-Guide to Python Issues"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options:
@@ -13,26 +13,57 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this document is to try to collect in one place, in a semi-organized fashion, 
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
 
-## Reticulate
+* [**Python installation**](#python): installing Python
+* [**Proxies and certificates**](#proxies): letting Python know how to communicate with the world
+* [**Python environment**](#python-env)
+* [**Altair installation**](#altair): installing Altair into your Python environment
+* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
+* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
 
-### Proxies and certificates
+There are four foundations upon which this package rests: 
 
-## Installation
+- the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
+- the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications into HTML
+- the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
-### MacOS
+This article deals with the first two items; the [rendering article](render.html) deals with the other two.
 
-### Windows
+Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate. However, thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call after `install.packages()`. 
 
-### Linux (Ubuntu)
+## Python {#python}
 
-## Accessing objects
+To make installation a little easier, we recommend (until its next CRAN release) using the dev version of **reticulate**:
+
+```r
+# install.packages("devtools")
+devtools::install_github("rstudio/reticulate")
+```
+
+Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article.
+
+Here, we amplify some opinions adapted from RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python Installation. I have found using that using Conda for Python 3.6 works well.
+
+Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation.
+
+TODO: talk about the choice between Conda and Miniconda.
+
+## Proxies and certificates {#proxies}
+
+Before you can *do* anything with your Conda installation, like set up a new environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall).
+
+## Python environment {#python-env}
+
+## Altair Installation {#altair}
+
+## Working with Python objects {#work-work}
 
 ### Altair object
 
 ### Vega-datasets object
 
-## Odds and ends
+## Odds and ends {#odds-ends}
 
 ### Dots in variables

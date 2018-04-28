@@ -13,6 +13,7 @@
 #' in Python.
 #'
 #' @examples
+#' \dontrun{
 #'   plot_basic <-
 #'     alt$Chart(
 #'       r_to_py(vega_data$cars())
@@ -21,6 +22,7 @@
 #'       y = "Horsepower:Q",
 #'       color = "Origin:N"
 #'     )$mark_point()
+#' }
 #'
 #' @seealso [Altair Python documentation](https://altair-viz.github.io/index.html)
 #' @export alt
