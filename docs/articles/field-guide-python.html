@@ -254,7 +254,7 @@ export HTTP_PROXY=${http_proxy}</code></pre>
 <details><p><summary>Windows</summary> At a new Anaconda prompt:</p>
 <pre><code># Anaconda prompt
 conda update conda</code></pre>
-</details><details><p><summary>MacOS</summary> At a new terminal window:</p>
+</details><details><p><summary>MacOS and Linux (Ubuntu)</summary> At a new terminal window:</p>
 <pre><code># Terminal window
 conda update conda</code></pre>
 </details>
@@ -291,6 +291,12 @@ conda update conda</code></pre>
 <div id="work-work" class="section level2">
 <h2 class="hasAnchor">
 <a href="#work-work" class="anchor"></a>Working with Python objects</h2>
+<p>When <strong>reticulate</strong> returns a Python object with a custom class, it appears in R as an S3 object that <em>behaves</em> like a reference class. This means that if you see this sort of notation in Python:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Python</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">foo.bar()</a></code></pre></div>
+<p>You would use this notation in R:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">foo<span class="op">$</span><span class="kw">bar</span>()</a></code></pre></div>
 <div id="altair-object" class="section level3">
 <h3 class="hasAnchor">
 <a href="#altair-object" class="anchor"></a>Altair object</h3>

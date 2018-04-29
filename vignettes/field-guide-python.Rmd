@@ -250,7 +250,56 @@ altair::has_altair()
 
 ## Working with Python objects {#work-work}
 
+When **reticulate** returns a Python object with a custom class, it appears in R as an S3 object that *behaves* like a reference class. This means that if you see this sort of notation in Python:
+
+```python
+# Python
+foo.bar()
+```
+
+You would use this notation in R:
+
+```r
+foo$bar()
+```
+
+In essence, you wherever you see a `.` in Python, use a `$` in R.
+
 ### Altair object
+
+In Python, Altair methods return a copy of the object:
+
+```{r}
+library("pryr")
+
+chart_old <-
+  alt$Chart(
+    r_to_py(vega_data$data$cars())
+  )$encode(
+    x = "Miles_per_Gallon:Q",
+    y = "Horsepower:Q",
+    color = "Origin:N"
+  )
+
+chart_new <- chart_old$mark_point()
+
+address(chart_new) == address(chart_old)
+```
+So far, so good: the 
+
+```{r}
+chart_new <- chart_old
+
+address(chart_new) == address(chart_old)
+```
+
+Use a copy method.
+
+```{r}
+chart_new <- chart_old$copy()
+
+address(chart_new) == address(chart_old)
+```
 
 ### Vega-datasets object
 
