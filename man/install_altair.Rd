@@ -24,10 +24,34 @@ or \code{\link[=virtualenv_install]{virtualenv_install()}}.}
 invisible \code{NULL}, called for side-effects
 }
 \description{
-Install Altair Python package
+This function wraps \code{\link[reticulate:py_install]{reticulate::py_install()}} to provide a straightforward,
+consistent method to install the Altair Python package.
+}
+\details{
+This package uses the \link[reticulate:reticulate]{reticulate} package
+to make an interface with the \href{https://altair-viz.github.io/index.html}{Altair}
+Python package. To promote consistency in usage of \strong{reticulate} among
+different R packages, it is
+\href{https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies}{recommended}
+to use a common Python environment, called \code{"r-reticulate"}.
+
+If you have a Conda installation, you can create this environment using
+\code{\link[reticulate:conda_install]{reticulate::conda_install()}}, as described in this
+\href{https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation}{reticulate article},
+or in this package's \href{https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env}{Field-Guide to Python Issues}.
+
+At present, version 2 of the Altair Python package is available as a
+release candidtate on PyPi, so it can be installed using \code{pip}.
+This function will use \code{pip} to install \code{altair==2.0.0rc2}
+into your \code{"r-reticulate"} Python environment.
 }
 \examples{
 \dontrun{
   install_altair()
 }
+}
+\seealso{
+\href{https://rstudio.github.io/reticulate/articles/package.html}{Using reticulate in an R Package},
+\href{https://rstudio.github.io/reticulate/articles/python_packages.html}{reticulate: Installing Python Packages},
+\href{https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env}{altiar: Field-Guide to Python Issues}
 }
