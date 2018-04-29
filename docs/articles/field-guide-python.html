@@ -197,8 +197,8 @@ NO_PROXY : 127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;
 HTTP_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
 HTTPS_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
 <p>By setting these variables here, both your R session and any Python session will have access to the information they will need.</p>
-</details><details><p><summary>MacOS</summary></p>
-<p>On MacOS, we need to set this information in two places (I know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
+</details><details><p><summary>MacOS and Linux (Ubuntu)</summary></p>
+<p>On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
 <p>The customary way to set environmen-variables for R is to add variables to your <code>.Renviron</code> file; add and adapt the following lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># .Renviron
 
@@ -218,8 +218,9 @@ http_proxy = "${https_proxy}"
 
 HTTPS_PROXY = "${https_proxy}"
 HTTP_PROXY = "${http_proxy}"</code></pre>
-<p>On MacOS, your <code>~/.bash_profile</code> file acts in a similar way as <code>.Renviron</code>, but the syntax is just a little different. Using your favorite text editor, find and edit your <code>.bash_profile</code>, adding and adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
-<pre><code># MacOS .bash_profile
+<p>On MacOS, your <code>~/.bash_profile</code> file acts in a similar way as <code>.Renviron</code>, but the syntax is just a little different. On Ubuntu Linux, this file is called <code>~/.bashrc</code> - you may have to determine this name for your particular flavor of Linux.</p>
+<p>Using your favorite text editor, find and edit your <code>.bash_profile</code> (or <code>.bashrc</code>), adding and adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
+<pre><code># MacOS .bash_profile, Ubuntu .bashrc
 
 # path to a certificate file 
 export SSL_CERT_FILE=&lt;/path/to/your/certificate/file.crt&gt;

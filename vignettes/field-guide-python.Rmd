@@ -107,9 +107,9 @@ By setting these variables here, both your R session and any Python session will
 </details>
 
 <details>
-<summary>MacOS</summary>
+<summary>MacOS and Linux (Ubuntu)</summary>
 
-On MacOS, we need to set this information in two places (I know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
+On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
 
 The customary way to set environmen-variables for R is to add variables to your `.Renviron` file; add and adapt the following lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
@@ -134,10 +134,12 @@ HTTPS_PROXY = "${https_proxy}"
 HTTP_PROXY = "${http_proxy}"
 ```
 
-On MacOS, your `~/.bash_profile` file acts in a similar way as `.Renviron`, but the syntax is just a little different. Using your favorite text editor, find and edit your `.bash_profile`, adding and adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+On MacOS, your `~/.bash_profile` file acts in a similar way as `.Renviron`, but the syntax is just a little different. On Ubuntu Linux, this file is called `~/.bashrc` - you may have to determine this name for your particular flavor of Linux.
+
+Using your favorite text editor, find and edit your `.bash_profile` (or `.bashrc`), adding and adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
 ```
-# MacOS .bash_profile
+# MacOS .bash_profile, Ubuntu .bashrc
 
 # path to a certificate file 
 export SSL_CERT_FILE=</path/to/your/certificate/file.crt>
@@ -186,7 +188,7 @@ conda update conda
 </details>
 
 <details>
-<summary>MacOS</summary>
+<summary>MacOS and Linux (Ubuntu)</summary>
 At a new terminal window:
 ```
 # Terminal window
