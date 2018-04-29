@@ -13,6 +13,9 @@
 #' @export
 #'
 install_altair <- function(method = "auto", conda = "auto", pip = TRUE, ...) {
+
+  # TODO: check version of reticulate
+
   reticulate::py_install(
     "altair==2.0.0rc2",
     method = method,

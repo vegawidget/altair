@@ -59,5 +59,5 @@ vega_data <- NULL
 
 .onLoad <- function(libname, pkgname) {
   alt <<- reticulate::import("altair", delay_load = TRUE)
-  vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)$data
+  # vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)$data
 }
