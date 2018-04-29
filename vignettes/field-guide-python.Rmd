@@ -17,7 +17,7 @@ There are four foundations upon which this package rests:
 
 - the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
 - the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
-- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications into HTML
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
 This article deals with the first two items; the [rendering article](render.html) deals with the other two.
@@ -33,7 +33,7 @@ The purpose of this document is to try to collect in one place, in a semi-organi
 
 Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
 
-Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to `install_github()`. This is the focus of the [Altair installation](#altair) section, to which you can skip if you already have a working Conda environment called `"r-reticulate"`.
+Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing an R package. This is the focus of the [Altair installation](#altair) section, to which you can skip if you already have a working Conda environment called `"r-reticulate"`.
 
 ## Python {#python}
 
@@ -46,7 +46,7 @@ devtools::install_github("rstudio/reticulate")
 
 Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article.
 
-Here, we amplify some opinions adapted from RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python Installation. I have found using that using Conda for Python 3.6 works well.
+Here, we amplify some opinions adapted from RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
 
 Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation.
 
@@ -54,51 +54,87 @@ TODO: talk about the choice between Conda and Miniconda.
 
 ## Proxies and certificates {#proxies}
 
-Before you can *do* anything with your Conda installation, like set up a new environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall). There will be three pieces of information you may need to distribute to different places on your computer:
+Before you can *do* anything with your Conda installation, like set up a new Conda environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall). There is some information you may need to distribute to different places on your computer. Please note that the angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
-- location of your certificate file: `/path/to/your/certificate/file.crt`
+- location of a valid certificate file: `</path/to/your/certificate/file.crt>`
+
+Additionally, if you work behind a firewall:
+
 - address of your proxy: `http://<your.proxy.ip.address>:<port>`
 - list of addresses for which proxy not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
 
-If you use a proxy, you have likely modified your `.Renviron` file to set the proxy and no-proxy variables. If you have the **usethis** package installed, it is very easy to view and edit:
-
-```r
-usethis::edit_r_environ() # it has a friend: edit_r_profile()
-```
+If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the **httr** package installed, it will use the certificate file associated with the **openssl** package. You can determine the location of this certificate file by using:
 
 ```r
 system.file("cacert.pem", package = "openssl")
 ```
 
-### R settings
+At this point, note this location and move ahead to [**R settings**](#r-settings).
 
-In your `~/.Rprofile` file:
+### Working behind a firewall
+
+If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called [develop-behind-proxy](https://smarie.github.io/develop-behind-proxy/), from which we take some inspiration. 
+
+It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers [some advice](https://smarie.github.io/develop-behind-proxy/know_your_proxy/) to find this certificate bundle, or you can ask your IT department for its location.
+
+If you use a proxy, you have likely modified your `.Renviron` file to set your proxy and no-proxy variables. If you have the **usethis** package installed, it can be very easy to find and open: `usethis::edit_r_environ()`.
+
+If you have your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.
+
+### R settings {#r-settings}
+
+Even though things may already be set up on your computer to use R to access the internet, there are a some things we should set to make it easier for **reticulate** to work with its Python environment. As best as I can tell, when **reticulate** launches its Python, its Python environment inherits environment variables from R. 
+
+Accordingly, we should set some variables in `.Renviron` for this Python environment to use (you may have some of these set already). Add and adapt the following lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
 ```
-reticulate::use_condaenv("r-reticulate")
-```
+# .Renviron
 
-```
-# specifies addresses for which proxy is not to be used
-no_proxy = "127.0.0.1,localhost,<other.hostnames.go.here>"
+# path to a certificate file 
+SSL_CERT_FILE = "</path/to/your/certificate/file.crt>"
+REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
 
-# specifies the proxy addresses
+# --------------------------------------
+# continue if you work behind a firewall
+
+# proxy addresses
 https_proxy = "http://<your.proxy.ip.address>:<port>"
-http_proxy = "${https_proxy}"
+http_proxy = "${https_proxy}" 
 
 HTTPS_PROXY = "${https_proxy}"
 HTTP_PROXY = "${http_proxy}"
 
-# defines the path to your certificate file 
-SSL_CERT_FILE = "/path/to/your/certificate/file.crt"
-REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
+# addresses for which proxy is not to be used
+no_proxy = "127.0.0.1,localhost,<other.hostnames.go.here>"
 ```
+
+Although you may not yet have set up a Conda environment, this may be a good time to tell **reticulate** which Python environment to use. For use with **reticulate**, RStudio [recommend] using a Python environment called `"r-reticulate"`. If you are using Conda, we recommend that you add this line to your `.Rprofile` (`usethis::edit_r_profile()` can be useful). 
+
+```
+# .Rprofile
+reticulate::use_condaenv("r-reticulate")
+```
+
+Of course, you should restart your R session to let your new settings take effect.
 
 ### System settings
 
-In your `~/.bash_profile` file:
+To diagnose problems, it can be useful to access Python from your command-line. In this case, Python will need to get its environment variables from the system itself. How to set these, as you can imagine, depends on your system.
+
+#### MacOS
+
+The file `~/.bash_profile` acts in a similar way as `.Renviron`, but the syntax is just a little different. Using your favorite text editor, find and edit your `.bash_profile`, adding and adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
 ```
+# MacOS .bash_profile
+
+# path to a certificate file 
+export SSL_CERT_FILE=</path/to/your/certificate/file.crt>
+export REQUESTS_CA_BUNDLE=${SSL_CERT_FILE}
+
+# --------------------------------------
+# continue if you work behind a firewall
+
 # specifies addresses for which proxy is not to be used
 export NO_PROXY="127.0.0.1,localhost,<other.hostnames.go.here>"
 
@@ -108,27 +144,50 @@ export http_proxy=${https_proxy}
 
 export HTTPS_PROXY=${https_proxy}
 export HTTP_PROXY=${http_proxy}
-
-# defines the path to your certificate file 
-export SSL_CERT_FILE=/path/to/your/certificate/file.crt
-export REQUESTS_CA_BUNDLE=${SSL_CERT_FILE}
 ```
 
-### Conda settings
+A new terminal window will have access to these settings.
 
-In your `~/.condarc` file:
+#### Windows
+
+In Windows, the customary way to set or change environment variables is to use `Control Panel\All Control Panel Items\System` then "Advanced System Settings" and "Environment Variables". This may vary according to your version of Windows. I would set each of these variables to values, adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
 ```
-# specifies addresses for which proxy is not to be used
-ssl_verify: /path/to/your/certificate/file.crt
+# Windows environment variables
+# 
+# Varaible : Value
 
-# specifies the proxy addresses
-proxy_servers:
-  http: http://<your.proxy.ip.address>:<port>
-  https: http://<your.proxy.ip.address>:<port>
+SSL_CERT_FILE : </path/to/your/certificate/file.crt>
+REQUESTS_CA_BUNDLE: </path/to/your/certificate/file.crt>
+
+# --------------------------------------
+# continue if you work behind a firewall
+
+NO_PROXY : 127.0.0.1,localhost,<other.hostnames.go.here>
+
+HTTP_PROXY : http://<your.proxy.ip.address>:<port>
+HTTPS_PROXY : http://<your.proxy.ip.address>:<port>
+```
+
+Close out of your system-settings window and open an "Anaconda prompt". If all is well, you will be able to update your Conda installation:
+
+```
+# Anaconda prompt
+
+conda update conda
 ```
 
 ## Python environment {#python-env}
+
+Once you have Conda installed, and you are able to successfully update it from the Conda prompt (`conda update conda`), create a Conda environment called `"r-reticulate"`. 
+
+One way to do this is from an R command-prompt:
+
+```r
+reticulate::conda_create("r-reticulate")
+```
+
+This should "just work".
 
 ## Altair Installation {#altair}
 
