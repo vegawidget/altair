@@ -24,44 +24,29 @@ This article deals with the first two items; the [rendering article](render.html
 
 The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
 
+* [**Proxies and certificates**](#proxies): letting your computer know how to communicate with the world
 * [**Python installation**](#python): installing Python
-* [**Proxies and certificates**](#proxies): letting Python know how to communicate with the world
 * [**Python environment**](#python-env): setting up a Python environment with a "standard" name
 * [**Altair installation**](#altair): installing Altair into your Python environment
 * [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
 * [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
 
-Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
+To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
 
-Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing an R package. This is the focus of the [Altair installation](#altair) section, to which you can skip if you already have a working Conda environment called `"r-reticulate"`.
-
-## Python {#python}
-
-We recommend (until its next CRAN release) using the dev version of **reticulate**:
-
-```r
-# install.packages("devtools")
-devtools::install_github("rstudio/reticulate")
-```
-
-Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article.
-
-Here, we amplify some opinions adapted from RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
-
-Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation.
-
-TODO: talk about the choice between Conda and Miniconda.
+Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing the R package. This is the focus of the [**Altair installation**](#altair) section, to which you can skip if you already have a working Python (Conda recommended) environment called `"r-reticulate"`.
 
 ## Proxies and certificates {#proxies}
 
-Before you can *do* anything with your Conda installation, like set up a new Conda environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall). There is some information you may need to distribute to different places on your computer. Please note that the angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that infomation to different places on your computer:
 
 - location of a valid certificate file: `</path/to/your/certificate/file.crt>`
 
 Additionally, if you work behind a firewall:
 
 - address of your proxy: `http://<your.proxy.ip.address>:<port>`
-- list of addresses for which proxy not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
+- list of addresses for which your proxy is not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
+
+Please note that the angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
 If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the **httr** package installed, it will use the certificate file associated with the **openssl** package. You can determine the location of this certificate file by using:
 
@@ -69,7 +54,7 @@ If you do not work behind a firewall, you need only determine the location of a 
 system.file("cacert.pem", package = "openssl")
 ```
 
-At this point, note this location and move ahead to [**R settings**](#r-settings).
+At this point, you can note this location and move ahead to [**Managing your settings**](#manage-settings).
 
 ### Working behind a firewall
 
@@ -77,11 +62,27 @@ If you work behind a firewall, it may be a little trickier to find your certific
 
 It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers [some advice](https://smarie.github.io/develop-behind-proxy/know_your_proxy/) to find this certificate bundle, or you can ask your IT department for its location.
 
-If you use a proxy, you have likely modified your `.Renviron` file to set your proxy and no-proxy variables. If you have the **usethis** package installed, it can be very easy to find and open: `usethis::edit_r_environ()`.
+Your proxy is likely set using environment variables, named some combination of:
 
-If you have your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.
+ - `http_proxy`, `https_proxy`, `no_proxy`, `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`
 
-### R settings {#r-settings}
+If you are using Windows, your proxy information may be set using your system's environment variables, in which case you may not need to do anything more. 
+
+It is also possible that you use your `.Renviron` file to set your proxy and no-proxy variables. If you have the **usethis** package installed, it can be very easy to find and open: `usethis::edit_r_environ()`.
+
+Once you have noted your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.
+
+### Managing your settings {#manage-settings}
+
+Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it.
+
+#### Windows
+
+#### MacOS
+
+#### Linux
+
+### R settings 
 
 Even though things may already be set up on your computer to use R to access the internet, there are a some things we should set to make it easier for **reticulate** to work with its Python environment. As best as I can tell, when **reticulate** launches its Python, its Python environment inherits environment variables from R. 
 
@@ -168,6 +169,23 @@ NO_PROXY : 127.0.0.1,localhost,<other.hostnames.go.here>
 HTTP_PROXY : http://<your.proxy.ip.address>:<port>
 HTTPS_PROXY : http://<your.proxy.ip.address>:<port>
 ```
+
+
+## Python {#python}
+
+We recommend (until its next CRAN release) using the dev version of **reticulate**:
+
+```r
+# install.packages("devtools")
+devtools::install_github("rstudio/reticulate")
+```
+
+Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article.
+
+Here, we amplify some opinions adapted from RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
+
+Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.
+
 
 Close out of your system-settings window and open an "Anaconda prompt". If all is well, you will be able to update your Conda installation:
 

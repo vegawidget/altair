@@ -103,7 +103,7 @@
     <div class="page-header toc-ignore">
       <h1>Field Guide to Python Issues</h1>
             
-            <h4 class="date">2018-04-28</h4>
+            <h4 class="date">2018-04-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/field-guide-python.Rmd"><code>vignettes/field-guide-python.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-python.Rmd</code></div>
@@ -123,9 +123,9 @@
 <p>The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:</p>
 <ul>
 <li>
-<a href="#python"><strong>Python installation</strong></a>: installing Python</li>
+<a href="#proxies"><strong>Proxies and certificates</strong></a>: letting your computer know how to communicate with the world</li>
 <li>
-<a href="#proxies"><strong>Proxies and certificates</strong></a>: letting Python know how to communicate with the world</li>
+<a href="#python"><strong>Python installation</strong></a>: installing Python</li>
 <li>
 <a href="#python-env"><strong>Python environment</strong></a>: setting up a Python environment with a “standard” name</li>
 <li>
@@ -135,23 +135,12 @@
 <li>
 <a href="#odds-ends"><strong>Odds and ends</strong></a>: weird bits that don’t fit anywhere else</li>
 </ul>
-<p>Just to be clear, there is a bit of hassle in setting up Python to use your first R-package that uses reticulate. Getting to this point is the focus of the first three sections of this document.</p>
-<p>Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing an R package. This is the focus of the <a href="#altair">Altair installation</a> section, to which you can skip if you already have a working Conda environment called <code>"r-reticulate"</code>.</p>
-<div id="python" class="section level2">
-<h2 class="hasAnchor">
-<a href="#python" class="anchor"></a>Python</h2>
-<p>We recommend (until its next CRAN release) using the dev version of <strong>reticulate</strong>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"rstudio/reticulate"</span>)</a></code></pre></div>
-<p>Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html"><em>Installing Python Packages</em></a> article.</p>
-<p>Here, we amplify some opinions adapted from RStudio. Because <a href="https://conda.io/docs/">Conda</a> is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.</p>
-<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html">Conda installation instructions</a> to suit your particular situation.</p>
-<p>TODO: talk about the choice between Conda and Miniconda.</p>
-</div>
+<p>To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate. Getting to this point is the focus of the first three sections of this document.</p>
+<p>Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing the R package. This is the focus of the <a href="#altair">Altair installation</a> section, to which you can skip if you already have a working Python (Conda recommended) environment called <code>"r-reticulate"</code>.</p>
 <div id="proxies" class="section level2">
 <h2 class="hasAnchor">
 <a href="#proxies" class="anchor"></a>Proxies and certificates</h2>
-<p>Before you can <em>do</em> anything with your Conda installation, like set up a new Conda environment, you may need to sort out some issues with certificates (and proxies, if you work behind a firewall). There is some information you may need to distribute to different places on your computer. Please note that the angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
+<p>This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that infomation to different places on your computer:</p>
 <ul>
 <li>location of a valid certificate file: <code>&lt;/path/to/your/certificate/file.crt&gt;</code>
 </li>
@@ -160,19 +149,44 @@
 <ul>
 <li>address of your proxy: <code>http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code>
 </li>
-<li>list of addresses for which proxy not to be used: <code>127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;</code>
+<li>list of addresses for which your proxy is not to be used: <code>127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;</code>
 </li>
 </ul>
+<p>Please note that the angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <p>If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the <strong>httr</strong> package installed, it will use the certificate file associated with the <strong>openssl</strong> package. You can determine the location of this certificate file by using:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">system.file</span>(<span class="st">"cacert.pem"</span>, <span class="dt">package =</span> <span class="st">"openssl"</span>)</a></code></pre></div>
-<p>At this point, note this location and move ahead to <a href="#r-settings"><strong>R settings</strong></a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">system.file</span>(<span class="st">"cacert.pem"</span>, <span class="dt">package =</span> <span class="st">"openssl"</span>)</a></code></pre></div>
+<p>At this point, you can note this location and move ahead to <a href="#manage-settings"><strong>Managing your settings</strong></a>.</p>
 <div id="working-behind-a-firewall" class="section level3">
 <h3 class="hasAnchor">
 <a href="#working-behind-a-firewall" class="anchor"></a>Working behind a firewall</h3>
 <p>If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called <a href="https://smarie.github.io/develop-behind-proxy/">develop-behind-proxy</a>, from which we take some inspiration.</p>
 <p>It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers <a href="https://smarie.github.io/develop-behind-proxy/know_your_proxy/">some advice</a> to find this certificate bundle, or you can ask your IT department for its location.</p>
-<p>If you use a proxy, you have likely modified your <code>.Renviron</code> file to set your proxy and no-proxy variables. If you have the <strong>usethis</strong> package installed, it can be very easy to find and open: <code><a href="http://www.rdocumentation.org/packages/usethis/topics/edit">usethis::edit_r_environ()</a></code>.</p>
-<p>If you have your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.</p>
+<p>Your proxy is likely set using environment variables named some combination of:</p>
+<ul>
+<li>
+<code>http_proxy</code>, <code>https_proxy</code>, <code>no_proxy</code>, <code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, <code>NO_PROXY</code>
+</li>
+</ul>
+<p>If you are using Windows, your proxy information may be set using your system’s environment variables, in which case you may not need to do anything more.</p>
+<p>It is also possible that you use your <code>.Renviron</code> file to set your proxy and no-proxy variables. If you have the <strong>usethis</strong> package installed, it can be very easy to find and open: <code><a href="http://www.rdocumentation.org/packages/usethis/topics/edit">usethis::edit_r_environ()</a></code>.</p>
+<p>Once you have noted your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.</p>
+</div>
+<div id="manage-settings" class="section level3">
+<h3 class="hasAnchor">
+<a href="#manage-settings" class="anchor"></a>Managing your settings</h3>
+<p>Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it.</p>
+<div id="windows" class="section level4">
+<h4 class="hasAnchor">
+<a href="#windows" class="anchor"></a>Windows</h4>
+</div>
+<div id="macos" class="section level4">
+<h4 class="hasAnchor">
+<a href="#macos" class="anchor"></a>MacOS</h4>
+</div>
+<div id="linux" class="section level4">
+<h4 class="hasAnchor">
+<a href="#linux" class="anchor"></a>Linux</h4>
+</div>
 </div>
 <div id="r-settings" class="section level3">
 <h3 class="hasAnchor">
@@ -206,11 +220,11 @@ reticulate::use_condaenv("r-reticulate")</a></code></pre>
 <h3 class="hasAnchor">
 <a href="#system-settings" class="anchor"></a>System settings</h3>
 <p>To diagnose problems, it can be useful to access Python from your command-line. In this case, Python will need to get its environment variables from the system itself. How to set these, as you can imagine, depends on your system.</p>
-<div id="macos" class="section level4">
+<div id="macos-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#macos" class="anchor"></a>MacOS</h4>
+<a href="#macos-1" class="anchor"></a>MacOS</h4>
 <p>The file <code>~/.bash_profile</code> acts in a similar way as <code>.Renviron</code>, but the syntax is just a little different. Using your favorite text editor, find and edit your <code>.bash_profile</code>, adding and adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
-<pre><code># MacOS .bash_profile.
+<pre><code># MacOS .bash_profile
 
 # path to a certificate file 
 export SSL_CERT_FILE=&lt;/path/to/your/certificate/file.crt&gt;
@@ -230,9 +244,9 @@ export HTTPS_PROXY=${https_proxy}
 export HTTP_PROXY=${http_proxy}</code></pre>
 <p>A new terminal window will have access to these settings.</p>
 </div>
-<div id="windows" class="section level4">
+<div id="windows-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#windows" class="anchor"></a>Windows</h4>
+<a href="#windows-1" class="anchor"></a>Windows</h4>
 <p>In Windows, the customary way to set or change environment variables is to use <code>Control Panel\All Control Panel Items\System</code> then “Advanced System Settings” and “Environment Variables”. This may vary according to your version of Windows. I would set each of these variables to values, adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># Windows environment variables
 # 
@@ -248,28 +262,30 @@ NO_PROXY : 127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;
 
 HTTP_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
 HTTPS_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="python" class="section level2">
+<h2 class="hasAnchor">
+<a href="#python" class="anchor"></a>Python</h2>
+<p>We recommend (until its next CRAN release) using the dev version of <strong>reticulate</strong>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"rstudio/reticulate"</span>)</a></code></pre></div>
+<p>Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html"><em>Installing Python Packages</em></a> article.</p>
+<p>Here, we amplify some opinions adapted from RStudio. Because <a href="https://conda.io/docs/">Conda</a> is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.</p>
+<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
 <p>Close out of your system-settings window and open an “Anaconda prompt”. If all is well, you will be able to update your Conda installation:</p>
 <pre><code># Anaconda prompt
 
 conda update conda</code></pre>
 </div>
-</div>
-<div id="conda-settings" class="section level3">
-<h3 class="hasAnchor">
-<a href="#conda-settings" class="anchor"></a>Conda settings</h3>
-<p>In your <code>~/.condarc</code> file:</p>
-<pre><code># specifies addresses for which proxy is not to be used
-ssl_verify: /path/to/your/certificate/file.crt
-
-# specifies the proxy addresses
-proxy_servers:
-  http: http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
-  https: http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
-</div>
-</div>
 <div id="python-env" class="section level2">
 <h2 class="hasAnchor">
 <a href="#python-env" class="anchor"></a>Python environment</h2>
+<p>Once you have Conda installed, and you are able to successfully update it from the Conda prompt (<code>conda update conda</code>), create a Conda environment called <code>"r-reticulate"</code>.</p>
+<p>One way to do this is from an R command-prompt:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/reticulate/topics/conda-tools">conda_create</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
+<p>This should “just work”.</p>
 </div>
 <div id="altair" class="section level2">
 <h2 class="hasAnchor">
@@ -302,8 +318,8 @@ proxy_servers:
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#python">Python</a></li>
-      <li><a href="#proxies">Proxies and certificates</a></li>
+<li><a href="#proxies">Proxies and certificates</a></li>
+      <li><a href="#python">Python</a></li>
       <li><a href="#python-env">Python environment</a></li>
       <li><a href="#altair">Altair Installation</a></li>
       <li><a href="#work-work">Working with Python objects</a></li>

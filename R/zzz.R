@@ -40,17 +40,17 @@ alt <- NULL
 #'
 #' @examples
 #' # To list available datasets
-#' vega_data$list_datasets()
+#' vega_data$data$list_datasets()
 #'
 #' # When accessing a dataset, substitute any "-" in the name with a "_"
-#' head(vega_data$sf_temps())
+#' head(vega_data$data$sf_temps())
 #'
 #' # Metadata are available for each dataset:
-#' vega_data$sf_temps$description
-#' vega_data$sf_temps$url
+#' vega_data$data$sf_temps$description
+#' vega_data$data$sf_temps$url
 #'
 #' # For local datasets, local path is available
-#' vega_data$sf_temps$filepath
+#' vega_data$data$sf_temps$filepath
 #'
 #' @seealso [Vega datasets documentation](https://github.com/altair-viz/vega_datasets)
 #' @export vega_data
@@ -59,5 +59,5 @@ vega_data <- NULL
 
 .onLoad <- function(libname, pkgname) {
   alt <<- reticulate::import("altair", delay_load = TRUE)
-  # vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)$data
+  vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)
 }
