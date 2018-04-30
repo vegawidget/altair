@@ -285,7 +285,9 @@ chart_new <- chart_old$mark_point()
 
 address(chart_new) == address(chart_old)
 ```
-So far, so good: the 
+So far, so good: the two charts have different memory addresses. This suggests that Altair methods use copy-on-modify semantics, as we are used-to in R.
+
+Let's try an assignment:
 
 ```{r}
 chart_new <- chart_old
@@ -293,13 +295,17 @@ chart_new <- chart_old
 address(chart_new) == address(chart_old)
 ```
 
-Use a copy method.
+Yikes! It looks like assignment of Altair objects (and perhaps, be extension, Pyhton objects) return a reference, rather than a copy, which we are not used-to in R.
+
+To get the the behavior we are used-to, use a copy method.
 
 ```{r}
 chart_new <- chart_old$copy()
 
 address(chart_new) == address(chart_old)
 ```
+
+As we might expect.
 
 ### Vega-datasets object
 

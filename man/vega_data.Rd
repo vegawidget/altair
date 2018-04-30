@@ -8,9 +8,6 @@
 \usage{
 vega_data
 }
-\arguments{
-\item{...}{not used}
-}
 \description{
 Uses the reticulate framework to access the \code{vega_datasets} Python
 package.
