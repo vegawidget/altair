@@ -13,6 +13,7 @@
 #' in Python.
 #'
 #' @examples
+#' \dontrun{
 #'   plot_basic <-
 #'     alt$Chart(
 #'       r_to_py(vega_data$cars())
@@ -21,6 +22,7 @@
 #'       y = "Horsepower:Q",
 #'       color = "Origin:N"
 #'     )$mark_point()
+#' }
 #'
 #' @seealso [Altair Python documentation](https://altair-viz.github.io/index.html)
 #' @export alt
@@ -34,28 +36,32 @@ alt <- NULL
 #'
 #' Some data are available locally, others require an internet connection.
 #'
-#' @param ... not used
+# @param ... not used
 #'
 #' @examples
 #' # To list available datasets
-#' vega_data$list_datasets()
+#' vega_data$data$list_datasets()
 #'
 #' # When accessing a dataset, substitute any "-" in the name with a "_"
-#' head(vega_data$sf_temps())
+#' head(vega_data$data$sf_temps())
 #'
 #' # Metadata are available for each dataset:
-#' vega_data$sf_temps$description
-#' vega_data$sf_temps$url
+#' vega_data$data$sf_temps$description
+#' vega_data$data$sf_temps$url
 #'
 #' # For local datasets, local path is available
-#' vega_data$sf_temps$filepath
+#' vega_data$data$sf_temps$filepath
 #'
 #' @seealso [Vega datasets documentation](https://github.com/altair-viz/vega_datasets)
 #' @export vega_data
 #'
 vega_data <- NULL
+#scipy <- NULL
+#stats <- NULL
 
 .onLoad <- function(libname, pkgname) {
   alt <<- reticulate::import("altair", delay_load = TRUE)
-  vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)$data
+  vega_data <<- reticulate::import("vega_datasets", delay_load = TRUE)
+#  scipy <<- reticulate::import("scipy", delay_load = TRUE)
+#  stats <<- reticulate::import("scipy.stats", delay_load = TRUE)
 }

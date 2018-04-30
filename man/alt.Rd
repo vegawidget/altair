@@ -21,6 +21,7 @@ In this package, use the \code{$} operator wherever you see the \code{.} operato
 in Python.
 }
 \examples{
+\dontrun{
   plot_basic <-
     alt$Chart(
       r_to_py(vega_data$cars())
@@ -29,6 +30,7 @@ in Python.
       y = "Horsepower:Q",
       color = "Origin:N"
     )$mark_point()
+}
 
 }
 \seealso{

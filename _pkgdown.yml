@@ -3,13 +3,14 @@ template:
     bootswatch: sandstone
 
 development:
-  mode: devel
+  mode: unreleased
 
 reference:
   - title: Installation
     desc: >
       Functions to help install the Python Altair library
     contents:
+      - install_altair
       - has_altair
   - title: Charts
     desc: >
@@ -27,7 +28,7 @@ reference:
       - add_field
   - title: Examining and Rendering
     desc: >
-      Functions for examining chart-, embedding-, and tooltip-specifications,
+      Functions for examining specifications,
       and for rendering them into htmlwidgets
     contents:
       - examine
