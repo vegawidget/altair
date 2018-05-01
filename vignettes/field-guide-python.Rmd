@@ -270,11 +270,14 @@ In essence, you wherever you see a `.` in Python, use a `$` in R.
 In Python, Altair methods return a copy of the object:
 
 ```{r}
+library("altair")
 library("pryr")
+
+vega_data <- import_vega_data()
 
 chart_old <-
   alt$Chart(
-    r_to_py(vega_data$data$cars())
+    r_to_py(vega_data$cars())
   )$encode(
     x = "Miles_per_Gallon:Q",
     y = "Horsepower:Q",
@@ -285,7 +288,7 @@ chart_new <- chart_old$mark_point()
 
 address(chart_new) == address(chart_old)
 ```
-So far, so good: the two charts have different memory addresses. This suggests that Altair methods use copy-on-modify semantics, as we are used-to in R.
+To confirm this we note that the two charts have different memory addresses. This suggests that Altair methods return a copy of the object; it *looks* like a reference-class method, but it *acts* like an S3 method.
 
 Let's try an assignment:
 
@@ -295,9 +298,7 @@ chart_new <- chart_old
 address(chart_new) == address(chart_old)
 ```
 
-Yikes! It looks like assignment of Altair objects (and perhaps, be extension, Pyhton objects) return a reference, rather than a copy, which we are not used-to in R.
-
-To get the the behavior we are used-to, use a copy method.
+It seems that an assignment of an Altair object (and perhaps, by extension, Pyhton objects) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
 
 ```{r}
 chart_new <- chart_old$copy()
@@ -305,10 +306,43 @@ chart_new <- chart_old$copy()
 address(chart_new) == address(chart_old)
 ```
 
-As we might expect.
-
 ### Vega-datasets object
+
+There will be more said in the article:
+
+```{r}
+iris_url <- vega_data$iris$url
+
+chart_iris <- 
+  alt$Chart(iris_url)$
+  encode(
+    x = "sepalWidth:Q",
+    y = "sepalLength:Q",
+    color = "species:N"
+  )$
+  mark_point()
+
+vegalite(chart_iris)
+```
+
+This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
 
 ## Odds and ends {#odds-ends}
 
 ### Dots in variables
+
+If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
+
+```{r iris}
+chart_iris <- 
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "[Sepal.Width]:Q",
+    y = "[Sepal.Length]:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+vegalite(chart_iris)
+```
+

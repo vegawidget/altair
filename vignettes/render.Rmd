@@ -26,6 +26,8 @@ In this article, we will render a chart a bunch of different ways, each highligh
 library("altair")
 library("tibble")
 
+vega_data <- import_vega_data()
+
 cars <- vega_data$cars()
 
 base_chart <- 
