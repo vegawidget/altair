@@ -41,7 +41,8 @@ Imports:
     rlang (>= 0.1.2),
     assertthat,
     magrittr,
-    jsonlite
+    jsonlite,
+    utils
 Suggests:
     httr,
     rprojroot,
