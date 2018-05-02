@@ -21,9 +21,9 @@ knitr::opts_chunk$set(
 
 # altair
 
-The goal of altair is to help you build [Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the [reticulate](https://rstudio.github.io/reticulate) package, it provides an interface to the [Altair](https://altair-viz.github.io) Python library. This approach is different from efforts to build a native R interface to Vega-Lite, by Bob Rudis ([\@hrbrmstr](https://github.com/hrbrmstr)) and coworkers: the  [vegalite](https://github.com/hrbrmstr/vegalite) package, which has inspired this effort.
+The goal of altair is to help you build [Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the [reticulate](https://rstudio.github.io/reticulate) package, it provides an interface to the [Altair](https://altair-viz.github.io) Python package. This approach is different from efforts to build a native R interface to Vega-Lite, by Bob Rudis ([\@hrbrmstr](https://github.com/hrbrmstr)) and coworkers: the  [vegalite](https://github.com/hrbrmstr/vegalite) package, which has inspired this effort.
 
-In this documentation, the capitalized word **Altair** shall refer to the Python API; the lower-case word **altair** shall refer to this R package.
+In this documentation, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
 
 ## Installation
 
