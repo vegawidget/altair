@@ -10,10 +10,12 @@
 #' [Altair Python documentation](https://altair-viz.github.io/index.html).
 #'
 #' In this package, use the `$` operator wherever you see the `.` operator
-#' in Python.
+#' used in Python.
 #'
 #' @examples
 #' \dontrun{
+#'   vega_data <- import_vega_data()
+#'
 #'   plot_basic <-
 #'     alt$Chart(
 #'       r_to_py(vega_data$cars())
