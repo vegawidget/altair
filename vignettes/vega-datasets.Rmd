@@ -1,0 +1,68 @@
+---
+title: "Vega Datasets"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The purpose of this document demonstrate some ways to use the data provided by the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package.
+
+In the [Altair documentation](https://altair-viz.github.io/getting_started/installation.html), you will see this code used often:
+
+```{python py-vega-datasets}
+from vega_datasets import data
+
+cars = data.cars()
+```
+
+The convention in the Altair documentation is to use the name `data` to refer to the `data` object in the `vega_datasets` package. This package offers a similar convention:
+
+```{r r-vega-data}
+library("altair")
+
+vega_data <- import_vega_data()
+
+cars <- vega_data$cars()
+```
+
+Our `vega_data` object has method to list oll its datasets:
+
+```{r list-datasets}
+vega_data$list_datasets() %>% head()
+```
+
+Each dataset has accessed using a function with a name being an element returned from `list_datasets()`. 
+
+```{r anscome}
+library("tibble")
+
+vega_data$anscombe() %>% as_tibble()
+```
+
+It is useful to keep in mind that **reticulate** changes the names of the datasets, and presumably, Python objects in general. Where you see a `-` in a name of a Python object, a `_` will be used in the name of the reticulated object in R. For example, in Python: `data.sf-temps()`; in R:
+
+```{r r-sf-temps}
+vega_data$sf_temps() %>% as_tibble()
+```
+
+Each dataset has some metadata associated:
+
+```{r anscome-description}
+vega_data$anscombe$description
+```
+
+```{r anscome-is_local}
+vega_data$anscombe$is_local
+```
+
+```{r}
+vega_data$anscombe$references
+```

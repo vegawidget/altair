@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.1.9000</span>
       </span>
     </div>
 
@@ -53,6 +53,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+    </li>
+    <li>
       <a href="../articles/first-example.html">First Example</a>
     </li>
     <li>
@@ -66,6 +69,9 @@
     </li>
     <li>
       <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
+    <li>
+      <a href="../articles/vega-datasets.html">Vega Datasets</a>
     </li>
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
@@ -98,7 +104,7 @@
       <h1>Manifesto</h1>
                         <h4 class="author">Ian Lyttle</h4>
             
-            <h4 class="date">2018-04-26</h4>
+            <h4 class="date">2018-05-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/manifesto.Rmd"><code>vignettes/manifesto.Rmd</code></a></small>
       <div class="hidden name"><code>manifesto.Rmd</code></div>
@@ -115,7 +121,7 @@
 <p>In the short term I’d like to focus on a small number of items:</p>
 <ol style="list-style-type: decimal">
 <li>Tightening up the existing capabilities.</li>
-<li>Working on a function called <code>install_altair()</code> which could manage the installation of the Python Altair components. Here, I think there are lessons to be learned from the <a href="https://keras.rstudio.com">keras</a> package, and its <code>install_keras()</code> function. As well, the V2 release of Altair will be made on conda soon (as of 2018-04-01), which may make things easier.</li>
+<li>Working on a function called <code><a href="../reference/install_altair.html">install_altair()</a></code> which could manage the installation of the Python Altair components. Here, I think there are lessons to be learned from the <a href="https://keras.rstudio.com">keras</a> package, and its <code>install_keras()</code> function. As well, the V2 release of Altair will be made on conda soon (as of 2018-04-01), which may make things easier.</li>
 <li>Tooltips.</li>
 </ol>
 <p>The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:</p>
