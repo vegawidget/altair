@@ -167,7 +167,7 @@ A new terminal-window will have access to these settings, which you can confirm 
 
 ## Reticulate and Python installation {#reticulate-python}
 
-We recommend (until its next CRAN release) using the dev version of **reticulate**:
+I recommend (until its next CRAN release) using the dev version of **reticulate**, which should have been installed automatically as a part of this package's installation.
 
 ```r
 # install.packages("devtools")
@@ -312,7 +312,7 @@ address(chart_new) == address(chart_old)
 
 ### Vega-datasets object
 
-There will be more said in the article:
+You can specify a dataset using a URL that points to a dataset, rather than a data frame. The `vega_data` object (assigned using `import_vega_data()`) contains the URLs as well as access to the data frames. 
 
 ```{r}
 iris_url <- vega_data$iris$url
@@ -330,6 +330,8 @@ vegalite(chart_iris)
 ```
 
 This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
+
+You can read more in the [Vega Datasets](vega-datasets.html) article.
 
 ## Odds and ends {#odds-ends}
 
