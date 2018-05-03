@@ -18,9 +18,12 @@ as outlined in the
 \href{https://altair-viz.github.io/index.html}{Altair Python documentation}.
 
 In this package, use the \code{$} operator wherever you see the \code{.} operator
-in Python.
+used in Python.
 }
 \examples{
+\dontrun{
+  vega_data <- import_vega_data()
+
   plot_basic <-
     alt$Chart(
       r_to_py(vega_data$cars())
@@ -29,6 +32,7 @@ in Python.
       y = "Horsepower:Q",
       color = "Origin:N"
     )$mark_point()
+}
 
 }
 \seealso{

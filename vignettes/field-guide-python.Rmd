@@ -1,0 +1,354 @@
+---
+title: "Field Guide to Python Issues"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+There are four foundations upon which this package rests: 
+
+- the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
+- the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
+- the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
+
+This article deals with the first two items; the [rendering article](render.html) deals with the other two.
+
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
+
+* [**Proxies and certificates**](#proxies): letting your computer know how to communicate with the world
+* [**Reticulate and Python installation**](#reticulate-python): installing  **reticulate** and Python 
+* [**Python environment**](#python-env): setting up a Python environment with a "standard" name
+* [**Altair installation**](#altair): installing Altair into your Python environment
+* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
+* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
+
+To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
+
+Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing the R package. This is the focus of the [**Altair installation**](#altair) section, to which you can skip if you already have a working Python (Conda recommended) environment called `"r-reticulate"`.
+
+## Proxies and certificates {#proxies}
+
+This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that infomation to different places on your computer:
+
+- location of a valid certificate file: `</path/to/your/certificate/file.crt>`
+
+Additionally, if you work behind a firewall:
+
+- address of your proxy: `http://<your.proxy.ip.address>:<port>`
+- list of addresses for which your proxy is not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
+
+Please note that the angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+
+### Working without a firewall
+
+If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the **httr** package installed, it will use the certificate file associated with the **openssl** package. You can determine the location of this certificate file by using:
+
+```r
+system.file("cacert.pem", package = "openssl")
+```
+
+At this point, you can note this location and move ahead to [**Managing your settings**](#manage-settings).
+
+### Working behind a firewall
+
+If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called [develop-behind-proxy](https://smarie.github.io/develop-behind-proxy/), from which we take some inspiration. 
+
+It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers [some advice](https://smarie.github.io/develop-behind-proxy/know_your_proxy/) to find this certificate bundle, or you can ask your IT department for its location.
+
+Your proxy is likely set using environment variables, named some combination of:
+
+ - `http_proxy`, `https_proxy`, `no_proxy`, `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`
+
+If you are using Windows, your proxy information may be set using your system's environment variables, in which case you may not need to do anything more. 
+
+It is also possible that you use your `.Renviron` file to set your proxy and no-proxy variables. If you have the **usethis** package installed, it can be very easy to find and open: `usethis::edit_r_environ()`.
+
+Once you have noted your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.
+
+### Managing your settings {#manage-settings}
+
+Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it. How you make this information known will depend on your operating-system.
+
+**Open the menu-item below for instructions for your operating system:**
+
+<details>
+<summary>Windows</summary>
+
+In Windows, the customary way to set or change environment variables is to use `Control Panel\All Control Panel Items\System` then "Advanced System Settings" and "Environment Variables". This may vary according to your version of Windows. 
+
+Set each of these variables, adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+
+```
+# Windows environment variables
+# 
+# Varaible : Value
+
+SSL_CERT_FILE : </path/to/your/certificate/file.crt>
+REQUESTS_CA_BUNDLE: </path/to/your/certificate/file.crt>
+
+# --------------------------------------
+# continue if you work behind a firewall
+
+NO_PROXY : 127.0.0.1,localhost,<other.hostnames.go.here>
+
+HTTP_PROXY : http://<your.proxy.ip.address>:<port>
+HTTPS_PROXY : http://<your.proxy.ip.address>:<port>
+```
+
+By setting these variables here, both your R session and any Python session will have access to the information they will need.
+
+</details>
+
+<details>
+<summary>MacOS and Linux (Ubuntu)</summary>
+
+On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
+
+The customary way to set environmen-variables for R is to add variables to your `.Renviron` file; add and adapt the following lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+
+```
+# .Renviron
+
+# path to a certificate file 
+SSL_CERT_FILE = "</path/to/your/certificate/file.crt>"
+REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
+
+# --------------------------------------
+# continue if you work behind a firewall
+
+# addresses for which proxy is not to be used
+no_proxy = "127.0.0.1,localhost,<other.hostnames.go.here>"
+
+# proxy addresses
+https_proxy = "http://<your.proxy.ip.address>:<port>"
+http_proxy = "${https_proxy}" 
+
+HTTPS_PROXY = "${https_proxy}"
+HTTP_PROXY = "${http_proxy}"
+```
+
+On MacOS, your `~/.bash_profile` file acts in a similar way as `.Renviron`, but the syntax is just a little different. On Ubuntu Linux, this file is called `~/.bashrc` - you may have to determine this name for your particular flavor of Linux.
+
+Using your favorite text editor, find and edit your `.bash_profile` (or `.bashrc`), adding and adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+
+```
+# MacOS .bash_profile, Ubuntu .bashrc
+
+# path to a certificate file 
+export SSL_CERT_FILE=</path/to/your/certificate/file.crt>
+export REQUESTS_CA_BUNDLE=${SSL_CERT_FILE}
+
+# --------------------------------------
+# continue if you work behind a firewall
+
+# specifies addresses for which proxy is not to be used
+export NO_PROXY="127.0.0.1,localhost,<other.hostnames.go.here>"
+
+# specifies the proxy addresses
+export https_proxy=http://<your.proxy.ip.address>:<port>
+export http_proxy=${https_proxy}
+
+export HTTPS_PROXY=${https_proxy}
+export HTTP_PROXY=${http_proxy}
+```
+
+A new terminal-window will have access to these settings, which you can confirm using the `env` command.
+
+</details>
+
+## Reticulate and Python installation {#reticulate-python}
+
+I recommend (until its next CRAN release) using the dev version of **reticulate**, which should have been installed automatically as a part of this package's installation.
+
+```r
+# install.packages("devtools")
+devtools::install_github("rstudio/reticulate")
+```
+
+Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article. Here, we amplify some opinions offered by RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, I recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
+
+Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.
+
+If all is well, you will be able to update your Conda installation.
+
+**Open the menu-item below for instructions for your operating system:**
+
+<details>
+<summary>Windows</summary>
+At a new Anaconda prompt:
+```
+# Anaconda prompt
+conda update conda
+```
+</details>
+
+<details>
+<summary>MacOS and Linux (Ubuntu)</summary>
+At a new terminal window:
+```
+# Terminal window
+conda update conda
+```
+</details>
+
+## Python environment {#python-env}
+
+For use with **reticulate**, RStudio [recommend](https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies) using a Python environment called `"r-reticulate"`. You can do this for your Conda environment directly from an R command-prompt, and it should "just work":
+
+```r
+reticulate::conda_create("r-reticulate")
+```
+
+To leave a hint for **reticulate** to use this Python environment by default, you can add this line to the `.First()` function in your `.Rprofile` (`usethis::edit_r_profile()` can be useful):
+
+```
+# .Rprofile
+
+.First <- function() {
+  <other stuff>
+  reticulate::use_condaenv("r-reticulate")
+}
+```
+
+Of course, you should restart your R session to let your new settings take effect.
+
+## Altair Installation {#altair}
+
+If you have not already installed this package into your R library, this is a perfect occasion to do so:
+
+```r
+# install.packages("devtools")
+devtools::install_github("ijlyttle/altair")
+```
+
+Thanks to all the preparatory work you have made, it is relatively straightforward to install the Altair Python package.     
+
+At present, version 2 of the Altair Python package is available as a release candidtate on PyPi, so it can be installed using `pip`. The function `altair::install_altair()` will use `pip` to install `altair==2.0.0rc2` into your `"r-reticulate"` Python environment.
+
+```r
+altair::install_altair()
+```
+
+When the "final" version-2 is released to Conda, the `install_altair()` function and documentation will be updated to support a complete Conda installation. 
+
+You can confirm success by showing your Python configuration:
+
+```r
+reticulate::py_config()
+```
+
+And by confirming your Altair installation:
+
+```r
+altair::has_altair()
+```
+
+## Working with Python objects {#work-work}
+
+When **reticulate** returns a Python object with a custom class, it appears in R as an S3 object that *behaves* like a reference class. This means that if you see this sort of notation in Python:
+
+```python
+# Python
+foo.bar()
+```
+
+You would use this notation in R:
+
+```r
+foo$bar()
+```
+
+In essence, you wherever you see a `.` in Python, use a `$` in R.
+
+### Altair object
+
+In Python, Altair methods return a copy of the object:
+
+```{r}
+library("altair")
+library("pryr")
+
+vega_data <- import_vega_data()
+
+chart_old <-
+  alt$Chart(
+    r_to_py(vega_data$cars())
+  )$encode(
+    x = "Miles_per_Gallon:Q",
+    y = "Horsepower:Q",
+    color = "Origin:N"
+  )
+
+chart_new <- chart_old$mark_point()
+
+address(chart_new) == address(chart_old)
+```
+To confirm this we note that the two charts have different memory addresses. This suggests that Altair methods return a copy of the object; it *looks* like a reference-class method, but it *acts* like an S3 method.
+
+Let's try an assignment:
+
+```{r}
+chart_new <- chart_old
+
+address(chart_new) == address(chart_old)
+```
+
+It seems that an assignment of an Altair object (and perhaps, by extension, Pyhton objects) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
+
+```{r}
+chart_new <- chart_old$copy()
+
+address(chart_new) == address(chart_old)
+```
+
+### Vega-datasets object
+
+You can specify a dataset using a URL that points to a dataset, rather than a data frame. The `vega_data` object (assigned using `import_vega_data()`) contains the URLs as well as access to the data frames. 
+
+```{r}
+iris_url <- vega_data$iris$url
+
+chart_iris <- 
+  alt$Chart(iris_url)$
+  encode(
+    x = "sepalWidth:Q",
+    y = "sepalLength:Q",
+    color = "species:N"
+  )$
+  mark_point()
+
+vegalite(chart_iris)
+```
+
+This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
+
+You can read more in the [Vega Datasets](vega-datasets.html) article.
+
+## Odds and ends {#odds-ends}
+
+### Dots in variables
+
+If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
+
+```{r iris}
+chart_iris <- 
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "[Sepal.Width]:Q",
+    y = "[Sepal.Length]:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+vegalite(chart_iris)
+```
+

@@ -1,6 +1,8 @@
-# altair 0.1.9000
+# altair 0.0.1.9000
 
-* makes Vega datasets available as `vega_data` (#25)
+* new function to manage installation of Altair Python package: `install_altair()` (#1)
+
+* makes Vega datasets available through `import_vega_data()` (#25)
 
 * significant changes to the rendering function `vegalite()`:
 
@@ -16,7 +18,7 @@
 
 * updates css for embedding, makes the action-links look much better (#20, @aliciaschep)
 
-* adds tooltip-capability to `vegalite()` renderer, with functions `vega_tooltip()`, `add_fields()`, and friends: `vega_tooltip_encoding()` and `vega_tooltip_all()` (#4, @aliciaschep) 
+* adds tooltip-capability to `vegalite()` renderer, with functions `vega_tooltip()`, `add_fields()`, and friends: `vega_tooltip_encoding()` and `vega_tooltip_all()` (#4, with @aliciaschep) 
  
 * adds a `NEWS.md` file to track changes to the package
 

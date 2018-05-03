@@ -85,6 +85,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/field-guide-python.html">Field-Guide to Python Issues</a>
+    </li>
+    <li>
       <a href="../articles/first-example.html">First Example</a>
     </li>
     <li>
@@ -98,6 +101,9 @@
     </li>
     <li>
       <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
+    <li>
+      <a href="../articles/vega-datasets.html">Vega Datasets</a>
     </li>
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
@@ -160,14 +166,17 @@ in Python.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
     <span class='no'>alt</span>$<span class='fu'>Chart</span>(
       <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>vega_data</span>$<span class='fu'>cars</span>())
     )$<span class='fu'>encode</span>(
       <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Miles_per_Gallon:Q"</span>,
       <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Horsepower:Q"</span>,
       <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
-    )$<span class='fu'>mark_point</span>()</div></pre>
+    )$<span class='fu'>mark_point</span>()
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

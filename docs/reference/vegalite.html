@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
       </span>
     </div>
 
@@ -83,6 +83,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+    </li>
+    <li>
       <a href="../articles/first-example.html">First Example</a>
     </li>
     <li>
@@ -96,6 +99,9 @@
     </li>
     <li>
       <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
+    <li>
+      <a href="../articles/vega-datasets.html">Vega Datasets</a>
     </li>
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
@@ -194,6 +200,10 @@ for <code>export</code>, <code>source</code>, and <code>editor</code></p></li>
     <p>If <code>actions</code> is <code>TRUE</code> (default) or <code>FALSE</code>, all the links
 are shown (or not). Use a named list to be more specific, see
 <code><a href='vega_embed.html'>vega_embed()</a></code> and <code><a href='only_actions.html'>only_actions()</a></code>.</p>
+<p>If <code>embed</code> is <code>NULL</code>, <code>vegalite()</code> sets <code>embed</code> to the value of
+<code>getOption("altair.embed_options")</code>. If that is null, the
+<a href='https://github.com/vega/vega-embed#api-reference'>vega-embed</a>
+defaults are used.</p>
 <p>The arguments <code>width</code> and <code>height</code> are used to override the width and height
 determined using the <code>chart</code> specification. However, there are some
 important provisions:</p><ul>

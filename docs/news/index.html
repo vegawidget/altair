@@ -57,7 +57,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
       </span>
     </div>
 
@@ -80,6 +80,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+    </li>
+    <li>
       <a href="../articles/first-example.html">First Example</a>
     </li>
     <li>
@@ -93,6 +96,9 @@
     </li>
     <li>
       <a href="../articles/tooltip.html">Tooltips</a>
+    </li>
+    <li>
+      <a href="../articles/vega-datasets.html">Vega Datasets</a>
     </li>
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
@@ -127,16 +133,24 @@
       <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="altair-0-1-9000" class="section level1">
+    <div id="altair-0-0-1-9000" class="section level1">
 <h1 class="page-header">
-<a href="#altair-0-1-9000" class="anchor"></a>altair 0.1.9000</h1>
+<a href="#altair-0-0-1-9000" class="anchor"></a>altair 0.0.1.9000</h1>
 <ul>
-<li><p>makes Vega datasets available as <code>vega_data</code> (<a href='https://github.com/ijlyttle/altair/issues/25'>#25</a>)</p></li>
-<li><p><code>width</code> and <code>height</code> arguments to <code><a href="../reference/vegalite.html">vegalite()</a></code> are used now to specify the <em>total</em> width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) <code>width</code> and <code>height</code> apply to the chart only, they do not take into account any action-links (<a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
-<li><p><code><a href="../reference/vegalite.html">vegalite()</a></code> renderer strips the <code>style</code> attribute from the <code>&lt;div/&gt;</code> for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>, <a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p>new function to manage installation of Altair Python package: <code><a href="../reference/install_altair.html">install_altair()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/1'>#1</a>)</p></li>
+<li><p>makes Vega datasets available through <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/25'>#25</a>)</p></li>
+<li>
+<p>significant changes to the rendering function <code><a href="../reference/vegalite.html">vegalite()</a></code>:</p>
+<ul>
+<li><p>if the <code>embed</code> argument is <code>NULL</code>, <code><a href="../reference/vegalite.html">vegalite()</a></code> sets it to <code>getOption("altair.embed_options")</code> - if that is not defined, the vega-embed defaults are used</p></li>
+<li><p><code>width</code> and <code>height</code> arguments to <code><a href="../reference/vegalite.html">vegalite()</a></code> are used now to specify the <em>total</em> width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) <code>width</code> and <code>height</code> apply to the chart only, they do not take into account any action-links - if arguments are not set, the size of the chart is determined from the chart specification (<a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p><code><a href="../reference/vegalite.html">vegalite()</a></code> strips the <code>style</code> attribute from the <code>&lt;div/&gt;</code> for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>, <a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+</ul>
+</li>
+<li><p>adds concatenation operators for charts: <code>|</code>, <code>&amp;</code>, <code>+</code> (<a href='https://github.com/ijlyttle/altair/issues/22'>#22</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds function <code><a href="../reference/vega_embed.html">vega_embed()</a></code>, with friend <code><a href="../reference/only_actions.html">only_actions()</a></code>, to support embedding options in <code><a href="../reference/vegalite.html">vegalite()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>)</p></li>
 <li><p>updates css for embedding, makes the action-links look much better (<a href='https://github.com/ijlyttle/altair/issues/20'>#20</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
-<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code><a href="../reference/vega_tooltip.html">vega_tooltip()</a></code>, <code>add_fields()</code>, and friends: <code><a href="../reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> and <code><a href="../reference/vega_tooltip.html">vega_tooltip_all()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
+<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code><a href="../reference/vega_tooltip.html">vega_tooltip()</a></code>, <code>add_fields()</code>, and friends: <code><a href="../reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> and <code><a href="../reference/vega_tooltip.html">vega_tooltip_all()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds a <code>NEWS.md</code> file to track changes to the package</p></li>
 <li><p>achieves minimal functionality</p></li>
 </ul>
@@ -147,7 +161,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#altair-0-1-9000">0.1.9000</a></li>
+        <li><a href="#altair-0-0-1-9000">0.0.1.9000</a></li>
       </ul>
     </div>
   </div>
