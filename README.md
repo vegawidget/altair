@@ -11,10 +11,10 @@ status](https://travis-ci.org/ijlyttle/altair.svg?branch=master)](https://travis
 
 The goal of altair is to help you build
 [Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the
-[reticulate](https://rstudio.github.io/reticulate) package, it provides
-an interface to the [Altair](https://altair-viz.github.io) Python
-package. This approach is different from efforts to build a native R
-interface to Vega-Lite, by Bob Rudis
+[**reticulate**](https://rstudio.github.io/reticulate) package, it
+provides an interface to the [Altair](https://altair-viz.github.io)
+Python package. This approach is different from efforts to build a
+native R interface to Vega-Lite, by Bob Rudis
 ([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers: the
 [vegalite](https://github.com/hrbrmstr/vegalite) package, which has
 inspired this effort.
@@ -33,54 +33,64 @@ For this package a development version is available from
 devtools::install_github("ijlyttle/altair")
 ```
 
-It is necessary to have a working Altair installation on your computer.
-As a first step, you may wish to follow the [Altair installation
-instructions](https://altair-viz.github.io/getting_started/installation.html).
-Once you have Altair install in your Python environment, you can
-determine the path to your particular Python installation:
+Because you are using a Python package, you may have some additional
+installation steps. These steps are described in greater detail in the
+article [Field Guide to Python
+Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
 
-``` python
-# Python
+1.  Python must be installed on your system. To make things easier to
+    work with reticulate, I recommend using a
+    [Conda](https://conda.io/docs) installation;
+    [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
+    works well for me.
+    
+    As well, for the time being, you will need the development version
+    of reticulate, which should have installed automatically, along with
+    this package.
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
+    
+      - Depending on how your system is configured, you may have to
+        specify the location of your SSL cerificate, or deal with a
+        proxy.
+        \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
 
-import altair # make sure this works
-import sys
+2.  Create a Conda environment called `"r-reticulate"`.
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env)\]
 
-sys.executable
+3.  Install Altair into your `"r-reticulate"` environment using
+    `altair::install_altair()`.
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#altair)\]
+
+You may wish to add a line like this to the `.First()` function in your
+`.Rprofile`:
+
+``` r
+reticulate::use_condaenv("r-reticulate")
 ```
 
-It might return something like `/path/to/bin/python3.6`; you can use
-this value to set an environment variable to specify which Python
-environment to use. You might consider putting a line like this into
-your `.Renviron` file:
-
-    # your path will be different
-    RETICULATE_PYTHON="/your/path/to/python3.6" 
-
-This is where the reticulate package will look first for Python on your
-computer.
-
-Of course, once you have edited your `.Renviron` file, restart R for the
-changes to take effect.
+This provides a hint to reticulate for which Python environment to use.
+\[[reference](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)\]
 
 ## Example
-
-This package provides a pass-through to the Altiar API.
 
 ``` r
 library("altair")
 
-plot <- 
-  alt$Chart(
-    r_to_py(mtcars)
-  )$mark_point(
-  )$encode(
-    x = "mpg:Q",
-    y = "hp:Q",
-    color = "cyl:N"
-  )
+vega_data <- import_vega_data()
 
-vegalite(plot)
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )$
+  mark_point()
+
+vegalite(chart)
 ```
+
+![](man/figures/first-example.png)
 
 Some things to keep in mind:
 
@@ -89,8 +99,9 @@ Some things to keep in mind:
   - Any data frames you provide as arguments need to wrapped by
     `r_to_py()`.
 
-  - In your data frames, columns that contain dots, i.e. `Sepal.Width`,
-    will prevent Altair from compiling a chart specification.
+  - In your data, columns that contain dots can be wrapped in square
+    brackets in Altair sppecifications, e.g. `[Sepal.Width]`, to keep
+    Altair from throwing an error.
 
 Also, it remains to sort out how to get the `vegalite()` function to “do
 the right thing” when knitting to a non-html format, and to render
@@ -98,10 +109,10 @@ inline in an RMarkdown notebook.
 
 ## Development plan
 
-For the foreseeable future, this package is going to be very rough. At
+For the foreseeable future, this package is going to be a bit rough. At
 the moment, you are able to muck around with Vega-Lite 2.0. This means:
 
-1.  You can create chart-specificatiobs by accessing the Python
+1.  You can create chart-specifications by accessing the Python
     **Altair** API using **reticulate**.
 2.  You can create tooltip-specifications using `vega_tooltip()`, and
     `add_fields()`. Or you create a default tooltip-specification using
@@ -109,12 +120,10 @@ the moment, you are able to muck around with Vega-Lite 2.0. This means:
 3.  You can render a chart-specification and tooltip-specification into
     an htmlwidget, using `vegalite()`.
 
-There’s really not much beyond that. Here are some ideas for the near
-future:
-
-1.  Tightening up existing capabilites.
-2.  A proper installation procedure for the Altair Python package, a
-    function like `install_altair()`.
+There’s really not much beyond that. In the near future, the thought is
+to focus on making this interface as robust as possible, perhaps to make
+it easier to consolidate datasets and publish
+[blocks](https://bl.ocks.org/).
 
 In the longer-term future it may be interesting to provide a proper R
 interface to the Python API; there are already some [encouraging first
@@ -139,8 +148,19 @@ The documentation for this package includes some articles:
   - [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html):
     In the Vega world, tooltips and charts are specified seperately.
     This article explains how to integrate tooltips with charts, and
-    shows a few tooltip-customization
-    options.
+    shows a few tooltip-customization options.
+
+  - [Vega
+    Datasets](https://ijlyttle.github.io/altair/articles/vega-datasets.html):
+    You can import [Vega
+    datasets](https://github.com/altair-viz/vega_datasets) using
+    `import_vega_data()`.
+
+  - [Field Guide to Python
+    Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html)
+    As someone who is relatively new to Python, I am trying to keep
+    track of “the unexpected”
+    here.
 
   - [Manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html):
     A collection of ideas on where this package might go (and where it
@@ -148,8 +168,8 @@ The documentation for this package includes some articles:
 
 ## Acknowledgements
 
-This package does not contribute much new; it rests on these
-foundations:
+This package does not contribute much beyond scaffolding; it rests on
+these foundations:
 
   - [Altair](https://altair-viz.github.io): Python interface to
     Vega-Lite

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Altair object — alt • altair</title>
+<title>Import Vega datasets — import_vega_data • altair</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Altair object — alt" />
+<meta property="og:title" content="Import Vega datasets — import_vega_data" />
 
-<meta property="og:description" content="Uses the reticulate framework to access the Altair API." />
+<meta property="og:description" content="Lets you access Vega datasets." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -132,57 +132,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Altair object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/zzz.R'><code>R/zzz.R</code></a></small>
-    <div class="hidden name"><code>alt.Rd</code></div>
+    <h1>Import Vega datasets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/import.R'><code>R/import.R</code></a></small>
+    <div class="hidden name"><code>import_vega_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Uses the reticulate framework to access the Altair API.</p>
+    <p>Lets you access Vega datasets.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>alt</span></pre>
+    <pre class="usage"><span class='fu'>import_vega_data</span>()</pre>
         
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>python.builtin.module</code> (inherits from <code>python.builtin.object</code>) of length 2.</p>
+    <p>An S3 object of class <code>vega_datasets.core.DataLoader</code></p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The Altair Python library is exposed through the <code>alt</code> object.
-You can create and add to chart using its methods and classes,
-as outlined in the
-<a href='https://altair-viz.github.io/index.html'>Altair Python documentation</a>.</p>
-<p>In this package, use the <code>$</code> operator wherever you see the <code>.</code> operator
-used in Python.</p>
+    <p>Returns the <code>data</code> object in the Python package
+<a href='https://github.com/altair-viz/vega_datasets'>vega-datasets</a>.
+In the documentation for this package, it is customary to
+assign this to an object named <code>vega_data</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://altair-viz.github.io/index.html'>Altair Python documentation</a></p></div>
+    <div class='dont-index'><p><a href='https://github.com/altair-viz/vega_datasets'>Vega datasets documentation</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='import_vega_data.html'>import_vega_data</a></span>()
+  <span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'>import_vega_datasets</span>()
 
-  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
-    <span class='no'>alt</span>$<span class='fu'>Chart</span>(
-      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>vega_data</span>$<span class='fu'>cars</span>())
-    )$<span class='fu'>encode</span>(
-      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Miles_per_Gallon:Q"</span>,
-      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Horsepower:Q"</span>,
-      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
-    )$<span class='fu'>mark_point</span>()
-<span class='co'># }</span><div class='input'>
-</div></pre>
+  <span class='co'># To list available datasets</span>
+  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='fu'>list_datasets</span>()
+
+  <span class='co'># When accessing a dataset, substitute any "-" in the name with a "_"</span>
+  <span class='fu'>head</span>(<span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='fu'>sf_temps</span>())
+
+  <span class='co'># Metadata are available for each dataset:</span>
+  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>description</span>
+  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>url</span>
+
+  <span class='co'># For local datasets, local path is available</span>
+  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>filepath</span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
 

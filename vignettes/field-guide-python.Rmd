@@ -78,6 +78,8 @@ Once you have noted your proxy and no-proxy settings, as well as the location of
 
 Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it. How you make this information known will depend on your operating-system.
 
+**Open the menu-item below for instructions for your operating system:**
+
 <details>
 <summary>Windows</summary>
 
@@ -176,7 +178,9 @@ Reticulate offers a number of ways to manange the installation of Python package
 
 Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.
 
-If all is well, you will be able to update your Conda installation:
+If all is well, you will be able to update your Conda installation.
+
+**Open the menu-item below for instructions for your operating system:**
 
 <details>
 <summary>Windows</summary>

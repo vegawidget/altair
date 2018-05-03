@@ -6,6 +6,10 @@ development:
   mode: unreleased
 
 reference:
+  - title: Package
+    desc: Overview of the package
+    contents:
+      - altair
   - title: Installation
     desc: >
       Functions to help install the Python Altair library
@@ -17,7 +21,7 @@ reference:
       Functions and objects to construct chart-specifications
     contents:
       - alt
-      - vega_data
+      - import_vega_data
       - r_to_py
       - altair_concatenation
   - title: Tooltips
