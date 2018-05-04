@@ -73,8 +73,8 @@ Pull request are very welcome. Our goal is to implement a system along the lines
 Situation                  | Branch to merge into | Add item to NEWS.md   | Appreciated
 -------------------------- | -------------------- | --------------------- | -----------
 bug-fix                    | `master`             | Yes                   | 😃
-improving documentation    | `develop`            | No                    | 😃
-adding vignette            | `develop`            | Yes                   | 😃
+improving documentation    | `develop`            | No                    | 😀
+adding vignette            | `develop`            | Yes                   | 😀
 helping with a new feature | `<feature-branch>`   | No                    | 😃
 proposing a new feature    | `develop`            | Yes                   | 😃
 
@@ -88,16 +88,16 @@ We should first define "type of Altair version" and "supported"
 
 There are three types of Altair versions:
 
-- `rele_sed`: Th_ s to a released version available on [Conda-Forge](https://anaconda.org/conda-forge/altair) 
-- `cand_candidate_ refers to a release-candiate available on [PyPi](https://pypi.org/project/altair)
-- _b`: Th_rs to a development version available at [GitHub](https://github.com/altair-viz/altair)
+- _released_ refers to a released version available on [Conda-Forge](https://anaconda.org/conda-forge/altair) 
+- _candidate_ refers to a release-candiate available on [PyPi](https://pypi.org/project/altair)
+- _github_ refers to a development version available at [GitHub](https://github.com/altair-viz/altair)
 
 We define "supported" as making the version available through the `install_altair()` function and hardcoding this Altair version as `getOption("altair.python.version.supported")`. 
 
-- `master`: only `rele*sed` ver*ions shall be supported on the `master` branch. Note that this is presently aspirational, but once a `rele*sed` ver*ion is supported on the master branch, this rule shall apply.
+- `master`: only _released_ versions shall be supported on the `master` branch. Note that this is presently aspirational, but once a _released_ version is supported on the master branch, this rule shall apply.
 
-- `develop`: `rele*sed` or *cand*date` ver*ions may be supported on the `develop` branch. However, in orrge into `master`, `develop` must support a `rele*sed` ver*ion.
+- `develop`: _released_ or _candidate_ versions may be supported on the `develop` branch. However, to merge into `master`, it must support a _released_ version.
 
-- `<feature-branch>`: any type of version may be supported on a `<feature-branch>`. However, in orrge into `develop`, `<feature-branch>` must support a `rele*released* or *candidate*ion.
+- `<feature-branch>`: any type of version may be supported on a `<feature-branch>`. However, to merge into `develop`, it must support a _released_ or _candidate_ version.
 
 We will build some infrastructure around how to change the type of version that your branch supports.
