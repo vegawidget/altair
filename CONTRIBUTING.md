@@ -88,16 +88,16 @@ We should first define "type of Altair version" and "supported"
 
 There are three types of Altair versions:
 
-- _released_ refers to a released version available on [Conda-Forge](https://anaconda.org/conda-forge/altair) 
-- _candidate_ refers to a release-candiate available on [PyPi](https://pypi.org/project/altair)
-- _github_ refers to a development version available at [GitHub](https://github.com/altair-viz/altair)
+- __released__ refers to a released version available on [Conda-Forge](https://anaconda.org/conda-forge/altair) 
+- __candidate__ refers to a release-candiate available on [PyPi](https://pypi.org/project/altair)
+- __github__ refers to a development version available at [GitHub](https://github.com/altair-viz/altair)
 
 We define "supported" as making the version available through the `install_altair()` function and hardcoding this Altair version as `getOption("altair.python.version.supported")`. 
 
-- `master`: only _released_ versions shall be supported on the `master` branch. Note that this is presently aspirational, but once a _released_ version is supported on the master branch, this rule shall apply.
+- `master`: only __released__ versions shall be supported on the `master` branch. Note that this is presently aspirational, but once a __released__ version is supported on the master branch, this rule shall apply.
 
-- `develop`: _released_ or _candidate_ versions may be supported on the `develop` branch. However, to merge into `master`, it must support a _released_ version.
+- `develop`: __released__ or __candidate__ versions may be supported on the `develop` branch. However, to merge into `master`, it must support a __released__ version.
 
-- `<feature-branch>`: any type of version may be supported on a `<feature-branch>`. However, to merge into `develop`, it must support a _released_ or _candidate_ version.
+- `<feature-branch>`: any type of version may be supported on a `<feature-branch>`. However, to merge into `develop`, it must support a __released__ or __candidate__ version.
 
 We will build some infrastructure around how to change the type of version that your branch supports.
