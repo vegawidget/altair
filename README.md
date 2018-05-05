@@ -185,8 +185,10 @@ A particular debt is owed to the folks behind the
 [vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided
 a lot of the inspiration for this package.
 
-## Code of conduct
+## Contributing
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
 to abide by its terms.
+
+This project also has a [Contributing Guide](CONTRIBUTING.md).
