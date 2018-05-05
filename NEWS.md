@@ -1,3 +1,7 @@
+# altair 0.0.2.9000
+
+* synchronizes with Altair v2.0.x (#36)
+
 # altair 0.0.1.9000
 
 * new function to manage installation of Altair Python package: `install_altair()` (#1)
