@@ -1,10 +1,21 @@
 # Contributing
 
-## Scope of this package
+## Package scope
 
-Deals with the Altair Python package, and embedding and rendering the resulting Vega-Lite chart specification. I think it is a great and wonderful thing to make a more R-like interface to Vega-Lite; however, I think that we should do that in a different package, perhaps called **altools**.
+The purpose of this package is to provide you the means:
+
+- to install the **Altair** Python package.
+- to build Vega-Lite chart-specifications using Altair. 
+- to render chart-specifiations into HTML.
+- to communicate your charts.
+
+There are a lot of "moving parts" in keeping current with a Python package and a set of JavaScript libraries (Vega-Lite, vega-embed, ...). Accordingly, I want -- at least initially -- to keep the scope of this package as focused as possible.
+
+That being said, I think it is a great and wonderful thing to make a more R-like interface to Vega-Lite. I think that we should do that in a different package, perhaps called **altools**.
 
 ## Style
+
+Looking at the present state of this package repository, you may think that this style guide is more aspirational than operational. You would not be incorrect in this assessment.
 
 This package aspires to use the [Tidyverse Style Guide](http://style.tidyverse.org), with some minor modifications.
 
@@ -18,7 +29,9 @@ This package aspires to use the [Tidyverse Style Guide](http://style.tidyverse.o
    #' @return `logical` indicating success
    ```
 
-Although we are mimicking calls to Python code, even copying-and-pasting Python examples, we should make the calls themselves as R-like as possible. Consider this example from Altair:
+In documentation, let's reserve the use of "capital-A" **Altair** to refer to the Python package, and the use of "small-a" to refer to this package.
+
+Although we are mimicking calls to Python code, even copying-and-pasting Python examples, we should make the syntax of the calls as R-like as possible. Consider this Python example from Altair:
 
 ```python
 import altair as alt
@@ -54,7 +67,7 @@ chart <-
 
 Here, I am experimenting with something. Clearly, the `$` operator is not a pipe, `%>%`. However, it can be used across line-breaks such that we could format the code in the same style as a pipe. I realize this is not completely satisfying, but it at least resembles a **ggplot2** style. 
 
-In the documentation, lets call things (and even name things) charts, as this seems to be the term-of-art that Altair and Vega-Lite use.
+In the documentation, let's call things (and even name things) charts, as this seems to be the term-of-art that Altair and Vega-Lite use. 
 
 ## Development strategy
 
@@ -62,7 +75,7 @@ In the documentation, lets call things (and even name things) charts, as this se
 
 The first digit indicates the maturity of this package's API. For the time being, it will be `0`. When we feel it is time, we will increment the first digit to agree with the first digit of the Altair release, currently `2`.
 
-The second digit will be incremented upon each CRAN release. This will also be given a GitHub release tag.
+The second digit will be incremented upon each CRAN release and assigned a GitHub release tag.
 
 The third digit will be incremented with each change of the `master` branch. Each change of the master branch will be assigned a git tag, so we will not do this lightly.
 
@@ -70,7 +83,7 @@ The third digit will be incremented with each change of the `master` branch. Eac
 
 Pull request are very welcome. Our goal is to implement a system along the lines of [gitflow](https://datasift.github.io/gitflow/IntroducingGitFlow.html). Accordingly, the branch into which you should make a pull-request will depend on the situation:
 
-Situation                  | Branch to merge into | Add item to NEWS.md   | Appreciated
+Situation                  | Reference branch     | Add item to NEWS.md   | Appreciated
 -------------------------- | -------------------- | --------------------- | -----------
 bug-fix                    | `master`             | Yes                   | 😃
 improving documentation    | `develop`            | No                    | 😀
@@ -80,11 +93,11 @@ proposing a new feature    | `develop`            | Yes                   | 😃
 
 Strategies for roxygen and pkgdown?
 
-### Git branch strategy
+### Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let's see how that works) Git branch strategy
 
 One of the motivations is to make our lives as developers, and as users, easier by restricting what types of Altair versions will be supported on which types of git branches.
 
-We should first define "type of Altair version" and "supported"
+We should first define "type of Altair version" and "supported".
 
 There are three types of Altair versions:
 
