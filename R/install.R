@@ -128,7 +128,14 @@ check_altair_version <- function(version_installed, version_supported) {
       version_installed
     )
 
-  config <- reticulate::py_config()
+  config_output <-
+    paste(
+      c(
+        "Output from reticulate::py_config():",
+        utils::capture.output(reticulate::py_config())
+      ),
+      collapse = "\n"
+    )
 
   is_identical <- function(component) {
     identical(installed[[component]], supported[[component]])
@@ -138,21 +145,39 @@ check_altair_version <- function(version_installed, version_supported) {
   if (!is_identical("major")) {
 
     stop(
-      "major\n",
-      version_string, "\n",
-      config
-,      call. = FALSE
+      paste(
+        "Disagreement in Altair major versions",
+        version_string,
+        config_output,
+        sep = "\n\n"
+      ),
+      call. = FALSE
     )
   }
 
   # check minor version
   if (!is_identical("minor")) {
-    warning("minor", call = FALSE)
+    warning(
+      paste(
+        "Disagreement in Altair minor versions",
+        version_string,
+        sep = "\n\n"
+      ),
+      call. = FALSE
+    )
+
+    return(invisible(NULL))
   }
 
   # check patch, rc versions
   if (!is_identical("patch") || !is_identical("rc")) {
-    message("patch RC")
+    packageStartupMessage(
+      paste(
+        "Disagreement in Altair patch versions",
+        version_string,
+        sep = "\n\n"
+      )
+    )
     return(invisible(NULL))
   }
 
