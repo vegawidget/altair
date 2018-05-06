@@ -117,6 +117,47 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #'
 check_altair_version <- function(version_installed, version_supported) {
 
+  installed <- get_version_components(version_installed)
+  supported <- get_version_components(version_supported)
+
+  version_string <-
+    paste(
+      "Supported Altair version:",
+      version_supported,
+      "- Installed Altair version:",
+      version_installed
+    )
+
+  config <- reticulate::py_config()
+
+  is_identical <- function(component) {
+    identical(installed[[component]], supported[[component]])
+  }
+
+  # check major version
+  if (!is_identical("major")) {
+
+    stop(
+      "major\n",
+      version_string, "\n",
+      config
+,      call. = FALSE
+    )
+  }
+
+  # check minor version
+  if (!is_identical("minor")) {
+    warning("minor", call = FALSE)
+  }
+
+  # check patch, rc versions
+  if (!is_identical("patch") || !is_identical("rc")) {
+    message("patch RC")
+    return(invisible(NULL))
+  }
+
+  # success!
+  invisible(NULL)
 }
 
 #' Get version components
