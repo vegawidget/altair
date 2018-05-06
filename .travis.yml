@@ -16,5 +16,6 @@ before_install:
   - conda update -q -y conda
 
 before_script:
+  - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_discover_config()'
 
