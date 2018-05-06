@@ -86,6 +86,38 @@ install_altair <- function(method = c("conda", "virtualenv"),
   invisible(NULL)
 }
 
+
+#' Check the Altair installation
+#'
+#' If the supported Altair version is different from the installed
+#' Altair version, this function will act according to where the
+#' difference in the version numbers:
+#'
+#' - major version leads to an **error**
+#' - minor version leads to a **warning**
+#' - patch version leads to a **message**
+#'
+#' If there is no difference, there is no message.
+#'
+#' To install the supported version into a Ptyhon environment
+#' called `"r-reticulate"`, use [install_altair()].
+#'
+#' @return invisible `NULL`, called for side-effects
+#' @seealso [reticulate::py_config()], [install_altair()]
+#' @examples
+#' \dontrun{
+#'   check_altair()
+#' }
+#' @export
+#'
+check_altair <- function() {
+  check_altair_version(
+    version_installed = alt$`__version__`,
+    version_supported = getOption("altair.python.version")
+  )
+}
+
+
 #' Check two verision-strings
 #'
 #' Given two version-strings, issue an error, warning, message, or do nothing.
