@@ -86,4 +86,78 @@ install_altair <- function(method = c("conda", "virtualenv"),
   invisible(NULL)
 }
 
+#' Check two verision-strings
+#'
+#' Given two version-strings, issue an error, warning, message, or do nothing.
+#'
+#' @param version_installed `character` vector, installed version -
+#'   can be obtained using `alt$__version__`
+#' @param version_supported `character` vector, supported version -
+#'   can be obtained using `getOption("altair.pyhton.version")`
+#'
+#' @return invisible `NULL`, called for side-effects
+#' @keywords internal
+#' @examples
+#' \dontrun{
+#'   version_supported <- "2.0.1"
+#'   # issues error
+#'   check_altair_version("1.2", version_supported)
+#'
+#'   # issues warning
+#'   check_altair_version("2.1", version_supported)
+#'
+#'   # issues message
+#'   check_altair_version("2.0.0", version_supported)
+#'   check_altair_version("2.0.0rc1", version_supported)
+#'
+#'   # does nothing
+#'   check_altair_version("2.0.1", version_supported)
+#' }
+#' @export
+#'
+check_altair_version <- function(version_installed, version_supported) {
+
+}
+
+#' Get version components
+#'
+#' @noRd
+#'
+#' @param version `character`
+#'
+#' @return `list` with elements: `major`, `minor`, `patch`, `rc`
+#' @examples
+#' get_version("2.0.0rc1")
+#'
+#'
+get_version_components <- function(version) {
+
+  regex_version <- "^(\\d+)\\.(\\d+)\\.(\\d+)(rc\\d+)?$"
+
+  # validate version
+  is_version_number <- grepl(regex_version, version)
+  assertthat::assert_that(
+    is_version_number,
+    msg = paste(version, "not a recognized Altair version number")
+  )
+
+  major <- as.integer(sub(regex_version, "\\1", version))
+  minor <- as.integer(sub(regex_version, "\\2", version))
+  patch <- as.integer(sub(regex_version, "\\3", version))
+
+  get_rc <- function(rc_string) {
+    if (identical(rc_string, "")) {
+      return(NULL)
+    }
+
+    rc <- as.integer(sub("rc(\\d+)", "\\1", rc_string))
+
+    rc
+  }
+
+  rc_string <- sub(regex_version, "\\4", version)
+  rc <- get_rc(rc_string)
+
+  list(major = major, minor = minor, patch = patch, rc = rc)
+}
 
