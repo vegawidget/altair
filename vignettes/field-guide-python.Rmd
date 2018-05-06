@@ -249,7 +249,8 @@ reticulate::py_config()
 And by confirming your Altair installation:
 
 ```r
-altair::has_altair()
+# the ideal result is nothing
+altair::check_altair()
 ```
 
 ## Working with Python objects {#work-work}
