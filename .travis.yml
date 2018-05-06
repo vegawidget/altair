@@ -2,8 +2,8 @@
 
 language: r
 r:
-#  - oldrel
-#  - release
+  - oldrel
+  - release
   - devel
 sudo: required
 cache: packages
@@ -15,7 +15,11 @@ before_install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - conda update -q -y conda
 
-before_script:
+script:
+  - R CMD build .
+  - R -e 'reticulate::condaenv("r-reticulate")'
   - R -e 'altair::install_altair()'
-  - R -e 'reticulate::py_discover_config()'
+  - R -e 'reticulate::py_config()'
+  - R -e 'altair::check_altair()'
+  - R CMD check *tar.gz
 
