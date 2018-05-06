@@ -31,6 +31,14 @@
 #'
 alt <- NULL
 
+
+# =============================================================================
+# Note to maintainers:
+#
+# To change the supported Python version, set the option in .onLoad
+# =============================================================================
+
 .onLoad <- function(libname, pkgname) {
+  options(altair.python.version = "2.0.1")
   alt <<- reticulate::import("altair", delay_load = TRUE)
 }
