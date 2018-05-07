@@ -17,7 +17,8 @@ before_install:
 
 script:
   - R CMD build .
-  - R -e 'reticulate::condaenv("r-reticulate")'
+  - R CMD install .
+  - R -e 'reticulate::use_condaenv("r-reticulate")'
   - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair()'
