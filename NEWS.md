@@ -2,7 +2,7 @@
 
 * adds function `check_altair()` to check installed version against supported version (#42, with @aliciaschep)
 
-* updates `install_altair()` (#41) 
+* updates `install_altair()` (#41)
 
 * synchronizes with Altair v2.0.x (#36)
 
