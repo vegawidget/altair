@@ -2,11 +2,7 @@
 title: "Manifesto"
 author: "Ian Lyttle"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Manifesto}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_document
 ---
 
 ```{r setup, include = FALSE}

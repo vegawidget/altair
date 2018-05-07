@@ -90,8 +90,7 @@ Also, it remains to sort out how to get the `vegalite()` function to "do the rig
 For the foreseeable future, this package is going to be a bit rough. At the moment, you are able to muck around with Vega-Lite 2.0. This means:
 
 1. You can create chart-specifications by accessing the Python **Altair** API using **reticulate**.
-1. You can create tooltip-specifications using `vega_tooltip()`, and `add_fields()`. Or you create a default tooltip-specification using `vega_tooltip_encoding()` or `vega_tooltip_all()`.
-1. You can render a chart-specification and tooltip-specification into an htmlwidget, using `vegalite()`.
+1. You can render a chart-specification into an htmlwidget, using `vegalite()`.
 
 There's really not much beyond that. In the near future, the thought is to focus on making this interface as robust as possible, perhaps to make it easier to consolidate datasets and publish [blocks](https://bl.ocks.org/).
 
@@ -105,7 +104,7 @@ The documentation for this package includes some articles:
 
 - [Interactive Examples](https://ijlyttle.github.io/altair/articles/interactive.html): A set of examples that work towards linked-brushing of two scatterplots.
 
-- [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html): In the Vega world, tooltips and charts are specified seperately. This article explains how to integrate tooltips with charts, and shows a few tooltip-customization options.
+- [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html): In the Vega world, tooltips are changing. Watch this space.
 
 - [Vega Datasets](https://ijlyttle.github.io/altair/articles/vega-datasets.html): You can import [Vega datasets](https://github.com/altair-viz/vega_datasets) using `import_vega_data()`. 
 
