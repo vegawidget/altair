@@ -1,5 +1,9 @@
 # altair 0.0.2.9000
 
+* updates versions of JS libraries: vega 3.3.1, vega-lite 2.4.3, vega-embed 3.9.0 (#33)
+
+* removes tooltip functions (#45)
+
 * updates `.onLoad()` to run `check_altair()` on loading, and adds error handling (#43, with @aliciaschep)
 
 * updates travis.yml so that this package installs its supported version of Altair (#44)
