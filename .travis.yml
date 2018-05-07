@@ -16,7 +16,7 @@ before_install:
   - conda update -q -y conda
 
 before_script:
-  - R CMD install .
+  - R CMD INSTALL .
   - R -e 'reticulate::use_condaenv("r-reticulate")'
   - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
