@@ -31,6 +31,34 @@
 #'
 alt <- NULL
 
+on_altair_load <- function() {
+  check_altair()
+}
+
+on_altair_error <- function(e) {
+  message("Error importing Altair python package")
+  message("Please try using install_altair() to install")
+  message("")
+  message("Output from reticulate::py_config()")
+  reticulate::py_config()
+}
+
+# =============================================================================
+# Note to maintainers:
+#
+# To change the supported Python version, set the option in .onLoad
+# =============================================================================
 .onLoad <- function(libname, pkgname) {
-  alt <<- reticulate::import("altair", delay_load = TRUE)
+
+  # sets the supported version
+  options(altair.python.version = "2.0.1")
+
+  alt <<-
+    reticulate::import(
+      "altair",
+      delay_load = list(
+        on_load = on_altair_load,
+        on_error = on_altair_error
+      )
+    )
 }

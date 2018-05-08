@@ -25,8 +25,7 @@ package.
 
 ## Installation
 
-For this package a development version is available from
-[GitHub](https://github.com/):
+A development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
@@ -49,10 +48,9 @@ Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
     this package.
     \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
     
-      - Depending on how your system is configured, you may have to
-        specify the location of your SSL cerificate, or deal with a
-        proxy.
-        \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
+    Depending on how your system is configured, you may have to specify
+    the location of your SSL cerificate, or deal with a proxy.
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
 
 2.  Create a Conda environment called `"r-reticulate"`.
     \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env)\]
@@ -114,11 +112,8 @@ the moment, you are able to muck around with Vega-Lite 2.0. This means:
 
 1.  You can create chart-specifications by accessing the Python
     **Altair** API using **reticulate**.
-2.  You can create tooltip-specifications using `vega_tooltip()`, and
-    `add_fields()`. Or you create a default tooltip-specification using
-    `vega_tooltip_encoding()` or `vega_tooltip_all()`.
-3.  You can render a chart-specification and tooltip-specification into
-    an htmlwidget, using `vegalite()`.
+2.  You can render a chart-specification into an htmlwidget, using
+    `vegalite()`.
 
 There’s really not much beyond that. In the near future, the thought is
 to focus on making this interface as robust as possible, perhaps to make
@@ -146,9 +141,7 @@ The documentation for this package includes some articles:
     scatterplots.
 
   - [Tooltips](https://ijlyttle.github.io/altair/articles/tooltip.html):
-    In the Vega world, tooltips and charts are specified seperately.
-    This article explains how to integrate tooltips with charts, and
-    shows a few tooltip-customization options.
+    In the Vega world, tooltips are changing. Watch this space.
 
   - [Vega
     Datasets](https://ijlyttle.github.io/altair/articles/vega-datasets.html):

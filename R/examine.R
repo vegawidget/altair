@@ -2,8 +2,8 @@
 #'
 #' Use this function to interactvely examine a specification, using
 #' [listviewer::jsonedit()]. It can be used to examine a chart-specification
-#' (built using [`alt`]$Chart()) or a tooltip-specification
-#' (built using [vega_tooltip()]).
+#' (built using [`alt`]$Chart()), or an embedding specification created using
+#' [vega_embed()].
 #'
 #' @inheritParams listviewer::jsonedit
 #'
@@ -22,14 +22,6 @@
 #'   examine(plot_basic)
 #' }
 #'
-#'   tooltip_custom <-
-#'     vega_tooltip() %>%
-#'     add_field(field = "mpg", title = "MPG") %>%
-#'     add_field(field = "hp", title = "HP")
-#'
-#' \dontrun{
-#'   examine(tooltip_custom)
-#' }
 #'
 #' @export
 #'
@@ -59,18 +51,6 @@ examine.default <- function(listdata = NULL, mode = "tree",
     height = height,
     elementId = elementId
   )
-}
-
-#' @export
-#'
-examine.vega_tooltip <- function(listdata = NULL, mode = "tree",
-                                 modes = c("code", "form", "text", "tree", "view"), ...,
-                                 width = NULL, height = NULL, elementId = NULL) {
-
-  # need to do this so JS functions show up
-  listdata <- jsonlite::toJSON(unclass(listdata), auto_unbox = TRUE)
-
-  NextMethod()
 }
 
 #' @export

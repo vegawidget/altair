@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.2.9000</span>
       </span>
     </div>
 
@@ -143,8 +143,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>(), <span class='kw'>embed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>vegalite</span>(<span class='no'>chart</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,12 +151,6 @@
     <tr>
       <th>chart</th>
       <td><p>an Altair plot object</p></td>
-    </tr>
-    <tr>
-      <th>tooltip</th>
-      <td><p><code>vega_tooltip</code> object to specify tooltip options -
-the default is an empty call to <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>,
-which will result in no tooltip being displayed</p></td>
     </tr>
     <tr>
       <th>embed</th>
@@ -185,12 +178,6 @@ the default is to use the chart specification</p></td>
     <p>This function is called <code>vegalite()</code> is because it returns an htmlwidget
 that uses the Vega-Lite JavaScript library, rather than the
 Altair Python package.</p>
-<p>To include a tooltip in your chart-rendering, use one of the
-<code><a href='vega_tooltip.html'>vega_tooltip()</a></code> functions with the <code>tooltip</code> argument.
-Keep in mind that you can include exactly <strong>one</strong> tooltip specification
-and exactly <strong>one</strong> chart specification
-in a rendering; the tooltip will be applied to the entire chart,
-even if it is a compound chart.</p>
 <p>To specify embedding-options, use the <code><a href='vega_embed.html'>vega_embed()</a></code> function with the
 <code>embed</code> argument. Its most-important options are:</p><ul>
 <li><p><code>renderer</code>, to specify <code>"canvas"</code> (default) or <code>"svg"</code></p></li>
@@ -223,7 +210,7 @@ the height of the action-links to be 25-30 pixels.</p></li>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>, <code><a href='vega_embed.html'>vega_embed()</a></code></p></div>
+    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_embed.html'>vega_embed()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -235,12 +222,9 @@ the height of the action-links to be 25-30 pixels.</p></li>
       <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
       <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
     )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
-  <span class='co'># default: no tooltips, rendered using canvas,</span>
+  <span class='co'># default: rendered using canvas,</span>
   <span class='co'>#   all action-links, chart-specification determines size</span>
   <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>)
-
-  <span class='co'># tooltip showing encoding variables</span>
-  <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='vega_tooltip.html'>vega_tooltip_encoding</a></span>())
 
   <span class='co'># render using SVG</span>
   <span class='fu'>vegalite</span>(<span class='no'>plot_basic</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='st'>"svg"</span>))

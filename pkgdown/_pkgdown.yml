@@ -1,0 +1,39 @@
+template:
+  params:
+    bootswatch: sandstone
+
+development:
+  mode: unreleased
+
+reference:
+  - title: Package
+    desc: Overview of the package
+    contents:
+      - altair
+  - title: Installation
+    desc: >
+      Functions to help install the Python Altair library
+    contents:
+      - install_altair
+      - check_altair
+  - title: Charts
+    desc: >
+      Functions and objects to construct chart-specifications
+    contents:
+      - alt
+      - import_vega_data
+      - r_to_py
+      - altair_concatenation
+  - title: Examining and Rendering
+    desc: >
+      Functions for examining specifications,
+      and for rendering them into htmlwidgets
+    contents:
+      - examine
+      - vegalite
+      - vega_embed
+      - only_actions
+      - renderVegalite
+      - vegaliteOutput
+
+

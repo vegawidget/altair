@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 The `vegalite()` function renders a chart specification into an HTML `<div/>`.
 
 * [**Chart specification**](#chart) (`chart`)
-* [**Tooltip specification**](#tooltip) (`tooltip`)
 * [**Embedding specification**](#embedding) (`embed`) 
 * [**Chart dimensions**](#dimensions) (`width`, `height`) 
 
@@ -49,10 +48,9 @@ The simplest useful call to `vegalite()` has only the chart specification:
 vegalite(base_chart)
 ```
 
-As you can see, this renders the chart using some defaults:
+As you can see, this renders this chart using some defaults:
 
-- The size of the plotting area is 400 $\times$ 300 pixels.
-- There are no tooltips.
+- The size of the plotting area is 400 $\times$ 300 pixels (default for two quantitative axes).
 - The chart is rendered using canvas.
 - There are action links to export, to view source of, and to edit the chart.
 
@@ -63,39 +61,6 @@ examine(base_chart)
 ```
 
 By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.
-
-## Tooltip specification {#tooltip}
-
-The `tooltip` argument expects a `vega_tooltip` object, which is made by the `vega_tooltip()` family of functions. The default is an empty call to `vega_tooltip()`, which results in no tooltips being displayed.
-
-To display a tooltip that contains only the encoding variables, use the `vega_tooltip_encoding()` function:
-
-```{r tooltip-encoding}
-vegalite(base_chart, tooltip = vega_tooltip_encoding())
-```
-
-To display a tooltip that contains all variables in the data, use the `vega_tooltip_all()` function:
-
-```{r tooltip-all}
-vegalite(base_chart, tooltip = vega_tooltip_all())
-```
-
-Finally, to build a custom tooltip, use the `vega_tooltip()` function with `add_field()`:
-
-```{r}
-tooltip_custom <- 
-  vega_tooltip() %>%
-  add_field(field = "Name") %>%
-  add_field(field = "Origin") %>%
-  add_field(field = "Horsepower") %>%
-  add_field(field = "Miles_per_Gallon", title = "Miles per Gallon")
-
-vegalite(base_chart, tooltip = tooltip_custom)
-```
-
-You can examine a tooltip specification using the `examine()` funciton.
-
-For more information on the options, see the [Tooltip article](tooltip.html) and the Vega Tooltip documentation. One thing to keep in mind is that you get exactly one tooltip-specification in a rendering, regardless if the chart is a single chart or a repeated chart.
 
 ## Embedding specificaiton {#embedding}
 
@@ -120,7 +85,7 @@ vegalite(
 )
 ```
 
-As with chart specifications and tooltip specifications, you can `examine()` embedding specifications.
+As with chart-specifications, you can `examine()` embedding-specifications.
 
 If there is a default that you would like to use, you can set an option in your `.Rprofile` file. For example:
 

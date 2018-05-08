@@ -6,13 +6,6 @@
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
 #'
-#' To include a tooltip in your chart-rendering, use one of the
-#' [vega_tooltip()] functions with the `tooltip` argument.
-#' Keep in mind that you can include exactly **one** tooltip specification
-#' and exactly **one** chart specification
-#' in a rendering; the tooltip will be applied to the entire chart,
-#' even if it is a compound chart.
-#'
 #' To specify embedding-options, use the [vega_embed()] function with the
 #' `embed` argument. Its most-important options are:
 #'
@@ -50,9 +43,6 @@
 #' the height of the action-links to be 25-30 pixels.
 #'
 #' @param chart   an Altair plot object
-#' @param tooltip `vega_tooltip` object to specify tooltip options -
-#'   the default is an empty call to [vega_tooltip()],
-#'   which will result in no tooltip being displayed
 #' @param embed   `vega_embed` object to specify embedding options -
 #'   the default is an empty call to [vega_embed()],
 #'   which will result in a canvas-rendering and all actions-links being
@@ -63,7 +53,7 @@
 #' @param height  `integer`, if specified, the total rendered height (in pixels)
 #'   of the chart - valid only for single-view charts and layered charts;
 #'   the default is to use the chart specification
-#' @seealso [alt], [vega_tooltip()], [vega_embed()]
+#' @seealso [alt], [vega_embed()]
 #' @examples
 #'   plot_basic <-
 #'     alt$Chart(
@@ -75,12 +65,9 @@
 #'     )$mark_point()
 #'
 #' \dontrun{
-#'   # default: no tooltips, rendered using canvas,
+#'   # default: rendered using canvas,
 #'   #   all action-links, chart-specification determines size
 #'   vegalite(plot_basic)
-#'
-#'   # tooltip showing encoding variables
-#'   vegalite(plot_basic, tooltip = vega_tooltip_encoding())
 #'
 #'   # render using SVG
 #'   vegalite(plot_basic, embed = vega_embed(renderer = "svg"))
@@ -93,12 +80,9 @@
 #' }
 #' @export
 #'
-vegalite <- function(chart,
-                     tooltip = vega_tooltip(),
-                     embed = NULL,
-                     width = NULL, height = NULL) {
+vegalite <- function(chart, embed = NULL, width = NULL, height = NULL) {
 
-  # if `emmbed` is NULL, check for option
+  # if `embed` is NULL, check for option
   if (is.null(embed)) {
     embed <- getOption("altair.embed_options")
   }
@@ -151,7 +135,6 @@ vegalite <- function(chart,
   x <-
     list(
       chart_spec = chart_copy$to_json(),
-      tooltip_options = unclass(tooltip),
       embed_options = unclass(embed)
     )
 
