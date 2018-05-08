@@ -43,11 +43,6 @@ Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well for me.
     
-    As well, for the time being, you will need the development version
-    of reticulate, which should have installed automatically, along with
-    this package.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
-    
     Depending on how your system is configured, you may have to specify
     the location of your SSL cerificate, or deal with a proxy.
     \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]

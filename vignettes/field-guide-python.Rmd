@@ -167,13 +167,6 @@ A new terminal-window will have access to these settings, which you can confirm 
 
 ## Reticulate and Python installation {#reticulate-python}
 
-I recommend (until its next CRAN release) using the dev version of **reticulate**, which should have been installed automatically as a part of this package's installation.
-
-```r
-# install.packages("devtools")
-devtools::install_github("rstudio/reticulate")
-```
-
 Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article. Here, we amplify some opinions offered by RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, I recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
 
 Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.

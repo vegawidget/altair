@@ -38,8 +38,6 @@ Because you are using a Python package, you may have some additional installatio
 
 1. Python must be installed on your system. To make things easier to work with reticulate, I recommend using a [Conda](https://conda.io/docs) installation; [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well for me.
 
-   As well, for the time being, you will need the development version of reticulate, which should have installed automatically, along with this package. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)]
-
    Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)]
 
 2. Create a Conda environment called `"r-reticulate"`. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env)]
