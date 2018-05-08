@@ -89,34 +89,39 @@ install_altair <- function(method = c("conda", "virtualenv"),
 
 #' Check the Altair installation
 #'
-#' If the supported Altair version is different from the installed
-#' Altair version, this function will act according to where the
+#' Provides feedback on any differences between your installed
+#' version of Altair and the version this package supports.
+#'
+#' If the supported Altair version is different from your installed
+#' version, this function will act according to where the
 #' difference in the version numbers:
 #'
 #' - major version leads to an **error**
 #' - minor version leads to a **warning**
 #' - patch version leads to a **message**
 #'
-#' If there is no difference, there is no message.
+#' If there is no difference, there is no message; no news is good news!
 #'
 #' To install the supported version into a Ptyhon environment
 #' called `"r-reticulate"`, use [install_altair()].
+#'
+#' @inheritParams check_altair_version
 #'
 #' @return invisible `NULL`, called for side-effects
 #' @seealso [reticulate::py_config()], [install_altair()]
 #' @examples
 #' \dontrun{
-#'   check_altair()
+#'   check_altair(quiet = FALSE)
 #' }
 #' @export
 #'
-check_altair <- function() {
+check_altair <- function(quiet = TRUE) {
   check_altair_version(
     version_installed = alt$`__version__`,
-    version_supported = getOption("altair.python.version")
+    version_supported = getOption("altair.python.version"),
+    quiet = quiet
   )
 }
-
 
 #' Check two verision-strings
 #'
@@ -126,6 +131,7 @@ check_altair <- function() {
 #'   can be obtained using `alt$__version__`
 #' @param version_supported `character` vector, supported version -
 #'   can be obtained using `getOption("altair.pyhton.version")`
+#' @param quiet `logical`, indicates to issue message if check is successful
 #'
 #' @return invisible `NULL`, called for side-effects
 #' @keywords internal
@@ -147,7 +153,8 @@ check_altair <- function() {
 #' }
 #' @export
 #'
-check_altair_version <- function(version_installed, version_supported) {
+check_altair_version <- function(version_installed, version_supported,
+                                 quiet = TRUE) {
 
   installed <- get_version_components(version_installed)
   supported <- get_version_components(version_supported)
@@ -214,6 +221,10 @@ check_altair_version <- function(version_installed, version_supported) {
   }
 
   # success!
+  if (!quiet) {
+    message(paste("Success:", version_string))
+  }
+
   invisible(NULL)
 }
 
