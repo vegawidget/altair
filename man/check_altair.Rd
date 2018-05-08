@@ -10,18 +10,20 @@ check_altair()
 invisible \code{NULL}, called for side-effects
 }
 \description{
-If the supported Altair version is different from the installed
-Altair version, this function will act according to where the
-difference in the version numbers:
+Provides feedback on any differences between your installed
+version of Altair and the version this package supports.
 }
 \details{
+If the supported Altair version is different from your installed
+version, this function will act according to where the
+difference in the version numbers:
 \itemize{
 \item major version leads to an \strong{error}
 \item minor version leads to a \strong{warning}
 \item patch version leads to a \strong{message}
 }
 
-If there is no difference, there is no message.
+If there is no difference, there is no message; no news is good news!
 
 To install the supported version into a Ptyhon environment
 called \code{"r-reticulate"}, use \code{\link[=install_altair]{install_altair()}}.

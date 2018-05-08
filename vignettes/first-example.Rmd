@@ -116,7 +116,7 @@ In Vega, "encoding" plays a similar role to "aesthetics" in ggplot2. We are mapp
 What we see here is, in fact, a shorthand. As explained in the [Altair documentation](https://altair-viz.github.io/user_guide/encoding.html#encoding-shorthands), there's a longer version:
 
 ```{r add-encoding-long}
-plot <- 
+chart <- 
   alt$Chart(
     r_to_py(mtcars)
   )$mark_point(

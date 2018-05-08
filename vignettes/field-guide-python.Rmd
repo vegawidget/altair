@@ -249,8 +249,7 @@ reticulate::py_config()
 And by confirming your Altair installation:
 
 ```r
-# the ideal result is nothing
-altair::check_altair()
+altair::check_altair(quiet = FALSE)
 ```
 
 ## Working with Python objects {#work-work}

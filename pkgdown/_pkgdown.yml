@@ -15,7 +15,7 @@ reference:
       Functions to help install the Python Altair library
     contents:
       - install_altair
-      - has_altair
+      - check_altair
   - title: Charts
     desc: >
       Functions and objects to construct chart-specifications
@@ -24,12 +24,6 @@ reference:
       - import_vega_data
       - r_to_py
       - altair_concatenation
-  - title: Tooltips
-    desc: >
-      Functions to create tooltip-specifications
-    contents:
-      - vega_tooltip
-      - add_field
   - title: Examining and Rendering
     desc: >
       Functions for examining specifications,
