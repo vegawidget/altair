@@ -25,8 +25,7 @@ package.
 
 ## Installation
 
-For this package a development version is available from
-[GitHub](https://github.com/):
+A development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
@@ -47,19 +46,18 @@ Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
     As well, for the time being, you will need the development version
     of reticulate, which should have installed automatically, along with
     this package.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]
     
-      - Depending on how your system is configured, you may have to
-        specify the location of your SSL cerificate, or deal with a
-        proxy.
-        \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)\]
+    Depending on how your system is configured, you may have to specify
+    the location of your SSL cerificate, or deal with a proxy.
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]
 
 2.  Create a Conda environment called `"r-reticulate"`.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env)\]
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env)\]
 
 3.  Install Altair into your `"r-reticulate"` environment using
     `altair::install_altair()`.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#altair)\]
+    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#altair)\]
 
 You may wish to add a line like this to the `.First()` function in your
 `.Rprofile`:
