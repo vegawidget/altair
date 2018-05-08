@@ -42,7 +42,6 @@ Because you are using a Python package, you may have some additional installatio
 
    Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)]
 
-
 2. Create a Conda environment called `"r-reticulate"`. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env)]
 
 3. Install Altair into your `"r-reticulate"` environment using `altair::install_altair()`. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#altair)]
