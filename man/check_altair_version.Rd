@@ -4,7 +4,7 @@
 \alias{check_altair_version}
 \title{Check two verision-strings}
 \usage{
-check_altair_version(version_installed, version_supported)
+check_altair_version(version_installed, version_supported, quiet = TRUE)
 }
 \arguments{
 \item{version_installed}{\code{character} vector, installed version -
@@ -12,6 +12,8 @@ can be obtained using \code{alt$__version__}}
 
 \item{version_supported}{\code{character} vector, supported version -
 can be obtained using \code{getOption("altair.pyhton.version")}}
+
+\item{quiet}{\code{logical}, indicates to issue message if check is successful}
 }
 \value{
 invisible \code{NULL}, called for side-effects
