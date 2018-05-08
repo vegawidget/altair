@@ -34,8 +34,8 @@
 
 <meta property="og:description" content="Use this function to interactvely examine a specification, using
 listviewer::jsonedit(). It can be used to examine a chart-specification
-(built using alt$Chart()) or a tooltip-specification
-(built using vega_tooltip())." />
+(built using alt$Chart()), or an embedding specification created using
+vega_embed()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@ listviewer::jsonedit(). It can be used to examine a chart-specification
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.2.9000</span>
       </span>
     </div>
 
@@ -144,8 +144,8 @@ listviewer::jsonedit(). It can be used to examine a chart-specification
     
     <p>Use this function to interactvely examine a specification, using
 <code><a href='http://www.rdocumentation.org/packages/listviewer/topics/jsonedit'>listviewer::jsonedit()</a></code>. It can be used to examine a chart-specification
-(built using <code><a href='alt.html'>alt</a></code>$Chart()) or a tooltip-specification
-(built using <code><a href='vega_tooltip.html'>vega_tooltip()</a></code>).</p>
+(built using <code><a href='alt.html'>alt</a></code>$Chart()), or an embedding specification created using
+<code><a href='vega_embed.html'>vega_embed()</a></code>.</p>
     
     </div>
 
@@ -209,12 +209,7 @@ identifier.</p></td>
     )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
   <span class='fu'>examine</span>(<span class='no'>plot_basic</span>)
 <span class='co'># }</span><div class='input'>
-  <span class='no'>tooltip_custom</span> <span class='kw'>&lt;-</span>
-    <span class='fu'><a href='vega_tooltip.html'>vega_tooltip</a></span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='add_field.html'>add_field</a></span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"MPG"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='add_field.html'>add_field</a></span>(<span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"hp"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"HP"</span>)</div><span class='co'># NOT RUN {</span>
-  <span class='fu'>examine</span>(<span class='no'>tooltip_custom</span>)
-<span class='co'># }</span><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

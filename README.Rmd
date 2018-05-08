@@ -27,7 +27,7 @@ In this documentation, the capitalized word **Altair** shall refer to the Python
 
 ## Installation
 
-For this package a development version is available from [GitHub](https://github.com/):
+A development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
@@ -40,7 +40,7 @@ Because you are using a Python package, you may have some additional installatio
 
    As well, for the time being, you will need the development version of reticulate, which should have installed automatically, along with this package. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)]
 
-   - Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)]
+   Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python)]
 
 2. Create a Conda environment called `"r-reticulate"`. [[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env)]
 
