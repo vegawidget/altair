@@ -22,6 +22,6 @@ before_script:
   - R -e 'reticulate::use_condaenv("r-reticulate")'
   - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
-  - R -e 'altair::check_altair()'
+  - R -e 'altair::check_altair(quiet = FALSE)'
 
 
