@@ -84,6 +84,14 @@ The argument to the `Chart()` function also merits some explanation. In Python, 
 
 In our case, we are converting dataframes. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
 
+The `data` argument to a chart function need not be a data frame; it can be a *reference* to a data frame like a URL, in which case you will not need to wrap in `r_to_py()`:
+
+```{r url}
+vega_data$cars$url
+
+chart <- alt$Chart(vega_data$cars$url)
+```
+
 ## Adding a mark
 
 ```{r add-mark}
@@ -117,10 +125,9 @@ What we see here is, in fact, a shorthand. As explained in the [Altair documenta
 
 ```{r add-encoding-long}
 chart <- 
-  alt$Chart(
-    r_to_py(mtcars)
-  )$mark_point(
-  )$encode(
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_point()$
+  encode(
     x = alt$X("Horsepower", type = "quantitative"),
     y = alt$Y("Miles_per_Gallon", type = "quantitative"),
     color = alt$Color("Origin", type = "nominal") 

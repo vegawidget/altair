@@ -53,6 +53,7 @@
 #' @param height  `integer`, if specified, the total rendered height (in pixels)
 #'   of the chart - valid only for single-view charts and layered charts;
 #'   the default is to use the chart specification
+#' @param ... other arguments
 #' @seealso [alt], [vega_embed()]
 #' @examples
 #'   plot_basic <-
@@ -80,7 +81,7 @@
 #' }
 #' @export
 #'
-vegalite <- function(chart, embed = NULL, width = NULL, height = NULL) {
+vegalite <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
 
   # if `embed` is NULL, check for option
   if (is.null(embed)) {
