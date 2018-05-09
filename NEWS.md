@@ -1,6 +1,6 @@
 # altair 0.0.2.9000
 
-* implements `knit_print()` and `print()` methods (#8)
+* provides methods for `knit_print()` and `print()` generics (#8)
 
 * updates versions of JS libraries: vega 3.3.1, vega-lite 2.4.3, vega-embed 3.9.0 (#33) 
 
