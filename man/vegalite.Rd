@@ -4,7 +4,7 @@
 \alias{vegalite}
 \title{Create a Vega-Lite htmlwidget}
 \usage{
-vegalite(chart, embed = NULL, width = NULL, height = NULL)
+vegalite(chart, embed = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{chart}{an Altair plot object}
@@ -21,6 +21,8 @@ the default is to use the chart specification}
 \item{height}{\code{integer}, if specified, the total rendered height (in pixels)
 of the chart - valid only for single-view charts and layered charts;
 the default is to use the chart specification}
+
+\item{...}{other arguments}
 }
 \description{
 Use this function to render a chart as an htmlwidget.
