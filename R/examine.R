@@ -27,19 +27,19 @@
 #'
 #' @export
 #'
-examine <- function() {
+examine <- function(listdata = NULL, mode = "tree",
+                    modes = c("code", "form", "text", "tree", "view"),
+                    ..., width = NULL, height = NULL,
+                    elementId = NULL) {
   UseMethod("examine")
 }
 
-# all of these functions have the same formals as listviewer::jsonedit,
-#   this seems like a way to save some effort and lessen the chance of
-#   an error
-#
-formals(examine) <- formals(listviewer::jsonedit)
-
 #' @export
 #'
-examine.default <- function() {
+examine.default <- function(listdata = NULL, mode = "tree",
+                            modes = c("code", "form", "text", "tree", "view"),
+                            ..., width = NULL, height = NULL,
+                            elementId = NULL) {
 
   if (!requireNamespace("listviewer", quietly = TRUE)) {
     stop("Package \"listviewer\" needed for this function to work. Please install it.",
@@ -57,12 +57,13 @@ examine.default <- function() {
   )
 }
 
-formals(examine.default) <- formals(listviewer::jsonedit)
-
 #' @export
 #'
 examine.altair.vegalite.v2.api.TopLevelMixin <-
-  function() {
+  function(listdata = NULL, mode = "tree",
+           modes = c("code", "form", "text", "tree", "view"),
+           ..., width = NULL, height = NULL,
+           elementId = NULL) {
 
   jsontemp <- listdata$to_json(validate = FALSE)
 
@@ -70,6 +71,4 @@ examine.altair.vegalite.v2.api.TopLevelMixin <-
 
   NextMethod()
 }
-
-formals(examine.altair.vegalite.v2.api.TopLevelMixin) <- formals(listviewer::jsonedit)
 
