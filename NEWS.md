@@ -1,6 +1,6 @@
 # altair 0.0.2.9000
 
-* deprecates `vegalite()` in favor of `vegawidget()` (#48, in progress)
+* deprecates `vegalite()` in favor of `vegawidget()` (#48)
 
 * provides methods for `knit_print()` and `print()` generics (#8)
 

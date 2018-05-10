@@ -151,6 +151,23 @@ vegawidget <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
   vegawidget
 }
 
+#' @rdname vegawidget
+#' @keywords internal
+#' @export
+#'
+vegalite <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
+
+  .Deprecated("vegawidget")
+
+  vegawidget(
+    chart = chart,
+    embed = embed,
+    width = NULL,
+    height = NULL,
+    ...
+  )
+}
+
 #' Shiny output for Vega-Lite
 #'
 #' @inheritParams htmlwidgets::shinyWidgetOutput
