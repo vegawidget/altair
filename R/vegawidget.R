@@ -151,7 +151,12 @@ vegawidget <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
   vegawidget
 }
 
-#' @rdname vegawidget
+#' Rendering function - deprecated
+#'
+#' This function has been renamed to `vegawidget()`
+#'
+#' @inheritParams  vegawidget
+#'
 #' @keywords internal
 #' @export
 #'
