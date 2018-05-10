@@ -20,20 +20,21 @@ assign this to an object named \code{vega_data}.
 }
 \examples{
 \dontrun{
-  vega_data <- import_vega_datasets()
+  vega_data <- import_vega_data()
 
   # To list available datasets
-  vega_data$data$list_datasets()
+  vega_data$list_datasets()
 
   # When accessing a dataset, substitute any "-" in the name with a "_"
-  head(vega_data$data$sf_temps())
+  head(vega_data$sf_temps())
 
   # Metadata are available for each dataset:
-  vega_data$data$sf_temps$description
-  vega_data$data$sf_temps$url
+  vega_data$anscombe$references
+  vega_data$anscombe$description
+  vega_data$anscombe$url
 
   # For local datasets, local path is available
-  vega_data$data$sf_temps$filepath
+  vega_data$sf_temps$filepath
 }
 }
 \seealso{
