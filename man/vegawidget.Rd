@@ -2,9 +2,12 @@
 % Please edit documentation in R/vegawidget.R
 \name{vegawidget}
 \alias{vegawidget}
+\alias{vegalite}
 \title{Create a Vega/Vega-Lite htmlwidget}
 \usage{
 vegawidget(chart, embed = NULL, width = NULL, height = NULL, ...)
+
+vegalite(chart, embed = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{chart}{an Altair plot object}
@@ -95,3 +98,4 @@ the height of the action-links to be 25-30 pixels.
 \seealso{
 \link{alt}, \code{\link[=vega_embed]{vega_embed()}}
 }
+\keyword{internal}
