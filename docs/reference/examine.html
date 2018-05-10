@@ -34,7 +34,7 @@
 
 <meta property="og:description" content="Use this function to interactvely examine a specification, using
 listviewer::jsonedit(). It can be used to examine a chart-specification
-(built using alt$Chart()), or an embedding specification created using
+(built using alt$Chart(), or compound charts), or an embedding specification created using
 vega_embed()." />
 <meta name="twitter:card" content="summary" />
 
@@ -144,7 +144,7 @@ vega_embed()." />
     
     <p>Use this function to interactvely examine a specification, using
 <code><a href='http://www.rdocumentation.org/packages/listviewer/topics/jsonedit'>listviewer::jsonedit()</a></code>. It can be used to examine a chart-specification
-(built using <code><a href='alt.html'>alt</a></code>$Chart()), or an embedding specification created using
+(built using <code><a href='alt.html'>alt</a></code>$Chart(), or compound charts), or an embedding specification created using
 <code><a href='vega_embed.html'>vega_embed()</a></code>.</p>
     
     </div>
@@ -199,15 +199,19 @@ identifier.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
-    <span class='no'>alt</span>$<span class='fu'>Chart</span>(
-      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>mtcars</span>)
-    )$<span class='fu'>encode</span>(
-      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"mpg:Q"</span>,
-      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
-      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
-    )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
-  <span class='fu'>examine</span>(<span class='no'>plot_basic</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='import_vega_data.html'>import_vega_data</a></span>()
+
+  <span class='no'>chart</span> <span class='kw'>&lt;-</span>
+    <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>vega_data</span>$<span class='no'>cars</span>$<span class='no'>url</span>))$
+    <span class='fu'>encode</span>(
+      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Horsepower:Q"</span>,
+      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Miles_per_Gallon:Q"</span>,
+      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
+    )$
+   <span class='fu'>mark_point</span>()
+
+  <span class='fu'>examine</span>(<span class='no'>chart</span>)
 <span class='co'># }</span><div class='input'>
 
 </div></pre>

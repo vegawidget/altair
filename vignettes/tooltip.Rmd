@@ -22,7 +22,7 @@ chart <-
     color = "Origin:N"
   )
 
-vegalite(chart)
+chart
 ```
 
 For the time-being, we can make tooltips only for a single encoding. We are waiting for the Altair package to catch-up to the vega-tooltip changes; the Altair folks are waiting for their renderers to catch up.
@@ -38,7 +38,7 @@ chart <-
     tooltip = alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative")
   )
 
-vegalite(chart)
+chart
 ```
 
 ```{r}

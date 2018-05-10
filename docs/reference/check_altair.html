@@ -145,8 +145,17 @@ version of Altair and the version this package supports.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_altair</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>check_altair</span>(<span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>quiet</th>
+      <td><p><code>logical</code>, indicates to issue message if check is successful</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>invisible <code>NULL</code>, called for side-effects</p>
@@ -171,12 +180,13 @@ called <code>"r-reticulate"</code>, use <code><a href='install_altair.html'>inst
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='fu'>check_altair</span>()
+  <span class='fu'>check_altair</span>(<span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 

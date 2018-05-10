@@ -14,8 +14,8 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin(x, ..., options = NULL)
 \item{options}{\code{list}, knitr options}
 }
 \description{
-The only effective options are \code{out.width} and \code{out.height};
-these are passed to \code{\link[=vegalite]{vegalite()}} as \code{width} and \code{height},
+The only effective options are \code{vega.width} and \code{vega.height};
+these are passed to \code{\link[=vegawidget]{vegawidget()}} as \code{width} and \code{height},
 respectively.
 }
 \details{

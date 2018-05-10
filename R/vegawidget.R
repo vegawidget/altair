@@ -1,8 +1,8 @@
-#' Create a Vega-Lite htmlwidget
+#' Create a Vega/Vega-Lite htmlwidget
 #'
 #' Use this function to render a chart as an htmlwidget.
 #'
-#' This function is called `vegalite()` is because it returns an htmlwidget
+#' This function is called `vegawidget()` is because it returns an htmlwidget
 #' that uses the Vega-Lite JavaScript library, rather than the
 #' Altair Python package.
 #'
@@ -17,7 +17,7 @@
 #' are shown (or not). Use a named list to be more specific, see
 #' [vega_embed()] and [only_actions()].
 #'
-#' If `embed` is `NULL`, `vegalite()` sets `embed` to the value of
+#' If `embed` is `NULL`, `vegawidget()` sets `embed` to the value of
 #' `getOption("altair.embed_options")`. If that is null, the
 #' [vega-embed](https://github.com/vega/vega-embed#api-reference)
 #' defaults are used.
@@ -26,7 +26,7 @@
 #' determined using the `chart` specification. However, there are some
 #' important provisions:
 #'
-#' - Specifying `width` and `height` in `vegalite()` is
+#' - Specifying `width` and `height` in `vegawidget()` is
 #' [effective only for single-view charts and layered charts](
 #' https://vega.github.io/vega-lite/docs/size.html#limitations).
 #' It will not work for contatenated, faceted, or repeated charts.
@@ -34,7 +34,7 @@
 #' - In the chart specification, the default interpretation of width and height
 #' is to describe the dimensions of the
 #' **plotting rectangle**, not including the space used by the axes, labels,
-#' etc. When `width` and `height` are specified using `vegalite()`,
+#' etc. When `width` and `height` are specified using `vegawidget()`,
 #' the meanings change to describe the dimensions of the **entire** rendered chart,
 #' including axes, labels, etc.
 #'
@@ -68,20 +68,20 @@
 #' \dontrun{
 #'   # default: rendered using canvas,
 #'   #   all action-links, chart-specification determines size
-#'   vegalite(plot_basic)
+#'   vegawidget(plot_basic)
 #'
 #'   # render using SVG
-#'   vegalite(plot_basic, embed = vega_embed(renderer = "svg"))
+#'   vegawidget(plot_basic, embed = vega_embed(renderer = "svg"))
 #'
 #'   # do not include action-links
-#'   vegalite(plot_basic, embed = vega_embed(actions = FALSE))
+#'   vegawidget(plot_basic, embed = vega_embed(actions = FALSE))
 #'
 #'   # specify dimensions of rendered-chart
-#'   vegalite(plot_basic, width = 300, height = 200)
+#'   vegawidget(plot_basic, width = 300, height = 200)
 #' }
 #' @export
 #'
-vegalite <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
+vegawidget <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
 
   # if `embed` is NULL, check for option
   if (is.null(embed)) {
@@ -139,16 +139,16 @@ vegalite <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
       embed_options = unclass(embed)
     )
 
-  vegalite <-
+  vegawidget <-
     htmlwidgets::createWidget(
-      "vegalite",
+      "vegawidget",
       x,
       width = width,
       height = height,
       package = "altair"
     )
 
-  vegalite
+  vegawidget
 }
 
 #' Shiny output for Vega-Lite
@@ -157,10 +157,10 @@ vegalite <- function(chart, embed = NULL, width = NULL, height = NULL, ...) {
 #'
 #' @export
 #'
-vegaliteOutput <- function(outputId, width = "100%", height = "400px") {
+vegawidgetOutput <- function(outputId, width = "100%", height = "400px") {
   htmlwidgets::shinyWidgetOutput(
     outputId,
-    "vegalite",
+    "vegawidget",
     width,
     height,
     package = "altair"
@@ -173,11 +173,11 @@ vegaliteOutput <- function(outputId, width = "100%", height = "400px") {
 #'
 #' @export
 #'
-renderVegalite <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderVegawidget <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(
     expr,
-    vegaliteOutput,
+    vegawidgetOutput,
     env,
     quoted = TRUE
   )

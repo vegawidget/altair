@@ -125,7 +125,6 @@
 <ol style="list-style-type: decimal">
 <li>
 <p>Python must be installed on your system. To make things easier to work with reticulate, I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well for me.</p>
-<p>As well, for the time being, you will need the development version of reticulate, which should have installed automatically, along with this package. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python">reference</a>]</p>
 <p>Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python">reference</a>]</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env">reference</a>]</p></li>
@@ -151,7 +150,7 @@
 <a class="sourceLine" id="cb3-11" data-line-number="11">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(chart)</a></code></pre></div>
+<a class="sourceLine" id="cb3-14" data-line-number="14">chart</a></code></pre></div>
 <p><img src="reference/figures/first-example.png"></p>
 <p>Some things to keep in mind:</p>
 <ul>
@@ -159,7 +158,7 @@
 <li><p>Any data frames you provide as arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
 <li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair sppecifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
 </ul>
-<p>Also, it remains to sort out how to get the <code><a href="reference/vegalite.html">vegalite()</a></code> function to “do the right thing” when knitting to a non-html format, and to render inline in an RMarkdown notebook.</p>
+<p>Also, it remains to sort out how to get the <code><a href="reference/vegawidget.html">vegawidget()</a></code> function to “do the right thing” when knitting to a non-html format, and to render inline in an RMarkdown notebook.</p>
 </div>
 <div id="development-plan" class="section level2">
 <h2 class="hasAnchor">
@@ -167,7 +166,7 @@
 <p>For the foreseeable future, this package is going to be a bit rough. At the moment, you are able to muck around with Vega-Lite 2.0. This means:</p>
 <ol style="list-style-type: decimal">
 <li>You can create chart-specifications by accessing the Python <strong>Altair</strong> API using <strong>reticulate</strong>.</li>
-<li>You can render a chart-specification into an htmlwidget, using <code><a href="reference/vegalite.html">vegalite()</a></code>.</li>
+<li>You can render a chart-specification into an htmlwidget, using <code><a href="reference/vegawidget.html">vegawidget()</a></code>.</li>
 </ol>
 <p>There’s really not much beyond that. In the near future, the thought is to focus on making this interface as robust as possible, perhaps to make it easier to consolidate datasets and publish <a href="https://bl.ocks.org/">blocks</a>.</p>
 <p>In the longer-term future it may be interesting to provide a proper R interface to the Python API; there are already some <a href="https://github.com/ijlyttle/altair/issues/15">encouraging first steps</a> towards this. This package has a <a href="https://ijlyttle.github.io/altair/articles/manifesto.html">manifesto</a> to outline some high-level ideas.</p>

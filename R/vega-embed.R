@@ -79,7 +79,7 @@
 #'   [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync)
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
 #'
-#' @seealso [vegalite()], [only_actions()]
+#' @seealso [vegawidget()], [only_actions()]
 #' @examples
 #' # Set the renderer
 #' embed_options <- vega_embed(renderer = "svg")

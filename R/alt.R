@@ -43,9 +43,6 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ..., options = NU
   width <- to_num(options$vega.width)
   height <- to_num(options$vega.height)
 
-  message(width)
-  message(height)
-
   knitr::knit_print(vegawidget(x, width = width, height = height))
 }
 

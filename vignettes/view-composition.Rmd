@@ -55,7 +55,7 @@ base <- alt$Chart(r_to_py(beaver1))$encode(
 scatter_plot <- base$mark_point()
 line_plot <- base$mark_line()
 
-vegalite(scatter_plot + line_plot, height = 400)
+scatter_plot + line_plot
 ```
 
 This layered plot could also have been made using:
@@ -82,7 +82,7 @@ line_plot2 <- base2$mark_line()
 combined_plot <- (scatter_plot + line_plot)$properties(title = "Beaver 1", width = 200)
 combined_plot2 <- (scatter_plot2 + line_plot2)$properties(title = "Beaver 2", width = 200)
 
-vegalite(combined_plot | combined_plot2)
+combined_plot | combined_plot2
 ```
 
 This plot could also have been made using:
@@ -91,7 +91,7 @@ This plot could also have been made using:
 alt$hconcat(combined_plot, combined_plot2)
 ```
 
-Passing the result of that function to `vegalite` would give the same output as using `|`.
+Rendering the result of that function would give the same output as using `|`.
 
 ## Vertical concatenation {#vconcat}
 
@@ -101,7 +101,7 @@ Those two plots could alternatively have been concatenated vertically using `&`:
 combined_plot <- combined_plot$properties(height = 200)
 combined_plot2 <- combined_plot2$properties(height = 200)
 
-vegalite(combined_plot & combined_plot2)
+combined_plot & combined_plot2
 ```
 
 This plot could also have been made using:
@@ -133,7 +133,7 @@ hist_plot2 <- alt$Chart(
     y = alt$Y("count():Q")
   )$properties(width = 200, height = 200)
 
-vegalite((combined_plot | hist_plot) & (combined_plot2 | hist_plot2))
+(combined_plot | hist_plot) & (combined_plot2 | hist_plot2)
 ```
 
 Note the use of parentheses to make sure the order of operations is correct.  
@@ -154,7 +154,7 @@ plot <-
   )
   
 
-vegalite(plot$facet(row = "cyl:N", column = "gear:N"))
+plot$facet(row = "cyl:N", column = "gear:N")
 ```
 
 ## Repeating {#repeat}
@@ -177,7 +177,7 @@ plot2 <-
     column = c("hp", "wt")
   )
 
-vegalite(plot2)
+plot2
 ```
 
 ## More information

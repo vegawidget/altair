@@ -137,6 +137,8 @@
 <h1 class="page-header">
 <a href="#altair-0-0-2-9000" class="anchor"></a>altair 0.0.2.9000</h1>
 <ul>
+<li><p>deprecates <code>vegalite()</code> in favor of <code><a href="../reference/vegawidget.html">vegawidget()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/48'>#48</a>, in progress)</p></li>
+<li><p>provides methods for <code>knit_print()</code> and <code>print()</code> generics (<a href='https://github.com/ijlyttle/altair/issues/8'>#8</a>)</p></li>
 <li><p>updates versions of JS libraries: vega 3.3.1, vega-lite 2.4.3, vega-embed 3.9.0 (<a href='https://github.com/ijlyttle/altair/issues/33'>#33</a>)</p></li>
 <li><p>removes tooltip functions (<a href='https://github.com/ijlyttle/altair/issues/45'>#45</a>)</p></li>
 <li><p>updates <code>.onLoad()</code> to run <code><a href="../reference/check_altair.html">check_altair()</a></code> on loading, and adds error handling (<a href='https://github.com/ijlyttle/altair/issues/43'>#43</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
@@ -153,17 +155,17 @@
 <li><p>new function to manage installation of Altair Python package: <code><a href="../reference/install_altair.html">install_altair()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/1'>#1</a>)</p></li>
 <li><p>makes Vega datasets available through <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/25'>#25</a>)</p></li>
 <li>
-<p>significant changes to the rendering function <code><a href="../reference/vegalite.html">vegalite()</a></code>:</p>
+<p>significant changes to the rendering function <code>vegalite()</code>:</p>
 <ul>
-<li><p>if the <code>embed</code> argument is <code>NULL</code>, <code><a href="../reference/vegalite.html">vegalite()</a></code> sets it to <code>getOption("altair.embed_options")</code> - if that is not defined, the vega-embed defaults are used</p></li>
-<li><p><code>width</code> and <code>height</code> arguments to <code><a href="../reference/vegalite.html">vegalite()</a></code> are used now to specify the <em>total</em> width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) <code>width</code> and <code>height</code> apply to the chart only, they do not take into account any action-links - if arguments are not set, the size of the chart is determined from the chart specification (<a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
-<li><p><code><a href="../reference/vegalite.html">vegalite()</a></code> strips the <code>style</code> attribute from the <code>&lt;div/&gt;</code> for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>, <a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p>if the <code>embed</code> argument is <code>NULL</code>, <code>vegalite()</code> sets it to <code>getOption("altair.embed_options")</code> - if that is not defined, the vega-embed defaults are used</p></li>
+<li><p><code>width</code> and <code>height</code> arguments to <code>vegalite()</code> are used now to specify the <em>total</em> width and height of rendered charts - notes: (1) this is effective only for single-view charts, (2) <code>width</code> and <code>height</code> apply to the chart only, they do not take into account any action-links - if arguments are not set, the size of the chart is determined from the chart specification (<a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
+<li><p><code>vegalite()</code> strips the <code>style</code> attribute from the <code>&lt;div/&gt;</code> for the htmlwidget - this has the effect of letting the rendered Vega-Lite chart determine the size of its container (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>, <a href='https://github.com/ijlyttle/altair/issues/18'>#18</a>)</p></li>
 </ul>
 </li>
 <li><p>adds concatenation operators for charts: <code>|</code>, <code>&amp;</code>, <code>+</code> (<a href='https://github.com/ijlyttle/altair/issues/22'>#22</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
-<li><p>adds function <code><a href="../reference/vega_embed.html">vega_embed()</a></code>, with friend <code><a href="../reference/only_actions.html">only_actions()</a></code>, to support embedding options in <code><a href="../reference/vegalite.html">vegalite()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>)</p></li>
+<li><p>adds function <code><a href="../reference/vega_embed.html">vega_embed()</a></code>, with friend <code><a href="../reference/only_actions.html">only_actions()</a></code>, to support embedding options in <code>vegalite()</code> (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>)</p></li>
 <li><p>updates css for embedding, makes the action-links look much better (<a href='https://github.com/ijlyttle/altair/issues/20'>#20</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
-<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code>vega_tooltip()</code>, <code>add_fields()</code>, and friends: <code>vega_tooltip_encoding()</code> and <code>vega_tooltip_all()</code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
+<li><p>adds tooltip-capability to <code>vegalite()</code> renderer, with functions <code>vega_tooltip()</code>, <code>add_fields()</code>, and friends: <code>vega_tooltip_encoding()</code> and <code>vega_tooltip_all()</code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds a <code>NEWS.md</code> file to track changes to the package</p></li>
 <li><p>achieves minimal functionality</p></li>
 </ul>
