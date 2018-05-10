@@ -118,5 +118,5 @@ embed_options <- vega_embed(actions = only_actions(export = TRUE))
 
 }
 \seealso{
-\code{\link[=vegalite]{vegalite()}}, \code{\link[=only_actions]{only_actions()}}
+\code{\link[=vegawidget]{vegawidget()}}, \code{\link[=only_actions]{only_actions()}}
 }

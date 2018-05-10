@@ -143,7 +143,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_altair_version</span>(<span class='no'>version_installed</span>, <span class='no'>version_supported</span>)</pre>
+    <pre class="usage"><span class='fu'>check_altair_version</span>(<span class='no'>version_installed</span>, <span class='no'>version_supported</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,6 +157,10 @@ can be obtained using <code>alt$__version__</code></p></td>
       <th>version_supported</th>
       <td><p><code>character</code> vector, supported version -
 can be obtained using <code>getOption("altair.pyhton.version")</code></p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p><code>logical</code>, indicates to issue message if check is successful</p></td>
     </tr>
     </table>
     

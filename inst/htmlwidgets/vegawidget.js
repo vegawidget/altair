@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: "vegalite",
+  name: "vegawidget",
 
   type: "output",
 

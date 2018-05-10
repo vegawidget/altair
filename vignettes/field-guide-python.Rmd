@@ -319,7 +319,7 @@ chart_iris <-
   )$
   mark_point()
 
-vegalite(chart_iris)
+chart_iris
 ```
 
 This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
@@ -342,6 +342,6 @@ chart_iris <-
   )$
   mark_point()
 
-vegalite(chart_iris)
+chart_iris
 ```
 

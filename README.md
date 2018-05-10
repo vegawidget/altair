@@ -88,7 +88,7 @@ chart <-
   )$
   mark_point()
 
-vegalite(chart)
+chart
 ```
 
 ![](man/figures/first-example.png)
@@ -104,8 +104,8 @@ Some things to keep in mind:
     brackets in Altair sppecifications, e.g. `[Sepal.Width]`, to keep
     Altair from throwing an error.
 
-Also, it remains to sort out how to get the `vegalite()` function to “do
-the right thing” when knitting to a non-html format, and to render
+Also, it remains to sort out how to get the `vegawidget()` function to
+“do the right thing” when knitting to a non-html format, and to render
 inline in an RMarkdown notebook.
 
 ## Development plan
@@ -116,7 +116,7 @@ the moment, you are able to muck around with Vega-Lite 2.0. This means:
 1.  You can create chart-specifications by accessing the Python
     **Altair** API using **reticulate**.
 2.  You can render a chart-specification into an htmlwidget, using
-    `vegalite()`.
+    `vegawidget()`.
 
 There’s really not much beyond that. In the near future, the thought is
 to focus on making this interface as robust as possible, perhaps to make

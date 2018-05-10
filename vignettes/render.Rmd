@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `vegalite()` function renders a chart specification into an HTML `<div/>`.
+The `vegawidget()` function renders a chart specification into an HTML `<div/>`.
 
 * [**Chart specification**](#chart) (`chart`)
 * [**Embedding specification**](#embedding) (`embed`) 
@@ -42,10 +42,10 @@ base_chart <-
 
 ## Chart specification {#chart}
 
-The simplest useful call to `vegalite()` has only the chart specification: 
+The simplest useful call to `vegawidget()` has only the chart specification: 
 
 ```{r vega-chart}
-vegalite(base_chart)
+vegawidget(base_chart)
 ```
 
 As you can see, this renders this chart using some defaults:
@@ -66,20 +66,20 @@ By expanding `config` and `view`, you will see the `height` and `width` properti
 
 The `embed` argument expects a `vega_embed` object, which is made by the `vega_embed()` function. 
 
-If `embed` is `NULL`, `vegalite()` sets it to `getOption("altair.embed_options")` which you can specify in your `.Rprofile`, as described in greater detail below. If `embed` is still `NULL`, this will result in the [vega-embed defaults](https://github.com/vega/vega-embed#options) being used: canvas rendering and action-links added below the chart. 
+If `embed` is `NULL`, `vegawidget()` sets it to `getOption("altair.embed_options")` which you can specify in your `.Rprofile`, as described in greater detail below. If `embed` is still `NULL`, this will result in the [vega-embed defaults](https://github.com/vega/vega-embed#options) being used: canvas rendering and action-links added below the chart. 
 
 The principal arguments to `vega_embed()` deal with rendering and action-links: `renderer` and `actions`. 
 
 To exclude all the action-links, set `actions = FALSE`:
 
 ```{r actions-false}
-vegalite(base_chart, embed = vega_embed(actions = FALSE))
+vegawidget(base_chart, embed = vega_embed(actions = FALSE))
 ```
 
 Here's another example, rendering using SVG and using the `only_actions()` function to include only the "export" action-link:
 
 ```{r actions-custom}
-vegalite(
+vegawidget(
   base_chart, 
   embed = vega_embed(renderer = "svg", actions = only_actions(export = TRUE))
 )
@@ -105,23 +105,23 @@ Let's look at a couple of charts where we specify the size. First, we take our `
 ```{r}
 base_chart_size <- base_chart$properties(width = 300, height = 300)
 
-vegalite(base_chart_size)
+vegawidget(base_chart_size)
 ```
 
-Contrast this with setting the dimensions using `vegalite()`, which will dictate the size of the *entire chart*:
+Contrast this with setting the dimensions using `vegawidget()`, which will dictate the size of the *entire chart*:
 
 ```{r}
-vegalite(base_chart_size, width = 300, height = 300)
+vegawidget(base_chart_size, width = 300, height = 300)
 ```
 
-In a chart specification, the default interpretation of `width` and `height` refers to the dimensions of the plotting rectangle. Using the chart specification, there is also a way to to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire chart, including axes, labels, etc. This is how `vegalite()` uses its `width` and `height` arguments to specify the dimensions of the entire chart. 
+In a chart specification, the default interpretation of `width` and `height` refers to the dimensions of the plotting rectangle. Using the chart specification, there is also a way to to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire chart, including axes, labels, etc. This is how `vegawidget()` uses its `width` and `height` arguments to specify the dimensions of the entire chart. 
 
-In the `vegalite()` function, the default value of `width` and `height` is `NULL`. For rendering, this means:
+In the `vegawidget()` function, the default value of `width` and `height` is `NULL`. For rendering, this means:
 
 - The dimensions in the chart specification are respected.
 - The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dictate the size of its enclosure.
 
-To specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegalite()` function. For rendering, this means:
+To specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegawidget()` function. For rendering, this means:
 
 - The non-null dimensions overwrite the values in the chart specification.
 - The chart specification is modified to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) the chart, so the entire chart conforms to the new specifications.
