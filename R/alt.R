@@ -2,13 +2,13 @@
 
 #' @export
 print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ...){
-  print(vegalite(x, ...))
+  print(vegawidget(x, ...))
 }
 
 #' Knit-print method
 #'
-#' The only effective options are `out.width` and `out.height`;
-#' these are passed to [vegalite()] as `width` and `height`,
+#' The only effective options are `vega.width` and `vega.height`;
+#' these are passed to [vegawidget()] as `width` and `height`,
 #' respectively.
 #'
 #' `out.width` and `out.height` are
@@ -40,9 +40,12 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ..., options = NU
     x_num
   }
 
-  width <- to_num(options$out.width)
-  height <- to_num(options$out.height)
+  width <- to_num(options$vega.width)
+  height <- to_num(options$vega.height)
 
-  knitr::knit_print(vegalite(x, width = width, height = height))
+  message(width)
+  message(height)
+
+  knitr::knit_print(vegawidget(x, width = width, height = height))
 }
 
