@@ -21,7 +21,7 @@ Authors@R: c(
     role = c("ctb"),
     comment = c(ORCID = "orcid.org/0000-0002-3915-0618")
   ),
-  person("Haley", "Jeppson", email = "hjeppson@iastate.edu", role = c("aut", "cre")),
+  person("Haley", "Jeppson", email = "hjeppson@iastate.edu", role = c("ctb")),
   person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
   person("Brian", "Granger", comment = "Altair library", role = c("ctb")),
   person("Kanit", "Wongsuphasawat", comment = "Vega-Lite library", role = c("ctb")),
