@@ -16,29 +16,37 @@ knitr::opts_chunk$set(
 To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here's the short version:
 
 1. You are encouraged to use [Conda Python](https://conda.io/docs/user-guide/install/index.html). Miniconda works well, and installs much-more-quickly than full Conda.
+
 1. Create a Conda environment called `"r-reticulate"`.
-1. Give R a hint for which Python environment to use. Put `reticulate::use_condaenv("r-reticulate")` into the `.First()` function in your `.Rprofile` file. If you do this, do not set `RETICULATE_PYTHON` in your `.Renviron` file. As usual, restart R for changes to take effect.
+
+1. Install the **reticulate** package, then give reticulate a hint for which Python environment to use. You can do this by putting `reticulate::use_condaenv("r-reticulate")` into the `.First()` function in your `.Rprofile` file. 
+
+   If you do this, ensure that `RETICULATE_PYTHON` is **not** set in your `.Renviron` file. 
+   
+   As usual, restart R for changes to take effect.
+   
 1. `devtools::install_github("ijlyttle/altair")`
+
 1. `altair::install_altair()`
 
 To verify your installation, use `altair::check_altair()`; it will tell you which Altair version is installed, and which version is supported by this package. 
 
-If you have any SSL-related difficulties in the process, please see the [**Proxies and certificates**](#proxies) section of this article. This may be the case if you are working in a corporate or institutional environment.
+If you have any SSL-related difficulties, perhaps because you are working in a corporate or institutional environment, please see the [**Proxies and certificates**](#proxies) section of this article.
 
 ## Overview
+
+The remainder of this article is divided into four sections:
 
 * [**Proxies and certificates**](#proxies): if needed, letting your computer know how to communicate with the world
 * [**Reticulate and Python installation**](#reticulate-python): installing  **reticulate** and Python 
 * [**Python environment**](#python-env): setting up a Python environment with a "standard" name
 * [**Altair installation**](#altair): installing Altair into your Python environment
 
-Thanks to the folks at RStudio, once you have a "standard" Python environment working, each subsequent installation is a single command-line call in addition to installing the R package. 
-
-If you have a working Python (Conda recommended) environment called `"r-reticulate"`, you can skip to the [**Altair installation**](#altair) section of this article.
+Thanks to the reticulate package, once you have a "standard" Python environment working, each subsequent installation is, in theory, a single command-line call in addition to installing the R package.  If you have a working Python (Conda recommended) environment called `"r-reticulate"`, you can skip to the [**Altair installation**](#altair) section of this article.
 
 ## Proxies and certificates {#proxies}
 
-
+I would recommend using this section only if you are having SSL-realted installation difficulties, which may happen if you work at a corporate or institutional environment.
 
 This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that infomation to different places on your computer:
 
@@ -226,15 +234,11 @@ If you have not already installed this package into your R library, this is a pe
 devtools::install_github("ijlyttle/altair")
 ```
 
-Thanks to all the preparatory work you have made, it is relatively straightforward to install the Altair Python package.     
-
-At present, version 2 of the Altair Python package is available as a release candidtate on PyPi, so it can be installed using `pip`. The function `altair::install_altair()` will use `pip` to install `altair==2.0.0rc2` into your `"r-reticulate"` Python environment.
+Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:    
 
 ```r
 altair::install_altair()
 ```
-
-When the "final" version-2 is released to Conda, the `install_altair()` function and documentation will be updated to support a complete Conda installation. 
 
 You can confirm success by showing your Python configuration:
 
@@ -245,5 +249,5 @@ reticulate::py_config()
 And by confirming your Altair installation:
 
 ```r
-altair::check_altair(quiet = FALSE)
+altair::check_altair()
 ```
