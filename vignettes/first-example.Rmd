@@ -60,10 +60,12 @@ chart <- alt$Chart(r_to_py(vega_data$cars()))
 
 There's a few things going on here. The first is that the altair (R) package exposes the Altair (Python) library using the variable `alt`. In the [Altair documentation](https://altair-viz.github.io/getting_started/overview.html), the convention is to expose the Altair library through the varaiable `alt`:
 
-```{python}
+```python
 # Python
 import altair as alt
 ```
+
+
 
 Accordingly, we expose the "same" variable, by default, as a part of the package-loading process. 
 
