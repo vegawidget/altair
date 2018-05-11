@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   field-guide-python: field-guide-python.html
   first-example: first-example.html
+  installation: installation.html
   interactive: interactive.html
   manifesto: manifesto.html
   render: render.html

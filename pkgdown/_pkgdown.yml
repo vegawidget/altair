@@ -36,4 +36,58 @@ reference:
       - renderVegawidget
       - vegawidgetOutput
 
+articles:
+  - title: Installation and Python Issues
+    contents:
+      - installation
+      - field-guide-python
+      - vega-datasets
+  - title: Getting started
+    contents:
+      - first-example
+      - render
+      - view-composition
+      - interactive
+  - title: Gallery
+  - title: Manifesto
+    contents:
+      - manifesto
 
+navbar:
+  title: "altair"
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: "Reference"
+      href: "reference/index.html"
+    - text: "Changelog"
+      href: "news/index.html"
+  right:
+    - text: Articles
+      menu:
+        - text: Installation & Python Issues
+        - text: Installation
+          href: articles/installation.html
+        - text: Field-Guide to Python Issues
+          href: articles/field-guide-python.html
+        - text: Vega Datasets
+          href: articles/field-guide-python.html
+        - text: "----------"
+        - text: Getting Started
+        - text: First Example
+          href: articles/first-example.html
+        - text: Rendering
+          href: articles/render.html
+        - text: View Composition
+          href: articles/view-composition.html
+        - text: Interactive Charts
+          href: articles/interactive.html
+        - text: "----------"
+        - text: Manifesto
+          href: articles/manifesto.html
+    - text: Gallery
+      menu:
+        - text: Topic A
+        - text: Topic B
+    - icon: fa-github fa-2x
+      href: https://github.com/ijlyttle/altair

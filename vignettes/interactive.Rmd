@@ -1,6 +1,6 @@
 ---
 title: "Interactive Examples"
-author: "Ian Lyttle"
+author: "[Altair Developers](https://altair-viz.github.io), adapted by Ian Lyttle"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
