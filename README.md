@@ -29,7 +29,7 @@ A development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ijlyttle/altair")
+devtools::install_github("ijlyttle/altair") 
 ```
 
 Because you are using a Python package, you may have some additional
@@ -43,14 +43,11 @@ Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well for me.
     
-<<<<<<< HEAD
     As well, for the time being, you will need the development version
     of reticulate, which should have installed automatically, along with
     this package.
     \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]
     
-=======
->>>>>>> removes suggestion to use dev version of reticulate
     Depending on how your system is configured, you may have to specify
     the location of your SSL cerificate, or deal with a proxy.
     \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]

@@ -31,7 +31,7 @@ A development version is available from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ijlyttle/altair")
+devtools::install_github("ijlyttle/altair") 
 ```
 
 Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the  article [Field Guide to Python Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
