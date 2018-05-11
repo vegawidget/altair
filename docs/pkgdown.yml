@@ -3,11 +3,11 @@ pkgdown: 1.0.0
 pkgdown_sha: ~
 articles:
   field-guide-python: field-guide-python.html
+  field-guide-rendering: field-guide-rendering.html
   first-example: first-example.html
   installation: installation.html
   interactive: interactive.html
   manifesto: manifesto.html
-  render: render.html
   tooltip: tooltip.html
   vega-datasets: vega-datasets.html
   view-composition: view-composition.html

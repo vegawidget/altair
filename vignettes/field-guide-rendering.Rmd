@@ -1,5 +1,5 @@
 ---
-title: "Rendering Charts"
+title: "Field Guide to Rendering Charts"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options:
@@ -12,6 +12,15 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+There are four foundations upon which this package rests: 
+
+- the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
+- the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
+- the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
+
+This article deals with the second two items; the [python-issues article](field-guide-python.html) deals with the other two.
 
 The `vegawidget()` function renders a chart specification into an HTML `<div/>`.
 

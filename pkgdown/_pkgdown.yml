@@ -66,7 +66,6 @@ navbar:
   right:
     - text: Articles
       menu:
-        - text: Installation & Python Issues
         - text: Installation
           href: articles/installation.html
         - text: "----------"
@@ -74,7 +73,7 @@ navbar:
         - text: First Example
           href: articles/first-example.html
         - text: Vega Datasets
-          href: articles/field-guide-python.html
+          href: articles/vega-datasets.html
         - text: View Composition
           href: articles/view-composition.html
         - text: Interactive Charts
@@ -85,6 +84,7 @@ navbar:
           href: articles/field-guide-python.html
         - text: Rendering Charts
           href: articles/field-guide-rendering.html
+        - text: "----------"
         - text: Manifesto
           href: articles/manifesto.html
     - text: Gallery

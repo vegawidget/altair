@@ -20,13 +20,12 @@ There are four foundations upon which this package rests:
 - the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
-This article deals with the first two items; the [rendering article](render.html) deals with the other two.
+This article deals with the first two items; the [chart-rendering article](field-guide-rendering.html) deals with the other two.
 
 The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
 
 * [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
 * [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
-
 
 ## Working with Python objects {#work-work}
 
