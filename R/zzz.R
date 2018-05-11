@@ -32,7 +32,7 @@
 alt <- NULL
 
 on_altair_load <- function() {
-  check_altair()
+  check_altair(quiet = TRUE)
 }
 
 on_altair_error <- function(e) {

@@ -4,7 +4,7 @@
 \alias{check_altair_version}
 \title{Check two verision-strings}
 \usage{
-check_altair_version(version_installed, version_supported, quiet = TRUE)
+check_altair_version(version_installed, version_supported, quiet = FALSE)
 }
 \arguments{
 \item{version_installed}{\code{character} vector, installed version -

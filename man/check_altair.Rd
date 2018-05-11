@@ -4,7 +4,7 @@
 \alias{check_altair}
 \title{Check the Altair installation}
 \usage{
-check_altair(quiet = TRUE)
+check_altair(quiet = FALSE)
 }
 \arguments{
 \item{quiet}{\code{logical}, indicates to issue message if check is successful}
@@ -33,7 +33,7 @@ called \code{"r-reticulate"}, use \code{\link[=install_altair]{install_altair()}
 }
 \examples{
 \dontrun{
-  check_altair(quiet = FALSE)
+  check_altair()
 }
 }
 \seealso{

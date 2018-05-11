@@ -111,11 +111,11 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' @seealso [reticulate::py_config()], [install_altair()]
 #' @examples
 #' \dontrun{
-#'   check_altair(quiet = FALSE)
+#'   check_altair()
 #' }
 #' @export
 #'
-check_altair <- function(quiet = TRUE) {
+check_altair <- function(quiet = FALSE) {
   check_altair_version(
     version_installed = alt$`__version__`,
     version_supported = getOption("altair.python.version"),
@@ -154,7 +154,7 @@ check_altair <- function(quiet = TRUE) {
 #' @export
 #'
 check_altair_version <- function(version_installed, version_supported,
-                                 quiet = TRUE) {
+                                 quiet = FALSE) {
 
   installed <- get_version_components(version_installed)
   supported <- get_version_components(version_supported)
@@ -200,6 +200,7 @@ check_altair_version <- function(version_installed, version_supported,
       paste(
         "Disagreement in Altair minor versions",
         version_string,
+        config_output,
         sep = "\n\n"
       ),
       call. = FALSE
@@ -214,6 +215,7 @@ check_altair_version <- function(version_installed, version_supported,
       paste(
         "Disagreement in Altair patch versions",
         version_string,
+        config_output,
         sep = "\n\n"
       )
     )
