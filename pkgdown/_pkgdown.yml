@@ -37,17 +37,18 @@ reference:
       - vegawidgetOutput
 
 articles:
-  - title: Installation and Python Issues
+  - title: Installation
     contents:
       - installation
-      - field-guide-python
-      - vega-datasets
   - title: Getting started
     contents:
       - first-example
-      - render
+      - vega-datasets
       - view-composition
       - interactive
+  - title: Field guides
+      - field-guide-python
+      - field-guide-rendering
   - title: Gallery
   - title: Manifesto
     contents:
@@ -68,21 +69,22 @@ navbar:
         - text: Installation & Python Issues
         - text: Installation
           href: articles/installation.html
-        - text: Field-Guide to Python Issues
-          href: articles/field-guide-python.html
-        - text: Vega Datasets
-          href: articles/field-guide-python.html
         - text: "----------"
         - text: Getting Started
         - text: First Example
           href: articles/first-example.html
-        - text: Rendering
-          href: articles/render.html
+        - text: Vega Datasets
+          href: articles/field-guide-python.html
         - text: View Composition
           href: articles/view-composition.html
         - text: Interactive Charts
           href: articles/interactive.html
         - text: "----------"
+        - text: Field Guides
+        - text: Python Issues
+          href: articles/field-guide-python.html
+        - text: Rendering Charts
+          href: articles/field-guide-rendering.html
         - text: Manifesto
           href: articles/manifesto.html
     - text: Gallery
