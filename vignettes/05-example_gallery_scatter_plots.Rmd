@@ -1,0 +1,314 @@
+---
+title: "Scatter Plots"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tidyverse)
+```
+
+Set-up:
+
+```{r}
+# devtools::install_github("ijlyttle/altair")
+library("altair")
+
+vega_data <- import_vega_data()
+```
+
+
+#### Anscombe's Quartet
+
+```{r}
+
+anscombe <- r_to_py(vega_data$anscombe())
+
+plot <- alt$Chart(anscombe)$mark_circle()$encode(
+    alt$X('X', scale=alt$Scale(zero=FALSE)),
+    alt$Y('Y', scale=alt$Scale(zero=FALSE)),
+    column='Series'
+)$properties(
+    width=150,
+    height=150
+)
+
+vegalite(plot)
+```
+
+#### Becker's Barley Trellis Plot
+
+```{r}
+
+source <- r_to_py(vega_data$barley())
+
+
+plot <- alt$Chart(source)$mark_point()$encode(
+    alt$X('median(yield)', scale=alt$Scale(zero=FALSE)),
+    alt$Y(
+        'variety',
+        sort=alt$SortField(field='yield', op='median', order='descending'),
+        scale=alt$Scale(rangeStep=20)
+    ),
+    color='year:N',
+    row='site'
+)
+
+vegalite(plot)
+```
+
+#### Binned Scatterplot
+
+
+```{r}
+
+source = r_to_py(vega_data$movies())
+
+plot <- alt$Chart(source)$mark_circle()$encode(
+    alt$X('IMDB_Rating:Q', bin=TRUE),
+    alt$Y('Rotten_Tomatoes_Rating:Q', bin=TRUE),
+    size='count(IMDB_Rating)'
+)
+
+vegalite(plot)
+```
+
+#### Bubble Plot
+
+```{r}
+
+plot <- 
+  alt$Chart(
+    r_to_py(vega_data$cars())
+  )$mark_point(
+  )$encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    size = "Acceleration"
+  )
+
+vegalite(plot)
+```
+
+
+#### Connected Scatterplot (Lines with Custom Paths)
+
+```{r}
+driving = r_to_py(vega_data$driving())
+
+lines = alt$Chart(driving)$mark_line()$encode(
+    alt$X('miles', scale=alt$Scale(zero=FALSE)),
+    alt$Y('gas', scale=alt$Scale(zero=FALSE)),
+    order='year'
+)
+
+points = alt$Chart(driving)$mark_circle()$encode(
+    alt$X('miles', scale=alt$Scale(zero=FALSE)),
+    alt$Y('gas', scale=alt$Scale(zero=FALSE))
+)
+
+vegalite(lines + points)
+```
+
+#### Dot Dash Plot
+
+```{r}
+cars = r_to_py(vega_data$cars())
+
+brush = alt$selection(type='interval')
+
+tick_axis = alt$Axis(labels=F, domain=F, ticks=F)
+tick_axis_notitle = alt$Axis(labels=F, domain=F, ticks=F, title='')
+
+points = alt$Chart(cars)$mark_point()$encode(
+    x=alt$X('Miles_per_Gallon', axis=alt$Axis(title='')),
+    y=alt$Y('Horsepower', axis=alt$Axis(title='')),
+    color=alt$condition(brush, 'Origin', alt$value('grey'))
+)$properties(
+    selection=brush
+)
+
+x_ticks = alt$Chart(cars)$mark_tick()$encode(
+    alt$X('Miles_per_Gallon', axis=tick_axis),
+    alt$Y('Origin', axis=tick_axis_notitle),
+    color=alt$condition(brush, 'Origin', alt$value('lightgrey'))
+)$properties(
+    selection=brush
+)
+
+y_ticks = alt$Chart(cars)$mark_tick()$encode(
+    alt$X('Origin', axis=tick_axis_notitle),
+    alt$Y('Horsepower', axis=tick_axis),
+    color=alt$condition(brush, 'Origin', alt$value('lightgrey'))
+)$properties(
+    selection=brush
+)
+
+vegalite(y_ticks | (points & x_ticks))
+```
+#### Gapminder Bubble Plot
+
+
+```{r}
+
+plot <- 
+  alt$Chart(
+    r_to_py(vega_data$gapminder())
+  )$mark_circle(
+  )$encode(
+    alt$X("income:Q", scale = alt$Scale(type = "log")), 
+    alt$Y("health:Q", scale = alt$Scale(zero = FALSE)), 
+    size='population:Q'
+  )
+
+vegalite(plot)
+```
+
+
+#### Multifeature Scatter Plot
+
+```{r}
+plot <- 
+  alt$Chart(
+    r_to_py(vega_data$iris())
+  )$mark_circle(
+  )$encode(
+    alt$X('sepalLength', scale=alt$Scale(zero=FALSE)),
+    alt$Y('sepalWidth', scale=alt$Scale(zero=FALSE, padding=1)),
+    color='species',
+    size='petalWidth'
+  )
+
+vegalite(plot)
+```
+
+#### Natural Disasters
+
+```{r}
+
+source = r_to_py(vega_data$disasters())
+
+plot <- alt$Chart(source)$mark_circle(
+    opacity=0.8,
+    stroke='black',
+    strokeWidth=1
+)$encode(
+    alt$X('Year:O', axis=alt$Axis(labelAngle=0)),
+    alt$Y('Entity:N'),
+    alt$Size('Deaths:Q',
+        scale=alt$Scale(range=c(0, 5000)),
+        legend=alt$Legend(title='Annual Global Deaths')
+    ),
+    alt$Color('Entity:N', legend=NULL)
+)$properties(
+    width=480,
+    height=350
+)$transform_filter(
+    "datum.Entity != 'All natural disasters'"
+)
+
+vegalite(plot)
+```
+
+#### Polynomial Fit Plot
+
+
+
+#### Scatter Matrix
+
+```{r}
+
+plot <- alt$Chart(
+  r_to_py(vega_data$cars())
+  )$mark_circle()$encode(
+    alt$X(alt$`repeat`("column"), type='quantitative'),
+    alt$Y(alt$`repeat`("row"), type='quantitative'),
+    color='Origin:N'
+)$properties(
+    width=250,
+    height=250
+)$`repeat`(
+    row=list('Horsepower', 'Acceleration', 'Miles_per_Gallon'),
+    column=list('Miles_per_Gallon', 'Acceleration', 'Horsepower')
+)$interactive()
+
+vegalite(plot)
+```
+
+#### Simple Scatter Plot with Labels
+
+
+Layering can now work with the `+` operator as it does in Python. Additionally, it can be declared as `alt$layer(chart1, chart2)` or as `alt$ChartLayer(layer = list(chart1, chart2))`
+
+```{r}
+dat <- data_frame(x = c(1, 3, 5, 7, 9),
+                  y = c(1, 3, 5, 7, 9),
+                  label = c('A', 'B', 'C', 'D', 'E'))
+
+bars = alt$Chart(r_to_py(dat))$mark_point()$encode(
+    x='x:Q',
+    y='y:Q'
+)
+
+text = bars$mark_text(
+    align='left',
+    baseline='middle',
+    dx=7
+)$encode(
+    text='label:N'
+)
+
+vegalite(text + bars)
+
+```
+
+#### Table Bubble Plot (Github Punch Card)
+
+```{r}
+plot <- 
+  alt$Chart(
+    r_to_py(vega_data$github())
+  )$mark_circle(
+  )$encode(
+    alt$X('time:O', timeUnit='hours'),
+    alt$Y('time:O', timeUnit='day'),
+    size='sum(count):Q'
+)
+
+vegalite(plot)
+```
+
+
+#### Trellis Scatter Plot
+
+
+```{r}
+
+plot <- 
+  alt$Chart(
+    r_to_py(vega_data$movies())
+  )$mark_point(
+  )$encode(
+     x='Worldwide_Gross:Q',
+    y='US_DVD_Sales:Q',
+    column='MPAA_Rating:N'
+)
+
+vegalite(plot)
+
+```
+
+
+
+
+
+
+
+

@@ -1,0 +1,261 @@
+---
+title: "Maps"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tidyverse)
+```
+
+
+Set-up:
+
+```{r}
+# devtools::install_github("ijlyttle/altair")
+library("altair")
+
+vega_data <- import_vega_data()
+```
+
+
+#### Choropleth Map (not working)
+
+Something is not being specified correctly in the line `alt$topo_feature(r_to_py(vega_data$us_10m()), 'counties')`
+
+```{r, eval = FALSE}
+counties = alt$topo_feature(
+  r_to_py(vega_data$us_10m()), 'counties')
+unemp_data = r_to_py(vega_data$unemployment())
+
+
+plot <- alt$Chart(counties)$mark_geoshape()$encode(
+    color='rate:Q'
+)$transform_lookup(
+    lookup='id',
+    from_=alt$LookupData(unemp_data, 'id', list('rate'))
+)$project(
+    type='albersUsa'
+)$properties(
+    width=500,
+    height=300
+)
+
+vegalite(plot)
+```
+
+#### Locations of US Airports (not working)
+
+Something is not being specified correctly in the line`alt$topo_feature(us, feature='states')`
+
+```{r, eval = FALSE}
+us <- r_to_py(vega_data$us_10m())
+states = alt$topo_feature(us, feature='states')
+airports = r_to_py(vega_data$airports())
+
+# US states background
+background = alt$Chart(states)$mark_geoshape(
+    fill='lightgray',
+    stroke='white'
+)$properties(
+    width=500,
+    height=300
+)$project('albersUsa')
+
+# airport positions on background
+points = alt$Chart(airports)$mark_circle()$encode(
+    longitude='longitude:Q',
+    latitude='latitude:Q',
+    size=alt$value(10),
+    color=alt$value('steelblue')
+)
+
+vegalite(background + points)
+```
+
+#### London Tube Lines (not working)
+
+Need to figure out how to specify the `topo_feature`
+
+```{r, eval = FALSE}
+
+boroughs = alt$topo_feature(r_to_py(vega_data$londonBoroughs()), 'boroughs')
+tubelines = alt$topo_feature(r_to_py(vega_data$londonTubeLines()), 'line')
+centroids = r_to_py(vega_data$londonCentroids())
+
+background = alt$Chart(boroughs)$mark_geoshape(
+    stroke='white',
+    strokeWidth=2
+)$encode(
+    color=alt.value('#eee')
+)$properties(
+    width=700,
+    height=500
+)
+
+labels = alt$Chart(centroids)$mark_text()$encode(
+    longitude='cx:Q',
+    latitude='cy:Q',
+    text='bLabel:N',
+    size=alt$value(8),
+    opacity=alt$value(0.6)
+)$transform_calculate(
+    "bLabel", "indexof (datum.name,' ') > 0  ? substring(datum.name,0,indexof(datum.name, ' ')) : datum.name"
+)
+
+line_scale = alt$Scale(domain=list("Bakerloo", "Central", "Circle", "District", "DLR",
+                               "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
+                               "Piccadilly", "Victoria", "Waterloo & City" ),
+                       range=list("rgb(137,78,36)", "rgb(220,36,30)", "rgb(255,206,0)",
+                              "rgb(1,114,41)", "rgb(0,175,173)", "rgb(215,153,175)",
+                              "rgb(106,114,120)", "rgb(114,17,84)", "rgb(0,0,0)",
+                              "rgb(0,24,168)", "rgb(0,160,226)", "rgb(106,187,170)"))
+
+lines = alt$Chart(tubelines)$mark_geoshape(
+    filled=FALSE,
+    strokeWidth=2
+)$encode(
+    alt$Color(
+        'id:N',
+        legend=alt$Legend(
+            title=NULL,
+            orient='bottom-right',
+            offset=0
+        )
+    )
+)
+
+vegalite(background + labels + lines)
+```
+
+#### One Dot Per Zipcode
+
+Here is the [issue](https://github.com/altair-viz/altair/issues/611) where there has to be less than 5000 observations
+
+```{r}
+zips <- vega_data$zipcodes() %>% sample_n(5000)
+plot <- 
+  alt$Chart(
+    r_to_py(zips)
+  )$mark_circle(size =3
+  )$encode(
+    longitude='longitude:Q',
+    latitude='latitude:Q',
+    color='digit:N'
+)$properties(
+    projection=list(type = 'albersUsa'),
+    width=650,
+    height=400
+)$transform_calculate(
+    "digit", "substring(datum.zip_code, 0, 1)"
+)
+
+vegalite(plot)
+```
+
+
+#### Repeated Choropleth Map (not working)
+
+```{r, eval=FALSE}
+states = alt$topo_feature(r_to_py(vega_data$us_10m()), 'states')
+
+pop_eng_hur = r_to_py(vega_data$population_engineers_hurricanes())
+
+variable_list = list('population', 'engineers', 'hurricanes')
+
+plot <- alt$Chart(states)$mark_geoshape()$encode(
+    alt$Color(alt$repeat('row'), type='quantitative')
+)$transform_lookup(
+    lookup='id',
+    from_=alt$LookupData(pop_eng_hur, 'id', variable_list)
+)$properties(
+    width=500,
+    height=300
+)$project(
+    type='albersUsa'
+)$`repeat`(
+    row=variable_list
+)$resolve_scale(
+    color='independent'
+)
+
+vegalite(plot)
+
+```
+
+#### U.S. state capitals overlayed on a map of the U.S (not working)
+
+```{r, eval=FALSE}
+
+states = alt$topo_feature(r_to_py(vega_data$us_10m()), 'states')
+capitals = r_to_py(vega_data$us_state_capitals())
+
+# US states background
+background = alt$Chart(states)$mark_geoshape(
+    fill='lightgray',
+    stroke='white'
+)$properties(
+    title='US State Capitols',
+    width=700,
+    height=400
+)$project('albersUsa')
+
+# Points and text
+hover = alt$selection(type='single', on='mouseover', nearest=TRUE,
+                      fields=lite('lat', 'lon'))
+
+base = alt$Chart(capitals)$encode(
+    longitude='lon:Q',
+    latitude='lat:Q'
+)
+
+text = base$mark_text(dy=-5, align='right')$encode(
+    alt$Text('city', type='nominal'),
+    opacity=alt$condition(hover$`__invert__`(), alt$value(0), alt$value(1))
+)
+
+points = base$mark_point()$encode(
+    color=alt$value('black'),
+    size=alt$condition(hover$`__invert__`(), alt$value(30), alt$value(100))
+)$properties(
+    selection=hover
+)
+
+vegalite(background + points + text)
+```
+
+#### World Projections (not working)
+
+I am unfamiliar with a lot of the python notation used in this example
+
+```{r, eval = FALSE}
+
+countries = alt$topo_feature(r_to_py(vega_data$us_110m()), 'countries')
+
+base = alt$Chart(countries)$mark_geoshape(
+    fill='#666666',
+    stroke='white'
+)$properties(
+    width=300,
+    height=180
+)
+
+projections = list('equirectangular', 'mercator', 'orthographic', 'gnomonic')
+charts = list(base$project(proj)$properties(title=proj)
+          for proj in projections)
+
+vegalite(
+alt$vconcat(
+    alt$hconcat(*charts[:2]),
+    alt$hconcat(*charts[2:])
+))
+
+```
+
