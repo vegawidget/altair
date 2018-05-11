@@ -1,4 +1,4 @@
 /NEWS.md merge=union
 /.Rbuildignore merge=union
 /inst/htmlwidgets/* linguist-vendored
-/docs/* linguist-documentation
+/docs/* linguist-documentation=true
