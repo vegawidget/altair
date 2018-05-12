@@ -3,6 +3,8 @@
 #' @export
 print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ...){
   print(vegawidget(x, ...))
+
+  invisible(x)
 }
 
 #' Knit-print method
