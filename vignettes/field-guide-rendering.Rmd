@@ -20,7 +20,7 @@ There are four foundations upon which this package rests:
 - the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
-This article deals with the second two items; the [python-issues article](field-guide-python.html) deals with the other two.
+This article deals with the second two items; the [Field Guide to Python Issues](field-guide-python.html) deals with the first two.
 
 ## Overview
 

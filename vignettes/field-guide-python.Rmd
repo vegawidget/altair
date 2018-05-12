@@ -20,17 +20,21 @@ There are four foundations upon which this package rests:
 - the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
-This article deals with the first two items; the [chart-rendering article](field-guide-rendering.html) deals with the other two.
+This article deals with the first two items; the [Field Guide to Rendering](field-guide-rendering.html) deals with the other two.
 
 The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. If you get a cryptic Python error, check here. If you find a workaround for something that isn't here, please let us know!
 
 ## Overview
 
-Here's the short version. When referring to the Altair documentation:
+A very useful way to learn how to create charts using this package is to follow the [Altair documentation](https://altair-viz.github.io). In the course of building and documenting this package, we have noted a few "gotchas" and come up with some workarounds. If you find another, please let us know!
+
+Here's the short version:
 
 - Where you see a `.`, use a `$` instead.
 
-- Altair *methods* return a copy of the object. Assignment of a Python object returns a refrence, not a copy. To get the behavior you might be accustomed-to for assignment of "bare" objects, use a `$copy()` method.
+- Altair *methods* return a copy of the object. Assignment of a Python object returns a refrence, not a copy. 
+
+- To get the behavior you might be accustomed-to for assignment of "bare" objects, use a `$copy()` method.
 
 - If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accomodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
 
@@ -43,33 +47,6 @@ Here's the short version. When referring to the Altair documentation:
 - Where you see `["foo", "bar"]` in Altair examples, use an unnamed list in R: `list("foo", "bar")`. Where you see `{'a' = "foo", 'b' = "bar"}` in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
 
 ## Method chaining
-
-## Copy on modify, reference on assignment
-
-## Dots in variable names
-
-If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
-
-```{r iris}
-chart_iris <- 
-  alt$Chart(r_to_py(iris))$
-  encode(
-    x = "[Sepal.Width]:Q",
-    y = "[Sepal.Length]:Q",
-    color = "Species:N"
-  )$
-  mark_point()
-
-chart_iris
-```
-
-## Repeat
-
-## Inversion (`~`)
-
-## Hyphens in Python Names
-
-## Lists and Dictionaries
 
 When **reticulate** returns a Python object with a custom class, it appears in R as an S3 object that *behaves* like a reference class. This means that if you see this sort of notation in Python:
 
@@ -86,30 +63,38 @@ foo$bar()
 
 In essence, you wherever you see a `.` in Python, use a `$` in R.
 
-### Altair object
-
-In Python, Altair methods return a copy of the object:
-
-```{r}
+```{r iris}
 library("altair")
-library("pryr")
 
 vega_data <- import_vega_data()
 
-chart_old <-
-  alt$Chart(
-    r_to_py(vega_data$cars())
-  )$encode(
-    x = "Miles_per_Gallon:Q",
-    y = "Horsepower:Q",
-    color = "Origin:N"
-  )
+chart_iris <- 
+  alt$Chart(r_to_py(vega_data$iris()))$
+  encode(
+    x = "sepalWidth:Q",
+    y = "sepalLength:Q",
+    color = "species:N"
+  )$
+  mark_point()
+```
+
+## Altair methods returns copy
+
+In Python, Altair methods return a copy of the object. To verify this, let's use `pryr::
+
+```{r}
+library("pryr")
+
+chart_old <- chart_iris
 
 chart_new <- chart_old$mark_point()
 
 address(chart_new) == address(chart_old)
 ```
-To confirm this we note that the two charts have different memory addresses. This suggests that Altair methods return a copy of the object; it *looks* like a reference-class method, but it *acts* like an S3 method.
+
+Although this *looks* like a reference-class method, the Altair method *acts* like an S3 method.
+
+## Python assignment returns reference
 
 Let's try an assignment:
 
@@ -119,7 +104,7 @@ chart_new <- chart_old
 address(chart_new) == address(chart_old)
 ```
 
-It seems that an assignment of an Altair object (and perhaps, by extension, Pyhton objects) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
+It seems that an assignment of an Altair object (and perhaps, by extension, a Python object) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
 
 ```{r}
 chart_new <- chart_old$copy()
@@ -127,6 +112,16 @@ chart_new <- chart_old$copy()
 address(chart_new) == address(chart_old)
 ```
 
+## Dots in variable names
 
+If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
+
+## Repeat
+
+## Inversion (`~`)
+
+## Hyphens in Python Names
+
+## Lists and Dictionaries
 
 
