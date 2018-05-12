@@ -6,10 +6,6 @@ development:
   mode: unreleased
 
 reference:
-  - title: Package
-    desc: Overview of the package
-    contents:
-      - altair
   - title: Installation
     desc: >
       Functions to help install the Python Altair library
@@ -35,6 +31,10 @@ reference:
       - only_actions
       - renderVegawidget
       - vegawidgetOutput
+  - title: Package
+    desc: Overview of the package
+    contents:
+      - altair
 
 articles:
   - title: Installation
@@ -90,7 +90,14 @@ navbar:
           href: articles/manifesto.html
     - text: Gallery
       menu:
-        - text: Topic A
-        - text: Topic B
+        - text: Simple Charts
+        - text: Bar Charts
+        - text: Line Charts
+        - text: Area Charts
+        - text: Scatterplots
+        - text: Histograms
+        - text: Maps
+        - text: Interactive Charts
+        - text: Other Charts
     - icon: fa-github fa-2x
       href: https://github.com/ijlyttle/altair
