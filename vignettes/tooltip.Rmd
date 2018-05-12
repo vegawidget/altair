@@ -35,7 +35,10 @@ chart <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = "Origin:N",
-    tooltip = alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative")
+    tooltip = list(
+      alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative"),
+      alt$Tooltip(field = "Horsepower", type = "quantitative")
+    )
   )
 
 chart
