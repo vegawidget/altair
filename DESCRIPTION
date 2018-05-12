@@ -14,6 +14,7 @@ Authors@R: c(
     role = c("aut", "cre"), 
     comment = c(ORCID = "0000-0001-9962-4849")
   ),
+  person("Altair Developers", role = c("aut")),
   person(
     "Alicia", 
     "Schep",
@@ -44,7 +45,7 @@ Imports:
     magrittr,
     jsonlite,
     utils
-Suggests:
+Suggests: 
     httr,
     rprojroot,
     purrr,
@@ -54,7 +55,8 @@ Suggests:
     tibble,
     listviewer (>= 2.0.0),
     testthat,
-    pryr
+    pryr,
+    stringr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

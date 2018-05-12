@@ -37,12 +37,13 @@ on_altair_load <- function() {
   # check to see that version is at least 1.7.1 to take care of
   # the "pop" problem
   #
-  fixed_pop <- (packageVersion("reticulate") >= package_version("1.7.1"))
+  version_reticulate <- utils::packageVersion("reticulate")
+  fixed_pop <- (version_reticulate >= package_version("1.7.1"))
 
   if (!fixed_pop) {
     message(
       "The installed version of reticulate is ",
-      packageVersion("reticulate"),
+      version_reticulate,
       "\n",
       "Using this version of reticulate, you will have a problem to ",
       "access the vega dataset \"gapminder\".\n",

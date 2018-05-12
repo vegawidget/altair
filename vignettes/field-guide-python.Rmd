@@ -26,7 +26,7 @@ The purpose of this document is to try to collect in one place, in a semi-organi
 
 ## Overview
 
-A very useful way to learn how to create charts using this package is to follow the [Altair documentation](https://altair-viz.github.io). In the course of building and documenting this package, we have noted a few "gotchas" and come up with some workarounds. If you find another, please let us know!
+A very useful way to learn how to create charts using this package is to follow the [Altair documentation](https://altair-viz.github.io). In the course of building and documenting this package, we have noted a few "gotchas" and their workarounds. If you find another, please let us know!
 
 Here's the short version:
 
@@ -45,6 +45,10 @@ Here's the short version:
 - Where you see a hyphen in the name of a Python object, use an underscore in R: `vega_data$sf_temps()`
 
 - Where you see `["foo", "bar"]` in Altair examples, use an unnamed list in R: `list("foo", "bar")`. Where you see `{'a' = "foo", 'b' = "bar"}` in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
+
+- Where you see a `None` in Altair examples, use a `NULL` in R.
+
+- You may see a function argument, `baz(a = 1, **{'foo': 'bar'})` in an Altair example. In R, interpolate the dictionary into the rest of the arguments, `baz(a = 1, foo = "bar")`.
 
 ## Method chaining
 
@@ -78,7 +82,7 @@ chart_iris <-
   mark_point()
 ```
 
-## Altair methods returns copy
+## Altair method returns copy
 
 In Python, Altair methods return a copy of the object. To verify this, let's use `pryr::
 
@@ -96,7 +100,9 @@ Although this *looks* like a reference-class method, the Altair method *acts* li
 
 ## Python assignment returns reference
 
-Let's try an assignment:
+The object returned by an Altair method is a modified copy of the calling-object, much as we are accustomed-to in R. However, it is important to note that using the R assignment operator (`<-`, `=`, `->`) on a Python object returns a *reference* to the object rather than a copy. 
+
+This becomes apparent when assigning a "bare" object:
 
 ```{r}
 chart_new <- chart_old
@@ -104,7 +110,7 @@ chart_new <- chart_old
 address(chart_new) == address(chart_old)
 ```
 
-It seems that an assignment of an Altair object (and perhaps, by extension, a Python object) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
+To return a copy of the object, use a copy method.
 
 ```{r}
 chart_new <- chart_old$copy()
@@ -114,14 +120,220 @@ address(chart_new) == address(chart_old)
 
 ## Dots in variable names
 
-If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
+In Python, dots can refer to a nested structure within a Data Frame variable. Vega-Lite supports such nesting, so it assumes that a dot in a variable-name will refer to a nested variable. 
+
+This means that we can run into trouble using R's `iris` dataset:
+
+```{r eval = FALSE}
+# does not render properly
+
+chart_iris_r <-
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "Sepal.Width:Q",
+    y = "Sepal.Length:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+chart_iris_r
+```
+
+The problem here is that there are variables whose names have dots in them, e.g. `Sepal.Width`. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, `\\`:
+
+```{r}
+chart_iris_r <-
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "[Sepal.Width]:Q",
+    y = "Sepal\\.Length:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+chart_iris_r
+```
+
+As you can see, this has the side-effect of showing the brackets and slashes in the scale labels.
+
+To fix the fix, you can set the title for each axis:
+
+```{r}
+chart_iris_r$ 
+  encode(
+    x = alt$X(
+      field = "[Sepal.Width]", 
+      type = "quantitative", 
+      axis = alt$Axis(title = "Sepal.Width")
+    ),
+    y = alt$Y(
+      field = "Sepal\\.Length", 
+      type = "quantitative", 
+      axis = alt$Axis(title = "Sepal.Length")
+    ),
+    color = "Species:N"
+  )
+```
 
 ## Repeat
 
+As shown in the [View Composistion article](view-composition.html#repeat), you can use the `repeat()` method to compose one-or-more charts such that the only thing different among them is an encoding.
+
+However, the article notes, there is a catch: `repeat` is a reserved word in R, so we have to enclose it in backticks, e.g. ``$`repeat`()``.
+
+```{r repeat}
+chart_repeat <- 
+  alt$Chart(r_to_py(vega_data$iris()))$
+  encode(
+    x = alt$X(alt$`repeat`("column"), type = "quantitative"),
+    y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
+    color = "species:N"
+  )$
+  mark_point()$
+  properties(
+    width = 200,
+    height = 200
+  )$
+  `repeat`(
+    row = list("petalLength", "petalWidth"),
+    column = list("sepalLength", "sepalWidth")
+  )
+
+chart_repeat
+```
+
 ## Inversion (`~`)
+
+This is another case where an operator has a completely different meaning in Python than it has in R. As you know, the `~` operator is used to construct a formula. In Python, it is the [bitwise inversion operator](https://stackoverflow.com/questions/8305199/the-tilde-operator-in-python). 
+
+You might come across this in an [Altair example](https://altair-viz.github.io/gallery/multiline_highlight.html) where the operator is used to invert a selection.
+
+```python
+# Python
+highlight = alt.selection(type='single', on='mouseover',
+                          fields=['symbol'], nearest=True)
+
+alt.condition(~highlight, alt.value(1), alt.value(3))
+```
+
+There are a couple of alternatives available here, the first is to invoke the `$__invert__()` operator explicitly.
+
+```{r eval = FALSE}
+# R
+highlight <-
+  alt$selection(
+    type = "single", 
+    on = "mouseover",
+    fields = list("symbol"), 
+    nearest = TRUE
+  )
+
+alt$condition(highlight$`__invert__`(), alt$value(1), alt$value(3))
+```
+
+The second alternative is to swap the order of the `if_true` and `if_false` arguments in `alt$condition()`.
+
+```{r eval = FALSE}
+# R
+highlight <-
+  alt$selection(
+    type = "single", 
+    on = "mouseover",
+    fields = list("symbol"), 
+    nearest = TRUE
+  )
+
+alt$condition(highlight, alt$value(3), alt$value(1))
+```
 
 ## Hyphens in Python Names
 
+This comes up in Vega datasets. Let's use the `$list_datasets()` method to get the names of the datasets that contain a hyphen.
+
+```{r datasets-hyphen}
+vega_data$list_datasets() %>% stringr::str_subset("-")
+```
+
+To refer to one of these datasets in R, substitute the hyphen with an underscore:
+
+```{r}
+vega_data$sf_temps() %>% head()
+```
+
 ## Lists and Dictionaries
 
+A Python list corresponds to an atomic vector in R; a Python dictionary corresponds to a named list in R.
 
+```python
+# Python
+
+example_list = [1, 2, 3]
+example_dictionary = {'a': 1, 'b': 2, 'c': 3}
+```
+
+In practice, we find that reticulate does the right thing if we provide an R *unnamed* list where Altair expects a list, and an R *named* list where Altair expects a dictionary.
+
+```{r}
+example_list <- list(1, 2, 3)
+example_dictionary <- list(a = 1, b = 2, c = 3)
+```
+
+Here's an example that uses lists and dictionaries:
+
+```{r}
+
+```
+
+## None and **
+
+These concepts are not related other that they are found in the same example:
+
+```python
+import altair as alt
+import pandas as pd
+
+activities = pd.DataFrame({'Activity': ['Sleeping', 'Eating', 'TV', 'Work', 'Exercise'],
+                           'Time': [8, 2, 4, 8, 2]})
+
+alt.Chart(activities).mark_bar().encode(
+    alt.X('PercentOfTotal:Q', axis=alt.Axis(format='.0%')),
+    y='Activity:N'
+).transform_window(
+    window=[alt.WindowFieldDef(op='sum', field='Time', **{'as': 'TotalTime'})],
+    frame=[None, None]
+).transform_calculate(
+    PercentOfTotal="datum.Time / datum.TotalTime"
+)
+```
+
+Here, we have a list containing `None`, which reticulate associates with R's `NULL`. 
+
+We also have some syntax, `**{'as': 'TotalTime'}`. This is a mechanism to [pass additional arguments](https://softwareengineering.stackexchange.com/a/131415) to a Python function, perhaps similar to `...` in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:  
+
+```{r list-dict}
+library("tibble")
+
+activities <- 
+  data_frame(
+    Activity = c("Sleeping", "Eating", "TV", "Work", "Exercise"),
+    Time = c(8, 2, 4, 8, 2)
+  )
+
+chart <- 
+  alt$Chart(r_to_py(activities))$
+  mark_bar()$
+  encode(
+    x = alt$X("PercentOfTotal:Q", axis = alt$Axis(format =".0%")),
+    y = "Activity:N"
+  )$
+  transform_window(
+    window = list(
+      alt$WindowFieldDef(op = "sum", field = "Time", as = "TotalTime")
+    ),
+    frame = list(NULL, NULL)
+  )$transform_calculate(
+    PercentOfTotal = "datum.Time / datum.TotalTime"
+  )
+
+chart
+```
