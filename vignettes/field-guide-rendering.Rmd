@@ -22,6 +22,8 @@ There are four foundations upon which this package rests:
 
 This article deals with the second two items; the [python-issues article](field-guide-python.html) deals with the other two.
 
+## Overview
+
 The `vegawidget()` function renders a chart specification into an HTML `<div/>`.
 
 * [**Chart specification**](#chart) (`chart`)

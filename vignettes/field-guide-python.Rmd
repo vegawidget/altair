@@ -22,12 +22,54 @@ There are four foundations upon which this package rests:
 
 This article deals with the first two items; the [chart-rendering article](field-guide-rendering.html) deals with the other two.
 
-The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. If you get a cryptic Python error, check here. If you find a workaround for something that isn't here, please let us know!
 
-* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
-* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
+## Overview
 
-## Working with Python objects {#work-work}
+Here's the short version. When referring to the Altair documentation:
+
+- Where you see a `.`, use a `$` instead.
+
+- Altair *methods* return a copy of the object. Assignment of a Python object returns a refrence, not a copy. To get the behavior you might be accustomed-to for assignment of "bare" objects, use a `$copy()` method.
+
+- If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accomodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
+
+- There is an Altair Chart method called `repeat()`; in R `repeat`, is a reserved word, so it needs to be enclosed in backticks: ``$`repeat`()``. 
+
+- Where you see an inversion operator, `~`, like `~highlight`, in Altair examples, call the method explicitly from R: ``hightlight$`__invert__`()``. 
+
+- Where you see a hyphen in the name of a Python object, use an underscore in R: `vega_data$sf_temps()`
+
+- Where you see `["foo", "bar"]` in Altair examples, use an unnamed list in R: `list("foo", "bar")`. Where you see `{'a' = "foo", 'b' = "bar"}` in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
+
+## Method chaining
+
+## Copy on modify, reference on assignment
+
+## Dots in variable names
+
+If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
+
+```{r iris}
+chart_iris <- 
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "[Sepal.Width]:Q",
+    y = "[Sepal.Length]:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+chart_iris
+```
+
+## Repeat
+
+## Inversion (`~`)
+
+## Hyphens in Python Names
+
+## Lists and Dictionaries
 
 When **reticulate** returns a Python object with a custom class, it appears in R as an S3 object that *behaves* like a reference class. This means that if you see this sort of notation in Python:
 
@@ -85,45 +127,6 @@ chart_new <- chart_old$copy()
 address(chart_new) == address(chart_old)
 ```
 
-### Vega-datasets object
 
-You can specify a dataset using a URL that points to a dataset, rather than a data frame. The `vega_data` object (assigned using `import_vega_data()`) contains the URLs as well as access to the data frames. 
 
-```{r}
-iris_url <- vega_data$iris$url
-
-chart_iris <- 
-  alt$Chart(iris_url)$
-  encode(
-    x = "sepalWidth:Q",
-    y = "sepalLength:Q",
-    color = "species:N"
-  )$
-  mark_point()
-
-chart_iris
-```
-
-This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
-
-You can read more in the [Vega Datasets](vega-datasets.html) article.
-
-## Odds and ends {#odds-ends}
-
-### Dots in variables
-
-If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
-
-```{r iris}
-chart_iris <- 
-  alt$Chart(r_to_py(iris))$
-  encode(
-    x = "[Sepal.Width]:Q",
-    y = "[Sepal.Length]:Q",
-    color = "Species:N"
-  )$
-  mark_point()
-
-chart_iris
-```
 

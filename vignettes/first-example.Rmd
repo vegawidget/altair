@@ -42,9 +42,9 @@ The first part of the code block is a call to load the package:
 library("altair")
 ```
 
-This assumes that your computer has a Python installation and an Altair installation. Please see the [Field Guide to Python](https://altair-viz.github.io/getting_started/field-guide-python.html) for more information on how to get up-and-running.
+This assumes that your computer has a Python installation and an Altair installation. Please see the [Installation article](installation.html) for more information on how to get up-and-running.
 
-The next bit is to import the data object from the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package:
+The next bit is to get access to [Vega datasets](https://github.com/altair-viz/vega_datasets), which also has its own [article](vega-datasets.html) in this collection.
 
 ```r
 vega_data <- import_vega_data()
@@ -65,8 +65,6 @@ There's a few things going on here. The first is that the altair (R) package exp
 import altair as alt
 ```
 
-
-
 Accordingly, we expose the "same" variable, by default, as a part of the package-loading process. 
 
 The next step is to create the chart itself. In Python, we would use language like this:
@@ -82,9 +80,11 @@ Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. I
 chart <- alt$Chart(...)
 ```
 
-The argument to the `Chart()` function also merits some explanation. In Python, the function expect its data argument to be a Pandas Dataframe. The reticulate package offers us a function `r_to_py()`, which we re-export in this package. This function and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
+The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. The reticulate package offers us a function `r_to_py()`, which we re-export in this package. This function and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
 
 In our case, we are converting dataframes. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
+
+As you follow the [Altair exmaples](https://altair-viz.github.io/gallery/index.html), you will come across other Python-R translation issues. We have compiled our discoveries and workarounds in an article, [Field Guide to Python](field-guide-python.html).
 
 The `data` argument to a chart function need not be a data frame; it can be a *reference* to a data frame like a URL, in which case you will not need to wrap in `r_to_py()`:
 
@@ -93,6 +93,8 @@ vega_data$cars$url
 
 chart <- alt$Chart(vega_data$cars$url)
 ```
+
+Note that referring to an external URL is generally not allowed in the RStudio IDE, so your chart may not render in the IDE. However, it will render in a regular browser.
 
 ## Adding a mark
 
@@ -146,8 +148,18 @@ Now that we have specified our chart, it remains to display it. This package pro
 vegawidget(chart)
 ```
 
+However, if you are using its defailts, you need not call the `vegawidget()` function explicity, as this package provides a `print()` method and a `knit_print()` method. 
+
+```{r display-bare}
+chart
+```
+
+More details on rendering charts, including how sizing works, are found in the article [Field Guide to Rendering](field-guide-rendering.html).
+
 You can examine the chart-specification by using the `examine()` function, which wraps `listviewer::jsonedit()`. To use this function, you will need to install the **listviewer** package from CRAN.
 
 ```{r examine, out.height=300}
 examine(chart)
 ```
+
+
