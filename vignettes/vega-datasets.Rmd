@@ -17,7 +17,7 @@ The purpose of this document demonstrate some ways to use the data provided by t
 
 In the [Altair documentation](https://altair-viz.github.io/getting_started/installation.html), you will see this code used often:
 
-```{python py-vega-datasets}
+```python 
 from vega_datasets import data
 
 cars = data.cars()

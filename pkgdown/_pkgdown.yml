@@ -47,9 +47,10 @@ articles:
       - view-composition
       - interactive
   - title: Field guides
+    contents:
       - field-guide-python
       - field-guide-rendering
-  - title: Gallery
+#  - title: Gallery
   - title: Manifesto
     contents:
       - manifesto
