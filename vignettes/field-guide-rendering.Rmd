@@ -48,7 +48,7 @@ Here's the short version:
 
   - `width` and `height` have meaning only as number of pixels.
 
-- In RMarkdown, the `vegawidget()` `width` and `height` can be set using the knitr options `vega.width` and `vega.height`, subject to the single-view constraint described above.
+- In R Markdown, the `vegawidget()` `width` and `height` can be set using the knitr options `vega.width` and `vega.height`, subject to the single-view constraint described above.
 
 
 In this article, we will render a chart a bunch of different ways, each highlighting a different aspect of the rendering process. Let's define our base chart:
@@ -168,9 +168,9 @@ There are two important caveats:
 
 This philosophy is driven by the idea that a Vega-Lite chart likes to determine its own size, and tends to resist attempts to impose size restrictions from the outside.
 
-## RMarkdown options
+## R Markdown options
 
-In RMarkdown, you can set the `width` and `height` arguments of `vegawidget()` using the knitr options `vega.width` and `vega.height`. Of course, you are still subject to the "autosize" caveats outlined above.
+In R Markdown, you can set the `width` and `height` arguments of `vegawidget()` using the knitr options `vega.width` and `vega.height`. Of course, you are still subject to the "autosize" caveats outlined above.
 
     ```{r vega.width=300, vega.height=300}
     chart
