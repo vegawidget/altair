@@ -28,9 +28,10 @@
 #'
 #' @return invisible `NULL`, called for side-effects
 #'
-#' @seealso [Using reticulate in an R Package](https://rstudio.github.io/reticulate/articles/package.html),
-#' [reticulate: Installing Python Packages](https://rstudio.github.io/reticulate/articles/python_packages.html),
-#' [altiar: Field-Guide to Python Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env)
+#' @seealso
+#' [altiar: Installation](https://ijlyttle.github.io/altair/articles/installation.html),
+#' [Using reticulate in an R Package](https://rstudio.github.io/reticulate/articles/package.html),
+#' [reticulate: Installing Python Packages](https://rstudio.github.io/reticulate/articles/python_packages.html)
 #' @examples
 #' \dontrun{
 #'   install_altair()
@@ -100,9 +101,12 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' - minor version leads to a **warning**
 #' - patch version leads to a **message**
 #'
-#' If there is no difference, there is no message; no news is good news!
+#' If there is no difference:
 #'
-#' To install the supported version into a Ptyhon environment
+#' - `quiet = FALSE`, success message showing version-numbers
+#' - `quiet = TRUE`, no message
+#'
+#' To install the supported version into a Python environment
 #' called `"r-reticulate"`, use [install_altair()].
 #'
 #' @inheritParams check_altair_version

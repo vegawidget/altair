@@ -26,7 +26,8 @@
 #'     )$mark_point()
 #' }
 #'
-#' @seealso [Altair Python documentation](https://altair-viz.github.io/index.html)
+#' @seealso [Altair Python documentation](https://altair-viz.github.io/index.html),
+#' [altair: Field Guide to Python Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html)
 #' @export alt
 #'
 alt <- NULL

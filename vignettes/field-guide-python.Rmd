@@ -26,29 +26,68 @@ The purpose of this document is to try to collect in one place, in a semi-organi
 
 ## Overview
 
-A very useful way to learn how to create charts using this package is to follow the [Altair documentation](https://altair-viz.github.io). In the course of building and documenting this package, we have noted a few "gotchas" and their workarounds. If you find another, please let us know!
+The [Altair documentation](https://altair-viz.github.io) is the best resource for learning how to create charts. In the course of building and documenting this package, we have noted a few "gotchas" and their workarounds. If you find another, please let us know!
 
 Here's the short version:
 
+- Data frames have to be wrapped in `r_to_py()`. 
+
 - Where you see a `.`, use a `$` instead.
 
-- Altair *methods* return a copy of the object. Assignment of a Python object returns a refrence, not a copy. 
+- Altair methods return a *copy* of the object. Assignment of a Python object returns a *reference*, not a copy. 
 
-- To get the behavior you might be accustomed-to for assignment of "bare" objects, use a `$copy()` method.
+- To get a copy a of "bare" Altair object, use a `$copy()` method.
 
 - If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accomodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
 
-- There is an Altair Chart method called `repeat()`; in R `repeat`, is a reserved word, so it needs to be enclosed in backticks: ``$`repeat`()``. 
+- There is an Altair Chart method called `repeat()`, which in R is a reserved word, so it needs to be enclosed in backticks: ``$`repeat`()``. 
 
-- Where you see an inversion operator, `~`, like `~highlight`, in Altair examples, call the method explicitly from R: ``hightlight$`__invert__`()``. 
+- Where you see an inversion operator, `~`, like `~highlight`, in Altair examples, call the method explicitly from R: ``hightlight$`__invert__`()``. Alternatively, you may be able to rearrange the code so as to avoid using the inversion. 
 
 - Where you see a hyphen in the name of a Python object, use an underscore in R: `vega_data$sf_temps()`
 
-- Where you see `["foo", "bar"]` in Altair examples, use an unnamed list in R: `list("foo", "bar")`. Where you see `{'a' = "foo", 'b' = "bar"}` in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
+- Where you see a Python list, `["foo", "bar"]`, in Altair examples, use an unnamed list in R: `list("foo", "bar")`.
+
+- Where you see a Python dictionary, `{'a' = "foo", 'b' = "bar"}`, in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
 
 - Where you see a `None` in Altair examples, use a `NULL` in R.
 
-- You may see a function argument, `baz(a = 1, **{'foo': 'bar'})` in an Altair example. In R, interpolate the dictionary into the rest of the arguments, `baz(a = 1, foo = "bar")`.
+- You may see a function call with `**`, `baz(a = 1, **{'foo': 'bar'})`, in an Altair example. In R, interpolate the dictionary into the rest of the arguments, `baz(a = 1, foo = "bar")`.
+
+## Data frames
+
+Consider this Python example:
+
+```python
+# Python
+
+from vega_datasets import data
+cars = data.cars()
+
+alt.Chart(cars).mark_point().encode(
+    x='Horsepower',
+    y='Miles_per_Gallon',
+    color='Origin',
+).interactive()
+```
+
+In this case, we are supplying a Data Frame to a `Chart()` method. To do the same thing from R, we need to wrap data frames in the `r_to_py()` function (exported from **reticulate**).
+
+```{r}
+library("altair")
+
+vega_data <- import_vega_data()
+cars <- vega_data$cars()
+
+chart <- 
+  alt$Chart(r_to_py(cars))$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
+```
 
 ## Method chaining
 
@@ -65,21 +104,20 @@ You would use this notation in R:
 foo$bar()
 ```
 
-In essence, you wherever you see a `.` in Python, use a `$` in R.
+In essence, you wherever you see a `.` in Python, use a `$` in R. 
 
-```{r iris}
-library("altair")
-
+```{r cars}
 vega_data <- import_vega_data()
+cars <- vega_data$cars()
 
-chart_iris <- 
-  alt$Chart(r_to_py(vega_data$iris()))$
+chart <- 
+  alt$Chart(r_to_py(cars))$
+  mark_point()$
   encode(
-    x = "sepalWidth:Q",
-    y = "sepalLength:Q",
-    color = "species:N"
-  )$
-  mark_point()
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
 ```
 
 ## Altair method returns copy
@@ -89,11 +127,9 @@ In Python, Altair methods return a copy of the object. To verify this, let's use
 ```{r}
 library("pryr")
 
-chart_old <- chart_iris
+chart_new <- chart$mark_point()
 
-chart_new <- chart_old$mark_point()
-
-address(chart_new) == address(chart_old)
+address(chart_new) == address(chart)
 ```
 
 Although this *looks* like a reference-class method, the Altair method *acts* like an S3 method.
@@ -105,17 +141,17 @@ The object returned by an Altair method is a modified copy of the calling-object
 This becomes apparent when assigning a "bare" object:
 
 ```{r}
-chart_new <- chart_old
+chart_new <- chart
 
-address(chart_new) == address(chart_old)
+address(chart_new) == address(chart)
 ```
 
 To return a copy of the object, use a copy method.
 
 ```{r}
-chart_new <- chart_old$copy()
+chart_new <- chart$copy()
 
-address(chart_new) == address(chart_old)
+address(chart_new) == address(chart)
 ```
 
 ## Dots in variable names
@@ -354,7 +390,7 @@ alt.Chart(activities).mark_bar().encode(
 )
 ```
 
-Here, we have a list containing `None`, which reticulate associates with R's `NULL`. 
+In this example, we have a list containing `None`, which reticulate associates with R's `NULL`. 
 
 We also have some syntax, `**{'as': 'TotalTime'}`. This is a mechanism to [pass additional arguments](https://softwareengineering.stackexchange.com/a/131415) to a Python function, perhaps similar to `...` in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:  
 
