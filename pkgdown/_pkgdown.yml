@@ -31,6 +31,7 @@ reference:
       - only_actions
       - renderVegawidget
       - vegawidgetOutput
+      - knit_print.altair.vegalite.v2.api.TopLevelMixin
   - title: Package
     desc: Overview of the package
     contents:

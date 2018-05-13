@@ -14,11 +14,11 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin(x, ..., options = NULL)
 \item{options}{\code{list}, knitr options}
 }
 \description{
-The only effective options are \code{vega.width} and \code{vega.height};
+The only effective sizing options are \code{vega.width} and \code{vega.height};
 these are passed to \code{\link[=vegawidget]{vegawidget()}} as \code{width} and \code{height},
 respectively.
 }
 \details{
-\code{out.width} and \code{out.height} are
+\code{vega.width} and \code{vega.height} are
 coerced to numeric, so it is ineffective to specify a percentage.
 }

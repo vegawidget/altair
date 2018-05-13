@@ -73,11 +73,13 @@ In the documentation, let's call things (and even name things) charts, as this s
 
 ### Versioning
 
-The first digit indicates the maturity of this package's API. For the time being, it will be `0`. When we feel it is time, we will increment the first digit to agree with the first digit of the Altair release, currently `2`.
+The first digit indicates the maturity of this package's API. For the time being, it will be `0`.
 
 The second digit will be incremented upon each CRAN release and assigned a GitHub release tag.
 
-The third digit will be incremented with each change of the `master` branch. Each change of the master branch will be assigned a git tag, so we will not do this lightly.
+The third digit will be incremented with each change of the `master` branch. Each change of the master branch will be assigned a git tag, so we will try not to do this lightly.
+
+The fourth digit is reserved to the `develop` branch and any `<feature-branch>`.
 
 ### Pull requests
 
@@ -91,9 +93,9 @@ adding vignette            | `develop`            | Yes                   | 😀
 helping with a new feature | `<feature-branch>`   | No                    | 😃
 proposing a new feature    | `develop`            | Yes                   | 😃
 
-Strategies for roxygen and pkgdown?
+Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let's see how that works) 
 
-### Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let's see how that works) Git branch strategy
+### Git branch strategy
 
 One of the motivations is to make our lives as developers, and as users, easier by restricting what types of Altair versions will be supported on which types of git branches.
 

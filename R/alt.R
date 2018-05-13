@@ -9,11 +9,11 @@ print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ...){
 
 #' Knit-print method
 #'
-#' The only effective options are `vega.width` and `vega.height`;
+#' The only effective sizing options are `vega.width` and `vega.height`;
 #' these are passed to [vegawidget()] as `width` and `height`,
 #' respectively.
 #'
-#' `out.width` and `out.height` are
+#' `vega.width` and `vega.height` are
 #' coerced to numeric, so it is ineffective to specify a percentage.
 #'
 #' @param x Altair chart object

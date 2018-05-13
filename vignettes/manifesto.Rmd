@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this package is to be a minimal and faithful interface to the [Python Altair](https://altair-viz.github.io) API. At this point, this R package provides:
+The purpose of this package is to be a minimal and faithful interface to the [Python Altair](https://altair-viz.github.io) API. Currently, this R package provides:
 
 1. Access, via [reticulate](https://rstudio.github.io/reticulate/), to Altair objects and methods to create and compose Vega-Lite charts.
 1. The means to display charts, via [htmlwidgets](https://www.htmlwidgets.org).
