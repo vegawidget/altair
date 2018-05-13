@@ -15,7 +15,7 @@ Lets you access Vega datasets.
 \details{
 Returns the \code{data} object in the Python package
 \href{https://github.com/altair-viz/vega_datasets}{vega-datasets}.
-In the documentation for this package, it is customary to
+In the documentation for this package, the convention is to
 assign this to an object named \code{vega_data}.
 }
 \examples{

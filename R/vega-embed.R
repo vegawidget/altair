@@ -79,12 +79,14 @@
 #'   [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync)
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
 #'
-#' @seealso [vegawidget()], [only_actions()]
+#' @seealso [vegawidget()], [only_actions()],
+#'   [altair: Field Guide to Rendering Charts](https://ijlyttle.github.io/altair/field-guide-rendering.html)
+#'
 #' @examples
-#' # Set the renderer
+#' # Set renderer
 #' embed_options <- vega_embed(renderer = "svg")
 #'
-#' # Specify the action links
+#' # Specify  action links
 #' embed_options <- vega_embed(actions = FALSE)
 #' embed_options <- vega_embed(actions = list(editor = FALSE))
 #' embed_options <- vega_embed(actions = only_actions(export = TRUE))
@@ -180,7 +182,11 @@ vega_embed <- function(renderer = c("canvas", "svg"),
 #' @param editor `logical`, include "Open in Vega Editor" link
 #'
 #' @return `list`
+#' @seealso [vega_embed()]
+#' @examples
+#' embed_options <- vega_embed(actions = only_actions(export = TRUE))
 #' @export
+#'
 #'
 only_actions = function(export = FALSE, source = FALSE, editor = FALSE) {
   list(

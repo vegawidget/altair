@@ -16,7 +16,7 @@ In this documentation, the capitalized word \strong{Altair} shall refer to the
 Python package; the lower-case word \strong{altair} shall refer to this R package.
 }
 \seealso{
-\href{https://ijlyttle.github.io/altair}{altair pkgdown website}
-\href{https://altair-viz.github.io/index.html}{Altair Python package}
+\href{https://ijlyttle.github.io/altair}{altair pkgdown website},
+\href{https://altair-viz.github.io/index.html}{Altair Python package},
 \href{https://vega.github.io/vega-lite}{Vega-Lite}
 }

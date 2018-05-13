@@ -40,7 +40,7 @@
 #'
 #' - Keep in mind that the action-links are not a part of the rendered chart,
 #' so you may have to account for them yourself. You might expect
-#' the height of the action-links to be 25-30 pixels.
+#' the height of the action-links to be 15-20 pixels.
 #'
 #' @param chart   an Altair plot object
 #' @param embed   `vega_embed` object to specify embedding options -
@@ -54,30 +54,33 @@
 #'   of the chart - valid only for single-view charts and layered charts;
 #'   the default is to use the chart specification
 #' @param ... other arguments
-#' @seealso [alt], [vega_embed()]
+#' @seealso [alt], [vega_embed()],
+#'   [altair: Field Guide to Rendering Charts](https://ijlyttle.github.io/altair/field-guide-rendering.html)
 #' @examples
-#'   plot_basic <-
-#'     alt$Chart(
-#'       r_to_py(mtcars)
-#'     )$encode(
-#'       x = "mpg:Q",
-#'       y = "hp:Q",
-#'       color = "cyl:N"
-#'     )$mark_point()
+#' vega_data <- import_vega_data()
+#'
+#' chart <-
+#'   alt$Chart(r_to_py(vega_data$cars()))$
+#'   mark_point()$
+#'   encode(
+#'     x = "Horsepower:Q",
+#'     y = "Miles_per_Gallon:Q",
+#'     color = "Origin:N"
+#'   )
 #'
 #' \dontrun{
 #'   # default: rendered using canvas,
 #'   #   all action-links, chart-specification determines size
-#'   vegawidget(plot_basic)
+#'   vegawidget(chart)
 #'
 #'   # render using SVG
-#'   vegawidget(plot_basic, embed = vega_embed(renderer = "svg"))
+#'   vegawidget(chart, embed = vega_embed(renderer = "svg"))
 #'
 #'   # do not include action-links
-#'   vegawidget(plot_basic, embed = vega_embed(actions = FALSE))
+#'   vegawidget(chart, embed = vega_embed(actions = FALSE))
 #'
 #'   # specify dimensions of rendered-chart
-#'   vegawidget(plot_basic, width = 300, height = 200)
+#'   vegawidget(chart, width = 300, height = 200)
 #' }
 #' @export
 #'

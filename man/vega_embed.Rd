@@ -108,15 +108,16 @@ It is ineffective to set the \code{width} and \code{height} parameters here, as 
 will be overridden by the values in the chart specification.
 }
 \examples{
-# Set the renderer
+# Set renderer
 embed_options <- vega_embed(renderer = "svg")
 
-# Specify the action links
+# Specify  action links
 embed_options <- vega_embed(actions = FALSE)
 embed_options <- vega_embed(actions = list(editor = FALSE))
 embed_options <- vega_embed(actions = only_actions(export = TRUE))
 
 }
 \seealso{
-\code{\link[=vegawidget]{vegawidget()}}, \code{\link[=only_actions]{only_actions()}}
+\code{\link[=vegawidget]{vegawidget()}}, \code{\link[=only_actions]{only_actions()}},
+\href{https://ijlyttle.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
 }

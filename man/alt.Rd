@@ -36,6 +36,7 @@ used in Python.
 
 }
 \seealso{
-\href{https://altair-viz.github.io/index.html}{Altair Python documentation}
+\href{https://altair-viz.github.io/index.html}{Altair Python documentation},
+\href{https://ijlyttle.github.io/altair/articles/field-guide-python.html}{altair: Field Guide to Python Issues}
 }
 \keyword{datasets}

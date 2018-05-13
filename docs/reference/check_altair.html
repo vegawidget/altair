@@ -192,8 +192,11 @@ difference in the version numbers:</p><ul>
 <li><p>minor version leads to a <strong>warning</strong></p></li>
 <li><p>patch version leads to a <strong>message</strong></p></li>
 </ul>
-    <p>If there is no difference, there is no message; no news is good news!</p>
-<p>To install the supported version into a Ptyhon environment
+    <p>If there is no difference:</p><ul>
+<li><p><code>quiet = FALSE</code>, success message showing version-numbers</p></li>
+<li><p><code>quiet = TRUE</code>, no message</p></li>
+</ul>
+    <p>To install the supported version into a Python environment
 called <code>"r-reticulate"</code>, use <code><a href='install_altair.html'>install_altair()</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

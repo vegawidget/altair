@@ -303,14 +303,15 @@ will be overridden by the values in the chart specification.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vegawidget.html'>vegawidget()</a></code>, <code><a href='only_actions.html'>only_actions()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='vegawidget.html'>vegawidget()</a></code>, <code><a href='only_actions.html'>only_actions()</a></code>,
+<a href='https://ijlyttle.github.io/altair/field-guide-rendering.html'>altair: Field Guide to Rendering Charts</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Set the renderer</span>
+    <pre class="examples"><div class='input'><span class='co'># Set renderer</span>
 <span class='no'>embed_options</span> <span class='kw'>&lt;-</span> <span class='fu'>vega_embed</span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='st'>"svg"</span>)
 
-<span class='co'># Specify the action links</span>
+<span class='co'># Specify  action links</span>
 <span class='no'>embed_options</span> <span class='kw'>&lt;-</span> <span class='fu'>vega_embed</span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='no'>embed_options</span> <span class='kw'>&lt;-</span> <span class='fu'>vega_embed</span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>editor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
 <span class='no'>embed_options</span> <span class='kw'>&lt;-</span> <span class='fu'>vega_embed</span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fu'><a href='only_actions.html'>only_actions</a></span>(<span class='kw'>export</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div></pre>

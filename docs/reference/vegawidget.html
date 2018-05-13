@@ -232,35 +232,38 @@ the meanings change to describe the dimensions of the <strong>entire</strong> re
 including axes, labels, etc.</p></li>
 <li><p>Keep in mind that the action-links are not a part of the rendered chart,
 so you may have to account for them yourself. You might expect
-the height of the action-links to be 25-30 pixels.</p></li>
+the height of the action-links to be 15-20 pixels.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_embed.html'>vega_embed()</a></code></p></div>
+    <div class='dont-index'><p><a href='alt.html'>alt</a>, <code><a href='vega_embed.html'>vega_embed()</a></code>,
+<a href='https://ijlyttle.github.io/altair/field-guide-rendering.html'>altair: Field Guide to Rendering Charts</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>plot_basic</span> <span class='kw'>&lt;-</span>
-    <span class='no'>alt</span>$<span class='fu'>Chart</span>(
-      <span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>mtcars</span>)
-    )$<span class='fu'>encode</span>(
-      <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"mpg:Q"</span>,
-      <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"hp:Q"</span>,
-      <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"cyl:N"</span>
-    )$<span class='fu'>mark_point</span>()</div><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='import_vega_data.html'>import_vega_data</a></span>()
+
+<span class='no'>chart</span> <span class='kw'>&lt;-</span>
+  <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>vega_data</span>$<span class='fu'>cars</span>()))$
+  <span class='fu'>mark_point</span>()$
+  <span class='fu'>encode</span>(
+    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Horsepower:Q"</span>,
+    <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Miles_per_Gallon:Q"</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
+  )</div><span class='co'># NOT RUN {</span>
   <span class='co'># default: rendered using canvas,</span>
   <span class='co'>#   all action-links, chart-specification determines size</span>
-  <span class='fu'>vegawidget</span>(<span class='no'>plot_basic</span>)
+  <span class='fu'>vegawidget</span>(<span class='no'>chart</span>)
 
   <span class='co'># render using SVG</span>
-  <span class='fu'>vegawidget</span>(<span class='no'>plot_basic</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='st'>"svg"</span>))
+  <span class='fu'>vegawidget</span>(<span class='no'>chart</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='st'>"svg"</span>))
 
   <span class='co'># do not include action-links</span>
-  <span class='fu'>vegawidget</span>(<span class='no'>plot_basic</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
+  <span class='fu'>vegawidget</span>(<span class='no'>chart</span>, <span class='kw'>embed</span> <span class='kw'>=</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
 
   <span class='co'># specify dimensions of rendered-chart</span>
-  <span class='fu'>vegawidget</span>(<span class='no'>plot_basic</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>200</span>)
+  <span class='fu'>vegawidget</span>(<span class='no'>chart</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>200</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

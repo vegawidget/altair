@@ -26,9 +26,13 @@ difference in the version numbers:
 \item patch version leads to a \strong{message}
 }
 
-If there is no difference, there is no message; no news is good news!
+If there is no difference:
+\itemize{
+\item \code{quiet = FALSE}, success message showing version-numbers
+\item \code{quiet = TRUE}, no message
+}
 
-To install the supported version into a Ptyhon environment
+To install the supported version into a Python environment
 called \code{"r-reticulate"}, use \code{\link[=install_altair]{install_altair()}}.
 }
 \examples{
