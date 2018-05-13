@@ -80,7 +80,7 @@
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
 #'
 #' @seealso [vegawidget()], [only_actions()],
-#'   [altair: Field Guide to Rendering Charts](https://ijlyttle.github.io/altair/field-guide-rendering.html)
+#'   [altair: Field Guide to Rendering Charts](https://vegawidget.github.io/altair/field-guide-rendering.html)
 #'
 #' @examples
 #' # Set renderer

@@ -25,7 +25,7 @@ To be clear, there is a bit of hassle to set-up Python to use your first R-packa
    
    As usual, restart R for changes to take effect.
    
-1. `devtools::install_github("ijlyttle/altair")`
+1. `devtools::install_github("vegawidget/altair")`
 
 1. `altair::install_altair()`
 
@@ -231,7 +231,7 @@ If you have not already installed this package into your R library, this is a pe
 
 ```r
 # install.packages("devtools")
-devtools::install_github("ijlyttle/altair")
+devtools::install_github("vegawidget/altair")
 ```
 
 Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:    

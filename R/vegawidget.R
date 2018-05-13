@@ -55,7 +55,7 @@
 #'   the default is to use the chart specification
 #' @param ... other arguments
 #' @seealso [alt], [vega_embed()],
-#'   [altair: Field Guide to Rendering Charts](https://ijlyttle.github.io/altair/field-guide-rendering.html)
+#'   [altair: Field Guide to Rendering Charts](https://vegawidget.github.io/altair/field-guide-rendering.html)
 #' @examples
 #' vega_data <- import_vega_data()
 #'

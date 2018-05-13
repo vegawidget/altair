@@ -9,7 +9,7 @@
 #' Python package; the lower-case word **altair** shall refer to this R package.
 #'
 #' @seealso
-#'   [altair pkgdown website](https://ijlyttle.github.io/altair),
+#'   [altair pkgdown website](https://vegawidget.github.io/altair),
 #'   [Altair Python package](https://altair-viz.github.io/index.html),
 #'   [Vega-Lite](https://vega.github.io/vega-lite)
 #'

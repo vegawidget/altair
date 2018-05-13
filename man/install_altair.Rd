@@ -41,7 +41,7 @@ Depending on your setup, you can create this environment using
 \code{\link[reticulate:conda_create]{reticulate::conda_create()}} or \code{\link[reticulate:virtualenv_install]{reticulate::virtualenv_install()}},
 as described in this
 \href{https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation}{reticulate article},
-or in this package's \href{https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env}{Field-Guide to Python Issues}.
+or in this package's \href{https://vegawidget.github.io/altair/articles/field-guide-python.html#python-env}{Field-Guide to Python Issues}.
 }
 \examples{
 \dontrun{
@@ -49,7 +49,7 @@ or in this package's \href{https://ijlyttle.github.io/altair/articles/field-guid
 }
 }
 \seealso{
-\href{https://ijlyttle.github.io/altair/articles/installation.html}{altiar: Installation},
+\href{https://vegawidget.github.io/altair/articles/installation.html}{altiar: Installation},
 \href{https://rstudio.github.io/reticulate/articles/package.html}{reticulate: Using reticulate in an R Package},
 \href{https://rstudio.github.io/reticulate/articles/python_packages.html}{reticulate: Installing Python Packages}
 }
