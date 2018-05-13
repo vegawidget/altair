@@ -15,7 +15,7 @@
 #' [reticulate::conda_create()] or [reticulate::virtualenv_install()],
 #' as described in this
 #' [reticulate article](https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation),
-#' or in this package's [Field-Guide to Python Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env).
+#' or in this package's [Field-Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html#python-env).
 #'
 #' @param method `character`, indicates to use `"conda"` or `"virtualenv"`
 #' @param envname `character`, name of environment into which to install
@@ -29,7 +29,7 @@
 #' @return invisible `NULL`, called for side-effects
 #'
 #' @seealso
-#' [altiar: Installation](https://ijlyttle.github.io/altair/articles/installation.html),
+#' [altiar: Installation](https://vegawidget.github.io/altair/articles/installation.html),
 #' [reticulate: Using reticulate in an R Package](https://rstudio.github.io/reticulate/articles/package.html),
 #' [reticulate: Installing Python Packages](https://rstudio.github.io/reticulate/articles/python_packages.html)
 #' @examples

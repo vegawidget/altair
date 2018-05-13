@@ -96,5 +96,5 @@ chart <-
 }
 \seealso{
 \link{alt}, \code{\link[=vega_embed]{vega_embed()}},
-\href{https://ijlyttle.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
+\href{https://vegawidget.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
 }

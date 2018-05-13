@@ -35,8 +35,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-URL: https://github.com/ijlyttle/altair
-BugReports: https://github.com/ijlyttle/altair/issues
+URL: https://github.com/vegawidget/altair
+BugReports: https://github.com/vegawidget/altair/issues
 Imports:
     reticulate (>= 1.7),
     htmlwidgets,

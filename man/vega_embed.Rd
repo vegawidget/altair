@@ -119,5 +119,5 @@ embed_options <- vega_embed(actions = only_actions(export = TRUE))
 }
 \seealso{
 \code{\link[=vegawidget]{vegawidget()}}, \code{\link[=only_actions]{only_actions()}},
-\href{https://ijlyttle.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
+\href{https://vegawidget.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
 }
