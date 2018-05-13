@@ -13,8 +13,8 @@ The goal of altair is to help you build
 [Vega-Lite](https://vega.github.io/vega-lite) visualizations. Using the
 [**reticulate**](https://rstudio.github.io/reticulate) package, it
 provides an interface to the [Altair](https://altair-viz.github.io)
-Python package. This approach is different from efforts to build a
-native R interface to Vega-Lite, by Bob Rudis
+Python package. This approach is distinct from efforts to build a native
+R interface to Vega-Lite, by Bob Rudis
 ([@hrbrmstr](https://github.com/hrbrmstr)) and coworkers: the
 [vegalite](https://github.com/hrbrmstr/vegalite) package, which has
 inspired this effort.
@@ -33,31 +33,32 @@ devtools::install_github("ijlyttle/altair")
 ```
 
 Because you are using a Python package, you may have some additional
-installation steps. These steps are described in greater detail in the
-article [Field Guide to Python
-Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
+installation steps. These steps are described in greater detail in an
+[Installation](https://ijlyttle.github.io/altair/articles/installation.html)
+article.
 
 1.  Python must be installed on your system. To make things easier to
     work with reticulate, I recommend using a
     [Conda](https://conda.io/docs) installation;
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
-    works well for me.
+    works well and installs more-quickly than Anaconda.
     
-    As well, for the time being, you will need the development version
-    of reticulate, which should have installed automatically, along with
-    this package.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]
-    
-    Depending on how your system is configured, you may have to specify
-    the location of your SSL cerificate, or deal with a proxy.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#reticulate-python)\]
+    If you work in a corporate or institutional environment, you may
+    have to specify the location of your SSL cerificate, or deal with a
+    proxy. The installation article has a
+    [section](https://ijlyttle.github.io/altair/articles/installation.html#proxies)
+    on this.
 
-2.  Create a Conda environment called `"r-reticulate"`.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env)\]
+2.  Create a Conda environment called `"r-reticulate"`. The reticulate
+    folks
+    [recommend](https://rstudio.github.io/reticulate/articles/python_packages.html)
+    standardizing on a common name for all Packages that use reticulate.
+    For more information, there is a
+    [section](https://ijlyttle.github.io/altair/articles/installation.html#python-env)
+    in the installation article.
 
 3.  Install Altair into your `"r-reticulate"` environment using
     `altair::install_altair()`.
-    \[[reference](https://ijlyttle.github.io/altair/articles/field-guide-python.html#altair)\]
 
 You may wish to add a line like this to the `.First()` function in your
 `.Rprofile`:
@@ -66,8 +67,9 @@ You may wish to add a line like this to the `.First()` function in your
 reticulate::use_condaenv("r-reticulate")
 ```
 
-This provides a hint to reticulate for which Python environment to use.
-\[[reference](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)\]
+This provides a [hint to
+reticulate](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
+on which Python environment to use.
 
 ## Example
 
@@ -101,29 +103,32 @@ Some things to keep in mind:
     brackets in Altair sppecifications, e.g. `[Sepal.Width]`, to keep
     Altair from throwing an error.
 
-Also, it remains to sort out how to get the `vegawidget()` function to
-“do the right thing” when knitting to a non-html format, and to render
-inline in an RMarkdown notebook.
+These issues and other “gotchas” are compiled, along with workarounds,
+in an article: [Field Guide to Python
+Issues](https://ijlyttle.github.io/altair/articles/field-guide-python.html).
+
+It remains to sort out how to get `vegawidget()` to “do the right thing”
+when knitting to a non-html format.
 
 ## Development plan
 
 For the foreseeable future, this package is going to be a bit rough. At
-the moment, you are able to muck around with Vega-Lite 2.0. This means:
+the moment, you are able to work with Vega-Lite 2. This means:
 
 1.  You can create chart-specifications by accessing the Python
     **Altair** API using **reticulate**.
 2.  You can render a chart-specification into an htmlwidget, using
     `vegawidget()`.
 
-There’s really not much beyond that. In the near future, the thought is
-to focus on making this interface as robust as possible, perhaps to make
-it easier to consolidate datasets and publish
-[blocks](https://bl.ocks.org/).
+In the near future, the thought is to focus on making this interface as
+robust as possible, perhaps to make it easier to consolidate datasets
+and publish [blocks](https://bl.ocks.org/).
 
 In the longer-term future it may be interesting to provide a proper R
 interface to the Python API; there are already some [encouraging first
-steps](https://github.com/ijlyttle/altair/issues/15) towards this. This
-package has a
+steps](https://github.com/AliciaSchep/autopyr) towards this.
+
+This package has a
 [manifesto](https://ijlyttle.github.io/altair/articles/manifesto.html)
 to outline some high-level ideas.
 
