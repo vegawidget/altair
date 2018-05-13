@@ -1,4 +1,4 @@
-# altair 0.0.2.9000
+# altair 0.0.3
 
 * adapts examples gallery from Altair (#24, @haleyjeppson)
 
