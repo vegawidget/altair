@@ -136,7 +136,26 @@
 
     
     
-<p>The purpose of this document demonstrate some ways to use the data provided by the <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> Python package.</p>
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
+<p>The purpose of this article is to demonstrate the use of data provided by the <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> Python package.</p>
+<p>Here’s the short version:</p>
+<ul>
+<li><p>We can access the Vega datasets using the <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This packge’s convention is to assign this to an object named <code>vega_data</code>.</p></li>
+<li><p>To access the data for a specific dataset, call the method for that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
+<li><p>These datasets have metadata that include a description, references, and a URL: e.g. <code>vega_data$cars$references</code>.</p></li>
+<li>
+<p>When you create an <code>alt$Chart()</code>, the <code>data</code> argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the <code><a href="../reference/r_to_py.html">r_to_py()</a></code> helper; instead you can write <code>alt$Chart(vega_data$cars$url)</code>.</p>
+<ul>
+<li>If your chart contains a reference to an external resource, such as <code>vega_data$cars$url</code>, it will not render in the RStudio IDE due to RStudio’s (well founded) security policy. If you view such a chart using an external browser, it <em>should</em> work OK.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="importing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#importing" class="anchor"></a>Importing</h2>
 <p>In the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair documentation</a>, you will see this code used often:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">from</span> vega_datasets <span class="im">import</span> data</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
@@ -147,7 +166,11 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">cars</span>()</a></code></pre></div>
-<p>Our <code>vega_data</code> object has method to list oll its datasets:</p>
+</div>
+<div id="accessing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#accessing" class="anchor"></a>Accessing</h2>
+<p>Our <code>vega_data</code> object has method to list all its datasets:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "7zip"        "airports"    "anscombe"    "barley"      "birdstrikes"</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [6] "budget"</span></a></code></pre></div>
@@ -185,6 +208,10 @@
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  9  46.4 2010-01-01 08:00:00</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 10  48.0 2010-01-01 09:00:00</span></a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; # ... with 8,749 more rows</span></a></code></pre></div>
+</div>
+<div id="metadata" class="section level2">
+<h2 class="hasAnchor">
+<a href="#metadata" class="anchor"></a>Metadata</h2>
 <p>Each dataset has some metadata associated:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>description</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] "Anscombe's Quartet is a famous dataset constructed by Francis Anscombe [1]_. Common summary statistics are identical for each subset of the data, despite the subsets having vastly different characteristics."</span></a></code></pre></div>
@@ -192,9 +219,10 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>references</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American Statistician. 27 (1): 17-21. JSTOR 2682899."</span></a></code></pre></div>
-<div id="vega-datasets-object" class="section level3">
-<h3 class="hasAnchor">
-<a href="#vega-datasets-object" class="anchor"></a>Vega-datasets object</h3>
+</div>
+<div id="using-reference-to-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-reference-to-data" class="anchor"></a>Using reference to data</h2>
 <p>You can specify a dataset using a URL that points to a dataset, rather than a data frame. The <code>vega_data</code> object (assigned using <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code>) contains the URLs as well as access to the data frames.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">iris_url &lt;-<span class="st"> </span>vega_data<span class="op">$</span>iris<span class="op">$</span>url</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"></a>
@@ -208,12 +236,23 @@
 <a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb9-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb9-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-f0e879324ae30c3a7d5e" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f0e879324ae30c3a7d5e">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+<div id="htmlwidget-55f98f82a976256aa218" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-55f98f82a976256aa218">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#overview">Overview</a></li>
+      <li><a href="#importing">Importing</a></li>
+      <li><a href="#accessing">Accessing</a></li>
+      <li><a href="#metadata">Metadata</a></li>
+      <li><a href="#using-reference-to-data">Using reference to data</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

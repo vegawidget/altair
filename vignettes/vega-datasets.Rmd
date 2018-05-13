@@ -13,7 +13,23 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this document demonstrate some ways to use the data provided by the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package.
+## Overview
+
+The purpose of this article is to demonstrate the use of data provided by the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package.
+
+Here's the short version:
+
+- We can access the Vega datasets using the `import_vega_data()` function. This packge's convention is to assign this to an object named `vega_data`.
+
+- To access the data for a specific dataset, call the method for that dataset: e.g. `vega_data$cars()`. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. `vega_data$sf_temps()`.
+
+- These datasets have metadata that include a description, references, and a URL: e.g. `vega_data$cars$references`.
+
+- When you create an `alt$Chart()`, the `data` argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the `r_to_py()` helper; instead you can write `alt$Chart(vega_data$cars$url)`. 
+
+  - If your chart contains a reference to an external resource, such as `vega_data$cars$url`, it will not render in the RStudio IDE due to RStudio's (well founded) security policy. If you view such a chart using an external browser, it *should* work OK.
+
+## Importing
 
 In the [Altair documentation](https://altair-viz.github.io/getting_started/installation.html), you will see this code used often:
 
@@ -33,7 +49,9 @@ vega_data <- import_vega_data()
 cars <- vega_data$cars()
 ```
 
-Our `vega_data` object has method to list oll its datasets:
+## Accessing
+
+Our `vega_data` object has method to list all its datasets:
 
 ```{r list-datasets}
 vega_data$list_datasets() %>% head()
@@ -53,6 +71,8 @@ It is useful to keep in mind that **reticulate** changes the names of the datase
 vega_data$sf_temps() %>% as_tibble()
 ```
 
+## Metadata
+
 Each dataset has some metadata associated:
 
 ```{r anscome-description}
@@ -67,7 +87,7 @@ vega_data$anscombe$is_local
 vega_data$anscombe$references
 ```
 
-### Vega-datasets object
+## Using reference to data
 
 You can specify a dataset using a URL that points to a dataset, rather than a data frame. The `vega_data` object (assigned using `import_vega_data()`) contains the URLs as well as access to the data frames. 
 
