@@ -50,6 +50,6 @@ or in this package's \href{https://ijlyttle.github.io/altair/articles/field-guid
 }
 \seealso{
 \href{https://ijlyttle.github.io/altair/articles/installation.html}{altiar: Installation},
-\href{https://rstudio.github.io/reticulate/articles/package.html}{Using reticulate in an R Package},
+\href{https://rstudio.github.io/reticulate/articles/package.html}{reticulate: Using reticulate in an R Package},
 \href{https://rstudio.github.io/reticulate/articles/python_packages.html}{reticulate: Installing Python Packages}
 }

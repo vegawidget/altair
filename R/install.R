@@ -30,7 +30,7 @@
 #'
 #' @seealso
 #' [altiar: Installation](https://ijlyttle.github.io/altair/articles/installation.html),
-#' [Using reticulate in an R Package](https://rstudio.github.io/reticulate/articles/package.html),
+#' [reticulate: Using reticulate in an R Package](https://rstudio.github.io/reticulate/articles/package.html),
 #' [reticulate: Installing Python Packages](https://rstudio.github.io/reticulate/articles/python_packages.html)
 #' @examples
 #' \dontrun{

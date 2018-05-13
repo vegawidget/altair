@@ -141,11 +141,13 @@
 <li>Access, via <a href="https://rstudio.github.io/reticulate/">reticulate</a>, to Altair objects and methods to create and compose Vega-Lite charts.</li>
 <li>The means to display charts using the <code>vegawiget()</code> and friends, via <a href="https://www.htmlwidgets.org">htmlwidgets</a>.</li>
 </ol>
-<p>In the short term, the thougth is to focus on a small number of items:</p>
+<p>In the short term, the thought is to focus on a small number of items:</p>
 <ol style="list-style-type: decimal">
 <li>Tightening up the existing capabilities.</li>
 <li>Will likely split the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function, with its friends, into its own package. This would not introduce any API changes to this package.</li>
 <li>Tooltips.</li>
+<li>Some infrastructure to create and publish <a href="https://bl.ocks.org/">blocks</a>. (<a href="https://github.com/ijlyttle/altair/issues/19">#19</a>)</li>
+<li>Consolidating datasets within a chart specification. (<a href="https://github.com/ijlyttle/altair/issues/26">#26</a>)</li>
 </ol>
 <p>The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">alt_chart &lt;-<span class="st"> </span><span class="cf">function</span>(data, ...) {</a>

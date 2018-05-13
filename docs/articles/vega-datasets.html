@@ -142,7 +142,7 @@
 <p>The purpose of this article is to demonstrate how to use data provided by the <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> Python package.</p>
 <p>Here’s the short version:</p>
 <ul>
-<li><p>We can access the Vega datasets using the <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This packge’s convention is to assign this to an object named <code>vega_data</code>.</p></li>
+<li><p>We can access the Vega datasets using the <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This package’s convention is to assign this to an object named <code>vega_data</code>.</p></li>
 <li><p>To access the data for a specific dataset, call the method for that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
 <li><p>These datasets have metadata that include a description, references, and a URL: e.g. <code>vega_data$cars$references</code>.</p></li>
 <li>
@@ -175,7 +175,7 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "7zip"        "airports"    "anscombe"    "barley"      "birdstrikes"</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [6] "budget"</span></a></code></pre></div>
-<p>Each dataset can be accessed using a method whose name is an element returned from <code>$list_datasets()</code>.</p>
+<p>Each dataset can be accessed using a method whose name is an element returned from <code>vega_data$list_datasets()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"tibble"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw">anscombe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_tibble</a></span>()</a>
@@ -249,8 +249,8 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-1cf160dd11482a7e76ff" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1cf160dd11482a7e76ff">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+<div id="htmlwidget-8aecf13a1b58c686d621" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8aecf13a1b58c686d621">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
 </div>
   </div>
 

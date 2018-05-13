@@ -151,7 +151,7 @@
 <ol style="list-style-type: decimal">
 <li>
 <p>Python must be installed on your system. To make things easier to work with reticulate, I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
-<p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL cerificate, or deal with a proxy. The installation article has a <a href="https://ijlyttle.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
+<p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://ijlyttle.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://ijlyttle.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
 <li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
@@ -182,7 +182,7 @@
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
 <li><p>Any data frames you provide as <code>data</code> arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
-<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair sppecifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
+<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
 </ul>
 <p>These and other “gotchas” are compiled, along with workarounds, in an article: <a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
 </div>
