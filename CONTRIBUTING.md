@@ -6,7 +6,7 @@ The purpose of this package is to provide you the means:
 
 - to install the **Altair** Python package.
 - to build Vega-Lite chart-specifications using Altair. 
-- to render chart-specifiations into HTML.
+- to render chart-specifications into HTML.
 - to communicate your charts.
 
 There are a lot of "moving parts" in keeping current with a Python package and a set of JavaScript libraries (Vega-Lite, vega-embed, ...). Accordingly, I want -- at least initially -- to keep the scope of this package as focused as possible.
@@ -104,7 +104,7 @@ We should first define "type of Altair version" and "supported".
 There are three types of Altair versions:
 
 - __released__ refers to a released version available on [Conda-Forge](https://anaconda.org/conda-forge/altair) 
-- __candidate__ refers to a release-candiate available on [PyPi](https://pypi.org/project/altair)
+- __candidate__ refers to a release-candidate available on [PyPi](https://pypi.org/project/altair)
 - __github__ refers to a development version available at [GitHub](https://github.com/altair-viz/altair)
 
 We define "supported" as making the version available through the `install_altair()` function and hardcoding this Altair version as `getOption("altair.python.version.supported")`. 
