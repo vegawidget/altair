@@ -10,3 +10,4 @@
 ^vignettes/.*\.Rmd$
 ^pkgdown$
 ^\.gitattributes$
+^CONTRIBUTING\.md$

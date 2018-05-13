@@ -1,5 +1,5 @@
 Package: altair
-Version: 0.0.1.9000
+Version: 0.0.3
 Title: R Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a Python interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
@@ -14,6 +14,7 @@ Authors@R: c(
     role = c("aut", "cre"), 
     comment = c(ORCID = "0000-0001-9962-4849")
   ),
+  person("Altair Developers", role = c("aut")),
   person(
     "Alicia", 
     "Schep",
@@ -21,6 +22,7 @@ Authors@R: c(
     role = c("ctb"),
     comment = c(ORCID = "orcid.org/0000-0002-3915-0618")
   ),
+  person("Haley", "Jeppson", email = "hjeppson@iastate.edu", role = c("ctb")),
   person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
   person("Brian", "Granger", comment = "Altair library", role = c("ctb")),
   person("Kanit", "Wongsuphasawat", comment = "Vega-Lite library", role = c("ctb")),
@@ -43,7 +45,7 @@ Imports:
     magrittr,
     jsonlite,
     utils
-Suggests:
+Suggests: 
     httr,
     rprojroot,
     purrr,
@@ -52,8 +54,9 @@ Suggests:
     rmarkdown,
     tibble,
     listviewer (>= 2.0.0),
-    testthat
-Remotes: rstudio/reticulate
+    testthat,
+    pryr,
+    stringr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

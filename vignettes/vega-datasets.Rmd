@@ -13,17 +13,33 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this document demonstrate some ways to use the data provided by the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package.
+## Overview
+
+The purpose of this article is to demonstrate how to use data provided by the [Vega datasets](https://github.com/altair-viz/vega_datasets) Python package.
+
+Here's the short version:
+
+- We can access the Vega datasets using the `import_vega_data()` function. This package's convention is to assign this to an object named `vega_data`.
+
+- To access the data for a specific dataset, call the method for that dataset: e.g. `vega_data$cars()`. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. `vega_data$sf_temps()`.
+
+- These datasets have metadata that include a description, references, and a URL: e.g. `vega_data$cars$references`.
+
+- When you create an `alt$Chart()`, the `data` argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the `r_to_py()` helper; instead you can write `alt$Chart(vega_data$cars$url)`. 
+
+  - If your chart contains a reference to an external resource, such as `vega_data$cars$url`, it will not render in the RStudio IDE due to RStudio's (well founded) security policy. If you view such a chart using an external browser, it should work OK if your computer can access the remote data.
+
+## Importing
 
 In the [Altair documentation](https://altair-viz.github.io/getting_started/installation.html), you will see this code used often:
 
-```{python py-vega-datasets}
+```python 
 from vega_datasets import data
 
 cars = data.cars()
 ```
 
-The convention in the Altair documentation is to use the name `data` to refer to the `data` object in the `vega_datasets` package. This package offers a similar convention:
+The Altair convention is to use the name `data` to refer to the `data` object in the `vega_datasets` package. This package offers a similar convention:
 
 ```{r r-vega-data}
 library("altair")
@@ -33,13 +49,17 @@ vega_data <- import_vega_data()
 cars <- vega_data$cars()
 ```
 
-Our `vega_data` object has method to list oll its datasets:
+Instead, our convention is to use an object called `vega_data`.
+
+## Accessing
+
+Our `vega_data` object has a method to list all its datasets:
 
 ```{r list-datasets}
 vega_data$list_datasets() %>% head()
 ```
 
-Each dataset has accessed using a function with a name being an element returned from `list_datasets()`. 
+Each dataset can be accessed using a method whose name is an element returned from `vega_data$list_datasets()`. 
 
 ```{r anscome}
 library("tibble")
@@ -53,16 +73,51 @@ It is useful to keep in mind that **reticulate** changes the names of the datase
 vega_data$sf_temps() %>% as_tibble()
 ```
 
-Each dataset has some metadata associated:
+## Metadata
+
+Each dataset has some metadata, such as a description and references.
 
 ```{r anscome-description}
-vega_data$anscombe$description
+wrapcat <- function(x) {
+  x %>% strwrap() %>% cat(sep = "\n")
+}
+
+vega_data$anscombe$description %>% wrapcat()
 ```
+
+```{r}
+vega_data$anscombe$references %>% wrapcat()
+```
+
+Some of the datasets are stored locally as a part of the Vega datasets Python package, others are not. The method that returns the data, e.g. `vega_data$anscombe()` will do the right thing. You can use the `is_local` property to find out what the right thing is for a dataset.
 
 ```{r anscome-is_local}
 vega_data$anscombe$is_local
 ```
 
+Each dataset has a remote URL, which you can use instead of a data frame in any Altair `data` argument.
+
 ```{r}
-vega_data$anscombe$references
+vega_data$anscombe$url
 ```
+
+## Using a URL
+
+You can specify `data` using a URL that points to a dataset, rather than using a data frame explicitly. 
+
+```{r}
+iris_url <- vega_data$iris$url
+
+chart_iris <- 
+  alt$Chart(iris_url)$
+  encode(
+    x = "sepalWidth:Q",
+    y = "sepalLength:Q",
+    color = "species:N"
+  )$
+  mark_point()
+
+chart_iris
+```
+
+This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -45,6 +45,11 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -53,22 +58,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider">
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -76,16 +71,44 @@
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -98,12 +121,13 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="vega-datasets_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="vega-datasets_files/vega-3.3.1/promise.min.js"></script><script src="vega-datasets_files/vega-3.3.1/symbol.min.js"></script><script src="vega-datasets_files/vega-3.3.1/vega.js"></script><script src="vega-datasets_files/vega-lite-2.4.3/vega-lite-min.js"></script><link href="vega-datasets_files/vega-embed-3.9.0/vega-embed.css" rel="stylesheet">
+<script src="vega-datasets_files/vega-embed-3.9.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.0.2.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2018-05-02</h4>
+            <h4 class="date">2018-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -112,21 +136,46 @@
 
     
     
-<p>The purpose of this document demonstrate some ways to use the data provided by the <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> Python package.</p>
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
+<p>The purpose of this article is to demonstrate how to use data provided by the <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> Python package.</p>
+<p>Here’s the short version:</p>
+<ul>
+<li><p>We can access the Vega datasets using the <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This package’s convention is to assign this to an object named <code>vega_data</code>.</p></li>
+<li><p>To access the data for a specific dataset, call the method for that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
+<li><p>These datasets have metadata that include a description, references, and a URL: e.g. <code>vega_data$cars$references</code>.</p></li>
+<li>
+<p>When you create an <code>alt$Chart()</code>, the <code>data</code> argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the <code><a href="../reference/r_to_py.html">r_to_py()</a></code> helper; instead you can write <code>alt$Chart(vega_data$cars$url)</code>.</p>
+<ul>
+<li>If your chart contains a reference to an external resource, such as <code>vega_data$cars$url</code>, it will not render in the RStudio IDE due to RStudio’s (well founded) security policy. If you view such a chart using an external browser, it should work OK if your computer can access the remote data.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="importing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#importing" class="anchor"></a>Importing</h2>
 <p>In the <a href="https://altair-viz.github.io/getting_started/installation.html">Altair documentation</a>, you will see this code used often:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">from</span> vega_datasets <span class="im">import</span> data</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">cars <span class="op">=</span> data.cars()</a></code></pre></div>
-<p>The convention in the Altair documentation is to use the name <code>data</code> to refer to the <code>data</code> object in the <code>vega_datasets</code> package. This package offers a similar convention:</p>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">cars <span class="op">=</span> data.cars()</a></code></pre></div>
+<p>The Altair convention is to use the name <code>data</code> to refer to the <code>data</code> object in the <code>vega_datasets</code> package. This package offers a similar convention:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">cars</span>()</a></code></pre></div>
-<p>Our <code>vega_data</code> object has method to list oll its datasets:</p>
+<p>Instead, our convention is to use an object called <code>vega_data</code>.</p>
+</div>
+<div id="accessing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#accessing" class="anchor"></a>Accessing</h2>
+<p>Our <code>vega_data</code> object has a method to list all its datasets:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "7zip"        "airports"    "anscombe"    "barley"      "birdstrikes"</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [6] "budget"</span></a></code></pre></div>
-<p>Each dataset has accessed using a function with a name being an element returned from <code>list_datasets()</code>.</p>
+<p>Each dataset can be accessed using a method whose name is an element returned from <code>vega_data$list_datasets()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"tibble"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw">anscombe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_tibble</a></span>()</a>
@@ -160,23 +209,70 @@
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  9  46.4 2010-01-01 08:00:00</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 10  48.0 2010-01-01 09:00:00</span></a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; # ... with 8,749 more rows</span></a></code></pre></div>
-<p>Each dataset has some metadata associated:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>description</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] "Anscombe's Quartet is a famous dataset constructed by Francis Anscombe [1]_. Common summary statistics are identical for each subset of the data, despite the subsets having vastly different characteristics."</span></a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>is_local</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>references</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American Statistician. 27 (1): 17-21. JSTOR 2682899."</span></a></code></pre></div>
+</div>
+<div id="metadata" class="section level2">
+<h2 class="hasAnchor">
+<a href="#metadata" class="anchor"></a>Metadata</h2>
+<p>Each dataset has some metadata, such as a description and references.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">wrapcat &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">strwrap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cat</span>(<span class="dt">sep =</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">vega_data<span class="op">$</span>anscombe<span class="op">$</span>description <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">wrapcat</span>()</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Anscombe's Quartet is a famous dataset constructed by Francis</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Anscombe [1]_. Common summary statistics are identical for each</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; subset of the data, despite the subsets having vastly different</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; characteristics.</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>references <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">wrapcat</span>()</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Statistician. 27 (1): 17-21. JSTOR 2682899.</span></a></code></pre></div>
+<p>Some of the datasets are stored locally as a part of the Vega datasets Python package, others are not. The method that returns the data, e.g. <code>vega_data$anscombe()</code> will do the right thing. You can use the <code>is_local</code> property to find out what the right thing is for a dataset.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>is_local</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<p>Each dataset has a remote URL, which you can use instead of a data frame in any Altair <code>data</code> argument.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>url</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; [1] "https://vega.github.io/vega-datasets/data/anscombe.json"</span></a></code></pre></div>
+</div>
+<div id="using-a-url" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-a-url" class="anchor"></a>Using a URL</h2>
+<p>You can specify <code>data</code> using a URL that points to a dataset, rather than using a data frame explicitly.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">iris_url &lt;-<span class="st"> </span>vega_data<span class="op">$</span>iris<span class="op">$</span>url</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">chart_iris &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris_url)<span class="op">$</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"sepalWidth:Q"</span>,</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">    <span class="dt">y =</span> <span class="st">"sepalLength:Q"</span>,</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">    <span class="dt">color =</span> <span class="st">"species:N"</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
+<div id="htmlwidget-febde8482e9617798e4e" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-febde8482e9617798e4e">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#overview">Overview</a></li>
+      <li><a href="#importing">Importing</a></li>
+      <li><a href="#accessing">Accessing</a></li>
+      <li><a href="#metadata">Metadata</a></li>
+      <li><a href="#using-a-url">Using a URL</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

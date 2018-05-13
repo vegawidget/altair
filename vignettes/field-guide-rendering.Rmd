@@ -1,0 +1,183 @@
+---
+title: "Field Guide to Rendering Charts"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+There are four foundations upon which this package rests: 
+
+- the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
+- the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file
+- the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
+
+This article deals with the second two items; the [Field Guide to Python Issues](field-guide-python.html) deals with the first two.
+
+## Overview
+
+The purpose of this document is to show how to render a chart-specification as HTML. We can use the Altair Python package to build a chart-specification; we can use the `vegawidget()` function to render it.
+
+Here's the short version:
+
+- Given a chart-specification `chart`, you can render it using `vegalite(chart)`, `print(chart)` or just `chart`. 
+
+- You can examine a chart-specification using the `examine()` function, which wraps `listviewer::jsonedit()`.
+  
+- The `vegalite()` function has arguments `embed_options`, and `width` & `height`.
+
+- The `embed_options` can be set using the `vega_embed()` function.
+
+  - The principal options are `renderer`: either `"canvas"` or `"svg"`, and `actions`: a list of logical values to indicate if `export`, `source`, and `editor` links are to be included.
+  
+  - In your R session, you can set an `option()` called `altair.embed_options` to store your defaults for `embed_options`.
+  
+- The default interpretation of `width` and `height` depend on where they are set.
+
+  - If you set the `width` and `height` in the chart-specification, this sets dimensions of the plotting area for a given  chart. The plotting area does not include axes, labels, etc., so the overall chart will be larger.
+  
+  - If you have a single-view chart, i.e. it is not faceted or concatenated, you can set the overall `width` and `height` using the `vegawidget()` function, overriding the chart-specification. 
+
+  - `width` and `height` have meaning only as number of pixels.
+
+- In R Markdown, the `vegawidget()` `width` and `height` can be set using the knitr options `vega.width` and `vega.height`, subject to the single-view constraint described above.
+
+
+In this article, we will render a chart a bunch of different ways, each highlighting a different aspect of the rendering process. Let's define our base chart:
+
+```{r base-chart}
+library("altair")
+library("tibble")
+
+vega_data <- import_vega_data()
+
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  encode(
+    x = "Miles_per_Gallon:Q",
+    y = "Horsepower:Q",
+    color = "Origin:N"    
+  )$
+  mark_point()
+```
+
+## Chart specification {#chart}
+
+The simplest useful call to `vegawidget()` has only the chart specification. This is equivalent to calling `print(chart)`, or even just `chart`. 
+
+```{r vega-chart}
+## These calls are equivalent:
+
+# print(chart)
+# chart
+vegawidget(chart)
+```
+
+As you can see, this renders this chart using some defaults:
+
+- The size of the plotting area is 400 $\times$ 300 pixels (default for two quantitative axes).
+- The chart is rendered using canvas.
+- There are action links to export, to view source of, and to edit the chart.
+
+You might have noticed that we did not set the size of the chart anywhere, to see where this is specified within the chart, we can use the `examine()` function: 
+
+```{r examine-default, out.height=300}
+examine(chart)
+```
+
+By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.
+
+## Embedding options {#embedding}
+
+The `embed` argument expects a `vega_embed` object, which is made by the `vega_embed()` function. 
+
+If `embed` is `NULL`, `vegawidget()` sets it to `getOption("altair.embed_options")` which you can specify in your `.Rprofile`, as described in greater detail below. If `embed` is still `NULL`, this will result in the [vega-embed defaults](https://github.com/vega/vega-embed#options) being used: canvas rendering and action-links added below the chart. 
+
+The principal arguments to `vega_embed()` deal with rendering and action-links: `renderer` and `actions`. 
+
+To exclude all the action-links, set `actions = FALSE`:
+
+```{r actions-false}
+vegawidget(chart, embed = vega_embed(actions = FALSE))
+```
+
+Here's another example, rendering using SVG and using the `only_actions()` function to include only the "export" action-link:
+
+```{r actions-custom}
+vegawidget(
+  chart, 
+  embed = vega_embed(renderer = "svg", actions = only_actions(export = TRUE))
+)
+```
+
+As with chart-specifications, you can `examine()` embedding-specifications.
+
+If there is a default that you would like to use, you can set an option in your `.Rprofile` file. For example:
+
+```r
+options(
+  repos = c(CRAN = "https://cloud.r-project.org/"),
+  ...
+  altair.embed_options =
+    altair::vega_embed(actions = altair::only_actions(export = TRUE))
+)
+```
+
+## Chart dimensions {#dimensions}
+
+Let's look at a couple of charts where we specify the size. First, we take our `chart` and add `width` and `height` to the chart specification, which will dictate the size of the *plotting rectangle*:
+
+```{r}
+chart_size <- chart$properties(width = 300, height = 300)
+
+chart_size
+```
+
+Contrast this with setting the dimensions using `vegawidget()`, which will dictate the size of the *entire chart*:
+
+```{r}
+vegawidget(chart, width = 300, height = 300)
+```
+
+In a chart specification, the default interpretation of `width` and `height` refers to the dimensions of the plotting rectangle. Using the chart specification, there is also a way to to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) charts so that the dimensions refer to the entire chart, including axes, labels, etc. This is how `vegawidget()` uses its `width` and `height` arguments to specify the dimensions of the entire chart. 
+
+In the `vegawidget()` function, the default value of `width` and `height` is `NULL`. For rendering, this means:
+
+- The dimensions in the chart specification are respected.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dictate the size of its enclosure.
+
+To specify the overall dimensions of a chart, you can use the `width` and `height` arguments of the `vegawidget()` function. For rendering, this means:
+
+- The non-null dimensions overwrite the values in the chart specification.
+- The chart specification is modified to [autosize](https://vega.github.io/vega-lite/docs/size.html#autosize) the chart, so the entire chart conforms to the new specifications.
+- The `style` attribute of the enclosing `<div/>` is removed, allowing the chart to dictate the size of its enclosure. However, because you have specified the size of the chart, you have also specified the size of its enclosure.
+
+There are two important caveats:
+
+1. You [cannot specify "autosize"](https://vega.github.io/vega-lite/docs/size.html#limitations), i.e. you cannot specify the overall dimensions, for any faceted, repeated, or concatenated chart.
+
+2. The overall chart size does not take into account action-links, which generally add a height of 15-20 pixels. If you suppress the links, this is not a concern. 
+
+This philosophy is driven by the idea that a Vega-Lite chart likes to determine its own size, and tends to resist attempts to impose size restrictions from the outside.
+
+## R Markdown options
+
+In R Markdown, you can set the `width` and `height` arguments of `vegawidget()` using the knitr options `vega.width` and `vega.height`. Of course, you are still subject to the "autosize" caveats outlined above.
+
+    ```{r vega.width=300, vega.height=300}
+    chart
+    ```
+    
+```{r vega-options, echo = FALSE, vega.width=300, vega.height=300}
+chart
+```
+
+We are not using the conventional knitr options, `out.width` and `out.height` because `out.width` can be set without *you* setting it explicitly, which would cause a hard-to-diagnose problem.

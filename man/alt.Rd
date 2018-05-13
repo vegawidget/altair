@@ -4,7 +4,7 @@
 \name{alt}
 \alias{alt}
 \title{Altair object}
-\format{An object of class \code{python.builtin.module} (inherits from \code{python.builtin.object}) of length 2.}
+\format{An object of class \code{python.builtin.module} (inherits from \code{python.builtin.object}) of length 5.}
 \usage{
 alt
 }
@@ -36,6 +36,7 @@ used in Python.
 
 }
 \seealso{
-\href{https://altair-viz.github.io/index.html}{Altair Python documentation}
+\href{https://altair-viz.github.io/index.html}{Altair Python documentation},
+\href{https://ijlyttle.github.io/altair/articles/field-guide-python.html}{altair: Field Guide to Python Issues}
 }
 \keyword{datasets}

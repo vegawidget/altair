@@ -36,30 +36,24 @@ called for side-effects
 \description{
 Use this function to interactvely examine a specification, using
 \code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. It can be used to examine a chart-specification
-(built using \code{\link{alt}}$Chart()) or a tooltip-specification
-(built using \code{\link[=vega_tooltip]{vega_tooltip()}}).
+(built using \code{\link{alt}}$Chart(), or compound charts), or an embedding specification created using
+\code{\link[=vega_embed]{vega_embed()}}.
 }
 \examples{
-  plot_basic <-
-    alt$Chart(
-      r_to_py(mtcars)
-    )$encode(
-      x = "mpg:Q",
-      y = "hp:Q",
-      color = "cyl:N"
-    )$mark_point()
-
 \dontrun{
-  examine(plot_basic)
+  vega_data <- import_vega_data()
+
+  chart <-
+    alt$Chart(r_to_py(vega_data$cars$url))$
+    encode(
+      x = "Horsepower:Q",
+      y = "Miles_per_Gallon:Q",
+      color = "Origin:N"
+    )$
+   mark_point()
+
+  examine(chart)
 }
 
-  tooltip_custom <-
-    vega_tooltip() \%>\%
-    add_field(field = "mpg", title = "MPG") \%>\%
-    add_field(field = "hp", title = "HP")
-
-\dontrun{
-  examine(tooltip_custom)
-}
 
 }

@@ -57,7 +57,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -72,7 +72,13 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -80,22 +86,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -103,17 +99,44 @@
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -135,6 +158,7 @@
     <table class="ref-index">
 
     <colgroup>
+      
       <col class="alias" />
       <col class="title" />
     </colgroup>
@@ -142,36 +166,22 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-package" class="hasAnchor"><a href="#section-package" class="anchor"></a>Package</h2>
-          <p class="section-desc"><p>Overview of the package</p></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="altair.html">altair</a></code> </p>
-        </td>
-        <td><p>altair: Create and embed Vega-Lite charts using the Altair Python package</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-installation" class="hasAnchor"><a href="#section-installation" class="anchor"></a>Installation</h2>
           <p class="section-desc"><p>Functions to help install the Python Altair library</p></p>
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="install_altair.html">install_altair()</a></code> </p>
         </td>
         <td><p>Install Altair Python package</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="has_altair.html">has_altair()</a></code> </p>
+          <p><code><a href="check_altair.html">check_altair()</a></code> </p>
         </td>
-        <td><p>Detect Altair installation</p></td>
+        <td><p>Check the Altair installation</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -181,49 +191,29 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="alt.html">alt</a></code> </p>
         </td>
         <td><p>Altair object</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="import_vega_data.html">import_vega_data()</a></code> </p>
         </td>
         <td><p>Import Vega datasets</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="r_to_py.html">r_to_py</a></code> </p>
         </td>
         <td><p>Convert an R object to Python</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="altair_concatenation.html">`|`(<i>&lt;altair.vegalite.v2.api.TopLevelMixin&gt;</i>)</a></code> <code><a href="altair_concatenation.html">`+`(<i>&lt;altair.vegalite.v2.api.TopLevelMixin&gt;</i>)</a></code> <code><a href="altair_concatenation.html">`&`(<i>&lt;altair.vegalite.v2.api.TopLevelMixin&gt;</i>)</a></code> </p>
         </td>
         <td><p>Altair plot concatenation</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-tooltips" class="hasAnchor"><a href="#section-tooltips" class="anchor"></a>Tooltips</h2>
-          <p class="section-desc"><p>Functions to create tooltip-specifications</p></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="vega_tooltip.html">vega_tooltip()</a></code> <code><a href="vega_tooltip.html">vega_tooltip_encoding()</a></code> <code><a href="vega_tooltip.html">vega_tooltip_all()</a></code> </p>
-        </td>
-        <td><p>Create a Vega tooltip-specification</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_field.html">add_field()</a></code> </p>
-        </td>
-        <td><p>Add a field to a Vega tooltip-specification</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -233,41 +223,61 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="examine.html">examine()</a></code> </p>
         </td>
         <td><p>Examine a specification</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="vegalite.html">vegalite()</a></code> </p>
+          <p><code><a href="vegawidget.html">vegawidget()</a></code> </p>
         </td>
-        <td><p>Create a Vega-Lite htmlwidget</p></td>
+        <td><p>Create a Vega/Vega-Lite htmlwidget</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="vega_embed.html">vega_embed()</a></code> </p>
         </td>
         <td><p>Vega embed options</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="only_actions.html">only_actions()</a></code> </p>
         </td>
         <td><p>Helper function for vega_embed actions</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="renderVegalite.html">renderVegalite()</a></code> </p>
+          <p><code><a href="renderVegawidget.html">renderVegawidget()</a></code> </p>
         </td>
         <td><p>Render a shiny output for Vega-Lite</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="vegaliteOutput.html">vegaliteOutput()</a></code> </p>
+          <p><code><a href="vegawidgetOutput.html">vegawidgetOutput()</a></code> </p>
         </td>
         <td><p>Shiny output for Vega-Lite</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="knit_print.altair.vegalite.v2.api.TopLevelMixin.html">knit_print.altair.vegalite.v2.api.TopLevelMixin()</a></code> </p>
+        </td>
+        <td><p>Knit-print method</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-package" class="hasAnchor"><a href="#section-package" class="anchor"></a>Package</h2>
+          <p class="section-desc"><p>Overview of the package</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="altair.html">altair</a></code> </p>
+        </td>
+        <td><p>altair: Create and embed Vega-Lite charts using the Altair Python package</p></td>
       </tr>
     </tbody>
     </table>
@@ -276,18 +286,17 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-package">Package</a></li>
       <li><a href="#section-installation">Installation</a></li>
       <li><a href="#section-charts">Charts</a></li>
-      <li><a href="#section-tooltips">Tooltips</a></li>
       <li><a href="#section-examining-and-rendering">Examining and Rendering</a></li>
+      <li><a href="#section-package">Package</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

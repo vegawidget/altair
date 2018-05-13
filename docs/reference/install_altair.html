@@ -33,7 +33,8 @@
 <meta property="og:title" content="Install Altair Python package — install_altair" />
 
 <meta property="og:description" content="This function wraps reticulate::py_install() to provide a straightforward,
-consistent method to install the Altair Python package." />
+consistent method to install the Python packages
+altair and vega_datasets." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +62,7 @@ consistent method to install the Altair Python package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -76,7 +77,13 @@ consistent method to install the Altair Python package." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -84,22 +91,12 @@ consistent method to install the Altair Python package." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -107,17 +104,44 @@ consistent method to install the Altair Python package." />
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -141,35 +165,39 @@ consistent method to install the Altair Python package." />
     <div class="ref-description">
     
     <p>This function wraps <code><a href='http://www.rdocumentation.org/packages/reticulate/topics/py_install'>reticulate::py_install()</a></code> to provide a straightforward,
-consistent method to install the Altair Python package.</p>
+consistent method to install the Python packages
+<strong>altair</strong> and <strong>vega_datasets</strong>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>install_altair</span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>conda</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>pip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>install_altair</span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"conda"</span>, <span class='st'>"virtualenv"</span>), <span class='kw'>envname</span> <span class='kw'>=</span> <span class='st'>"r-reticulate"</span>,
+  <span class='kw'>pip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"altair.python.version"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>method</th>
-      <td><p>Installation method. By default, "auto" automatically finds a
-method that will work in the local environment. Change the default to force
-a specific installation method. Note that the "virtualenv" method is not
-available on Windows.</p></td>
+      <td><p><code>character</code>, indicates to use <code>"conda"</code> or <code>"virtualenv"</code></p></td>
     </tr>
     <tr>
-      <th>conda</th>
-      <td><p>Path to conda executable (or "auto" to find conda using the
-PATH and other conventional install locations).</p></td>
+      <th>envname</th>
+      <td><p><code>character</code>, name of environment into which to install</p></td>
     </tr>
     <tr>
-      <th>pip</th>
-      <td><p>TRUE to use pip (defaults to TRUE)</p></td>
+      <th>pip, </th>
+      <td><p><code>logical</code>, used for conda installation to indicate to use pip
+(will be set to TRUE for release-candidates)</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p><code>character</code>, version of Altair to install. For general use of this package,
+this is set automatically, so you should not need to specify this.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to <code>conda_install()</code>
-or <code>virtualenv_install()</code>.</p></td>
+      <td><p>other arguments sent to <code><a href='http://www.rdocumentation.org/packages/reticulate/topics/conda-tools'>reticulate::conda_install()</a></code> or
+<code><a href='http://www.rdocumentation.org/packages/reticulate/topics/virtualenv-tools'>reticulate::virtualenv_install()</a></code></p></td>
     </tr>
     </table>
     
@@ -185,20 +213,17 @@ Python package. To promote consistency in usage of <strong>reticulate</strong> a
 different R packages, it is
 <a href='https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies'>recommended</a>
 to use a common Python environment, called <code>"r-reticulate"</code>.</p>
-<p>If you have a Conda installation, you can create this environment using
-<code><a href='http://www.rdocumentation.org/packages/reticulate/topics/conda-tools'>reticulate::conda_install()</a></code>, as described in this
+<p>Depending on your setup, you can create this environment using
+<code><a href='http://www.rdocumentation.org/packages/reticulate/topics/conda-tools'>reticulate::conda_create()</a></code> or <code><a href='http://www.rdocumentation.org/packages/reticulate/topics/virtualenv-tools'>reticulate::virtualenv_install()</a></code>,
+as described in this
 <a href='https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation'>reticulate article</a>,
 or in this package's <a href='https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env'>Field-Guide to Python Issues</a>.</p>
-<p>At present, version 2 of the Altair Python package is available as a
-release candidtate on PyPi, so it can be installed using <code>pip</code>.
-This function will use <code>pip</code> to install <code>altair==2.0.0rc2</code>
-into your <code>"r-reticulate"</code> Python environment.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rstudio.github.io/reticulate/articles/package.html'>Using reticulate in an R Package</a>,
-<a href='https://rstudio.github.io/reticulate/articles/python_packages.html'>reticulate: Installing Python Packages</a>,
-<a href='https://ijlyttle.github.io/altair/articles/field-guide-python.html#python-env'>altiar: Field-Guide to Python Issues</a></p></div>
+    <div class='dont-index'><p><a href='https://ijlyttle.github.io/altair/articles/installation.html'>altiar: Installation</a>,
+<a href='https://rstudio.github.io/reticulate/articles/package.html'>reticulate: Using reticulate in an R Package</a>,
+<a href='https://rstudio.github.io/reticulate/articles/python_packages.html'>reticulate: Installing Python Packages</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -225,7 +250,7 @@ into your <code>"r-reticulate"</code> Python environment.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

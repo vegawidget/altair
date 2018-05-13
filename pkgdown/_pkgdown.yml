@@ -1,0 +1,104 @@
+template:
+  params:
+    bootswatch: sandstone
+
+development:
+  mode: unreleased
+
+reference:
+  - title: Installation
+    desc: >
+      Functions to help install the Python Altair library
+    contents:
+      - install_altair
+      - check_altair
+  - title: Charts
+    desc: >
+      Functions and objects to construct chart-specifications
+    contents:
+      - alt
+      - import_vega_data
+      - r_to_py
+      - altair_concatenation
+  - title: Examining and Rendering
+    desc: >
+      Functions for examining specifications,
+      and for rendering them into htmlwidgets
+    contents:
+      - examine
+      - vegawidget
+      - vega_embed
+      - only_actions
+      - renderVegawidget
+      - vegawidgetOutput
+      - knit_print.altair.vegalite.v2.api.TopLevelMixin
+  - title: Package
+    desc: Overview of the package
+    contents:
+      - altair
+
+articles:
+  - title: Installation
+    contents:
+      - installation
+  - title: Getting started
+    contents:
+      - first-example
+      - vega-datasets
+      - view-composition
+      - interactive
+  - title: Field guides
+    contents:
+      - field-guide-python
+      - field-guide-rendering
+#  - title: Gallery
+  - title: Manifesto
+    contents:
+      - manifesto
+
+navbar:
+  title: "altair"
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: "Reference"
+      href: "reference/index.html"
+    - text: "Changelog"
+      href: "news/index.html"
+  right:
+    - text: Articles
+      menu:
+        - text: Installation
+          href: articles/installation.html
+        - text: "----------"
+        - text: Getting Started
+        - text: First Example
+          href: articles/first-example.html
+        - text: Vega Datasets
+          href: articles/vega-datasets.html
+        - text: View Composition
+          href: articles/view-composition.html
+        - text: Interactive Charts
+          href: articles/interactive.html
+        - text: "----------"
+        - text: Field Guides
+        - text: Python Issues
+          href: articles/field-guide-python.html
+        - text: Rendering Charts
+          href: articles/field-guide-rendering.html
+        - text: "----------"
+        - text: Manifesto
+          href: articles/manifesto.html
+    - text: Gallery
+      menu:
+        - text: Simple Charts
+        - text: Bar Charts
+        - text: Line Charts
+        - text: Area Charts
+        - text: Scatterplots
+        - text: Histograms
+        - text: Maps
+        - text: Interactive Charts
+        - text: Other Charts
+    - icon: fa-github fa-2x
+      href: https://github.com/ijlyttle/altair

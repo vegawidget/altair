@@ -2,11 +2,7 @@
 title: "Manifesto"
 author: "Ian Lyttle"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Manifesto}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_document
 ---
 
 ```{r setup, include = FALSE}
@@ -16,16 +12,18 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of this package is to be a minimal and faithful interface to the [Python Altair](https://altair-viz.github.io) API. At this point, this R package provides:
+The purpose of this package is to be a faithful interface to the [Python Altair](https://altair-viz.github.io) API. Currently, this R package provides:
 
 1. Access, via [reticulate](https://rstudio.github.io/reticulate/), to Altair objects and methods to create and compose Vega-Lite charts.
-1. The means to display charts, via [htmlwidgets](https://www.htmlwidgets.org).
+1. The means to display charts using the `vegawiget()` and friends, via [htmlwidgets](https://www.htmlwidgets.org).
 
-In the short term I'd like to focus on a small number of items:
+In the short term, the thought is to focus on a small number of items:
 
 1. Tightening up the existing capabilities.
-1. Working on a function called `install_altair()` which could manage the installation of the Python Altair components. Here, I think there are lessons to be learned from the [keras](https://keras.rstudio.com) package, and its `install_keras()` function. As well, the V2 release of Altair will be made on conda soon (as of 2018-04-01), which may make things easier.
+1. Will likely split the `vegawidget()` function, with its friends, into its own package. This would not introduce any API changes to this package.
 1. Tooltips.
+1. Some infrastructure to create and publish [blocks](https://bl.ocks.org/). ([#19](https://github.com/ijlyttle/altair/issues/19))
+1. Consolidating datasets within a chart specification. ([#26](https://github.com/ijlyttle/altair/issues/26))
 
 The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:
 
@@ -35,11 +33,11 @@ alt_chart <- function(data, ...) {
 }
 ```
 
-I think this approach would support piping, but at the cost of risking namespace collisions, as detailed in this [discussion](https://github.com/g2inR/g2r/issues/1) on ideas for porting the [g2 visualization library](https://antv.alipay.com/zh-cn/g2/3.x/index.html).
+Such an this approach would support piping, but at the cost of risking namespace collisions, as detailed in this [discussion](https://github.com/g2inR/g2r/issues/1) on ideas for porting the [g2 visualization library](https://antv.alipay.com/zh-cn/g2/3.x/index.html). Another thing to consider is how much effort it would take to provide full coverage of the Python API. 
 
-Another thing to consider is how much effort it would take to provide full coverage of the Python API.
+This effort is already underway with Alicia Schep's new package [autopyr](https://github.com/AliciaSchep/autopyr).
 
-I think it is useful to outline what this package is not. In this package, I do not want to introduce any new ideas or opinions - rather I think this package should remain a faithful translation of the Altair API. The authors of Altair should see this package and recognize only their opinions and intentions.
+It is worth noting what this package is not. In this package, I do not want to introduce any new ideas or opinions - rather I think this package should remain a faithful translation of the Altair API. The authors of Altair should see this package and recognize only their opinions and intentions.
 
 That being said, I think there is an opportunity to build another package (perhaps built on this one) that introduces opinions and tries to be a bit more ggplot2-like. Perhaps this package could include a ggplot2-translator function along the lines of `plotly::ggplotly()`.
 

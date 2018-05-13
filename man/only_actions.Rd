@@ -20,3 +20,9 @@ only_actions(export = FALSE, source = FALSE, editor = FALSE)
 This function can be useful if you want to specify only one
 of the links include in the embedding-options.
 }
+\examples{
+embed_options <- vega_embed(actions = only_actions(export = TRUE))
+}
+\seealso{
+\code{\link[=vega_embed]{vega_embed()}}
+}

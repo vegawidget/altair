@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -49,6 +49,11 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -57,22 +62,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="articles/installation.html">Installation</a>
     </li>
+    <li class="divider">
+    </li>
+<li class="dropdown-header">Getting Started</li>
     <li>
       <a href="articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="articles/vega-datasets.html">Vega Datasets</a>
@@ -80,16 +76,46 @@
     <li>
       <a href="articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider">
+    </li>
+<li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
+      <a href="articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -113,29 +139,26 @@
 <div id="altair" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#altair" class="anchor"></a>altair</h1></div>
-<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite">Vega-Lite</a> visualizations. Using the <a href="https://rstudio.github.io/reticulate"><strong>reticulate</strong></a> package, it provides an interface to the <a href="https://altair-viz.github.io">Altair</a> Python package. This approach is different from efforts to build a native R interface to Vega-Lite, by Bob Rudis (<a href="https://github.com/hrbrmstr">@hrbrmstr</a>) and coworkers: the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, which has inspired this effort.</p>
+<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite"><strong>Vega-Lite</strong></a> visualizations. Using the <a href="https://rstudio.github.io/reticulate"><strong>reticulate</strong></a> package, it provides an interface to the <a href="https://altair-viz.github.io"><strong>Altair</strong></a> Python package. This approach is distinct from efforts to build a native R interface to Vega-Lite, by <a href="https://github.com/hrbrmstr">Bob Rudis</a> and coworkers: the <a href="https://github.com/hrbrmstr/vegalite"><strong>vegalite</strong></a> package, which has inspired this effort.</p>
 <p>In this documentation, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>For this package a development version is available from <a href="https://github.com/">GitHub</a>:</p>
+<p>A development version is available from <a href="https://github.com/">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ijlyttle/altair"</span>)</a></code></pre></div>
-<p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the article <a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ijlyttle/altair"</span>) </a></code></pre></div>
+<p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in an <a href="https://ijlyttle.github.io/altair/articles/installation.html">Installation</a> article.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Python must be installed on your system. To make things easier to work with reticulate, I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well for me.</p>
-<p>As well, for the time being, you will need the development version of reticulate, which should have installed automatically, along with this package. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python">reference</a>]</p>
-<ul>
-<li>Depending on how your system is configured, you may have to specify the location of your SSL cerificate, or deal with a proxy. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#reticulate-python">reference</a>]</li>
-</ul>
+<p>Python must be installed on your system. To make things easier to work with reticulate, I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://ijlyttle.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
 </li>
-<li><p>Create a Conda environment called <code>"r-reticulate"</code>. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#python-env">reference</a>]</p></li>
-<li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>. [<a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html/#altair">reference</a>]</p></li>
+<li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://ijlyttle.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
+<li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
 </ol>
 <p>You may wish to add a line like this to the <code>.First()</code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/reticulate/topics/use_python">use_condaenv</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
-<p>This provides a hint to reticulate for which Python environment to use. [<a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">reference</a>]</p>
+<p>This provides a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -153,63 +176,63 @@
 <a class="sourceLine" id="cb3-11" data-line-number="11">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw"><a href="reference/vegalite.html">vegalite</a></span>(chart)</a></code></pre></div>
+<a class="sourceLine" id="cb3-14" data-line-number="14">chart</a></code></pre></div>
 <p><img src="reference/figures/first-example.png"></p>
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
-<li><p>Any data frames you provide as arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
-<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair sppecifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
+<li><p>Any data frames you provide as <code>data</code> arguments need to wrapped by <code><a href="reference/r_to_py.html">r_to_py()</a></code>.</p></li>
+<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
 </ul>
-<p>Also, it remains to sort out how to get the <code><a href="reference/vegalite.html">vegalite()</a></code> function to “do the right thing” when knitting to a non-html format, and to render inline in an RMarkdown notebook.</p>
-</div>
-<div id="development-plan" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-plan" class="anchor"></a>Development plan</h2>
-<p>For the foreseeable future, this package is going to be a bit rough. At the moment, you are able to muck around with Vega-Lite 2.0. This means:</p>
-<ol style="list-style-type: decimal">
-<li>You can create chart-specifications by accessing the Python <strong>Altair</strong> API using <strong>reticulate</strong>.</li>
-<li>You can create tooltip-specifications using <code><a href="reference/vega_tooltip.html">vega_tooltip()</a></code>, and <code>add_fields()</code>. Or you create a default tooltip-specification using <code><a href="reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> or <code><a href="reference/vega_tooltip.html">vega_tooltip_all()</a></code>.</li>
-<li>You can render a chart-specification and tooltip-specification into an htmlwidget, using <code><a href="reference/vegalite.html">vegalite()</a></code>.</li>
-</ol>
-<p>There’s really not much beyond that. In the near future, the thought is to focus on making this interface as robust as possible, perhaps to make it easier to consolidate datasets and publish <a href="https://bl.ocks.org/">blocks</a>.</p>
-<p>In the longer-term future it may be interesting to provide a proper R interface to the Python API; there are already some <a href="https://github.com/ijlyttle/altair/issues/15">encouraging first steps</a> towards this. This package has a <a href="https://ijlyttle.github.io/altair/articles/manifesto.html">manifesto</a> to outline some high-level ideas.</p>
+<p>These and other “gotchas” are compiled, along with workarounds, in an article: <a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
 </div>
 <div id="articles" class="section level2">
 <h2 class="hasAnchor">
 <a href="#articles" class="anchor"></a>Articles</h2>
 <p>The documentation for this package includes some articles:</p>
 <ul>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/first-example.html">First Example</a>: A walkthrough to get a first chart to work.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/interactive.html">Interactive Examples</a>: A set of examples that work towards linked-brushing of two scatterplots.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/tooltip.html">Tooltips</a>: In the Vega world, tooltips and charts are specified seperately. This article explains how to integrate tooltips with charts, and shows a few tooltip-customization options.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/vega-datasets.html">Vega Datasets</a>: You can import <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> using <code><a href="reference/import_vega_data.html">import_vega_data()</a></code>.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a> As someone who is relatively new to Python, I am trying to keep track of “the unexpected” here.</p></li>
-<li><p><a href="https://ijlyttle.github.io/altair/articles/manifesto.html">Manifesto</a>: A collection of ideas on where this package might go (and where it might want to avoid).</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/installation.html">Installation</a>: some more-detailed instructions</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/manifesto.html">Manifesto</a>: an outline of some high-level development ideas, which may change from time to time</p></li>
+</ul>
+<p>Gallery:</p>
+<ul>
+<li>Watch this space for an adaptation to R of the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a>.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/first-example.html">First Example</a>: a walkthrough to get a first chart to work</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/vega-datasets.html">Vega Datasets</a>: work with <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> using <code><a href="reference/import_vega_data.html">import_vega_data()</a></code></p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/view-composition.html">View Composition</a>: how to facet, add layers to, repeat, and concatenate charts</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/interactive.html">Interactive Examples</a>: a set of examples that work towards linked-brushing of two scatterplots</p></li>
+</ul>
+<p>Field Guides:</p>
+<ul>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>: A place for “gotchas” and their workarounds.</p></li>
+<li><p><a href="https://ijlyttle.github.io/altair/articles/field-guide-rendering.html">Field Guide to Rendering Charts</a>: How to use the <code><a href="reference/vegawidget.html">vegawidget()</a></code> function to render charts as HTML.</p></li>
 </ul>
 </div>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>This package does not contribute much beyond scaffolding; it rests on these foundations:</p>
+<p>This package rests on these foundations:</p>
 <ul>
-<li>
-<a href="https://altair-viz.github.io">Altair</a>: Python interface to Vega-Lite</li>
-<li>
-<a href="https://rstudio.github.io/reticulate">Reticulate</a>: R framework to work with Python</li>
-<li>
-<a href="https://vega.github.io/vega-lite">Vega-Lite</a>: A grammar of interactive graphics</li>
-<li>
-<a href="https://d3js.org">D3</a>: Data-driven documents</li>
-<li>
-<a href="https://github.com/hrbrmstr/vegalite">vegalite</a>: Native R interface to Vega-Lite</li>
+<li><p><a href="https://altair-viz.github.io">Altair</a>: Python interface to Vega-Lite</p></li>
+<li><p><a href="https://rstudio.github.io/reticulate">reticulate</a>: R framework to work with Python</p></li>
+<li><p><a href="https://vega.github.io/vega-lite">Vega-Lite</a>: a grammar of interactive graphics</p></li>
+<li><p><a href="https://www.htmlwidgets.org/">htmlwidgets</a>: R framework to work with JavaScript visualizations</p></li>
 </ul>
-<p>A particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, as it provided a lot of the inspiration for this package.</p>
+<p>As well, a particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, as it provided a lot of the inspiration for these efforts.</p>
+<p>This project is a collaborative effort. In addition to the principal author:</p>
+<ul>
+<li><p><a href="https://github.com/AliciaSchep">Alicia Schep</a> has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.</p></li>
+<li><p><a href="https://github.com/haleyjeppson">Haley Jeppson</a> has adapted the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a> to R, which will be integrated into the <a href="https://ijlyttle.github.io/altair">project website</a> in the coming days.</p></li>
+<li><p><a href="https://github.com/heike">Heike Hofmann</a> has been an invaluable advisor, providing incisive feedback, and insight into the fundamentals of interactive graphics.</p></li>
+</ul>
 </div>
-<div id="code-of-conduct" class="section level2">
+<div id="contributing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of conduct</h2>
-<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<a href="#contributing" class="anchor"></a>Contributing</h2>
+<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms. This project also has a <a href="CONTRIBUTING.html">Contributing Guide</a>.</p>
 </div>
 </div>
   </div>
@@ -235,6 +258,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Ian Lyttle <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9962-4849" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
+<li>Altair Developers <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -253,7 +277,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

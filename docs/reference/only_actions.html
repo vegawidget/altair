@@ -61,7 +61,7 @@ of the links include in the embedding-options." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -76,7 +76,13 @@ of the links include in the embedding-options." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -84,22 +90,12 @@ of the links include in the embedding-options." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -107,17 +103,44 @@ of the links include in the embedding-options." />
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -168,7 +191,13 @@ of the links include in the embedding-options.</p>
 
     <p><code>list</code></p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p><code><a href='vega_embed.html'>vega_embed()</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>embed_options</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='vega_embed.html'>vega_embed</a></span>(<span class='kw'>actions</span> <span class='kw'>=</span> <span class='fu'>only_actions</span>(<span class='kw'>export</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,14 +205,18 @@ of the links include in the embedding-options.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

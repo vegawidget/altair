@@ -1,3 +1,27 @@
+# altair 0.0.3
+
+* adapts examples gallery from Altair (#24, @haleyjeppson)
+
+* updates articles and documentation (#32)
+
+* deprecates `vegalite()` in favor of `vegawidget()` (#48)
+
+* provides methods for `knit_print()` and `print()` generics (#8)
+
+* updates versions of JS libraries: vega 3.3.1, vega-lite 2.4.3, vega-embed 3.9.0 (#33) 
+
+* removes tooltip functions (#45)
+
+* updates `.onLoad()` to run `check_altair()` on loading, and adds error handling (#43, with @aliciaschep)
+
+* updates travis.yml so that this package installs its supported version of Altair (#44)
+
+* adds function `check_altair()` to check installed version against supported version (#42, with @aliciaschep)
+
+* updates `install_altair()` (#41) 
+
+* synchronizes with Altair v2.0.x (#36)
+
 # altair 0.0.1.9000
 
 * new function to manage installation of Altair Python package: `install_altair()` (#1)

@@ -57,7 +57,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -72,7 +72,13 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -80,22 +86,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -103,17 +99,44 @@
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -133,6 +156,23 @@
       <small>Source: <a href='https://github.com/ijlyttle/altair/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="altair-0-0-3" class="section level1">
+<h1 class="page-header">
+<a href="#altair-0-0-3" class="anchor"></a>altair 0.0.3</h1>
+<ul>
+<li><p>adapts examples gallery from Altair (<a href='https://github.com/ijlyttle/altair/issues/24'>#24</a>, <a href='http://github.com/haleyjeppson'>@haleyjeppson</a>)</p></li>
+<li><p>updates articles and documentation (<a href='https://github.com/ijlyttle/altair/issues/32'>#32</a>)</p></li>
+<li><p>deprecates <code><a href="../reference/vegalite.html">vegalite()</a></code> in favor of <code><a href="../reference/vegawidget.html">vegawidget()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/48'>#48</a>)</p></li>
+<li><p>provides methods for <code>knit_print()</code> and <code>print()</code> generics (<a href='https://github.com/ijlyttle/altair/issues/8'>#8</a>)</p></li>
+<li><p>updates versions of JS libraries: vega 3.3.1, vega-lite 2.4.3, vega-embed 3.9.0 (<a href='https://github.com/ijlyttle/altair/issues/33'>#33</a>)</p></li>
+<li><p>removes tooltip functions (<a href='https://github.com/ijlyttle/altair/issues/45'>#45</a>)</p></li>
+<li><p>updates <code>.onLoad()</code> to run <code><a href="../reference/check_altair.html">check_altair()</a></code> on loading, and adds error handling (<a href='https://github.com/ijlyttle/altair/issues/43'>#43</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
+<li><p>updates travis.yml so that this package installs its supported version of Altair (<a href='https://github.com/ijlyttle/altair/issues/44'>#44</a>)</p></li>
+<li><p>adds function <code><a href="../reference/check_altair.html">check_altair()</a></code> to check installed version against supported version (<a href='https://github.com/ijlyttle/altair/issues/42'>#42</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
+<li><p>updates <code><a href="../reference/install_altair.html">install_altair()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/41'>#41</a>)</p></li>
+<li><p>synchronizes with Altair v2.0.x (<a href='https://github.com/ijlyttle/altair/issues/36'>#36</a>)</p></li>
+</ul>
+</div>
     <div id="altair-0-0-1-9000" class="section level1">
 <h1 class="page-header">
 <a href="#altair-0-0-1-9000" class="anchor"></a>altair 0.0.1.9000</h1>
@@ -150,7 +190,7 @@
 <li><p>adds concatenation operators for charts: <code>|</code>, <code>&amp;</code>, <code>+</code> (<a href='https://github.com/ijlyttle/altair/issues/22'>#22</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds function <code><a href="../reference/vega_embed.html">vega_embed()</a></code>, with friend <code><a href="../reference/only_actions.html">only_actions()</a></code>, to support embedding options in <code><a href="../reference/vegalite.html">vegalite()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/16'>#16</a>)</p></li>
 <li><p>updates css for embedding, makes the action-links look much better (<a href='https://github.com/ijlyttle/altair/issues/20'>#20</a>, <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
-<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code><a href="../reference/vega_tooltip.html">vega_tooltip()</a></code>, <code>add_fields()</code>, and friends: <code><a href="../reference/vega_tooltip.html">vega_tooltip_encoding()</a></code> and <code><a href="../reference/vega_tooltip.html">vega_tooltip_all()</a></code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
+<li><p>adds tooltip-capability to <code><a href="../reference/vegalite.html">vegalite()</a></code> renderer, with functions <code>vega_tooltip()</code>, <code>add_fields()</code>, and friends: <code>vega_tooltip_encoding()</code> and <code>vega_tooltip_all()</code> (<a href='https://github.com/ijlyttle/altair/issues/4'>#4</a>, with <a href='http://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 <li><p>adds a <code>NEWS.md</code> file to track changes to the package</p></li>
 <li><p>achieves minimal functionality</p></li>
 </ul>
@@ -161,6 +201,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#altair-0-0-3">0.0.3</a></li>
         <li><a href="#altair-0-0-1-9000">0.0.1.9000</a></li>
       </ul>
     </div>
@@ -170,7 +211,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

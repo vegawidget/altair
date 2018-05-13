@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -75,7 +75,13 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -83,22 +89,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -106,17 +102,44 @@
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -133,7 +156,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Import Vega datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/import.R'><code>R/import.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ijlyttle/altair/blob/master/R/vega-data.R'><code>R/vega-data.R</code></a></small>
     <div class="hidden name"><code>import_vega_data.Rd</code></div>
     </div>
 
@@ -153,7 +176,7 @@
 
     <p>Returns the <code>data</code> object in the Python package
 <a href='https://github.com/altair-viz/vega_datasets'>vega-datasets</a>.
-In the documentation for this package, it is customary to
+In the documentation for this package, the convention is to
 assign this to an object named <code>vega_data</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -163,20 +186,21 @@ assign this to an object named <code>vega_data</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'>import_vega_datasets</span>()
+  <span class='no'>vega_data</span> <span class='kw'>&lt;-</span> <span class='fu'>import_vega_data</span>()
 
   <span class='co'># To list available datasets</span>
-  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='fu'>list_datasets</span>()
+  <span class='no'>vega_data</span>$<span class='fu'>list_datasets</span>()
 
   <span class='co'># When accessing a dataset, substitute any "-" in the name with a "_"</span>
-  <span class='fu'>head</span>(<span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='fu'>sf_temps</span>())
+  <span class='fu'>head</span>(<span class='no'>vega_data</span>$<span class='fu'>sf_temps</span>())
 
   <span class='co'># Metadata are available for each dataset:</span>
-  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>description</span>
-  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>url</span>
+  <span class='no'>vega_data</span>$<span class='no'>anscombe</span>$<span class='no'>references</span>
+  <span class='no'>vega_data</span>$<span class='no'>anscombe</span>$<span class='no'>description</span>
+  <span class='no'>vega_data</span>$<span class='no'>anscombe</span>$<span class='no'>url</span>
 
   <span class='co'># For local datasets, local path is available</span>
-  <span class='no'>vega_data</span>$<span class='no'>data</span>$<span class='no'>sf_temps</span>$<span class='no'>filepath</span>
+  <span class='no'>vega_data</span>$<span class='no'>sf_temps</span>$<span class='no'>filepath</span>
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -197,7 +221,7 @@ assign this to an object named <code>vega_data</code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.1.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.3</span>
       </span>
     </div>
 
@@ -45,6 +45,11 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -53,22 +58,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/field-guide-python.html">Field Guide to Python Issues</a>
+      <a href="../articles/installation.html">Installation</a>
     </li>
+    <li class="divider">
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
-    </li>
-    <li>
-      <a href="../articles/interactive.html">Interactive Examples</a>
-    </li>
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
-    </li>
-    <li>
-      <a href="../articles/render.html">Rendering Charts</a>
-    </li>
-    <li>
-      <a href="../articles/tooltip.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -76,16 +71,44 @@
     <li>
       <a href="../articles/view-composition.html">View Composition</a>
     </li>
+    <li>
+      <a href="../articles/interactive.html">Interactive Charts</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Field Guides</li>
+    <li>
+      <a href="../articles/field-guide-python.html">Python Issues</a>
+    </li>
+    <li>
+      <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="../articles/manifesto.html">Manifesto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Gallery
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
   <a href="https://github.com/ijlyttle/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
@@ -104,7 +127,7 @@
       <h1>Manifesto</h1>
                         <h4 class="author">Ian Lyttle</h4>
             
-            <h4 class="date">2018-05-02</h4>
+            <h4 class="date">2018-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/manifesto.Rmd"><code>vignettes/manifesto.Rmd</code></a></small>
       <div class="hidden name"><code>manifesto.Rmd</code></div>
@@ -113,24 +136,26 @@
 
     
     
-<p>The purpose of this package is to be a minimal and faithful interface to the <a href="https://altair-viz.github.io">Python Altair</a> API. At this point, this R package provides:</p>
+<p>The purpose of this package is to be a faithful interface to the <a href="https://altair-viz.github.io">Python Altair</a> API. Currently, this R package provides:</p>
 <ol style="list-style-type: decimal">
 <li>Access, via <a href="https://rstudio.github.io/reticulate/">reticulate</a>, to Altair objects and methods to create and compose Vega-Lite charts.</li>
-<li>The means to display charts, via <a href="https://www.htmlwidgets.org">htmlwidgets</a>.</li>
+<li>The means to display charts using the <code>vegawiget()</code> and friends, via <a href="https://www.htmlwidgets.org">htmlwidgets</a>.</li>
 </ol>
-<p>In the short term I’d like to focus on a small number of items:</p>
+<p>In the short term, the thought is to focus on a small number of items:</p>
 <ol style="list-style-type: decimal">
 <li>Tightening up the existing capabilities.</li>
-<li>Working on a function called <code><a href="../reference/install_altair.html">install_altair()</a></code> which could manage the installation of the Python Altair components. Here, I think there are lessons to be learned from the <a href="https://keras.rstudio.com">keras</a> package, and its <code>install_keras()</code> function. As well, the V2 release of Altair will be made on conda soon (as of 2018-04-01), which may make things easier.</li>
+<li>Will likely split the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function, with its friends, into its own package. This would not introduce any API changes to this package.</li>
 <li>Tooltips.</li>
+<li>Some infrastructure to create and publish <a href="https://bl.ocks.org/">blocks</a>. (<a href="https://github.com/ijlyttle/altair/issues/19">#19</a>)</li>
+<li>Consolidating datasets within a chart specification. (<a href="https://github.com/ijlyttle/altair/issues/26">#26</a>)</li>
 </ol>
 <p>The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">alt_chart &lt;-<span class="st"> </span><span class="cf">function</span>(data, ...) {</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">  alt<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="../reference/r_to_py.html">r_to_py</a></span>(data), ...)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">}</a></code></pre></div>
-<p>I think this approach would support piping, but at the cost of risking namespace collisions, as detailed in this <a href="https://github.com/g2inR/g2r/issues/1">discussion</a> on ideas for porting the <a href="https://antv.alipay.com/zh-cn/g2/3.x/index.html">g2 visualization library</a>.</p>
-<p>Another thing to consider is how much effort it would take to provide full coverage of the Python API.</p>
-<p>I think it is useful to outline what this package is not. In this package, I do not want to introduce any new ideas or opinions - rather I think this package should remain a faithful translation of the Altair API. The authors of Altair should see this package and recognize only their opinions and intentions.</p>
+<p>Such an this approach would support piping, but at the cost of risking namespace collisions, as detailed in this <a href="https://github.com/g2inR/g2r/issues/1">discussion</a> on ideas for porting the <a href="https://antv.alipay.com/zh-cn/g2/3.x/index.html">g2 visualization library</a>. Another thing to consider is how much effort it would take to provide full coverage of the Python API.</p>
+<p>This effort is already underway with Alicia Schep’s new package <a href="https://github.com/AliciaSchep/autopyr">autopyr</a>.</p>
+<p>It is worth noting what this package is not. In this package, I do not want to introduce any new ideas or opinions - rather I think this package should remain a faithful translation of the Altair API. The authors of Altair should see this package and recognize only their opinions and intentions.</p>
 <p>That being said, I think there is an opportunity to build another package (perhaps built on this one) that introduces opinions and tries to be a bit more ggplot2-like. Perhaps this package could include a ggplot2-translator function along the lines of <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly()</a></code>.</p>
   </div>
 
@@ -141,7 +166,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

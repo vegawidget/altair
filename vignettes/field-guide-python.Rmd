@@ -17,242 +17,79 @@ There are four foundations upon which this package rests:
 
 - the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
 - the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
-- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
-This article deals with the first two items; the [rendering article](render.html) deals with the other two.
+This article deals with the first two items; the [Field Guide to Rendering](field-guide-rendering.html) deals with the other two.
 
-The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. This includes:
+The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. If you get a cryptic Python error, check here. If you find a workaround for something that isn't here, please let us know!
 
-* [**Proxies and certificates**](#proxies): letting your computer know how to communicate with the world
-* [**Reticulate and Python installation**](#reticulate-python): installing  **reticulate** and Python 
-* [**Python environment**](#python-env): setting up a Python environment with a "standard" name
-* [**Altair installation**](#altair): installing Altair into your Python environment
-* [**Working with Python objects**](#work-work): how to work with Altair and Vega-datasets objects
-* [**Odds and ends**](#odds-ends): weird bits that don't fit anywhere else
+## Overview
 
-To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate.  Getting to this point is the focus of the first three sections of this document.
+The [Altair documentation](https://altair-viz.github.io) is the best resource for learning how to create charts. In the course of building and documenting this package, we have noted a few "gotchas" and their workarounds. If you find another, please let us know!
 
-Thanks to the folks at RStudio, once you have a Python environment set up in a standard way, each subsequent installation is a single command-line call in addition to installing the R package. This is the focus of the [**Altair installation**](#altair) section, to which you can skip if you already have a working Python (Conda recommended) environment called `"r-reticulate"`.
+Here's the short version:
 
-## Proxies and certificates {#proxies}
+- Data frames have to be wrapped in `r_to_py()`. 
 
-This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that infomation to different places on your computer:
+- Where you see a `.`, use a `$` instead.
 
-- location of a valid certificate file: `</path/to/your/certificate/file.crt>`
+- Altair methods return a *copy* of the object. Assignment of a Python object returns a *reference*, not a copy. 
 
-Additionally, if you work behind a firewall:
+- To get a copy a of "bare" Altair object, use a `$copy()` method.
 
-- address of your proxy: `http://<your.proxy.ip.address>:<port>`
-- list of addresses for which your proxy is not to be used: `127.0.0.1,localhost,<other.hostnames.go.here>`
+- If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accommodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
 
-Please note that the angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
+- There is an Altair Chart method called `repeat()`, which in R is a reserved word, so it needs to be enclosed in backticks: ``$`repeat`()``. 
 
-### Working without a firewall
+- Where you see an inversion operator, `~`, like `~highlight`, in Altair examples, call the method explicitly from R: ``hightlight$`__invert__`()``. Alternatively, you may be able to rearrange the code so as to avoid using the inversion. 
 
-If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the **httr** package installed, it will use the certificate file associated with the **openssl** package. You can determine the location of this certificate file by using:
+- Where you see a hyphen in the name of a Python object, use an underscore in R: `vega_data$sf_temps()`
 
-```r
-system.file("cacert.pem", package = "openssl")
+- Where you see a Python list, `["foo", "bar"]`, in Altair examples, use an unnamed list in R: `list("foo", "bar")`.
+
+- Where you see a Python dictionary, `{'a' = "foo", 'b' = "bar"}`, in Altair examples, use a named list in R: `list(a = "foo", b = "bar")`
+
+- Where you see a `None` in Altair examples, use a `NULL` in R.
+
+- You may see a function call with `**`, `baz(a = 1, **{'foo': 'bar'})`, in an Altair example. In R, interpolate the dictionary into the rest of the arguments, `baz(a = 1, foo = "bar")`.
+
+## Data frames
+
+Consider this Python example:
+
+```python
+# Python
+
+from vega_datasets import data
+cars = data.cars()
+
+alt.Chart(cars).mark_point().encode(
+    x='Horsepower',
+    y='Miles_per_Gallon',
+    color='Origin',
+).interactive()
 ```
 
-At this point, you can note this location and move ahead to [**Managing your settings**](#manage-settings).
+In this case, we are supplying a Data Frame to a `Chart()` method. To do the same thing from R, we need to wrap data frames in the `r_to_py()` function (exported from **reticulate**).
 
-### Working behind a firewall
+```{r}
+library("altair")
 
-If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called [develop-behind-proxy](https://smarie.github.io/develop-behind-proxy/), from which we take some inspiration. 
+vega_data <- import_vega_data()
+cars <- vega_data$cars()
 
-It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers [some advice](https://smarie.github.io/develop-behind-proxy/know_your_proxy/) to find this certificate bundle, or you can ask your IT department for its location.
-
-Your proxy is likely set using environment variables, named some combination of:
-
- - `http_proxy`, `https_proxy`, `no_proxy`, `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`
-
-If you are using Windows, your proxy information may be set using your system's environment variables, in which case you may not need to do anything more. 
-
-It is also possible that you use your `.Renviron` file to set your proxy and no-proxy variables. If you have the **usethis** package installed, it can be very easy to find and open: `usethis::edit_r_environ()`.
-
-Once you have noted your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.
-
-### Managing your settings {#manage-settings}
-
-Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it. How you make this information known will depend on your operating-system.
-
-**Open the menu-item below for instructions for your operating system:**
-
-<details>
-<summary>Windows</summary>
-
-In Windows, the customary way to set or change environment variables is to use `Control Panel\All Control Panel Items\System` then "Advanced System Settings" and "Environment Variables". This may vary according to your version of Windows. 
-
-Set each of these variables, adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
-
-```
-# Windows environment variables
-# 
-# Varaible : Value
-
-SSL_CERT_FILE : </path/to/your/certificate/file.crt>
-REQUESTS_CA_BUNDLE: </path/to/your/certificate/file.crt>
-
-# --------------------------------------
-# continue if you work behind a firewall
-
-NO_PROXY : 127.0.0.1,localhost,<other.hostnames.go.here>
-
-HTTP_PROXY : http://<your.proxy.ip.address>:<port>
-HTTPS_PROXY : http://<your.proxy.ip.address>:<port>
+chart <- 
+  alt$Chart(r_to_py(cars))$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
 ```
 
-By setting these variables here, both your R session and any Python session will have access to the information they will need.
-
-</details>
-
-<details>
-<summary>MacOS and Linux (Ubuntu)</summary>
-
-On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
-
-The customary way to set environmen-variables for R is to add variables to your `.Renviron` file; add and adapt the following lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
-
-```
-# .Renviron
-
-# path to a certificate file 
-SSL_CERT_FILE = "</path/to/your/certificate/file.crt>"
-REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
-
-# --------------------------------------
-# continue if you work behind a firewall
-
-# addresses for which proxy is not to be used
-no_proxy = "127.0.0.1,localhost,<other.hostnames.go.here>"
-
-# proxy addresses
-https_proxy = "http://<your.proxy.ip.address>:<port>"
-http_proxy = "${https_proxy}" 
-
-HTTPS_PROXY = "${https_proxy}"
-HTTP_PROXY = "${http_proxy}"
-```
-
-On MacOS, your `~/.bash_profile` file acts in a similar way as `.Renviron`, but the syntax is just a little different. On Ubuntu Linux, this file is called `~/.bashrc` - you may have to determine this name for your particular flavor of Linux.
-
-Using your favorite text editor, find and edit your `.bash_profile` (or `.bashrc`), adding and adapting these lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
-
-```
-# MacOS .bash_profile, Ubuntu .bashrc
-
-# path to a certificate file 
-export SSL_CERT_FILE=</path/to/your/certificate/file.crt>
-export REQUESTS_CA_BUNDLE=${SSL_CERT_FILE}
-
-# --------------------------------------
-# continue if you work behind a firewall
-
-# specifies addresses for which proxy is not to be used
-export NO_PROXY="127.0.0.1,localhost,<other.hostnames.go.here>"
-
-# specifies the proxy addresses
-export https_proxy=http://<your.proxy.ip.address>:<port>
-export http_proxy=${https_proxy}
-
-export HTTPS_PROXY=${https_proxy}
-export HTTP_PROXY=${http_proxy}
-```
-
-A new terminal-window will have access to these settings, which you can confirm using the `env` command.
-
-</details>
-
-## Reticulate and Python installation {#reticulate-python}
-
-I recommend (until its next CRAN release) using the dev version of **reticulate**, which should have been installed automatically as a part of this package's installation.
-
-```r
-# install.packages("devtools")
-devtools::install_github("rstudio/reticulate")
-```
-
-Reticulate offers a number of ways to manange the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article. Here, we amplify some opinions offered by RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, I recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
-
-Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.
-
-If all is well, you will be able to update your Conda installation.
-
-**Open the menu-item below for instructions for your operating system:**
-
-<details>
-<summary>Windows</summary>
-At a new Anaconda prompt:
-```
-# Anaconda prompt
-conda update conda
-```
-</details>
-
-<details>
-<summary>MacOS and Linux (Ubuntu)</summary>
-At a new terminal window:
-```
-# Terminal window
-conda update conda
-```
-</details>
-
-## Python environment {#python-env}
-
-For use with **reticulate**, RStudio [recommend](https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies) using a Python environment called `"r-reticulate"`. You can do this for your Conda environment directly from an R command-prompt, and it should "just work":
-
-```r
-reticulate::conda_create("r-reticulate")
-```
-
-To leave a hint for **reticulate** to use this Python environment by default, you can add this line to the `.First()` function in your `.Rprofile` (`usethis::edit_r_profile()` can be useful):
-
-```
-# .Rprofile
-
-.First <- function() {
-  <other stuff>
-  reticulate::use_condaenv("r-reticulate")
-}
-```
-
-Of course, you should restart your R session to let your new settings take effect.
-
-## Altair Installation {#altair}
-
-If you have not already installed this package into your R library, this is a perfect occasion to do so:
-
-```r
-# install.packages("devtools")
-devtools::install_github("ijlyttle/altair")
-```
-
-Thanks to all the preparatory work you have made, it is relatively straightforward to install the Altair Python package.     
-
-At present, version 2 of the Altair Python package is available as a release candidtate on PyPi, so it can be installed using `pip`. The function `altair::install_altair()` will use `pip` to install `altair==2.0.0rc2` into your `"r-reticulate"` Python environment.
-
-```r
-altair::install_altair()
-```
-
-When the "final" version-2 is released to Conda, the `install_altair()` function and documentation will be updated to support a complete Conda installation. 
-
-You can confirm success by showing your Python configuration:
-
-```r
-reticulate::py_config()
-```
-
-And by confirming your Altair installation:
-
-```r
-altair::has_altair()
-```
-
-## Working with Python objects {#work-work}
+## Method chaining
 
 When **reticulate** returns a Python object with a custom class, it appears in R as an S3 object that *behaves* like a reference class. This means that if you see this sort of notation in Python:
 
@@ -267,88 +104,320 @@ You would use this notation in R:
 foo$bar()
 ```
 
-In essence, you wherever you see a `.` in Python, use a `$` in R.
+In essence, you wherever you see a `.` in Python, use a `$` in R. 
 
-### Altair object
-
-In Python, Altair methods return a copy of the object:
-
-```{r}
-library("altair")
-library("pryr")
-
+```{r cars}
 vega_data <- import_vega_data()
+cars <- vega_data$cars()
 
-chart_old <-
-  alt$Chart(
-    r_to_py(vega_data$cars())
-  )$encode(
-    x = "Miles_per_Gallon:Q",
-    y = "Horsepower:Q",
+chart <- 
+  alt$Chart(r_to_py(cars))$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
     color = "Origin:N"
   )
-
-chart_new <- chart_old$mark_point()
-
-address(chart_new) == address(chart_old)
 ```
-To confirm this we note that the two charts have different memory addresses. This suggests that Altair methods return a copy of the object; it *looks* like a reference-class method, but it *acts* like an S3 method.
 
-Let's try an assignment:
+## Altair method returns copy
+
+In Python, Altair methods return a copy of the object. To verify this, let's use `pryr::
 
 ```{r}
-chart_new <- chart_old
+library("pryr")
 
-address(chart_new) == address(chart_old)
+chart_new <- chart$mark_point()
+
+address(chart_new) == address(chart)
 ```
 
-It seems that an assignment of an Altair object (and perhaps, by extension, Pyhton objects) returns a reference, rather than a copy. To return a copy of the object, use a copy method.
+Although this *looks* like a reference-class method, the Altair method *acts* like an S3 method.
+
+## Python assignment returns reference
+
+The object returned by an Altair method is a modified copy of the calling-object, much as we are accustomed-to in R. However, it is important to note that using the R assignment operator (`<-`, `=`, `->`) on a Python object returns a *reference* to the object rather than a copy. 
+
+This becomes apparent when assigning a "bare" object:
 
 ```{r}
-chart_new <- chart_old$copy()
+chart_new <- chart
 
-address(chart_new) == address(chart_old)
+address(chart_new) == address(chart)
 ```
 
-### Vega-datasets object
-
-You can specify a dataset using a URL that points to a dataset, rather than a data frame. The `vega_data` object (assigned using `import_vega_data()`) contains the URLs as well as access to the data frames. 
+To return a copy of the object, use a copy method.
 
 ```{r}
-iris_url <- vega_data$iris$url
+chart_new <- chart$copy()
 
-chart_iris <- 
-  alt$Chart(iris_url)$
-  encode(
-    x = "sepalWidth:Q",
-    y = "sepalLength:Q",
-    color = "species:N"
-  )$
-  mark_point()
-
-vegalite(chart_iris)
+address(chart_new) == address(chart)
 ```
 
-This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
+## Dots in variable names
 
-You can read more in the [Vega Datasets](vega-datasets.html) article.
+In Python, dots can refer to a nested structure within a Data Frame variable. Vega-Lite supports such nesting, so it assumes that a dot in a variable-name will refer to a nested variable. 
 
-## Odds and ends {#odds-ends}
+This means that we can run into trouble using R's `iris` dataset:
 
-### Dots in variables
+```{r eval = FALSE}
+# does not render properly
 
-If your encoding variables have dots in them, enclose their names in square-brackets. This has the side effect of showing the brackets in the scale labels. (TODO: find the references to this and the `\\` workaround identfied by Alicia) 
-
-```{r iris}
-chart_iris <- 
+chart_iris_r <-
   alt$Chart(r_to_py(iris))$
   encode(
-    x = "[Sepal.Width]:Q",
-    y = "[Sepal.Length]:Q",
+    x = "Sepal.Width:Q",
+    y = "Sepal.Length:Q",
     color = "Species:N"
   )$
   mark_point()
 
-vegalite(chart_iris)
+chart_iris_r
 ```
 
+The problem here is that there are variables whose names have dots in them, e.g. `Sepal.Width`. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, `\\`:
+
+```{r}
+chart_iris_r <-
+  alt$Chart(r_to_py(iris))$
+  encode(
+    x = "[Sepal.Width]:Q",
+    y = "Sepal\\.Length:Q",
+    color = "Species:N"
+  )$
+  mark_point()
+
+chart_iris_r
+```
+
+As you can see, this has the side-effect of showing the brackets and slashes in the scale labels.
+
+To fix the fix, you can set the title for each axis:
+
+```{r}
+chart_iris_r$ 
+  encode(
+    x = alt$X(
+      field = "[Sepal.Width]", 
+      type = "quantitative", 
+      axis = alt$Axis(title = "Sepal.Width")
+    ),
+    y = alt$Y(
+      field = "Sepal\\.Length", 
+      type = "quantitative", 
+      axis = alt$Axis(title = "Sepal.Length")
+    ),
+    color = "Species:N"
+  )
+```
+
+## Repeat
+
+As shown in the [View Composistion article](view-composition.html#repeat), you can use the `repeat()` method to compose one-or-more charts such that the only thing different among them is an encoding.
+
+However, the article notes, there is a catch: `repeat` is a reserved word in R, so we have to enclose it in backticks, e.g. ``$`repeat`()``.
+
+```{r repeat}
+chart_repeat <- 
+  alt$Chart(r_to_py(vega_data$iris()))$
+  encode(
+    x = alt$X(alt$`repeat`("column"), type = "quantitative"),
+    y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
+    color = "species:N"
+  )$
+  mark_point()$
+  properties(
+    width = 200,
+    height = 200
+  )$
+  `repeat`(
+    row = list("petalLength", "petalWidth"),
+    column = list("sepalLength", "sepalWidth")
+  )
+
+chart_repeat
+```
+
+## Inversion: `~`
+
+This is another case where an operator has a completely different meaning in Python than it has in R. As you know, the `~` operator is used to construct a formula. In Python, it is the [bitwise inversion operator](https://stackoverflow.com/questions/8305199/the-tilde-operator-in-python). 
+
+You might come across this in an [Altair example](https://altair-viz.github.io/gallery/multiline_highlight.html) where the operator is used to invert a selection.
+
+```python
+# Python
+highlight = alt.selection(type='single', on='mouseover',
+                          fields=['symbol'], nearest=True)
+
+alt.condition(~highlight, alt.value(1), alt.value(3))
+```
+
+There are a couple of alternatives available here, the first is to invoke the `$__invert__()` operator explicitly.
+
+```{r eval = FALSE}
+# R
+highlight <-
+  alt$selection(
+    type = "single", 
+    on = "mouseover",
+    fields = list("symbol"), 
+    nearest = TRUE
+  )
+
+alt$condition(highlight$`__invert__`(), alt$value(1), alt$value(3))
+```
+
+The second alternative is to swap the order of the `if_true` and `if_false` arguments in `alt$condition()`.
+
+```{r eval = FALSE}
+# R
+highlight <-
+  alt$selection(
+    type = "single", 
+    on = "mouseover",
+    fields = list("symbol"), 
+    nearest = TRUE
+  )
+
+alt$condition(highlight, alt$value(3), alt$value(1))
+```
+
+## Hyphens in Python Names
+
+This comes up in Vega datasets. Let's use the `$list_datasets()` method to get the names of the datasets that contain a hyphen.
+
+```{r datasets-hyphen}
+vega_data$list_datasets() %>% stringr::str_subset("-")
+```
+
+To refer to one of these datasets in R, substitute the hyphen with an underscore:
+
+```{r}
+vega_data$sf_temps() %>% head()
+```
+
+## Lists: `[]` and Dictionaries: `{}`
+
+A Python list corresponds to an atomic vector in R; a Python dictionary corresponds to a named list in R.
+
+```python
+# Python
+
+example_list = [1, 2, 3]
+example_dictionary = {'a': 1, 'b': 2, 'c': 3}
+```
+
+In practice, we find that reticulate does the right thing if we provide an R *unnamed* list where Altair expects a list, and an R *named* list where Altair expects a dictionary.
+
+```{r}
+example_list <- list(1, 2, 3)
+example_dictionary <- list(a = 1, b = 2, c = 3)
+```
+
+Consider this Altair [example](https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html) that uses lists and dictionaries. This is some of the Python bits:
+
+```python
+import altair as alt
+from vega_datasets import data
+
+flights = alt.UrlData(data.flights_2k.url,
+                      format={'parse': {'date': 'date'}})
+
+brush = alt.selection(type='interval', encodings=['x'])
+```
+
+Here's an R translation of the complete example, which demonstrates interactive cross-filtering.
+
+```{r}
+flights <-
+  alt$UrlData(
+    vega_data$flights_2k$url,
+    format = list(parse = list(date = "date"))
+  )
+
+brush <- alt$selection(type = "interval", encodings = list("x"))
+
+# Define the base chart, with the common parts of the
+# background and highlights
+base <- 
+  alt$Chart()$
+  mark_bar()$
+  encode(
+    x = alt$X(
+      alt$`repeat`("column"), 
+      type = "quantitative", 
+      bin = alt$Bin(maxbins = 20)
+    ),
+    y = "count()"
+  )$
+  properties(width = 180, height = 130)
+
+# blue background with selection
+background <- base$properties(selection = brush)
+
+# yellow highlights on the transformed data
+highlight <-
+  base$
+  encode(color=alt$value("goldenrod"))$
+  transform_filter(brush$ref())
+
+# layer the two charts & repeat
+alt$
+  layer(background, highlight, data = flights)$
+  transform_calculate("time", "hours(datum.date)")$
+  `repeat`(column = list("distance", "delay", "time"))
+```
+
+## None and `**`
+
+These concepts are not related other that they are found in the same example:
+
+```python
+import altair as alt
+import pandas as pd
+
+activities = pd.DataFrame({'Activity': ['Sleeping', 'Eating', 'TV', 'Work', 'Exercise'],
+                           'Time': [8, 2, 4, 8, 2]})
+
+alt.Chart(activities).mark_bar().encode(
+    alt.X('PercentOfTotal:Q', axis=alt.Axis(format='.0%')),
+    y='Activity:N'
+).transform_window(
+    window=[alt.WindowFieldDef(op='sum', field='Time', **{'as': 'TotalTime'})],
+    frame=[None, None]
+).transform_calculate(
+    PercentOfTotal="datum.Time / datum.TotalTime"
+)
+```
+
+In this example, we have a list containing `None`, which reticulate associates with R's `NULL`. 
+
+We also have some syntax, `**{'as': 'TotalTime'}`. This is a mechanism to [pass additional arguments](https://softwareengineering.stackexchange.com/a/131415) to a Python function, perhaps similar to `...` in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:  
+
+```{r list-dict}
+library("tibble")
+
+activities <- 
+  data_frame(
+    Activity = c("Sleeping", "Eating", "TV", "Work", "Exercise"),
+    Time = c(8, 2, 4, 8, 2)
+  )
+
+chart <- 
+  alt$Chart(r_to_py(activities))$
+  mark_bar()$
+  encode(
+    x = alt$X("PercentOfTotal:Q", axis = alt$Axis(format =".0%")),
+    y = "Activity:N"
+  )$
+  transform_window(
+    window = list(
+      alt$WindowFieldDef(op = "sum", field = "Time", as = "TotalTime")
+    ),
+    frame = list(NULL, NULL)
+  )$transform_calculate(
+    PercentOfTotal = "datum.Time / datum.TotalTime"
+  )
+
+chart
+```
