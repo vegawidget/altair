@@ -59,7 +59,7 @@ Our `vega_data` object has a method to list all its datasets:
 vega_data$list_datasets() %>% head()
 ```
 
-Each dataset can be accessed using a method whose name is an element returned from `$list_datasets()`. 
+Each dataset can be accessed using a method whose name is an element returned from `vega_data$list_datasets()`. 
 
 ```{r anscome}
 library("tibble")
