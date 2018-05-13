@@ -95,8 +95,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Topic A</li>
-    <li class="dropdown-header">Topic B</li>
+<li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
@@ -121,7 +128,7 @@
     <div class="page-header toc-ignore">
       <h1>Tooltips</h1>
             
-            <h4 class="date">2018-05-11</h4>
+            <h4 class="date">2018-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/tooltip.Rmd"><code>vignettes/tooltip.Rmd</code></a></small>
       <div class="hidden name"><code>tooltip.Rmd</code></div>
@@ -145,8 +152,8 @@
 <a class="sourceLine" id="cb1-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb1-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb1-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-059d2202994524f0097c" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-059d2202994524f0097c">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/cars.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"Origin\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"Horsepower\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"Miles_per_Gallon\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>For the time-being, we can make tooltips only for a single encoding. We are waiting for the Altair package to catch-up to the vega-tooltip changes; the Altair folks are waiting for their renderers to catch up.</p>
+<div id="htmlwidget-541ef5f5652090a7c5c5" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-541ef5f5652090a7c5c5">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/cars.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"Origin\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"Horsepower\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"Miles_per_Gallon\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>For the time-being, we can make tooltips only for a single encoding. We are waiting for the Altair package to catch-up to the vega-tooltip changes; the Altair folks are waiting for their renderers to catch up.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span>cars<span class="op">$</span>url)<span class="op">$</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
@@ -154,14 +161,16 @@
 <a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"Horsepower:Q"</span>,</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"Miles_per_Gallon:Q"</span>,</a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"Origin:N"</span>,</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="dt">tooltip =</span> alt<span class="op">$</span><span class="kw">Tooltip</span>(<span class="dt">field =</span> <span class="st">"Miles_per_Gallon"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">  )</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-b1363601cf8468ad2899" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b1363601cf8468ad2899">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/cars.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"Origin\",\n      \"type\": \"nominal\"\n    },\n    \"tooltip\": {\n      \"field\": \"Miles_per_Gallon\",\n      \"type\": \"quantitative\"\n    },\n    \"x\": {\n      \"field\": \"Horsepower\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"Miles_per_Gallon\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/examine.html">examine</a></span>(chart)</a></code></pre></div>
-<div id="htmlwidget-b456da968f293f09124f" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b456da968f293f09124f">{"x":{"data":{"$schema":"https://vega.github.io/schema/vega-lite/v2.4.1.json","config":{"view":{"height":300,"width":400}},"data":{"url":"https://vega.github.io/vega-datasets/data/cars.json"},"encoding":{"color":{"field":"Origin","type":"nominal"},"tooltip":{"field":"Miles_per_Gallon","type":"quantitative"},"x":{"field":"Horsepower","type":"quantitative"},"y":{"field":"Miles_per_Gallon","type":"quantitative"}},"mark":"point"},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="dt">tooltip =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">      alt<span class="op">$</span><span class="kw">Tooltip</span>(<span class="dt">field =</span> <span class="st">"Miles_per_Gallon"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>),</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">      alt<span class="op">$</span><span class="kw">Tooltip</span>(<span class="dt">field =</span> <span class="st">"Horsepower"</span>, <span class="dt">type =</span> <span class="st">"quantitative"</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    )</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">  )</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">chart</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/examine.html">examine</a></span>(chart)</a></code></pre></div>
+<div id="htmlwidget-c40d49e5ff2ae039dc95" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c40d49e5ff2ae039dc95">{"x":{"data":{"$schema":"https://vega.github.io/schema/vega-lite/v2.4.1.json","config":{"view":{"height":300,"width":400}},"data":{"url":"https://vega.github.io/vega-datasets/data/cars.json"},"encoding":{"color":{"field":"Origin","type":"nominal"},"x":{"field":"Horsepower","type":"quantitative"},"y":{"field":"Miles_per_Gallon","type":"quantitative"}},"mark":"point"},"options":{"mode":"tree","modes":["code","form","text","tree","view"]}},"evals":[],"jsHooks":[]}</script>
 </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -171,7 +180,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

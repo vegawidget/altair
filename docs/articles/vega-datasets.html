@@ -95,8 +95,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Topic A</li>
-    <li class="dropdown-header">Topic B</li>
+<li class="dropdown-header">Simple Charts</li>
+    <li class="dropdown-header">Bar Charts</li>
+    <li class="dropdown-header">Line Charts</li>
+    <li class="dropdown-header">Area Charts</li>
+    <li class="dropdown-header">Scatterplots</li>
+    <li class="dropdown-header">Histograms</li>
+    <li class="dropdown-header">Maps</li>
+    <li class="dropdown-header">Interactive Charts</li>
+    <li class="dropdown-header">Other Charts</li>
   </ul>
 </li>
 <li>
@@ -114,12 +121,13 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="vega-datasets_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="vega-datasets_files/vega-3.3.1/promise.min.js"></script><script src="vega-datasets_files/vega-3.3.1/symbol.min.js"></script><script src="vega-datasets_files/vega-3.3.1/vega.js"></script><script src="vega-datasets_files/vega-lite-2.4.3/vega-lite-min.js"></script><link href="vega-datasets_files/vega-embed-3.9.0/vega-embed.css" rel="stylesheet">
+<script src="vega-datasets_files/vega-embed-3.9.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.0.2.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2018-05-11</h4>
+            <h4 class="date">2018-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ijlyttle/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -184,6 +192,25 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>references</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American Statistician. 27 (1): 17-21. JSTOR 2682899."</span></a></code></pre></div>
+<div id="vega-datasets-object" class="section level3">
+<h3 class="hasAnchor">
+<a href="#vega-datasets-object" class="anchor"></a>Vega-datasets object</h3>
+<p>You can specify a dataset using a URL that points to a dataset, rather than a data frame. The <code>vega_data</code> object (assigned using <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code>) contains the URLs as well as access to the data frames.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">iris_url &lt;-<span class="st"> </span>vega_data<span class="op">$</span>iris<span class="op">$</span>url</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">chart_iris &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris_url)<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"sepalWidth:Q"</span>,</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">    <span class="dt">y =</span> <span class="st">"sepalLength:Q"</span>,</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">    <span class="dt">color =</span> <span class="st">"species:N"</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">chart_iris</a></code></pre></div>
+<div id="htmlwidget-5a56ccf15c64ae7d78d2" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5a56ccf15c64ae7d78d2">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -193,7 +220,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle.</p>
+  <p>Developed by Ian Lyttle, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

@@ -27,7 +27,7 @@ chart
 
 For the time-being, we can make tooltips only for a single encoding. We are waiting for the Altair package to catch-up to the vega-tooltip changes; the Altair folks are waiting for their renderers to catch up.
 
-```{r}
+```{r eval=FALSE}
 chart <- 
   alt$Chart(vega_data$cars$url)$
   mark_point()$
