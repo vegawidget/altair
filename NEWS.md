@@ -2,6 +2,8 @@
 
 * adapts examples gallery from Altair (#24, @haleyjeppson)
 
+* updates articles and documentation (#32)
+
 * deprecates `vegalite()` in favor of `vegawidget()` (#48)
 
 * provides methods for `knit_print()` and `print()` generics (#8)

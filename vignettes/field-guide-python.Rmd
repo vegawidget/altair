@@ -17,7 +17,7 @@ There are four foundations upon which this package rests:
 
 - the [Altair](https://altair-viz.github.io/) Python package, to build chart specifications
 - the [reticulate](https://rstudio.github.io/reticulate/index.html) R package, to provide inter-operability with Python
-- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file.
+- the [Vega-Lite](https://vega.github.io/vega-lite/) JavaScript framework, to render chart specifications in an HTML file
 - the [htmlwidgets](https://www.htmlwidgets.org/) R package, to provide inter-operability with HTML and JavaScript
 
 This article deals with the first two items; the [Field Guide to Rendering](field-guide-rendering.html) deals with the other two.
@@ -202,7 +202,7 @@ chart_repeat <-
 chart_repeat
 ```
 
-## Inversion (`~`)
+## Inversion: `~`
 
 This is another case where an operator has a completely different meaning in Python than it has in R. As you know, the `~` operator is used to construct a formula. In Python, it is the [bitwise inversion operator](https://stackoverflow.com/questions/8305199/the-tilde-operator-in-python). 
 
@@ -260,7 +260,7 @@ To refer to one of these datasets in R, substitute the hyphen with an underscore
 vega_data$sf_temps() %>% head()
 ```
 
-## Lists and Dictionaries
+## Lists: `[]` and Dictionaries: `{}`
 
 A Python list corresponds to an atomic vector in R; a Python dictionary corresponds to a named list in R.
 
@@ -278,13 +278,61 @@ example_list <- list(1, 2, 3)
 example_dictionary <- list(a = 1, b = 2, c = 3)
 ```
 
-Here's an example that uses lists and dictionaries:
+Consider this Altair [example](https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html) that uses lists and dictionaries. This is some of the Python bits:
 
-```{r}
+```python
+import altair as alt
+from vega_datasets import data
 
+flights = alt.UrlData(data.flights_2k.url,
+                      format={'parse': {'date': 'date'}})
+
+brush = alt.selection(type='interval', encodings=['x'])
 ```
 
-## None and **
+Here's an R translation of the complete example, which demonstrates interactive cross-filtering.
+
+```{r}
+flights <-
+  alt$UrlData(
+    vega_data$flights_2k$url,
+    format = list(parse = list(date = "date"))
+  )
+
+brush <- alt$selection(type = "interval", encodings = list("x"))
+
+# Define the base chart, with the common parts of the
+# background and highlights
+base <- 
+  alt$Chart()$
+  mark_bar()$
+  encode(
+    x = alt$X(
+      alt$`repeat`("column"), 
+      type = "quantitative", 
+      bin = alt$Bin(maxbins = 20)
+    ),
+    y = "count()"
+  )$
+  properties(width = 180, height = 130)
+
+# blue background with selection
+background <- base$properties(selection = brush)
+
+# yellow highlights on the transformed data
+highlight <-
+  base$
+  encode(color=alt$value("goldenrod"))$
+  transform_filter(brush$ref())
+
+# layer the two charts & repeat
+alt$
+  layer(background, highlight, data = flights)$
+  transform_calculate("time", "hours(datum.date)")$
+  `repeat`(column = list("distance", "delay", "time"))
+```
+
+## None and `**`
 
 These concepts are not related other that they are found in the same example:
 
