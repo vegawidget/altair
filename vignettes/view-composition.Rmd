@@ -43,7 +43,7 @@ Note that for "repeat", backticks are required around the word `repeat`. This is
 
 ## Layered charts {#layer}
 
-Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the `+` operator or the `alt$layer` function. A common use case is to add more than one mark for the same set of encodings.  For example, you could combine points and a line for time-series data. Here is an example using the "beaver1" data, which has body temparature for a beaver over time:
+Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the `+` operator or the `alt$layer` function. A common use case is to add more than one mark for the same set of encodings.  For example, you could combine points and a line for time-series data. Here is an example using the "beaver1" data, which has body temperature for a beaver over time:
 
 ```{r}
 library(altair)

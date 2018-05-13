@@ -38,7 +38,7 @@ Here's the short version:
 
 - To get a copy a of "bare" Altair object, use a `$copy()` method.
 
-- If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accomodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
+- If you have a dataset that has variables with dots in their names, e.g. `Sepal.Width`, you have to make some accommodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to "[Sepal.Width]".
 
 - There is an Altair Chart method called `repeat()`, which in R is a reserved word, so it needs to be enclosed in backticks: ``$`repeat`()``. 
 

@@ -220,9 +220,10 @@
 <div id="versioning" class="section level3">
 <h3 class="hasAnchor">
 <a href="#versioning" class="anchor"></a>Versioning</h3>
-<p>The first digit indicates the maturity of this package’s API. For the time being, it will be <code>0</code>. When we feel it is time, we will increment the first digit to agree with the first digit of the Altair release, currently <code>2</code>.</p>
+<p>The first digit indicates the maturity of this package’s API. For the time being, it will be <code>0</code>.</p>
 <p>The second digit will be incremented upon each CRAN release and assigned a GitHub release tag.</p>
-<p>The third digit will be incremented with each change of the <code>master</code> branch. Each change of the master branch will be assigned a git tag, so we will not do this lightly.</p>
+<p>The third digit will be incremented with each change of the <code>master</code> branch. Each change of the master branch will be assigned a git tag, so we will try not to do this lightly.</p>
+<p>The fourth digit is reserved to the <code>develop</code> branch and any <code>&lt;feature-branch&gt;</code>.</p>
 </div>
 <div id="pull-requests" class="section level3">
 <h3 class="hasAnchor">
@@ -268,11 +269,11 @@
 </tr>
 </tbody>
 </table>
-<p>Strategies for roxygen and pkgdown?</p>
+<p>Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let’s see how that works)</p>
 </div>
-<div id="please-roxygenize-as-a-part-of-your-pull-request-however-please-do-not-commit-your-changes-to-pkgdown--i-will-do-that-following-a-merging-the-pr--lets-see-how-that-works-git-branch-strategy" class="section level3">
+<div id="git-branch-strategy" class="section level3">
 <h3 class="hasAnchor">
-<a href="#please-roxygenize-as-a-part-of-your-pull-request-however-please-do-not-commit-your-changes-to-pkgdown--i-will-do-that-following-a-merging-the-pr--lets-see-how-that-works-git-branch-strategy" class="anchor"></a>Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let’s see how that works) Git branch strategy</h3>
+<a href="#git-branch-strategy" class="anchor"></a>Git branch strategy</h3>
 <p>One of the motivations is to make our lives as developers, and as users, easier by restricting what types of Altair versions will be supported on which types of git branches.</p>
 <p>We should first define “type of Altair version” and “supported”.</p>
 <p>There are three types of Altair versions:</p>

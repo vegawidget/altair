@@ -58,7 +58,7 @@ The next part of the code block creates a chart object:
 chart <- alt$Chart(r_to_py(vega_data$cars()))
 ```
 
-There's a few things going on here. The first is that the altair (R) package exposes the Altair (Python) library using the variable `alt`. In the [Altair documentation](https://altair-viz.github.io/getting_started/overview.html), the convention is to expose the Altair library through the varaiable `alt`:
+There's a few things going on here. The first is that the altair (R) package exposes the Altair (Python) library using the variable `alt`. In the [Altair documentation](https://altair-viz.github.io/getting_started/overview.html), the convention is to expose the Altair library through the variable `alt`:
 
 ```python
 # Python
@@ -148,7 +148,7 @@ Now that we have specified our chart, it remains to display it. This package pro
 vegawidget(chart)
 ```
 
-However, if you are using its defailts, you need not call the `vegawidget()` function explicity, as this package provides a `print()` method and a `knit_print()` method. 
+However, if you are using its defaults, you need not call the `vegawidget()` function explicitly, as this package provides a `print()` method and a `knit_print()` method. 
 
 ```{r display-bare}
 chart

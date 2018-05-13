@@ -17,11 +17,13 @@ The purpose of this package is to be a faithful interface to the [Python Altair]
 1. Access, via [reticulate](https://rstudio.github.io/reticulate/), to Altair objects and methods to create and compose Vega-Lite charts.
 1. The means to display charts using the `vegawiget()` and friends, via [htmlwidgets](https://www.htmlwidgets.org).
 
-In the short term, the thougth is to focus on a small number of items:
+In the short term, the thought is to focus on a small number of items:
 
-1. Tightening up the existing capabilities. 
+1. Tightening up the existing capabilities.
 1. Will likely split the `vegawidget()` function, with its friends, into its own package. This would not introduce any API changes to this package.
 1. Tooltips.
+1. Some infrastructure to create and publish [blocks](https://bl.ocks.org/). ([#19](https://github.com/ijlyttle/altair/issues/19))
+1. Consolidating datasets within a chart specification. ([#26](https://github.com/ijlyttle/altair/issues/26))
 
 The longer term will require more thought and consultation. As a start, it might be interesting to construct some R functions along the lines of:
 

@@ -162,9 +162,9 @@ To specify the overall dimensions of a chart, you can use the `width` and `heigh
 
 There are two important caveats:
 
-1. You [cannot specify "autosize"](https://vega.github.io/vega-lite/docs/size.html#limitations), i.e. you cannot specify the overall dimensions, for any faceted, repeated, or concantenated chart.
+1. You [cannot specify "autosize"](https://vega.github.io/vega-lite/docs/size.html#limitations), i.e. you cannot specify the overall dimensions, for any faceted, repeated, or concatenated chart.
 
-2. The overall chart size does not take into account action-links, which generally add a height of 15-20 pixels. If you supress the links, this is not a concern. 
+2. The overall chart size does not take into account action-links, which generally add a height of 15-20 pixels. If you suppress the links, this is not a concern. 
 
 This philosophy is driven by the idea that a Vega-Lite chart likes to determine its own size, and tends to resist attempts to impose size restrictions from the outside.
 

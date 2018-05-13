@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 This document adapted from the [linked-brush scatter-plot example](https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot) found in the Altair documentation.
 
-A goal of Vega-Lite is to implement a declaritive grammmar not only of visualization, but also of interaction. The core concept of this interactive grammar is the *selection* object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.
+A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the *selection* object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.
 
 Let's start again with our basic plot from the [first example](first-example.html):
 
@@ -36,7 +36,7 @@ chart_static <-
 chart_static
 ```
 
-Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selecton, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).
+Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an *interval* selection, other types of selections are detailed in the [API reference](https://altair-viz.github.io/user_guide/API.html#altair.selection).
 
 ```{r}
 brush <- alt$selection_interval()

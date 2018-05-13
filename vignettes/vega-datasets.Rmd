@@ -19,7 +19,7 @@ The purpose of this article is to demonstrate how to use data provided by the [V
 
 Here's the short version:
 
-- We can access the Vega datasets using the `import_vega_data()` function. This packge's convention is to assign this to an object named `vega_data`.
+- We can access the Vega datasets using the `import_vega_data()` function. This package's convention is to assign this to an object named `vega_data`.
 
 - To access the data for a specific dataset, call the method for that dataset: e.g. `vega_data$cars()`. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. `vega_data$sf_temps()`.
 
@@ -120,4 +120,4 @@ chart_iris <-
 chart_iris
 ```
 
-This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudioIDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
+This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
