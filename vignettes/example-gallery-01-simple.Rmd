@@ -1,0 +1,241 @@
+---
+title: "Simple Charts"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Simple Charts](https://altair-viz.github.io/gallery/#simple-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+
+vega_data <- import_vega_data()
+```
+
+## Simple Bar Chart
+
+[Altair example](https://altair-viz.github.io/gallery/simple_bar_chart.html)
+
+#### Data
+
+<details>
+<summary>Defining data</summary>
+```{r}
+dat <-  
+  data_frame(
+    a= c("A", "B", "C", "D", "E", "F", "G", "H", "I"),
+    b =c(28, 55, 43, 91, 81, 53, 19, 87, 52)
+  )
+```
+</details>
+
+```{r}
+glimpse(dat)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(dat))$
+  mark_bar()$
+  encode(
+    x = "a",
+    y = "b"
+  )
+
+chart
+```
+
+## Simple Heatmap
+
+[Altair example](https://altair-viz.github.io/gallery/simple_heatmap.html)
+
+#### Data
+
+<details>
+<summary>Defining data</summary>
+```{r}
+# Compute x^2 + y^2 across a 2D grid
+x = -5:5
+y = -5:5
+dat <- expand.grid(x,y)
+names(dat) <- c("x", "y")
+dat$z = (dat$x^2) + (dat$y^2)
+```
+</details>
+
+```{r}
+glimpse(dat)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(dat))$
+  mark_rect()$
+  encode(
+    x = "x:O",
+    y = "y:O",
+    color = "z:Q"
+  )
+
+chart
+```
+
+## Simple Histogram
+
+[Altair example](https://altair-viz.github.io/gallery/simple_histogram.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$movies()))$
+  mark_bar()$
+  encode(
+    alt$X("IMDB_Rating", bin = TRUE), 
+    y = "count()"
+  )
+
+chart
+```
+
+## Simple Line Chart
+
+[Altair example](https://altair-viz.github.io/gallery/simple_line_chart.html)
+
+#### Data
+
+<details>
+<summary>Defining data</summary>
+```{r}
+dat <- 
+  data_frame(
+    x = 0:100,
+    sinx = sin(x / 5)
+  ) 
+```
+</details>
+
+```{r}
+glimpse(dat)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(dat))$
+  mark_line()$
+  encode(
+    x = "x",
+    y = "sinx"
+  )
+
+chart
+```
+
+## Simple Scatter Plot
+
+[Altair example](https://altair-viz.github.io/gallery/simple_scatter.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$iris())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$iris()))$
+  mark_point()$
+  encode(
+    x = "petalWidth",
+    y = "petalLength",
+    color = "species"
+  )$
+  interactive()
+
+chart
+```
+
+## Simple Stacked Area Chart
+
+[Altair example](https://altair-viz.github.io/gallery/simple_stacked_area_chart.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$unemployment_across_industries())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(
+    r_to_py(vega_data$unemployment_across_industries())
+  )$mark_area(
+  )$encode(
+    x="date:T",
+    y="count:Q",
+    color="series:N"
+  )
+
+chart
+```
+
+## Strip Plot
+
+[Altair example](https://altair-viz.github.io/gallery/strip_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_tick()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Cylinders:O"
+  )
+
+chart
+```
+
+
+
+
+
+
+
