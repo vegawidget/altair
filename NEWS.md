@@ -1,3 +1,7 @@
+# altair 0.0.4
+
+* incorporates first gallery
+
 # altair 0.0.3
 
 * adapts examples gallery from Altair (#24, @haleyjeppson)
