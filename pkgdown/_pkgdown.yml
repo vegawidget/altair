@@ -92,6 +92,7 @@ navbar:
     - text: Gallery
       menu:
         - text: Simple Charts
+          href: articles/example-gallery-01-simple.html
         - text: Bar Charts
         - text: Line Charts
         - text: Area Charts
