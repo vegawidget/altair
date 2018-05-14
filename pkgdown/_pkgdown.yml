@@ -102,4 +102,4 @@ navbar:
         - text: Interactive Charts
         - text: Other Charts
     - icon: fa-github fa-2x
-      href: https://github.com/ijlyttle/altair
+      href: https://github.com/vegawidget/altair
