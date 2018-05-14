@@ -1,3 +1,7 @@
+# altair 0.0.4.9000
+
+* bumps version for development
+
 # altair 0.0.4
 
 * incorporates first gallery
