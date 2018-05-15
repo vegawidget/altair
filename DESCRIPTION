@@ -45,7 +45,7 @@ Imports:
     magrittr,
     jsonlite,
     utils
-Suggests: 
+Suggests:
     httr,
     rprojroot,
     purrr,
@@ -56,7 +56,8 @@ Suggests:
     listviewer (>= 2.0.0),
     testthat,
     pryr,
-    stringr
+    stringr,
+    tidyr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

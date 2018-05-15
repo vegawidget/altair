@@ -94,6 +94,7 @@ navbar:
         - text: Simple Charts
           href: articles/example-gallery-01-simple.html
         - text: Bar Charts
+          href: articles/example-gallery-02-bar-chart.html
         - text: Line Charts
         - text: Area Charts
         - text: Scatterplots

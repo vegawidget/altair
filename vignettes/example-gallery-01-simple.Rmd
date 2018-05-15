@@ -33,7 +33,7 @@ vega_data <- import_vega_data()
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
 dat <-  
   data_frame(
@@ -68,7 +68,7 @@ chart
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
 # Compute x^2 + y^2 across a 2D grid
 x = -5:5
@@ -129,7 +129,7 @@ chart
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
 dat <- 
   data_frame(
@@ -197,10 +197,9 @@ glimpse(vega_data$unemployment_across_industries())
 
 ```{r}
 chart <- 
-  alt$Chart(
-    r_to_py(vega_data$unemployment_across_industries())
-  )$mark_area(
-  )$encode(
+  alt$Chart(r_to_py(vega_data$unemployment_across_industries()))$
+  mark_area()$
+  encode(
     x="date:T",
     y="count:Q",
     color="series:N"
