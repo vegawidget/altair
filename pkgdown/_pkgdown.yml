@@ -2,8 +2,8 @@ template:
   params:
     bootswatch: sandstone
     docsearch:
-        api_key: 0d6a37c7b714a8042d5ce01dad53be53
-        index_name: altair
+      api_key: 0d6a37c7b714a8042d5ce01dad53be53
+      index_name: altair
 
 development:
   mode: unreleased
