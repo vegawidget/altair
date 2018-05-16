@@ -19,7 +19,7 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 Our first step is to set up our environment:
 
 ```{r}
-# devtools::install_github("ijlyttle/altair")
+# devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
 library("jsonlite")
@@ -37,7 +37,7 @@ vega_data <- import_vega_data()
 <details>
 <summary>Definition</summary>
 ```{r}
-dat <- 
+data <- 
   data_frame(
     Day = 1:15, 
     Value = c(54.8, 112.1, 63.6, 37.6, 79.7, 137.9, 120.1, 103.3, 394.8,
@@ -49,7 +49,7 @@ data2 <- data_frame(ThresholdValue = 300, Threshold = "hazardous")
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 ```{r}
@@ -60,7 +60,7 @@ glimpse(data2)
 
 ```{r}
 bar1 <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_bar()$
   encode(
     x = "Day:O",
@@ -68,7 +68,7 @@ bar1 <-
   )
 
 bar2 <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_bar(color="#e45755")$
   encode(
     x = "Day:O",
@@ -156,11 +156,11 @@ chart <- (lower_plot + middle_plot + upper_plot + middle_tick)
 chart
 ```
 
-## Calculating Percentage of Total (not working)
+## Calculating Percentage of Total
 
 [Altair example](https://altair-viz.github.io/gallery/percentage_of_total.html)
 
-Not sure how to handle the `transform_window` part
+TODO: put a note here about the `**` in the Python code. 
 
 #### Data
 
@@ -181,7 +181,7 @@ glimpse(activities)
 
 #### Chart
 
-```{r, eval = FALSE}
+```{r}
 chart <- 
   alt$Chart(r_to_py(activities))$
   mark_bar()$
@@ -932,6 +932,9 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart.html)
 
+TODO: It may be useful to note which of these are JavaScript expressions, and to come up with a convention to denote that. For example, what is the value of wrapping in `JS()`? Is it just to denote this to ourselves? This may be reason enough to do this. Also try to figure out what is up with the `if_()` notation in Python. 
+
+
 ```{r}
 chart <- 
   alt$Chart(r_to_py(vega_data$population()))$
@@ -954,8 +957,9 @@ chart <-
   )$
   configure_view(stroke = "transparent")$
   configure_axis(domainWidth = 0.8)$
-  transform_filter("datum.year == 2000")$
-  transform_calculate("gender", 'if_(datum.sex == 2, "Female", "Male")')
+  transform_filter(JS("datum.year == 2000"))$
+  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))$
+  copy()
 
 chart
 ```
@@ -1002,7 +1006,7 @@ glimpse(vega_data$barley())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py())$
+  alt$Chart(r_to_py(vega_data$barley()))$
   mark_bar()$
   encode(
     x = "sum(yield)",
@@ -1071,12 +1075,6 @@ chart
 
 #### Data
 
-<details>
-<summary>Definition</summary>
-```{r}
-```
-</details>
-
 ```{r}
 glimpse(vega_data$population())
 ```
@@ -1085,7 +1083,7 @@ glimpse(vega_data$population())
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$population())$
+  alt$Chart(r_to_py(vega_data$population()))$
   mark_bar(opacity = 0.7)$
   encode(
     x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
@@ -1098,10 +1096,10 @@ chart <-
       "gender:N", 
       scale = alt$Scale(range = list("#EA98D2", "#659CCA")))
   )$
-  transform_filter("datum.year == 2000")$
-  transform_calculate("gender", 'if_(datum.sex == 2, "Female", "Male")')
+  transform_filter(JS("datum.year == 2000"))$
+  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))
 
-vegalite(plot)
+chart
 ```
 
 ## Layered Bar Chart
@@ -1115,14 +1113,14 @@ vegalite(plot)
 #### Data
 
 ```{r}
-source <- r_to_py(vega_data$seattle_weather())
-
-glimpse(source)
+glimpse(vega_data$seattle_weather())
 ```
 
 #### Chart
 
 ```{r}
+source <- r_to_py(vega_data$seattle_weather())
+
 bar <- 
   alt$Chart(source)$
   mark_bar()$
@@ -1148,19 +1146,19 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/layered_plot_with_dual_axis.html) 
 
+TODO: find a diplomatic way to say that this seems to support Hadley's (and others') edict on dual axes.
+
 #### Data
 
 ```{r}
-source <- r_to_py(vega_data$seattle_weather())
-
-glimpse(source)
+glimpse(vega_data$seattle_weather())
 ```
 
 #### Chart
 
 ```{r}
 base <- 
-  alt$Chart(source)$
+  alt$Chart(r_to_py(vega_data$seattle_weather()))$
   encode(
     x = alt$X(
       "date:O",
@@ -1199,16 +1197,14 @@ chart
 #### Data
 
 ```{r}
-source <- r_to_py(vega_data$seattle_weather())
-
-glimpse(source)
+glimpse(vega_data$population())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(source)$
+  alt$Chart(r_to_py(vega_data$population()))$
   mark_bar()$
   encode(
     x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
@@ -1222,10 +1218,10 @@ chart <-
       scale = alt$Scale(range = c("#EA98D2", "#659CCA"))
     )
   )$
-  transform_filter("datum.year == 2000")$
-  transform_calculate("gender", 'if_(datum.sex == 2, "Female", "Male")')
+  transform_filter(JS("datum.year == 2000"))$
+  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))
 
-vegalite(chart)
+chart
 ```
 
 ## Simple Bar Chart with Labels
@@ -1278,15 +1274,13 @@ chart
 
 
 ```{r}
-weather <- r_to_py(vega_data$seattle_weather())
-
-glimpse(weather)
+glimpse(vega_data$seattle_weather())
 ```
 
 #### Chart
 ```{r}
 chart <- 
-  alt$Chart(weather)$
+  alt$Chart(r_to_py(vega_data$seattle_weather()))$
   mark_bar()$
   encode(
     x = alt$X(
@@ -1297,7 +1291,7 @@ chart <-
     y = "count(weather)",
     color = alt$Color(
       "weather:N",
-      legend = alt$Legend(title="Weather type"),
+      legend = alt$Legend(title = "Weather type"),
       scale = alt$Scale(
         domain = list("sun", "fog", "drizzle", "rain", "snow"),
         range = list("#e7ba42", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd")
@@ -1313,15 +1307,13 @@ chart
 [Altair example](https://altair-viz.github.io/gallery/trellis_stacked_bar_chart.html)
 
 ```{r}
-barley <- r_to_py(vega_data$barley())
-
-glimpse(barley)
+glimpse(vega_data$barley())
 ```
 
 #### Chart
 ```{r}
 chart <- 
-  alt$Chart(barley)$
+  alt$Chart(r_to_py(vega_data$barley()))$
   mark_bar()$
   encode(
     x = "sum(yield)",
