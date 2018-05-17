@@ -99,10 +99,15 @@ navbar:
         - text: Bar Charts
           href: articles/example-gallery-02-bar-chart.html
         - text: Line Charts
+          href: articles/example-gallery-03-line-charts.html
         - text: Area Charts
+          href: example-gallery-04-area-charts.html
         - text: Scatterplots
+          href: example-gallery-05-scatter-plots.html
         - text: Histograms
+          href: example-gallery-06-histograms.html
         - text: Maps
+          href: example-gallery-07-maps.html
         - text: Interactive Charts
         - text: Other Charts
     - icon: fa-github fa-2x

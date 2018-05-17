@@ -1,0 +1,197 @@
+---
+title: "Area charts"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Bar Charts](https://altair-viz.github.io/gallery/index.html#bar-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("jsonlite")
+
+vega_data <- import_vega_data()
+```
+
+## Horizon Graph
+
+[Altair example](https://altair-viz.github.io/gallery/horizon_graph.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- fromJSON('[
+  {"x": 1,  "y": 28}, {"x": 2,  "y": 55},
+  {"x": 3,  "y": 43}, {"x": 4,  "y": 91},
+  {"x": 5,  "y": 81}, {"x": 6,  "y": 53},
+  {"x": 7,  "y": 19}, {"x": 8,  "y": 87},
+  {"x": 9,  "y": 52}, {"x": 10, "y": 48},
+  {"x": 11, "y": 24}, {"x": 12, "y": 49},
+  {"x": 13, "y": 87}, {"x": 14, "y": 66},
+  {"x": 15, "y": 17}, {"x": 16, "y": 27},
+  {"x": 17, "y": 68}, {"x": 18, "y": 16},
+  {"x": 19, "y": 49}, {"x": 20, "y": 15}
+]')
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+area1 <- 
+  alt$Chart(r_to_py(data))$
+  mark_area(clip = TRUE, interpolate="monotone")$
+  encode(
+    x = alt$X("x", scale = alt$Scale(zero = FALSE, nice = FALSE)),
+    y = alt$Y(
+      "y", 
+      scale = alt$Scale(domain = list(0, 50)), 
+      axis = alt$Axis(title = "y")
+    ),
+    opacity = alt$value(0.6)
+  )$
+  properties(
+    width = 500,
+    height = 75
+  )
+
+area2 <- 
+  area1$
+  encode(
+    y = alt$Y("ny:Q", scale=alt$Scale(domain=list(0, 50)))
+  )$
+  transform_calculate("ny", "datum.y - 50")
+
+chart <- (area1 + area2)
+
+chart
+```
+
+## Interval Selection Example
+
+Click-and-drag on the bottom chart.
+
+[Altair example](https://altair-viz.github.io/gallery/interval_selection.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$sp500())
+```
+
+#### Chart
+
+```{r}
+brush <- alt$selection(type = "interval", encodings = list("x"))
+
+upper <- 
+  alt$Chart()$
+  mark_area()$
+  encode(
+    alt$X("date:T", scale = list("domain" = brush$ref())),
+    y = "price:Q"
+  )$
+  properties(
+    width = 600,
+    height = 200
+  )
+
+lower <- 
+  upper$
+  properties(
+    selection = brush,
+    height=60
+  )
+
+chart <- alt$vconcat(upper, lower, data = r_to_py(vega_data$sp500()))
+
+chart
+```
+
+## Streamgraph
+
+[Altair example](https://altair-viz.github.io/gallery/streamgraph.html)
+
+#### Data
+
+```{r}
+source <- vega_data$unemployment_across_industries()
+
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(source))$
+  mark_area()$
+  encode(
+    x = alt$X(
+      "date:T",
+      timeUnit = "yearmonth",
+      axis = alt$Axis(format = "%Y", domain = FALSE, tickSize = 0)
+    ),
+    y = alt$Y("sum(count):Q", stack = "center", axis = NULL),
+    color = alt$Color("series:N", scale = alt$Scale(scheme = "category20b"))
+  )$
+  interactive()
+
+chart
+```
+
+## Trellis Area
+
+[Altair example](https://altair-viz.github.io/gallery/trellis_area.html)
+
+#### Data
+
+```{r}
+source <- vega_data$stocks()
+
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(source))$
+  mark_area()$
+  encode(
+    x = alt$X(
+      "date:T", 
+      axis = alt$Axis(format = "%Y", title = "Time", grid = FALSE)
+    ),
+    y = alt$Y("price:Q", axis = alt$Axis(title = "Price", grid = FALSE)),
+    color = alt$Color("symbol", legend = NULL),
+    row = alt$Row("symbol:N", header = alt$Header(title = "Symbol"))
+  )$
+  properties(
+    width = 300,
+    height = 40
+  )$
+  transform_filter("datum.symbol != 'GOOG'")
+
+chart
+```

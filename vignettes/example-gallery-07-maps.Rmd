@@ -1,0 +1,345 @@
+---
+title: "Maps"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Bar Charts](https://altair-viz.github.io/gallery/index.html#bar-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("purrr")
+library("dplyr")
+
+vega_data <- import_vega_data()
+```
+
+## Choropleth Map 
+
+[Altair example](https://altair-viz.github.io/gallery/choropleth.html)
+
+A couple of points here - it is not straightforward to preview the topological data, or the unemployment data. Furthermore, we are using the URLs, which means that this example will not render in the RStudio IDE, although it will render in an external browser. 
+
+#### Data
+
+```{r}
+counties <- alt$topo_feature(vega_data$us_10m$url, "counties")
+unemp_data <- vega_data$unemployment$url
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(counties)$
+  mark_geoshape()$
+  encode(
+    color = "rate:Q"
+  )$
+  transform_lookup(
+    lookup = "id",
+    from_ = alt$LookupData(unemp_data, "id", list("rate"))
+  )$
+  project(type = "albersUsa")$
+  properties(width = 500, height = 300)
+
+chart
+```
+
+## Locations of US Airports 
+
+[Altair example](https://altair-viz.github.io/gallery/airports.html)
+
+#### Data
+
+```{r}
+us <- vega_data$us_10m$url
+```
+
+```{r}
+airports <- vega_data$airports()
+glimpse(airports)
+```
+
+#### Chart
+
+Something is not being specified correctly in the line`alt$topo_feature(us, feature="states")`
+
+```{r}
+states <- alt$topo_feature(us, feature = "states")
+
+# US states background
+background <-
+  alt$Chart(r_to_py(states))$
+  mark_geoshape(
+    fill = "lightgray",
+    stroke = "white"
+  )$
+  properties(width = 500, height = 300)$
+  project("albersUsa")
+
+# airport positions on background
+points <- 
+  alt$Chart(r_to_py(airports))$
+  mark_circle()$
+  encode(
+    longitude = "longitude:Q",
+    latitude = "latitude:Q",
+    size = alt$value(10),
+    color = alt$value("steelblue")
+  )
+
+chart <- (background + points)
+
+chart
+```
+
+## London Tube Lines 
+
+[Altair example](https://altair-viz.github.io/gallery/london_tube.html)
+
+#### Data
+
+```{r}
+boroughs <- alt$topo_feature(vega_data$londonBoroughs$url, "boroughs")
+tubelines <- alt$topo_feature(vega_data$londonTubeLines$url, "line")
+
+centroids <- vega_data$londonCentroids()
+glimpse(centroids)
+```
+
+#### Chart
+
+```{r}
+centroids <- r_to_py(centroids)
+
+domain_line <- 
+  list("Bakerloo", "Central", "Circle", "District", "DLR", 
+       "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
+       "Piccadilly", "Victoria", "Waterloo & City" )
+
+range_line <- 
+  list("rgb(137,78,36)", "rgb(220,36,30)", "rgb(255,206,0)",
+       "rgb(1,114,41)", "rgb(0,175,173)", "rgb(215,153,175)",
+       "rgb(106,114,120)", "rgb(114,17,84)", "rgb(0,0,0)",
+       "rgb(0,24,168)", "rgb(0,160,226)", "rgb(106,187,170)")
+
+background <-
+  alt$Chart(boroughs)$
+  mark_geoshape(stroke = "white", strokeWidth = 2)$
+  encode(
+    color = alt$value("#eee")
+  )$
+  properties(width = 700, height = 500)
+
+labels <- 
+  alt$Chart(centroids)$
+  mark_text()$
+  encode(
+    longitude = "cx:Q",
+    latitude = "cy:Q",
+    text = "bLabel:N",
+    size = alt$value(8),
+    opacity = alt$value(0.6)
+  )$
+  transform_calculate("bLabel", "indexof (datum.name,' ') > 0  ? substring(datum.name,0,indexof(datum.name, ' ')) : datum.name")
+
+line_scale <- 
+  alt$Scale(domain = domain_line, range = range_line)
+
+lines <- 
+  alt$Chart(tubelines)$
+  mark_geoshape(filled = FALSE, strokeWidth = 2)$
+  encode(
+    color = alt$Color(
+      "id:N",
+      legend = alt$Legend(
+      title = NULL,
+      orient = "bottom-right",
+      offset = 0
+    )
+  )
+)
+
+chart <- (background + labels + lines)
+
+chart
+```
+
+## One Dot Per Zipcode
+
+[Altair example](https://altair-viz.github.io/gallery/one_dot_per_zipcode.html)
+
+Here is the [issue](https://github.com/altair-viz/altair/issues/611) where there has to be less than 5000 observations
+
+#### Data
+
+```{r}
+zips <- vega_data$zipcodes() %>% sample_n(5000)
+glimpse(zips)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(zips))$
+  mark_circle(size = 3)$
+  encode(
+    longitude = "longitude:Q",
+    latitude = "latitude:Q",
+    color = "digit:N"
+  )$
+  properties(
+    projection = list(type = "albersUsa"),
+    width = 650,
+    height = 400
+  )$
+  transform_calculate("digit", "substring(datum.zip_code, 0, 1)")
+
+chart
+```
+
+## Repeated Choropleth Map
+
+[Altair example](https://altair-viz.github.io/gallery/choropleth_repeat.html)
+
+#### Data
+
+```{r}
+pop_eng_hur <- vega_data$population_engineers_hurricanes()
+
+glimpse(pop_eng_hur)
+```
+
+#### Chart
+
+```{r}
+states <- alt$topo_feature(vega_data$us_10m$url, "states")
+
+pop_eng_hur <- r_to_py(pop_eng_hur)
+
+variable_list <- list("population", "engineers", "hurricanes")
+
+chart <- 
+  alt$Chart(states)$
+  mark_geoshape()$
+  encode(
+    color = alt$Color(alt$`repeat`("row"), type = "quantitative")
+  )$
+  transform_lookup(
+    lookup = "id",
+    from_ = alt$LookupData(pop_eng_hur, "id", variable_list)
+  )$
+  properties(width = 500, height = 300)$
+  project(type = "albersUsa")$
+  `repeat`(row = variable_list)$
+  resolve_scale(color = "independent")
+
+chart
+```
+
+## U.S. state capitals overlayed on a map of the U.S
+
+[Altair example](https://altair-viz.github.io/gallery/us_state_capitals.html)
+
+#### Data
+
+```{r}
+capitals <- vega_data$us_state_capitals()
+glimpse(capitals)
+```
+
+#### Chart
+
+```{r}
+states <- alt$topo_feature(vega_data$us_10m$url, "states")
+capitals <- r_to_py(capitals)
+
+# US states background
+background <- 
+  alt$Chart(states)$
+  mark_geoshape(fill = "lightgray",stroke = "white")$
+  properties(title = "US State Capitols", width = 700, height = 400)$
+  project("albersUsa")
+
+# Points and text
+hover <- 
+  alt$selection(
+    type = "single", 
+    on = "mouseover", 
+    nearest = TRUE,
+    fields = list("lat", "lon")
+  )
+
+base <- 
+  alt$Chart(capitals)$
+  encode(
+    longitude = "lon:Q",
+    latitude = "lat:Q"
+  )
+
+text <- 
+  base$
+  mark_text(dy = -5, align = "right")$
+  encode(
+    alt$Text("city", type = "nominal"),
+    # switched from reference
+    opacity = alt$condition(hover, alt$value(1), alt$value(0))
+  )
+
+points <- 
+  base$
+  mark_point()$
+  encode(
+    color = alt$value("black"),
+    # switched from reference
+    size = alt$condition(hover, alt$value(100), alt$value(30))
+  )$
+  properties(selection = hover)
+
+chart <- (background + points + text)
+
+chart
+```
+
+## World Projections 
+
+[Altair example](https://altair-viz.github.io/gallery/world_projections.html)
+
+Please see the [Vega documentation](https://vega.github.io/vega-lite/docs/projection.html) for more details on the projections available. 
+
+TODO: discuss purrr
+
+```{r}
+countries <- alt$topo_feature(vega_data$world_110m$url, "countries")
+
+base <-  
+  alt$Chart(countries)$
+  mark_geoshape(fill = "#666666",stroke = "white")$
+  properties(width = 300, height = 180)
+
+projections <- list("equirectangular", "mercator", "orthographic", "gnomonic")
+
+# this seems to be a way to make a facet_wrap
+charts <- map(projections, ~base$project(.x)$properties(title = .x))
+
+chart <- (charts[[1]] | charts[[2]]) & (charts[[3]] | charts[[4]])
+
+chart
+```
+

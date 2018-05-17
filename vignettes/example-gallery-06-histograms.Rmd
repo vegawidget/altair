@@ -1,0 +1,132 @@
+---
+title: "Histograms"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+This document is adapted from the [Bar Charts](https://altair-viz.github.io/gallery/index.html#bar-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("tidyr")
+
+vega_data <- import_vega_data()
+```
+
+## Histogram with a Global Mean Overlay
+
+[Altair example](https://altair-viz.github.io/gallery/histogram_with_a_global_mean_overlay.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+data <- r_to_py(vega_data$movies())
+
+bar <- 
+  alt$Chart(data)$
+  mark_bar()$
+  encode(
+    x = alt$X("IMDB_Rating:Q", bin=TRUE, axis=NULL),
+    y = alt$Y("count(IMDB_Rating)")
+  )
+
+rule <- 
+  alt$Chart(data)$
+  mark_rule(color = "red")$
+  encode(
+    x = "mean(IMDB_Rating):Q",
+    size = alt$value(5)
+  )
+
+chart <- (bar + rule)
+
+chart
+```
+
+## Layered Histogram
+
+[Altair example](https://altair-viz.github.io/gallery/layered_histogram.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- 
+  data_frame(
+    Trial_A = rnorm(1000, 0, 0.8),
+    Trial_B = rnorm(1000, -2, 1),
+    Trial_C = rnorm(1000, 3, 2)
+  ) %>%
+  gather(Experiment, Measurement)
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(data))$
+  mark_area(opacity = 0.3, interpolate="step")$
+  encode(
+    x = alt$X("Measurement", bin = alt$Bin(maxbins = 100)),
+    y = alt$Y("count(Measurement)", stack = NULL),
+    color = alt$Color(
+      "Experiment",
+      scale = alt$Scale(range = list("#0000ff", "#008000", "#ff0000"))
+    )
+  )
+
+chart
+```
+
+## Trellis Histogram
+
+[Altair example](https://altair-viz.github.io/gallery/trellis_histogram.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_bar()$
+  encode(
+    x = alt$X("Horsepower:Q", bin = TRUE),
+    y = "count(Horsepower)",
+    row = "Origin"
+  )
+
+chart
+```
+
