@@ -1,0 +1,308 @@
+---
+title: "Other Charts"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Other Charts](https://altair-viz.github.io/gallery/index.html#other-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("dplyr")
+
+vega_data <- import_vega_data()
+```
+
+## Binned Movie Rating Heatmap
+
+[Altair Example](https://altair-viz.github.io/gallery/binned_heatmap.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$movies()))$
+  mark_rect()$
+  encode(
+    x = alt$X("IMDB_Rating:Q", bin = alt$Bin(maxbins = 60)),
+    y = alt$Y("Rotten_Tomatoes_Rating:Q", bin=alt$Bin(maxbins = 40)),
+    color = alt$Color(
+      "count(IMDB_Rating):Q", 
+      scale = alt$Scale(scheme = "greenblue")
+    )
+  )
+
+chart
+```
+
+## Facetted Scatterplot with marginal histograms
+
+[Altair Example](https://altair-viz.github.io/gallery/scatter_marginal_hist.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$iris())
+```
+
+#### Chart
+
+```{r}
+iris <- r_to_py(vega_data$iris())
+
+xscale <- alt$Scale(domain = list(4.0, 8.0))
+yscale <- alt$Scale(domain = list(1.9, 4.55))
+
+blank_axis <- alt$Axis(title = "")
+
+points <- 
+  alt$Chart(iris)$
+  mark_circle()$
+  encode(
+    alt$X("sepalLength", scale = xscale),
+    alt$Y("sepalWidth", scale = yscale),
+    color = "species"
+  )
+
+top_hist <-
+  alt$Chart(iris)$
+  mark_area(opacity = 0.3, interpolate = "step")$
+  encode(
+    x = alt$X("sepalLength:Q",
+          # when using bins, the axis scale is set through
+          # the bin extent, so we do not specify the scale here
+          # (which would be ignored anyway)
+          bin = alt$Bin(maxbins = 20, extent = xscale$domain),
+          stack = NULL,
+          axis = blank_axis
+        ),
+    y = alt$Y("count(sepalLength)", stack = NULL, axis = blank_axis),
+    color = alt$Color("species:N")
+  )$
+  properties(height=60)
+
+right_hist <- 
+  alt$Chart(iris)$
+  mark_area(opacity= 0.3, interpolate= "step")$
+  encode(
+    x = alt$X("count(sepalWidth)", stack=NULL, axis=blank_axis),
+    y = alt$Y(
+      "sepalWidth:Q",
+      bin = alt$Bin(maxbins = 20, extent = yscale$domain),
+      stack = NULL,
+      axis = blank_axis
+    ),
+    color = alt$Color("species:N")
+  )$
+  properties(width=60)
+
+chart <- (top_hist & (points | right_hist))
+
+chart
+```
+
+## Layering text over a heatmap
+
+[Altair Example](https://altair-viz.github.io/gallery/layered_heatmap_text.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+cars <- r_to_py(vega_data$cars())
+
+heatmap <- 
+  alt$Chart(cars)$
+  mark_rect()$
+  encode(
+    x = alt$X("Cylinders:O", scale = alt$Scale(paddingInner = 0)),
+    y = alt$Y("Origin:O", scale = alt$Scale(paddingInner = 0)),
+    color= "count(Cylinders)"
+  )
+
+text <- 
+  alt$Chart(cars)$
+  mark_text(baseline="middle")$
+  encode(
+    x = "Cylinders:O",
+    y = "Origin:O",
+    text = "count(Cylinders)",
+    color = alt$condition(
+      "datum['count_*'] > 100",
+      alt$value("black"),
+      alt$value("white")
+    )
+  )
+
+chart <- (heatmap + text)
+
+chart
+```
+
+## Multiple Marks
+
+[Altair Example](https://altair-viz.github.io/gallery/multiple_marks.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$stocks())
+```
+
+#### Chart
+
+```{r}
+stocks <- r_to_py(vega_data$stocks())
+
+chart <- 
+  alt$LayerChart(stocks)$
+  encode(
+    x = "date:T",
+    y = "price:Q",
+    color = "symbol:N"
+  )$add_layers(
+    alt$Chart()$mark_point(),
+    alt$Chart()$mark_line()
+  )
+
+chart
+```
+
+## Ranged Dot Plot
+
+[Altair Example](https://altair-viz.github.io/gallery/ranged_dot_plot.html)
+
+> This example shows a ranged dot plot that uses *layer* to convey changing life expectancy for the five most populous countries (between 1955 and 2000).
+
+#### Data
+
+Cannot get the Vega-Lite data-layer to work.
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- 
+  vega_data$countries() %>%
+  select(-`_comment`) %>%
+  filter(
+    country %in% c("China", "India", "United States", "Indonesia", "Brazil"),
+    year %in% c(1955, 2000)
+  ) 
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+# layer_data <- 
+#   alt$layer(data = vega_data$countries$url)$
+#   transform_filter(
+#     filter = list(
+#       field = "country",
+#       oneOf = list("China", "India", "United States", "Indonesia", "Brazil")
+#     )
+#   )$
+#   transform_filter(
+#     filter = list(field = "year", oneOf = list(1955, 2000))
+#   )
+
+chart_line <-
+  alt$Chart()$
+  mark_line(color = "#db646f")$
+  encode(
+    x = "life_expect:Q",
+    y = "country:N",
+    detail = "country:N"
+  )
+
+# Add points for life expectancy in 1955 & 2000
+chart_point <- 
+  alt$Chart()$
+  mark_point(size = 100, opacity = 1, filled = TRUE)$
+  encode(
+    x = "life_expect:Q",
+    y = "country:N",
+    color = alt$Color(
+      "year:O",
+      scale = alt$Scale(
+        domain = list("1955", "2000"), 
+        range = list("#e6959c", "#911a24")
+      )
+    )
+  )$interactive()
+
+chart <- 
+  (chart_line + chart_point)$
+  properties(data = r_to_py(data))
+
+chart
+```
+
+## Steam and Leaf Plot
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+</details>
+
+#### Chart
+
+## Trail Marker
+
+> The `trail` marker is like the `line` marker, but it allows properties of the line (such as thickness) to vary along the length of the line. This shows a simple example of the trail mark using stock prices.
+
+#### Data
+
+```{r}
+glimpse(vega_data$stocks())
+```
+
+#### Chart
+
+```{r}
+chart <-
+  alt$Chart(stocks)$
+  mark_trail()$
+  encode(
+    x = "date:T",
+    y = "price:Q",
+    size = "price:Q",
+    color = "symbol:N"
+  )
+
+chart
+```
+
+
+
+

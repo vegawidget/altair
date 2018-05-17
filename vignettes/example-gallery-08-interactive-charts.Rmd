@@ -15,6 +15,8 @@ Our first step is to set up our environment:
 # devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
+library("dplyr")
+library("tidyr")
 
 vega_data <- import_vega_data()
 ```
@@ -103,7 +105,7 @@ glimpse(movies)
 
 #### Chart
 
-```{r, eval = FALSE}
+```{r}
 pts <- alt$selection(type = "single", encodings = list("x"))
 
 rect <- 
@@ -163,7 +165,7 @@ glimpse(flights)
 
 #### Chart
 
-```{r, eval = FALSE}
+```{r}
 brush <- alt$selection_interval(encodings = list("x"))
 
 # Define the base chart, with the common parts of the
@@ -232,8 +234,9 @@ chart
 
 ## Multi-Line Highlight
 
-
 [Altair example](https://altair-viz.github.io/gallery/multiline_highlight.html)
+
+This multi-line chart uses an invisible Voronoi tessellation to handle mouseover to identify the nearest point and then highlight the line on which the point falls. It is adapted from [amitkamp's block](https://bl.ocks.org/amitkaps/fe4238e716db53930b2f1a70d3401701).
 
 #### Data
 
@@ -280,13 +283,118 @@ chart
 
 ## Multi-Line Tooltip
 
+[Altair Example](https://altair-viz.github.io/gallery/multiline_tooltip.html)
 
-[Altair example]()
+This example usex selections and layers to create a multi-line tooltip that tracks the x position of the cursor.
 
+To find the x-position of the cursor, little trick is used: adding some transparent points with only an x encoding (no `y` encoding) and tie a nearest selection to these, tied to the `x` field.
 
-#### Seattle Weather Interactive
+#### Data
 
-```{r, eval = FALSE}
+<details>
+<summary>Definition</summary>
+```{r}
+set.seed(42)
+
+category <- c("A", "B", "C")
+x <- seq(1, 100)
+
+data <-
+  crossing(
+    category = c("A", "B", "C"),
+    x = seq(1, 100)
+  ) %>%
+  mutate(y = rnorm(n()) %>% round(2)) %>%
+  group_by(category) %>%
+  mutate(y = cumsum(y)) %>%
+  ungroup()
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+# Create a selection that chooses the nearest point & selects based on x-value
+nearest <- alt$selection(
+  type = "single", 
+  nearest = TRUE, 
+  on = "mouseover",
+  fields = list("x"), 
+  empty = "none"
+)
+
+# The basic line
+line <- 
+  alt$Chart()$
+  mark_line(interpolate = "basis")$
+  encode(
+    x = "x:Q",
+    y = "y:Q",
+    color = "category:N"
+  )
+
+# Transparent selectors across the chart. This is what tells us
+# the x-value of the cursor
+selectors <- 
+  alt$Chart()$
+    mark_point()$
+    encode(
+      x = "x:Q",
+      opacity = alt$value(0)
+    )$
+    properties(selection = nearest)$
+    copy()
+
+# Draw points on the line, and highlight based on selection
+points <-
+  line$
+  mark_point()$
+  encode(
+    opacity = alt$condition(nearest, alt$value(1), alt$value(0))
+  )
+
+# Draw text labels near the points, and highlight based on selection
+text <- 
+  line$
+  mark_text(align = "left", dx = 5, dy = -5)$
+  encode(
+    text = alt$condition(nearest, "y:Q", alt$value(" "))
+  )
+
+# Draw a rule at the location of the selection
+rules <- 
+  alt$Chart()$
+  mark_rule(color = "gray")$
+  encode(
+    x = "x:Q"
+  )$
+  transform_filter(nearest$ref())
+
+# Put the five layers into a chart and bind the data
+chart <-  
+  (line + selectors + points + rules + text)$
+  properties(data = r_to_py(data), width = 600, height = 300)
+
+chart
+```
+
+## Seattle Weather Interactive
+
+[Altair example](https://altair-viz.github.io/gallery/seattle_weather_interactive.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$seattle_weather())
+```
+
+#### Chart
+
+```{r}
 scale <- alt$Scale(
   domain = list("sun", "fog", "drizzle", "rain", "snow"),
   range = list("#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd")
@@ -339,18 +447,100 @@ chart <-
     data = r_to_py(vega_data$seattle_weather()),
     title = "Seattle Weather: 2012-2015"
   )  
+
+chart
 ```
 
 ## Selection Detail Example
 
+[Altair example](https://altair-viz.github.io/gallery/select_detail.html)
 
-[Altair example]()
+> This example shows a selection that links two views of data: the left panel contains one point per object, and the right panel contains one line per object. Clicking on either the points or lines will select the corresponding objects in both views of the data.
+> 
+>The challenge lies in expressing such hierarchical data in a way that Altair can handle. We do this by merging the data into a “long form” dataframe, and aggregating identical metadata for the final plot.
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+n_objects <- 20
+n_times <- 50
+
+# Create one (x, y) pair of metadata per object
+locations <- 
+  tibble(
+    id = seq(1, n_objects),
+    x = rnorm(n_objects),
+    y = rnorm(n_objects)
+  )
+
+# Create a 50-element time-series for each object
+timeseries <-
+  crossing(
+    id = seq(1, n_objects),
+    time = seq(1, n_times)
+  ) %>%
+  mutate(value = rnorm(n())) %>%
+  group_by(id) %>%
+  mutate(value = cumsum(value)) %>%
+  ungroup()
+
+
+# Merge the (x, y) metadata into the long-form view
+data <- left_join(timeseries, locations, by = "id")
+```
+</details>
+
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+selector <- alt$selection_single(empty = "all", fields = list("id"))
+
+points <- 
+  alt$Chart(r_to_py(data))$
+  mark_point(filled = TRUE, size = 200)$
+  encode(
+    x = "mean(x)",
+    y = "mean(y)",
+    color = alt$condition(
+      selector,
+      "id:O",
+      alt$value("lightgray"),
+      legend = NULL
+    )
+  )$
+  properties(selection = selector, width = 250, height = 250)$
+  interactive()$
+  copy()
+
+timeseries <- 
+  alt$Chart(r_to_py(data))$
+    mark_line()$
+    encode(
+      x = "time",
+      y = alt$Y("value", scale = alt$Scale(domain = c(-15, 15))),
+      color = alt$Color("id:O", legend = NULL)
+  )$
+  transform_filter(selector)$
+  properties(selection = selector, width = 250, height = 250)
+
+points | timeseries
+```
 
 ## Selection Histogram
 
 
-[Altair example]()
+[Altair example](https://altair-viz.github.io/gallery/selection_histogram.html)
 
+> This chart shows an example of using an interval selection to filter the contents of an attached histogram, allowing the user to see the proportion of items in each category within the selection.
+
+TODO: find a way to fix the numerical scale of the bar chart
 
 #### Data
 
@@ -392,8 +582,7 @@ chart
 
 ## Simple Interactive Colored Scatterplot
 
-
-[Altair example]()
+[Altair example](https://altair-viz.github.io/gallery/interactive_scatter_plot.html)
 
 #### Data
 
@@ -414,13 +603,14 @@ chart <-
   )$
   interactive()
 
-vegalite(plot)
+chart
 ```
 
 ## US Population Over Time
 
+[Altair example](https://altair-viz.github.io/gallery/us_population_over_time.html)
 
-[Altair example]()
+> This chart visualizes the age distribution of the US population over time. It uses a slider widget that is bound to the year to visualize the age distribution over time.
 
 #### Data
 
@@ -457,7 +647,7 @@ chart <-
     column = "age:O"
   )$
   properties(width = 20, selection = year)$
-  transform_calculate("sex", 'if_(datum.sex == 1, "Male", "Female")')$
+  transform_calculate("sex", JS('if(datum.sex == 1, "Male", "Female")'))$
   transform_filter(year$ref())
 
 chart

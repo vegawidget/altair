@@ -109,6 +109,8 @@ navbar:
         - text: Maps
           href: example-gallery-07-maps.html
         - text: Interactive Charts
+          href: example-gallery-08-interactive-charts.html
         - text: Other Charts
+          href: example-gallery-09-other-charts.html
     - icon: fa-github fa-2x
       href: https://github.com/vegawidget/altair
