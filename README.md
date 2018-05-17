@@ -66,7 +66,7 @@ You may wish to add a line like this to the `.First()` function in your
 reticulate::use_condaenv("r-reticulate")
 ```
 
-This provides a [hint to
+The `use_condaenv()` function is called to provide a [hint to
 reticulate](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
 on which Python environment to use.
 
@@ -109,7 +109,7 @@ Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 ## Articles
 
 The documentation for this package includes some
-    articles:
+[articles](https://vegawidget.github.io/altair/articles/index.html):
 
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
     some more-detailed
@@ -121,8 +121,13 @@ The documentation for this package includes some
 
 Gallery:
 
-  - Watch this space for an adaptation to R of the [Altair Example
-    Gallery](https://altair-viz.github.io/gallery).
+  - An adaptation to R of the [Altair Example
+    Gallery](https://altair-viz.github.io/gallery), to demonstrate (not
+    least to ourselves) that we are not missing any of the
+    expressiveness of the Python API. You may be interested in the
+    [Interactive
+    Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html)
+    examples.
 
 Examples:
 
@@ -183,9 +188,7 @@ author:
     JavaScript, and package-API issues.
 
   - [Haley Jeppson](https://github.com/haleyjeppson) has adapted the
-    [Altair Example Gallery](https://altair-viz.github.io/gallery) to R,
-    which will be integrated into the [project
-    website](https://vegawidget.github.io/altair) in the coming days.
+    [Altair Example Gallery](https://altair-viz.github.io/gallery) to R.
 
   - [Heike Hofmann](https://github.com/heike) has been an invaluable
     advisor, providing incisive feedback, and insight into the

@@ -27,6 +27,11 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
@@ -60,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4.9000</span>
       </span>
     </div>
 
@@ -78,10 +83,7 @@
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -129,23 +131,48 @@
     <li>
       <a href="../articles/example-gallery-01-simple.html">Simple Charts</a>
     </li>
-    <li class="dropdown-header">Bar Charts</li>
-    <li class="dropdown-header">Line Charts</li>
-    <li class="dropdown-header">Area Charts</li>
-    <li class="dropdown-header">Scatterplots</li>
-    <li class="dropdown-header">Histograms</li>
-    <li class="dropdown-header">Maps</li>
-    <li class="dropdown-header">Interactive Charts</li>
-    <li class="dropdown-header">Other Charts</li>
+    <li>
+      <a href="../articles/example-gallery-02-bar-charts.html">Bar Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-03-line-charts.html">Line Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-04-area-charts.html">Area Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-05-scatter-plots.html">Scatterplots</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-06-histograms.html">Histograms</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-07-maps.html">Maps</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+    </li>
   </ul>
 </li>
-<li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
   <a href="https://github.com/vegawidget/altair">
     <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -193,6 +220,23 @@
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '0d6a37c7b714a8042d5ce01dad53be53',
+    indexName: 'altair',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>
