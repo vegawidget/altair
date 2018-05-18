@@ -33,6 +33,8 @@ vega_data <- import_vega_data()
 
 [Altair example](https://altair-viz.github.io/gallery/cumulative_wiki_donations.html)
 
+> This chart shows cumulative donations to Wikipedia over the past 10 years. Inspired by this [Reddit post](https://www.reddit.com/r/dataisbeautiful/comments/7guwd0/cumulative_wikimedia_donations_over_the_past_10/) but using lines instead of areas.
+
 #### Data
 
 ```{r}
@@ -181,6 +183,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/layer_line_color_rule.html)
 
+> This example shows how to make a multi series line chart of the daily closing stock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000 and 2010, along with a layered rule showing the average values.
 
 #### Data
 
@@ -255,8 +258,9 @@ chart
 
 ## Line chart with Confidence Interval Band
 
-
 [Altair example](https://altair-viz.github.io/gallery/line_with_ci.html)
+
+> This example shows how to make a line chart with a bootstrapped 95% confidence interval band.
 
 #### Data
 
@@ -360,6 +364,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/step_chart.html)
 
+> This example shows Google`s stock price over time. This uses the `step-after` interpolation scheme. The full list of interpolation options includes `linear`, `linear-closed`, `step`, `step-before`, `step-after`, `basis`, `basis-open`, `basis-closed`, `cardinal`, `cardinal-open`, `cardinal-closed`, `bundle`, and `monotone`.
 
 #### Data
 

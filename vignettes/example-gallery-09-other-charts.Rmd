@@ -59,6 +59,10 @@ chart
 
 [Altair Example](https://altair-viz.github.io/gallery/scatter_marginal_hist.html)
 
+There is a slight difference from the Altair example in the `yscale`, to get everything to line-up correctly.
+
+TODO - note this at ALtair.
+
 #### Data
 
 ```{r}
@@ -71,7 +75,7 @@ glimpse(vega_data$iris())
 iris <- r_to_py(vega_data$iris())
 
 xscale <- alt$Scale(domain = list(4.0, 8.0))
-yscale <- alt$Scale(domain = list(1.9, 4.55))
+yscale <- alt$Scale(domain = list(1.8, 4.6))
 
 blank_axis <- alt$Axis(title = "")
 
@@ -223,18 +227,7 @@ glimpse(data)
 #### Chart
 
 ```{r}
-# layer_data <- 
-#   alt$layer(data = vega_data$countries$url)$
-#   transform_filter(
-#     filter = list(
-#       field = "country",
-#       oneOf = list("China", "India", "United States", "Indonesia", "Brazil")
-#     )
-#   )$
-#   transform_filter(
-#     filter = list(field = "year", oneOf = list(1955, 2000))
-#   )
-
+# Line between life expectancy in 1955 & 2000
 chart_line <-
   alt$Chart()$
   mark_line(color = "#db646f")$
@@ -244,7 +237,7 @@ chart_line <-
     detail = "country:N"
   )
 
-# Add points for life expectancy in 1955 & 2000
+# Points for life expectancy in 1955 & 2000
 chart_point <- 
   alt$Chart()$
   mark_point(size = 100, opacity = 1, filled = TRUE)$
@@ -260,10 +253,20 @@ chart_point <-
     )
   )$interactive()
 
+# Compose charts, add data and transformations
 chart <- 
   (chart_line + chart_point)$
-  properties(data = r_to_py(data))
-
+  properties(data =  vega_data$countries$url)$
+  transform_filter(
+    filter = list(
+      field = "country",
+      oneOf = list("China", "India", "United States", "Indonesia", "Brazil")
+    )
+  )$
+  transform_filter(
+    filter = list(field = "year", oneOf = list(1955, 2000))
+  )
+  
 chart
 ```
 

@@ -31,6 +31,8 @@ vega_data <- import_vega_data()
 
 [Altair example](https://altair-viz.github.io/gallery/horizon_graph.html)
 
+This shows how a Horizon Graph with two layers. See [this reference](https://idl.cs.washington.edu/papers/horizon/) for more details on Horizon Graphs.
+
 #### Data
 
 <details>
@@ -89,9 +91,9 @@ chart
 
 ## Interval Selection Example
 
-Click-and-drag on the bottom chart.
-
 [Altair example](https://altair-viz.github.io/gallery/interval_selection.html)
+
+> This is an example of creating a stacked chart for which the domain of the top chart can be selected by interacting with the bottom chart.
 
 #### Data
 

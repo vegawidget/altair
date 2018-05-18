@@ -102,6 +102,8 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/simple_histogram.html)
 
+> This example shows how to make a basic histogram, based on the [vega-lite docs](https://vega.github.io/vega-lite/examples/histogram.html). 
+
 #### Data
 
 ```{r}

@@ -109,6 +109,8 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/trellis_histogram.html)
 
+This example is originally from [Vega-Lite](https://vega.github.io/vega-lite/examples/trellis_bar_histogram.html). 
+
 #### Data
 
 ```{r}

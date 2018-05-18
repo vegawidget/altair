@@ -100,6 +100,8 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/boxplot_max_min.html)
 
+> This [example](https://vega.github.io/vega-lite/examples/box-plot_minmax_2D_vertical_normalized.html) shows how to make a basic box plot using US Population data from 2000.
+
 #### Data
 
 ```{r}
@@ -201,6 +203,8 @@ chart
 ## Candlestick Chart
 
 [Altair example](https://altair-viz.github.io/gallery/candlestick_chart.html)
+
+> A candlestick chart [inspired from Protovis](http://mbostock.github.io/protovis/ex/candlestick.html). This example shows the performance of the Chicago Board Options Exchange Volatility Index (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red.
 
 #### Data
 
@@ -468,6 +472,8 @@ chart
 ## Diverging Stacked Bar Chart
 
 [Altair example](https://altair-viz.github.io/gallery/diverging_stacked_bar_chart.html)
+
+> This example shows a diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark.
 
 #### Data
 
@@ -855,6 +861,8 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/error_bars_with_ci.html)
 
+> This example shows how to show error bars using covidence intervals. The confidence intervals are computed internally in vega by a non-parametric [bootstrap of the mean](https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js).
+
 #### Data
 
 ```{r}
@@ -932,8 +940,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart.html)
 
-TODO: It may be useful to note which of these are JavaScript expressions, and to come up with a convention to denote that. For example, what is the value of wrapping in `JS()`? Is it just to denote this to ourselves? This may be reason enough to do this. Also try to figure out what is up with the `if_()` notation in Python. 
-
+> This example shows a population broken out by gender and age for a specific year. The grouping is achieved by building a trellis plot with narrow column encoded on the age groups and x-axes encoded on gender.
 
 ```{r}
 chart <- 

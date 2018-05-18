@@ -112,6 +112,8 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/london_tube.html)
 
+> This example shows the London tube lines against the background of the borough boundaries. It is based on the [Vega-Lite example](https://vega.github.io/vega-lite/examples/geo_layer_line_london.html).
+
 #### Data
 
 ```{r}
