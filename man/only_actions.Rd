@@ -4,12 +4,15 @@
 \alias{only_actions}
 \title{Helper function for vega_embed actions}
 \usage{
-only_actions(export = FALSE, source = FALSE, editor = FALSE)
+only_actions(export = FALSE, source = FALSE, compiled = FALSE,
+  editor = FALSE)
 }
 \arguments{
 \item{export}{\code{logical}, include "Export As ..." link}
 
 \item{source}{\code{logical}, include "View Source" link}
+
+\item{compiled}{\code{logical}, include "Compiled" link}
 
 \item{editor}{\code{logical}, include "Open in Vega Editor" link}
 }

@@ -32,12 +32,11 @@ devtools::install_github("vegawidget/altair")
 ```
 
 Because you are using a Python package, you may have some additional
-installation steps. These steps are described in greater detail in an
+installation steps. These steps are described in greater detail in the
 [Installation](https://vegawidget.github.io/altair/articles/installation.html)
 article.
 
-1.  Python must be installed on your system. To make things easier to
-    work with reticulate, I recommend using a
+1.  Python must be installed on your system. I recommend using a
     [Conda](https://conda.io/docs) installation;
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
@@ -66,7 +65,7 @@ You may wish to add a line like this to the `.First()` function in your
 reticulate::use_condaenv("r-reticulate")
 ```
 
-This provides a [hint to
+The `use_condaenv()` function is called to provide a [hint to
 reticulate](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
 on which Python environment to use.
 
@@ -109,7 +108,7 @@ Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 ## Articles
 
 The documentation for this package includes some
-    articles:
+[articles](https://vegawidget.github.io/altair/articles/index.html):
 
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
     some more-detailed
@@ -121,8 +120,13 @@ The documentation for this package includes some
 
 Gallery:
 
-  - Watch this space for an adaptation to R of the [Altair Example
-    Gallery](https://altair-viz.github.io/gallery).
+  - An adaptation to R of the [Altair Example
+    Gallery](https://altair-viz.github.io/gallery), to demonstrate (not
+    least to ourselves) that we are not missing any of the
+    expressiveness of the Python API. You may be interested in the
+    [Interactive
+    Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html)
+    examples.
 
 Examples:
 
@@ -149,11 +153,11 @@ Field Guides:
 
   - [Field Guide to Python
     Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html):
-    A place for “gotchas” and their workarounds.
+    A place for “gotchas” and their workarounds
 
   - [Field Guide to Rendering
     Charts](https://vegawidget.github.io/altair/articles/field-guide-rendering.html):
-    How to use the `vegawidget()` function to render charts as HTML.
+    How to use the `vegawidget()` function to render charts as HTML
 
 ## Acknowledgements
 
@@ -183,9 +187,7 @@ author:
     JavaScript, and package-API issues.
 
   - [Haley Jeppson](https://github.com/haleyjeppson) has adapted the
-    [Altair Example Gallery](https://altair-viz.github.io/gallery) to R,
-    which will be integrated into the [project
-    website](https://vegawidget.github.io/altair) in the coming days.
+    [Altair Example Gallery](https://altair-viz.github.io/gallery) to R.
 
   - [Heike Hofmann](https://github.com/heike) has been an invaluable
     advisor, providing incisive feedback, and insight into the
@@ -195,5 +197,6 @@ author:
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
-to abide by its terms. This project also has a [Contributing
-Guide](CONTRIBUTING.md).
+to abide by its terms.
+
+This project also has a [Contributing Guide](CONTRIBUTING.md).

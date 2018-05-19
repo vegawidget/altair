@@ -7,29 +7,29 @@
 vegawidget(chart, embed = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
-\item{chart}{an Altair plot object}
+\item{chart}{an Altair chart object}
 
 \item{embed}{\code{vega_embed} object to specify embedding options -
 the default is an empty call to \code{\link[=vega_embed]{vega_embed()}},
-which will result in a canvas-rendering and all actions-links being
-included}
+which will result in a canvas-rendering and action-links included for
+exporting, viewing the Vega-Lite source, and opening the Vega editor.}
 
 \item{width}{\code{integer}, if specified, the total rendered width (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification}
+the default is to use the width in the chart specification}
 
 \item{height}{\code{integer}, if specified, the total rendered height (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification}
+the default is to use the height in the chart specification}
 
 \item{...}{other arguments}
 }
 \description{
-Use this function to render a chart as an htmlwidget.
+Renders a chart as an htmlwidget.
 }
 \details{
 This function is called \code{vegawidget()} is because it returns an htmlwidget
-that uses the Vega-Lite JavaScript library, rather than the
+that uses Vega-Lite and Vega JavaScript libraries, rather than the
 Altair Python package.
 
 To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} function with the
@@ -37,15 +37,15 @@ To specify embedding-options, use the \code{\link[=vega_embed]{vega_embed()}} fu
 \itemize{
 \item \code{renderer}, to specify \code{"canvas"} (default) or \code{"svg"}
 \item \code{actions},  to specify action-links
-for \code{export}, \code{source}, and \code{editor}
+for \code{export}, \code{source}, \code{compiled}, and \code{editor}
 }
 
-If \code{actions} is \code{TRUE} (default) or \code{FALSE}, all the links
+If \code{actions} is \code{TRUE} (or \code{FALSE}), all the links
 are shown (or not). Use a named list to be more specific, see
 \code{\link[=vega_embed]{vega_embed()}} and \code{\link[=only_actions]{only_actions()}}.
 
 If \code{embed} is \code{NULL}, \code{vegawidget()} sets \code{embed} to the value of
-\code{getOption("altair.embed_options")}. If that is null, the
+\code{getOption("altair.embed_options")}. Then, if this option is \code{NULL}, the
 \href{https://github.com/vega/vega-embed#api-reference}{vega-embed}
 defaults are used.
 
@@ -81,7 +81,7 @@ chart <-
 
 \dontrun{
   # default: rendered using canvas,
-  #   all action-links, chart-specification determines size
+  #  default action-links, chart-specification determines size
   vegawidget(chart)
 
   # render using SVG

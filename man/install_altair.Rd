@@ -25,8 +25,7 @@ this is set automatically, so you should not need to specify this.}
 invisible \code{NULL}, called for side-effects
 }
 \description{
-This function wraps \code{\link[reticulate:py_install]{reticulate::py_install()}} to provide a straightforward,
-consistent method to install the Python packages
+This function wraps installation functions from \link[reticulate:reticulate]{reticulate} to install the Python packages
 \strong{altair} and \strong{vega_datasets}.
 }
 \details{
@@ -38,10 +37,10 @@ different R packages, it is
 to use a common Python environment, called \code{"r-reticulate"}.
 
 Depending on your setup, you can create this environment using
-\code{\link[reticulate:conda_create]{reticulate::conda_create()}} or \code{\link[reticulate:virtualenv_install]{reticulate::virtualenv_install()}},
+\code{\link[reticulate:conda_create]{reticulate::conda_create()}} or \code{\link[reticulate:virtualenv_create]{reticulate::virtualenv_create()}},
 as described in this
 \href{https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation}{reticulate article},
-or in this package's \href{https://vegawidget.github.io/altair/articles/field-guide-python.html#python-env}{Field-Guide to Python Issues}.
+or in this package's \href{https://vegawidget.github.io/altair/articles/installation.html#python-env}{Installation article}.
 }
 \examples{
 \dontrun{

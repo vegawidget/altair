@@ -13,7 +13,7 @@ can be obtained using \code{alt$__version__}}
 \item{version_supported}{\code{character} vector, supported version -
 can be obtained using \code{getOption("altair.pyhton.version")}}
 
-\item{quiet}{\code{logical}, indicates to issue message if check is successful}
+\item{quiet}{\code{logical}, if \code{TRUE}, suppresses message upon successful check}
 }
 \value{
 invisible \code{NULL}, called for side-effects

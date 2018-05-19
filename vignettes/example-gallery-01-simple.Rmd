@@ -18,10 +18,12 @@ This document is adapted from the [Simple Charts](https://altair-viz.github.io/g
 
 Our first step is to set up our environment:
 
-```{r}
+```{r message=FALSE}
 # devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
+library("tidyr")
+library("dplyr")
 
 vega_data <- import_vega_data()
 ```
@@ -33,9 +35,9 @@ vega_data <- import_vega_data()
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
-dat <-  
+data <-  
   data_frame(
     a= c("A", "B", "C", "D", "E", "F", "G", "H", "I"),
     b =c(28, 55, 43, 91, 81, 53, 19, 87, 52)
@@ -44,14 +46,14 @@ dat <-
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_bar()$
   encode(
     x = "a",
@@ -68,26 +70,24 @@ chart
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
 # Compute x^2 + y^2 across a 2D grid
-x = -5:5
-y = -5:5
-dat <- expand.grid(x,y)
-names(dat) <- c("x", "y")
-dat$z = (dat$x^2) + (dat$y^2)
+data <- 
+  crossing(x = seq(-5, 5), y = seq(-5, 5)) %>%
+  mutate(z = x^2 + y^2)
 ```
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_rect()$
   encode(
     x = "x:O",
@@ -101,6 +101,8 @@ chart
 ## Simple Histogram
 
 [Altair example](https://altair-viz.github.io/gallery/simple_histogram.html)
+
+> This example shows how to make a basic histogram, based on the [vega-lite docs](https://vega.github.io/vega-lite/examples/histogram.html). 
 
 #### Data
 
@@ -129,7 +131,7 @@ chart
 #### Data
 
 <details>
-<summary>Defining data</summary>
+<summary>Definition</summary>
 ```{r}
 dat <- 
   data_frame(
@@ -197,10 +199,9 @@ glimpse(vega_data$unemployment_across_industries())
 
 ```{r}
 chart <- 
-  alt$Chart(
-    r_to_py(vega_data$unemployment_across_industries())
-  )$mark_area(
-  )$encode(
+  alt$Chart(r_to_py(vega_data$unemployment_across_industries()))$
+  mark_area()$
+  encode(
     x="date:T",
     y="count:Q",
     color="series:N"

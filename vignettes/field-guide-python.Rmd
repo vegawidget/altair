@@ -368,7 +368,7 @@ alt$
   `repeat`(column = list("distance", "delay", "time"))
 ```
 
-## None and `**`
+## None and `**{}`
 
 These concepts are not related other that they are found in the same example:
 
@@ -416,7 +416,7 @@ chart <-
     ),
     frame = list(NULL, NULL)
   )$transform_calculate(
-    PercentOfTotal = "datum.Time / datum.TotalTime"
+    PercentOfTotal = JS("datum.Time / datum.TotalTime")
   )
 
 chart

@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="R Interface to 'Altair'">
 <meta property="og:description" content="Interface to 'Altair' &lt;https://altair-viz.github.io&gt;, which itself 
   is a Python interface to 'Vega-Lite' &lt;https://vega.github.io/vega-lite&gt;.
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
       </span>
     </div>
 
@@ -52,8 +54,6 @@
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -105,16 +105,34 @@
 <li>
       <a href="articles/example-gallery-01-simple.html">Simple Charts</a>
     </li>
-    <li class="dropdown-header">Bar Charts</li>
-    <li class="dropdown-header">Line Charts</li>
-    <li class="dropdown-header">Area Charts</li>
-    <li class="dropdown-header">Scatterplots</li>
-    <li class="dropdown-header">Histograms</li>
-    <li class="dropdown-header">Maps</li>
-    <li class="dropdown-header">Interactive Charts</li>
-    <li class="dropdown-header">Other Charts</li>
+    <li>
+      <a href="articles/example-gallery-02-bar-charts.html">Bar Charts</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-03-line-charts.html">Line Charts</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-04-area-charts.html">Area Charts</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-05-scatter-plots.html">Scatterplots</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-06-histograms.html">Histograms</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-07-maps.html">Maps</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
+    </li>
+    <li>
+      <a href="articles/example-gallery-09-other-charts.html">Other Charts</a>
+    </li>
   </ul>
 </li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/vegawidget/altair">
     <span class="fa fa-github fa-2x"></span>
@@ -122,7 +140,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -149,10 +173,10 @@
 <p>A development version is available from <a href="https://github.com/">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"vegawidget/altair"</span>) </a></code></pre></div>
-<p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in an <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
+<p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Python must be installed on your system. To make things easier to work with reticulate, I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>Python must be installed on your system. I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
 <p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
@@ -160,7 +184,7 @@
 </ol>
 <p>You may wish to add a line like this to the <code>.First()</code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/reticulate/topics/use_python">use_condaenv</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
-<p>This provides a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
+<p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -191,14 +215,14 @@
 <div id="articles" class="section level2">
 <h2 class="hasAnchor">
 <a href="#articles" class="anchor"></a>Articles</h2>
-<p>The documentation for this package includes some articles:</p>
+<p>The documentation for this package includes some <a href="https://vegawidget.github.io/altair/articles/index.html">articles</a>:</p>
 <ul>
 <li><p><a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a>: some more-detailed instructions</p></li>
 <li><p><a href="https://vegawidget.github.io/altair/articles/manifesto.html">Manifesto</a>: an outline of some high-level development ideas, which may change from time to time</p></li>
 </ul>
 <p>Gallery:</p>
 <ul>
-<li>Watch this space for an adaptation to R of the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a>.</li>
+<li>An adaptation to R of the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a>, to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the <a href="https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html">Interactive Charts</a> examples.</li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -209,8 +233,8 @@
 </ul>
 <p>Field Guides:</p>
 <ul>
-<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>: A place for “gotchas” and their workarounds.</p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-rendering.html">Field Guide to Rendering Charts</a>: How to use the <code><a href="reference/vegawidget.html">vegawidget()</a></code> function to render charts as HTML.</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>: A place for “gotchas” and their workarounds</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-rendering.html">Field Guide to Rendering Charts</a>: How to use the <code><a href="reference/vegawidget.html">vegawidget()</a></code> function to render charts as HTML</p></li>
 </ul>
 </div>
 <div id="acknowledgements" class="section level2">
@@ -227,14 +251,15 @@
 <p>This project is a collaborative effort. In addition to the principal author:</p>
 <ul>
 <li><p><a href="https://github.com/AliciaSchep">Alicia Schep</a> has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.</p></li>
-<li><p><a href="https://github.com/haleyjeppson">Haley Jeppson</a> has adapted the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a> to R, which will be integrated into the <a href="https://vegawidget.github.io/altair">project website</a> in the coming days.</p></li>
+<li><p><a href="https://github.com/haleyjeppson">Haley Jeppson</a> has adapted the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a> to R.</p></li>
 <li><p><a href="https://github.com/heike">Heike Hofmann</a> has been an invaluable advisor, providing incisive feedback, and insight into the fundamentals of interactive graphics.</p></li>
 </ul>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms. This project also has a <a href="CONTRIBUTING.html">Contributing Guide</a>.</p>
+<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>This project also has a <a href="CONTRIBUTING.html">Contributing Guide</a>.</p>
 </div>
 </div>
   </div>
@@ -290,6 +315,20 @@
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: '0d6a37c7b714a8042d5ce01dad53be53',
+    indexName: 'altair',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

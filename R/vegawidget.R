@@ -1,9 +1,9 @@
 #' Create a Vega/Vega-Lite htmlwidget
 #'
-#' Use this function to render a chart as an htmlwidget.
+#' Renders a chart as an htmlwidget.
 #'
 #' This function is called `vegawidget()` is because it returns an htmlwidget
-#' that uses the Vega-Lite JavaScript library, rather than the
+#' that uses Vega-Lite and Vega JavaScript libraries, rather than the
 #' Altair Python package.
 #'
 #' To specify embedding-options, use the [vega_embed()] function with the
@@ -11,14 +11,14 @@
 #'
 #' - `renderer`, to specify `"canvas"` (default) or `"svg"`
 #' - `actions`,  to specify action-links
-#'    for `export`, `source`, and `editor`
+#'    for `export`, `source`, `compiled`, and `editor`
 #'
-#' If `actions` is `TRUE` (default) or `FALSE`, all the links
+#' If `actions` is `TRUE` (or `FALSE`), all the links
 #' are shown (or not). Use a named list to be more specific, see
 #' [vega_embed()] and [only_actions()].
 #'
 #' If `embed` is `NULL`, `vegawidget()` sets `embed` to the value of
-#' `getOption("altair.embed_options")`. If that is null, the
+#' `getOption("altair.embed_options")`. Then, if this option is `NULL`, the
 #' [vega-embed](https://github.com/vega/vega-embed#api-reference)
 #' defaults are used.
 #'
@@ -42,17 +42,17 @@
 #' so you may have to account for them yourself. You might expect
 #' the height of the action-links to be 15-20 pixels.
 #'
-#' @param chart   an Altair plot object
+#' @param chart   an Altair chart object
 #' @param embed   `vega_embed` object to specify embedding options -
 #'   the default is an empty call to [vega_embed()],
-#'   which will result in a canvas-rendering and all actions-links being
-#'   included
+#'   which will result in a canvas-rendering and action-links included for
+#'   exporting, viewing the Vega-Lite source, and opening the Vega editor.
 #' @param width   `integer`, if specified, the total rendered width (in pixels)
 #'   of the chart - valid only for single-view charts and layered charts;
-#'   the default is to use the chart specification
+#'   the default is to use the width in the chart specification
 #' @param height  `integer`, if specified, the total rendered height (in pixels)
 #'   of the chart - valid only for single-view charts and layered charts;
-#'   the default is to use the chart specification
+#'   the default is to use the height in the chart specification
 #' @param ... other arguments
 #' @seealso [alt], [vega_embed()],
 #'   [altair: Field Guide to Rendering Charts](https://vegawidget.github.io/altair/field-guide-rendering.html)
@@ -70,7 +70,7 @@
 #'
 #' \dontrun{
 #'   # default: rendered using canvas,
-#'   #   all action-links, chart-specification determines size
+#'   #  default action-links, chart-specification determines size
 #'   vegawidget(chart)
 #'
 #'   # render using SVG

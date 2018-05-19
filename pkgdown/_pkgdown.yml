@@ -1,6 +1,9 @@
 template:
   params:
     bootswatch: sandstone
+    docsearch:
+      api_key: 0d6a37c7b714a8042d5ce01dad53be53
+      index_name: altair
 
 development:
   mode: unreleased
@@ -51,7 +54,17 @@ articles:
     contents:
       - field-guide-python
       - field-guide-rendering
-#  - title: Gallery
+  - title: Gallery
+    contents:
+      - example-gallery-01-simple
+      - example-gallery-02-bar-charts
+      - example-gallery-03-line-charts
+      - example-gallery-04-area-charts
+      - example-gallery-05-scatter-plots
+      - example-gallery-06-histograms
+      - example-gallery-07-maps
+      - example-gallery-08-interactive-charts
+      - example-gallery-09-other-charts
   - title: Manifesto
     contents:
       - manifesto
@@ -65,7 +78,6 @@ navbar:
       href: "reference/index.html"
     - text: "Changelog"
       href: "news/index.html"
-  right:
     - text: Articles
       menu:
         - text: Installation
@@ -94,12 +106,21 @@ navbar:
         - text: Simple Charts
           href: articles/example-gallery-01-simple.html
         - text: Bar Charts
+          href: articles/example-gallery-02-bar-charts.html
         - text: Line Charts
+          href: articles/example-gallery-03-line-charts.html
         - text: Area Charts
+          href: articles/example-gallery-04-area-charts.html
         - text: Scatterplots
+          href: articles/example-gallery-05-scatter-plots.html
         - text: Histograms
+          href: articles/example-gallery-06-histograms.html
         - text: Maps
+          href: articles/example-gallery-07-maps.html
         - text: Interactive Charts
+          href: articles/example-gallery-08-interactive-charts.html
         - text: Other Charts
+          href: articles/example-gallery-09-other-charts.html
+  right:
     - icon: fa-github fa-2x
       href: https://github.com/vegawidget/altair
