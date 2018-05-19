@@ -32,12 +32,11 @@ devtools::install_github("vegawidget/altair")
 ```
 
 Because you are using a Python package, you may have some additional
-installation steps. These steps are described in greater detail in an
+installation steps. These steps are described in greater detail in the
 [Installation](https://vegawidget.github.io/altair/articles/installation.html)
 article.
 
-1.  Python must be installed on your system. To make things easier to
-    work with reticulate, I recommend using a
+1.  Python must be installed on your system. I recommend using a
     [Conda](https://conda.io/docs) installation;
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
@@ -154,11 +153,11 @@ Field Guides:
 
   - [Field Guide to Python
     Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html):
-    A place for “gotchas” and their workarounds.
+    A place for “gotchas” and their workarounds
 
   - [Field Guide to Rendering
     Charts](https://vegawidget.github.io/altair/articles/field-guide-rendering.html):
-    How to use the `vegawidget()` function to render charts as HTML.
+    How to use the `vegawidget()` function to render charts as HTML
 
 ## Acknowledgements
 
@@ -198,5 +197,6 @@ author:
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
-to abide by its terms. This project also has a [Contributing
-Guide](CONTRIBUTING.md).
+to abide by its terms.
+
+This project also has a [Contributing Guide](CONTRIBUTING.md).

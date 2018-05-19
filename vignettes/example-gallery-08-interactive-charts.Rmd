@@ -552,8 +552,6 @@ points | timeseries
 
 > This chart shows an example of using an interval selection to filter the contents of an attached histogram, allowing the user to see the proportion of items in each category within the selection.
 
-TODO: find a way to fix the numerical scale of the bar chart
-
 #### Data
 
 ```{r}

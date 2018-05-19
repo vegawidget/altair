@@ -162,7 +162,20 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/percentage_of_total.html)
 
-TODO: put a note here about the `**` in the Python code. 
+In the Altair example, we see some code like this:
+
+```python
+alt.WindowFieldDef(op='sum', field='Time', **{'as': 'TotalTime'})
+```
+
+In R, supply the stuff inside the `**{}` as addition arguments to the function:
+
+```r
+alt$WindowFieldDef(op = "sum", field = "Time", as = "TotalTime")
+```
+
+See the [Field Guide to Python Issues](field-guide-python.html) for more details 
+and more examples.
 
 #### Data
 
@@ -975,7 +988,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/aggregate_bar_chart.html)
 
-Need to specify the `transform_filter` as a string of JavaScript
+Note that the argument to the `transorm_filter()` function is a JavaScript expression that refers to a variable in the data using the `datum.` prefix.
 
 #### Data
 
@@ -1153,7 +1166,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/layered_plot_with_dual_axis.html) 
 
-TODO: find a diplomatic way to say that this seems to support Hadley's (and others') edict on dual axes.
+This seems exemplary of why dual-axes should be used with caution.
 
 #### Data
 

@@ -7,7 +7,7 @@
 check_altair(quiet = FALSE)
 }
 \arguments{
-\item{quiet}{\code{logical}, indicates to issue message if check is successful}
+\item{quiet}{\code{logical}, if \code{TRUE}, suppresses message upon successful check}
 }
 \value{
 invisible \code{NULL}, called for side-effects

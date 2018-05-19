@@ -312,7 +312,7 @@ glimpse(vega_data$stocks())
 
 #### Chart
 
-Had to make sure to delare that the `date` variable is of type `"temporal"`
+A difference from the Python example is that you have to make sure that you delcare that the `date` variable is of type `"temporal"`
 
 ```{r}
 chart <- 
@@ -364,7 +364,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/step_chart.html)
 
-> This example shows Google`s stock price over time. This uses the `step-after` interpolation scheme. The full list of interpolation options includes `linear`, `linear-closed`, `step`, `step-before`, `step-after`, `basis`, `basis-open`, `basis-closed`, `cardinal`, `cardinal-open`, `cardinal-closed`, `bundle`, and `monotone`.
+> This example shows Google's stock price over time. This uses the `step-after` interpolation scheme. The full list of interpolation options includes `linear`, `linear-closed`, `step`, `step-before`, `step-after`, `basis`, `basis-open`, `basis-closed`, `cardinal`, `cardinal-open`, `cardinal-closed`, `bundle`, and `monotone`.
 
 #### Data
 
@@ -374,8 +374,6 @@ glimpse(vega_data$stocks())
 
 #### Chart
 
-Need to specify the `transform_filter` as a string?
-
 ```{r}
 chart <- 
   alt$Chart(r_to_py(vega_data$stocks()))$
@@ -384,7 +382,7 @@ chart <-
     x = "date",
     y = "price"
   )$
-  transform_filter("datum.symbol == 'GOOG'")
+  transform_filter(JS("datum.symbol == 'GOOG'"))
 
 chart
 ```

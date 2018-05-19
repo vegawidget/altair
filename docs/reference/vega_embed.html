@@ -37,7 +37,10 @@
   
 <meta property="og:title" content="Vega embed options — vega_embed" />
 
-<meta property="og:description" content="Use this function to specify embedding-options to the vegalite renderer.
+<meta property="og:description" content="Used to specify the embed argument to the vegawidget() renderer.
+These arguments are then passed to the
+vega-embed()
+library, which ultimately renders the chart specification as HTML.
 The most common options to set are renderer, to specify "canvas"
 or "svg", and actions, to specify the inclusion of export, source,
 and editor links. This documentation is adapted from the
@@ -69,7 +72,7 @@ vega-embed documentation." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
       </span>
     </div>
 
@@ -195,7 +198,10 @@ vega-embed documentation." />
 
     <div class="ref-description">
     
-    <p>Use this function to specify embedding-options to the vegalite renderer.
+    <p>Used to specify the <code>embed</code> argument to the <code><a href='vegawidget.html'>vegawidget()</a></code> renderer.
+These arguments are then passed to the
+<a href='https://github.com/vega/vega-embed#options'>vega-embed()</a>
+library, which ultimately renders the chart specification as HTML.
 The most common options to set are <code>renderer</code>, to specify <code>"canvas"</code>
 or <code>"svg"</code>, and <code>actions</code>, to specify the inclusion of <code>export</code>, <code>source</code>,
 and <code>editor</code> links. This documentation is adapted from the
@@ -203,7 +209,7 @@ and <code>editor</code> links. This documentation is adapted from the
     
     </div>
 
-    <pre class="usage"><span class='fu'>vega_embed</span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"canvas"</span>, <span class='st'>"svg"</span>), <span class='kw'>actions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>vega_embed</span>(<span class='kw'>renderer</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"canvas"</span>, <span class='st'>"svg"</span>), <span class='kw'>actions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>logLevel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>loader</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>onBeforeParse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>padding</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>editorUrl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sourceHeader</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sourceFooter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>runAsync</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -226,9 +232,10 @@ are included with the embedded view.
 If the value is <code>TRUE</code> (default), all action links will be shown
 and none if the value is <code>FALSE</code>. This property can be a named vector of
 logicals that maps
-keys (<code>export</code>, <code>source</code>, <code>editor</code>) to logical values for determining
-if each action link should be shown. Unspecified keys will be true by
-default. For example, if <code>actions</code> is
+keys (<code>export</code>, <code>source</code>, <code>compiled</code>, <code>editor</code>) to logical values for determining
+if each action link should be shown. By default, <code>export</code>, <code>source</code>,
+and <code>editor</code> are <code>TRUE</code> and <code>compiled</code> is <code>FALSE</code>, but these defaults
+can be overridden. For example, if <code>actions</code> is
 <code>list(export = FALSE, source = TRUE)</code>, the embedded visualization will
 have two links – "View Source" and "Open in Vega Editor".</p></td>
     </tr>
@@ -319,10 +326,11 @@ instead of <a href='https://vega.github.io/vega/docs/api/view/#view_run'>run</a>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The default <code>renderer</code> is <code>"canvas"</code>.</p>
-<p>The default for <code>actions</code> is <code>TRUE</code>, which means that all three action links
-will be included.</p><ul>
+<p>The default for <code>actions</code> is <code>NULL</code>, which means that the <code>export</code>,
+<code>source</code>, and <code>editor</code> links are shown, but the <code>compiled</code> link is
+not shown.</p><ul>
 <li><p>To suppress all action links, call with <code>actions = FALSE</code>.</p></li>
-<li><p>To suppress a given action link, call with a list:
+<li><p>To change from the default for a given action link, call with a list:
 <code>actions = list(editor = FALSE)</code>.</p></li>
 <li><p>To specify which link(s) to include, call using the <code><a href='only_actions.html'>only_actions()</a></code>
 function: <code>actions = only_actions(export = TRUE)</code>.</p></li>
@@ -333,7 +341,8 @@ will be overridden by the values in the chart specification.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='vegawidget.html'>vegawidget()</a></code>, <code><a href='only_actions.html'>only_actions()</a></code>,
-<a href='https://vegawidget.github.io/altair/field-guide-rendering.html'>altair: Field Guide to Rendering Charts</a></p></div>
+<a href='https://vegawidget.github.io/altair/field-guide-rendering.html'>altair: Field Guide to Rendering Charts</a>,
+<a href='https://github.com/vega/vega-embed'>vega-embed library</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

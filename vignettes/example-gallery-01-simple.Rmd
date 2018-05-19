@@ -18,10 +18,12 @@ This document is adapted from the [Simple Charts](https://altair-viz.github.io/g
 
 Our first step is to set up our environment:
 
-```{r}
+```{r message=FALSE}
 # devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
+library("tidyr")
+library("dplyr")
 
 vega_data <- import_vega_data()
 ```
@@ -35,7 +37,7 @@ vega_data <- import_vega_data()
 <details>
 <summary>Definition</summary>
 ```{r}
-dat <-  
+data <-  
   data_frame(
     a= c("A", "B", "C", "D", "E", "F", "G", "H", "I"),
     b =c(28, 55, 43, 91, 81, 53, 19, 87, 52)
@@ -44,14 +46,14 @@ dat <-
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_bar()$
   encode(
     x = "a",
@@ -71,23 +73,21 @@ chart
 <summary>Definition</summary>
 ```{r}
 # Compute x^2 + y^2 across a 2D grid
-x = -5:5
-y = -5:5
-dat <- expand.grid(x,y)
-names(dat) <- c("x", "y")
-dat$z = (dat$x^2) + (dat$y^2)
+data <- 
+  crossing(x = seq(-5, 5), y = seq(-5, 5)) %>%
+  mutate(z = x^2 + y^2)
 ```
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(r_to_py(data))$
   mark_rect()$
   encode(
     x = "x:O",

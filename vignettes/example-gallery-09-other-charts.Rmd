@@ -61,8 +61,6 @@ chart
 
 There is a slight difference from the Altair example in the `yscale`, to get everything to line-up correctly.
 
-TODO - note this at ALtair.
-
 #### Data
 
 ```{r}

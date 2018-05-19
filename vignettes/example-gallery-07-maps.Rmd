@@ -32,7 +32,12 @@ vega_data <- import_vega_data()
 
 [Altair example](https://altair-viz.github.io/gallery/choropleth.html)
 
-A couple of points here - it is not straightforward to preview the topological data, or the unemployment data. Furthermore, we are using the URLs, which means that this example will not render in the RStudio IDE, although it will render in an external browser. 
+It is not straightforward to preview the topological data, or the unemployment data:
+
+- The `vega_data$us_10m` data is in topoJSON, not a data frame
+- The `vega_data$unemployment` data is in an unparsed format.
+
+Furthermore, we are using the URLs, which means that this example will not render in the RStudio IDE, although it will render in an external browser. 
 
 #### Data
 
@@ -76,8 +81,6 @@ glimpse(airports)
 ```
 
 #### Chart
-
-Something is not being specified correctly in the line`alt$topo_feature(us, feature="states")`
 
 ```{r}
 states <- alt$topo_feature(us, feature = "states")
@@ -186,20 +189,25 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/one_dot_per_zipcode.html)
 
-Here is the [issue](https://github.com/altair-viz/altair/issues/611) where there has to be less than 5000 observations
+If you are building a chart using a local data frame, the default is that there has to be less than 5000 observations. If you build a chart using a URL (local or remote), there is no such default.
+
+To modify this default:
+
+```r
+alt$data_transformers$enable('default', max_rows=<your new max>)
+```
 
 #### Data
 
 ```{r}
-zips <- vega_data$zipcodes() %>% sample_n(5000)
-glimpse(zips)
+glimpse(vega_data$zipcodes())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(zips))$
+  alt$Chart(vega_data$zipcodes$url)$
   mark_circle(size = 3)$
   encode(
     longitude = "longitude:Q",
@@ -325,7 +333,6 @@ chart
 
 Please see the [Vega documentation](https://vega.github.io/vega-lite/docs/projection.html) for more details on the projections available. 
 
-TODO: discuss purrr
 
 ```{r}
 countries <- alt$topo_feature(vega_data$world_110m$url, "countries")
@@ -337,7 +344,7 @@ base <-
 
 projections <- list("equirectangular", "mercator", "orthographic", "gnomonic")
 
-# this seems to be a way to make a facet_wrap
+# use purrr to fashion a facet_wrap
 charts <- map(projections, ~base$project(.x)$properties(title = .x))
 
 chart <- (charts[[1]] | charts[[2]]) & (charts[[3]] | charts[[4]])

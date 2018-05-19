@@ -1,7 +1,6 @@
 #' Install Altair Python package
 #'
-#' This function wraps [reticulate::py_install()] to provide a straightforward,
-#' consistent method to install the Python packages
+#' This function wraps installation functions from [reticulate][reticulate::reticulate] to install the Python packages
 #' **altair** and **vega_datasets**.
 #'
 #' This package uses the [reticulate][reticulate::reticulate] package
@@ -12,10 +11,10 @@
 #' to use a common Python environment, called `"r-reticulate"`.
 #'
 #' Depending on your setup, you can create this environment using
-#' [reticulate::conda_create()] or [reticulate::virtualenv_install()],
+#' [reticulate::conda_create()] or [reticulate::virtualenv_create()],
 #' as described in this
 #' [reticulate article](https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation),
-#' or in this package's [Field-Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html#python-env).
+#' or in this package's [Installation article](https://vegawidget.github.io/altair/articles/installation.html#python-env).
 #'
 #' @param method `character`, indicates to use `"conda"` or `"virtualenv"`
 #' @param envname `character`, name of environment into which to install
@@ -135,7 +134,7 @@ check_altair <- function(quiet = FALSE) {
 #'   can be obtained using `alt$__version__`
 #' @param version_supported `character` vector, supported version -
 #'   can be obtained using `getOption("altair.pyhton.version")`
-#' @param quiet `logical`, indicates to issue message if check is successful
+#' @param quiet `logical`, if `TRUE`, suppresses message upon successful check
 #'
 #' @return invisible `NULL`, called for side-effects
 #' @keywords internal

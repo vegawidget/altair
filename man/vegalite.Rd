@@ -7,20 +7,20 @@
 vegalite(chart, embed = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
-\item{chart}{an Altair plot object}
+\item{chart}{an Altair chart object}
 
 \item{embed}{\code{vega_embed} object to specify embedding options -
 the default is an empty call to \code{\link[=vega_embed]{vega_embed()}},
-which will result in a canvas-rendering and all actions-links being
-included}
+which will result in a canvas-rendering and action-links included for
+exporting, viewing the Vega-Lite source, and opening the Vega editor.}
 
 \item{width}{\code{integer}, if specified, the total rendered width (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification}
+the default is to use the width in the chart specification}
 
 \item{height}{\code{integer}, if specified, the total rendered height (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification}
+the default is to use the height in the chart specification}
 
 \item{...}{other arguments}
 }

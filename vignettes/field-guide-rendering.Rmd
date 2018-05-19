@@ -36,7 +36,7 @@ Here's the short version:
 
 - The `embed_options` can be set using the `vega_embed()` function.
 
-  - The principal options are `renderer`: either `"canvas"` or `"svg"`, and `actions`: a list of logical values to indicate if `export`, `source`, and `editor` links are to be included.
+  - The principal options are `renderer`: either `"canvas"` or `"svg"`, and `actions`: a list of logical values to indicate if `export`, `source`, `compiled`, and `editor` links are to be included.
   
   - In your R session, you can set an `option()` called `altair.embed_options` to store your defaults for `embed_options`.
   
