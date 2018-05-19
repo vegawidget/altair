@@ -14,8 +14,10 @@ test_that("validation works", {
 
 test_that("helper works", {
 
-  all_false <- list(export = FALSE, source = FALSE, editor = FALSE)
-  source_true <- list(export = FALSE, source = TRUE, editor = FALSE)
+  all_false <-
+    list(export = FALSE, source = FALSE, compiled = FALSE, editor = FALSE)
+  source_true <-
+    list(export = FALSE, source = TRUE, compiled = FALSE, editor = FALSE)
 
   expect_identical(only_actions(), all_false)
   expect_identical(only_actions(source = TRUE), source_true)
@@ -30,7 +32,7 @@ test_that("constructor works", {
   expect_s3_class(test_embed, "vega_embed")
 
   expect_identical(test_embed_default$renderer, "canvas")
-  expect_identical(test_embed_default$actions, TRUE)
+  expect_null(test_embed_default$actions)
 
   expect_identical(test_embed$renderer, "svg")
   expect_identical(test_embed$actions, list(source = FALSE))

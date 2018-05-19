@@ -1,6 +1,9 @@
 #' Vega embed options
 #'
-#' Use this function to specify embedding-options to the vegalite renderer.
+#' Used to specify the `embed` argument to the `vegawidget()` renderer.
+#' These arguments are then passed to the
+#' [vega-embed](https://github.com/vega/vega-embed#options)
+#' library, which ultimately renders the chart specification as HTML.
 #' The most common options to set are `renderer`, to specify `"canvas"`
 #' or `"svg"`, and `actions`, to specify the inclusion of `export`, `source`,
 #' and `editor` links. This documentation is adapted from the
@@ -8,11 +11,12 @@
 #'
 #' The default `renderer` is `"canvas"`.
 #'
-#' The default for `actions` is `TRUE`, which means that all three action links
-#' will be included.
+#' The default for `actions` is `NULL`, which means that the `export`,
+#' `source`, and `editor` links are shown, but the `compiled` link is
+#' not shown.
 #'
 #' - To suppress all action links, call with `actions = FALSE`.
-#' - To suppress a given action link, call with a list:
+#' - To change from the default for a given action link, call with a list:
 #'   `actions = list(editor = FALSE)`.
 #' - To specify which link(s) to include, call using the `only_actions()`
 #'   function: `actions = only_actions(export = TRUE)`.
@@ -53,9 +57,10 @@
 #'   If the value is `TRUE` (default), all action links will be shown
 #'   and none if the value is `FALSE`. This property can be a named vector of
 #'   logicals that maps
-#'   keys (`export`, `source`, `editor`) to logical values for determining
-#'   if each action link should be shown. Unspecified keys will be true by
-#'   default. For example, if `actions` is
+#'   keys (`export`, `source`, `compiled`, `editor`) to logical values for determining
+#'   if each action link should be shown. By default, `export`, `source`,
+#'   and `editor` are `TRUE` and `compiled` is `FALSE`, but these defaults
+#'   can be overridden. For example, if `actions` is
 #'   `list(export =  FALSE, source = TRUE)`, the embedded visualization will
 #'   have two links – "View Source" and "Open in Vega Editor".
 #' @param config `character` or `list` a URL string** from which to load
@@ -80,7 +85,8 @@
 #'   instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run).
 #'
 #' @seealso [vegawidget()], [only_actions()],
-#'   [altair: Field Guide to Rendering Charts](https://vegawidget.github.io/altair/field-guide-rendering.html)
+#'   [altair: Field Guide to Rendering Charts](https://vegawidget.github.io/altair/field-guide-rendering.html),
+#'   [`vega-embed` library](https://github.com/vega/vega-embed)
 #'
 #' @examples
 #' # Set renderer
@@ -95,7 +101,7 @@
 #' @export
 #'
 vega_embed <- function(renderer = c("canvas", "svg"),
-                       actions = TRUE,
+                       actions = NULL,
                        mode = NULL,
                        logLevel = NULL,
                        loader = NULL,
@@ -111,20 +117,22 @@ vega_embed <- function(renderer = c("canvas", "svg"),
 
   renderer <- match.arg(renderer)
 
-  # coerce actions to logical, preserve names
-  names_actions <- names(actions)
-  actions <- as.logical(actions)
+  # if not null, coerce actions to logical, preserve names
+  if (!is.null(actions)) {
+    names_actions <- names(actions)
+    actions <- as.logical(actions)
 
-  # if named, turn into a list
-  if (!is.null(names_actions)) {
-    actions <- as.list(actions)
-    names(actions) <- names_actions
+    # if named, turn into a list
+    if (!is.null(names_actions)) {
+      actions <- as.list(actions)
+      names(actions) <- names_actions
+    }
   }
 
-  names_actions_legal <- c("export", "source", "editor")
+  names_actions_legal <- c("export", "source", "compiled", "editor")
 
   # unnamed must have length 1
-  if (!rlang::is_named(actions)) {
+  if (!rlang::is_named(actions) && !is.null(actions)) {
     assertthat::assert_that(
       identical(length(actions), 1L),
       msg = ("if `actions` is unnamed, it must have length 1")
@@ -179,6 +187,7 @@ vega_embed <- function(renderer = c("canvas", "svg"),
 #'
 #' @param export `logical`, include "Export As ..." link
 #' @param source `logical`, include "View Source" link
+#' @param compiled `logical`, include "Compiled" link
 #' @param editor `logical`, include "Open in Vega Editor" link
 #'
 #' @return `list`
@@ -188,10 +197,12 @@ vega_embed <- function(renderer = c("canvas", "svg"),
 #' @export
 #'
 #'
-only_actions = function(export = FALSE, source = FALSE, editor = FALSE) {
+only_actions = function(export = FALSE, source = FALSE, compiled = FALSE,
+                        editor = FALSE) {
   list(
     export = as.logical(export),
     source = as.logical(source),
+    compiled = as.logical(compiled),
     editor = as.logical(editor)
   )
 }

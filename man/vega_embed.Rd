@@ -4,7 +4,7 @@
 \alias{vega_embed}
 \title{Vega embed options}
 \usage{
-vega_embed(renderer = c("canvas", "svg"), actions = TRUE, mode = NULL,
+vega_embed(renderer = c("canvas", "svg"), actions = NULL, mode = NULL,
   logLevel = NULL, loader = NULL, onBeforeParse = NULL, width = NULL,
   height = NULL, padding = NULL, config = NULL, editorUrl = NULL,
   sourceHeader = NULL, sourceFooter = NULL, runAsync = NULL)
@@ -21,9 +21,10 @@ are included with the embedded view.
 If the value is \code{TRUE} (default), all action links will be shown
 and none if the value is \code{FALSE}. This property can be a named vector of
 logicals that maps
-keys (\code{export}, \code{source}, \code{editor}) to logical values for determining
-if each action link should be shown. Unspecified keys will be true by
-default. For example, if \code{actions} is
+keys (\code{export}, \code{source}, \code{compiled}, \code{editor}) to logical values for determining
+if each action link should be shown. By default, \code{export}, \code{source},
+and \code{editor} are \code{TRUE} and \code{compiled} is \code{FALSE}, but these defaults
+can be overridden. For example, if \code{actions} is
 \code{list(export = FALSE, source = TRUE)}, the embedded visualization will
 have two links – "View Source" and "Open in Vega Editor".}
 
@@ -85,7 +86,10 @@ instead of \href{https://vega.github.io/vega/docs/api/view/#view_run}{run}.}
 S3 object with class \code{vega_embed}
 }
 \description{
-Use this function to specify embedding-options to the vegalite renderer.
+Used to specify the \code{embed} argument to the \code{vegawidget()} renderer.
+These arguments are then passed to the
+\href{https://github.com/vega/vega-embed#options}{vega-embed()}
+library, which ultimately renders the chart specification as HTML.
 The most common options to set are \code{renderer}, to specify \code{"canvas"}
 or \code{"svg"}, and \code{actions}, to specify the inclusion of \code{export}, \code{source},
 and \code{editor} links. This documentation is adapted from the
@@ -94,11 +98,12 @@ and \code{editor} links. This documentation is adapted from the
 \details{
 The default \code{renderer} is \code{"canvas"}.
 
-The default for \code{actions} is \code{TRUE}, which means that all three action links
-will be included.
+The default for \code{actions} is \code{NULL}, which means that the \code{export},
+\code{source}, and \code{editor} links are shown, but the \code{compiled} link is
+not shown.
 \itemize{
 \item To suppress all action links, call with \code{actions = FALSE}.
-\item To suppress a given action link, call with a list:
+\item To change from the default for a given action link, call with a list:
 \code{actions = list(editor = FALSE)}.
 \item To specify which link(s) to include, call using the \code{only_actions()}
 function: \code{actions = only_actions(export = TRUE)}.
@@ -119,5 +124,6 @@ embed_options <- vega_embed(actions = only_actions(export = TRUE))
 }
 \seealso{
 \code{\link[=vegawidget]{vegawidget()}}, \code{\link[=only_actions]{only_actions()}},
-\href{https://vegawidget.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts}
+\href{https://vegawidget.github.io/altair/field-guide-rendering.html}{altair: Field Guide to Rendering Charts},
+\href{https://github.com/vega/vega-embed}{vega-embed library}
 }

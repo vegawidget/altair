@@ -1,0 +1,532 @@
+---
+title: "Scatter Plots"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Bar Charts](https://altair-viz.github.io/gallery/index.html#bar-charts) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("dplyr")
+library("purrr")
+library("tidyr")
+
+vega_data <- import_vega_data()
+```
+
+## Anscombe's Quartet
+
+[Altair example](https://altair-viz.github.io/gallery/anscombe_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$anscombe())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$anscombe()))$
+  mark_circle()$
+  encode(
+    x = alt$X("X", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("Y", scale = alt$Scale(zero = FALSE)),
+    column="Series"
+  )$
+  properties(
+    width = 150,
+    height = 150
+  )
+
+chart
+```
+
+## Becker's Barley Trellis Plot
+
+[Altair example](https://altair-viz.github.io/gallery/beckers_barley_trellis_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$barley()))$
+  mark_point()$
+  encode(
+    x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
+    y = alt$Y(
+        "variety",
+        sort = alt$SortField(
+          field = "yield", 
+          op = "median", 
+          order = "descending"
+        ),
+        scale = alt$Scale(rangeStep = 20)
+    ),
+    color = "year:N",
+    row = "site"
+  )
+
+chart
+```
+
+## Binned Scatterplot
+
+[Altair example](https://altair-viz.github.io/gallery/binned_scatterplot.html)
+
+#### Data
+
+```{r}
+movies <- vega_data$movies()
+
+glimpse(movies)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(movies))$
+  mark_circle()$
+  encode(
+    alt$X("IMDB_Rating:Q", bin = TRUE),
+    alt$Y("Rotten_Tomatoes_Rating:Q", bin = TRUE),
+    size="count(IMDB_Rating)"
+  )
+
+chart
+```
+
+## Bubble Plot
+
+[Altair example](https://altair-viz.github.io/gallery/bubble_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    size = "Acceleration"
+  )
+
+chart
+```
+
+## Connected Scatterplot (Lines with Custom Paths)
+
+[Altair example](https://altair-viz.github.io/gallery/connected_scatterplot.html)
+
+> This example shows how layering can be used to build a plot. This dataset tracks miles driven per capita along with gas prices annually from 1956 to 2010. It is based on the May 2, 2010 New York Times article ‘Driving Shifts Into Reverse’. See this [reference](http://mbostock.github.io/protovis/ex/driving.html).
+
+#### Data
+
+```{r}
+glimpse(vega_data$driving())
+```
+
+#### Chart
+
+```{r}
+lines <- 
+  alt$Chart(r_to_py(vega_data$driving()))$
+  mark_line()$
+  encode(
+    x = alt$X("miles", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("gas", scale = alt$Scale(zero = FALSE)),
+    order="year"
+  )
+
+points <- 
+  alt$Chart(r_to_py(vega_data$driving()))$
+  mark_circle()$
+  encode(
+    alt$X("miles", scale = alt$Scale(zero = FALSE)),
+    alt$Y("gas", scale = alt$Scale(zero = FALSE))
+  )
+
+chart <- (lines + points)
+
+chart
+```
+
+## Dot Dash Plot
+
+[Altair example](https://altair-viz.github.io/gallery/dot_dash_plot.html)
+
+> This example shows how to make a dot-dash plot presented in Edward Tufte’s book Visual Display of Quantitative Information on page 133. This example is based on [g3o2's block](https://bl.ocks.org/g3o2/bd4362574137061c243a2994ba648fb8).
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+cars <- r_to_py(vega_data$cars())
+
+brush <- alt$selection(type = "interval")
+
+tick_axis <- alt$Axis(labels=FALSE, domain=FALSE, ticks=FALSE)
+
+tick_axis_notitle <- 
+  alt$Axis(labels=FALSE, domain=FALSE, ticks=FALSE, title="")
+
+points <-
+  alt$Chart(cars)$
+  mark_point()$
+  encode(
+    x = alt$X("Miles_per_Gallon", axis = alt$Axis(title = "")),
+    y = alt$Y("Horsepower", axis = alt$Axis(title = "")),
+    color = alt$condition(brush, "Origin", alt$value("grey"))
+  )$
+  properties(selection = brush)
+
+x_ticks <- 
+  alt$Chart(cars)$
+  mark_tick()$
+  encode(
+    x = alt$X("Miles_per_Gallon", axis = tick_axis),
+    y = alt$Y("Origin", axis = tick_axis_notitle),
+    color = alt$condition(brush, "Origin", alt$value("lightgrey"))
+  )$
+  properties(selection = brush)
+
+y_ticks <- 
+  alt$Chart(cars)$
+  mark_tick()$
+  encode(
+    alt$X("Origin", axis = tick_axis_notitle),
+    alt$Y("Horsepower", axis = tick_axis),
+    color=alt$condition(brush, "Origin", alt$value("lightgrey"))
+  )$
+  properties(selection = brush)
+
+chart <- (y_ticks | (points & x_ticks))
+
+chart
+```
+
+## Gapminder Bubble Plot
+
+[Altair example](https://altair-viz.github.io/gallery/gapminder_bubble_plot.html)
+
+> This example shows how to make a bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost’s blog post [‘One Chart, Twelve Charting Libraries’](http://lisacharlotterost.github.io/2016/05/17/one-chart-code/)).
+
+#### Data
+
+```{r}
+glimpse(vega_data$gapminder_health_income())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$gapminder_health_income()))$
+  mark_circle()$
+  encode(
+    alt$X("income:Q", scale = alt$Scale(type = "log")), 
+    alt$Y("health:Q", scale = alt$Scale(zero = FALSE)), 
+    size="population:Q"
+  )
+
+chart
+```
+
+## Multifeature Scatter Plot
+
+[Altair example](https://altair-viz.github.io/gallery/multifeature_scatter_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$iris())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$iris()))$
+  mark_circle()$
+  encode(
+    x = alt$X("sepalLength", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("sepalWidth", scale = alt$Scale(zero = FALSE, padding = 1)),
+    color = "species",
+    size = "petalWidth"
+  )
+
+chart
+```
+
+## Natural Disasters
+
+[Altair example](https://altair-viz.github.io/gallery/natural_disasters.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$disasters())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$disasters()))$
+  mark_circle(opacity = 0.8, stroke = "black", strokeWidth = 1)$
+  encode(
+    x = alt$X("Year:O", axis = alt$Axis(labelAngle = 0)),
+    y = alt$Y("Entity:N"),
+    size = alt$Size(
+      "Deaths:Q",
+      scale = alt$Scale(range = c(0, 5000)),
+      legend = alt$Legend(title = "Annual Global Deaths")
+    ),
+    color = alt$Color("Entity:N", legend = NULL)
+   )$
+  properties(
+    width = 480,
+    height = 350
+  )$
+  transform_filter("datum.Entity != 'All natural disasters'")
+
+chart
+```
+
+## Polynomial Fit Plot
+
+[Altair example](https://altair-viz.github.io/gallery/poly_fit.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+n <- 40
+
+data <- 
+  data_frame(
+    x = runif(n)**2,
+    y = 10 - 1 / (x + 0.1) + runif(n)
+  )
+
+degree <- c(1, 3, 5)
+
+model_poly <- 
+  map(degree, ~lm(y ~ poly(x, degree = .x), data = data)) 
+
+x_pred <- seq(min(data$x), max(data$x), length.out = 500)
+
+data_predict <- 
+  crossing(degree, x = x_pred) %>%
+  nest(x) %>%
+  mutate(y = map2(model_poly, data, predict)) %>%
+  unnest()
+```
+</details>
+
+
+```{r}
+glimpse(data)
+```
+
+```{r}
+glimpse(data_predict)
+```
+
+#### Chart
+
+```{r}
+chart_data <- 
+  alt$Chart(r_to_py(data))$
+  mark_circle(color = "black")$
+  encode(
+    x = "x:Q",
+    y = "y:Q"
+  )
+
+chart_predict <-
+  alt$Chart(r_to_py(data_predict))$
+  mark_line()$
+  encode(
+    x = "x:Q",
+    y = "y:Q",
+    color = "degree:N"
+  )
+
+chart <- (chart_data + chart_predict)
+
+chart
+```
+
+## Scatter Matrix
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_matrix.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_circle()$
+  encode(
+    x = alt$X(alt$`repeat`("column"), type = "quantitative"),
+    y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
+    color = "Origin:N"
+  )$
+  properties(width = 200, height = 200)$
+  `repeat`(
+      row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
+      column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
+  )$
+  interactive()
+
+chart
+```
+
+## Simple Scatter Plot with Labels
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_with_labels.html)
+
+Layering can now work with the `+` operator as it does in Python. Additionally, it can be declared as `alt$layer(chart1, chart2)` or as `alt$ChartLayer(layer = list(chart1, chart2))`
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- 
+  data_frame(
+    x = c(1, 3, 5, 7, 9),
+    y = c(1, 3, 5, 7, 9),
+    label = c("A", "B", "C", "D", "E")
+  )
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+bars <- 
+  alt$Chart(r_to_py(data))$
+  mark_point()$
+  encode(
+    x = "x:Q",
+    y = "y:Q"
+  )
+
+text <-
+  bars$
+  mark_text(align = "left", baseline = "middle", dx = 7)$
+  encode(text = "label:N")
+
+chart <- (text + bars)
+
+chart
+```
+
+## Table Bubble Plot (Github Punch Card)
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_with_labels.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$github())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$github()))$
+  mark_circle()$
+  encode(
+    x = alt$X("time:O", timeUnit = "hours"),
+    y = alt$Y("time:O", timeUnit = "day"),
+    size = "sum(count):Q"
+  )
+
+chart
+```
+
+## Trellis Scatter Plot
+
+[Altair example](https://altair-viz.github.io/gallery/trellis_scatter_plot.html)
+
+This example demonstrates the need for a `ggplot2::facet_wrap()`-like capability, which we understand is coming to Vega-Lite in the no-so-distant future.
+
+#### Data
+
+```{r}
+glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(r_to_py(vega_data$movies()))$
+  mark_point()$
+  encode(
+    x = "Worldwide_Gross:Q",
+    y = "US_DVD_Sales:Q",
+    column = "MPAA_Rating:N"
+  )$
+  properties(width = 200, height = 200)
+
+chart
+```
+
+
+
+
+
+
+
+

@@ -30,13 +30,11 @@ in favor of specific, more self-documenting and helpful arguments.}
 htmlwidget for special situations in which you want a non-random
 identifier.}
 }
-\value{
-called for side-effects
-}
 \description{
-Use this function to interactvely examine a specification, using
-\code{\link[listviewer:jsonedit]{listviewer::jsonedit()}}. It can be used to examine a chart-specification
-(built using \code{\link{alt}}$Chart(), or compound charts), or an embedding specification created using
+This function is a thin wrapper to \code{\link[listviewer:jsonedit]{listviewer::jsonedit()}};
+use it to interactvely examine a specification.
+It can be used to examine a chart-specification,
+or an embedding specification created using
 \code{\link[=vega_embed]{vega_embed()}}.
 }
 \examples{

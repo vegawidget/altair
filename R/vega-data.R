@@ -5,7 +5,7 @@
 #' Returns the `data` object in the Python package
 #' [vega-datasets](https://github.com/altair-viz/vega_datasets).
 #' In the documentation for this package, the convention is to
-#' assign this to an object named `vega_data`.
+#' assign this object to the name `vega_data`.
 #'
 #' @return An S3 object of class `vega_datasets.core.DataLoader`
 #' @seealso

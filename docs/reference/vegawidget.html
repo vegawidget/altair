@@ -27,12 +27,17 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Create a Vega/Vega-Lite htmlwidget — vegawidget" />
 
-<meta property="og:description" content="Use this function to render a chart as an htmlwidget." />
+<meta property="og:description" content="Renders a chart as an htmlwidget." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -60,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
       </span>
     </div>
 
@@ -78,10 +83,7 @@
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
      
@@ -129,23 +131,48 @@
     <li>
       <a href="../articles/example-gallery-01-simple.html">Simple Charts</a>
     </li>
-    <li class="dropdown-header">Bar Charts</li>
-    <li class="dropdown-header">Line Charts</li>
-    <li class="dropdown-header">Area Charts</li>
-    <li class="dropdown-header">Scatterplots</li>
-    <li class="dropdown-header">Histograms</li>
-    <li class="dropdown-header">Maps</li>
-    <li class="dropdown-header">Interactive Charts</li>
-    <li class="dropdown-header">Other Charts</li>
+    <li>
+      <a href="../articles/example-gallery-02-bar-charts.html">Bar Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-03-line-charts.html">Line Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-04-area-charts.html">Area Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-05-scatter-plots.html">Scatterplots</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-06-histograms.html">Histograms</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-07-maps.html">Maps</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+    </li>
   </ul>
 </li>
-<li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
   <a href="https://github.com/vegawidget/altair">
     <span class="fa fa-github fa-2x"></span>
      
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -164,7 +191,7 @@
 
     <div class="ref-description">
     
-    <p>Use this function to render a chart as an htmlwidget.</p>
+    <p>Renders a chart as an htmlwidget.</p>
     
     </div>
 
@@ -175,26 +202,26 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>chart</th>
-      <td><p>an Altair plot object</p></td>
+      <td><p>an Altair chart object</p></td>
     </tr>
     <tr>
       <th>embed</th>
       <td><p><code>vega_embed</code> object to specify embedding options -
 the default is an empty call to <code><a href='vega_embed.html'>vega_embed()</a></code>,
-which will result in a canvas-rendering and all actions-links being
-included</p></td>
+which will result in a canvas-rendering and action-links included for
+exporting, viewing the Vega-Lite source, and opening the Vega editor.</p></td>
     </tr>
     <tr>
       <th>width</th>
       <td><p><code>integer</code>, if specified, the total rendered width (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification</p></td>
+the default is to use the width in the chart specification</p></td>
     </tr>
     <tr>
       <th>height</th>
       <td><p><code>integer</code>, if specified, the total rendered height (in pixels)
 of the chart - valid only for single-view charts and layered charts;
-the default is to use the chart specification</p></td>
+the default is to use the height in the chart specification</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -205,19 +232,19 @@ the default is to use the chart specification</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is called <code>vegawidget()</code> is because it returns an htmlwidget
-that uses the Vega-Lite JavaScript library, rather than the
+that uses Vega-Lite and Vega JavaScript libraries, rather than the
 Altair Python package.</p>
 <p>To specify embedding-options, use the <code><a href='vega_embed.html'>vega_embed()</a></code> function with the
 <code>embed</code> argument. Its most-important options are:</p><ul>
 <li><p><code>renderer</code>, to specify <code>"canvas"</code> (default) or <code>"svg"</code></p></li>
 <li><p><code>actions</code>,  to specify action-links
-for <code>export</code>, <code>source</code>, and <code>editor</code></p></li>
+for <code>export</code>, <code>source</code>, <code>compiled</code>, and <code>editor</code></p></li>
 </ul>
-    <p>If <code>actions</code> is <code>TRUE</code> (default) or <code>FALSE</code>, all the links
+    <p>If <code>actions</code> is <code>TRUE</code> (or <code>FALSE</code>), all the links
 are shown (or not). Use a named list to be more specific, see
 <code><a href='vega_embed.html'>vega_embed()</a></code> and <code><a href='only_actions.html'>only_actions()</a></code>.</p>
 <p>If <code>embed</code> is <code>NULL</code>, <code>vegawidget()</code> sets <code>embed</code> to the value of
-<code>getOption("altair.embed_options")</code>. If that is null, the
+<code>getOption("altair.embed_options")</code>. Then, if this option is <code>NULL</code>, the
 <a href='https://github.com/vega/vega-embed#api-reference'>vega-embed</a>
 defaults are used.</p>
 <p>The arguments <code>width</code> and <code>height</code> are used to override the width and height
@@ -255,7 +282,7 @@ the height of the action-links to be 15-20 pixels.</p></li>
     <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"Origin:N"</span>
   )</div><span class='co'># NOT RUN {</span>
   <span class='co'># default: rendered using canvas,</span>
-  <span class='co'>#   all action-links, chart-specification determines size</span>
+  <span class='co'>#  default action-links, chart-specification determines size</span>
   <span class='fu'>vegawidget</span>(<span class='no'>chart</span>)
 
   <span class='co'># render using SVG</span>
@@ -296,6 +323,23 @@ the height of the action-links to be 15-20 pixels.</p></li>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '0d6a37c7b714a8042d5ce01dad53be53',
+    indexName: 'altair',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

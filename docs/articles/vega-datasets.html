@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Vega Datasets">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.4</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
       </span>
     </div>
 
@@ -48,8 +50,6 @@
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -98,16 +98,34 @@
 <li>
       <a href="../articles/example-gallery-01-simple.html">Simple Charts</a>
     </li>
-    <li class="dropdown-header">Bar Charts</li>
-    <li class="dropdown-header">Line Charts</li>
-    <li class="dropdown-header">Area Charts</li>
-    <li class="dropdown-header">Scatterplots</li>
-    <li class="dropdown-header">Histograms</li>
-    <li class="dropdown-header">Maps</li>
-    <li class="dropdown-header">Interactive Charts</li>
-    <li class="dropdown-header">Other Charts</li>
+    <li>
+      <a href="../articles/example-gallery-02-bar-charts.html">Bar Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-03-line-charts.html">Line Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-04-area-charts.html">Area Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-05-scatter-plots.html">Scatterplots</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-06-histograms.html">Histograms</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-07-maps.html">Maps</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+    </li>
   </ul>
 </li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/vegawidget/altair">
     <span class="fa fa-github fa-2x"></span>
@@ -115,7 +133,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -129,7 +153,7 @@
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2018-05-13</h4>
+            <h4 class="date">2018-05-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -251,8 +275,8 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-5f8696d1bc1e2680d4fb" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5f8696d1bc1e2680d4fb">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+<div id="htmlwidget-223ab0eb67ec3d81f8a6" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-223ab0eb67ec3d81f8a6">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
 </div>
   </div>
 
@@ -285,6 +309,20 @@
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: '0d6a37c7b714a8042d5ce01dad53be53',
+    indexName: 'altair',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

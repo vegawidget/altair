@@ -1,6 +1,8 @@
-# altair 0.0.4.9000
+# altair 0.0.5
 
-* bumps version for development
+* adds `compiled` option to `only_actions()` to conform with new option in vega-embed (#71) 
+
+* incorporates remaining galleries
 
 # altair 0.0.4
 

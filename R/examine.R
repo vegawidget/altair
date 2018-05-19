@@ -1,13 +1,13 @@
 #' Examine a specification
 #'
-#' Use this function to interactvely examine a specification, using
-#' [listviewer::jsonedit()]. It can be used to examine a chart-specification
-#' (built using [`alt`]$Chart(), or compound charts), or an embedding specification created using
+#' This function is a thin wrapper to [listviewer::jsonedit()];
+#' use it to interactvely examine a specification.
+#' It can be used to examine a chart-specification,
+#' or an embedding specification created using
 #' [vega_embed()].
 #'
 #' @inheritParams listviewer::jsonedit
 #'
-#' @return called for side-effects
 #' @examples
 #' \dontrun{
 #'   vega_data <- import_vega_data()
