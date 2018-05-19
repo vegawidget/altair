@@ -1,6 +1,6 @@
 # altair 0.0.5
 
-* adds `compiled` option to `only_actions()` to conform with new option in vega-embed (#71)
+* adds `compiled` option to `only_actions()` to conform with new option in vega-embed (#71) 
 
 * incorporates remaining galleries
 
