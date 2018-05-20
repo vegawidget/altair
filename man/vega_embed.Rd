@@ -88,7 +88,7 @@ S3 object with class \code{vega_embed}
 \description{
 Used to specify the \code{embed} argument to the \code{vegawidget()} renderer.
 These arguments are then passed to the
-\href{https://github.com/vega/vega-embed#options}{vega-embed()}
+\href{https://github.com/vega/vega-embed#options}{vega-embed}
 library, which ultimately renders the chart specification as HTML.
 The most common options to set are \code{renderer}, to specify \code{"canvas"}
 or \code{"svg"}, and \code{actions}, to specify the inclusion of \code{export}, \code{source},
