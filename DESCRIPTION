@@ -1,5 +1,5 @@
 Package: altair
-Version: 0.1.0
+Version: 0.0.6
 Title: R Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a Python interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.

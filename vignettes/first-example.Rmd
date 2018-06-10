@@ -29,7 +29,7 @@ chart <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = "Origin:N",
-    tooltip = c("Name","Horsepower", "Miles_per_Gallon", "Origin")
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
   )
 
 vegawidget(chart)
@@ -121,7 +121,7 @@ chart <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = "Origin:N",
-    tooltip = c("Name","Horsepower", "Miles_per_Gallon", "Origin")
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
   )
 ```
 
@@ -137,7 +137,13 @@ chart <-
     x = alt$X("Horsepower", type = "quantitative"),
     y = alt$Y("Miles_per_Gallon", type = "quantitative"),
     color = alt$Color("Origin", type = "nominal"),
-    tooltip = c("Name","Horsepower", "Miles_per_Gallon", "Origin")
+    tooltip = 
+      list(
+        alt$Tooltip(field = "Name", type = "nominal"),
+        alt$Tooltip(field = "Horsepower", type = "quantitative"),
+        alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative"),
+        alt$Tooltip(field = "Origin", type = "nominal")
+      )
   )
 ```
 
