@@ -1,6 +1,6 @@
 # altair 0.0.6
 
-* updates to use Altair 2.1.0, which offers tooltips (@aliciaschep)
+* updates to use Altair 2.1.0, which offers tooltips (#29, #46, @aliciaschep)
 
 # altair 0.0.5
 
