@@ -87,6 +87,8 @@ navbar:
         - text: Getting Started
         - text: First Example
           href: articles/first-example.html
+        - text: Tooltips
+          href: articles/tooltips.html
         - text: Vega Datasets
           href: articles/vega-datasets.html
         - text: View Composition
