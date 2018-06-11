@@ -1,5 +1,7 @@
 # altair 0.0.6
 
+* adds requirement to use reticulate (>=) 1.8, to avoid conflict between data-frame variable-names and python methods (#50, @aliciaschep)  
+
 * updates to use Altair 2.1.0, which offers tooltips (#29, #46, @aliciaschep)
 
 # altair 0.0.5
