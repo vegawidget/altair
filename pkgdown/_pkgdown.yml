@@ -47,6 +47,7 @@ articles:
   - title: Getting started
     contents:
       - first-example
+      - tooltips
       - vega-datasets
       - view-composition
       - interactive

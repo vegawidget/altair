@@ -1,0 +1,98 @@
+---
+title: "Tooltips"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In Vega-Lite, a tooltip is an encoding to which variables are attached.
+
+The Altair Python package offers us a shortcut to specify the tooltip encoding, by supplying the names of the variables we wish to appear in the tooltip. Altair and Vega-Lite apply some default behaviors.
+
+```{r base-chart}
+library("altair")
+
+vega_data <- import_vega_data()
+
+chart <- 
+  alt$Chart(r_to_py(vega_data$cars()))$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N",
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
+  )
+
+chart
+```
+
+You can use the `alt$Tooltip()` method to achieve the same outcome:
+
+```{r long}
+chart_new <- 
+  chart$
+  encode(
+    tooltip = 
+      list(
+        alt$Tooltip(field = "Name", type = "nominal"),
+        alt$Tooltip(field = "Horsepower", type = "quantitative"),
+        alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative"),
+        alt$Tooltip(field = "Origin", type = "nominal")
+      )
+  )
+
+chart_new
+```
+
+Although it is more verbose than the shorthand form, it does allow you to be more expressive:
+
+```{r customize}
+chart_new <- 
+  chart$
+  encode(
+    tooltip = 
+      list(
+        alt$Tooltip(field = "Name", type = "nominal"),
+        alt$Tooltip(
+          field = "Year",
+          title = "Year",
+          type = "temporal", 
+          timeUnit = "year"
+        ),
+        alt$Tooltip(field = "Horsepower", type = "quantitative"),
+        alt$Tooltip(
+          field = "Miles_per_Gallon", 
+          format = ".2f",
+          title = "Gas Mileage (mpg)",
+          type = "quantitative"
+        ),
+        alt$Tooltip(field = "Origin", type = "nominal")
+      )
+  )
+
+chart_new
+```
+
+If there is no aggregation or time-unit specified, Vega-Lite will use the variable-name as the title for the field. Otherwise, Vega-Lite will modify the variable-name to indicate the time-unit or the aggregation. You can use the `title` option to override the default that Vega-Lite will propose.
+
+Also, you can specify the [format](https://vega.github.io/vega-lite/docs/format.html) of the values using the `format` option. For quantitative variables, [d3-format](https://github.com/d3/d3-format) is used; for temporal variables, [d3-time-format](https://github.com/d3/d3-time-format) is used.
+
+## Further reading
+
+- [Vega-Lite tooltips](https://vega.github.io/vega-lite/docs/tooltip.html)
+
+- [Vega-Lite format](https://vega.github.io/vega-lite/docs/format.html)
+
+- [D3 format](https://github.com/d3/d3-format)
+
+- [D3 time format](https://github.com/d3/d3-time-format)
+

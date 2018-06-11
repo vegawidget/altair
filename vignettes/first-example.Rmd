@@ -28,7 +28,8 @@ chart <-
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
-    color = "Origin:N"
+    color = "Origin:N",
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
   )
 
 vegawidget(chart)
@@ -119,11 +120,12 @@ chart <-
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
-    color = "Origin:N"
+    color = "Origin:N",
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
   )
 ```
 
-In Vega, "encode" plays a similar role to "aesthetics" in ggplot2. We are mapping variables in the data to scales in the plot.
+In Vega, "encode" plays a similar role to "aesthetics" in ggplot2. We are mapping variables in the data to scales in the plot. We can pass multiple variables to the tooltip by giving a list of variables.  
 
 What we see here is, in fact, a shorthand. As explained in the [Altair documentation](https://altair-viz.github.io/user_guide/encoding.html#encoding-shorthands), there's a longer version:
 
@@ -134,7 +136,14 @@ chart <-
   encode(
     x = alt$X("Horsepower", type = "quantitative"),
     y = alt$Y("Miles_per_Gallon", type = "quantitative"),
-    color = alt$Color("Origin", type = "nominal") 
+    color = alt$Color("Origin", type = "nominal"),
+    tooltip = 
+      list(
+        alt$Tooltip(field = "Name", type = "nominal"),
+        alt$Tooltip(field = "Horsepower", type = "quantitative"),
+        alt$Tooltip(field = "Miles_per_Gallon", type = "quantitative"),
+        alt$Tooltip(field = "Origin", type = "nominal")
+      )
   )
 ```
 
