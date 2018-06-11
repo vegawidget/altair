@@ -35,23 +35,9 @@ alt <- NULL
 on_altair_load <- function() {
   check_altair(quiet = TRUE)
 
-  # check to see that version is at least 1.7.1 to take care of
-  # the "pop" problem
+  # leave this here in case we ever need to check the version of reticulate
   #
-  version_reticulate <- utils::packageVersion("reticulate")
-  fixed_pop <- (version_reticulate >= package_version("1.7.1"))
-
-  if (!fixed_pop) {
-    message(
-      "The installed version of reticulate is ",
-      version_reticulate,
-      "\n",
-      "Using this version of reticulate, you will have a problem to ",
-      "access the vega dataset \"gapminder\".\n",
-      "To fix the problem, you can install the dev version of reticulate ",
-      "using: devtools::install_github(\"rstudio/reticulate\")"
-    )
-  }
+  # version_reticulate <- utils::packageVersion("reticulate")
 
 }
 
