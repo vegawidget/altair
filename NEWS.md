@@ -1,3 +1,7 @@
+# altair 0.0.6
+
+* updates to use Altair 2.1.0, which offers tooltips (#29, #46, @aliciaschep)
+
 # altair 0.0.5
 
 * adds `compiled` option to `only_actions()` to conform with new option in vega-embed (#71) 

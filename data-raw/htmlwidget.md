@@ -41,7 +41,7 @@ downloads <-
     ~path_local,                         ~path_remote,
     "vega/promise.min.js",               "https://vega.github.io/vega/assets/promise.min.js",
     "vega/symbol.min.js",                "https://vega.github.io/vega/assets/symbol.min.js",
-    "vega/vega.js",                      "https://cdn.jsdelivr.net/npm/vega@3.3.1",
+    "vega/vega.js",                      "https://cdn.jsdelivr.net/npm/vega@3.3.1/build/vega.js",
     "vega/LICENSE",                      "https://raw.githubusercontent.com/vega/vega/master/LICENSE",
     "vega-lite/vega-lite-min.js",        "https://cdn.jsdelivr.net/npm/vega-lite@2.4.3",
     "vega-lite/LICENSE",                 "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",

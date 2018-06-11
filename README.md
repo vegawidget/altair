@@ -132,7 +132,12 @@ Examples:
 
   - [First
     Example](https://vegawidget.github.io/altair/articles/first-example.html):
-    a walkthrough to get a first chart to work
+    a walkthrough to get a first chart to
+    work
+
+  - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
+    shows how Vega-Lite implements tooltips as an encoding within a
+    chart, with formatting options
 
   - [Vega
     Datasets](https://vegawidget.github.io/altair/articles/vega-datasets.html):
