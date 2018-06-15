@@ -84,7 +84,7 @@ The argument to the `Chart()` function merits some explanation. In Python, a `da
 
 In our case, we are converting data frames. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
 
-As you follow the [Altair exmaples](https://altair-viz.github.io/gallery/index.html), you will come across other Python-R translation issues. We have compiled our discoveries and workarounds in an article, [Field Guide to Python](field-guide-python.html).
+As you follow the [Altair examples](https://altair-viz.github.io/gallery/index.html), you will come across other Python-R translation issues. We have compiled our discoveries and workarounds in an article, [Field Guide to Python](field-guide-python.html).
 
 The `data` argument to a chart function need not be a data frame; it can be a *reference* to a data frame like a URL, in which case you will not need to wrap in `r_to_py()`:
 
