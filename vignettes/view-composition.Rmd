@@ -47,7 +47,7 @@ Layering involves combining multiple displays on the same set of axes. Two chart
 
 ```{r}
 library(altair)
-base <- alt$Chart(r_to_py(beaver1))$encode(
+base <- alt$Chart(beaver1)$encode(
   x = alt$X("time"),
   y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
 )
@@ -71,7 +71,7 @@ Passing the result of that function to `vegalite` would give the same output as 
 We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the `|` operator:
 
 ```{r}
-base2 <- alt$Chart(r_to_py(beaver2))$encode(
+base2 <- alt$Chart(beaver2)$encode(
   x = alt$X("time"),
   y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
 )
@@ -118,7 +118,7 @@ Compound plots can be combined to create more elaborate composed views. Here is 
 
 ```{r}
 hist_plot <- alt$Chart(
-  r_to_py(beaver1)
+  beaver1
   )$mark_bar(
   )$encode(
     x = alt$X("temp:Q", bin = TRUE),
@@ -126,7 +126,7 @@ hist_plot <- alt$Chart(
   )$properties(width = 200, height = 200)
 
 hist_plot2 <- alt$Chart(
-  r_to_py(beaver2)
+  beaver2
   )$mark_bar(
   )$encode(
     x = alt$X("temp:Q", bin = TRUE),
@@ -145,7 +145,7 @@ Faceting will likely be familiar to R users comfortable with ggplot2. Faceting c
 ```{r}
 plot <- 
   alt$Chart(
-    r_to_py(mtcars)
+    mtcars
   )$mark_point(
   )$encode(
     x = "mpg:Q",
@@ -166,7 +166,7 @@ Here is an example of creating plots with different x and y axes for the mtcars 
 ```{r}
 plot2 <- 
   alt$Chart(
-    r_to_py(mtcars)
+    mtcars
   )$mark_point(
   )$encode(
     alt$X(alt$`repeat`("column"), type="quantitative"),

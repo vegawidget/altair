@@ -25,7 +25,7 @@ Here's the short version:
 
 - These datasets have metadata that include a description, references, and a URL: e.g. `vega_data$cars$references`.
 
-- When you create an `alt$Chart()`, the `data` argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the `r_to_py()` helper; instead you can write `alt$Chart(vega_data$cars$url)`. 
+- When you create an `alt$Chart()`, the `data` argument need not be a data frame; it can be a reference to a data frame, such as a URL. 
 
   - If your chart contains a reference to an external resource, such as `vega_data$cars$url`, it will not render in the RStudio IDE due to RStudio's (well founded) security policy. If you view such a chart using an external browser, it should work OK if your computer can access the remote data.
 
