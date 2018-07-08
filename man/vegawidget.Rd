@@ -71,7 +71,7 @@ the height of the action-links to be 15-20 pixels.
 vega_data <- import_vega_data()
 
 chart <-
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",

@@ -13,7 +13,7 @@
 #'   vega_data <- import_vega_data()
 #'
 #'   chart <-
-#'     alt$Chart(r_to_py(vega_data$cars$url))$
+#'     alt$Chart(vega_data$cars())$
 #'     encode(
 #'       x = "Horsepower:Q",
 #'       y = "Miles_per_Gallon:Q",
@@ -23,7 +23,6 @@
 #'
 #'   examine(chart)
 #' }
-#'
 #'
 #' @export
 #'
