@@ -41,6 +41,17 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ..., options = NU
   knitr::knit_print(x, ..., options = options)
 }
 
+
+#' Vegawidget knit-print
+#'
+#' See \code{vegawidget::\link[vegawidget]{knit_print.vegaspec}} for details.
+#'
+#' @name knit_print.vegaspec
+#' @rdname knit_print.vegaspec
+#' @export
+#' @importFrom vegawidget knit_print.vegaspec
+NULL
+
 #' Vega-Embed actions
 #'
 #' See \code{vegawidget::\link[vegawidget]{as_vegaspec}} for details.
