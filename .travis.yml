@@ -14,8 +14,6 @@ before_install:
 #  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update
 #  - sudo apt-get install libstdc++6
-#  - sudo apt-get install ppa-purge
-#  - sudo ppa-purge ppa:ubuntu-toolchain-r/test
 #  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p $HOME/miniconda
@@ -25,11 +23,12 @@ before_install:
 
 before_script:
   - R CMD INSTALL .
-  - R -e 'reticulate::py_config()'
   - R -e 'altair::install_altair()'
-  - conda install -y python=3.6.6 --name r-reticulate
+  #  - ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /home/travis/miniconda/envs/r-reticulate/lib/python3.6/site-packages/pandas/_libs/window.cpython-36m-x86_64-linux-gnu.so)
+  #  - GLIBCXX_3.4.21 not available for Ubuntu 14.04 (try strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX)
+  #  - Solution may be to adjust version of pandas - 0.23.3 seemed to work, but not available now
+  #  - instead downgrade to 0.22.0 (suggested by https://groups.google.com/forum/#!topic/clusterjob/ium1jFYNqxU)
   - conda install -y pandas=0.22.0 --name r-reticulate
-  - R -e 'reticulate::py_config(); alt <- reticulate::import("altair")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
 
