@@ -25,13 +25,13 @@ used in Python.
   vega_data <- import_vega_data()
 
   plot_basic <-
-    alt$Chart(
-      r_to_py(vega_data$cars())
-    )$encode(
+    alt$Chart(vega_data$cars())$
+    encode(
       x = "Miles_per_Gallon:Q",
       y = "Horsepower:Q",
       color = "Origin:N"
-    )$mark_point()
+    )$
+    mark_point()
 }
 
 }
