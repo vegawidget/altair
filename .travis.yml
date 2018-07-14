@@ -15,8 +15,8 @@ before_install:
   - bash miniconda.sh -b -p $HOME/miniconda
   - rm miniconda.sh
   - export PATH="$HOME/miniconda/bin:$PATH"
-  - conda install -q -y libgcc
   - conda update -q -y conda
+  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
 
 before_script:
   - R CMD INSTALL .
