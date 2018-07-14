@@ -28,6 +28,7 @@ before_script:
   - R -e 'reticulate::py_config()'
   - R -e 'altair::install_altair()'
   - conda install -y python=3.6.6 --name r-reticulate
+  - conda install -y pandas=0.23.3 --name r-reticulate
   - R -e 'reticulate::py_config(); alt <- reticulate::import("altair")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
