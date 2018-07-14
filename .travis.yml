@@ -10,13 +10,13 @@ cache: packages
 
 # ref: https://conda.io/docs/user-guide/tasks/use-conda-with-travis-ci.html
 before_install:
-  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
-  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
+#  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+#  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update
-  - sudo apt-get install libstdc++6
-  - sudo apt-get install ppa-purge
-  - sudo ppa-purge ppa:ubuntu-toolchain-r/test
-  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+#  - sudo apt-get install libstdc++6
+#  - sudo apt-get install ppa-purge
+#  - sudo ppa-purge ppa:ubuntu-toolchain-r/test
+#  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p $HOME/miniconda
   - rm miniconda.sh
@@ -26,7 +26,9 @@ before_install:
 before_script:
   - R CMD INSTALL .
   - R -e 'reticulate::py_config()'
-  - R -e 'altair::install_altair(); reticulate::py_config(); alt <- reticulate::import("altair")'
+  - R -e 'altair::install_altair()'
+  - conda install python=3.6.6
+  - R -e 'reticulate::py_config(); alt <- reticulate::import("altair")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
 
