@@ -53,7 +53,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     x = "a",
@@ -87,7 +87,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_rect()$
   encode(
     x = "x:O",
@@ -133,7 +133,7 @@ chart
 <details>
 <summary>Definition</summary>
 ```{r}
-dat <- 
+data <- 
   data_frame(
     x = 0:100,
     sinx = sin(x / 5)
@@ -142,14 +142,14 @@ dat <-
 </details>
 
 ```{r}
-glimpse(dat)
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(dat))$
+  alt$Chart(data)$
   mark_line()$
   encode(
     x = "x",
@@ -173,7 +173,7 @@ glimpse(vega_data$iris())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$iris()))$
+  alt$Chart(vega_data$iris())$
   mark_point()$
   encode(
     x = "petalWidth",
@@ -199,7 +199,7 @@ glimpse(vega_data$unemployment_across_industries())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$unemployment_across_industries()))$
+  alt$Chart(vega_data$unemployment_across_industries())$
   mark_area()$
   encode(
     x="date:T",
@@ -224,7 +224,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_tick()$
   encode(
     x = "Horsepower:Q",

@@ -23,7 +23,7 @@ library("altair")
 vega_data <- import_vega_data()
 
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -56,7 +56,7 @@ vega_data <- import_vega_data()
 The next part of the code block creates a chart object:
 
 ```{r create-chart}
-chart <- alt$Chart(r_to_py(vega_data$cars()))
+chart <- alt$Chart(vega_data$cars())
 ```
 
 There's a few things going on here. The first is that the altair (R) package exposes Altair (Python) methods and objects using the variable `alt`; the same convention is used in the [Altair documentation](https://altair-viz.github.io/getting_started/overview.html).
@@ -81,13 +81,13 @@ Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. I
 chart <- alt$Chart(...)
 ```
 
-The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. The reticulate package offers us a function `r_to_py()`, which we re-export in this package. This function and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
+The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. Using this package, the reticulate package automaticaLLY converts R `data.frame`s to Pandas Dataframes.
 
-In our case, we are converting data frames. Although the reticulate documentation suggests (or at least I interpreted) that the conversion would be made automatically, I found it necessary to call `r_to_py()` explicitly.
+As well, the reticulate package offers us a function `r_to_py()`, and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
 
 As you follow the [Altair exmaples](https://altair-viz.github.io/gallery/index.html), you will come across other Python-R translation issues. We have compiled our discoveries and workarounds in an article, [Field Guide to Python](field-guide-python.html).
 
-The `data` argument to a chart function need not be a data frame; it can be a *reference* to a data frame like a URL, in which case you will not need to wrap in `r_to_py()`:
+The `data` argument to a chart function need not be a data frame; it can be a *reference* to a data frame like a URL:
 
 ```{r url}
 vega_data$cars$url
@@ -101,7 +101,7 @@ Note that referring to an external URL is generally not allowed in the RStudio I
 
 ```{r add-mark}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()
 ```
 
@@ -115,7 +115,7 @@ Note that we can extend the `$` operation across lines, giving us the illusion o
 
 ```{r add-encoding}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -131,7 +131,7 @@ What we see here is, in fact, a shorthand. As explained in the [Altair documenta
 
 ```{r add-encoding-long}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = alt$X("Horsepower", type = "quantitative"),

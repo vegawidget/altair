@@ -38,13 +38,14 @@ ByteCompile: true
 URL: https://github.com/vegawidget/altair
 BugReports: https://github.com/vegawidget/altair/issues
 Imports:
-    reticulate (>= 1.8),
+    reticulate (>= 1.9),
     htmlwidgets,
     rlang (>= 0.1.2),
     assertthat,
     magrittr,
     jsonlite,
-    utils
+    utils,
+    vegawidget
 Suggests:
     httr,
     rprojroot,
@@ -59,6 +60,7 @@ Suggests:
     stringr,
     tidyr,
     dplyr
+Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

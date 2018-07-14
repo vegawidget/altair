@@ -47,7 +47,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_line()$
   encode(
     x = alt$X(
@@ -147,9 +147,6 @@ glimpse(source2)
 #### Chart
 
 ```{r}
-source <- r_to_py(source)
-source2 <- r_to_py(source2)
-
 line <-
   alt$Chart(source)$
   mark_line(color="#333")$
@@ -194,7 +191,7 @@ glimpse(vega_data$stocks())
 #### Chart
 
 ```{r}
-stocks <- r_to_py(vega_data$stocks())
+stocks <- vega_data$stocks()
 
 line <- 
   alt$Chart(stocks)$
@@ -240,10 +237,8 @@ glimpse(jobs)
 #### Chart
 
 ```{r}
-source = r_to_py(jobs)
-
 chart <- 
-  alt$Chart(source)$
+  alt$Chart(jobs)$
   mark_line()$
   encode(
     x = alt$X("year:O"),
@@ -271,7 +266,7 @@ glimpse(vega_data$cars())
 #### Chart
 
 ```{r}
-cars <- r_to_py(vega_data$cars())
+cars <- vega_data$cars()
 
 line <- 
   alt$Chart(cars)$
@@ -316,7 +311,7 @@ A difference from the Python example is that you have to make sure that you delc
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$stocks()))$
+  alt$Chart(vega_data$stocks())$
   mark_line()$
   encode(
     x = "date:T",
@@ -348,7 +343,7 @@ glimpse(barley)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(barley))$
+  alt$Chart(barley)$
   mark_line()$
   encode(
     x = "year",
@@ -376,7 +371,7 @@ glimpse(vega_data$stocks())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$stocks()))$
+  alt$Chart(vega_data$stocks())$
   mark_line(interpolate = "step-after")$
   encode(
     x = "date",

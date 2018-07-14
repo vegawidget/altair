@@ -32,7 +32,7 @@ Here's the short version:
 
 - You can examine a chart-specification using the `examine()` function, which wraps `listviewer::jsonedit()`.
   
-- The `vegalite()` function has arguments `embed_options`, and `width` & `height`.
+- The `vegawidget()` function has arguments `embed_options`, and `width` & `height`.
 
 - The `embed_options` can be set using the `vega_embed()` function.
 
@@ -60,7 +60,7 @@ library("tibble")
 vega_data <- import_vega_data()
 
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   encode(
     x = "Miles_per_Gallon:Q",
     y = "Horsepower:Q",

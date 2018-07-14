@@ -87,7 +87,7 @@ states <- alt$topo_feature(us, feature = "states")
 
 # US states background
 background <-
-  alt$Chart(r_to_py(states))$
+  alt$Chart(states)$
   mark_geoshape(
     fill = "lightgray",
     stroke = "white"
@@ -97,7 +97,7 @@ background <-
 
 # airport positions on background
 points <- 
-  alt$Chart(r_to_py(airports))$
+  alt$Chart(airports)$
   mark_circle()$
   encode(
     longitude = "longitude:Q",
@@ -130,8 +130,6 @@ glimpse(centroids)
 #### Chart
 
 ```{r}
-centroids <- r_to_py(centroids)
-
 domain_line <- 
   list("Bakerloo", "Central", "Circle", "District", "DLR", 
        "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
@@ -241,8 +239,6 @@ glimpse(pop_eng_hur)
 ```{r}
 states <- alt$topo_feature(vega_data$us_10m$url, "states")
 
-pop_eng_hur <- r_to_py(pop_eng_hur)
-
 variable_list <- list("population", "engineers", "hurricanes")
 
 chart <- 
@@ -278,7 +274,6 @@ glimpse(capitals)
 
 ```{r}
 states <- alt$topo_feature(vega_data$us_10m$url, "states")
-capitals <- r_to_py(capitals)
 
 # US states background
 background <- 

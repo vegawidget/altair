@@ -77,25 +77,22 @@ library("altair")
 vega_data <- import_vega_data()
 
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
+  mark_point()$
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = "Origin:N"
-  )$
-  mark_point()
+  )
 
 chart
 ```
 
-![](man/figures/first-example.png)
+<img src="man/figures/README-example-1.png" width="100%" />
 
 Some things to keep in mind:
 
   - Where you see a `.` in the Python examples, use a `$` instead.
-
-  - Any data frames you provide as `data` arguments need to wrapped by
-    `r_to_py()`.
 
   - In your data, columns that contain dots can be wrapped in square
     brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep

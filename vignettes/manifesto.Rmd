@@ -28,7 +28,7 @@ The longer term will require more thought and consultation. As a start, it might
 
 ```r
 alt_chart <- function(data, ...) {
-  alt$Chart(r_to_py(data), ...)
+  alt$Chart(data, ...)
 }
 ```
 
