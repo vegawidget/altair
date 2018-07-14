@@ -1,5 +1,5 @@
 # altair 0.0.6
-  
+
 * revomes rendering functions in favor of a seperate package, [**vegawidget**](https://github.com/vegawidget/vegawidget)
 
 * adds requirement to use reticulate (>=) 1.9, to avoid conflict between data-frame variable-names and python methods (#50, @aliciaschep) and to remove the need to use the `r_to_py()` function for data (#83)
