@@ -6,7 +6,7 @@ r:
   - release
 #  - devel
 sudo: required
-cache: packages
+# cache: packages
 
 # ref: https://conda.io/docs/user-guide/tasks/use-conda-with-travis-ci.html
 before_install:
