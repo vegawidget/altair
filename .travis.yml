@@ -27,7 +27,8 @@ before_script:
   - R CMD INSTALL .
   - R -e 'reticulate::py_config()'
   - R -e 'altair::install_altair()'
-  - conda install python=3.6.6
+  - conda activate r-reticulate
+  - conda install -y python=3.6.6
   - R -e 'reticulate::py_config(); alt <- reticulate::import("altair")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
