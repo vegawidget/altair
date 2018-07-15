@@ -108,10 +108,10 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' To install the supported version into a Python environment
 #' called `"r-reticulate"`, use [install_altair()].
 #'
-#' @inheritParams check_altair_version
+#' @param quiet `logical`, if `TRUE`, suppresses message upon successful check
 #'
 #' @return invisible `NULL`, called for side-effects
-#' @seealso [reticulate::py_config()], [install_altair()]
+#' @seealso [reticulate::py_config()], [install_altair()], [altair_versions()]
 #' @examples
 #' \dontrun{
 #'   check_altair()
@@ -119,16 +119,31 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' @export
 #'
 check_altair <- function(quiet = FALSE) {
-  check_altair_version(
-    version_installed = alt$`__version__`,
-    version_supported = getOption("altair.python.version"),
-    quiet = quiet
+  check_altair_version(quiet = quiet)
+}
+
+#' Installed versions of Altair, Vega, etc.
+#'
+#' Returns a named list of version tags for Altair, Vega, Vega-Lite,
+#' and Vega-Embed
+#'
+#' @return named `list` of version tags
+#' @examples
+#'   altair_versions()
+#' @export
+#'
+altair_versions <- function() {
+  c(
+    list(altair = alt$`__version__`),
+    vegawidget::vega_versions()
   )
 }
 
 #' Check two verision-strings
 #'
 #' Given two version-strings, issue an error, warning, message, or do nothing.
+#'
+#' @noRd
 #'
 #' @param version_installed `character` vector, installed version -
 #'   can be obtained using `alt$__version__`
@@ -154,10 +169,11 @@ check_altair <- function(quiet = FALSE) {
 #'   # does nothing
 #'   check_altair_version("2.0.1", version_supported)
 #' }
-#' @export
 #'
-check_altair_version <- function(version_installed, version_supported,
-                                 quiet = FALSE) {
+check_altair_version <-
+  function(version_installed = altair_versions()$altair,
+           version_supported = getOption("altair.python.version"),
+           quiet = FALSE) {
 
   installed <- get_version_components(version_installed)
   supported <- get_version_components(version_supported)
