@@ -1,5 +1,5 @@
 # altair 0.0.6
- 
+
 * adds `altair_versions()`, returns list of versions used for Altair, Vega, Vega-Lite, etc.
 
 * adds `as_chart()`, to import a vegaspec as an Altair chart
