@@ -1,6 +1,6 @@
 # see zzz.R for "creation" of the alt object
 
-#' Create an Altair object from a vegaspec
+#' Create Altair chart from  vegaspec
 #'
 #' @param spec vegaspec
 #'
@@ -12,7 +12,7 @@
 as_chart <- function(spec) {
 
   spec <- as_vegaspec(spec)
-  spec <- as_json(spec)
+  spec <- vw_as_json(spec)
 
   chart <- alt$Chart()$from_json(spec)
 

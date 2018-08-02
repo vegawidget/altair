@@ -111,7 +111,7 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' @param quiet `logical`, if `TRUE`, suppresses message upon successful check
 #'
 #' @return invisible `NULL`, called for side-effects
-#' @seealso [reticulate::py_config()], [install_altair()], [altair_versions()]
+#' @seealso [reticulate::py_config()], [install_altair()], [altair_version()]
 #' @examples
 #' \dontrun{
 #'   check_altair()
@@ -129,13 +129,13 @@ check_altair <- function(quiet = FALSE) {
 #'
 #' @return named `list` of version tags
 #' @examples
-#'   altair_versions()
+#'   altair_version()
 #' @export
 #'
-altair_versions <- function() {
+altair_version <- function() {
   c(
     list(altair = alt$`__version__`),
-    vegawidget::vega_versions()
+    vegawidget::vega_version()
   )
 }
 
@@ -171,7 +171,7 @@ altair_versions <- function() {
 #' }
 #'
 check_altair_version <-
-  function(version_installed = altair_versions()$altair,
+  function(version_installed = altair_version()$altair,
            version_supported = getOption("altair.python.version"),
            quiet = FALSE) {
 

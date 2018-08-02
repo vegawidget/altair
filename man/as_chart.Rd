@@ -2,7 +2,7 @@
 % Please edit documentation in R/alt.R
 \name{as_chart}
 \alias{as_chart}
-\title{Create an Altair object from a vegaspec}
+\title{Create Altair chart from  vegaspec}
 \usage{
 as_chart(spec)
 }
@@ -13,7 +13,7 @@ as_chart(spec)
 altair object
 }
 \description{
-Create an Altair object from a vegaspec
+Create Altair chart from  vegaspec
 }
 \examples{
   as_chart(vegawidget::spec_mtcars)
