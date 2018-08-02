@@ -1,10 +1,10 @@
 # altair 0.0.6
 
-* adds `altair_versions()`, returns list of versions used for Altair, Vega, Vega-Lite, etc.
+* adds `altair_version()`, returns list of versions used for Altair, Vega, Vega-Lite, etc.
 
 * adds `as_chart()`, to import a vegaspec as an Altair chart
  
-* revomes rendering functions in favor of a seperate package, [**vegawidget**](https://github.com/vegawidget/vegawidget)
+* revomes rendering functions in favor of a seperate package, [**vegawidget**](https://github.com/vegawidget/vegawidget) - vegawidget functions imported and exported using templating function `vegawidget::use_vegawidget()`.
 
 * adds requirement to use reticulate (>=) 1.9, to avoid conflict between data-frame variable-names and python methods (#50, @aliciaschep) and to remove the need to use the `r_to_py()` function for data (#83)
 
