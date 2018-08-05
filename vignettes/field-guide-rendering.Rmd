@@ -126,8 +126,7 @@ If there is a default that you would like to use, you can set an option in your 
 options(
   repos = c(CRAN = "https://cloud.r-project.org/"),
   ...
-  altair.embed_options =
-    altair::vega_embed(actions = altair::only_actions(export = TRUE))
+  vega.embed = altair::vega_embed(actions = FALSE)
 )
 ```
 
