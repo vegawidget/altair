@@ -5,7 +5,8 @@
 \alias{knit_print.vegaspec}
 \title{Knit-print method}
 \usage{
-knit_print.altair.vegalite.v2.api.TopLevelMixin(spec, ..., options = NULL)
+knit_print.altair.vegalite.v2.api.TopLevelMixin(spec, ...,
+  options = NULL)
 }
 \arguments{
 \item{spec}{object to be coerced to \code{vegaspec}, a Vega/Vega-Lite specification}

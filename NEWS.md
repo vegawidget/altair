@@ -1,3 +1,9 @@
+# altair 2.2.2.0
+
+* new versioning system: first three version numbers follow supported Altair (Python) version
+
+* updates to use Altair 2.2.2
+
 # altair 0.0.6
 
 * adds `altair_version()`, returns list of versions used for Altair, Vega, Vega-Lite, etc.

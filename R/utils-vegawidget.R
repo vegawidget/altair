@@ -211,4 +211,13 @@ NULL
 #'
 NULL
 
-
+#' Serialize data-frame time-columns
+#'
+#' See \code{vegawidget::\link[vegawidget]{vw_serialize_data}} for details.
+#'
+#' @name vw_serialize_data
+#' @rdname vw_serialize_data
+#' @importFrom vegawidget vw_serialize_data
+#' @export
+#'
+NULL
