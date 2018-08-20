@@ -41,5 +41,5 @@ called \code{"r-reticulate"}, use \code{\link[=install_altair]{install_altair()}
 }
 }
 \seealso{
-\code{\link[reticulate:py_config]{reticulate::py_config()}}, \code{\link[=install_altair]{install_altair()}}
+\code{\link[reticulate:py_config]{reticulate::py_config()}}, \code{\link[=install_altair]{install_altair()}}, \code{\link[=altair_version]{altair_version()}}
 }

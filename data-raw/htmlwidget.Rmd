@@ -23,24 +23,24 @@ Let's establish the files we will download, and where we will download them to.
 
 Here's a [reference](https://vega.github.io/vega/usage/#ie) to a solution to the promise-and-symbol issue that Alicia Schep brought up. 
 
-As of 2015-05-06, the most current versions are:
+As of 2015-05-31, the most current versions are [reference](https://github.com/vega/vega-lite/blob/v2.5.0/package.json):
 
-- vega 3.3.1 [link](https://www.jsdelivr.com/package/npm/vega)
-- vega-lite 2.4.3 [link](https://www.jsdelivr.com/package/npm/vega-lite)
-- vega-embed 3.9.0 [link](https://www.jsdelivr.com/package/npm/vega-embed)
+- vega-lite 2.5.0 [link](https://www.jsdelivr.com/package/npm/vega-lite)
+- vega 4.0.0-rc.2 [link](https://www.jsdelivr.com/package/npm/vega)
+- vega-embed 3.14.0 [link](https://www.jsdelivr.com/package/npm/vega-embed)
 
 
 ```{r}
 downloads <-
   tribble(
     ~path_local,                         ~path_remote,
+    "vega-lite/vega-lite-min.js",        "https://cdn.jsdelivr.net/npm/vega-lite@2.5.0",
+    "vega-lite/LICENSE",                 "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",
     "vega/promise.min.js",               "https://vega.github.io/vega/assets/promise.min.js",
     "vega/symbol.min.js",                "https://vega.github.io/vega/assets/symbol.min.js",
-    "vega/vega.js",                      "https://cdn.jsdelivr.net/npm/vega@3.3.1",
+    "vega/vega.js",                      "https://cdn.jsdelivr.net/npm/vega@4.0.0-rc.2/build/vega.js",
     "vega/LICENSE",                      "https://raw.githubusercontent.com/vega/vega/master/LICENSE",
-    "vega-lite/vega-lite-min.js",        "https://cdn.jsdelivr.net/npm/vega-lite@2.4.3",
-    "vega-lite/LICENSE",                 "https://raw.githubusercontent.com/vega/vega-lite/master/LICENSE",
-    "vega-embed/vega-embed.js",          "https://cdn.jsdelivr.net/npm/vega-embed@3.9.0",
+    "vega-embed/vega-embed.js",          "https://cdn.jsdelivr.net/npm/vega-embed@3.14.0",
     "vega-embed/LICENSE",                "https://raw.githubusercontent.com/vega/vega-embed/master/LICENSE"
   )
 ```

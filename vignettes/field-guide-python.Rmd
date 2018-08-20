@@ -30,8 +30,6 @@ The [Altair documentation](https://altair-viz.github.io) is the best resource fo
 
 Here's the short version:
 
-- Data frames have to be wrapped in `r_to_py()`. 
-
 - Where you see a `.`, use a `$` instead.
 
 - Altair methods return a *copy* of the object. Assignment of a Python object returns a *reference*, not a copy. 
@@ -71,7 +69,7 @@ alt.Chart(cars).mark_point().encode(
 ).interactive()
 ```
 
-In this case, we are supplying a Data Frame to a `Chart()` method. To do the same thing from R, we need to wrap data frames in the `r_to_py()` function (exported from **reticulate**).
+In this case, we are supplying a Data Frame to a `Chart()` method. 
 
 ```{r}
 library("altair")
@@ -80,7 +78,7 @@ vega_data <- import_vega_data()
 cars <- vega_data$cars()
 
 chart <- 
-  alt$Chart(r_to_py(cars))$
+  alt$Chart(cars)$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -111,7 +109,7 @@ vega_data <- import_vega_data()
 cars <- vega_data$cars()
 
 chart <- 
-  alt$Chart(r_to_py(cars))$
+  alt$Chart(cars)$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -164,7 +162,7 @@ This means that we can run into trouble using R's `iris` dataset:
 # does not render properly
 
 chart_iris_r <-
-  alt$Chart(r_to_py(iris))$
+  alt$Chart(iris)$
   encode(
     x = "Sepal.Width:Q",
     y = "Sepal.Length:Q",
@@ -179,7 +177,7 @@ The problem here is that there are variables whose names have dots in them, e.g.
 
 ```{r}
 chart_iris_r <-
-  alt$Chart(r_to_py(iris))$
+  alt$Chart(iris)$
   encode(
     x = "[Sepal.Width]:Q",
     y = "Sepal\\.Length:Q",
@@ -219,7 +217,7 @@ However, the article notes, there is a catch: `repeat` is a reserved word in R, 
 
 ```{r repeat}
 chart_repeat <- 
-  alt$Chart(r_to_py(vega_data$iris()))$
+  alt$Chart(vega_data$iris())$
   encode(
     x = alt$X(alt$`repeat`("column"), type = "quantitative"),
     y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
@@ -404,7 +402,7 @@ activities <-
   )
 
 chart <- 
-  alt$Chart(r_to_py(activities))$
+  alt$Chart(activities)$
   mark_bar()$
   encode(
     x = alt$X("PercentOfTotal:Q", axis = alt$Axis(format =".0%")),

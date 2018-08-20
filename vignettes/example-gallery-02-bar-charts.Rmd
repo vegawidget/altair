@@ -60,7 +60,7 @@ glimpse(data2)
 
 ```{r}
 bar1 <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     x = "Day:O",
@@ -68,7 +68,7 @@ bar1 <-
   )
 
 bar2 <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar(color="#e45755")$
   encode(
     x = "Day:O",
@@ -79,12 +79,12 @@ bar2 <-
   transform_calculate("baseline", "300")
 
 rule <- 
-  alt$Chart(r_to_py(data2))$
+  alt$Chart(data2)$
   mark_rule()$
   encode(y = "ThresholdValue:Q")
 
 text <- 
-  alt$Chart(r_to_py(data2))$
+  alt$Chart(data2)$
   mark_text(align="left", dx = 215, dy = -5)$
   encode(
     y = alt$Y("ThresholdValue:Q", axis = alt$Axis(title = "PM2.5 Value")),
@@ -119,7 +119,7 @@ upper_whisker <- "max(people):Q"
 
 # Compose each layer individually
 lower_plot <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_rule()$
   encode(
     y = alt$Y(lower_whisker, axis = alt$Axis(title = "population")),
@@ -128,7 +128,7 @@ lower_plot <-
   )
 
 middle_plot <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_bar(size = 5.0)$
   encode(
     y = lower_box,
@@ -137,7 +137,7 @@ middle_plot <-
   )
 
 upper_plot <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_rule()$
   encode(
     y = upper_whisker,
@@ -146,7 +146,7 @@ upper_plot <-
   )
 
 middle_tick <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_tick(color = "white", size = 5.0)$
   encode(
     y = "median(people):Q",
@@ -198,7 +198,7 @@ glimpse(activities)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(activities))$
+  alt$Chart(activities)$
   mark_bar()$
   encode(
     alt$X("PercentOfTotal:Q", axis = alt$Axis(format = ".0%")),
@@ -443,7 +443,7 @@ open_close_color <-
   )
 
 rule <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_rule()$
   encode(
     alt$X(
@@ -467,7 +467,7 @@ rule <-
 )
 
 bar <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     alt$X("date:T", timeUnit = "yearmonthdate"),
@@ -854,7 +854,7 @@ y_axis <-
   )
 
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     x = "percentage_start:Q",
@@ -886,7 +886,7 @@ glimpse(vega_data$barley())
 
 ```{r}
 points <- 
-  alt$Chart(r_to_py(vega_data$barley()))$
+  alt$Chart(vega_data$barley())$
   mark_point(filled = TRUE)$
   encode(
     x = alt$X(
@@ -899,7 +899,7 @@ points <-
   )
 
 error_bars <- 
-  alt$Chart(r_to_py(vega_data$barley()))$
+  alt$Chart(vega_data$barley())$
   mark_rule()$
   encode(
     x = "ci0(yield)",
@@ -938,7 +938,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     x = "start",
@@ -957,7 +957,7 @@ chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_bar(stroke = "transparent")$
   encode(
     x = alt$X(
@@ -1000,7 +1000,7 @@ glimpse(vega_data$population())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_bar()$
   encode(
     x = alt$X("sum(people):Q", axis = alt$Axis(title = "population")),
@@ -1026,7 +1026,7 @@ glimpse(vega_data$barley())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$barley()))$
+  alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
     x = "sum(yield)",
@@ -1080,7 +1080,7 @@ b <-
 
 chart <- 
   (a + b)$ 
-  properties(data = r_to_py(data))$
+  properties(data = data)$
   # controls the width of the tick
   configure_tick(thickness = 2, bandSize=35)$
   # controls the width of the bar
@@ -1103,7 +1103,7 @@ glimpse(vega_data$population())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_bar(opacity = 0.7)$
   encode(
     x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
@@ -1139,7 +1139,7 @@ glimpse(vega_data$seattle_weather())
 #### Chart
 
 ```{r}
-source <- r_to_py(vega_data$seattle_weather())
+source <- vega_data$seattle_weather()
 
 bar <- 
   alt$Chart(source)$
@@ -1178,7 +1178,7 @@ glimpse(vega_data$seattle_weather())
 
 ```{r}
 base <- 
-  alt$Chart(r_to_py(vega_data$seattle_weather()))$
+  alt$Chart(vega_data$seattle_weather())$
   encode(
     x = alt$X(
       "date:O",
@@ -1224,7 +1224,7 @@ glimpse(vega_data$population())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$population()))$
+  alt$Chart(vega_data$population())$
   mark_bar()$
   encode(
     x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
@@ -1269,7 +1269,7 @@ glimpse(data)
 
 ```{r}
 bars <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_bar()$
   encode(
     x = "b",
@@ -1300,7 +1300,7 @@ glimpse(vega_data$seattle_weather())
 #### Chart
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$seattle_weather()))$
+  alt$Chart(vega_data$seattle_weather())$
   mark_bar()$
   encode(
     x = alt$X(
@@ -1333,7 +1333,7 @@ glimpse(vega_data$barley())
 #### Chart
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$barley()))$
+  alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
     x = "sum(yield)",

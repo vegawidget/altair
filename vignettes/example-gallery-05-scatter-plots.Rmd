@@ -43,7 +43,7 @@ glimpse(vega_data$anscombe())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$anscombe()))$
+  alt$Chart(vega_data$anscombe())$
   mark_circle()$
   encode(
     x = alt$X("X", scale = alt$Scale(zero = FALSE)),
@@ -72,13 +72,13 @@ glimpse(vega_data$barley())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$barley()))$
+  alt$Chart(vega_data$barley())$
   mark_point()$
   encode(
     x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
     y = alt$Y(
         "variety",
-        sort = alt$SortField(
+        sort = alt$EncodingSortField(
           field = "yield", 
           op = "median", 
           order = "descending"
@@ -108,7 +108,7 @@ glimpse(movies)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(movies))$
+  alt$Chart(movies)$
   mark_circle()$
   encode(
     alt$X("IMDB_Rating:Q", bin = TRUE),
@@ -133,7 +133,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -160,7 +160,7 @@ glimpse(vega_data$driving())
 
 ```{r}
 lines <- 
-  alt$Chart(r_to_py(vega_data$driving()))$
+  alt$Chart(vega_data$driving())$
   mark_line()$
   encode(
     x = alt$X("miles", scale = alt$Scale(zero = FALSE)),
@@ -169,7 +169,7 @@ lines <-
   )
 
 points <- 
-  alt$Chart(r_to_py(vega_data$driving()))$
+  alt$Chart(vega_data$driving())$
   mark_circle()$
   encode(
     alt$X("miles", scale = alt$Scale(zero = FALSE)),
@@ -196,7 +196,7 @@ glimpse(vega_data$cars())
 #### Chart
 
 ```{r}
-cars <- r_to_py(vega_data$cars())
+cars <- vega_data$cars()
 
 brush <- alt$selection(type = "interval")
 
@@ -256,7 +256,7 @@ glimpse(vega_data$gapminder_health_income())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$gapminder_health_income()))$
+  alt$Chart(vega_data$gapminder_health_income())$
   mark_circle()$
   encode(
     alt$X("income:Q", scale = alt$Scale(type = "log")), 
@@ -281,7 +281,7 @@ glimpse(vega_data$iris())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$iris()))$
+  alt$Chart(vega_data$iris())$
   mark_circle()$
   encode(
     x = alt$X("sepalLength", scale = alt$Scale(zero = FALSE)),
@@ -307,7 +307,7 @@ glimpse(vega_data$disasters())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$disasters()))$
+  alt$Chart(vega_data$disasters())$
   mark_circle(opacity = 0.8, stroke = "black", strokeWidth = 1)$
   encode(
     x = alt$X("Year:O", axis = alt$Axis(labelAngle = 0)),
@@ -373,7 +373,7 @@ glimpse(data_predict)
 
 ```{r}
 chart_data <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_circle(color = "black")$
   encode(
     x = "x:Q",
@@ -381,7 +381,7 @@ chart_data <-
   )
 
 chart_predict <-
-  alt$Chart(r_to_py(data_predict))$
+  alt$Chart(data_predict)$
   mark_line()$
   encode(
     x = "x:Q",
@@ -408,7 +408,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_circle()$
   encode(
     x = alt$X(alt$`repeat`("column"), type = "quantitative"),
@@ -453,7 +453,7 @@ glimpse(data)
 
 ```{r}
 bars <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_point()$
   encode(
     x = "x:Q",
@@ -484,7 +484,7 @@ glimpse(vega_data$github())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$github()))$
+  alt$Chart(vega_data$github())$
   mark_circle()$
   encode(
     x = alt$X("time:O", timeUnit = "hours"),
@@ -511,7 +511,7 @@ glimpse(vega_data$movies())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$movies()))$
+  alt$Chart(vega_data$movies())$
   mark_point()$
   encode(
     x = "Worldwide_Gross:Q",

@@ -21,7 +21,6 @@ In the short term, the thought is to focus on a small number of items:
 
 1. Tightening up the existing capabilities.
 1. Will likely split the `vegawidget()` function, with its friends, into its own package. This would not introduce any API changes to this package.
-1. Tooltips.
 1. Some infrastructure to create and publish [blocks](https://bl.ocks.org/). ([#19](https://github.com/vegawidget/altair/issues/19))
 1. Consolidating datasets within a chart specification. ([#26](https://github.com/vegawidget/altair/issues/26))
 
@@ -29,7 +28,7 @@ The longer term will require more thought and consultation. As a start, it might
 
 ```r
 alt_chart <- function(data, ...) {
-  alt$Chart(r_to_py(data), ...)
+  alt$Chart(data, ...)
 }
 ```
 

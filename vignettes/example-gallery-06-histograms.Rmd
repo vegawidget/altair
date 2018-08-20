@@ -41,7 +41,7 @@ glimpse(vega_data$movies())
 #### Chart
 
 ```{r}
-data <- r_to_py(vega_data$movies())
+data <- vega_data$movies()
 
 bar <- 
   alt$Chart(data)$
@@ -91,7 +91,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_area(opacity = 0.3, interpolate="step")$
   encode(
     x = alt$X("Measurement", bin = alt$Bin(maxbins = 100)),
@@ -121,7 +121,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_bar()$
   encode(
     x = alt$X("Horsepower:Q", bin = TRUE),

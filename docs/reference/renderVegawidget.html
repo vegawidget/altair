@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Render a shiny output for Vega-Lite — renderVegawidget • altair</title>
+<title>Render shiny-output for vegawidget — renderVegawidget • altair</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -35,10 +35,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Render a shiny output for Vega-Lite — renderVegawidget" />
+<meta property="og:title" content="Render shiny-output for vegawidget — renderVegawidget" />
 
-<meta property="og:description" content="Render a shiny output for Vega-Lite" />
+<meta property="og:description" content="See vegawidget::renderVegawidget for details." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -65,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.0</span>
       </span>
     </div>
 
@@ -97,6 +98,9 @@
     <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
+    </li>
+    <li>
+      <a href="../articles/tooltips.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -184,43 +188,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Render a shiny output for Vega-Lite</h1>
-    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/vegawidget.R'><code>R/vegawidget.R</code></a></small>
+    <h1>Render shiny-output for vegawidget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/utils-vegawidget.R'><code>R/utils-vegawidget.R</code></a></small>
     <div class="hidden name"><code>renderVegawidget.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Render a shiny output for Vega-Lite</p>
+    <p>See <code>vegawidget::<a href='http://www.rdocumentation.org/packages/vegawidget/topics/renderVegawidget'>renderVegawidget</a></code> for details.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>renderVegawidget</span>(<span class='no'>expr</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quoted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>expr</th>
-      <td><p>An expression that generates an HTML widget</p></td>
-    </tr>
-    <tr>
-      <th>env</th>
-      <td><p>The environment in which to evaluate <code>expr</code>.</p></td>
-    </tr>
-    <tr>
-      <th>quoted</th>
-      <td><p>Is <code>expr</code> a quoted expression (with <code>quote()</code>)? This
-is useful if you want to save an expression in a variable.</p></td>
-    </tr>
-    </table>
-    
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
                 </ul>
 
   </div>

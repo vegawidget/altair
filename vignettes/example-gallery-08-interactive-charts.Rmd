@@ -39,7 +39,7 @@ glimpse(vega_data$cars())
 brush <- alt$selection(type = "interval", resolve="global")
 
 base <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     y="Miles_per_Gallon",
@@ -69,7 +69,6 @@ glimpse(weather)
 #### Chart
 
 ```{r}
-weather <- r_to_py(weather)
 brush <- alt$selection(type = "interval", encodings = list("x"))
 
 bars <- 
@@ -115,7 +114,7 @@ glimpse(movies)
 pts <- alt$selection(type = "single", encodings = list("x"))
 
 rect <- 
-  alt$Chart(r_to_py(movies))$
+  alt$Chart(movies)$
   mark_rect()$
   encode(
     x = alt$X("IMDB_Rating:Q", bin = TRUE),
@@ -140,7 +139,7 @@ circ <-
   transform_filter(pts$ref())
 
 bar <- 
-  alt$Chart(r_to_py(movies))$
+  alt$Chart(movies)$
   mark_bar()$
   encode(
     x = "Major_Genre:N",
@@ -205,7 +204,7 @@ highlight <-
 # layer the two charts & repeat
 chart <- 
   (background + highlight)$ 
-  properties(data = r_to_py(flights))$
+  properties(data = flights)$
   transform_calculate("time", "hours(datum.date)")$
   `repeat`(column = list("distance", "delay", "time"))
 
@@ -230,7 +229,7 @@ glimpse(vega_data$cars())
 brush <- alt$selection(type = "interval")
 
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -265,7 +264,7 @@ highlight <-
   )
 
 base <- 
-  alt$Chart(r_to_py(vega_data$stocks()))$
+  alt$Chart(vega_data$stocks())$
   encode(
     x = "date:T",
     y = "price:Q",
@@ -387,7 +386,7 @@ rules <-
 # Put the five layers into a chart and bind the data
 chart <-  
   (line + selectors + points + rules + text)$
-  properties(data = r_to_py(data), width = 600, height = 300)
+  properties(data = data, width = 600, height = 300)
 
 chart
 ```
@@ -456,7 +455,7 @@ bars <-
 chart <- 
   (points & bars)$ 
   properties(
-    data = r_to_py(vega_data$seattle_weather()),
+    data = vega_data$seattle_weather(),
     title = "Seattle Weather: 2012-2015"
   )  
 
@@ -515,7 +514,7 @@ glimpse(data)
 selector <- alt$selection_single(empty = "all", fields = list("id"))
 
 points <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_point(filled = TRUE, size = 200)$
   encode(
     x = "mean(x)",
@@ -532,7 +531,7 @@ points <-
   copy()
 
 timeseries <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
     mark_line()$
     encode(
       x = "time",
@@ -561,7 +560,7 @@ glimpse(vega_data$cars())
 #### Chart
 
 ```{r}
-cars <- r_to_py(vega_data$cars())
+cars <- vega_data$cars()
 
 brush <- alt$selection(type="interval")
 
@@ -604,7 +603,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_circle()$
   encode(
     x = "Horsepower",
@@ -631,7 +630,7 @@ glimpse(vega_data$population())
 #### Chart
 
 ```{r}
-pop <- r_to_py(vega_data$population())
+pop <- vega_data$population()
 
 pink_blue <- 
   alt$Scale(

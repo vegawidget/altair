@@ -28,10 +28,9 @@ reference:
       Functions for examining specifications,
       and for rendering them into htmlwidgets
     contents:
-      - examine
+      - vw_examine
       - vegawidget
       - vega_embed
-      - only_actions
       - renderVegawidget
       - vegawidgetOutput
       - knit_print.altair.vegalite.v2.api.TopLevelMixin
@@ -47,6 +46,7 @@ articles:
   - title: Getting started
     contents:
       - first-example
+      - tooltips
       - vega-datasets
       - view-composition
       - interactive
@@ -86,6 +86,8 @@ navbar:
         - text: Getting Started
         - text: First Example
           href: articles/first-example.html
+        - text: Tooltips
+          href: articles/tooltips.html
         - text: Vega Datasets
           href: articles/vega-datasets.html
         - text: View Composition

@@ -25,7 +25,7 @@ library("altair")
 vega_data <- import_vega_data()
 
 chart_static <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",
@@ -59,7 +59,7 @@ We need to "tell" the encoding to pay attention to the selection. We could do th
 
 ```{r}
 chart_selection <-
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
     x = "Horsepower:Q",

@@ -41,7 +41,7 @@ glimpse(vega_data$movies())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$movies()))$
+  alt$Chart(vega_data$movies())$
   mark_rect()$
   encode(
     x = alt$X("IMDB_Rating:Q", bin = alt$Bin(maxbins = 60)),
@@ -70,7 +70,7 @@ glimpse(vega_data$iris())
 #### Chart
 
 ```{r}
-iris <- r_to_py(vega_data$iris())
+iris <- vega_data$iris()
 
 xscale <- alt$Scale(domain = list(4.0, 8.0))
 yscale <- alt$Scale(domain = list(1.8, 4.6))
@@ -136,7 +136,7 @@ glimpse(vega_data$cars())
 #### Chart
 
 ```{r}
-cars <- r_to_py(vega_data$cars())
+cars <- vega_data$cars()
 
 heatmap <- 
   alt$Chart(cars)$
@@ -179,7 +179,7 @@ glimpse(vega_data$stocks())
 #### Chart
 
 ```{r}
-stocks <- r_to_py(vega_data$stocks())
+stocks <- vega_data$stocks()
 
 chart <- 
   alt$LayerChart(stocks)$
@@ -298,7 +298,7 @@ glimpse(data)
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(data))$
+  alt$Chart(data)$
   mark_text(align = "left", baseline = "middle", dx = -5)$
   encode(
     x = alt$X(

@@ -77,25 +77,22 @@ library("altair")
 vega_data <- import_vega_data()
 
 chart <- 
-  alt$Chart(r_to_py(vega_data$cars()))$
+  alt$Chart(vega_data$cars())$
+  mark_point()$
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = "Origin:N"
-  )$
-  mark_point()
+  )
 
 chart
 ```
 
-![](man/figures/first-example.png)
+![](man/figures/README-example-1.png)<!-- -->
 
 Some things to keep in mind:
 
   - Where you see a `.` in the Python examples, use a `$` instead.
-
-  - Any data frames you provide as `data` arguments need to wrapped by
-    `r_to_py()`.
 
   - In your data, columns that contain dots can be wrapped in square
     brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
@@ -132,7 +129,12 @@ Examples:
 
   - [First
     Example](https://vegawidget.github.io/altair/articles/first-example.html):
-    a walkthrough to get a first chart to work
+    a walkthrough to get a first chart to
+    work
+
+  - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
+    shows how Vega-Lite implements tooltips as an encoding within a
+    chart, with formatting options
 
   - [Vega
     Datasets](https://vegawidget.github.io/altair/articles/vega-datasets.html):

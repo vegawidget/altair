@@ -38,8 +38,9 @@
 <meta property="og:title" content="Altair plot concatenation — altair_concatenation" />
 
 <meta property="og:description" content="Altair plots can be concatenated using the following operators:
-+, |, and &amp;" />
++, |, and &amp;amp;" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -66,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.5</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.0</span>
       </span>
     </div>
 
@@ -98,6 +99,9 @@
     <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/first-example.html">First Example</a>
+    </li>
+    <li>
+      <a href="../articles/tooltips.html">Tooltips</a>
     </li>
     <li>
       <a href="../articles/vega-datasets.html">Vega Datasets</a>
@@ -228,7 +232,7 @@
     <pre class="examples"><div class='input'>
 <span class='co'># Examples using the beaver1 and beaver2 body temperature data sets</span>
 <span class='co'># Layering Charts</span>
-<span class='no'>base</span> <span class='kw'>&lt;-</span> <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>beaver1</span>))$<span class='fu'>encode</span>(
+<span class='no'>base</span> <span class='kw'>&lt;-</span> <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='no'>beaver1</span>)$<span class='fu'>encode</span>(
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>X</span>(<span class='st'>'time'</span>),
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>Y</span>(<span class='st'>'temp'</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>Scale</span>(<span class='kw'>zero</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
 )
@@ -239,7 +243,7 @@
 <span class='no'>combined_plot</span> <span class='kw'>&lt;-</span> <span class='no'>scatter_plot</span> + <span class='no'>line_plot</span>
 
 <span class='co'># Horizontal Concatenation</span>
-<span class='no'>base2</span> <span class='kw'>&lt;-</span> <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='fu'><a href='r_to_py.html'>r_to_py</a></span>(<span class='no'>beaver2</span>))$<span class='fu'>encode</span>(
+<span class='no'>base2</span> <span class='kw'>&lt;-</span> <span class='no'>alt</span>$<span class='fu'>Chart</span>(<span class='no'>beaver2</span>)$<span class='fu'>encode</span>(
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>X</span>(<span class='st'>'time'</span>),
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>Y</span>(<span class='st'>'temp'</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>alt</span>$<span class='fu'>Scale</span>(<span class='kw'>zero</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
 )
