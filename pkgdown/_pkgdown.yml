@@ -28,10 +28,9 @@ reference:
       Functions for examining specifications,
       and for rendering them into htmlwidgets
     contents:
-      - examine
+      - vw_examine
       - vegawidget
       - vega_embed
-      - only_actions
       - renderVegawidget
       - vegawidgetOutput
       - knit_print.altair.vegalite.v2.api.TopLevelMixin

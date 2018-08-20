@@ -78,7 +78,7 @@ chart <-
     x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
     y = alt$Y(
         "variety",
-        sort = alt$SortField(
+        sort = alt$EncodingSortField(
           field = "yield", 
           op = "median", 
           order = "descending"

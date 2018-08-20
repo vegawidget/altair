@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.6</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.0</span>
       </span>
     </div>
 
@@ -150,13 +150,13 @@
 <!--/.navbar -->
 
       
-      </header><script src="vega-datasets_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="vega-datasets_files/vega-3.3.1/promise.min.js"></script><script src="vega-datasets_files/vega-3.3.1/symbol.min.js"></script><script src="vega-datasets_files/vega-3.3.1/vega.js"></script><script src="vega-datasets_files/vega-lite-2.4.3/vega-lite-min.js"></script><link href="vega-datasets_files/vega-embed-3.9.0/vega-embed.css" rel="stylesheet">
-<script src="vega-datasets_files/vega-embed-3.9.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.1.0/vegawidget.js"></script><div class="row">
+      </header><script src="vega-datasets_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="vega-datasets_files/vega-4.0.0/promise.min.js"></script><script src="vega-datasets_files/vega-4.0.0/symbol.min.js"></script><script src="vega-datasets_files/vega-4.0.0/vega.js"></script><script src="vega-datasets_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="vega-datasets_files/vega-embed-3.16.0/vega-embed.css" rel="stylesheet">
+<script src="vega-datasets_files/vega-embed-3.16.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.0.3/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2018-06-11</h4>
+            <h4 class="date">2018-08-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -175,7 +175,7 @@
 <li><p>To access the data for a specific dataset, call the method for that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
 <li><p>These datasets have metadata that include a description, references, and a URL: e.g. <code>vega_data$cars$references</code>.</p></li>
 <li>
-<p>When you create an <code>alt$Chart()</code>, the <code>data</code> argument need not be a data frame; it can be a reference to a data frame, such as a URL. In this case, you do not need to use the <code><a href="../reference/r_to_py.html">r_to_py()</a></code> helper; instead you can write <code>alt$Chart(vega_data$cars$url)</code>.</p>
+<p>When you create an <code>alt$Chart()</code>, the <code>data</code> argument need not be a data frame; it can be a reference to a data frame, such as a URL.</p>
 <ul>
 <li>If your chart contains a reference to an external resource, such as <code>vega_data$cars$url</code>, it will not render in the RStudio IDE due to RStudio’s (well founded) security policy. If you view such a chart using an external browser, it should work OK if your computer can access the remote data.</li>
 </ul>
@@ -278,8 +278,40 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-4a016537ac14e78b297b" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4a016537ac14e78b297b">{"x":{"chart_spec":"{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v2.4.3.json\",\n  \"config\": {\n    \"view\": {\n      \"height\": 300,\n      \"width\": 400\n    }\n  },\n  \"data\": {\n    \"url\": \"https://vega.github.io/vega-datasets/data/iris.json\"\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"species\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"sepalWidth\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"sepalLength\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": \"point\"\n}","embed_options":null},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+<div id="htmlwidget-767ec162e2c5b9ca3d6d" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-767ec162e2c5b9ca3d6d">{"x":{
+  "chart_spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
+    "config": {
+      "view": {
+        "height": 300,
+        "width": 400
+      }
+    },
+    "data": {
+      "url": "https://vega.github.io/vega-datasets/data/iris.json"
+    },
+    "encoding": {
+      "color": {
+        "field": "species",
+        "type": "nominal"
+      },
+      "x": {
+        "field": "sepalWidth",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "sepalLength",
+        "type": "quantitative"
+      }
+    },
+    "mark": "point"
+  },
+  "embed_options": {
+    "defaultStyle": true,
+    "renderer": "canvas"
+  }
+},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not in the RStudio IDE. This is because, for security reasons, the RStudio IDE does not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
 </div>
   </div>
 

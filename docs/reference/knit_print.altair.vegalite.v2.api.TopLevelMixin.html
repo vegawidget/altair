@@ -37,9 +37,8 @@
   
 <meta property="og:title" content="Knit-print method — knit_print.altair.vegalite.v2.api.TopLevelMixin" />
 
-<meta property="og:description" content="The only effective sizing options are vega.width and vega.height;
-these are passed to vegawidget() as width and height,
-respectively." />
+<meta property="og:description" content="See vegawidget::knit_print.vegaspec for details,
+particularly on additional packages that may have to be installed." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +67,7 @@ respectively." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">0.0.6</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.0</span>
       </span>
     </div>
 
@@ -191,26 +190,26 @@ respectively." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Knit-print method</h1>
-    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/alt.R'><code>R/alt.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/utils-vegawidget.R'><code>R/utils-vegawidget.R</code></a></small>
     <div class="hidden name"><code>knit_print.altair.vegalite.v2.api.TopLevelMixin.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The only effective sizing options are <code>vega.width</code> and <code>vega.height</code>;
-these are passed to <code><a href='vegawidget.html'>vegawidget()</a></code> as <code>width</code> and <code>height</code>,
-respectively.</p>
+    <p>See <code>vegawidget::<a href='http://www.rdocumentation.org/packages/vegawidget/topics/knit_print.vegaspec'>knit_print.vegaspec</a></code> for details,
+particularly on additional packages that may have to be installed.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>knit_print.altair.vegalite.v2.api.TopLevelMixin</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>options</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>knit_print.altair.vegalite.v2.api.TopLevelMixin</span>(<span class='no'>spec</span>, <span class='no'>...</span>,
+  <span class='kw'>options</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Altair chart object</p></td>
+      <th>spec</th>
+      <td><p>object to be coerced to <code>vegaspec</code>, a Vega/Vega-Lite specification</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -222,20 +221,13 @@ respectively.</p>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>vega.width</code> and <code>vega.height</code> are
-coerced to numeric, so it is ineffective to specify a percentage.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
