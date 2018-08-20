@@ -1,3 +1,7 @@
+# altair 2.2.2.0.9000
+
+* imports `vw_rename_datasets()` from vegawidget
+
 # altair 2.2.2.0
 
 * new versioning system: first three version numbers follow supported Altair (Python) version
