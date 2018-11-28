@@ -2,17 +2,17 @@
 % Please edit documentation in R/utils-jupyterlab.R
 \name{repr_vegalite2.altair.vegalite.v2.api.Chart}
 \alias{repr_vegalite2.altair.vegalite.v2.api.Chart}
-\title{MIME method for rendering}
+\title{MIME method for chart rendering}
 \usage{
-repr_vegalite2.altair.vegalite.v2.api.Chart(obj)
+\method{repr_vegalite2}{altair.vegalite.v2.api.Chart}(obj)
 }
 \arguments{
-\item{obj}{chart object to be mimed}
+\item{obj}{Altair chart object to be rendered}
 }
 \value{
 list, reflecting JSON spec
 }
 \description{
-MIME method for rendering
+MIME method for chart rendering
 }
 \keyword{internal}
