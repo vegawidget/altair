@@ -5,7 +5,7 @@
 \alias{as_vegaspec}
 \title{Coerce to vegaspec}
 \usage{
-as_vegaspec.altair.vegalite.v2.api.TopLevelMixin(spec, ...)
+\method{as_vegaspec}{altair.vegalite.v2.api.TopLevelMixin}(spec, ...)
 }
 \arguments{
 \item{spec}{object to be coerced to \code{vegaspec}, a Vega/Vega-Lite specification}
