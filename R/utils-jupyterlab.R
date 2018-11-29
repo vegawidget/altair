@@ -15,7 +15,6 @@ py_mimebundle <- function(obj) {
 #'
 #' @return character
 #' @keywords internal
-#' @importFrom repr repr_text
 #' @export
 #'
 repr_text.altair.vegalite.v2.api.Chart <- function(obj) {
@@ -28,7 +27,6 @@ repr_text.altair.vegalite.v2.api.Chart <- function(obj) {
 #'
 #' @return list, reflecting JSON spec
 #' @keywords internal
-#' @importFrom repr repr_vegalite2
 #' @export
 #'
 repr_vegalite2.altair.vegalite.v2.api.Chart <- function(obj) {

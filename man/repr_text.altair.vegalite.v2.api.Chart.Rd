@@ -4,7 +4,7 @@
 \alias{repr_text.altair.vegalite.v2.api.Chart}
 \title{MIME method for text}
 \usage{
-\method{repr_text}{altair.vegalite.v2.api.Chart}(obj)
+repr_text.altair.vegalite.v2.api.Chart(obj)
 }
 \arguments{
 \item{obj}{Altair chart object to be rendered}
