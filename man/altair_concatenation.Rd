@@ -14,12 +14,12 @@
 \method{&}{altair.vegalite.v2.api.TopLevelMixin}(e1, e2)
 }
 \arguments{
-\item{e1}{An Altair plot object}
+\item{e1}{Altair chart object}
 
-\item{e2}{An Altair plot object}
+\item{e2}{Altair chart object}
 }
 \value{
-Compound Altair plot object
+Compound Altair chart object
 }
 \description{
 Altair plots can be concatenated using the following operators:

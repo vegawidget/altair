@@ -4,10 +4,10 @@
 #' `+`, `|`, and `&`
 #' @md
 #'
-#' @param e1 An Altair plot object
-#' @param e2 An Altair plot object
+#' @param e1 Altair chart object
+#' @param e2 Altair chart object
 #'
-#' @return Compound Altair plot object
+#' @return Compound Altair chart object
 #'
 #' @rdname altair_concatenation
 #' @name altair_concatenation
