@@ -40,7 +40,8 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget
+    vegawidget,
+    repr
 Suggests:
     httr,
     rprojroot,
@@ -54,8 +55,7 @@ Suggests:
     pryr,
     stringr,
     tidyr,
-    dplyr,
-    repr
+    dplyr
 Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
