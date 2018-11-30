@@ -24,10 +24,6 @@ before_install:
 before_script:
   - R CMD INSTALL .
   - R -e 'altair::install_altair()'
-  #  - ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /home/travis/miniconda/envs/r-reticulate/lib/python3.6/site-packages/pandas/_libs/window.cpython-36m-x86_64-linux-gnu.so)
-  #  - GLIBCXX_3.4.21 not available for Ubuntu 14.04 (try strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX)
-  #  - downgrade to 0.22.0 (suggested by https://groups.google.com/forum/#!topic/clusterjob/ium1jFYNqxU)
-  - conda install -y pandas=0.22.0 --name r-reticulate
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
 

@@ -40,7 +40,8 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget
+    vegawidget,
+    repr
 Suggests:
     httr,
     rprojroot,
@@ -59,3 +60,4 @@ Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
+

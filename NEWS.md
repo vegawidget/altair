@@ -1,5 +1,7 @@
 # altair 2.2.2.0.9000
 
+* adds methods `repr_text()` and `repr_vegalite2()` methods for Altair chart objects, allowing them to be rendered natively in Jupyter notebooks using IRKernel (https://irkernel.github.io) (#91, with @flying-sheep).
+
 * imports `vw_rename_datasets()` from vegawidget
 
 # altair 2.2.2.0
@@ -14,7 +16,7 @@
 
 * adds `as_chart()`, to import a vegaspec as an Altair chart
  
-* revomes rendering functions in favor of a seperate package, [**vegawidget**](https://github.com/vegawidget/vegawidget) - vegawidget functions imported and exported using templating function `vegawidget::use_vegawidget()`.
+* revomes rendering functions in favor of a separate package, [**vegawidget**](https://github.com/vegawidget/vegawidget) - vegawidget functions imported and exported using templating function `vegawidget::use_vegawidget()`.
 
 * adds requirement to use reticulate (>=) 1.9, to avoid conflict between data-frame variable-names and python methods (#50, @aliciaschep) and to remove the need to use the `r_to_py()` function for data (#83)
 
