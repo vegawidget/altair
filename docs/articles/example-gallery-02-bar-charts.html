@@ -8,8 +8,8 @@
 <title>Bar Charts • altair</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Bar Charts">
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.0</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased package">2.2.2.1</span>
       </span>
     </div>
 
@@ -150,14 +150,14 @@
 <!--/.navbar -->
 
       
-      </header><script src="example-gallery-02-bar-charts_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.0.0/promise.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.0.0/symbol.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.0.0/vega.js"></script><script src="example-gallery-02-bar-charts_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="example-gallery-02-bar-charts_files/vega-embed-3.16.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-02-bar-charts_files/vega-embed-3.16.0/vega-embed-modified.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-binding-0.0.3/vegawidget.js"></script><div class="row">
+      </header><script src="example-gallery-02-bar-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.2.0/promise.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.2.0/symbol.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-4.2.0/vega.js"></script><script src="example-gallery-02-bar-charts_files/vega-lite-3.0.0/vega-lite.min.js"></script><link href="example-gallery-02-bar-charts_files/vega-embed-3.19.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-02-bar-charts_files/vega-embed-3.19.2/vega-embed-modified.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-binding-0.0.4.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Bar Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2018-08-19</h4>
+            <h4 class="date">2018-11-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-02-bar-charts.Rmd"><code>vignettes/example-gallery-02-bar-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-02-bar-charts.Rmd</code></div>
@@ -239,8 +239,8 @@
 <a class="sourceLine" id="cb5-33" data-line-number="33">chart &lt;-<span class="st"> </span>(bar1 <span class="op">+</span><span class="st"> </span>text <span class="op">+</span><span class="st"> </span>bar2 <span class="op">+</span><span class="st"> </span>rule)</a>
 <a class="sourceLine" id="cb5-34" data-line-number="34"></a>
 <a class="sourceLine" id="cb5-35" data-line-number="35">chart</a></code></pre></div>
-<div id="htmlwidget-6123438828c8d704e330" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6123438828c8d704e330">{"x":{
+<div id="htmlwidget-85c19b4123baf5b0fa71" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-85c19b4123baf5b0fa71">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -486,8 +486,8 @@
 <a class="sourceLine" id="cb7-43" data-line-number="43">chart &lt;-<span class="st"> </span>(lower_plot <span class="op">+</span><span class="st"> </span>middle_plot <span class="op">+</span><span class="st"> </span>upper_plot <span class="op">+</span><span class="st"> </span>middle_tick)</a>
 <a class="sourceLine" id="cb7-44" data-line-number="44"></a>
 <a class="sourceLine" id="cb7-45" data-line-number="45">chart</a></code></pre></div>
-<div id="htmlwidget-1903efcd2e6514c254f8" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1903efcd2e6514c254f8">{"x":{
+<div id="htmlwidget-d7ccf742c9bf88f0a7be" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d7ccf742c9bf88f0a7be">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -4072,8 +4072,8 @@
 <a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="dt">PercentOfTotal =</span> <span class="st">"datum.Time / datum.TotalTime"</span>)</a>
 <a class="sourceLine" id="cb12-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb12-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-0deff4399ea2aaf637f0" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0deff4399ea2aaf637f0">{"x":{
+<div id="htmlwidget-1caf5d92f09f1001cfa9" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1caf5d92f09f1001cfa9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -4420,8 +4420,8 @@
 <a class="sourceLine" id="cb15-42" data-line-number="42">chart &lt;-<span class="st"> </span>(rule <span class="op">+</span><span class="st"> </span>bar)</a>
 <a class="sourceLine" id="cb15-43" data-line-number="43"></a>
 <a class="sourceLine" id="cb15-44" data-line-number="44">chart</a></code></pre></div>
-<div id="htmlwidget-7288327c42a3d97eb5d4" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7288327c42a3d97eb5d4">{"x":{
+<div id="htmlwidget-49063c223e9151c8ca06" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-49063c223e9151c8ca06">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -5111,8 +5111,8 @@
 <a class="sourceLine" id="cb18-34" data-line-number="34">  )</a>
 <a class="sourceLine" id="cb18-35" data-line-number="35"></a>
 <a class="sourceLine" id="cb18-36" data-line-number="36">chart</a></code></pre></div>
-<div id="htmlwidget-702a19c5502c34319cb7" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-702a19c5502c34319cb7">{"x":{
+<div id="htmlwidget-b14676928728fdb7d3cc" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b14676928728fdb7d3cc">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -5547,8 +5547,8 @@
 <a class="sourceLine" id="cb20-23" data-line-number="23">chart &lt;-<span class="st"> </span>(points <span class="op">+</span><span class="st"> </span>error_bars)</a>
 <a class="sourceLine" id="cb20-24" data-line-number="24"></a>
 <a class="sourceLine" id="cb20-25" data-line-number="25">chart</a></code></pre></div>
-<div id="htmlwidget-6de51d14cc21cec92f01" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6de51d14cc21cec92f01">{"x":{
+<div id="htmlwidget-273df40582162ce53461" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-273df40582162ce53461">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -6376,8 +6376,8 @@
 <a class="sourceLine" id="cb23-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb23-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb23-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-f067c69e6625706e65d7" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f067c69e6625706e65d7">{"x":{
+<div id="htmlwidget-b3a1b5da070acd83e12d" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3a1b5da070acd83e12d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -6464,8 +6464,8 @@
 <a class="sourceLine" id="cb24-24" data-line-number="24"><span class="st">  </span><span class="kw">copy</span>()</a>
 <a class="sourceLine" id="cb24-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb24-26" data-line-number="26">chart</a></code></pre></div>
-<div id="htmlwidget-dbea30a00229072dd628" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dbea30a00229072dd628">{"x":{
+<div id="htmlwidget-34783123c6b960ad2265" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-34783123c6b960ad2265">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -9990,8 +9990,8 @@
 <a class="sourceLine" id="cb26-9" data-line-number="9"><span class="st">  </span><span class="kw">transform_filter</span>(<span class="kw"><a href="../reference/JS.html">JS</a></span>(<span class="st">"datum.year == 2000"</span>))</a>
 <a class="sourceLine" id="cb26-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb26-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-267fef3e5efdc9c4357a" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-267fef3e5efdc9c4357a">{"x":{
+<div id="htmlwidget-8f94b0cb21d3ee45cc91" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8f94b0cb21d3ee45cc91">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -13485,8 +13485,8 @@
 <a class="sourceLine" id="cb28-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb28-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb28-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-1ed074396d43d3b06a03" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1ed074396d43d3b06a03">{"x":{
+<div id="htmlwidget-efa8dd63e919e4dc4f16" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-efa8dd63e919e4dc4f16">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -14295,8 +14295,8 @@
 <a class="sourceLine" id="cb31-23" data-line-number="23"><span class="st">  </span><span class="kw">configure_scale</span>(<span class="dt">rangeStep =</span> <span class="dv">40</span>)</a>
 <a class="sourceLine" id="cb31-24" data-line-number="24"></a>
 <a class="sourceLine" id="cb31-25" data-line-number="25">chart</a></code></pre></div>
-<div id="htmlwidget-d6e78c61abb4c93733f5" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d6e78c61abb4c93733f5">{"x":{
+<div id="htmlwidget-4f23586bc3639e021b10" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4f23586bc3639e021b10">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -14429,8 +14429,8 @@
 <a class="sourceLine" id="cb33-16" data-line-number="16"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="st">"gender"</span>, <span class="kw"><a href="../reference/JS.html">JS</a></span>(<span class="st">'if(datum.sex == 2, "Female", "Male")'</span>))</a>
 <a class="sourceLine" id="cb33-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb33-18" data-line-number="18">chart</a></code></pre></div>
-<div id="htmlwidget-1601b7b6a4b46798a29d" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1601b7b6a4b46798a29d">{"x":{
+<div id="htmlwidget-97408565a358efc2f03e" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-97408565a358efc2f03e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -17961,8 +17961,8 @@
 <a class="sourceLine" id="cb35-19" data-line-number="19">chart &lt;-<span class="st"> </span>(bar <span class="op">+</span><span class="st"> </span>rule)</a>
 <a class="sourceLine" id="cb35-20" data-line-number="20"></a>
 <a class="sourceLine" id="cb35-21" data-line-number="21">chart</a></code></pre></div>
-<div id="htmlwidget-bd020b0a43e2895842af" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bd020b0a43e2895842af">{"x":{
+<div id="htmlwidget-cb47ea34a1a65a20710f" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb47ea34a1a65a20710f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -29762,8 +29762,8 @@
 <a class="sourceLine" id="cb37-29" data-line-number="29"><span class="st">  </span><span class="kw">resolve_scale</span>(<span class="dt">y=</span> <span class="st">"independent"</span>)</a>
 <a class="sourceLine" id="cb37-30" data-line-number="30"></a>
 <a class="sourceLine" id="cb37-31" data-line-number="31">chart</a></code></pre></div>
-<div id="htmlwidget-908a1f15afed8d63ade9" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-908a1f15afed8d63ade9">{"x":{
+<div id="htmlwidget-5078344c051d09054412" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5078344c051d09054412">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -41567,8 +41567,8 @@
 <a class="sourceLine" id="cb39-17" data-line-number="17"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="st">"gender"</span>, <span class="kw"><a href="../reference/JS.html">JS</a></span>(<span class="st">'if(datum.sex == 2, "Female", "Male")'</span>))</a>
 <a class="sourceLine" id="cb39-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb39-19" data-line-number="19">chart</a></code></pre></div>
-<div id="htmlwidget-3426bdc06454774899ce" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3426bdc06454774899ce">{"x":{
+<div id="htmlwidget-7b5187d28f8c82168e99" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b5187d28f8c82168e99">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -45090,8 +45090,8 @@
 <a class="sourceLine" id="cb42-16" data-line-number="16">chart &lt;-<span class="st"> </span>(bars <span class="op">+</span><span class="st"> </span>text)</a>
 <a class="sourceLine" id="cb42-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb42-18" data-line-number="18">chart</a></code></pre></div>
-<div id="htmlwidget-47b4feb38bd235e0cd98" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-47b4feb38bd235e0cd98">{"x":{
+<div id="htmlwidget-c31cdcda2ee5665c017a" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c31cdcda2ee5665c017a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -45228,8 +45228,8 @@
 <a class="sourceLine" id="cb44-19" data-line-number="19">  )</a>
 <a class="sourceLine" id="cb44-20" data-line-number="20"></a>
 <a class="sourceLine" id="cb44-21" data-line-number="21">chart</a></code></pre></div>
-<div id="htmlwidget-ffa605a42fc62bfbb6e7" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ffa605a42fc62bfbb6e7">{"x":{
+<div id="htmlwidget-f67b558d7df6b55a0ce0" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f67b558d7df6b55a0ce0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -57006,8 +57006,8 @@
 <a class="sourceLine" id="cb46-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">250</span>)</a>
 <a class="sourceLine" id="cb46-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb46-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-b54a39960109af1d9202" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b54a39960109af1d9202">{"x":{
+<div id="htmlwidget-eec627d634dd7688b820" style="width:960px;height:500px;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eec627d634dd7688b820">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
