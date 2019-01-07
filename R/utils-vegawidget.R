@@ -16,6 +16,8 @@ as_vegaspec.altair.vegalite.v2.api.TopLevelMixin <- function(spec, ...) {
   # e.g.:
   # spec <- spec$to_json()
 
+  spec <- spec$to_json()
+
   vegawidget::as_vegaspec(spec, ...)
 }
 
