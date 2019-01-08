@@ -1,3 +1,7 @@
+# altair 2.2.2.2
+
+* updates exports from vegawidget
+
 # altair 2.2.2.1
 
 * adds methods `repr_text()` and `repr_vegalite2()` methods for Altair chart objects, allowing them to be rendered natively in Jupyter notebooks using IRKernel (https://irkernel.github.io) (#91, with @flying-sheep).
