@@ -1,3 +1,7 @@
+# altair 2.3,0
+
+* upgrades to Altair 2.3.0
+
 # altair 2.2.2.2
 
 * updates exports from vegawidget
