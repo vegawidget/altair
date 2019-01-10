@@ -8,14 +8,13 @@
 #' @return S3 object of class `vegaspec`
 #' @export
 #'
-as_vegaspec.altair.vegalite.v2.api.TopLevelMixin <- function(spec, ...) {
+as_vegaspec.altair.vegalite.v2.api.TopLevelMixin  <- function(spec, ...) {
 
   # TODO: if needed, insert code to convert your object to
   # something that can be coerced to a vegaspec.
   #
   # e.g.:
   # spec <- spec$to_json()
-
   spec <- spec$to_json()
 
   vegawidget::as_vegaspec(spec, ...)
@@ -55,7 +54,7 @@ NULL
 
 #' @export
 #'
-print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ...) {
+print.altair.vegalite.v2.api.TopLevelMixin  <- function(x, ...) {
 
   x <- as_vegaspec(x)
 
@@ -71,7 +70,7 @@ print.altair.vegalite.v2.api.TopLevelMixin <- function(x, ...) {
 #'
 #' @export
 #'
-knit_print.altair.vegalite.v2.api.TopLevelMixin <- function(spec, ..., options = NULL) {
+knit_print.altair.vegalite.v2.api.TopLevelMixin  <- function(spec, ..., options = NULL) {
 
   spec <- as_vegaspec(spec)
 
@@ -208,20 +207,9 @@ NULL
 #'
 #' @name image
 #' @importFrom vegawidget
-#'           vw_to_png vw_to_svg vw_write_png vw_write_svg
-#' @aliases  vw_to_png vw_to_svg vw_write_png vw_write_svg
-#' @export   vw_to_png vw_to_svg vw_write_png vw_write_svg
-#'
-NULL
-
-#' Coerce data-URI string to raw binary
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_png_bin}} for details.
-#'
-#' @name vw_png_bin
-#' @rdname vw_png_bin
-#' @importFrom vegawidget vw_png_bin
-#' @export
+#'           vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
+#' @aliases  vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
+#' @export   vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
 #'
 NULL
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/utils-vegawidget.R
 \name{image}
 \alias{image}
-\alias{vw_to_png}
 \alias{vw_to_svg}
+\alias{vw_to_bitmap}
 \alias{vw_write_png}
 \alias{vw_write_svg}
 \title{Create or write image}
