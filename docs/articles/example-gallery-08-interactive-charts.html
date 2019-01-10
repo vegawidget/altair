@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.2.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.3.0.1</span>
       </span>
     </div>
 
@@ -152,13 +152,13 @@
 
       
       </header><script src="example-gallery-08-interactive-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-08-interactive-charts_files/vega-4.0.0/promise.min.js"></script><script src="example-gallery-08-interactive-charts_files/vega-4.0.0/symbol.min.js"></script><script src="example-gallery-08-interactive-charts_files/vega-4.0.0/vega.js"></script><script src="example-gallery-08-interactive-charts_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="example-gallery-08-interactive-charts_files/vega-embed-3.25.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-08-interactive-charts_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="example-gallery-08-interactive-charts_files/vegawidget-binding-0.0.6.9000/vegawidget.js"></script><div class="row">
+<script src="example-gallery-08-interactive-charts_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="example-gallery-08-interactive-charts_files/vegawidget-binding-0.0.7.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Interactive Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-01-08</h4>
+            <h4 class="date">2019-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-08-interactive-charts.Rmd"><code>vignettes/example-gallery-08-interactive-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-08-interactive-charts.Rmd</code></div>
@@ -194,7 +194,7 @@
 <div id="data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
 <pre><code>## Observations: 406
 ## Variables: 9
 ## $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5,...
@@ -224,8 +224,8 @@
 <a class="sourceLine" id="cb8-12" data-line-number="12">chart &lt;-<span class="st"> </span>(base<span class="op">$</span><span class="kw">encode</span>(<span class="dt">x =</span> <span class="st">"Horsepower"</span>) <span class="op">|</span><span class="st"> </span>base<span class="op">$</span><span class="kw">encode</span>( <span class="dt">x =</span> <span class="st">"Acceleration"</span>))</a>
 <a class="sourceLine" id="cb8-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb8-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-08d16bf0d47b74a9e619" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08d16bf0d47b74a9e619">{"x":{
+<div id="htmlwidget-d2d6b4fef530a745a55c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d2d6b4fef530a745a55c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -4790,7 +4790,7 @@
 <a href="#data-1" class="anchor"></a>Data</h4>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">weather &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">seattle_weather</span>()</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(weather)</a></code></pre></div>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(weather)</a></code></pre></div>
 <pre><code>## Observations: 1,461
 ## Variables: 6
 ## $ date          &lt;dttm&gt; 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04,...
@@ -4827,8 +4827,8 @@
 <a class="sourceLine" id="cb11-22" data-line-number="22">chart &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">layer</span>(bars, line, <span class="dt">data=</span>weather)</a>
 <a class="sourceLine" id="cb11-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb11-24" data-line-number="24">chart</a></code></pre></div>
-<div id="htmlwidget-03b2d3b287a279fea4a4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-03b2d3b287a279fea4a4">{"x":{
+<div id="htmlwidget-9419ceaafc07be16eba5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9419ceaafc07be16eba5">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -16606,7 +16606,7 @@
 <h4 class="hasAnchor">
 <a href="#data-2" class="anchor"></a>Data</h4>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">movies &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">movies</span>()</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(movies)</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(movies)</a></code></pre></div>
 <pre><code>## Observations: 3,201
 ## Variables: 16
 ## $ Creative_Type          &lt;list&gt; [NULL, NULL, NULL, NULL, "Contemporary...
@@ -16671,8 +16671,8 @@
 <a class="sourceLine" id="cb14-40" data-line-number="40"><span class="st">  </span><span class="kw">resolve_legend</span>(<span class="dt">color =</span> <span class="st">"independent"</span>, <span class="dt">size =</span> <span class="st">"independent"</span>)</a>
 <a class="sourceLine" id="cb14-41" data-line-number="41">  </a>
 <a class="sourceLine" id="cb14-42" data-line-number="42">chart</a></code></pre></div>
-<div id="htmlwidget-cfe1daa2e05e0f0d45ea" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cfe1daa2e05e0f0d45ea">{"x":{
+<div id="htmlwidget-e2daa459bbff5d493af2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2daa459bbff5d493af2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -74434,7 +74434,7 @@
 <h4 class="hasAnchor">
 <a href="#data-3" class="anchor"></a>Data</h4>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">flights &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">flights_2k</span>()</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(flights)</a></code></pre></div>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(flights)</a></code></pre></div>
 <pre><code>## Observations: 2,000
 ## Variables: 5
 ## $ date        &lt;dttm&gt; 2001-01-14 21:55:00, 2001-03-26 20:15:00, 2001-03...
@@ -74482,8 +74482,8 @@
 <a class="sourceLine" id="cb17-34" data-line-number="34"><span class="st">  `</span><span class="dt">repeat</span><span class="st">`</span>(<span class="dt">column =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span>))</a>
 <a class="sourceLine" id="cb17-35" data-line-number="35"></a>
 <a class="sourceLine" id="cb17-36" data-line-number="36">chart</a></code></pre></div>
-<div id="htmlwidget-e61a620278296785ad3a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e61a620278296785ad3a">{"x":{
+<div id="htmlwidget-0cc1bcbf1d50014a8a99" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0cc1bcbf1d50014a8a99">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -88594,7 +88594,7 @@
 <div id="data-4" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-4" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
 <pre><code>## Observations: 406
 ## Variables: 9
 ## $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5,...
@@ -88623,8 +88623,8 @@
 <a class="sourceLine" id="cb20-11" data-line-number="11"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">selection =</span> brush)</a>
 <a class="sourceLine" id="cb20-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb20-13" data-line-number="13">chart</a></code></pre></div>
-<div id="htmlwidget-51d41e86088bd3101409" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-51d41e86088bd3101409">{"x":{
+<div id="htmlwidget-14a7ce61b7b844f76413" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-14a7ce61b7b844f76413">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -93148,7 +93148,7 @@
 <div id="data-5" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-5" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a></code></pre></div>
 <pre><code>## Observations: 560
 ## Variables: 3
 ## $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",...
@@ -93190,8 +93190,8 @@
 <a class="sourceLine" id="cb23-30" data-line-number="30">chart &lt;-<span class="st"> </span>(points <span class="op">+</span><span class="st"> </span>lines)</a>
 <a class="sourceLine" id="cb23-31" data-line-number="31"></a>
 <a class="sourceLine" id="cb23-32" data-line-number="32">chart</a></code></pre></div>
-<div id="htmlwidget-0de3883fe0d58fe192b8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0de3883fe0d58fe192b8">{"x":{
+<div id="htmlwidget-83f0984d9daf89344a3f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-83f0984d9daf89344a3f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -96101,7 +96101,7 @@
 <a class="sourceLine" id="cb24-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(category) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb24-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cumsum">cumsum</a></span>(y)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb24-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()</a></code></pre></div>
-</details><div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(data)</a></code></pre></div>
+</details><div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a></code></pre></div>
 <pre><code>## Observations: 300
 ## Variables: 3
 ## $ category &lt;chr&gt; "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"...
@@ -96173,8 +96173,8 @@
 <a class="sourceLine" id="cb27-60" data-line-number="60"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">data =</span> data, <span class="dt">width =</span> <span class="dv">600</span>, <span class="dt">height =</span> <span class="dv">300</span>)</a>
 <a class="sourceLine" id="cb27-61" data-line-number="61"></a>
 <a class="sourceLine" id="cb27-62" data-line-number="62">chart</a></code></pre></div>
-<div id="htmlwidget-d49e293441dbecdf6c54" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d49e293441dbecdf6c54">{"x":{
+<div id="htmlwidget-b32cf2b3b336735b09ad" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b32cf2b3b336735b09ad">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -97840,7 +97840,7 @@
 <div id="data-7" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-7" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">seattle_weather</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">seattle_weather</span>())</a></code></pre></div>
 <pre><code>## Observations: 1,461
 ## Variables: 6
 ## $ date          &lt;dttm&gt; 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04,...
@@ -97907,8 +97907,8 @@
 <a class="sourceLine" id="cb30-52" data-line-number="52">  )  </a>
 <a class="sourceLine" id="cb30-53" data-line-number="53"></a>
 <a class="sourceLine" id="cb30-54" data-line-number="54">chart</a></code></pre></div>
-<div id="htmlwidget-d148961540d7055da111" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d148961540d7055da111">{"x":{
+<div id="htmlwidget-1405533b465d30f93265" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1405533b465d30f93265">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -109771,7 +109771,7 @@
 <a class="sourceLine" id="cb31-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb31-4" data-line-number="4"><span class="co"># Create one (x, y) pair of metadata per object</span></a>
 <a class="sourceLine" id="cb31-5" data-line-number="5">locations &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tibble">tibble</a></span>(</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
 <a class="sourceLine" id="cb31-7" data-line-number="7">    <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">1</span>, n_objects),</a>
 <a class="sourceLine" id="cb31-8" data-line-number="8">    <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(n_objects),</a>
 <a class="sourceLine" id="cb31-9" data-line-number="9">    <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(n_objects)</a>
@@ -109791,7 +109791,7 @@
 <a class="sourceLine" id="cb31-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb31-24" data-line-number="24"><span class="co"># Merge the (x, y) metadata into the long-form view</span></a>
 <a class="sourceLine" id="cb31-25" data-line-number="25">data &lt;-<span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(timeseries, locations, <span class="dt">by =</span> <span class="st">"id"</span>)</a></code></pre></div>
-</details><div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(data)</a></code></pre></div>
+</details><div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a></code></pre></div>
 <pre><code>## Observations: 1,000
 ## Variables: 5
 ## $ id    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
@@ -109834,8 +109834,8 @@
 <a class="sourceLine" id="cb34-29" data-line-number="29"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">selection =</span> selector, <span class="dt">width =</span> <span class="dv">250</span>, <span class="dt">height =</span> <span class="dv">250</span>)</a>
 <a class="sourceLine" id="cb34-30" data-line-number="30"></a>
 <a class="sourceLine" id="cb34-31" data-line-number="31">points <span class="op">|</span><span class="st"> </span>timeseries</a></code></pre></div>
-<div id="htmlwidget-da2df736f14390503e35" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-da2df736f14390503e35">{"x":{
+<div id="htmlwidget-b5c89d10c40d91b4ed4e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b5c89d10c40d91b4ed4e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -116963,7 +116963,7 @@
 <div id="data-9" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-9" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
 <pre><code>## Observations: 406
 ## Variables: 9
 ## $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5,...
@@ -117006,8 +117006,8 @@
 <a class="sourceLine" id="cb37-25" data-line-number="25">chart &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">vconcat</span>(points, bars, <span class="dt">data =</span> cars)</a>
 <a class="sourceLine" id="cb37-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb37-27" data-line-number="27">chart</a></code></pre></div>
-<div id="htmlwidget-c31f8ffc94ff85da5fac" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c31f8ffc94ff85da5fac">{"x":{
+<div id="htmlwidget-ab3d4718b491ecbc7e5b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab3d4718b491ecbc7e5b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -121557,7 +121557,7 @@
 <div id="data-10" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-10" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a></code></pre></div>
 <pre><code>## Observations: 406
 ## Variables: 9
 ## $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5,...
@@ -121584,8 +121584,8 @@
 <a class="sourceLine" id="cb40-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()</a>
 <a class="sourceLine" id="cb40-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb40-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-a2e4cc4904f0c8c6b9cb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a2e4cc4904f0c8c6b9cb">{"x":{
+<div id="htmlwidget-fe880cde837245d89c78" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fe880cde837245d89c78">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -126110,7 +126110,7 @@
 <div id="data-11" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-11" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/who.html">population</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/who.html">population</a></span>())</a></code></pre></div>
 <pre><code>## Observations: 570
 ## Variables: 4
 ## $ age    &lt;dbl&gt; 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35,...
@@ -126151,8 +126151,8 @@
 <a class="sourceLine" id="cb43-28" data-line-number="28"><span class="st">  </span><span class="kw">transform_filter</span>(year<span class="op">$</span><span class="kw">ref</span>())</a>
 <a class="sourceLine" id="cb43-29" data-line-number="29"></a>
 <a class="sourceLine" id="cb43-30" data-line-number="30">chart</a></code></pre></div>
-<div id="htmlwidget-7cb694750fb93f25c447" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7cb694750fb93f25c447">{"x":{
+<div id="htmlwidget-3efedb8d17dcefce6c26" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3efedb8d17dcefce6c26">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {

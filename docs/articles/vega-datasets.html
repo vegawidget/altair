@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.2.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.3.0.1</span>
       </span>
     </div>
 
@@ -152,12 +152,12 @@
 
       
       </header><script src="vega-datasets_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="vega-datasets_files/vega-4.0.0/promise.min.js"></script><script src="vega-datasets_files/vega-4.0.0/symbol.min.js"></script><script src="vega-datasets_files/vega-4.0.0/vega.js"></script><script src="vega-datasets_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="vega-datasets_files/vega-embed-3.25.0/vega-embed.css" rel="stylesheet">
-<script src="vega-datasets_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.0.6.9000/vegawidget.js"></script><div class="row">
+<script src="vega-datasets_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="vega-datasets_files/vegawidget-binding-0.0.7.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2019-01-08</h4>
+            <h4 class="date">2019-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -208,7 +208,7 @@
 <p>Each dataset can be accessed using a method whose name is an element returned from <code>vega_data$list_datasets()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/anscombe">anscombe</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_tibble</a></span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/anscombe">anscombe</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; # A tibble: 44 x 3</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;    Series     X     Y</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  * &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></a>
@@ -224,7 +224,7 @@
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 10 I         7.  4.81</span></a>
 <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; # ... with 34 more rows</span></a></code></pre></div>
 <p>It is useful to keep in mind that <strong>reticulate</strong> changes the names of the datasets, and presumably, Python objects in general. Where you see a <code>-</code> in a name of a Python object, a <code>_</code> will be used in the name of the reticulated object in R. For example, in Python: <code>data.sf-temps()</code>; in R:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">sf_temps</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_tibble</a></span>()</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">sf_temps</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; # A tibble: 8,759 x 2</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;     temp date               </span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;    &lt;dbl&gt; &lt;dttm&gt;             </span></a>
@@ -279,8 +279,8 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-b059129e7d534e6393d9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b059129e7d534e6393d9">{"x":{
+<div id="htmlwidget-3028a56c5a8745a69702" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3028a56c5a8745a69702">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {

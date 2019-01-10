@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.2.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.3.0.1</span>
       </span>
     </div>
 
@@ -152,13 +152,13 @@
 
       
       </header><script src="example-gallery-09-other-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-09-other-charts_files/vega-4.0.0/promise.min.js"></script><script src="example-gallery-09-other-charts_files/vega-4.0.0/symbol.min.js"></script><script src="example-gallery-09-other-charts_files/vega-4.0.0/vega.js"></script><script src="example-gallery-09-other-charts_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="example-gallery-09-other-charts_files/vega-embed-3.25.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-09-other-charts_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="example-gallery-09-other-charts_files/vegawidget-binding-0.0.6.9000/vegawidget.js"></script><div class="row">
+<script src="example-gallery-09-other-charts_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="example-gallery-09-other-charts_files/vegawidget-binding-0.0.7.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Other Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-01-08</h4>
+            <h4 class="date">2019-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-09-other-charts.Rmd"><code>vignettes/example-gallery-09-other-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-09-other-charts.Rmd</code></div>
@@ -190,7 +190,7 @@
 <div id="data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">movies</span>())</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">movies</span>())</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Observations: 3,201</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Variables: 16</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; $ Creative_Type          &lt;list&gt; [NULL, NULL, NULL, NULL, "Contemporary...</span></a>
@@ -226,8 +226,8 @@
 <a class="sourceLine" id="cb3-11" data-line-number="11">  )</a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb3-13" data-line-number="13">chart</a></code></pre></div>
-<div id="htmlwidget-49fda0dc09630fec9148" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-49fda0dc09630fec9148">{"x":{
+<div id="htmlwidget-c07875545a01a72702f0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c07875545a01a72702f0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -57902,7 +57902,7 @@
 <div id="data-1" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-1" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Observations: 150</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Variables: 5</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, ...</span></a>
@@ -57965,8 +57965,8 @@
 <a class="sourceLine" id="cb5-49" data-line-number="49">chart &lt;-<span class="st"> </span>(top_hist <span class="op">&amp;</span><span class="st"> </span>(points <span class="op">|</span><span class="st"> </span>right_hist))</a>
 <a class="sourceLine" id="cb5-50" data-line-number="50"></a>
 <a class="sourceLine" id="cb5-51" data-line-number="51">chart</a></code></pre></div>
-<div id="htmlwidget-5192bcb26fad9906d1fe" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5192bcb26fad9906d1fe">{"x":{
+<div id="htmlwidget-d6c2820176f0c849f407" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d6c2820176f0c849f407">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -59164,7 +59164,7 @@
 <div id="data-2" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-2" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Observations: 406</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Variables: 9</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5,...</span></a>
@@ -59208,8 +59208,8 @@
 <a class="sourceLine" id="cb7-26" data-line-number="26">chart &lt;-<span class="st"> </span>(heatmap <span class="op">+</span><span class="st"> </span>text)</a>
 <a class="sourceLine" id="cb7-27" data-line-number="27"></a>
 <a class="sourceLine" id="cb7-28" data-line-number="28">chart</a></code></pre></div>
-<div id="htmlwidget-e0f7dc720dfd8872ce0b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e0f7dc720dfd8872ce0b">{"x":{
+<div id="htmlwidget-e77061a0c5b9cb2fed8a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e77061a0c5b9cb2fed8a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -63763,7 +63763,7 @@
 <div id="data-3" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-3" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Observations: 560</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",...</span></a>
@@ -63787,8 +63787,8 @@
 <a class="sourceLine" id="cb9-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb9-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb9-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-1210f175800a6e67fceb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1210f175800a6e67fceb">{"x":{
+<div id="htmlwidget-e1700a7414a6682cb2c9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e1700a7414a6682cb2c9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -66653,7 +66653,7 @@
 <a class="sourceLine" id="cb10-5" data-line-number="5">    country <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span>),</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">    year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1955</span>, <span class="dv">2000</span>)</a>
 <a class="sourceLine" id="cb10-7" data-line-number="7">  ) </a></code></pre></div>
-</details><div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(data)</a>
+</details><div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; Observations: 10</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; Variables: 8</span></a>
 <a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ country       &lt;chr&gt; "Brazil", "Brazil", "China", "China", "India", "...</span></a>
@@ -66709,8 +66709,8 @@
 <a class="sourceLine" id="cb12-39" data-line-number="39">  )</a>
 <a class="sourceLine" id="cb12-40" data-line-number="40">  </a>
 <a class="sourceLine" id="cb12-41" data-line-number="41">chart</a></code></pre></div>
-<div id="htmlwidget-5ed0259565999c0d5266" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5ed0259565999c0d5266">{"x":{
+<div id="htmlwidget-6083f120f2cfc75030f0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6083f120f2cfc75030f0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -66826,7 +66826,7 @@
 <a href="#data-5" class="anchor"></a>Data</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tibble">tibble</a></span>(</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
 <a class="sourceLine" id="cb13-3" data-line-number="3">    <span class="dt">sample =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(),</a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="dt">stem =</span> (sample <span class="op">/</span><span class="st"> </span>10L) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(),</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5">    <span class="dt">leaf =</span> sample <span class="op">%%</span><span class="st"> </span>10L</a>
@@ -66835,13 +66835,13 @@
 <a class="sourceLine" id="cb13-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(stem) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(leaf)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()</a></code></pre></div>
-</details><div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(data)</a>
+</details><div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#&gt; Observations: 100</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 18, 20, 23, 23, 25, 25, 25, 27, 27, 28, 28, 29, 30, 3...</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3,...</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 8, 0, 3, 3, 5, 5, 5, 7, 7, 8, 8, 9, 0, 2, 2, 4, 4, 5,...</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, 5, ...</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 12, 15, 15, 20, 24, 24, 24, 24, 29, 29, 29, 30, 30, 3...</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3,...</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 2, 5, 5, 0, 4, 4, 4, 4, 9, 9, 9, 0, 0, 0, 1, 4, 4, 5,...</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 2, 3, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7,...</span></a></code></pre></div>
 </div>
 <div id="chart-5" class="section level4">
 <h4 class="hasAnchor">
@@ -66861,8 +66861,8 @@
 <a class="sourceLine" id="cb15-13" data-line-number="13"><span class="st">  </span><span class="kw">configure_text</span>(<span class="dt">fontSize =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb15-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb15-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-e6e0f4435f3549311d42" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e6e0f4435f3549311d42">{"x":{
+<div id="htmlwidget-548178ba1534846d72b4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-548178ba1534846d72b4">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -66878,14 +66878,26 @@
       }
     },
     "data": {
-      "name": "data-0d5faa574835361095d953b0face58af"
+      "name": "data-ff730e6ba67cb5f2ceb59bd81da323b0"
     },
     "datasets": {
-      "data-0d5faa574835361095d953b0face58af": [
+      "data-ff730e6ba67cb5f2ceb59bd81da323b0": [
         {
-          "leaf": 8,
+          "leaf": 2,
           "position": 1,
-          "sample": 18,
+          "sample": 12,
+          "stem": 1
+        },
+        {
+          "leaf": 5,
+          "position": 2,
+          "sample": 15,
+          "stem": 1
+        },
+        {
+          "leaf": 5,
+          "position": 3,
+          "sample": 15,
           "stem": 1
         },
         {
@@ -66895,62 +66907,44 @@
           "stem": 2
         },
         {
-          "leaf": 3,
+          "leaf": 4,
           "position": 2,
-          "sample": 23,
+          "sample": 24,
           "stem": 2
         },
         {
-          "leaf": 3,
+          "leaf": 4,
           "position": 3,
-          "sample": 23,
+          "sample": 24,
           "stem": 2
         },
         {
-          "leaf": 5,
+          "leaf": 4,
           "position": 4,
-          "sample": 25,
+          "sample": 24,
           "stem": 2
         },
         {
-          "leaf": 5,
+          "leaf": 4,
           "position": 5,
-          "sample": 25,
-          "stem": 2
-        },
-        {
-          "leaf": 5,
-          "position": 6,
-          "sample": 25,
-          "stem": 2
-        },
-        {
-          "leaf": 7,
-          "position": 7,
-          "sample": 27,
-          "stem": 2
-        },
-        {
-          "leaf": 7,
-          "position": 8,
-          "sample": 27,
-          "stem": 2
-        },
-        {
-          "leaf": 8,
-          "position": 9,
-          "sample": 28,
-          "stem": 2
-        },
-        {
-          "leaf": 8,
-          "position": 10,
-          "sample": 28,
+          "sample": 24,
           "stem": 2
         },
         {
           "leaf": 9,
-          "position": 11,
+          "position": 6,
+          "sample": 29,
+          "stem": 2
+        },
+        {
+          "leaf": 9,
+          "position": 7,
+          "sample": 29,
+          "stem": 2
+        },
+        {
+          "leaf": 9,
+          "position": 8,
           "sample": 29,
           "stem": 2
         },
@@ -66961,21 +66955,21 @@
           "stem": 3
         },
         {
-          "leaf": 2,
+          "leaf": 0,
           "position": 2,
-          "sample": 32,
+          "sample": 30,
           "stem": 3
         },
         {
-          "leaf": 2,
+          "leaf": 0,
           "position": 3,
-          "sample": 32,
+          "sample": 30,
           "stem": 3
         },
         {
-          "leaf": 4,
+          "leaf": 1,
           "position": 4,
-          "sample": 34,
+          "sample": 31,
           "stem": 3
         },
         {
@@ -66985,15 +66979,15 @@
           "stem": 3
         },
         {
-          "leaf": 5,
+          "leaf": 4,
           "position": 6,
-          "sample": 35,
+          "sample": 34,
           "stem": 3
         },
         {
-          "leaf": 7,
+          "leaf": 5,
           "position": 7,
-          "sample": 37,
+          "sample": 35,
           "stem": 3
         },
         {
@@ -67009,9 +67003,9 @@
           "stem": 3
         },
         {
-          "leaf": 8,
+          "leaf": 7,
           "position": 10,
-          "sample": 38,
+          "sample": 37,
           "stem": 3
         },
         {
@@ -67021,45 +67015,51 @@
           "stem": 3
         },
         {
-          "leaf": 1,
+          "leaf": 9,
+          "position": 12,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 0,
           "position": 1,
+          "sample": 40,
+          "stem": 4
+        },
+        {
+          "leaf": 0,
+          "position": 2,
+          "sample": 40,
+          "stem": 4
+        },
+        {
+          "leaf": 0,
+          "position": 3,
+          "sample": 40,
+          "stem": 4
+        },
+        {
+          "leaf": 1,
+          "position": 4,
           "sample": 41,
           "stem": 4
         },
         {
           "leaf": 1,
-          "position": 2,
+          "position": 5,
           "sample": 41,
           "stem": 4
         },
         {
-          "leaf": 2,
-          "position": 3,
-          "sample": 42,
-          "stem": 4
-        },
-        {
-          "leaf": 2,
-          "position": 4,
-          "sample": 42,
-          "stem": 4
-        },
-        {
-          "leaf": 2,
-          "position": 5,
-          "sample": 42,
-          "stem": 4
-        },
-        {
-          "leaf": 3,
+          "leaf": 1,
           "position": 6,
-          "sample": 43,
+          "sample": 41,
           "stem": 4
         },
         {
-          "leaf": 3,
+          "leaf": 1,
           "position": 7,
-          "sample": 43,
+          "sample": 41,
           "stem": 4
         },
         {
@@ -67093,9 +67093,9 @@
           "stem": 4
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 13,
-          "sample": 44,
+          "sample": 45,
           "stem": 4
         },
         {
@@ -67111,33 +67111,33 @@
           "stem": 4
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 16,
-          "sample": 45,
+          "sample": 46,
           "stem": 4
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 17,
-          "sample": 45,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 18,
-          "sample": 45,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 19,
-          "sample": 46,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 20,
-          "sample": 46,
+          "sample": 47,
           "stem": 4
         },
         {
@@ -67147,9 +67147,9 @@
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 22,
-          "sample": 47,
+          "sample": 48,
           "stem": 4
         },
         {
@@ -67171,21 +67171,15 @@
           "stem": 4
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 26,
-          "sample": 48,
+          "sample": 49,
           "stem": 4
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 27,
-          "sample": 48,
-          "stem": 4
-        },
-        {
-          "leaf": 8,
-          "position": 28,
-          "sample": 48,
+          "sample": 49,
           "stem": 4
         },
         {
@@ -67213,9 +67207,9 @@
           "stem": 5
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 5,
-          "sample": 51,
+          "sample": 50,
           "stem": 5
         },
         {
@@ -67225,51 +67219,51 @@
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 7,
-          "sample": 52,
+          "sample": 51,
+          "stem": 5
+        },
+        {
+          "leaf": 1,
+          "position": 8,
+          "sample": 51,
+          "stem": 5
+        },
+        {
+          "leaf": 1,
+          "position": 9,
+          "sample": 51,
+          "stem": 5
+        },
+        {
+          "leaf": 1,
+          "position": 10,
+          "sample": 51,
           "stem": 5
         },
         {
           "leaf": 2,
-          "position": 8,
+          "position": 11,
           "sample": 52,
           "stem": 5
         },
         {
-          "leaf": 3,
-          "position": 9,
-          "sample": 53,
-          "stem": 5
-        },
-        {
-          "leaf": 3,
-          "position": 10,
-          "sample": 53,
-          "stem": 5
-        },
-        {
-          "leaf": 3,
-          "position": 11,
-          "sample": 53,
-          "stem": 5
-        },
-        {
-          "leaf": 4,
+          "leaf": 5,
           "position": 12,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 13,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 14,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
@@ -67297,8 +67291,26 @@
           "stem": 5
         },
         {
-          "leaf": 9,
+          "leaf": 8,
           "position": 19,
+          "sample": 58,
+          "stem": 5
+        },
+        {
+          "leaf": 8,
+          "position": 20,
+          "sample": 58,
+          "stem": 5
+        },
+        {
+          "leaf": 8,
+          "position": 21,
+          "sample": 58,
+          "stem": 5
+        },
+        {
+          "leaf": 9,
+          "position": 22,
           "sample": 59,
           "stem": 5
         },
@@ -67309,33 +67321,33 @@
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 2,
-          "sample": 60,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 3,
-          "sample": 60,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 2,
           "position": 4,
-          "sample": 60,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 1,
+          "leaf": 2,
           "position": 5,
-          "sample": 61,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 1,
+          "leaf": 2,
           "position": 6,
-          "sample": 61,
+          "sample": 62,
           "stem": 6
         },
         {
@@ -67345,9 +67357,9 @@
           "stem": 6
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 8,
-          "sample": 63,
+          "sample": 62,
           "stem": 6
         },
         {
@@ -67357,86 +67369,50 @@
           "stem": 6
         },
         {
-          "leaf": 4,
+          "leaf": 3,
           "position": 10,
-          "sample": 64,
-          "stem": 6
-        },
-        {
-          "leaf": 4,
-          "position": 11,
-          "sample": 64,
-          "stem": 6
-        },
-        {
-          "leaf": 4,
-          "position": 12,
-          "sample": 64,
-          "stem": 6
-        },
-        {
-          "leaf": 4,
-          "position": 13,
-          "sample": 64,
+          "sample": 63,
           "stem": 6
         },
         {
           "leaf": 5,
-          "position": 14,
+          "position": 11,
           "sample": 65,
           "stem": 6
         },
         {
           "leaf": 6,
-          "position": 15,
+          "position": 12,
           "sample": 66,
           "stem": 6
         },
         {
           "leaf": 6,
-          "position": 16,
+          "position": 13,
           "sample": 66,
           "stem": 6
         },
         {
           "leaf": 6,
-          "position": 17,
+          "position": 14,
           "sample": 66,
-          "stem": 6
-        },
-        {
-          "leaf": 6,
-          "position": 18,
-          "sample": 66,
-          "stem": 6
-        },
-        {
-          "leaf": 6,
-          "position": 19,
-          "sample": 66,
-          "stem": 6
-        },
-        {
-          "leaf": 7,
-          "position": 20,
-          "sample": 67,
           "stem": 6
         },
         {
           "leaf": 8,
-          "position": 21,
+          "position": 15,
+          "sample": 68,
+          "stem": 6
+        },
+        {
+          "leaf": 8,
+          "position": 16,
           "sample": 68,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 22,
-          "sample": 69,
-          "stem": 6
-        },
-        {
-          "leaf": 9,
-          "position": 23,
+          "position": 17,
           "sample": 69,
           "stem": 6
         },
@@ -67447,39 +67423,63 @@
           "stem": 7
         },
         {
-          "leaf": 3,
+          "leaf": 0,
           "position": 2,
-          "sample": 73,
+          "sample": 70,
           "stem": 7
         },
         {
-          "leaf": 4,
+          "leaf": 0,
           "position": 3,
-          "sample": 74,
+          "sample": 70,
           "stem": 7
         },
         {
-          "leaf": 4,
+          "leaf": 1,
           "position": 4,
+          "sample": 71,
+          "stem": 7
+        },
+        {
+          "leaf": 2,
+          "position": 5,
+          "sample": 72,
+          "stem": 7
+        },
+        {
+          "leaf": 4,
+          "position": 6,
           "sample": 74,
           "stem": 7
         },
         {
           "leaf": 4,
-          "position": 5,
+          "position": 7,
           "sample": 74,
           "stem": 7
         },
         {
-          "leaf": 5,
-          "position": 6,
-          "sample": 75,
+          "leaf": 6,
+          "position": 8,
+          "sample": 76,
           "stem": 7
         },
         {
-          "leaf": 3,
+          "leaf": 6,
+          "position": 9,
+          "sample": 76,
+          "stem": 7
+        },
+        {
+          "leaf": 8,
+          "position": 10,
+          "sample": 78,
+          "stem": 7
+        },
+        {
+          "leaf": 2,
           "position": 1,
-          "sample": 83,
+          "sample": 82,
           "stem": 8
         }
       ]
@@ -67532,7 +67532,7 @@
 <div id="data-6" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-6" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co">#&gt; Observations: 560</span></a>
 <a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",...</span></a>
@@ -67553,8 +67553,8 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9">  )</a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb17-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-c1d7cfa6f0d3307b72c9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c1d7cfa6f0d3307b72c9">{"x":{
+<div id="htmlwidget-7034f7e9e16f1967c272" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7034f7e9e16f1967c272">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {

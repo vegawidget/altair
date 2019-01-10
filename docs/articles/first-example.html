@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.2.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.3.0.1</span>
       </span>
     </div>
 
@@ -152,13 +152,13 @@
 
       
       </header><script src="first-example_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="first-example_files/vega-4.0.0/promise.min.js"></script><script src="first-example_files/vega-4.0.0/symbol.min.js"></script><script src="first-example_files/vega-4.0.0/vega.js"></script><script src="first-example_files/vega-lite-2.6.0/vega-lite.min.js"></script><link href="first-example_files/vega-embed-3.25.0/vega-embed.css" rel="stylesheet">
-<script src="first-example_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="first-example_files/vegawidget-binding-0.0.6.9000/vegawidget.js"></script><link href="first-example_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
+<script src="first-example_files/vega-embed-3.25.0/vega-embed-modified.js"></script><script src="first-example_files/vegawidget-binding-0.0.7.9000/vegawidget.js"></script><link href="first-example_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
 <script src="first-example_files/jsoneditor-5.25.6/jsoneditor.min.js"></script><script src="first-example_files/jsonedit-binding-2.1.0/jsonedit.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>First Example</h1>
             
-            <h4 class="date">2019-01-08</h4>
+            <h4 class="date">2019-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/first-example.Rmd"><code>vignettes/first-example.Rmd</code></a></small>
       <div class="hidden name"><code>first-example.Rmd</code></div>
@@ -186,8 +186,8 @@
 <a class="sourceLine" id="cb1-13" data-line-number="13">  )</a>
 <a class="sourceLine" id="cb1-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb1-15" data-line-number="15"><span class="kw"><a href="../reference/vegawidget.html">vegawidget</a></span>(chart)</a></code></pre></div>
-<div id="htmlwidget-b9ddb57223c913609e83" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b9ddb57223c913609e83">{"x":{
+<div id="htmlwidget-1b8644395af0e529643f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b8644395af0e529643f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -4787,8 +4787,8 @@
 <a href="#displaying-and-examining" class="anchor"></a>Displaying and Examining</h2>
 <p>Now that we have specified our chart, it remains to display it. This package provides a function <code><a href="../reference/vegawidget.html">vegawidget()</a></code> that takes a chart object then renders and embeds it as an <a href="https://www.htmlwidgets.org">htmlwidget</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/vegawidget.html">vegawidget</a></span>(chart)</a></code></pre></div>
-<div id="htmlwidget-80df9d824abd1f5ba7fe" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-80df9d824abd1f5ba7fe">{"x":{
+<div id="htmlwidget-7069702a93e9c4056b0d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7069702a93e9c4056b0d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -9310,8 +9310,8 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>However, if you are using its defaults, you need not call the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function explicitly, as this package provides a <code><a href="https://www.rdocumentation.org/packages/base/topics/print">print()</a></code> method and a <code>knit_print()</code> method.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">chart</a></code></pre></div>
-<div id="htmlwidget-c4a7cdb5ba06ef605c6a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c4a7cdb5ba06ef605c6a">{"x":{
+<div id="htmlwidget-f6fdf96525f5e5b634e4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f6fdf96525f5e5b634e4">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
     "config": {
@@ -13834,8 +13834,8 @@
 },"evals":[],"jsHooks":[]}</script><p>More details on rendering charts, including how sizing works, are found in the article <a href="field-guide-rendering.html">Field Guide to Rendering</a>.</p>
 <p>You can examine the chart-specification by using the <code>examine()</code> function, which wraps <code><a href="https://www.rdocumentation.org/packages/listviewer/topics/jsonedit">listviewer::jsonedit()</a></code>. To use this function, you will need to install the <strong>listviewer</strong> package from CRAN.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/vw_examine.html">vw_examine</a></span>(chart)</a></code></pre></div>
-<div id="htmlwidget-4b6e6c0101305199306b" style="width:700px;height:300px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b6e6c0101305199306b">{"x":{"data":{
+<div id="htmlwidget-122ecf8e780fec95a72f" style="width:700px;height:300px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-122ecf8e780fec95a72f">{"x":{"data":{
   "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
   "config": {
     "view": {
