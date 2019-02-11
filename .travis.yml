@@ -1,12 +1,14 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: r
-r:
-  - oldrel
-  - release
-  - devel
+language: R
 sudo: required
 cache: packages
+
+matrix:
+  include:
+  - r: devel
+  - r: release
+  - r: oldrel
 
 # ref: https://conda.io/docs/user-guide/tasks/use-conda-with-travis-ci.html
 before_install:
