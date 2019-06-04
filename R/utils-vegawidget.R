@@ -8,20 +8,19 @@
 #' @return S3 object of class `vegaspec`
 #' @export
 #'
-as_vegaspec.altair.vegalite.v2.api.TopLevelMixin  <- function(spec, ...) {
+as_vegaspec.altair.vegalite.v3.api.Chart <- function(spec, ...) {
 
   # TODO: if needed, insert code to convert your object to
   # something that can be coerced to a vegaspec.
   #
   # e.g.:
-  # spec <- spec$to_json()
   spec <- spec$to_json()
 
   vegawidget::as_vegaspec(spec, ...)
 }
 
 #' @name as_vegaspec
-#' @rdname as_vegaspec.altair.vegalite.v2.api.TopLevelMixin
+#' @rdname as_vegaspec.altair.vegalite.v3.api.Chart
 #'
 #' @importFrom vegawidget as_vegaspec
 #' @export
@@ -39,22 +38,11 @@ NULL
 #'
 NULL
 
-#' Rename datasets in a vegaspec
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_rename_datasets}} for details.
-#'
-#' @name vw_rename_datasets
-#' @rdname vw_rename_datasets
-#' @importFrom vegawidget vw_rename_datasets
-#' @export
-#'
-NULL
-
 #### print functions ####
 
 #' @export
 #'
-print.altair.vegalite.v2.api.TopLevelMixin  <- function(x, ...) {
+print.altair.vegalite.v3.api.Chart <- function(x, ...) {
 
   x <- as_vegaspec(x)
 
@@ -70,7 +58,7 @@ print.altair.vegalite.v2.api.TopLevelMixin  <- function(x, ...) {
 #'
 #' @export
 #'
-knit_print.altair.vegalite.v2.api.TopLevelMixin  <- function(spec, ..., options = NULL) {
+knit_print.altair.vegalite.v3.api.Chart <- function(spec, ..., options = NULL) {
 
   spec <- as_vegaspec(spec)
 
@@ -78,7 +66,7 @@ knit_print.altair.vegalite.v2.api.TopLevelMixin  <- function(spec, ..., options 
 }
 
 #' @name knit_print.vegaspec
-#' @rdname knit_print.altair.vegalite.v2.api.TopLevelMixin
+#' @rdname knit_print.altair.vegalite.v3.api.Chart
 #'
 #' @importFrom vegawidget knit_print.vegaspec
 #' @export
@@ -109,96 +97,6 @@ NULL
 #'
 NULL
 
-#### shiny functions ####
-
-#' Shiny-output for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{vegawidgetOutput}} for details.
-#'
-#' @name vegawidgetOutput
-#' @rdname vegawidgetOutput
-#' @importFrom vegawidget vegawidgetOutput
-#' @export
-#'
-NULL
-
-#' Render shiny-output for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{renderVegawidget}} for details.
-#'
-#' @name renderVegawidget
-#' @rdname renderVegawidget
-#' @importFrom vegawidget renderVegawidget
-#' @export
-#'
-NULL
-
-#' Shiny getters for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{shiny-getters}} for details.
-#'
-#' @name vw-shiny-getters
-#' @importFrom vegawidget
-#'           vw_shiny_get_event vw_shiny_get_signal
-#' @aliases  vw_shiny_get_event vw_shiny_get_signal
-#' @export   vw_shiny_get_event vw_shiny_get_signal
-#'
-NULL
-
-#' Shiny setters for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{shiny-setters}} for details.
-#'
-#' @name vw-shiny-setters
-#' @importFrom vegawidget
-#'          vw_shiny_set_data vw_shiny_set_signal
-#' @aliases vw_shiny_set_data vw_shiny_set_signal
-#' @export  vw_shiny_set_data vw_shiny_set_signal
-#'
-NULL
-
-#### listener functions ####
-
-#' JavaScript listeners for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{add-listeners}} for details.
-#'
-#' @name vw-add-listeners
-#' @importFrom vegawidget
-#'          vw_add_event_listener vw_add_signal_listener
-#' @aliases vw_add_event_listener vw_add_signal_listener
-#' @export  vw_add_event_listener vw_add_signal_listener
-#'
-NULL
-
-#### handler functions ####
-
-#' JavaScript handlers for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_handler_signal}},
-#'   \code{vegawidget::\link[vegawidget]{vw_handler_add_effect}}, for details.
-#'
-#' @name vw-handlers
-#' @importFrom vegawidget
-#'           vw_handler_signal vw_handler_event vw_handler_add_effect
-#' @aliases  vw_handler_signal vw_handler_event vw_handler_add_effect
-#' @export   vw_handler_signal vw_handler_event vw_handler_add_effect
-#'
-NULL
-
-#### debug/share functions ####
-
-#' Examine vegaspec
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_examine}} for details.
-#'
-#' @name vw_examine
-#' @rdname vw_examine
-#' @importFrom vegawidget vw_examine
-#' @export
-#'
-NULL
-
 #### image functions ####
 
 #' Create or write image
@@ -212,41 +110,3 @@ NULL
 #' @export   vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
 #'
 NULL
-
-#### utility functions ####
-
-#' Determine Vega JavaScript versions
-#'
-#' See \code{vegawidget::\link[vegawidget]{vega_version}} for details.
-#'
-#' @name vega_version
-#' @rdname vega_version
-#' @importFrom vegawidget vega_version
-#' @export
-#'
-NULL
-
-#' Determine vegaspec version
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_spec_version}} for details.
-#'
-#' @name vw_spec_version
-#' @rdname vw_spec_version
-#' @importFrom vegawidget vw_spec_version
-#' @export
-#'
-NULL
-
-#' Serialize data-frame time-columns
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_serialize_data}} for details.
-#'
-#' @name vw_serialize_data
-#' @rdname vw_serialize_data
-#' @importFrom vegawidget vw_serialize_data
-#' @export
-#'
-NULL
-
-
-

@@ -88,7 +88,7 @@ chart <-
 chart
 ```
 
-![](man/figures/README-example-1.png)<!-- -->
+![](man/figures/README-example-1.svg)<!-- -->
 
 Some things to keep in mind:
 
