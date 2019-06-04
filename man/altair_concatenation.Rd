@@ -2,16 +2,16 @@
 % Please edit documentation in R/concatenation.R
 \name{altair_concatenation}
 \alias{altair_concatenation}
-\alias{|.altair.vegalite.v2.api.TopLevelMixin}
-\alias{+.altair.vegalite.v2.api.TopLevelMixin}
-\alias{&.altair.vegalite.v2.api.TopLevelMixin}
+\alias{|.altair.vegalite.v3.api.TopLevelMixin}
+\alias{+.altair.vegalite.v3.api.TopLevelMixin}
+\alias{&.altair.vegalite.v3.api.TopLevelMixin}
 \title{Altair plot concatenation}
 \usage{
-\method{|}{altair.vegalite.v2.api.TopLevelMixin}(e1, e2)
+\method{|}{altair.vegalite.v3.api.TopLevelMixin}(e1, e2)
 
-\method{+}{altair.vegalite.v2.api.TopLevelMixin}(e1, e2)
+\method{+}{altair.vegalite.v3.api.TopLevelMixin}(e1, e2)
 
-\method{&}{altair.vegalite.v2.api.TopLevelMixin}(e1, e2)
+\method{&}{altair.vegalite.v3.api.TopLevelMixin}(e1, e2)
 }
 \arguments{
 \item{e1}{Altair chart object}
@@ -57,5 +57,4 @@ hconcat_plot <- combined_plot | combined_plot2
 
 vconcat_plot <- combined_plot & combined_plot2
 
-# Use vegalite function to render combined_plot, hconcat_plot, or vconcat_plot
 }

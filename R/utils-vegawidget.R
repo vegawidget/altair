@@ -8,7 +8,7 @@
 #' @return S3 object of class `vegaspec`
 #' @export
 #'
-as_vegaspec.altair.vegalite.v3.api.Chart <- function(spec, ...) {
+as_vegaspec.altair.vegalite.v3.api.TopLevelMixin <- function(spec, ...) {
 
   # TODO: if needed, insert code to convert your object to
   # something that can be coerced to a vegaspec.
@@ -20,7 +20,7 @@ as_vegaspec.altair.vegalite.v3.api.Chart <- function(spec, ...) {
 }
 
 #' @name as_vegaspec
-#' @rdname as_vegaspec.altair.vegalite.v3.api.Chart
+#' @rdname as_vegaspec.altair.vegalite.v3.api.TopLevelMixin
 #'
 #' @importFrom vegawidget as_vegaspec
 #' @export
@@ -42,7 +42,7 @@ NULL
 
 #' @export
 #'
-print.altair.vegalite.v3.api.Chart <- function(x, ...) {
+print.altair.vegalite.v3.api.TopLevelMixin <- function(x, ...) {
 
   x <- as_vegaspec(x)
 
@@ -58,7 +58,7 @@ print.altair.vegalite.v3.api.Chart <- function(x, ...) {
 #'
 #' @export
 #'
-knit_print.altair.vegalite.v3.api.Chart <- function(spec, ..., options = NULL) {
+knit_print.altair.vegalite.v3.api.TopLevelMixin <- function(spec, ..., options = NULL) {
 
   spec <- as_vegaspec(spec)
 
@@ -66,7 +66,7 @@ knit_print.altair.vegalite.v3.api.Chart <- function(spec, ..., options = NULL) {
 }
 
 #' @name knit_print.vegaspec
-#' @rdname knit_print.altair.vegalite.v3.api.Chart
+#' @rdname knit_print.altair.vegalite.v3.api.TopLevelMixin
 #'
 #' @importFrom vegawidget knit_print.vegaspec
 #' @export
