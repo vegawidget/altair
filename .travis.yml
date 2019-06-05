@@ -11,11 +11,14 @@ matrix:
   - r: oldrel
 
 before_script:
+  - pyenv global 3.6
   - sudo apt-get install python3-setuptools
   - sudo easy_install3 pip
   - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
   - R CMD INSTALL .
+  - R -e 'reticulate::py_config()'
   - R -e 'Sys.setenv(RETICULATE_PYTHON = "/usr/bin/python3"); reticulate::virtualenv_create("r-reticulate")'
+  - R -e 'reticulate::py_config()'
   - R -e 'altair::install_altair("virtualenv")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
