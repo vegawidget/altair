@@ -6,12 +6,12 @@ cache: packages
 
 matrix:
   include:
-  - r: devel
+ # - r: devel
   - r: release
-  - r: oldrel
+#  - r: oldrel
 
 before_script:
-  - pyenv global 3.6
+  - pyenv versions
   - sudo apt-get install python3-setuptools
   - sudo easy_install3 pip
   - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
