@@ -9,8 +9,10 @@ matrix:
   - r: release
   - r: oldrel
 
-before_install:
-  - pip install pip --upgrade;
+addons:
+  apt:
+    packages:
+      - python3.7
 
 before_script:
   - R CMD INSTALL .
