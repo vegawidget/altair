@@ -75,7 +75,7 @@ install_altair <- function(method = c("conda", "virtualenv"),
     )
   }
 
-  if (identical(method, "virtual")) {
+  if (identical(method, "virtualenv")) {
     reticulate::virtualenv_install(
       packages = packages,
       envname = envname,
