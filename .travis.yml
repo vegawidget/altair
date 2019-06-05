@@ -27,9 +27,7 @@ before_script:
   - R CMD INSTALL .
   - R -e 'reticulate::conda_create("r-reticulate")'
   - R -e 'altair::install_altair()'
-  - R -e 'reticulate::py_config()'
-  - R -e 'altair::install_altair()'
-  - R -e 'reticulate::py_config()'
-  - R -e 'altair::check_altair(quiet = FALSE)'
+  - R -e 'reticulate::use_condaenv("r-reticulate"); reticulate::py_config()'
+  - R -e 'reticulate::use_condaenv("r-reticulate"); altair::check_altair(quiet = FALSE)'
 
 
