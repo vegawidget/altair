@@ -1,6 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
+sudo: false
 cache: packages
 
 matrix:
@@ -10,7 +11,7 @@ matrix:
   - r: oldrel
 
 before_script:
-  # - pip install --upgrade --ignore-installed --user travis virtualenv
+  - /usr/bin/python3.4 -m pip install --upgrade --user travis virtualenv
   - R CMD INSTALL .
   - R -e 'reticulate::virtualenv_create("r-reticulate")'
   - R -e 'altair::install_altair("virtualenv")'
