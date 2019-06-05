@@ -11,6 +11,8 @@ matrix:
 
 addons:
   apt:
+    sources:
+      - deadsnakes # source required so it finds the package definition below
     packages:
       - python3.7
 
