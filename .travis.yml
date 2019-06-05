@@ -11,7 +11,8 @@ matrix:
 #  - r: oldrel
 
 before_script:
-  - pyenv versions
+  - sudo apt-get update
+  - sudo apt-get install python3 # try to upgrade to latest python
   - sudo apt-get install python3-setuptools
   - sudo easy_install3 pip
   - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
