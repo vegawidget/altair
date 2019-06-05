@@ -10,9 +10,15 @@ matrix:
   - r: release
   - r: oldrel
 
+addons:
+  apt:
+    sources:
+    - deadsnakes
+    packages:
+    - python3-venv
+
 before_script:
-  - sudo apt-get install python3-venv
-  - /usr/bin/python3.4 -m pip install --upgrade --user travis virtualenv
+  - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
   - R CMD INSTALL .
   - R -e 'reticulate::virtualenv_create("r-reticulate")'
   - R -e 'altair::install_altair("virtualenv")'
