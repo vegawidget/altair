@@ -20,6 +20,7 @@ addons:
 
 before_script:
   - which python3.6
+  - sudo ln -s /usr/bin/python3.6 /usr/bin/python3
   - sudo apt-get install python3-setuptools
   - sudo easy_install3 pip
   - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
