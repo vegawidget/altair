@@ -1,7 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: required
+sudo: false
 cache: packages
 
 matrix:
@@ -27,6 +27,3 @@ before_script:
   - R -e 'altair::install_altair("")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
-
-
-# /home/travis/.virtualenvs/r-reticulate/bin/python
