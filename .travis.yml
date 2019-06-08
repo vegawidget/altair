@@ -7,8 +7,8 @@ cache: packages
 
 matrix:
   include:
-#   - r: devel
-#   - r: release
+   - r: devel
+   - r: release
    - r: oldrel
 
 # from https://www.augustguang.com/travis-ci-for-python-and-r/\
@@ -25,13 +25,12 @@ before_install:
   - conda info -a
   - conda create -q -n r-reticulate python=$TRAVIS_PYTHON_VERSION
   - source activate r-reticulate
-  - conda install -c conda-forge altair vega_datasets
-  - conda list
+  # - conda install -c conda-forge altair vega_datasets
+  # - conda list
 
 before_script:
   - R CMD INSTALL .
-#  - R -e 'reticulate::py_config()'
-#  - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
-#  - R -e 'altair::check_altair(quiet = FALSE)'
-  - R -e 'a <- reticulate::import("altair"); str(a)'
+  - R -e 'altair::install_altair()'
+  - R -e 'reticulate::py_config()'
+  - R -e 'altair::check_altair(quiet = FALSE)'
