@@ -2,6 +2,7 @@
 
 language: R
 sudo: false
+dist: xenial
 cache: packages
 
 matrix:
