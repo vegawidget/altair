@@ -7,8 +7,8 @@ cache: packages
 matrix:
   include:
 #   - r: devel
-   - r: release
-#   - r: oldrel
+#   - r: release
+   - r: oldrel
 
 # from https://www.augustguang.com/travis-ci-for-python-and-r/\
 # - doing this in `before_install` to avoid overwriting `install`, where
