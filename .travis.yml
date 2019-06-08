@@ -23,7 +23,7 @@ before_install:
   - conda update -q conda
   - conda info -a
   - conda create -q -n r-reticulate python=$TRAVIS_PYTHON_VERSION
-  - conda activate r-reticulate
+  - source activate r-reticulate
   - conda install -c conda-forge altair vega_datasets
   - conda list
 
