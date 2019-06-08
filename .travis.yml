@@ -10,7 +10,10 @@ matrix:
    - r: release
 #   - r: oldrel
 
-# from https://www.augustguang.com/travis-ci-for-python-and-r/
+# from https://www.augustguang.com/travis-ci-for-python-and-r/\
+# - doing this in `before_install` to avoid overwriting `install`, where
+#   R packages are installed in the default script
+# - https://docs-staging.travis-ci.com/user/languages/r#customizing-the-travis-build-steps
 before_install:
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
@@ -21,12 +24,10 @@ before_install:
   - conda info -a
   - conda create -q -n r-reticulate python=$TRAVIS_PYTHON_VERSION
   - source activate r-reticulate
-  # https://docs-staging.travis-ci.com/user/languages/r#customizing-the-travis-build-steps
-  # - R -e 'devtools::install_deps(dep = T)'
 
 before_script:
   - R CMD INSTALL .
   - R -e 'reticulate::py_config()'
-  - R -e 'altair::install_altair("")'
+  - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
