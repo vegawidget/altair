@@ -10,26 +10,21 @@ matrix:
   - r: release
 #  - r: oldrel
 
-addons:
-  apt:
-    sources: deadsnakes
-    update: true
-    packages:
-      - python3.6
-      - python3.6-venv
+install:
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+  - conda create -q -n r-reticulate python=$TRAVIS_PYTHON_VERSION
+  - source activate r-reticulate
 
 before_script:
-  - which python3.6
-  - sudo rm /usr/bin/python3
-  - sudo ln -s /usr/bin/python3.6 /usr/bin/python3
-  - sudo apt-get install python3-setuptools
-  - sudo easy_install3 pip
-  - /usr/bin/python3 -m pip install --upgrade --user travis virtualenv
   - R CMD INSTALL .
   - R -e 'reticulate::py_config()'
-  - R -e 'Sys.setenv(RETICULATE_PYTHON = "/usr/bin/python3"); reticulate::virtualenv_create("r-reticulate")'
-  - R -e 'reticulate::py_config()'
-  - R -e 'altair::install_altair("virtualenv")'
+  - R -e 'altair::install_altair("")'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
 
