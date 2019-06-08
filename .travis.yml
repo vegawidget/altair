@@ -24,10 +24,11 @@ before_install:
   - conda info -a
   - conda create -q -n r-reticulate python=$TRAVIS_PYTHON_VERSION
   - source activate r-reticulate
+  - conda install -c conda-forge altair vega_datasets
 
 before_script:
   - R CMD INSTALL .
-  - R -e 'reticulate::py_config()'
-  - R -e 'altair::install_altair()'
+#  - R -e 'reticulate::py_config()'
+#  - R -e 'altair::install_altair()'
   - R -e 'reticulate::py_config()'
   - R -e 'altair::check_altair(quiet = FALSE)'
