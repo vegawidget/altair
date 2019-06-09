@@ -4,24 +4,8 @@
 #'
 #' See \code{vegawidget::\link[vegawidget]{as_vegaspec}} for details.
 #'
-#' @inheritParams vegawidget::as_vegaspec
-#' @return S3 object of class `vegaspec`
-#' @export
-#'
-as_vegaspec.altair.vegalite.v3.api.TopLevelMixin <- function(spec, ...) {
-
-  # TODO: if needed, insert code to convert your object to
-  # something that can be coerced to a vegaspec.
-  #
-  # e.g.:
-  spec <- spec$to_json()
-
-  vegawidget::as_vegaspec(spec, ...)
-}
-
 #' @name as_vegaspec
-#' @rdname as_vegaspec.altair.vegalite.v3.api.TopLevelMixin
-#'
+#' @rdname as_vegaspec
 #' @importFrom vegawidget as_vegaspec
 #' @export
 #'
@@ -40,34 +24,13 @@ NULL
 
 #### print functions ####
 
-#' @export
-#'
-print.altair.vegalite.v3.api.TopLevelMixin <- function(x, ...) {
-
-  x <- as_vegaspec(x)
-
-  print(x, ...)
-}
-
 #' Knit-print method
 #'
 #' See \code{vegawidget::\link[vegawidget]{knit_print.vegaspec}} for details,
 #' particularly on additional packages that may have to be installed.
 #'
-#' @inheritParams vegawidget::knit_print.vegaspec
-#'
-#' @export
-#'
-knit_print.altair.vegalite.v3.api.TopLevelMixin <- function(spec, ..., options = NULL) {
-
-  spec <- as_vegaspec(spec)
-
-  knitr::knit_print(spec, ..., options = options)
-}
-
 #' @name knit_print.vegaspec
-#' @rdname knit_print.altair.vegalite.v3.api.TopLevelMixin
-#'
+#' @rdname knit_print.vegaspec
 #' @importFrom vegawidget knit_print.vegaspec
 #' @export
 #'
@@ -110,3 +73,38 @@ NULL
 #' @export   vw_to_svg vw_to_bitmap vw_write_png vw_write_svg
 #'
 NULL
+
+#### shiny functions ####
+
+#' Shiny-output for vegawidget
+#'
+#' See \code{vegawidget::\link[vegawidget]{vegawidgetOutput}} for details.
+#'
+#' @name vegawidgetOutput
+#' @rdname vegawidgetOutput
+#' @importFrom vegawidget vegawidgetOutput
+#' @export
+#'
+NULL
+
+#' Render shiny-output for vegawidget
+#'
+#' See \code{vegawidget::\link[vegawidget]{renderVegawidget}} for details.
+#'
+#' @name renderVegawidget
+#' @rdname renderVegawidget
+#' @importFrom vegawidget renderVegawidget
+#' @export
+#'
+NULL
+
+#### specs ####
+
+#' Example vegaspecs
+#'
+#' See \code{vegawidget::\link[vegawidget]{spec_mtcars}} for details.
+#'
+#' @name spec_mtcars
+#' @export
+#'
+spec_mtcars <- vegawidget::spec_mtcars
