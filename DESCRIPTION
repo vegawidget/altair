@@ -55,7 +55,8 @@ Suggests:
     pryr,
     stringr,
     tidyr,
-    dplyr
+    dplyr,
+    pkgdown
 Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1

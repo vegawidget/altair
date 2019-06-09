@@ -33,7 +33,7 @@ reference:
       - vega_embed
       - renderVegawidget
       - vegawidgetOutput
-      - knit_print.altair.vegalite.v2.api.TopLevelMixin
+      - knit_print.altair.vegalite.v3.api.TopLevelMixin
   - title: Package
     desc: Overview of the package
     contents:

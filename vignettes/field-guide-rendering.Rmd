@@ -30,7 +30,7 @@ Here's the short version:
 
 - Given a chart-specification `chart`, you can render it using `vegalite(chart)`, `print(chart)` or just `chart`. 
 
-- You can examine a chart-specification using the `vw_examine()` function, which wraps `listviewer::jsonedit()`.
+- You can examine a chart-specification using `vegawidget::vw_examine()`, which wraps `listviewer::jsonedit()`.
   
 - The `vegawidget()` function has arguments `embed_options`, and `width` & `height`.
 
@@ -87,10 +87,10 @@ As you can see, this renders this chart using some defaults:
 - The chart is rendered using canvas.
 - There are action links to export, to view source of, and to edit the chart.
 
-You might have noticed that we did not set the size of the chart anywhere, to see where this is specified within the chart, we can use the `vw_examine()` function: 
+You might have noticed that we did not set the size of the chart anywhere, to see where this is specified within the chart, we can use `vegawidget::vw_examine()`: 
 
 ```{r examine-default, out.height=300}
-vw_examine(chart)
+vegawidget::vw_examine(chart)
 ```
 
 By expanding `config` and `view`, you will see the `height` and `width` properties. These defaults were added to the specification by Altair, on the Python side. Although we will discuss this more in the [dimensions](#dimensions) section, we note that these refer to the dimensions of the **plotting area** rather than the dimensions of the entire chart, including axes, labels, etc.
