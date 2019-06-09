@@ -178,7 +178,7 @@ brush <- alt$selection_interval(encodings = list("x"))
 # Define the base chart, with the common parts of the
 # background and highlights
 base <- 
-  alt$Chart()$
+  alt$Chart(data = flights)$
   mark_bar()$
   encode(
     x = alt$X(
@@ -204,7 +204,6 @@ highlight <-
 # layer the two charts & repeat
 chart <- 
   (background + highlight)$ 
-  properties(data = flights)$
   transform_calculate("time", "hours(datum.date)")$
   `repeat`(column = list("distance", "delay", "time"))
 
@@ -338,7 +337,7 @@ nearest <- alt$selection(
 
 # The basic line
 line <- 
-  alt$Chart()$
+  alt$Chart(data = data)$
   mark_line(interpolate = "basis")$
   encode(
     x = "x:Q",
@@ -349,7 +348,7 @@ line <-
 # Transparent selectors across the chart. This is what tells us
 # the x-value of the cursor
 selectors <- 
-  alt$Chart()$
+  alt$Chart(data = data)$
     mark_point()$
     encode(
       x = "x:Q",
@@ -376,7 +375,7 @@ text <-
 
 # Draw a rule at the location of the selection
 rules <- 
-  alt$Chart()$
+  alt$Chart(data = data)$
   mark_rule(color = "gray")$
   encode(
     x = "x:Q"
@@ -386,7 +385,7 @@ rules <-
 # Put the five layers into a chart and bind the data
 chart <-  
   (line + selectors + points + rules + text)$
-  properties(data = data, width = 600, height = 300)
+  properties( width = 600, height = 300)
 
 chart
 ```
@@ -421,7 +420,7 @@ click <- alt$selection_multi(encodings = list("color"))
 
 # Top panel is scatter plot of temperature vs time
 points <- 
-  alt$Chart()$
+  alt$Chart(data = vega_data$seattle_weather())$
   mark_point()$
   encode(
     x = alt$X(
@@ -442,7 +441,7 @@ points <-
 
 # Bottom panel is a bar chart of weather type
 bars <- 
-  alt$Chart()$
+  alt$Chart(data = vega_data$seattle_weather())$
   mark_bar()$
   encode(
     x = "count(weather)",
@@ -454,10 +453,7 @@ bars <-
 
 chart <- 
   (points & bars)$ 
-  properties(
-    data = vega_data$seattle_weather(),
-    title = "Seattle Weather: 2012-2015"
-  )  
+  properties(title = "Seattle Weather: 2012-2015")  
 
 chart
 ```

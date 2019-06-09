@@ -38,7 +38,9 @@ vega_data <- import_vega_data()
 #### Data
 
 ```{r}
-data <- read_csv(curl::curl("https://frdata.wikimedia.org/donationdata-vs-day.csv"))
+data <- 
+  read_csv("https://frdata.wikimedia.org/donationdata-vs-day.csv") %>%
+  mutate(date = as.character(date))
 
 glimpse(data)
 ```
