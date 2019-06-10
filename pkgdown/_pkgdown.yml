@@ -127,5 +127,5 @@ navbar:
         - text: Other Charts
           href: articles/example-gallery-09-other-charts.html
   right:
-    - icon: fa-github fa-2x
+    - icon: fa-github fa-lg
       href: https://github.com/vegawidget/altair
