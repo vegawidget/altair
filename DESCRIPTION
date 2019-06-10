@@ -1,5 +1,5 @@
 Package: altair
-Version: 2.2.2.2
+Version: 3.0.0.1.9000
 Title: R Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a Python interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
@@ -40,7 +40,7 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget,
+    vegawidget (>= 0.2.0.9006),
     repr
 Suggests:
     httr,
@@ -55,9 +55,13 @@ Suggests:
     pryr,
     stringr,
     tidyr,
-    dplyr
+    dplyr,
+    pkgdown,
+    processx,
+    rsvg,
+    png,
+    fs
 Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-

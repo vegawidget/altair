@@ -43,16 +43,16 @@
 #'
 #' vconcat_plot <- combined_plot & combined_plot2
 #'
-#' # Use vegalite function to render combined_plot, hconcat_plot, or vconcat_plot
 NULL
 
 is_altair_chart <- function(x) {
-  inherits(x, "altair.vegalite.v2.api.TopLevelMixin")
+  inherits(x, "altair.vegalite.v3.api.TopLevelMixin")
 }
 
 #' @rdname altair_concatenation
 #' @export
-"|.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+#'
+"|.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to | is not an Altair Chart")
   }
@@ -61,7 +61,8 @@ is_altair_chart <- function(x) {
 
 #' @rdname altair_concatenation
 #' @export
-"+.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+#'
+"+.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to + is not an Altair Chart")
   }
@@ -70,7 +71,8 @@ is_altair_chart <- function(x) {
 
 #' @rdname altair_concatenation
 #' @export
-"&.altair.vegalite.v2.api.TopLevelMixin" <- function(e1, e2) {
+#'
+"&.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to & is not an Altair Chart")
   }

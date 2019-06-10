@@ -227,7 +227,7 @@ glimpse(data)
 ```{r}
 # Line between life expectancy in 1955 & 2000
 chart_line <-
-  alt$Chart()$
+  alt$Chart(data = vega_data$countries$url)$
   mark_line(color = "#db646f")$
   encode(
     x = "life_expect:Q",
@@ -237,7 +237,7 @@ chart_line <-
 
 # Points for life expectancy in 1955 & 2000
 chart_point <- 
-  alt$Chart()$
+  alt$Chart(data = vega_data$countries$url)$
   mark_point(size = 100, opacity = 1, filled = TRUE)$
   encode(
     x = "life_expect:Q",
@@ -254,7 +254,6 @@ chart_point <-
 # Compose charts, add data and transformations
 chart <- 
   (chart_line + chart_point)$
-  properties(data =  vega_data$countries$url)$
   transform_filter(
     filter = list(
       field = "country",

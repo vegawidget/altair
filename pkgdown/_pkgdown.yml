@@ -15,25 +15,28 @@ reference:
     contents:
       - install_altair
       - check_altair
+      - altair_version
   - title: Charts
     desc: >
       Functions and objects to construct chart-specifications
     contents:
       - alt
       - import_vega_data
-      - r_to_py
+      - as_chart
+      - as_vegaspec
+      - vw_as_json
       - altair_concatenation
-  - title: Examining and Rendering
+      - r_to_py
+  - title: Rendering
     desc: >
-      Functions for examining specifications,
-      and for rendering them into htmlwidgets
+      Functions to render chart-specifications
     contents:
-      - vw_examine
       - vegawidget
       - vega_embed
       - renderVegawidget
       - vegawidgetOutput
-      - knit_print.altair.vegalite.v2.api.TopLevelMixin
+      - knit_print.altair.vegalite.v3.api.TopLevelMixin
+      - image
   - title: Package
     desc: Overview of the package
     contents:
@@ -124,5 +127,5 @@ navbar:
         - text: Other Charts
           href: articles/example-gallery-09-other-charts.html
   right:
-    - icon: fa-github fa-2x
+    - icon: fa-github fa-lg
       href: https://github.com/vegawidget/altair

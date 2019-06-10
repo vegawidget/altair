@@ -1,3 +1,15 @@
+# altair 2.3.0.2
+
+* Remote field for [vegawidget](https://vegawidget.github.io/vegawidget) removed from DESCRIPTION.
+
+# altair 2.3.0.1
+
+* updates the image-functions from vegawidget
+
+# altair 2.3.0
+
+* upgrades to Altair 2.3.0
+
 # altair 2.2.2.2
 
 * updates exports from vegawidget

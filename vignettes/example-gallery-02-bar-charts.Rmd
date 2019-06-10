@@ -1063,7 +1063,7 @@ glimpse(data)
 
 ```{r}
 a <- 
-  alt$Chart()$
+  alt$Chart(data = data)$
   mark_bar()$
   encode(
     x = "project",
@@ -1071,7 +1071,7 @@ a <-
   )
 
 b <- 
-  alt$Chart()$
+  alt$Chart(data = data)$
   mark_tick(color = "red")$
   encode(
     x = "project",
@@ -1080,7 +1080,6 @@ b <-
 
 chart <- 
   (a + b)$ 
-  properties(data = data)$
   # controls the width of the tick
   configure_tick(thickness = 2, bandSize=35)$
   # controls the width of the bar
