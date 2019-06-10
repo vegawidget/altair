@@ -1,6 +1,8 @@
-# altair 2.3.0.2
+# altair (3.1.0.0 development version)
 
-* Remote field for [vegawidget](https://vegawidget.github.io/vegawidget) removed from DESCRIPTION.
+* Update the JupyterLab renderers to Vega-Lite 3
+
+* Upgrade to Altair 3.1.0
 
 # altair 2.3.0.1
 
