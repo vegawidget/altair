@@ -1,4 +1,4 @@
-# altair (3.1.0.0 development version)
+# altair 3.1.0.0 (development version)
 
 * Update the JupyterLab renderers to Vega-Lite 3
 
