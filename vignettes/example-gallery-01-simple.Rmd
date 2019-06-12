@@ -107,14 +107,15 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$movies())
+movies <- jsonlite::fromJSON("https://vega.github.io/vega-datasets/data/movies.json")
+glimpse(movies)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$movies()))$
+  alt$Chart(r_to_py(movies))$
   mark_bar()$
   encode(
     alt$X("IMDB_Rating", bin = TRUE), 
@@ -161,24 +162,25 @@ chart
 
 ## Simple Scatter Plot
 
-[Altair example](https://altair-viz.github.io/gallery/simple_scatter.html)
+[Altair example](https://altair-viz.github.io/gallery/scatter_tooltips.html)
 
 #### Data
 
 ```{r}
-glimpse(vega_data$iris())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$iris())$
-  mark_point()$
+  alt$Chart(vega_data$cars())$
+  mark_circle()$
   encode(
-    x = "petalWidth",
-    y = "petalLength",
-    color = "species"
+    x = "Horsepower",
+    y = "Miles_per_Gallon",
+    color = "Origin",
+    tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
   )$
   interactive()
 
@@ -192,19 +194,20 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$unemployment_across_industries())
+glimpse(vega_data$iowa_electricity())
+
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$unemployment_across_industries())$
+  alt$Chart(vega_data$iowa_electricity())$
   mark_area()$
   encode(
-    x="date:T",
-    y="count:Q",
-    color="series:N"
+    x="year:T",
+    y="net_generation:Q",
+    color="source:N"
   )
 
 chart
