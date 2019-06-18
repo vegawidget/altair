@@ -21,36 +21,7 @@ library("tidyr")
 vega_data <- import_vega_data()
 ```
 
-## Faceted Scatter Plot with Linked Brushing
 
-[Altair example](https://altair-viz.github.io/gallery/scatter_linked_brush.html)
-
-> This is an example of using an interval selection to control the color of points across multiple facets.
-
-#### Data
-
-```{r}
-glimpse(vega_data$cars())
-```
-
-#### Chart
-
-```{r}
-brush <- alt$selection(type = "interval", resolve="global")
-
-base <- 
-  alt$Chart(vega_data$cars())$
-  mark_point()$
-  encode(
-    y="Miles_per_Gallon",
-    color=alt$condition(brush, "Origin", alt$ColorValue("gray"))
-  )$
-  properties(selection = brush, width = 250, height=250)
-
-chart <- (base$encode(x = "Horsepower") | base$encode( x = "Acceleration"))
-
-chart
-```
 
 ## Interactive Average
 
@@ -104,8 +75,7 @@ chart
 #### Data
 
 ```{r}
-movies <- vega_data$movies()
-glimpse(movies)
+#glimpse(movies)
 ```
 
 #### Chart
@@ -114,13 +84,13 @@ glimpse(movies)
 pts <- alt$selection(type = "single", encodings = list("x"))
 
 rect <- 
-  alt$Chart(movies)$
+  alt$Chart(vega_data$movies$url)$
   mark_rect()$
   encode(
     x = alt$X("IMDB_Rating:Q", bin = TRUE),
     y = alt$Y("Rotten_Tomatoes_Rating:Q", bin=TRUE),
     color = alt$Color(
-      "count(IMDB_Rating)",
+      "count()",
       scale = alt$Scale(scheme = "greenblue"),
       legend = alt$Legend(title = "Total Records")
     )
@@ -132,18 +102,18 @@ circ <-
   encode(
     color = alt$ColorValue("grey"),
     size = alt$Size(
-      "count(IMDB_Rating)",
+      "count()",
       legend = alt$Legend(title = "Records in Selection")
     )
   )$
   transform_filter(pts$ref())
 
 bar <- 
-  alt$Chart(movies)$
+  alt$Chart(vega_data$movies$url)$
   mark_bar()$
   encode(
     x = "Major_Genre:N",
-    y = "count(Major_Genre)",
+    y = "count()",
     color = alt$condition(pts, alt$ColorValue("steelblue"), alt$ColorValue("grey"))
   )$
   properties(selection = pts, width = 550, height = 200)
@@ -166,8 +136,7 @@ Note: `alt$repeat()` must be translated to  `alt$\x60repeat\x60()`.
 #### Data
 
 ```{r}
-flights <- vega_data$flights_2k()
-glimpse(flights)
+#glimpse(flights)
 ```
 
 #### Chart
@@ -178,7 +147,7 @@ brush <- alt$selection_interval(encodings = list("x"))
 # Define the base chart, with the common parts of the
 # background and highlights
 base <- 
-  alt$Chart(data = flights)$
+  alt$Chart(vega_data$flights_2k$url)$
   mark_bar()$
   encode(
     x = alt$X(
@@ -186,7 +155,7 @@ base <-
       type = "quantitative", 
       bin = alt$Bin(maxbins=20)
     ),
-    y = "count(delay)"
+    y = "count()"
   )$
   properties(width = 180, height = 130)
 
@@ -239,6 +208,76 @@ chart <-
 
 chart
 ```
+
+## Interactive Scatter Plot and Linked Layered Histogram
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_with_layered_histogram.html)
+
+> This example shows how to link a scatter plot and a histogram together such that clicking on a point in the scatter plot will isolate the distribution corresponding to that point, and vice versa.
+
+#### Data
+
+```{r}
+source <- data_frame(
+  gender = c(rep("M", 1000), rep("F", 1000)),
+  height = c(rnorm(1000, 69, 7), rnorm(1000, 64, 6)),
+  weight = c(rnorm(1000, 195.8, 144), rnorm(1000, 167, 100)),
+  age = c(rnorm(1000, 45, 8), rnorm(1000, 51, 6))
+)
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+selector <- alt$selection_single(empty='all', fields=list('gender'))
+
+color_scale <- alt$Scale(domain=list('M', 'F'),
+                        range=list('#1FC3AA', '#8624F5'))
+
+base <- 
+  alt$Chart(source)$
+  properties(
+    width=250,
+    height=250
+    )$
+  add_selection(selector)
+
+points <-
+  base$mark_point(filled=TRUE, size=200)$
+  encode(
+    x=alt$X('mean(height):Q',
+            scale=alt$Scale(domain=list(0,84))),
+    y=alt$Y('mean(weight):Q',
+            scale=alt$Scale(domain=list(0,250))),
+    color=alt$condition(selector,
+                        'gender:N',
+                        alt$value('lightgray'),
+                        scale=color_scale)
+)$interactive()
+
+hists <-
+  base$
+  mark_bar(opacity=0.5, thickness=100)$
+  encode(
+    x=alt$X('age',
+            bin=alt$Bin(step=5), # step keeps bin size the same
+            scale=alt$Scale(domain=list(0,100))),
+    y=alt$Y('count()',
+            stack=NULL,
+            scale=alt$Scale(domain=list(0,350))),
+    color=alt$Color('gender:N',
+                    scale=color_scale)
+)$transform_filter(
+    selector
+)
+
+
+points | hists
+
+
+```
+
 
 ## Multi-Line Highlight
 
@@ -390,73 +429,201 @@ chart <-
 chart
 ```
 
-## Seattle Weather Interactive
 
-[Altair example](https://altair-viz.github.io/gallery/seattle_weather_interactive.html)
 
-> This chart provides an interactive exploration of Seattle weather over the course of the year. It includes a one-axis brush selection to easily see the distribution of weather types in a particular date range.
+
+## Multi-panel Scatter Plot with Linked Brushing
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_linked_brush.html)
 
 #### Data
 
 ```{r}
-glimpse(vega_data$seattle_weather())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
-scale <- alt$Scale(
-  domain = list("sun", "fog", "drizzle", "rain", "snow"),
-  range = list("#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd")
-)
+source <- vega_data$cars()
 
-color <- alt$Color("weather:N", scale = scale)
+brush = alt$selection(type='interval', resolve='global')
 
-# We create two selections:
-# - a brush that is active on the top panel
-# - a multi-click that is active on the bottom panel
-brush <- alt$selection_interval(encodings = list("x"))
-click <- alt$selection_multi(encodings = list("color"))
-
-# Top panel is scatter plot of temperature vs time
-points <- 
-  alt$Chart(data = vega_data$seattle_weather())$
+base = alt$Chart(source)$
   mark_point()$
   encode(
-    x = alt$X(
-      "date:T", 
-      timeUnit = "monthdate", 
-      axis=alt$Axis(title="Date")
-    ),
-    alt$Y(
-      "temp_max:Q",
-      axis = alt$Axis(title = "Maximum Daily Temperature (C)"),
-      scale = alt$Scale(domain = list(-5, 40))
-    ),
-    color = alt$condition(brush, color, alt$value("lightgray")),
-    size = alt$Size("precipitation:Q", scale = alt$Scale(range = list(5, 200)))
+    y='Miles_per_Gallon',
+    color=alt$condition(brush, 'Origin', alt$ColorValue('gray'))
+    )$
+  add_selection(
+    brush
   )$
-  properties(width = 600, height = 300, selection = brush)$
-  transform_filter(click$ref())
+  properties(
+    width=250,
+    height=250
+  )
 
-# Bottom panel is a bar chart of weather type
-bars <- 
-  alt$Chart(data = vega_data$seattle_weather())$
-  mark_bar()$
-  encode(
-    x = "count(weather)",
-    y = "weather:N",
-    color = alt$condition(click, color, alt$value("lightgray"))
-  )$
-  transform_filter(brush$ref())$
-  properties(width = 600, selection = click)
-
-chart <- 
-  (points & bars)$ 
-  properties(title = "Seattle Weather: 2012-2015")  
-
-chart
+base$encode(x='Horsepower') | base$encode(x='Acceleration')
 ```
+
+## Multiple Interactions
+
+
+[Altair example](https://altair-viz.github.io/gallery/multiple_interactions.html)
+
+#### Chart
+
+```{r eval=FALSE}
+# movies = alt$UrlData(
+#     vega_data$movies$url,
+#     format=alt$DataFormat(parse=c("Release_Date":"date"))
+# )
+
+ratings = list('G', 'NC-17', 'PG', 'PG-13', 'R')
+genres = list('Action', 'Adventure', 'Black Comedy', 'Comedy',
+       'Concert/Performance', 'Documentary', 'Drama', 'Horror', 'Musical', 'Romantic Comedy', 'Thriller/Suspense', 'Western')
+
+base <-
+  alt$Chart(vega_data$movies$url, 
+            width=200,
+            height=200
+            )$
+  mark_point(filled=TRUE)$
+  transform_calculate(
+    Rounded_IMDB_Rating = "floor(datum.IMDB_Rating)",
+    Hundred_Million_Production =  "datum.Production_Budget > 100000000.0 ? 100 : 10",
+    Release_Year = "year(datum.Release_Date)"
+)$transform_filter(
+    "datum.IMDB_Rating > 0"
+)$transform_filter(
+    alt$FieldOneOfPredicate(field='MPAA_Rating', oneOf=ratings)
+)$encode(
+    x=alt$X('Worldwide_Gross:Q', scale=alt$Scale(domain=c(100000,10**9), clamp=TRUE)),
+    y='IMDB_Rating:Q',
+    tooltip="Title:N"
+)
+
+# A slider filter
+year_slider = alt$binding_range(min=1969, max=2018, step=1)
+slider_selection = alt$selection_single(bind=year_slider, fields=list('Release_Year'), name="Release Year_")
+
+
+filter_year = base$add_selection(
+    slider_selection
+)$transform_filter(
+    slider_selection
+)$properties(title="Slider Filtering")
+
+# A dropdown filter
+genre_dropdown = alt$binding_select(options=genres)
+genre_select = alt$selection_single(fields=list('Major_Genre'), bind=genre_dropdown, name="Genre")
+
+filter_genres = base$add_selection(
+    genre_select
+)$transform_filter(
+    genre_select
+)$properties(title="Dropdown Filtering")
+
+#color changing marks
+rating_radio = alt$binding_radio(options=ratings)
+
+rating_select = alt$selection_single(fields=list('MPAA_Rating'), bind=rating_radio, name="Rating")
+rating_color_condition = alt$condition(rating_select,
+                      alt$Color('MPAA_Rating:N', legend=NULL),
+                      alt$value('lightgray'))
+
+highlight_ratings = base$add_selection(
+    rating_select
+)$encode(
+    color=rating_color_condition
+)$properties(title="Radio Button Highlighting")
+
+# Boolean selection for format changes
+input_checkbox = alt$binding_checkbox()
+checkbox_selection = alt$selection_single(bind=input_checkbox, name="Big Budget Films")
+
+size_checkbox_condition = alt$condition(checkbox_selection,
+                                        alt$SizeValue(25),
+                                        alt$Size('Hundred_Million_Production:Q')
+                                       )
+
+budget_sizing = base$add_selection(
+    checkbox_selection
+)$encode(
+    size=size_checkbox_condition
+)$properties(title="Checkbox Formatting")
+
+( filter_year | filter_genres) &  (highlight_ratings | budget_sizing  )
+```
+
+## Scatter Plot and Histogram with Interval Selection
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_with_histogram.html)
+
+> This example shows how to link a scatter plot and a histogram together such that an interval selection in the histogram will plot the selected values in the scatter plot.
+>
+> Note that both subplots need to know about the mbin field created by the transform_bin method. In order to achieve this, the data is not passed to the Chart() instances creating the subplots, but directly in the hconcat() function, which joins the two plots together.
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+source <- data_frame(
+  x = rnorm(100),
+  y = rnorm(100),
+  m = rnorm(100, 15, 1)
+)
+```
+</details>
+
+
+```{r}
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+
+# interval selection in the scatter plot
+pts = alt$selection(type="interval", encodings=list("x"))
+
+# left panel: scatter plot
+points = alt$Chart()$
+  mark_point(filled=TRUE, color="black")$
+  encode(
+    x='x',
+    y='y'
+)$transform_filter(
+    pts
+)$properties(
+    width=300,
+    height=300
+)
+
+# right panel: histogram
+mag = alt$Chart()$mark_bar()$encode(
+    x='mbin:N',
+    y="count()",
+    color=alt$condition(pts, alt$value("black"), alt$value("lightgray"))
+)$properties(
+    width=300,
+    height=300
+)$add_selection(pts)
+
+# build the chart:
+alt$hconcat(
+    points,
+    mag,
+    data=source
+)$transform_bin(
+    "mbin",
+    field="m",
+    bin=alt$Bin(maxbins=20)
+)
+```
+
 
 ## Selection Detail Example
 
@@ -611,54 +778,46 @@ chart <-
 chart
 ```
 
-## US Population Over Time
+## Using Selection Interval with mark_area
 
-[Altair example](https://altair-viz.github.io/gallery/us_population_over_time.html)
-
-> This chart visualizes the age distribution of the US population over time. It uses a slider widget that is bound to the year to visualize the age distribution over time.
+[Altair example](https://altair-viz.github.io/gallery/select_mark_area.html)
 
 #### Data
 
 ```{r}
-glimpse(vega_data$population())
+#glimpse(vega_data$unemployment_across_industries())
 ```
 
 #### Chart
 
 ```{r}
-pop <- vega_data$population()
+source <- vega_data$unemployment_across_industries$url
 
-pink_blue <- 
-  alt$Scale(
-    domain = list("Male", "Female"),
-    range = list("steelblue", "salmon")
-  )
-
-slider <- alt$binding_range(min = 1900, max = 2000, step = 10)
-
-year <- alt$selection_single(
-  name = "year", 
-  fields = list("year"), 
-  bind = slider
-)
-
-chart <- 
-  alt$Chart(pop)$
-  mark_bar()$
+base <-
+  alt$Chart(source)$
+  mark_area(
+    color='goldenrod',
+    opacity=0.3
+    )$
   encode(
-    x = alt$X("sex:N", axis = alt$Axis(title = NULL)),
-    y = alt$Y("people:Q", scale = alt$Scale(domain = c(0, 1.2e7))),
-    color = alt$Color("sex:N", scale = pink_blue),
-    column = "age:O"
-  )$
-  properties(width = 20, selection = year)$
-  transform_calculate("sex", JS('if(datum.sex == 1, "Male", "Female")'))$
-  transform_filter(year$ref())
+    x='yearmonth(date):T',
+    y='sum(count):Q'
+    )
 
-chart
+brush <-
+  alt$selection_interval(
+    encodings=list('x'), 
+    empty='all'
+    )
+
+background <- base$add_selection(brush)
+selected <- 
+  base$
+  transform_filter(brush)$
+  mark_area(color='goldenrod')
+
+background + selected
 ```
-
-
 
 
 

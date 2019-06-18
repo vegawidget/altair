@@ -98,7 +98,7 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$sp500())
+#glimpse(vega_data$sp500())
 ```
 
 #### Chart
@@ -107,7 +107,7 @@ glimpse(vega_data$sp500())
 brush <- alt$selection(type = "interval", encodings = list("x"))
 
 upper <- 
-  alt$Chart()$
+  alt$Chart(vega_data$sp500$url)$
   mark_area()$
   encode(
     alt$X("date:T", scale = list("domain" = brush$ref())),
@@ -125,10 +125,70 @@ lower <-
     height=60
   )
 
-chart <- alt$vconcat(upper, lower, data = vega_data$sp500())
+chart <- alt$vconcat(upper, lower)
 
 chart
 ```
+
+## Layered Area Chart
+
+[Altair example](https://altair-viz.github.io/gallery/layered_area_chart.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$iowa_electricity())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$iowa_electricity())$
+  mark_area(opacity = 0.3)$
+  encode(
+    x = "year:T",
+    y= alt$Y(
+      "net_generation:Q", 
+      stack = NULL
+  ),
+  color = "source:N"
+  )
+
+chart
+```
+
+
+## Normalized Stacked Area Chart
+
+
+[Altair example](https://altair-viz.github.io/gallery/normalized_stacked_area_chart.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$iowa_electricity())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$iowa_electricity())$
+  mark_area()$
+  encode(
+    x = "year:T",
+    y= alt$Y(
+      "net_generation:Q", 
+      stack = "normalize"
+  ),
+  color = "source:N"
+  )
+
+chart
+```
+
+
 
 ## Streamgraph
 
@@ -137,16 +197,16 @@ chart
 #### Data
 
 ```{r}
-source <- vega_data$unemployment_across_industries()
+#source <- vega_data$unemployment_across_industries()
 
-glimpse(source)
+#glimpse(source)
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(source)$
+  alt$Chart(vega_data$unemployment_across_industries$url)$
   mark_area()$
   encode(
     x = alt$X(
@@ -162,9 +222,40 @@ chart <-
 chart
 ```
 
-## Trellis Area
+## Trellis Area Chart
 
 [Altair example](https://altair-viz.github.io/gallery/trellis_area.html)
+
+#### Data
+
+```{r}
+source <- vega_data$iowa_electricity()
+
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(source)$
+  mark_area()$
+  encode(
+    x = "year:T",
+    y="net_generation:Q",
+    color="source:N",
+    row="source:N"
+  )$
+  properties(
+    height = 100
+  )
+
+chart
+```
+
+## Trellis Area Sort Chart
+
+[Altair example](https://altair-viz.github.io/gallery/trellis_area_sort_array.html)
 
 #### Data
 
@@ -179,21 +270,20 @@ glimpse(source)
 ```{r}
 chart <- 
   alt$Chart(source)$
+  transform_filter("datum.symbol != 'GOOG'")$
   mark_area()$
   encode(
-    x = alt$X(
-      "date:T", 
-      axis = alt$Axis(format = "%Y", title = "Time", grid = FALSE)
-    ),
-    y = alt$Y("price:Q", axis = alt$Axis(title = "Price", grid = FALSE)),
-    color = alt$Color("symbol", legend = NULL),
-    row = alt$Row("symbol:N", header = alt$Header(title = "Symbol"))
+    x = "date:T", 
+    y = "price:Q",
+    color = "symbol:N",
+    row = alt$Row("symbol:N", sort=c('MSFT', 'AAPL', 'IBM', 'AMZN')
+    )
   )$
   properties(
     width = 300,
     height = 40
-  )$
-  transform_filter("datum.symbol != 'GOOG'")
+  )
 
 chart
 ```
+#

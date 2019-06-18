@@ -765,9 +765,9 @@ error_bars <-
     column = "site:N"
   )
 
-#chart <- (bars + error_bars)
+chart <- (bars + error_bars)
 
-#chart
+chart
 ```
 
 
