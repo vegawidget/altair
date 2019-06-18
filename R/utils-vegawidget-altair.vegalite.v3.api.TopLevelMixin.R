@@ -13,6 +13,8 @@ as_vegaspec.altair.vegalite.v3.api.TopLevelMixin <- function(spec, ...) {
   vegawidget::as_vegaspec(spec, ...)
 }
 
+#' @export
+#'
 print.altair.vegalite.v3.api.TopLevelMixin <- function(x, ...) {
 
   x <- as_vegaspec(x)
@@ -20,6 +22,8 @@ print.altair.vegalite.v3.api.TopLevelMixin <- function(x, ...) {
   print(x, ...)
 }
 
+#' @export
+#'
 format.altair.vegalite.v3.api.TopLevelMixin <- function(x, ...) {
 
   x <- as_vegaspec(x)
