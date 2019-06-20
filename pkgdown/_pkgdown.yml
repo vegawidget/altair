@@ -26,7 +26,6 @@ reference:
       - as_vegaspec
       - vw_as_json
       - altair_concatenation
-      - r_to_py
   - title: Rendering
     desc: >
       Functions to render chart-specifications

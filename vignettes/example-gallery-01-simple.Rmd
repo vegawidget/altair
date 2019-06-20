@@ -21,6 +21,7 @@ Our first step is to set up our environment:
 ```{r message=FALSE}
 # devtools::install_github("vegawidget/altair")
 library("altair")
+library("reticulate")
 library("tibble")
 library("tidyr")
 library("dplyr")
