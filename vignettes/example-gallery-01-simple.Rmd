@@ -21,6 +21,7 @@ Our first step is to set up our environment:
 ```{r message=FALSE}
 # devtools::install_github("vegawidget/altair")
 library("altair")
+library("reticulate")
 library("tibble")
 library("tidyr")
 library("dplyr")
@@ -114,7 +115,7 @@ glimpse(vega_data$movies())
 
 ```{r}
 chart <- 
-  alt$Chart(r_to_py(vega_data$movies()))$
+  alt$Chart(vega_data$movies())$
   mark_bar()$
   encode(
     alt$X("IMDB_Rating", bin = TRUE), 
