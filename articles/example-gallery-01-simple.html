@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9005</span>
       </span>
     </div>
 
@@ -158,7 +158,7 @@
       <h1>Simple Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-06-18</h4>
+            <h4 class="date">2019-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-01-simple.Rmd"><code>vignettes/example-gallery-01-simple.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-01-simple.Rmd</code></div>
@@ -171,11 +171,12 @@
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># devtools::install_github("vegawidget/altair")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidyr"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"reticulate"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidyr"</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="simple-bar-chart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#simple-bar-chart" class="anchor"></a>Simple Bar Chart</h2>
@@ -209,8 +210,8 @@
 <a class="sourceLine" id="cb4-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-eb0ada0fe2ebe3f971a7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb0ada0fe2ebe3f971a7">{"x":{
+<div id="htmlwidget-fc299a009ccbc8297c03" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc299a009ccbc8297c03">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -316,8 +317,8 @@
 <a class="sourceLine" id="cb7-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb7-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb7-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-27b44384b1a61e6973a2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-27b44384b1a61e6973a2">{"x":{
+<div id="htmlwidget-77dd8a074413f205d920" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-77dd8a074413f205d920">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -998,7 +999,7 @@
 <h4 class="hasAnchor">
 <a href="#chart-2" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="../reference/r_to_py.html">r_to_py</a></span>(vega_data<span class="op">$</span><span class="kw">movies</span>()))<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">movies</span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"IMDB_Rating"</span>, <span class="dt">bin =</span> <span class="ot">TRUE</span>), </a>
@@ -1006,8 +1007,8 @@
 <a class="sourceLine" id="cb9-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb9-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-f6efad4d6754e2f80f04" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6efad4d6754e2f80f04">{"x":{
+<div id="htmlwidget-e7aae8e28a128182211b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e7aae8e28a128182211b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -58695,8 +58696,8 @@
 <a class="sourceLine" id="cb12-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-1592751c55ab329ceda9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1592751c55ab329ceda9">{"x":{
+<div id="htmlwidget-eb240df3a83cd1b76d4e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb240df3a83cd1b76d4e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -59168,8 +59169,8 @@
 <a class="sourceLine" id="cb14-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()</a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb14-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-f68d7c44537b8439edb6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f68d7c44537b8439edb6">{"x":{
+<div id="htmlwidget-5be228416e8d2546ac85" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5be228416e8d2546ac85">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -60301,8 +60302,8 @@
 <a class="sourceLine" id="cb16-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb16-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb16-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-c344fba077e9c3da59a9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c344fba077e9c3da59a9">{"x":{
+<div id="htmlwidget-05cdd60a93dd9dcd5e2b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-05cdd60a93dd9dcd5e2b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -74040,8 +74041,8 @@
 <a class="sourceLine" id="cb18-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb18-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb18-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-ad42e8d2154c90ab43c6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ad42e8d2154c90ab43c6">{"x":{
+<div id="htmlwidget-a7684c7b2182ab672688" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a7684c7b2182ab672688">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -78567,7 +78568,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Altair Developers.</p>
+  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

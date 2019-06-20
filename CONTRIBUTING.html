@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9005</span>
       </span>
     </div>
 
@@ -205,8 +205,7 @@
 <li>to render chart-specifications into HTML.</li>
 <li>to communicate your charts.</li>
 </ul>
-<p>There are a lot of “moving parts” in keeping current with a Python package and a set of JavaScript libraries (Vega-Lite, vega-embed, …). Accordingly, I want – at least initially – to keep the scope of this package as focused as possible.</p>
-<p>That being said, I think it is a great and wonderful thing to make a more R-like interface to Vega-Lite. I think that we should do that in a different package, perhaps called <strong>altools</strong>.</p>
+<p>There are a lot of “moving parts” in keeping current with a Python package and a set of JavaScript libraries (Vega-Lite, vega-embed, …). Accordingly, this package aspires to keep its scope as focused as possible.</p>
 </div>
 <div id="style" class="section level2">
 <h2 class="hasAnchor">
@@ -216,13 +215,15 @@
 <ul>
 <li>
 <p><a href="http://style.tidyverse.org/code-documentation.html#documenting-parameters">Documenting parameters</a>:</p>
-<p>For @param and @return, the text should be an uncapitalized sentence clause, starting with the expected class (or possible classes) of the argument or return value.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#' @param width `integer`, sets the view width in pixels </span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#'</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#' @return `logical` indicating success</span></a></code></pre></div>
+<p>For <code>@param</code> and <code>@return</code>, the text should starting with the expected class (or possible classes) of the argument or return value, followed by a comma, then the (uncapitalized) description. If omitting the class name, then begin the description with a capital letter.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#' @param spec  An object to be coerced to `vegaspec`, a Vega/Vega-Lite specification</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#' @param width `integer`, sets the view width in pixels</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#'</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#' @return `logical` indicating success</span></a></code></pre></div>
 </li>
 </ul>
-<p>In documentation, let’s reserve the use of “capital-A” <strong>Altair</strong> to refer to the Python package, and the use of “small-a” to refer to this package.</p>
+<p>In the documentation, we use <em>specification</em> or <em>spec</em> to describe the JSON or the list; we use <em>chart</em> to describe the rendering, the finished product. These seem to be the terms-of-art that Vega-Lite uses.</p>
+<p>In documentation, we reserve the use of “capital-A” <strong>Altair</strong> to refer to the Python package, and the use of “small-a” to refer to this package.</p>
 <p>Although we are mimicking calls to Python code, even copying-and-pasting Python examples, we should make the syntax of the calls as R-like as possible. Consider this Python example from Altair:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="im">import</span> altair <span class="im">as</span> alt</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">from</span> vega_datasets <span class="im">import</span> data</a>
@@ -241,7 +242,7 @@
 <a class="sourceLine" id="cb3-4" data-line-number="4">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">chart &lt;-</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(<span class="kw"><a href="reference/r_to_py.html">r_to_py</a></span>(cars))<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(cars)<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="dt">x =</span> <span class="st">"Horsepower"</span>,</a>
@@ -249,24 +250,26 @@
 <a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="dt">color =</span> <span class="st">"Origin"</span>,</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13">    <span class="dt">shape =</span> <span class="st">"Origin"</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">  )</a></code></pre></div>
-<p>Here, I am experimenting with something. Clearly, the <code>$</code> operator is not a pipe, <code>%&gt;%</code>. However, it can be used across line-breaks such that we could format the code in the same style as a pipe. I realize this is not completely satisfying, but it at least resembles a <strong>ggplot2</strong> style.</p>
-<p>In the documentation, let’s call things (and even name things) charts, as this seems to be the term-of-art that Altair and Vega-Lite use.</p>
+<p>This formatting-style is an experiment. Clearly, the <code>$</code> operator is not a pipe, <code>%&gt;%</code>. However, it can be used across line-breaks such that we could format the code in the same style as a pipe. This may not be completely satisfying, but it at least resembles a <strong>ggplot2</strong> style.</p>
 </div>
 <div id="development-strategy" class="section level2">
 <h2 class="hasAnchor">
 <a href="#development-strategy" class="anchor"></a>Development strategy</h2>
+<p>So that we can use the (very useful) pull-request functions from <a href="https://usethis.r-lib.org/">usethis</a>, we follow the Tidyverse convention of using the <code>master</code> branch as the reference branch for pull-requests. However, <em>you</em> should not make a pull-request from <em>your</em> copy of the <code>master</code> branch; you should work from a branch named for the change you are proposing. For more information, please see the <a href="https://usethis.r-lib.org/reference/pr_init.html">usethis pull-request reference</a>.</p>
+<p>We will wish for <code>master</code> to contain only stable versions. We will not normally merge a pull-request that does not pass the CI checks. Further, we will intend that each commit to master will have a incremented version number; we will manage this as a part of the pull-request process.</p>
+<p>Please build pkgdown as much as you would like - the <code>docs</code> folder is git-ignored; the pkgdown site is built and deployed automatically upon update of the GitHub <code>master</code> branch. The CRAN version of the documentation is at the “root” of the documentation site; the latest <code>master</code> version will be deployed to the <code>dev</code> directory of the “root”.</p>
 <div id="versioning" class="section level3">
 <h3 class="hasAnchor">
 <a href="#versioning" class="anchor"></a>Versioning</h3>
-<p>The first digit indicates the maturity of this package’s API. For the time being, it will be <code>0</code>.</p>
-<p>The second digit will be incremented upon each CRAN release and assigned a GitHub release tag.</p>
-<p>The third digit will be incremented with each change of the <code>master</code> branch. Each change of the master branch will be assigned a git tag, so we will try not to do this lightly.</p>
-<p>The fourth digit is reserved to the <code>develop</code> branch and any <code>&lt;feature-branch&gt;</code>.</p>
+<p>The version nuumber may have as many as five components. The first three digits will mirror the version number of the supported (Python) Altair version; this is currently <code>3.1.0</code>.</p>
+<p>The fourth component will correspond to a CRAN release of this package; these will be tagged.</p>
+<p>A fifth component denotes a development version.</p>
+<p>Our goal is that each commit to the <code>master</code> branch will have an incremented version-number.</p>
 </div>
 <div id="pull-requests" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull-requests" class="anchor"></a>Pull requests</h3>
-<p>Pull request are very welcome. Our goal is to implement a system along the lines of <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">gitflow</a>. Accordingly, the branch into which you should make a pull-request will depend on the situation:</p>
+<p>Pull requests are very welcome. Accordingly, the branch into which you should make a pull-request will depend on the situation:</p>
 <table>
 <thead><tr class="header">
 <th>Situation</th>
@@ -278,36 +281,36 @@
 <tr class="odd">
 <td>bug-fix</td>
 <td><code>master</code></td>
-<td>Yes</td>
-<td>😃</td>
+<td>✅</td>
+<td>😁</td>
 </tr>
 <tr class="even">
 <td>improving documentation</td>
-<td><code>develop</code></td>
-<td>No</td>
-<td>😀</td>
+<td><code>master</code></td>
+<td>❎</td>
+<td>😁</td>
 </tr>
 <tr class="odd">
-<td>adding vignette</td>
-<td><code>develop</code></td>
-<td>Yes</td>
-<td>😀</td>
+<td>adding a vignette</td>
+<td><code>master</code></td>
+<td>✅</td>
+<td>😁</td>
 </tr>
 <tr class="even">
 <td>helping with a new feature</td>
 <td><code>&lt;feature-branch&gt;</code></td>
-<td>No</td>
-<td>😃</td>
+<td>❎</td>
+<td>😁</td>
 </tr>
 <tr class="odd">
 <td>proposing a new feature</td>
-<td><code>develop</code></td>
-<td>Yes</td>
-<td>😃</td>
+<td><code>master</code></td>
+<td>✅</td>
+<td>😁</td>
 </tr>
 </tbody>
 </table>
-<p>Please roxygenize as a part of your pull-request, however, please do not commit your changes to pkgdown. I will do that following a merging the PR. (Let’s see how that works)</p>
+<p>Please roxygenize as a part of your pull-request.</p>
 </div>
 <div id="git-branch-strategy" class="section level3">
 <h3 class="hasAnchor">
@@ -328,11 +331,9 @@
 </ul>
 <p>We define “supported” as making the version available through the <code><a href="reference/install_altair.html">install_altair()</a></code> function and hardcoding this Altair version as <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("altair.python.version.supported")</a></code>.</p>
 <ul>
-<li><p><code>master</code>: only <strong>released</strong> versions shall be supported on the <code>master</code> branch. Note that this is presently aspirational, but once a <strong>released</strong> version is supported on the master branch, this rule shall apply.</p></li>
-<li><p><code>develop</code>: <strong>released</strong> or <strong>candidate</strong> versions may be supported on the <code>develop</code> branch. However, to merge into <code>master</code>, it must support a <strong>released</strong> version.</p></li>
-<li><p><code>&lt;feature-branch&gt;</code>: any type of version may be supported on a <code>&lt;feature-branch&gt;</code>. However, to merge into <code>develop</code>, it must support a <strong>released</strong> or <strong>candidate</strong> version.</p></li>
+<li><p><code>master</code>: only <strong>released</strong> versions shall be supported on the <code>master</code> branch.</p></li>
+<li><p><code>&lt;feature-branch&gt;</code>: any type of version may be supported on a <code>&lt;feature-branch&gt;</code>. However, to merge into <code>master</code>, it must support a <strong>released</strong> or <strong>candidate</strong> version.</p></li>
 </ul>
-<p>We will build some infrastructure around how to change the type of version that your branch supports.</p>
 </div>
 </div>
 </div>
@@ -344,7 +345,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle, Altair Developers.</p>
+  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">

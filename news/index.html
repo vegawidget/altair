@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9005</span>
       </span>
     </div>
 
@@ -198,6 +198,7 @@
 <h1 class="page-header">
 <a href="#altair-3-1-0-0-development-version" class="anchor"></a>altair 3.1.0.0 (development version)</h1>
 <ul>
+<li><p>Remove references to <code>r_to_py()</code>, as <strong>retuculate</strong> manages this automatically. (<a href='https://github.com/vegawidget/altair/issues/83'>#83</a>)</p></li>
 <li><p>Update the JupyterLab renderers to Vega-Lite 3</p></li>
 <li><p>Upgrade to Altair 3.1.0</p></li>
 </ul>
@@ -246,7 +247,7 @@
 <li><p>adds <code><a href="../reference/altair_version.html">altair_version()</a></code>, returns list of versions used for Altair, Vega, Vega-Lite, etc.</p></li>
 <li><p>adds <code><a href="../reference/as_chart.html">as_chart()</a></code>, to import a vegaspec as an Altair chart</p></li>
 <li><p>revomes rendering functions in favor of a separate package, <a href="https://github.com/vegawidget/vegawidget"><strong>vegawidget</strong></a> - vegawidget functions imported and exported using templating function <code><a href="https://www.rdocumentation.org/packages/vegawidget/topics/use_vegawidget">vegawidget::use_vegawidget()</a></code>.</p></li>
-<li><p>adds requirement to use reticulate (&gt;=) 1.9, to avoid conflict between data-frame variable-names and python methods (<a href='https://github.com/vegawidget/altair/issues/50'>#50</a>, <a href='https://github.com/aliciaschep'>@aliciaschep</a>) and to remove the need to use the <code><a href="../reference/r_to_py.html">r_to_py()</a></code> function for data (<a href='https://github.com/vegawidget/altair/issues/83'>#83</a>)</p></li>
+<li><p>adds requirement to use reticulate (&gt;=) 1.9, to avoid conflict between data-frame variable-names and python methods (<a href='https://github.com/vegawidget/altair/issues/50'>#50</a>, <a href='https://github.com/aliciaschep'>@aliciaschep</a>) and to remove the need to use the <code>r_to_py()</code> function for data (<a href='https://github.com/vegawidget/altair/issues/83'>#83</a>)</p></li>
 <li><p>updates to use Altair 2.1.0, which offers tooltips (<a href='https://github.com/vegawidget/altair/issues/29'>#29</a>, <a href='https://github.com/vegawidget/altair/issues/46'>#46</a>, <a href='https://github.com/aliciaschep'>@aliciaschep</a>)</p></li>
 </ul>
 </div>
@@ -329,7 +330,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ian Lyttle, Altair Developers.</p>
+  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
