@@ -1,5 +1,7 @@
 # altair 3.1.0.0 (development version)
 
+* Remove references to `r_to_py()`, as **retuculate** manages this automatically. (#83)
+
 * Update the JupyterLab renderers to Vega-Lite 3
 
 * Upgrade to Altair 3.1.0
