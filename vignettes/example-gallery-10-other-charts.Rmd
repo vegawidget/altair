@@ -23,13 +23,14 @@ Our first step is to set up our environment:
 library("altair")
 library("tibble")
 library("dplyr")
+library("jsonlite")
 
 vega_data <- import_vega_data()
 ```
 
-## Binned Movie Rating Heatmap
+## Bar Chart with Highlighted Segment
 
-[Altair Example](https://altair-viz.github.io/gallery/binned_heatmap.html)
+[Altair Example](https://altair-viz.github.io/gallery/bar_chart_with_highlighted_segment.html)
 
 #### Data
 
@@ -49,7 +50,7 @@ bars <-
   encode(
     x="year:O",
     y="wheat:Q"
-)
+  )
 
 highlight <- 
   alt$Chart(source)$
@@ -58,18 +59,437 @@ highlight <-
     x='year:O',
     y='baseline:Q',
     y2='wheat:Q'
-)$transform_filter(
+  )$transform_filter(
     "datum.wheat > 90"
-)$transform_calculate("baseline", "90")
+  )$transform_calculate("baseline", "90")
 
 rule <-
   alt$Chart(threshold)$
   mark_rule()$
   encode(
     y='threshold:Q'
-)
+  )
 
-(bars + highlight + rule)$properties(width=500)
+(bars + highlight + rule)$properties(width=600)
+```
+
+## Becker’s Barley Trellis Plot (wrapped facet)
+
+
+[Altair Example](https://altair-viz.github.io/gallery/beckers_barley_wrapped_facet.html)
+
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$barley())$
+  mark_point()$
+  encode(
+    x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
+    y = "variety:O",
+    color = "year:N",
+    facet = "site:O"
+  )$properties(
+    columns=2,
+    width=200,
+    height=100
+  )
+
+chart
+```
+
+
+## Binned Movie Rating Heatmap
+
+[Altair Example](https://altair-viz.github.io/gallery/binned_heatmap.html)
+
+#### Data
+
+```{r}
+# glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$movies$url)$
+  mark_rect()$
+  encode(
+    x = alt$X("IMDB_Rating:Q", bin = alt$Bin(maxbins = 60)),
+    y = alt$Y("Rotten_Tomatoes_Rating:Q", bin=alt$Bin(maxbins = 40)),
+    color = alt$Color(
+      "count(IMDB_Rating):Q", 
+      scale = alt$Scale(scheme = "greenblue")
+    )
+  )
+chart
+```
+
+## Box Plot with Min/Max Whiskers
+
+[Altair example](https://altair-viz.github.io/gallery/boxplot_max_min.html)
+
+> This example shows how to make a basic box plot using US Population data from 2000.
+
+```{r}
+#glimpse(vega_data$population())
+```
+
+#### Chart
+
+```{r}
+chart <-
+  alt$Chart(vega_data$population$url)$
+  mark_boxplot(extent='min-max')$
+  encode(
+    x='age:O',
+    y='people:Q'
+  )
+
+chart
+```
+
+## Candlestick Chart
+
+[Altair example](https://altair-viz.github.io/gallery/candlestick_chart.html)
+
+> A candlestick chart [inspired from Protovis](http://mbostock.github.io/protovis/ex/candlestick.html). This example shows the performance of the Chicago Board Options Exchange Volatility Index (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red.
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- 
+  jsonlite::fromJSON('[
+  {
+    "date": "01-Jun-2009",
+    "open": 28.7,
+    "high": 30.05,
+    "low": 28.45,
+    "close": 30.04,
+    "signal": "short",
+    "ret": -4.89396411092985
+  },
+  {
+    "date": "02-Jun-2009",
+    "open": 30.04,
+    "high": 30.13,
+    "low": 28.3,
+    "close": 29.63,
+    "signal": "short",
+    "ret": -0.322580645161295
+  },
+  {
+    "date": "03-Jun-2009",
+    "open": 29.62,
+    "high": 31.79,
+    "low": 29.62,
+    "close": 31.02,
+    "signal": "short",
+    "ret": 3.68663594470045
+  },
+  {
+    "date": "04-Jun-2009",
+    "open": 31.02,
+    "high": 31.02,
+    "low": 29.92,
+    "close": 30.18,
+    "signal": "short",
+    "ret": 4.51010886469673
+  },
+  {
+    "date": "05-Jun-2009",
+    "open": 29.39,
+    "high": 30.81,
+    "low": 28.85,
+    "close": 29.62,
+    "signal": "short",
+    "ret": 6.08424336973478
+  },
+  {
+    "date": "08-Jun-2009",
+    "open": 30.84,
+    "high": 31.82,
+    "low": 26.41,
+    "close": 29.77,
+    "signal": "short",
+    "ret": 1.2539184952978
+  },
+  {
+    "date": "09-Jun-2009",
+    "open": 29.77,
+    "high": 29.77,
+    "low": 27.79,
+    "close": 28.27,
+    "signal": "short",
+    "ret": -5.02431118314424
+  },
+  {
+    "date": "10-Jun-2009",
+    "open": 26.9,
+    "high": 29.74,
+    "low": 26.9,
+    "close": 28.46,
+    "signal": "short",
+    "ret": -5.46623794212217
+  },
+  {
+    "date": "11-Jun-2009",
+    "open": 27.36,
+    "high": 28.11,
+    "low": 26.81,
+    "close": 28.11,
+    "signal": "short",
+    "ret": -8.3743842364532
+  },
+  {
+    "date": "12-Jun-2009",
+    "open": 28.08,
+    "high": 28.5,
+    "low": 27.73,
+    "close": 28.15,
+    "signal": "short",
+    "ret": -5.52763819095477
+  },
+  {
+    "date": "15-Jun-2009",
+    "open": 29.7,
+    "high": 31.09,
+    "low": 29.64,
+    "close": 30.81,
+    "signal": "long",
+    "ret": 3.4920634920635
+  },
+  {
+    "date": "16-Jun-2009",
+    "open": 30.81,
+    "high": 32.75,
+    "low": 30.07,
+    "close": 32.68,
+    "signal": "short",
+    "ret": 0.155038759689914
+  },
+  {
+    "date": "17-Jun-2009",
+    "open": 31.19,
+    "high": 32.77,
+    "low": 30.64,
+    "close": 31.54,
+    "signal": "short",
+    "ret": 5.82822085889571
+  },
+  {
+    "date": "18-Jun-2009",
+    "open": 31.54,
+    "high": 31.54,
+    "low": 29.6,
+    "close": 30.03,
+    "signal": "short",
+    "ret": 8.17610062893082
+  },
+  {
+    "date": "19-Jun-2009",
+    "open": 29.16,
+    "high": 29.32,
+    "low": 27.56,
+    "close": 27.99,
+    "signal": "short",
+    "ret": 8.59872611464968
+  },
+  {
+    "date": "22-Jun-2009",
+    "open": 30.4,
+    "high": 32.05,
+    "low": 30.3,
+    "close": 31.17,
+    "signal": "short",
+    "ret": 15.4907975460123
+  },
+  {
+    "date": "23-Jun-2009",
+    "open": 31.3,
+    "high": 31.54,
+    "low": 27.83,
+    "close": 30.58,
+    "signal": "short",
+    "ret": 11.7370892018779
+  },
+  {
+    "date": "24-Jun-2009",
+    "open": 30.58,
+    "high": 30.58,
+    "low": 28.79,
+    "close": 29.05,
+    "signal": "long",
+    "ret": -10.4234527687296
+  },
+  {
+    "date": "25-Jun-2009",
+    "open": 29.45,
+    "high": 29.56,
+    "low": 26.3,
+    "close": 26.36,
+    "signal": "long",
+    "ret": 0
+  },
+  {
+    "date": "26-Jun-2009",
+    "open": 27.09,
+    "high": 27.22,
+    "low": 25.76,
+    "close": 25.93,
+    "signal": "long",
+    "ret": 0
+  },
+  {
+    "date": "29-Jun-2009",
+    "open": 25.93,
+    "high": 27.18,
+    "low": 25.29,
+    "close": 25.35,
+    "signal": "long",
+    "ret": 5.26315789473684
+  },
+  {
+    "date": "30-Jun-2009",
+    "open": 25.36,
+    "high": 27.38,
+    "low": 25.02,
+    "close": 26.35,
+    "signal": "long",
+    "ret": 6.73758865248228
+  }
+]')
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+open_close_color <- 
+  alt$condition(
+    "datum.open < datum.close",
+    alt$value("#06982d"),
+    alt$value("#ae1325")
+  )
+rule <- 
+  alt$Chart(data)$
+  mark_rule()$
+  encode(
+    alt$X(
+      "date:T",
+      timeUnit = "yearmonthdate",
+      scale = alt$Scale(
+        domain = list(
+          list(month= 5, date= 31, year= 2009),
+          list(month= 7, date= 1, year= 2009)
+        )
+      ),
+      axis = alt$Axis(format="%m/%d", title="Date in 2009")
+    ),
+    alt$Y(
+      "low",
+      scale = alt$Scale(zero=FALSE),
+      axis = alt$Axis(title="Price")
+    ),
+    alt$Y2("high"),
+    color = open_close_color
+  )
+bar <- 
+  alt$Chart(data)$
+  mark_bar()$
+  encode(
+    alt$X("date:T", timeUnit = "yearmonthdate"),
+    y = "open",
+    y2 = "close",
+    color = open_close_color
+  )
+chart <- (rule + bar)
+chart
+```
+
+## Error Bar with Standard Deviation
+
+
+[Altair Example](https://altair-viz.github.io/gallery/errorbars_with_std.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$barley()
+
+error_bars <-
+  alt$Chart(source)$
+  mark_errorbar(extent='stdev')$
+  encode(
+    x=alt$X('yield:Q', scale=alt$Scale(zero=FALSE)),
+    y=alt$Y('variety:N')
+  )
+
+points <-
+  alt$Chart(source)$
+  mark_point(filled=TRUE, color='black')$
+  encode(
+    x=alt$X('yield:Q', aggregate='mean'),
+    y=alt$Y('variety:N')
+  )
+
+error_bars + points
+```
+
+## Error Bars showing Confidence Interval
+
+
+[Altair Example](https://altair-viz.github.io/gallery/errorbars_with_ci.html)
+
+> This example shows how to show error bars using confidence intervals. The confidence intervals are computed internally in vega by a non-parametric [bootstrap of the mean](https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js).
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$barley()
+
+error_bars <-
+  alt$Chart(source)$
+  mark_errorbar(extent='ci')$
+  encode(
+    x=alt$X('yield:Q', scale=alt$Scale(zero=FALSE)),
+    y=alt$Y('variety:N')
+  )
+
+points <-
+  alt$Chart(source)$
+  mark_point(filled=TRUE, color='black')$
+  encode(
+    x=alt$X('yield:Q', aggregate='mean'),
+    y=alt$Y('variety:N')
+  )
+
+error_bars + points
 ```
 
 ## Facetted Scatterplot with marginal histograms
@@ -108,13 +528,13 @@ top_hist <-
   mark_area(opacity = 0.3, interpolate = "step")$
   encode(
     x = alt$X("sepalLength:Q",
-          # when using bins, the axis scale is set through
-          # the bin extent, so we do not specify the scale here
-          # (which would be ignored anyway)
-          bin = alt$Bin(maxbins = 20, extent = xscale$domain),
-          stack = NULL,
-          axis = blank_axis
-        ),
+              # when using bins, the axis scale is set through
+              # the bin extent, so we do not specify the scale here
+              # (which would be ignored anyway)
+              bin = alt$Bin(maxbins = 20, extent = xscale$domain),
+              stack = NULL,
+              axis = blank_axis
+    ),
     y = alt$Y("count(sepalLength)", stack = NULL, axis = blank_axis),
     color = alt$Color("species:N")
   )$
@@ -140,48 +560,89 @@ chart <- (top_hist & (points | right_hist))
 chart
 ```
 
-## Layering text over a heatmap
+## Gantt Chart
 
-[Altair Example](https://altair-viz.github.io/gallery/layered_heatmap_text.html)
+[Altair example](https://altair-viz.github.io/gallery/gantt_chart.html)
 
 #### Data
 
+<details>
+<summary>Definition</summary>
 ```{r}
-glimpse(vega_data$cars())
+data <- 
+  fromJSON('[
+    {"task": "A", "start": 1, "end": 3},
+    {"task": "B", "start": 3, "end": 8},
+    {"task": "C", "start": 8, "end": 10}
+  ]')
+```
+</details>
+
+```{r}
+glimpse(data)
 ```
 
 #### Chart
 
 ```{r}
-cars <- vega_data$cars()
-
-heatmap <- 
-  alt$Chart(cars)$
-  mark_rect()$
+chart <- 
+  alt$Chart(data)$
+  mark_bar()$
   encode(
-    x = alt$X("Cylinders:O", scale = alt$Scale(paddingInner = 0)),
-    y = alt$Y("Origin:O", scale = alt$Scale(paddingInner = 0)),
-    color= "count(Cylinders)"
+    x = "start",
+    x2 = "end",
+    y = "task"
   )
-
-text <- 
-  alt$Chart(cars)$
-  mark_text(baseline="middle")$
-  encode(
-    x = "Cylinders:O",
-    y = "Origin:O",
-    text = "count(Cylinders)",
-    color = alt$condition(
-      "datum['count_*'] > 100",
-      alt$value("black"),
-      alt$value("white")
-    )
-  )
-
-chart <- (heatmap + text)
 
 chart
 ```
+
+
+## Isotype Grid
+
+
+[Altair Example](https://altair-viz.github.io/gallery/isotype_grid.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+data <- data_frame(id = 1:101)
+person = c('M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z')
+```
+</details>
+
+```{r}
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+chart <-
+  alt$Chart(data)$
+  transform_calculate(
+    row="ceil(datum.id/10)"
+  )$transform_calculate(
+    col="datum.id - datum.row*10"
+  )$mark_point(
+    filled=TRUE,
+    size=50
+  )$encode(
+    x=alt$X("col:O", axis=NULL),
+    y=alt$Y("row:O", axis=NULL),
+    shape=alt$ShapeValue(person)
+  )$properties(
+    width=400,
+    height=400
+  )$configure_view(
+    strokeWidth=0
+  )
+
+chart
+```
+
 
 ## Multiple Marks
 
@@ -199,18 +660,100 @@ glimpse(vega_data$stocks())
 stocks <- vega_data$stocks()
 
 chart <- 
-  alt$LayerChart(stocks)$
+  alt$Chart(stocks)$
+  mark_line(point=TRUE)$
   encode(
-    x = "date:T",
-    y = "price:Q",
-    color = "symbol:N"
-  )$add_layers(
-    alt$Chart()$mark_point(),
-    alt$Chart()$mark_line()
+    x='date:T',
+    y='price:Q',
+    color='symbol:N'
   )
 
 chart
 ```
+
+## Normalized Parallel Coordinates Example
+
+
+[Altair Example](https://altair-viz.github.io/gallery/normed_parallel_coordinates.html)
+
+> A [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) chart is a chart that lets you visualize the individual data points by drawing a single line for each of them.
+>
+> Such a chart can be created in Altair by first transforming the data into a suitable representation.
+>
+> This example shows a modified parallel coordinates chart with the Iris dataset, where the y-axis shows the value after min-max rather than the raw value. It’s a simplified Altair version of [the VegaLite version](https://vega.github.io/vega-lite/examples/parallel_coordinate.html).
+
+#### Data
+
+```{r}
+glimpse(vega_data$iris())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$iris()
+
+chart <-
+  alt$Chart(source)$
+  transform_window(
+    index='count()'
+  )$transform_fold(
+    list('petalLength', 'petalWidth', 'sepalLength', 'sepalWidth')
+  )$transform_joinaggregate(
+    min='min(value)',
+    max='max(value)',
+    groupby=list('key')
+  )$transform_calculate(
+    minmax_value='(datum.value-datum.min)/(datum.max-datum.min)',
+    mid='(datum.min+datum.max)/2'
+  )$mark_line()$
+  encode(
+    x='key:N',
+    y='minmax_value:Q',
+    color='species:N',
+    detail='index:N',
+    opacity=alt$value(0.5)
+  )$properties(width=500)
+
+chart
+```
+
+## Parallel Coordinates Example
+
+
+[Altair Example](https://altair-viz.github.io/gallery/parallel_coordinates.html)
+
+> A [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a parallel coordinates chart with the Iris dataset.
+
+#### Data
+
+```{r}
+glimpse(vega_data$iris())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$iris()
+
+chart <-
+  alt$Chart(source)$
+  transform_window(
+    index='count()'
+  )$transform_fold(
+    list('petalLength', 'petalWidth', 'sepalLength', 'sepalWidth')
+  )$mark_line()$
+  encode(
+    x='key:N',
+    y='value:Q',
+    color='species:N',
+    detail='index:N',
+    opacity=alt$value(0.5)
+  )$properties(width=500)
+
+chart
+```
+
 
 ## Ranged Dot Plot
 
@@ -225,8 +768,9 @@ Cannot get the Vega-Lite data-layer to work.
 <details>
 <summary>Definition</summary>
 ```{r}
+data <- fromJSON(vega_data$countries$url)
 data <- 
-  vega_data$countries() %>%
+  data %>%
   select(-`_comment`) %>%
   filter(
     country %in% c("China", "India", "United States", "Indonesia", "Brazil"),
@@ -244,7 +788,7 @@ glimpse(data)
 ```{r}
 # Line between life expectancy in 1955 & 2000
 chart_line <-
-  alt$Chart(data = vega_data$countries$url)$
+  alt$Chart(data)$
   mark_line(color = "#db646f")$
   encode(
     x = "life_expect:Q",
@@ -254,7 +798,7 @@ chart_line <-
 
 # Points for life expectancy in 1955 & 2000
 chart_point <- 
-  alt$Chart(data = vega_data$countries$url)$
+  alt$Chart(data)$
   mark_point(size = 100, opacity = 1, filled = TRUE)$
   encode(
     x = "life_expect:Q",
@@ -280,9 +824,129 @@ chart <-
   transform_filter(
     filter = list(field = "year", oneOf = list(1955, 2000))
   )
-  
+
 chart
 ```
+
+## Ridgeline plot Example
+
+
+[Altair Example](https://altair-viz.github.io/gallery/ridgeline_plot.html)
+
+> A [Ridgeline plot](https://serialmentor.com/blog/2017/9/15/goodbye-joyplots) chart is a chart that lets you visualize distribution of a numeric value for several groups.
+>
+> Such a chart can be created in Altair by first transforming the data into a suitable representation.
+
+#### Data
+
+```{r}
+glimpse(vega_data$seattle_weather())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$seattle_weather()
+
+step = 20
+overlap = 1
+
+chart <-
+  alt$Chart(source)$
+  transform_timeunit(
+    Month='month(date)'
+  )$transform_joinaggregate(
+    mean_temp='mean(temp_max)', groupby=list('Month')
+  )$transform_bin(
+    list('bin_max', 'bin_min'), 'temp_max'
+  )$transform_aggregate(
+    value='count()', groupby=list('Month', 'mean_temp', 'bin_min', 'bin_max')
+  )$transform_impute(
+    impute='value', groupby=list('Month', 'mean_temp'), key='bin_min', value=0
+  )$mark_area(
+    interpolate='monotone',
+    fillOpacity=0.8,
+    stroke='lightgray',
+    strokeWidth=0.5
+  )$encode(
+    alt$X('bin_min:Q', bin='binned', title='Maximum Daily Temperature (C)'),
+    alt$Y(
+      'value:Q',
+      scale=alt$Scale(range=list(step, -step * overlap)),
+      axis=NULL
+    ),
+    alt$Fill(
+      'mean_temp:Q',
+      legend=NULL,
+      scale=alt$Scale(domain=list(30, 5), scheme='redyellowblue')
+    ),
+    alt$Row(
+      'Month:T',
+      title=NULL,
+      header=alt$Header(labelAngle=0, labelAlign='right', format='%B')
+    )
+  )$properties(
+    bounds='flush', title='Seattle Weather', height=step
+  )$configure_facet(
+    spacing=0
+  )$configure_view(
+    stroke=NULL
+  )$configure_title(
+    anchor='end'
+  )
+
+chart
+```
+
+
+## Sorted Error Bars showing Confidence Interval
+
+
+[Altair Example](https://altair-viz.github.io/gallery/sorted_error_bars_with_ci.html)
+
+> This example shows how to show error bars using confidence intervals, while also sorting the y-axis based on x-axis values.
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$barley()
+
+points <-
+  alt$Chart(source)$
+  mark_point(filled=TRUE, color='black')$
+  encode(
+    x=alt$X('mean(yield):Q', title='Barley Yield'),
+    y=alt$Y(
+      'variety',
+      sort=alt$EncodingSortField(
+        field='yield',
+        op='mean',
+        order='descending'
+      )
+    )
+  )$properties(
+    width=400,
+    height=250
+  )
+
+error_bars <-
+  points$
+  mark_rule()$
+  encode(
+    x='ci0(yield)',
+    x2='ci1(yield)'
+  )
+
+points + error_bars
+```
+
+
 
 ## Steam and Leaf Plot
 
@@ -330,34 +994,120 @@ chart <-
 chart
 ```
 
-## Trail Marker
+## Text over a Heatmap
 
-[Altair Example](https://altair-viz.github.io/gallery/trail_marker.html)
 
-> The `trail` marker is like the `line` marker, but it allows properties of the line (such as thickness) to vary along the length of the line. This shows a simple example of the trail mark using stock prices.
+[Altair Example](https://altair-viz.github.io/gallery/layered_heatmap_text.html)
+
+> An example of a layered chart of text over a heatmap using the cars dataset.
 
 #### Data
 
 ```{r}
-glimpse(vega_data$stocks())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
-chart <-
-  alt$Chart(stocks)$
-  mark_trail()$
-  encode(
-    x = "date:T",
-    y = "price:Q",
-    size = "price:Q",
-    color = "symbol:N"
+source <- vega_data$cars()
+
+# Configure common options
+base <-
+  alt$Chart(source)$
+  transform_aggregate(
+    num_cars='count()',
+    groupby=list('Origin', 'Cylinders')
+  )$encode(
+    alt$X('Cylinders:O', scale=alt$Scale(paddingInner=0)),
+    alt$Y('Origin:O', scale=alt$Scale(paddingInner=0))
   )
 
-chart
+# Configure heatmap
+heatmap <- base$
+  mark_rect()$
+  encode(
+    color=alt$Color('num_cars:Q',
+                    scale=alt$Scale(scheme='viridis'),
+                    legend=alt$Legend(direction='horizontal')
+    )
+  )
+
+# Configure text
+text <- base$
+  mark_text(baseline='middle')$
+  encode(
+    text='num_cars:Q',
+    color=alt$condition(
+      'datum.num_cars > 100',
+      alt$value('black'),
+      alt$value('white')
+    )
+  )
+
+# Draw the chart
+heatmap + text
 ```
 
 
 
+## Violinplot.
 
+[Altair Example](https://altair-viz.github.io/gallery/violine_plot.html)
+
+> This example shows how to make a kind of a Violinplot.
+
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$cars()
+
+chart <-
+  alt$Chart(source)$
+  transform_filter(
+    'datum.Miles_per_Gallon > 0'
+  )$transform_bin(
+    list('bin_max', 'bin_min'), field='Miles_per_Gallon', bin=alt$Bin(maxbins=20)
+  )$transform_calculate(
+    binned='(datum.bin_max + datum.bin_min) / 2'
+  )$transform_aggregate(
+    value_count='count()', groupby=list('Origin', 'binned')
+  )$transform_impute(
+    impute='value_count', groupby=list('Origin'), key='binned', value=0
+  )$mark_area(
+    interpolate='monotone',
+    orient='horizontal'
+  )$encode(
+    x=alt$X(
+      'value_count:Q',
+      title=NULL,
+      stack='center',
+      axis=alt$Axis(labels=FALSE, values=list(0),grid=FALSE, ticks=TRUE)
+    ),
+    y=alt$Y('binned:Q', bin='binned', title='Miles per Gallon'),
+    color=alt$Color('Origin:N', legend=NULL),
+    column=alt$Column(
+      'Origin:N',
+      header=alt$Header(
+        titleOrient='bottom',
+        labelOrient='bottom',
+        labelPadding=0
+      )
+    )
+  )$properties(
+    width=80
+  )$configure_facet(
+    spacing=0
+  )$configure_view(
+    stroke=NULL
+  )
+
+chart
+```

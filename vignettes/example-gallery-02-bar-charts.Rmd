@@ -50,10 +50,10 @@ chart <-
     y = "wheat:Q",
     # The highlight will be set on the result of a conditional statement
     color=alt$condition(
-        "datum.year == 1810",  # If the year is 1810 this test returns True,
-        alt$value('orange'),     # which sets the bar orange.
-        alt$value('steelblue')   # And if it's not true it sets the bar steelblue.
-  )
+      "datum.year == 1810",  # If the year is 1810 this test returns True,
+      alt$value('orange'),     # which sets the bar orange.
+      alt$value('steelblue')   # And if it's not true it sets the bar steelblue.
+    )
   )$properties(width=600)
 
 chart
@@ -90,7 +90,7 @@ text <-
     text = "wheat:Q"
   )
 
-chart <- (bars + text)$properties(height=500)
+chart <- (bars + text)$properties(height=800)
 
 chart
 ```
@@ -125,7 +125,7 @@ rule <-
     y = "mean(wheat)"
   )
 
-chart <- (bar + rule)$properties(width = 500)
+chart <- (bar + rule)$properties(width = 600)
 
 chart
 ```
@@ -148,9 +148,7 @@ glimpse(vega_data$wheat())
 base <- 
   alt$Chart(vega_data$wheat())$
   encode(
-    x = alt$X(
-      "year:O"
-    )
+    x = alt$X("year:O")
   )
 
 bar <- 
@@ -170,7 +168,7 @@ line <-
 
 chart <-
   (bar + line)$
-  properties(width = 500)
+  properties(width = 600)
 
 chart
 ```
@@ -195,11 +193,11 @@ chart <-
     x = "month:T",
     y = "nonfarm_change:Q",
     color = alt$condition(
-        "datum.nonfarm_change > 0",  
-        alt$value('steelblue'), # The positive color
-        alt$value('orange') # The negative color
+      "datum.nonfarm_change > 0",  
+      alt$value('steelblue'), # The positive color
+      alt$value('orange') # The negative color
     )
-  )$properties(width = 500)
+  )$properties(width = 600)
 
 
 
@@ -714,7 +712,7 @@ chart
 ```{r}
 chart <- 
   alt$Chart(vega_data$barley())$
-  mark_bar(stroke = "transparent")$
+  mark_bar()$
   encode(
     x = "year:O",
     y = "sum(yield):Q",
@@ -743,7 +741,7 @@ glimpse(vega_data$barley())
 source <- vega_data$barley()
 
 bars <- 
-  alt$Chart(source)$
+  alt$Chart()$
   mark_bar()$
   encode(
     x = "year:O",
@@ -751,21 +749,23 @@ bars <-
       "mean(yield):Q",
       axis = alt$Axis(title = "Mean Yield")
     ),
-    color = "year:N",
-    column = "site:N"
+    color = "year:N"
   )
 
 error_bars <- 
-  alt$Chart(source)$
-  mark_rule()$
+  alt$Chart()$
+  mark_errorbar(extent='ci')$
   encode(
-    y = "ci0(yield)",
-    y2 = "ci1(yield)",
-    x = "year",
-    column = "site:N"
+    x='year:O',
+    y='yield:Q'
   )
 
-chart <- (bars + error_bars)
+chart <- 
+  alt$layer(bars, error_bars, data=source)$
+  facet(
+    column='site:N'
+  )
+
 
 chart
 ```
@@ -775,7 +775,7 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/bar_chart_horizontal.html)
 
-Note that the argument to the `transorm_filter()` function is a JavaScript expression that refers to a variable in the data using the `datum.` prefix.
+Note that the argument to the `transform_filter()` function is a JavaScript expression that refers to a variable in the data using the `datum.` prefix.
 
 #### Data
 
@@ -793,7 +793,7 @@ chart <-
     x = "wheat:Q",
     y = "year:O"
   )$
-  properties(height = 500)
+  properties(height = 700)
 
 chart
 ```
@@ -815,7 +815,7 @@ chart <-
   alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
-    x = "sum(yield)",
+    x = "sum(yield):Q",
     y = "year:O",
     color = "year:N",
     row = "site:N"
@@ -902,16 +902,16 @@ chart <-
     x = alt$X("sum(yield)", stack = "normalize"),
     y = "variety",
     color = "site"
-    )
+  )
 
 chart
 ```
 
 
 
-## Sorter Bar Chart
+## Sorted Bar Chart
 
-[Altair example](https://altair-viz.github.io/gallery/bar_chart_sorter.html)
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_sorter.html)  
 
 
 ```{r}
@@ -929,9 +929,9 @@ chart <-
       "site:N",
       sort = alt$EncodingSortField(
         field = "yield", # The field to use for the sort
-            op="sum",  # The operation to run on the field prior to sorting
-            order="descending"  # The order to sort in
-        )
+        op="sum",  # The operation to run on the field prior to sorting
+        order="descending"  # The order to sort in
+      )
     )
   )
 
@@ -1014,7 +1014,7 @@ bars <-
     x=alt$X('sum(yield):Q', stack='zero'),
     y=alt$Y('variety:N'),
     color=alt$Color('site')
-)
+  )
 
 text = alt$Chart(source)$
   mark_text(dx=-15, dy=3, color='white')$
@@ -1024,7 +1024,7 @@ text = alt$Chart(source)$
     detail='site:N',
     text=alt$Text('sum(yield):Q', format='.1f')
   )
-    
+
 
 
 chart <- (bars + text)

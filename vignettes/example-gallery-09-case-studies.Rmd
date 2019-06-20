@@ -1,0 +1,1369 @@
+---
+title: "Case Studies"
+author: "Haley Jeppson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document is adapted from the [Case Studies](https://altair-viz.github.io/gallery/index.html#case-studies) section of the Altair Example Gallery.
+
+Our first step is to set up our environment:
+
+```{r}
+# devtools::install_github("vegawidget/altair")
+library("altair")
+library("tibble")
+library("dplyr")
+library("readr")
+library("jsonlite")
+library("stringr")
+
+vega_data <- import_vega_data()
+```
+
+## Anscombe's Quartet
+
+[Altair example](https://altair-viz.github.io/gallery/anscombe_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$anscombe())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$anscombe())$
+  mark_circle()$
+  encode(
+    x = alt$X("X", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("Y", scale = alt$Scale(zero = FALSE)),
+    column="Series"
+  )$
+  properties(
+    width = 180,
+    height = 180
+  )
+chart
+```
+
+## Atmospheric CO2 Concentration
+
+
+[Altair example](https://altair-viz.github.io/gallery/co2_concentration.html)
+
+#### Data
+
+```{r}
+#glimpse(vega_data$co2_concentration())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$co2_concentration$url
+
+base <-
+  alt$Chart(
+    source,
+    title="Carbon Dioxide in the Atmosphere"
+  )$transform_calculate(
+    year="year(datum.Date)"
+  )$transform_calculate(
+    decade="floor(datum.year / 10)"
+  )$transform_calculate(
+    scaled_date="(datum.year % 10) + (month(datum.Date)/12)"
+  )$transform_window(
+    first_date='first_value(scaled_date)',
+    last_date='last_value(scaled_date)',
+    sort = list(alt$EncodingSortField(
+      field = "scaled_date", # The field to use for the sort
+      order="ascending"  # The order to sort in
+    )),
+    groupby=list('decade'),
+    frame=list(NULL, NULL)
+  )$transform_calculate(
+    end="datum.first_date === datum.scaled_date ? 'first' : datum.last_date === datum.scaled_date ? 'last' : null"
+  )$encode(
+    x=alt$X(
+      "scaled_date:Q",
+      axis=alt$Axis(title="Year into Decade", tickCount=11)
+    ),
+    y=alt$Y(
+      "CO2:Q",
+      title="CO2 concentration in ppm",
+      scale=alt$Scale(zero=FALSE)
+    )
+  )
+
+line <- 
+  base$
+  mark_line()$
+  encode(
+    color=alt$Color(
+      "decade:O",
+      scale=alt$Scale(scheme="magma"),
+      legend=NULL
+    )
+  )
+
+text <- base$encode(text="year:N")
+
+start_year <- text$transform_filter(
+  "datum.end == 'first'"
+)$mark_text(baseline="top")
+
+end_year <- text$transform_filter(
+  "datum.end == 'last'"
+)$mark_text(baseline="bottom")
+
+chart <- (line + start_year + end_year)
+
+chart <- chart$configure_text(
+  align="left",
+  dx=1,
+  dy=3
+)$properties(width=600, height=375)
+
+chart
+```
+
+## Becker's Barley Trellis Plot
+
+[Altair example](https://altair-viz.github.io/gallery/beckers_barley_trellis_plot.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$barley())$
+  mark_point()$
+  encode(
+    x = alt$X(
+      "yield", 
+      title="Barley Yield (bushels/acre)",
+      scale=alt$Scale(zero=FALSE),
+      axis=alt$Axis(grid=FALSE)),
+    y = alt$Y(
+      "variety",
+      title="",
+      sort = alt$EncodingSortField(
+        field = "yield", 
+        op = "sum", 
+        order = "descending"
+      ),
+      scale = alt$Scale(rangeStep = 20),
+      axis=alt$Axis(grid=TRUE)
+    ),
+    color = alt$Color('year:N', legend=alt$Legend(title="Year")),
+    row=alt$Row(
+      'site:N',
+      title="",
+      sort=alt$EncodingSortField(field='yield', op='sum', order='descending')
+    )
+  )$configure_view(stroke="transparent")
+
+chart
+```
+
+
+## Cumulative Wikipedia Donations
+
+[Altair example](https://altair-viz.github.io/gallery/cumulative_wiki_donations.html)
+
+> This chart shows cumulative donations to Wikipedia over the past 10 years. Inspired by this [Reddit post](https://www.reddit.com/r/dataisbeautiful/comments/7guwd0/cumulative_wikimedia_donations_over_the_past_10/) but using lines instead of areas.
+
+#### Data
+
+```{r}
+data <- 
+  read_csv("https://frdata.wikimedia.org/donationdata-vs-day.csv") %>%
+  mutate(date = as.character(date))
+glimpse(data)
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(data)$
+  mark_line()$
+  encode(
+    x = alt$X(
+      "date:T", 
+      timeUnit = "monthdate",
+      axis = alt$Axis(format = "%B", title = "Month")
+    ),
+    y = alt$Y(
+      "max(ytdsum):Q", 
+      stack = NULL,
+      axis = alt$Axis(title = "Cumulative Donations")
+    ),
+    color = alt$Color(
+      "date:O", 
+      timeUnit = "year", 
+      legend = alt$Legend(title = "Year")
+    ),
+    order = alt$Order("data:O", timeUnit= "year")
+  )
+chart
+```
+
+## Falkensee
+
+[Altair example](https://altair-viz.github.io/gallery/falkensee.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+source <- fromJSON('[
+    {"year": "1875", "population": 1309},
+    {"year": "1890", "population": 1558},
+    {"year": "1910", "population": 4512},
+    {"year": "1925", "population": 8180},
+    {"year": "1933", "population": 15915},
+    {"year": "1939", "population": 24824},
+    {"year": "1946", "population": 28275},
+    {"year": "1950", "population": 29189},
+    {"year": "1964", "population": 29881},
+    {"year": "1971", "population": 26007},
+    {"year": "1981", "population": 24029},
+    {"year": "1985", "population": 23340},
+    {"year": "1989", "population": 22307},
+    {"year": "1990", "population": 22087},
+    {"year": "1991", "population": 22139},
+    {"year": "1992", "population": 22105},
+    {"year": "1993", "population": 22242},
+    {"year": "1994", "population": 22801},
+    {"year": "1995", "population": 24273},
+    {"year": "1996", "population": 25640},
+    {"year": "1997", "population": 27393},
+    {"year": "1998", "population": 29505},
+    {"year": "1999", "population": 32124},
+    {"year": "2000", "population": 33791},
+    {"year": "2001", "population": 35297},
+    {"year": "2002", "population": 36179},
+    {"year": "2003", "population": 36829},
+    {"year": "2004", "population": 37493},
+    {"year": "2005", "population": 38376},
+    {"year": "2006", "population": 39008},
+    {"year": "2007", "population": 39366},
+    {"year": "2008", "population": 39821},
+    {"year": "2009", "population": 40179},
+    {"year": "2010", "population": 40511},
+    {"year": "2011", "population": 40465},
+    {"year": "2012", "population": 40905},
+    {"year": "2013", "population": 41258},
+    {"year": "2014", "population": 41777}
+  ]')
+
+source2 <- fromJSON('[
+    {
+      "start": "1933",
+      "end": "1945",
+      "event": "Nazi Rule"
+    },
+    {
+      "start": "1948",
+      "end": "1989",
+      "event": "GDR (East Germany)"
+    }
+  ]')
+```
+</details>
+
+```{r}
+glimpse(source)
+```
+
+```{r}
+glimpse(source2)
+```
+
+#### Chart
+
+```{r}
+line <-
+  alt$Chart(source)$
+  mark_line(color="#333")$
+  encode(
+    x = alt$X("year:T", axis = alt$Axis(format = "%Y")),
+    y = "population"
+  )$
+  properties(
+    width = 500,
+    height = 300
+  )
+point <- line$mark_point(color="#333")
+rect <- 
+  alt$Chart(source2)$
+  mark_rect()$
+  encode(
+    x = "start:T",
+    x2 = "end:T",
+    color = "event:N"
+  )
+chart <- (rect + line + point)
+chart
+```
+
+## Gapminder Bubble Plot
+
+[Altair example](https://altair-viz.github.io/gallery/gapminder_bubble_plot.html)
+
+> This example shows how to make a bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost’s blog post [‘One Chart, Twelve Charting Libraries’](http://lisacharlotterost.github.io/2016/05/17/one-chart-code/)).
+
+#### Data
+
+```{r}
+#glimpse(vega_data$gapminder_health_income())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$gapminder_health_income$url)$
+  mark_circle()$
+  encode(
+    alt$X("income:Q", scale = alt$Scale(type = "log")), 
+    alt$Y("health:Q", scale = alt$Scale(zero = FALSE)), 
+    size="population:Q"
+  )
+chart
+```
+
+
+## Iowa’s renewable energy boom
+
+
+[Altair example](https://altair-viz.github.io/gallery/iowa_electricity.html)
+
+> This example is a fully developed stacked chart using the sample dataset of Iowa’s electricity sources.
+
+#### Data
+
+```{r}
+glimpse(vega_data$iowa_electricity())
+```
+
+#### Chart
+
+```{r}
+source = vega_data$iowa_electricity()
+
+chart <- 
+  alt$Chart(
+    source, 
+    title="Iowa's renewable energy boom"
+  )$
+  mark_area()$
+  encode(
+    x=alt$X(
+      "year:T",
+      title="Year"
+    ),
+    y=alt$Y(
+      "net_generation:Q",
+      stack="normalize",
+      title="Share of net generation",
+      axis=alt$Axis(format=".0%")
+    ),
+    color=alt$Color(
+      "source:N",
+      legend=alt$Legend(title="Electricity source")
+    )
+  )
+
+chart
+```
+
+
+## Isotype Visualization
+
+[Altair example](https://altair-viz.github.io/gallery/isotype.html)
+
+
+> Isotype Visualization shows the distribution of animals across UK and US. Inspired by [Only An Ocean Between, 1943](http://www.thomwhite.co.uk/?p=1303). Population Live Stock, p.13. This is adapted from a [Vega-Lite example])https://vega.github.io/editor/#/examples/vega-lite/isotype_bar_chart).
+
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+source <- fromJSON('[
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "pigs"},
+      {"country": "Great Britain", "animal": "pigs"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"}
+  ]')
+```
+
+</details>
+
+```{r}
+glimpse(source)
+```
+
+#### Chart
+
+<details>
+<summary>Scales</summary>
+```{r}
+domains = list('person', 'cattle', 'pigs', 'sheep')
+
+shape_scale = alt$Scale(
+  domain=domains,
+  range=list(
+    'M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z',
+    'M4 -2c0 0 0.9 -0.7 1.1 -0.8c0.1 -0.1 -0.1 0.5 -0.3 0.7c-0.2 0.2 1.1 1.1 1.1 1.2c0 0.2 -0.2 0.8 -0.4 0.7c-0.1 0 -0.8 -0.3 -1.3 -0.2c-0.5 0.1 -1.3 1.6 -1.5 2c-0.3 0.4 -0.6 0.4 -0.6 0.4c0 0.1 0.3 1.7 0.4 1.8c0.1 0.1 -0.4 0.1 -0.5 0c0 0 -0.6 -1.9 -0.6 -1.9c-0.1 0 -0.3 -0.1 -0.3 -0.1c0 0.1 -0.5 1.4 -0.4 1.6c0.1 0.2 0.1 0.3 0.1 0.3c0 0 -0.4 0 -0.4 0c0 0 -0.2 -0.1 -0.1 -0.3c0 -0.2 0.3 -1.7 0.3 -1.7c0 0 -2.8 -0.9 -2.9 -0.8c-0.2 0.1 -0.4 0.6 -0.4 1c0 0.4 0.5 1.9 0.5 1.9l-0.5 0l-0.6 -2l0 -0.6c0 0 -1 0.8 -1 1c0 0.2 -0.2 1.3 -0.2 1.3c0 0 0.3 0.3 0.2 0.3c0 0 -0.5 0 -0.5 0c0 0 -0.2 -0.2 -0.1 -0.4c0 -0.1 0.2 -1.6 0.2 -1.6c0 0 0.5 -0.4 0.5 -0.5c0 -0.1 0 -2.7 -0.2 -2.7c-0.1 0 -0.4 2 -0.4 2c0 0 0 0.2 -0.2 0.5c-0.1 0.4 -0.2 1.1 -0.2 1.1c0 0 -0.2 -0.1 -0.2 -0.2c0 -0.1 -0.1 -0.7 0 -0.7c0.1 -0.1 0.3 -0.8 0.4 -1.4c0 -0.6 0.2 -1.3 0.4 -1.5c0.1 -0.2 0.6 -0.4 0.6 -0.4z',
+    'M1.2 -2c0 0 0.7 0 1.2 0.5c0.5 0.5 0.4 0.6 0.5 0.6c0.1 0 0.7 0 0.8 0.1c0.1 0 0.2 0.2 0.2 0.2c0 0 -0.6 0.2 -0.6 0.3c0 0.1 0.4 0.9 0.6 0.9c0.1 0 0.6 0 0.6 0.1c0 0.1 0 0.7 -0.1 0.7c-0.1 0 -1.2 0.4 -1.5 0.5c-0.3 0.1 -1.1 0.5 -1.1 0.7c-0.1 0.2 0.4 1.2 0.4 1.2l-0.4 0c0 0 -0.4 -0.8 -0.4 -0.9c0 -0.1 -0.1 -0.3 -0.1 -0.3l-0.2 0l-0.5 1.3l-0.4 0c0 0 -0.1 -0.4 0 -0.6c0.1 -0.1 0.3 -0.6 0.3 -0.7c0 0 -0.8 0 -1.5 -0.1c-0.7 -0.1 -1.2 -0.3 -1.2 -0.2c0 0.1 -0.4 0.6 -0.5 0.6c0 0 0.3 0.9 0.3 0.9l-0.4 0c0 0 -0.4 -0.5 -0.4 -0.6c0 -0.1 -0.2 -0.6 -0.2 -0.5c0 0 -0.4 0.4 -0.6 0.4c-0.2 0.1 -0.4 0.1 -0.4 0.1c0 0 -0.1 0.6 -0.1 0.6l-0.5 0l0 -1c0 0 0.5 -0.4 0.5 -0.5c0 -0.1 -0.7 -1.2 -0.6 -1.4c0.1 -0.1 0.1 -1.1 0.1 -1.1c0 0 -0.2 0.1 -0.2 0.1c0 0 0 0.9 0 1c0 0.1 -0.2 0.3 -0.3 0.3c-0.1 0 0 -0.5 0 -0.9c0 -0.4 0 -0.4 0.2 -0.6c0.2 -0.2 0.6 -0.3 0.8 -0.8c0.3 -0.5 1 -0.6 1 -0.6z',
+    'M-4.1 -0.5c0.2 0 0.2 0.2 0.5 0.2c0.3 0 0.3 -0.2 0.5 -0.2c0.2 0 0.2 0.2 0.4 0.2c0.2 0 0.2 -0.2 0.5 -0.2c0.2 0 0.2 0.2 0.4 0.2c0.2 0 0.2 -0.2 0.4 -0.2c0.1 0 0.2 0.2 0.4 0.1c0.2 0 0.2 -0.2 0.4 -0.3c0.1 0 0.1 -0.1 0.4 0c0.3 0 0.3 -0.4 0.6 -0.4c0.3 0 0.6 -0.3 0.7 -0.2c0.1 0.1 1.4 1 1.3 1.4c-0.1 0.4 -0.3 0.3 -0.4 0.3c-0.1 0 -0.5 -0.4 -0.7 -0.2c-0.3 0.2 -0.1 0.4 -0.2 0.6c-0.1 0.1 -0.2 0.2 -0.3 0.4c0 0.2 0.1 0.3 0 0.5c-0.1 0.2 -0.3 0.2 -0.3 0.5c0 0.3 -0.2 0.3 -0.3 0.6c-0.1 0.2 0 0.3 -0.1 0.5c-0.1 0.2 -0.1 0.2 -0.2 0.3c-0.1 0.1 0.3 1.1 0.3 1.1l-0.3 0c0 0 -0.3 -0.9 -0.3 -1c0 -0.1 -0.1 -0.2 -0.3 -0.2c-0.2 0 -0.3 0.1 -0.4 0.4c0 0.3 -0.2 0.8 -0.2 0.8l-0.3 0l0.3 -1c0 0 0.1 -0.6 -0.2 -0.5c-0.3 0.1 -0.2 -0.1 -0.4 -0.1c-0.2 -0.1 -0.3 0.1 -0.4 0c-0.2 -0.1 -0.3 0.1 -0.5 0c-0.2 -0.1 -0.1 0 -0.3 0.3c-0.2 0.3 -0.4 0.3 -0.4 0.3l0.2 1.1l-0.3 0l-0.2 -1.1c0 0 -0.4 -0.6 -0.5 -0.4c-0.1 0.3 -0.1 0.4 -0.3 0.4c-0.1 -0.1 -0.2 1.1 -0.2 1.1l-0.3 0l0.2 -1.1c0 0 -0.3 -0.1 -0.3 -0.5c0 -0.3 0.1 -0.5 0.1 -0.7c0.1 -0.2 -0.1 -1 -0.2 -1.1c-0.1 -0.2 -0.2 -0.8 -0.2 -0.8c0 0 -0.1 -0.5 0.4 -0.8z'
+  ))
+
+color_scale <- alt$Scale(
+  domain=domains,
+  range=list('rgb(162,160,152)', 'rgb(194,81,64)', 'rgb(93,93,93)', 'rgb(91,131,149)')
+)
+
+```
+
+</details>
+
+```{r}
+chart <- 
+  alt$Chart(source)$
+  mark_point(filled=TRUE, opacity=1, size=100)$
+  encode(
+    alt$X('x:O', axis=NULL),
+    alt$Y('animal:O', axis=NULL),
+    alt$Row('country:N', header=alt$Header(title='')),
+    alt$Shape('animal:N', legend=NULL, scale=shape_scale),
+    alt$Color('animal:N', legend=NULL, scale=color_scale)
+  )$transform_window(
+    x='rank()',
+    groupby=list('country', 'animal')
+  )$properties(width=550, height=140)
+
+chart
+```
+
+## Isotype Visualization with Emoji
+
+
+[Altair example](https://altair-viz.github.io/gallery/isotype_emoji.html)
+
+
+> Isotype Visualization shows the distribution of animals across UK and US, using unicode emoji marks rather than custom SVG paths (see [](https://altair-viz.github.io/gallery/isotype.html)). This is adapted from Vega-Lite example  [](https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html).
+
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+source <- fromJSON('[
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "cattle"},
+      {"country": "Great Britain", "animal": "pigs"},
+      {"country": "Great Britain", "animal": "pigs"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "Great Britain", "animal": "sheep"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "cattle"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "pigs"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"},
+      {"country": "United States", "animal": "sheep"}
+  ]')
+```
+
+</details>
+
+```{r}
+glimpse(source)
+```
+
+#### Chart
+
+```{r eval = FALSE}
+e_pig <- emo::ji("pig")
+
+chart <- 
+  alt$Chart(source)$
+  mark_text(size=45, baseline='middle')$
+  encode(
+    alt$X('x:O', axis=NULL),
+    alt$Y('animal:O', axis=NULL),
+    alt$Row('country:N', header=alt$Header(title='')),
+    alt$Text('emoji:N')
+  )$transform_calculate(
+    emoji = "{'cattle': '🐄', 'pigs': '🐖', 'sheep': '🐏'}[datum.animal]"
+  )$transform_window(
+    x = 'rank()',
+    groupby = list('country', 'animal')
+  )$properties(width=550, height=140)
+
+chart
+```
+
+## Locations of US Airports 
+
+[Altair example](https://altair-viz.github.io/gallery/airports.html)
+
+#### Data
+
+```{r}
+us <- vega_data$us_10m$url
+```
+
+```{r}
+airports <- vega_data$airports()
+glimpse(airports)
+```
+
+#### Chart
+
+```{r}
+states <- alt$topo_feature(us, feature = "states")
+# US states background
+background <-
+  alt$Chart(states)$
+  mark_geoshape(
+    fill = "lightgray",
+    stroke = "white"
+  )$
+  properties(width = 500, height = 300)$
+  project("albersUsa")
+# airport positions on background
+points <- 
+  alt$Chart(airports)$
+  mark_circle()$
+  encode(
+    longitude = "longitude:Q",
+    latitude = "latitude:Q",
+    size = alt$value(10),
+    color = alt$value("steelblue")
+  )
+chart <- (background + points)
+chart
+```
+
+## London Tube Lines 
+
+[Altair example](https://altair-viz.github.io/gallery/london_tube.html)
+
+> This example shows the London tube lines against the background of the borough boundaries. It is based on the [Vega-Lite example](https://vega.github.io/vega-lite/examples/geo_layer_line_london.html).
+#### Data
+
+```{r}
+boroughs <- alt$topo_feature(vega_data$londonBoroughs$url, "boroughs")
+tubelines <- alt$topo_feature(vega_data$londonTubeLines$url, "line")
+#glimpse(vega_data$londonCentroids())
+```
+
+#### Chart
+
+```{r}
+domain_line <- 
+  list("Bakerloo", "Central", "Circle", "District", "DLR", 
+       "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
+       "Piccadilly", "Victoria", "Waterloo & City" )
+range_line <- 
+  list("rgb(137,78,36)", "rgb(220,36,30)", "rgb(255,206,0)",
+       "rgb(1,114,41)", "rgb(0,175,173)", "rgb(215,153,175)",
+       "rgb(106,114,120)", "rgb(114,17,84)", "rgb(0,0,0)",
+       "rgb(0,24,168)", "rgb(0,160,226)", "rgb(106,187,170)")
+background <-
+  alt$Chart(boroughs)$
+  mark_geoshape(stroke = "white", strokeWidth = 2)$
+  encode(
+    color = alt$value("#eee")
+  )$
+  properties(width = 700, height = 500)
+labels <- 
+  alt$Chart(vega_data$londonCentroids$url)$
+  mark_text()$
+  encode(
+    longitude = "cx:Q",
+    latitude = "cy:Q",
+    text = "bLabel:N",
+    size = alt$value(8),
+    opacity = alt$value(0.6)
+  )$
+  transform_calculate("bLabel", "indexof (datum.name,' ') > 0  ? substring(datum.name,0,indexof(datum.name, ' ')) : datum.name")
+line_scale <- 
+  alt$Scale(domain = domain_line, range = range_line)
+lines <- 
+  alt$Chart(tubelines)$
+  mark_geoshape(filled = FALSE, strokeWidth = 2)$
+  encode(
+    color = alt$Color(
+      "id:N",
+      legend = alt$Legend(
+        title = NULL,
+        orient = "bottom-right",
+        offset = 0
+      )
+    )
+  )
+chart <- (background + labels + lines)
+chart
+```
+
+## Natural Disasters
+
+[Altair example](https://altair-viz.github.io/gallery/natural_disasters.html)
+
+#### Data
+
+```{r}
+#glimpse(vega_data$disasters())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$disasters$url)$
+  mark_circle(opacity = 0.8, stroke = "black", strokeWidth = 1)$
+  encode(
+    x = alt$X("Year:O", axis = alt$Axis(labelAngle = 0)),
+    y = alt$Y("Entity:N"),
+    size = alt$Size(
+      "Deaths:Q",
+      scale = alt$Scale(range = c(0, 5000)),
+      legend = alt$Legend(title = "Annual Global Deaths")
+    ),
+    color = alt$Color("Entity:N", legend = NULL)
+  )$
+  properties(
+    width = 480,
+    height = 320
+  )$
+  transform_filter("datum.Entity != 'All natural disasters'")
+chart
+```
+
+## One Dot Per Zipcode
+
+[Altair example](https://altair-viz.github.io/gallery/one_dot_per_zipcode.html)
+
+If you are building a chart using a local data frame, the default is that there has to be less than 5000 observations. If you build a chart using a URL (local or remote), there is no such default.
+
+To modify this default:
+
+```r
+alt$data_transformers$enable('default', max_rows=<your new max>)
+```
+
+#### Data
+
+```{r}
+glimpse(vega_data$zipcodes())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$zipcodes$url)$
+  mark_circle(size = 3)$
+  encode(
+    longitude = "longitude:Q",
+    latitude = "latitude:Q",
+    color = "digit:N"
+  )$
+  properties(
+    projection = list(type = "albersUsa"),
+    width = 650,
+    height = 400
+  )$
+  transform_calculate("digit", "substring(datum.zip_code, 0, 1)")
+chart
+```
+
+## Seattle Weather Heatmap
+
+
+[Altair Example](https://altair-viz.github.io/gallery/weather_heatmap.html)
+
+> This example shows the 2010 daily high temperature (F) in Seattle, WA.
+
+
+
+#### Data
+
+```{r}
+glimpse(vega_data$seattle_temps())
+```
+
+#### Chart
+
+```{r}
+# Since the data is more than 5,000 rows we'll import it from a URL
+source <- vega_data$seattle_temps$url
+
+chart <-
+  alt$Chart(
+    source,
+    title="2010 Daily High Temperature (F) in Seattle, WA"
+  )$
+  mark_rect()$
+  encode(
+    x='date(date):O',
+    y='month(date):O',
+    color=alt$Color('max(temp):Q', scale=alt$Scale(scheme="inferno")),
+    tooltip=list(
+      alt$Tooltip('monthdate(date):T', title='Date'),
+      alt$Tooltip('max(temp):Q', title='Max Temp')
+    )
+  )$properties(width=550)
+
+chart
+```
+
+## Seattle Weather Interactive
+
+[Altair example](https://altair-viz.github.io/gallery/seattle_weather_interactive.html)
+
+> This chart provides an interactive exploration of Seattle weather over the course of the year. It includes a one-axis brush selection to easily see the distribution of weather types in a particular date range.
+#### Data
+
+```{r}
+glimpse(vega_data$seattle_weather())
+```
+
+#### Chart
+
+```{r}
+scale <- alt$Scale(
+  domain = list("sun", "fog", "drizzle", "rain", "snow"),
+  range = list("#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd")
+)
+color <- alt$Color("weather:N", scale = scale)
+# We create two selections:
+# - a brush that is active on the top panel
+# - a multi-click that is active on the bottom panel
+brush <- alt$selection_interval(encodings = list("x"))
+click <- alt$selection_multi(encodings = list("color"))
+# Top panel is scatter plot of temperature vs time
+points <- 
+  alt$Chart(data = vega_data$seattle_weather())$
+  mark_point()$
+  encode(
+    x = alt$X(
+      "date:T", 
+      timeUnit = "monthdate", 
+      axis=alt$Axis(title="Date")
+    ),
+    alt$Y(
+      "temp_max:Q",
+      axis = alt$Axis(title = "Maximum Daily Temperature (C)"),
+      scale = alt$Scale(domain = list(-5, 40))
+    ),
+    color = alt$condition(brush, color, alt$value("lightgray")),
+    size = alt$Size("precipitation:Q", scale = alt$Scale(range = list(5, 200)))
+  )$
+  properties(width = 600, height = 300, selection = brush)$
+  transform_filter(click$ref())
+# Bottom panel is a bar chart of weather type
+bars <- 
+  alt$Chart(data = vega_data$seattle_weather())$
+  mark_bar()$
+  encode(
+    x = "count(weather)",
+    y = "weather:N",
+    color = alt$condition(click, color, alt$value("lightgray"))
+  )$
+  transform_filter(brush$ref())$
+  properties(width = 600, selection = click)
+chart <- 
+  (points & bars)$ 
+  properties(title = "Seattle Weather: 2012-2015")  
+chart
+```
+
+
+## The U.S. employment crash during the Great Recession
+
+[Altair example](https://altair-viz.github.io/gallery/us_employment.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$us_employment())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$us_employment()
+presidents = fromJSON('[
+    {
+        "start": "2006-01-01",
+        "end": "2009-01-19",
+        "president": "Bush"
+    },
+    {
+        "start": "2009-01-20",
+        "end": "2015-12-31",
+        "president": "Obama"
+    }
+    ]')
+
+bars <-
+  alt$Chart(
+    source,
+    title="The U.S. employment crash during the Great Recession"
+  )$mark_bar()$
+  encode(
+    x=alt$X("month:T", title=""),
+    y=alt$Y("nonfarm_change:Q", title="Change in non-farm employment (in thousands)"),
+    color=alt$condition(
+      'datum.nonfarm_change > 0',
+      alt$value("steelblue"),
+      alt$value("orange")
+    )
+  )
+
+rule <-
+  alt$Chart(presidents)$mark_rule(
+    color="black",
+    strokeWidth=2
+  )$encode(
+    x='end:T'
+  )$transform_filter('datum.president == "Bush"')
+
+text <- 
+  alt$Chart(presidents)$
+  mark_text(
+    align='left',
+    baseline='middle',
+    dx=7,
+    dy=-135,
+    size=11
+  )$encode(
+    x='start:T',
+    x2='end:T',
+    text='president',
+    color=alt$value('#000000')
+  )
+
+chart <- (bars + rule + text)$properties(width=600)
+
+chart
+```
+
+## Top K Items
+
+
+[Altair Example](https://altair-viz.github.io/gallery/top_k_items.html)
+
+> This example shows how to use the window and transformation filter to display the Top items of a long list of items in decreasing order. The sorting of the x-axis is needed for vega-lite and for the example does not do anything since we already have a unique value. Here we sort the top 10 highest ranking movies of IMDB.
+
+
+#### Data
+
+```{r}
+#glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$movies$url
+
+# Top 10 movies by IMBD rating
+chart <-
+  alt$Chart(
+    source
+  )$
+  mark_bar()$
+  encode(
+    x=alt$X(
+      'Title:N',
+      sort=alt$EncodingSortField(field="IMDB_Rating", op="mean", order='descending')
+    ),
+    y=alt$Y('IMDB_Rating:Q'),
+    color=alt$Color('IMDB_Rating:Q')
+  )$transform_window(
+    rank='rank(IMDB_Rating)',
+    sort=list(alt$SortField('IMDB_Rating', order='descending'))
+  )$transform_filter(
+    ('datum.rank < 10')
+  )
+
+chart
+```
+
+## Top K Letters
+
+
+[Altair Example](https://altair-viz.github.io/gallery/top_k_letters.html)
+
+> This example shows how to use a window transform in order to display only the top K categories by number of entries. In this case, we rank the characters in the first paragraph of Dickens’ A Tale of Two Cities by number of occurances.
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+txt = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way - in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only."
+
+
+ttxt <- txt %>% 
+  str_remove_all(pattern = "[[:punct:]]") %>%
+  str_remove_all(' ') %>% 
+  str_split(pattern = "")
+
+source <- data_frame(letters = ttxt[[1]])
+```
+</details>
+
+```{r}
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+chart <-
+  alt$Chart(source)$
+  transform_aggregate(
+    count='count()',
+    groupby=list('letters')
+  )$
+  transform_window(
+    rank='rank(count)',
+    sort=list(alt$SortField('count', order='descending'))
+  )$
+  transform_filter(
+    "datum.rank < 10"
+  )$
+  mark_bar()$
+  encode(
+    y=alt$Y('letters:N',
+            sort=alt$EncodingSortField(
+              field='count', 
+              op='sum', 
+              order='descending')
+    ),
+    x='count:Q'
+  )
+
+chart
+```
+
+
+## U.S. state capitals overlayed on a map of the U.S
+
+[Altair example](https://altair-viz.github.io/gallery/us_state_capitals.html)
+
+#### Data
+
+```{r}
+#glimpse(vega_data$us_state_capitals())
+```
+
+#### Chart
+
+```{r}
+states <- alt$topo_feature(vega_data$us_10m$url, "states")
+capitals <- vega_data$us_state_capitals$url
+# US states background
+background <- 
+  alt$Chart(states)$
+  mark_geoshape(fill = "lightgray",stroke = "white")$
+  properties(title = "US State Capitols", width = 700, height = 400)$
+  project("albersUsa")
+# Points and text
+hover <- 
+  alt$selection(
+    type = "single", 
+    on = "mouseover", 
+    nearest = TRUE,
+    fields = list("lat", "lon")
+  )
+base <- 
+  alt$Chart(capitals)$
+  encode(
+    longitude = "lon:Q",
+    latitude = "lat:Q"
+  )
+text <- 
+  base$
+  mark_text(dy = -5, align = "right")$
+  encode(
+    alt$Text("city", type = "nominal"),
+    # switched from reference
+    opacity = alt$condition(hover, alt$value(1), alt$value(0))
+  )
+points <- 
+  base$
+  mark_point()$
+  encode(
+    color = alt$value("black"),
+    # switched from reference
+    size = alt$condition(hover, alt$value(100), alt$value(30))
+  )$
+  properties(selection = hover)
+chart <- (background + points + text)
+chart
+```
+
+## US Population Over Time
+
+[Altair example](https://altair-viz.github.io/gallery/us_population_over_time.html)
+
+> This chart visualizes the age distribution of the US population over time. It uses a slider widget that is bound to the year to visualize the age distribution over time.
+#### Data
+
+```{r}
+#glimpse(vega_data$population())
+```
+
+#### Chart
+
+```{r}
+pop <- vega_data$population$url
+pink_blue <- 
+  alt$Scale(
+    domain = list("Male", "Female"),
+    range = list("steelblue", "salmon")
+  )
+slider <- alt$binding_range(min = 1900, max = 2000, step = 10)
+year <- alt$selection_single(
+  name = "year", 
+  fields = list("year"), 
+  bind = slider
+)
+chart <- 
+  alt$Chart(pop)$
+  mark_bar()$
+  encode(
+    x = alt$X("sex:N", axis = alt$Axis(title = NULL)),
+    y = alt$Y("people:Q", scale = alt$Scale(domain = c(0, 1.2e7))),
+    color = alt$Color("sex:N", scale = pink_blue),
+    column = "age:O"
+  )$
+  properties(width = 20, selection = year)$
+  transform_calculate("sex", JS('if(datum.sex == 1, "Male", "Female")'))$
+  transform_filter(year$ref())
+chart
+```
+
+## US Population Pyramid Over Time
+
+
+[Altair Example](https://altair-viz.github.io/gallery/us_population_pyramid_over_time.html)
+
+> A population pyramid shows the distribution of age groups within a population. It uses a slider widget that is bound to the year to visualize the age distribution over time.
+
+#### Data
+
+```{r}
+#glimpse(vega_data$population())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$population$url
+
+slider <- alt$binding_range(min=1850, max=2000, step=10)
+
+select_year <- 
+  alt$selection_single(
+    name='year', 
+    fields=list('year'),
+    bind=slider,
+    init=list(year = 2000))
+
+base <-
+  alt$
+  Chart(source)$
+  add_selection(select_year)$
+  transform_filter(select_year)$
+  transform_calculate("gender", JS('if(datum.sex == 1, "Male", "Female")'))$
+  properties(width=250)
+
+
+color_scale <-
+  alt$Scale(
+    domain=list('Male', 'Female'),
+    range=list('#1f77b4', '#e377c2')
+  )
+
+left <-
+  base$
+  transform_filter(
+    "datum.gender == 'Female'"
+  )$
+  encode(
+    y=alt$Y('age:O', axis=NULL),
+    x=alt$X('sum(people):Q',
+            title='population',
+            sort=alt$SortOrder('descending')),
+    color=alt$Color('gender:N', scale=color_scale, legend=NULL)
+  )$
+  mark_bar()$
+  properties(title='Female')
+
+middle = base$encode(
+  y=alt$Y('age:O', axis=NULL),
+  text=alt$Text('age:Q')
+)$
+  mark_text()$
+  properties(width=20)
+
+right = base$transform_filter(
+  "datum.gender == 'Male'"
+)$
+  encode(
+    y=alt$Y('age:O', axis=NULL),
+    x=alt$X('sum(people):Q', title='population'),
+    color=alt$Color('gender:N', scale=color_scale, legend=NULL)
+  )$
+  mark_bar()$
+  properties(title='Male')
+
+chart <- alt$concat(left, middle, right, spacing=5)
+
+chart
+```
+
+
+## US Population: Wrapped Facet
+
+
+[Altair Example](https://altair-viz.github.io/gallery/us_population_over_time_facet.html)
+
+> This chart visualizes the age distribution of the US population over time, using a wrapped faceting of the data by decade.
+
+#### Data
+
+```{r}
+#glimpse(vega_data$population())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$population$url
+
+chart <- 
+  alt$Chart(source)$
+  mark_area()$
+  encode(
+    x='age:O',
+    y=alt$Y(
+      'sum(people):Q',
+      title='Population',
+      axis=alt$Axis(format='~s')
+    ),
+    facet='year:O'
+  )$properties(
+    title='US Age Distribution By Year',
+    columns=5,
+    width=90,
+    height=80
+  )
+
+chart
+```
+
+
+## Wheat and Wages
+
+
+[Altair Example](https://altair-viz.github.io/gallery/wheat_wages.html)
+
+> A recreation of William Playfair’s classic chart visualizing the price of wheat, the wages of a mechanic, and the reigning British monarch.
+>
+> This is a more polished version of the simpler chart in [Bar Chart with Line on Dual Axis](https://altair-viz.github.io/gallery/bar_and_line_with_dual_axis.html#gallery-bar-and-line-with-dual-axis).
+
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+#### Chart
+
+```{r}
+base_wheat <-
+  alt$Chart(vega_data$wheat$url)$
+  transform_calculate(year_end="+datum.year + 5")
+
+base_monarchs <- 
+  alt$Chart(vega_data$monarchs$url)$
+  transform_calculate(
+    offset="((!datum.commonwealth && datum.index % 2) ? -1: 1) * 2 + 95",
+    off2="((!datum.commonwealth && datum.index % 2) ? -1: 1) + 95",
+    y="95",
+    x="+datum.start + (+datum.end - +datum.start)/2"
+  )
+
+bars <-
+  base_wheat$mark_bar(
+    fill= "#aaa", 
+    stroke= "#999"
+  )$
+  encode(
+    x=alt$X("year:Q", axis=alt$Axis(format='d', tickCount=5)),
+    y=alt$Y("wheat:Q", axis=alt$Axis(zindex=1)),
+    x2=alt$X2("year_end")
+  )
+
+area <-
+  base_wheat$
+  mark_area(
+    color="#a4cedb", 
+    opacity= 0.7
+  )$
+  encode(
+    x=alt$X("year:Q"),
+    y=alt$Y("wages:Q")
+  )
+
+area_line_1 <-
+  area$mark_line(
+    color= "#000", 
+    opacity= 0.7
+  )
+area_line_2 <-
+  area$mark_line(
+    yOffset= -2, 
+    color= "#EE8182"
+  )
+
+top_bars <- 
+  base_monarchs$
+  mark_bar(stroke="#000")$
+  encode(
+    x=alt$X("start:Q"),
+    x2=alt$X2("end"),
+    y=alt$Y("y:Q"),
+    y2=alt$Y2("offset"),
+    fill=alt$Fill("commonwealth:N", 
+                  legend=NULL, 
+                  scale=alt$Scale(range=list("black", "white"))
+    )
+  )
+
+
+
+top_text <-
+  base_monarchs$
+  mark_text(
+    yOffset= 14,
+    fontSize= 9, 
+    fontStyle="italic"
+  )$
+  encode(
+    x=alt$X("x:Q"),
+    y=alt$Y("off2:Q"),
+    text=alt$Text("name:N")
+  )
+
+chart <- (bars + area + area_line_1 + area_line_2 + top_bars + top_text)$
+  properties(
+    width=900, height=400
+  )$
+  configure_axis(
+    title=NULL, gridColor="white", gridOpacity=0.25, domain=FALSE
+  )$
+  configure_view(stroke="transparent")
+
+chart
+```
+
+
+
+
+
+
+
+
+
+
+

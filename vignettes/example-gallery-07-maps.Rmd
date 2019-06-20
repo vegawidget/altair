@@ -37,8 +37,6 @@ It is not straightforward to preview the topological data, or the unemployment d
 - The `vega_data$us_10m` data is in topoJSON, not a data frame
 - The `vega_data$unemployment` data is in an unparsed format.
 
-Furthermore, we are using the URLs, which means that this example will not render in the RStudio IDE, although it will render in an external browser. 
-
 #### Data
 
 ```{r}
@@ -127,9 +125,7 @@ chart
 #### Data
 
 ```{r}
-#pop_eng_hur <- vega_data$population_engineers_hurricanes()
-
-#glimpse(pop_eng_hur)
+#glimpse(vega_data$population_engineers_hurricanes())
 ```
 
 #### Chart

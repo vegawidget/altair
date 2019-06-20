@@ -122,22 +122,24 @@ glimpse(vega_data$stocks())
 ```{r}
 stocks <- vega_data$stocks()
 
-line <- 
+base <- 
   alt$Chart(stocks)$
+  properties(
+    width = 550,
+    title = "Daily closing prices with their aggregate prices"
+  )
+
+line <- 
+  base$
   mark_line()$
   encode(
     x = "date",
     y = "price",
     color = "symbol"
-  )$
-  properties(
-    width = 600,
-    title = "Daily closing prices with their aggregate prices"
-  )$
-  interactive(bind_y=FALSE)
+  )
 
 rule <- 
-  alt$Chart(stocks)$
+  base$
   mark_rule()$
   encode(
     y = alt$Y("average(price)"),
@@ -206,7 +208,7 @@ chart <-
   encode(
     x = "x",
     y = "f(x)"
-    )
+  )
 
 chart
 ```
@@ -233,7 +235,7 @@ chart <-
     x = "year:T",
     y = "wheat:Q",
     size = "wheat:Q"
-    )
+  )
 
 chart
 ```

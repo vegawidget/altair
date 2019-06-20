@@ -151,8 +151,8 @@ chart <-
     y= alt$Y(
       "net_generation:Q", 
       stack = NULL
-  ),
-  color = "source:N"
+    ),
+    color = "source:N"
   )
 
 chart
@@ -181,8 +181,8 @@ chart <-
     y= alt$Y(
       "net_generation:Q", 
       stack = "normalize"
-  ),
-  color = "source:N"
+    ),
+    color = "source:N"
   )
 
 chart
@@ -197,9 +197,7 @@ chart
 #### Data
 
 ```{r}
-#source <- vega_data$unemployment_across_industries()
-
-#glimpse(source)
+#glimpse(vega_data$unemployment_across_industries())
 ```
 
 #### Chart
@@ -280,10 +278,10 @@ chart <-
     )
   )$
   properties(
-    width = 300,
-    height = 40
+    width = 400,
+    height = 50
   )
 
 chart
 ```
-#
+

@@ -37,9 +37,7 @@ vega_data <- import_vega_data()
 #### Data
 
 ```{r}
-#movies <- vega_data$movies()
-
-#glimpse(movies)
+#glimpse(vega_data$movies())
 ```
 
 #### Chart
@@ -72,7 +70,7 @@ glimpse(vega_data$cars())
 
 ```{r}
 source <- vega_data$cars()
-  
+
 # Brush for selection
 brush <- alt$selection(type = "interval")
 
@@ -84,7 +82,7 @@ points <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = alt$condition(brush, 'Cylinders:O', alt$value('grey'))
-    )$add_selection(brush)
+  )$add_selection(brush)
 
 
 
@@ -103,43 +101,44 @@ ranked_text <-
     rank='rank(row_number)'
   )$transform_filter(
     "datum.rank<20"
-)
+  )
 
 # Data Tables
 horsepower <- 
   ranked_text$
   encode(
     text='Horsepower:N'
-    )$
+  )$
   properties(
     title='Horsepower'
-    )
+  )
 
 mpg <- 
   ranked_text$encode(
     text='Miles_per_Gallon:N'
-    )$
+  )$
   properties(
-      title='MPG'
-      )
+    title='MPG'
+  )
 
 origin <- 
   ranked_text$encode(
     text='Origin:N'
-    )$
+  )$
   properties(
     title='Origin'
-    )
+  )
 
 text <- alt$hconcat(horsepower, mpg, origin) # Combine data tables
 
 # Build chart
-chart <- alt$hconcat(
+chart <- 
+  alt$hconcat(
     points,
     text
-)$resolve_legend(
+  )$resolve_legend(
     color="independent"
-)
+  )
 
 chart
 ```
@@ -381,12 +380,11 @@ chart <-
     y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
     color = "Origin:N"
   )$
-  properties(width = 200, height = 200)$
+  properties(width = 150, height = 150)$
   `repeat`(
-      row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
-      column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
-  )$
-  interactive()
+    row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
+    column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
+  )$interactive()
 
 chart
 ```
@@ -406,11 +404,11 @@ glimpse(vega_data$cars())
 
 #### Chart
 
-```{r eval = FALSE}
+```{r}
 chart <- 
   alt$Chart(vega_data$cars())$
   transform_calculate(
-    "url='https://www.google.com/search?q=' + datum.Name"
+    "url", "'https://www.google.com/search?q=' + datum.Name"
   )$
   mark_point()$
   encode(
@@ -463,8 +461,9 @@ points <-
   mark_point()$
   encode(
     x = 'date:T',
-    y=alt$Y('temp_max:Q',
-            axis=alt$Axis(title='Max Temp'))
+    y=alt$Y(
+      'temp_max:Q',
+      axis=alt$Axis(title='Max Temp'))
   )
 
 points + line
@@ -477,6 +476,8 @@ points + line
 
 #### Data
 
+<details>
+<summary>Definition</summary>
 ```{r}
 set.seed(0)
 source <- data_frame(
@@ -484,7 +485,10 @@ source <- data_frame(
   y = rnorm(5, 10, 0.5),
   yerr = 0.2
 )
+```
+</details>
 
+```{r}
 glimpse(source)
 ```
 
@@ -497,7 +501,7 @@ base <-
   transform_calculate(
     ymin="datum.y-datum.yerr",
     ymax="datum.y+datum.yerr"
-)
+  )
 
 # generate the points
 points <- 
@@ -510,17 +514,17 @@ points <-
   encode(
     x=alt$X('x', scale=alt$Scale(domain=c(0, 6))),
     y=alt$Y('y', scale=alt$Scale(domain=c(10, 11)))
-)
+  )
 
 # generate the error bars
 errorbars <-
   base$
-  mark_line()$
+  mark_errorbar()$
   encode(
     x="x",
     y="ymin:Q",
     y2="ymax:Q"
-)
+  )
 
 points + errorbars
 ```
@@ -583,38 +587,41 @@ chart
 
 #### Chart
 
-```{r eval = FALSE}
+```{r}
 source <- vega_data$movies$url
 
 stripplot <-
-  alt$Chart(source)$
+  alt$Chart(source, width=40)$
   transform_calculate(
     # Generate Gaussian jitter with a Box-Muller transform
     jitter='sqrt(-2*log(random()))*cos(2*PI*random())'
-    )$
+  )$
   mark_circle(size=8)$
   encode(
     x=alt$X(
-        'jitter:Q',
-        title=" ",
-        axis=alt$Axis(
-           values = list(0), ticks=TRUE, grid=FALSE, labels=FALSE),
-        scale=alt$Scale()
+      'jitter:Q',
+      title=" ",
+      axis=alt$Axis(
+        values = list(0), 
+        ticks=TRUE, 
+        grid=FALSE, 
+        labels=FALSE),
+      scale=alt$Scale()
     ),
     y=alt$Y('IMDB_Rating:Q'),
     color=alt$Color('Major_Genre:N', legend=NULL),
     column=alt$Column(
-         'Major_Genre:N',
-        header=alt$Header(
-            labelAngle=-90#,
-            #titleOrient='top',
-            #labelOrient='bottom',
-            #labelAlign='right',
-            #labelPadding=3
-        )
+      'Major_Genre:N',
+      header=alt$Header(
+        labelAngle=-90,
+        titleOrient='top',
+        labelOrient='bottom',
+        labelAlign='right',
+        labelPadding=3
+      )
     )
   )$
-  #configure_facet(spacing=0)$
+  configure_facet(spacing=0)$
   configure_view(stroke="transparent")
 
 
