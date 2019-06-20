@@ -27,10 +27,188 @@ library("jsonlite")
 vega_data <- import_vega_data()
 ```
 
+## Bar Chart with Highlighted Bar
 
-## Bar Chart with Highlight
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_highlighted_bar.html)
 
-[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_highlight.html)
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$wheat())$
+  mark_bar()$
+  encode(
+    x = "year:O",
+    y = "wheat:Q",
+    # The highlight will be set on the result of a conditional statement
+    color=alt$condition(
+      "datum.year == 1810",  # If the year is 1810 this test returns True,
+      alt$value('orange'),     # which sets the bar orange.
+      alt$value('steelblue')   # And if it's not true it sets the bar steelblue.
+    )
+  )$properties(width=600)
+
+chart
+```
+
+
+## Bar Chart with Labels
+
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_labels.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+
+
+#### Chart
+
+```{r}
+bars <- 
+  alt$Chart(vega_data$wheat())$
+  mark_bar()$
+  encode(
+    x = "wheat:Q",
+    y="year:O"
+  )
+
+text <- 
+  bars$
+  mark_text(align = "left", baseline = "middle", dx = 3)$
+  encode(
+    text = "wheat:Q"
+  )
+
+chart <- (bars + text)$properties(height=800)
+
+chart
+```
+
+## Bar Chart with Line as Mean
+
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_mean_line.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$wheat()
+
+bar <- 
+  alt$Chart(source)$
+  mark_bar()$
+  encode(
+    x = alt$X("year:O"),
+    y = alt$Y("wheat:Q")
+  )
+
+rule <- 
+  alt$Chart(source)$
+  mark_rule(color = "red")$
+  encode(
+    y = "mean(wheat)"
+  )
+
+chart <- (bar + rule)$properties(width = 600)
+
+chart
+```
+
+## Bar Chart with Line on Dual Axis
+
+[Altair example](https://altair-viz.github.io/gallery/bar_and_line_with_dual_axis.html)
+
+This seems exemplary of why dual-axes should be used with caution.
+
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+#### Chart
+
+```{r}
+base <- 
+  alt$Chart(vega_data$wheat())$
+  encode(
+    x = alt$X("year:O")
+  )
+
+bar <- 
+  base$
+  mark_bar()$
+  encode(
+    y = "wheat:Q"
+  )
+
+
+line <-  
+  base$
+  mark_line(color = "red")$
+  encode(
+    y="wages:Q"
+  )
+
+chart <-
+  (bar + line)$
+  properties(width = 600)
+
+chart
+```
+
+## Bar Chart with Negative Values
+
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_negatives.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$us_employment())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$us_employment())$
+  mark_bar()$
+  encode(
+    x = "month:T",
+    y = "nonfarm_change:Q",
+    color = alt$condition(
+      "datum.nonfarm_change > 0",  
+      alt$value('steelblue'), # The positive color
+      alt$value('orange') # The negative color
+    )
+  )$properties(width = 600)
+
+
+
+chart
+```
+
+
+## Bar and Tick Chart
+
+
+[Altair example](https://altair-viz.github.io/gallery/layered_chart_bar_mark.html)
 
 #### Data
 
@@ -39,12 +217,10 @@ vega_data <- import_vega_data()
 ```{r}
 data <- 
   data_frame(
-    Day = 1:15, 
-    Value = c(54.8, 112.1, 63.6, 37.6, 79.7, 137.9, 120.1, 103.3, 394.8,
-              199.5, 72.3, 51.1, 112.0, 174.5, 130.5)
+    project = c("a", "b", "c", "d", "e", "f", "g"),
+    score = c(25, 57, 23, 19, 8, 47, 8),
+    goal = c(25, 47, 30, 27, 38, 19, 4)
   )
-
-data2 <- data_frame(ThresholdValue = 300, Threshold = "hazardous")
 ```
 </details>
 
@@ -52,111 +228,35 @@ data2 <- data_frame(ThresholdValue = 300, Threshold = "hazardous")
 glimpse(data)
 ```
 
-```{r}
-glimpse(data2)
-```
-
 #### Chart
 
 ```{r}
-bar1 <- 
-  alt$Chart(data)$
+a <- 
+  alt$Chart(data = data)$
   mark_bar()$
   encode(
-    x = "Day:O",
-    y = "Value:Q"
+    x = "project",
+    y = "score"
   )
 
-bar2 <- 
-  alt$Chart(data)$
-  mark_bar(color="#e45755")$
+b <- 
+  alt$Chart(data = data)$
+  mark_tick(color = "red")$
   encode(
-    x = "Day:O",
-    y = "baseline:Q",
-    y2 = "Value:Q"
-  )$
-  transform_filter("datum.Value >= 300")$
-  transform_calculate("baseline", "300")
-
-rule <- 
-  alt$Chart(data2)$
-  mark_rule()$
-  encode(y = "ThresholdValue:Q")
-
-text <- 
-  alt$Chart(data2)$
-  mark_text(align="left", dx = 215, dy = -5)$
-  encode(
-    y = alt$Y("ThresholdValue:Q", axis = alt$Axis(title = "PM2.5 Value")),
-    text = alt$value("hazardous")
+    x = "project",
+    y = "goal"
   )
 
-chart <- (bar1 + text + bar2 + rule)
+chart <- 
+  (a + b)$ 
+  # controls the width of the tick
+  configure_tick(thickness = 2, bandSize=35)$
+  # controls the width of the bar
+  configure_scale(rangeStep = 40)
 
 chart
 ```
 
-## Box Plot with Min/Max Whiskers
-
-[Altair example](https://altair-viz.github.io/gallery/boxplot_max_min.html)
-
-> This [example](https://vega.github.io/vega-lite/examples/box-plot_minmax_2D_vertical_normalized.html) shows how to make a basic box plot using US Population data from 2000.
-
-#### Data
-
-```{r}
-glimpse(vega_data$population())
-```
-
-#### Chart
-
-```{r}
-# Define aggregate fields
-lower_box <- "q1(people):Q"
-lower_whisker <- "min(people):Q"
-upper_box <- "q3(people):Q"
-upper_whisker <- "max(people):Q"
-
-# Compose each layer individually
-lower_plot <- 
-  alt$Chart(vega_data$population())$
-  mark_rule()$
-  encode(
-    y = alt$Y(lower_whisker, axis = alt$Axis(title = "population")),
-    y2 = lower_box,
-    x = "age:O"
-  )
-
-middle_plot <- 
-  alt$Chart(vega_data$population())$
-  mark_bar(size = 5.0)$
-  encode(
-    y = lower_box,
-    y2 = upper_box,
-    x ="age:O"
-  )
-
-upper_plot <- 
-  alt$Chart(vega_data$population())$
-  mark_rule()$
-  encode(
-    y = upper_whisker,
-    y2 = upper_box,
-    x = "age:O"
-  )
-
-middle_tick <- 
-  alt$Chart(vega_data$population())$
-  mark_tick(color = "white", size = 5.0)$
-  encode(
-    y = "median(people):Q",
-    x = "age:O"
-  )
-
-chart <- (lower_plot + middle_plot + upper_plot + middle_tick)
-
-chart
-```
 
 ## Calculating Percentage of Total
 
@@ -213,273 +313,7 @@ chart <-
 chart
 ```
 
-## Candlestick Chart
 
-[Altair example](https://altair-viz.github.io/gallery/candlestick_chart.html)
-
-> A candlestick chart [inspired from Protovis](http://mbostock.github.io/protovis/ex/candlestick.html). This example shows the performance of the Chicago Board Options Exchange Volatility Index (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red.
-
-#### Data
-
-<details>
-<summary>Definition</summary>
-```{r}
-data <- 
-jsonlite::fromJSON('[
-  {
-    "date": "01-Jun-2009",
-    "open": 28.7,
-    "high": 30.05,
-    "low": 28.45,
-    "close": 30.04,
-    "signal": "short",
-    "ret": -4.89396411092985
-  },
-  {
-    "date": "02-Jun-2009",
-    "open": 30.04,
-    "high": 30.13,
-    "low": 28.3,
-    "close": 29.63,
-    "signal": "short",
-    "ret": -0.322580645161295
-  },
-  {
-    "date": "03-Jun-2009",
-    "open": 29.62,
-    "high": 31.79,
-    "low": 29.62,
-    "close": 31.02,
-    "signal": "short",
-    "ret": 3.68663594470045
-  },
-  {
-    "date": "04-Jun-2009",
-    "open": 31.02,
-    "high": 31.02,
-    "low": 29.92,
-    "close": 30.18,
-    "signal": "short",
-    "ret": 4.51010886469673
-  },
-  {
-    "date": "05-Jun-2009",
-    "open": 29.39,
-    "high": 30.81,
-    "low": 28.85,
-    "close": 29.62,
-    "signal": "short",
-    "ret": 6.08424336973478
-  },
-  {
-    "date": "08-Jun-2009",
-    "open": 30.84,
-    "high": 31.82,
-    "low": 26.41,
-    "close": 29.77,
-    "signal": "short",
-    "ret": 1.2539184952978
-  },
-  {
-    "date": "09-Jun-2009",
-    "open": 29.77,
-    "high": 29.77,
-    "low": 27.79,
-    "close": 28.27,
-    "signal": "short",
-    "ret": -5.02431118314424
-  },
-  {
-    "date": "10-Jun-2009",
-    "open": 26.9,
-    "high": 29.74,
-    "low": 26.9,
-    "close": 28.46,
-    "signal": "short",
-    "ret": -5.46623794212217
-  },
-  {
-    "date": "11-Jun-2009",
-    "open": 27.36,
-    "high": 28.11,
-    "low": 26.81,
-    "close": 28.11,
-    "signal": "short",
-    "ret": -8.3743842364532
-  },
-  {
-    "date": "12-Jun-2009",
-    "open": 28.08,
-    "high": 28.5,
-    "low": 27.73,
-    "close": 28.15,
-    "signal": "short",
-    "ret": -5.52763819095477
-  },
-  {
-    "date": "15-Jun-2009",
-    "open": 29.7,
-    "high": 31.09,
-    "low": 29.64,
-    "close": 30.81,
-    "signal": "long",
-    "ret": 3.4920634920635
-  },
-  {
-    "date": "16-Jun-2009",
-    "open": 30.81,
-    "high": 32.75,
-    "low": 30.07,
-    "close": 32.68,
-    "signal": "short",
-    "ret": 0.155038759689914
-  },
-  {
-    "date": "17-Jun-2009",
-    "open": 31.19,
-    "high": 32.77,
-    "low": 30.64,
-    "close": 31.54,
-    "signal": "short",
-    "ret": 5.82822085889571
-  },
-  {
-    "date": "18-Jun-2009",
-    "open": 31.54,
-    "high": 31.54,
-    "low": 29.6,
-    "close": 30.03,
-    "signal": "short",
-    "ret": 8.17610062893082
-  },
-  {
-    "date": "19-Jun-2009",
-    "open": 29.16,
-    "high": 29.32,
-    "low": 27.56,
-    "close": 27.99,
-    "signal": "short",
-    "ret": 8.59872611464968
-  },
-  {
-    "date": "22-Jun-2009",
-    "open": 30.4,
-    "high": 32.05,
-    "low": 30.3,
-    "close": 31.17,
-    "signal": "short",
-    "ret": 15.4907975460123
-  },
-  {
-    "date": "23-Jun-2009",
-    "open": 31.3,
-    "high": 31.54,
-    "low": 27.83,
-    "close": 30.58,
-    "signal": "short",
-    "ret": 11.7370892018779
-  },
-  {
-    "date": "24-Jun-2009",
-    "open": 30.58,
-    "high": 30.58,
-    "low": 28.79,
-    "close": 29.05,
-    "signal": "long",
-    "ret": -10.4234527687296
-  },
-  {
-    "date": "25-Jun-2009",
-    "open": 29.45,
-    "high": 29.56,
-    "low": 26.3,
-    "close": 26.36,
-    "signal": "long",
-    "ret": 0
-  },
-  {
-    "date": "26-Jun-2009",
-    "open": 27.09,
-    "high": 27.22,
-    "low": 25.76,
-    "close": 25.93,
-    "signal": "long",
-    "ret": 0
-  },
-  {
-    "date": "29-Jun-2009",
-    "open": 25.93,
-    "high": 27.18,
-    "low": 25.29,
-    "close": 25.35,
-    "signal": "long",
-    "ret": 5.26315789473684
-  },
-  {
-    "date": "30-Jun-2009",
-    "open": 25.36,
-    "high": 27.38,
-    "low": 25.02,
-    "close": 26.35,
-    "signal": "long",
-    "ret": 6.73758865248228
-  }
-]')
-```
-</details>
-
-```{r}
-glimpse(data)
-```
-
-#### Chart
-
-```{r}
-open_close_color <- 
-  alt$condition(
-   "datum.open < datum.close",
-   alt$value("#06982d"),
-   alt$value("#ae1325")
-  )
-
-rule <- 
-  alt$Chart(data)$
-  mark_rule()$
-  encode(
-    alt$X(
-      "date:T",
-      timeUnit = "yearmonthdate",
-      scale = alt$Scale(
-        domain = list(
-          list(month= 5, date= 31, year= 2009),
-          list(month= 7, date= 1, year= 2009)
-        )
-      ),
-      axis = alt$Axis(format="%m/%d", title="Date in 2009")
-    ),
-    alt$Y(
-      "low",
-      scale = alt$Scale(zero=FALSE),
-      axis = alt$Axis(title="Price")
-    ),
-    alt$Y2("high"),
-    color = open_close_color
-)
-
-bar <- 
-  alt$Chart(data)$
-  mark_bar()$
-  encode(
-    alt$X("date:T", timeUnit = "yearmonthdate"),
-    y = "open",
-    y2 = "close",
-    color = open_close_color
-  )
-
-chart <- (rule + bar)
-
-chart
-```
 
 
 ## Diverging Stacked Bar Chart
@@ -870,9 +704,28 @@ chart <-
 chart
 ```
 
-## Error Bars showing Confidence Interval
+## Grouped Bar Chart
 
-[Altair example](https://altair-viz.github.io/gallery/error_bars_with_ci.html)
+[Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart.html)
+
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$barley())$
+  mark_bar()$
+  encode(
+    x = "year:O",
+    y = "sum(yield):Q",
+    color = "year:N",
+    column = "site:N"
+  )
+
+chart
+```
+
+## Grouped Bar Chart with Error Bars
+
+[Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart_with_error_bars.html)
 
 > This example shows how to show error bars using covidence intervals. The confidence intervals are computed internally in vega by a non-parametric [bootstrap of the mean](https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js).
 
@@ -885,132 +738,92 @@ glimpse(vega_data$barley())
 #### Chart
 
 ```{r}
-points <- 
-  alt$Chart(vega_data$barley())$
-  mark_point(filled = TRUE)$
+source <- vega_data$barley()
+
+bars <- 
+  alt$Chart()$
+  mark_bar()$
   encode(
-    x = alt$X(
-      "mean(yield)",
-      scale = alt$Scale(zero = FALSE),
-      axis = alt$Axis(title = "Barley Yield")
+    x = "year:O",
+    y = alt$Y(
+      "mean(yield):Q",
+      axis = alt$Axis(title = "Mean Yield")
     ),
-    y = "variety",
-    color = alt$value("black")
+    color = "year:N"
   )
 
 error_bars <- 
+  alt$Chart()$
+  mark_errorbar(extent='ci')$
+  encode(
+    x='year:O',
+    y='yield:Q'
+  )
+
+chart <- 
+  alt$layer(bars, error_bars, data=source)$
+  facet(
+    column='site:N'
+  )
+
+
+chart
+```
+
+
+## Horizontal Bar Chart
+
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_horizontal.html)
+
+Note that the argument to the `transform_filter()` function is a JavaScript expression that refers to a variable in the data using the `datum.` prefix.
+
+#### Data
+
+```{r}
+glimpse(vega_data$wheat())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$wheat())$
+  mark_bar()$
+  encode(
+    x = "wheat:Q",
+    y = "year:O"
+  )$
+  properties(height = 700)
+
+chart
+```
+
+## Horizontal Grouped Bar Chart
+
+[Altair example](https://altair-viz.github.io/gallery/horizontal_stacked_bar_chart.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+
+```{r}
+chart <- 
   alt$Chart(vega_data$barley())$
-  mark_rule()$
-  encode(
-    x = "ci0(yield)",
-    x2 = "ci1(yield)",
-    y = "variety"
-  )
-
-chart <- (points + error_bars)
-
-chart
-```
-
-## Gantt Chart
-
-[Altair example](https://altair-viz.github.io/gallery/gantt_chart.html)
-
-#### Data
-
-<details>
-<summary>Definition</summary>
-```{r}
-data <- 
-  fromJSON('[
-    {"task": "A", "start": 1, "end": 3},
-    {"task": "B", "start": 3, "end": 8},
-    {"task": "C", "start": 8, "end": 10}
-  ]')
-```
-</details>
-
-```{r}
-glimpse(data)
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(data)$
   mark_bar()$
   encode(
-    x = "start",
-    x2 = "end",
-    y = "task"
+    x = "sum(yield):Q",
+    y = "year:O",
+    color = "year:N",
+    row = "site:N"
   )
 
 chart
 ```
 
-## Grouped Bar Chart
-
-[Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart.html)
-
-> This example shows a population broken out by gender and age for a specific year. The grouping is achieved by building a trellis plot with narrow column encoded on the age groups and x-axes encoded on gender.
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$population())$
-  mark_bar(stroke = "transparent")$
-  encode(
-    x = alt$X(
-      "gender:N", 
-      scale = alt$Scale(rangeStep = 12), 
-      axis = alt$Axis(title = "")
-    ),
-    y = alt$Y(
-      "sum(people):Q", 
-      axis=alt$Axis(title = "population", grid = FALSE)
-    ),
-    color = alt$Color(
-      "gender:N", 
-      scale = alt$Scale(range = list("#EA98D2", "#659CCA"))
-    ),
-    column="age:O"
-  )$
-  configure_view(stroke = "transparent")$
-  configure_axis(domainWidth = 0.8)$
-  transform_filter(JS("datum.year == 2000"))$
-  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))$
-  copy()
-
-chart
-```
-
-## Horizontal Aggregate Bar Chart
-
-[Altair example](https://altair-viz.github.io/gallery/aggregate_bar_chart.html)
-
-Note that the argument to the `transorm_filter()` function is a JavaScript expression that refers to a variable in the data using the `datum.` prefix.
-
-#### Data
-
-```{r}
-glimpse(vega_data$population())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$population())$
-  mark_bar()$
-  encode(
-    x = alt$X("sum(people):Q", axis = alt$Axis(title = "population")),
-    y = "age:O"
-  )$
-  properties(height = 300, width = 300)$
-  transform_filter(JS("datum.year == 2000"))
-
-chart
-```
 
 ## Horizontal Stacked Bar Chart
 
@@ -1037,56 +850,7 @@ chart <-
 chart
 ```
 
-## LayerChart with Bar and Tick
 
-[Altair example](https://altair-viz.github.io/gallery/layered_chart_bar_mark.html)
-
-#### Data
-
-<details>
-<summary>Definition</summary>
-```{r}
-data <- 
-  data_frame(
-    project = c("a", "b", "c", "d", "e", "f", "g"),
-    score = c(25, 57, 23, 19, 8, 47, 8),
-    goal = c(25, 47, 30, 27, 38, 19, 4)
-  )
-```
-</details>
-
-```{r}
-glimpse(data)
-```
-
-#### Chart
-
-```{r}
-a <- 
-  alt$Chart(data = data)$
-  mark_bar()$
-  encode(
-    x = "project",
-    y = "score"
-  )
-
-b <- 
-  alt$Chart(data = data)$
-  mark_tick(color = "red")$
-  encode(
-    x = "project",
-    y = "goal"
-  )
-
-chart <- 
-  (a + b)$ 
-  # controls the width of the tick
-  configure_tick(thickness = 2, bandSize=35)$
-  # controls the width of the bar
-  configure_scale(rangeStep = 40)
-
-chart
-```
 
 ## Layered Bar Chart
 
@@ -1095,119 +859,28 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$population())
+glimpse(vega_data$iowa_electricity())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$population())$
+  alt$Chart(vega_data$iowa_electricity())$
   mark_bar(opacity = 0.7)$
   encode(
-    x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
+    x = "year:O",
     y = alt$Y(
-      "sum(people):Q", 
-      axis = alt$Axis(title = "population"), 
+      "net_generation:Q", 
       stack = NULL
     ),
-    color = alt$Color(
-      "gender:N", 
-      scale = alt$Scale(range = list("#EA98D2", "#659CCA")))
-  )$
-  transform_filter(JS("datum.year == 2000"))$
-  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))
+    color = "source"
+  )
 
 chart
 ```
 
-## Layered Bar Chart
 
-[Altair example](https://altair-viz.github.io/gallery/layered_bar_chart.html)
-
-## Layered Bar Chart with Line as Mean
-
-[Altair example](https://altair-viz.github.io/gallery/mean_overlay_over_precipitiation_chart.html)
-
-#### Data
-
-```{r}
-glimpse(vega_data$seattle_weather())
-```
-
-#### Chart
-
-```{r}
-source <- vega_data$seattle_weather()
-
-bar <- 
-  alt$Chart(source)$
-  mark_bar()$
-  encode(
-    x = alt$X("date:O", timeUnit = "month"),
-    y = alt$Y("mean(precipitation):Q")
-  )
-
-rule <- 
-  alt$Chart(source)$
-  mark_rule(color = "red")$
-  encode(
-    y = "mean(precipitation)",
-    size = alt$value(3)
-  )
-
-chart <- (bar + rule)
-
-chart
-```
-
-## Layered Plot with Dual-Axis
-
-[Altair example](https://altair-viz.github.io/gallery/layered_plot_with_dual_axis.html) 
-
-This seems exemplary of why dual-axes should be used with caution.
-
-#### Data
-
-```{r}
-glimpse(vega_data$seattle_weather())
-```
-
-#### Chart
-
-```{r}
-base <- 
-  alt$Chart(vega_data$seattle_weather())$
-  encode(
-    x = alt$X(
-      "date:O",
-      axis = alt$Axis(format = "%b"),
-      timeUnit = "month",
-      scale = alt$Scale(zero = FALSE)
-    )
-  )
-
-bar <- 
-  base$
-  mark_bar()$
-  encode(
-    y = "mean(precipitation)"
-  )
-
-
-line <-  
-  base$
-  mark_line(color = "red")$
-  encode(
-    y="mean(temp_max)"
-  )
-
-chart <-
-  (bar + line)$
-  resolve_scale(y= "independent")
-
-chart
-```
 
 ## Normalized Stacked Bar Chart
 
@@ -1216,76 +889,56 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$population())
+glimpse(vega_data$barley())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$population())$
+  alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
-    x = alt$X("age:O", scale = alt$Scale(rangeStep = 17)),
-    y = alt$Y(
-      "sum(people):Q",
-       axis = alt$Axis(title="population"),
-       stack = "normalize"
-    ),
-    color = alt$Color(
-      "gender:N",
-      scale = alt$Scale(range = c("#EA98D2", "#659CCA"))
-    )
-  )$
-  transform_filter(JS("datum.year == 2000"))$
-  transform_calculate("gender", JS('if(datum.sex == 2, "Female", "Male")'))
+    x = alt$X("sum(yield)", stack = "normalize"),
+    y = "variety",
+    color = "site"
+  )
 
 chart
 ```
 
-## Simple Bar Chart with Labels
 
-[Altair example](https://altair-viz.github.io/gallery/bar_chart_with_labels.html)
 
-#### Data
+## Sorted Bar Chart
 
-<details>
-<summary>Definition</summary>
-```{r}
-data <- 
-  data_frame(
-    a = c("A", "B", "C", "D", "E", "F", "G", "H", "I"),
-    b = c(28, 55, 43, 91, 81, 53, 19, 87, 52)
-  )
-```
-</details>
+[Altair example](https://altair-viz.github.io/gallery/bar_chart_sorter.html)  
+
 
 ```{r}
-glimpse(data)
+glimpse(vega_data$barley())
 ```
 
 #### Chart
-
 ```{r}
-bars <- 
-  alt$Chart(data)$
+chart <- 
+  alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
-    x = "b",
-    y = "a"
+    x = "sum(yield):Q",
+    y = alt$Y(
+      "site:N",
+      sort = alt$EncodingSortField(
+        field = "yield", # The field to use for the sort
+        op="sum",  # The operation to run on the field prior to sorting
+        order="descending"  # The order to sort in
+      )
+    )
   )
-
-text <- 
-  bars$
-  mark_text(align = "left", baseline = "middle", dx = 3)$
-  encode(
-    text = "b"
-  )
-
-chart <- (bars + text)
 
 chart
 ```
+
+
 
 ## Stacked Bar Chart
 
@@ -1293,32 +946,91 @@ chart
 
 
 ```{r}
-glimpse(vega_data$seattle_weather())
+glimpse(vega_data$barley())
 ```
 
 #### Chart
 ```{r}
 chart <- 
-  alt$Chart(vega_data$seattle_weather())$
+  alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
-    x = alt$X(
-      "date:N",
-      axis = alt$Axis(title = "Month of the Year"),
-      timeUnit = "month"
-    ),
-    y = "count(weather)",
-    color = alt$Color(
-      "weather:N",
-      legend = alt$Legend(title = "Weather type"),
-      scale = alt$Scale(
-        domain = list("sun", "fog", "drizzle", "rain", "snow"),
-        range = list("#e7ba42", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd")
-      )
+    x = "variety",
+    y = "sum(yield)",
+    color = "site"
+  )
+
+chart
+```
+
+## Stacked Bar Chart with Sorted Segments
+
+
+[Altair example](https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html)
+
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+```{r}
+chart <- 
+  alt$Chart(vega_data$barley())$
+  mark_bar()$
+  encode(
+    y = "variety",
+    x = "sum(yield)",
+    color = "site",
+    order = alt$Order(
+      # Sort the segments of the bars by this field
+      'site',
+      sort='ascending'
     )
   )
 
 chart
+```
+
+
+## Stacked Bar Chart with Text Overlay
+
+
+[Altair example](https://altair-viz.github.io/gallery/stacked_bar_chart_with_text.html)
+
+
+```{r}
+glimpse(vega_data$barley())
+```
+
+#### Chart
+```{r}
+source <- vega_data$barley()
+
+bars <- 
+  alt$Chart(source)$
+  mark_bar()$
+  encode(
+    x=alt$X('sum(yield):Q', stack='zero'),
+    y=alt$Y('variety:N'),
+    color=alt$Color('site')
+  )
+
+text = alt$Chart(source)$
+  mark_text(dx=-15, dy=3, color='white')$
+  encode(
+    x=alt$X('sum(yield):Q', stack='zero'),
+    y=alt$Y('variety:N'),
+    detail='site:N',
+    text=alt$Text('sum(yield):Q', format='.1f')
+  )
+
+
+
+chart <- (bars + text)
+
+chart
+
 ```
 
 ## Trellis Stacked Bar Chart
@@ -1335,12 +1047,12 @@ chart <-
   alt$Chart(vega_data$barley())$
   mark_bar()$
   encode(
-    x = "sum(yield)",
+    x = "yield",
     y = "variety",
     color = "site",
     column = "year"
   )$
-  properties(width = 250)
+  properties(width = 220)
 
 chart
 ```
