@@ -74,7 +74,7 @@ vega_data <- import_vega_data()
 cars <- vega_data$cars()
 
 chart <-
-  alt$Chart(r_to_py(cars))$
+  alt$Chart(cars)$
   mark_point()$
   encode(
     x = "Horsepower",
