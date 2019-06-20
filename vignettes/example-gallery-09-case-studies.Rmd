@@ -566,8 +566,8 @@ glimpse(source)
 
 ```{r eval = FALSE}
 # devtools::install_github("hadley/emo")
+e_cow <- emo::ji("cow2")
 e_pig <- emo::ji("pig2")
-e_cow <- emo::ji("cow")
 e_sheep <- emo::ji("sheep") 
 
 chart <- 
