@@ -123,11 +123,9 @@ This package rests on these foundations:
 
 As well, a particular debt is owed to the folks behind the [vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided a lot of the inspiration for these efforts.
 
-This project is a collaborative effort. In addition to the principal author:
+This project is a collaborative effort. In addition to the principal authors:
 
 - [Alicia Schep](https://github.com/AliciaSchep) has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.
-
-- [Haley Jeppson](https://github.com/haleyjeppson) has adapted the [Altair Example Gallery](https://altair-viz.github.io/gallery) to R.
 
 - [Heike Hofmann](https://github.com/heike) has been an invaluable advisor, providing incisive feedback, and insight into the fundamentals of interactive graphics.
 
