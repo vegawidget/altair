@@ -565,7 +565,10 @@ glimpse(source)
 #### Chart
 
 ```{r eval = FALSE}
-e_pig <- emo::ji("pig")
+# devtools::install_github("hadley/emo")
+e_pig <- emo::ji("pig2")
+e_cow <- emo::ji("cow")
+e_sheep <- emo::ji("sheep") 
 
 chart <- 
   alt$Chart(source)$
@@ -576,7 +579,9 @@ chart <-
     alt$Row('country:N', header=alt$Header(title='')),
     alt$Text('emoji:N')
   )$transform_calculate(
-    emoji = "{'cattle': '🐄', 'pigs': '🐖', 'sheep': '🐏'}[datum.animal]"
+    emoji = vegawidget::glue_js(
+      "{'cattle': '${e_cow}', 'pigs': '${e_pig}', 'sheep': '${e_sheep}'}[datum.animal]"
+    )
   )$transform_window(
     x = 'rank()',
     groupby = list('country', 'animal')
