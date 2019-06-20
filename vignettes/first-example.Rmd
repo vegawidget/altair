@@ -81,7 +81,7 @@ Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. I
 chart <- alt$Chart(...)
 ```
 
-The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. Using this package, the reticulate package automaticaLLY converts R `data.frame`s to Pandas Dataframes.
+The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. Using this package, the reticulate package automatically converts R `data.frame`s to Pandas DataFrames.
 
 As well, the reticulate package offers us a function `r_to_py()`, and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
 
