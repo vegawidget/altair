@@ -1,5 +1,5 @@
 Package: altair
-Version: 3.1.0.0.9005
+Version: 3.1.0.0.9006
 Title: R Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a Python interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
@@ -40,7 +40,7 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget (>= 0.2.0.9006),
+    vegawidget (>= 0.2.0.9012),
     repr
 Suggests:
     httr,
