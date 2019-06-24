@@ -29,68 +29,6 @@ library("tidyr")
 vega_data <- import_vega_data()
 ```
 
-## Anscombe's Quartet
-
-[Altair example](https://altair-viz.github.io/gallery/anscombe_plot.html)
-
-#### Data
-
-```{r}
-glimpse(vega_data$anscombe())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$anscombe())$
-  mark_circle()$
-  encode(
-    x = alt$X("X", scale = alt$Scale(zero = FALSE)),
-    y = alt$Y("Y", scale = alt$Scale(zero = FALSE)),
-    column="Series"
-  )$
-  properties(
-    width = 150,
-    height = 150
-  )
-
-chart
-```
-
-## Becker's Barley Trellis Plot
-
-[Altair example](https://altair-viz.github.io/gallery/beckers_barley_trellis_plot.html)
-
-#### Data
-
-```{r}
-glimpse(vega_data$barley())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$barley())$
-  mark_point()$
-  encode(
-    x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
-    y = alt$Y(
-        "variety",
-        sort = alt$EncodingSortField(
-          field = "yield", 
-          op = "median", 
-          order = "descending"
-        ),
-        scale = alt$Scale(rangeStep = 20)
-    ),
-    color = "year:N",
-    row = "site"
-  )
-
-chart
-```
 
 ## Binned Scatterplot
 
@@ -99,25 +37,112 @@ chart
 #### Data
 
 ```{r}
-movies <- vega_data$movies()
-
-glimpse(movies)
+#glimpse(vega_data$movies())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(movies)$
+  alt$Chart(vega_data$movies$url)$
   mark_circle()$
   encode(
     alt$X("IMDB_Rating:Q", bin = TRUE),
     alt$Y("Rotten_Tomatoes_Rating:Q", bin = TRUE),
-    size="count(IMDB_Rating)"
+    size="count()"
   )
 
 chart
 ```
+
+## Brushing Scatter Plot to show data on a table
+
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_linked_table.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$cars()
+
+# Brush for selection
+brush <- alt$selection(type = "interval")
+
+# Scatter Plot
+points <- 
+  alt$Chart(source)$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = alt$condition(brush, 'Cylinders:O', alt$value('grey'))
+  )$add_selection(brush)
+
+
+
+
+# Base chart for data tables
+ranked_text <-
+  alt$Chart(source)$
+  mark_text()$
+  encode(
+    y=alt$Y('row_number:O', axis=NULL)
+  )$transform_window(
+    row_number='row_number()'
+  )$transform_filter(
+    brush
+  )$transform_window(
+    rank='rank(row_number)'
+  )$transform_filter(
+    "datum.rank<20"
+  )
+
+# Data Tables
+horsepower <- 
+  ranked_text$
+  encode(
+    text='Horsepower:N'
+  )$
+  properties(
+    title='Horsepower'
+  )
+
+mpg <- 
+  ranked_text$encode(
+    text='Miles_per_Gallon:N'
+  )$
+  properties(
+    title='MPG'
+  )
+
+origin <- 
+  ranked_text$encode(
+    text='Origin:N'
+  )$
+  properties(
+    title='Origin'
+  )
+
+text <- alt$hconcat(horsepower, mpg, origin) # Combine data tables
+
+# Build chart
+chart <- 
+  alt$hconcat(
+    points,
+    text
+  )$resolve_legend(
+    color="independent"
+  )
+
+chart
+```
+
 
 ## Bubble Plot
 
@@ -240,33 +265,6 @@ chart <- (y_ticks | (points & x_ticks))
 chart
 ```
 
-## Gapminder Bubble Plot
-
-[Altair example](https://altair-viz.github.io/gallery/gapminder_bubble_plot.html)
-
-> This example shows how to make a bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost’s blog post [‘One Chart, Twelve Charting Libraries’](http://lisacharlotterost.github.io/2016/05/17/one-chart-code/)).
-
-#### Data
-
-```{r}
-glimpse(vega_data$gapminder_health_income())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$gapminder_health_income())$
-  mark_circle()$
-  encode(
-    alt$X("income:Q", scale = alt$Scale(type = "log")), 
-    alt$Y("health:Q", scale = alt$Scale(zero = FALSE)), 
-    size="population:Q"
-  )
-
-chart
-```
-
 ## Multifeature Scatter Plot
 
 [Altair example](https://altair-viz.github.io/gallery/multifeature_scatter_plot.html)
@@ -293,40 +291,7 @@ chart <-
 chart
 ```
 
-## Natural Disasters
 
-[Altair example](https://altair-viz.github.io/gallery/natural_disasters.html)
-
-#### Data
-
-```{r}
-glimpse(vega_data$disasters())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$disasters())$
-  mark_circle(opacity = 0.8, stroke = "black", strokeWidth = 1)$
-  encode(
-    x = alt$X("Year:O", axis = alt$Axis(labelAngle = 0)),
-    y = alt$Y("Entity:N"),
-    size = alt$Size(
-      "Deaths:Q",
-      scale = alt$Scale(range = c(0, 5000)),
-      legend = alt$Legend(title = "Annual Global Deaths")
-    ),
-    color = alt$Color("Entity:N", legend = NULL)
-   )$
-  properties(
-    width = 480,
-    height = 350
-  )$
-  transform_filter("datum.Entity != 'All natural disasters'")
-
-chart
-```
 
 ## Polynomial Fit Plot
 
@@ -415,15 +380,155 @@ chart <-
     y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
     color = "Origin:N"
   )$
-  properties(width = 200, height = 200)$
+  properties(width = 150, height = 150)$
   `repeat`(
-      row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
-      column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
-  )$
-  interactive()
+    row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
+    column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
+  )$interactive()
 
 chart
 ```
+
+
+
+## Scatter Plot with Href
+
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_href.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$cars())
+```
+
+#### Chart
+
+```{r}
+chart <- 
+  alt$Chart(vega_data$cars())$
+  transform_calculate(
+    "url", "'https://www.google.com/search?q=' + datum.Name"
+  )$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color='Origin:N',
+    href='url:N',
+    tooltip=list('Name:N', 'url:N')
+  )
+
+chart
+```
+
+
+
+## Scatter Plot with Rolling Mean
+
+
+[Altair example](https://altair-viz.github.io/gallery/scatter_with_rolling_mean.html)
+
+#### Data
+
+```{r}
+glimpse(vega_data$seattle_weather())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$seattle_weather()
+
+line <- 
+  alt$Chart(source)$
+  mark_line(
+    color = "red",
+    size = 3
+  )$
+  transform_window(
+    rolling_mean='mean(temp_max)',
+    frame=c(-15, 15)
+  )$
+  encode(
+    x = 'date:T',
+    y='rolling_mean:Q'
+  )
+
+
+points <- 
+  alt$Chart(source)$
+  mark_point()$
+  encode(
+    x = 'date:T',
+    y=alt$Y(
+      'temp_max:Q',
+      axis=alt$Axis(title='Max Temp'))
+  )
+
+points + line
+```
+
+
+## Simple Scatter Plot with Errorbars
+
+[Altair example](https://altair-viz.github.io/gallery/simple_scatter_with_errorbars.html)
+
+#### Data
+
+<details>
+<summary>Definition</summary>
+```{r}
+set.seed(0)
+source <- data_frame(
+  x = 1:5, 
+  y = rnorm(5, 10, 0.5),
+  yerr = 0.2
+)
+```
+</details>
+
+```{r}
+glimpse(source)
+```
+
+#### Chart
+
+```{r}
+# the base chart
+base <- 
+  alt$Chart(source)$
+  transform_calculate(
+    ymin="datum.y-datum.yerr",
+    ymax="datum.y+datum.yerr"
+  )
+
+# generate the points
+points <- 
+  base$
+  mark_point(
+    filled = TRUE,
+    size = 50,
+    color = "black"
+  )$
+  encode(
+    x=alt$X('x', scale=alt$Scale(domain=c(0, 6))),
+    y=alt$Y('y', scale=alt$Scale(domain=c(10, 11)))
+  )
+
+# generate the error bars
+errorbars <-
+  base$
+  mark_errorbar()$
+  encode(
+    x="x",
+    y="ymin:Q",
+    y2="ymax:Q"
+  )
+
+points + errorbars
+```
+
 
 ## Simple Scatter Plot with Labels
 
@@ -470,6 +575,59 @@ chart <- (text + bars)
 chart
 ```
 
+## Stripplot
+
+[Altair example](https://altair-viz.github.io/gallery/stripplot.html)
+
+#### Data
+
+```{r}
+#glimpse(vega_data$movies())
+```
+
+#### Chart
+
+```{r}
+source <- vega_data$movies$url
+
+stripplot <-
+  alt$Chart(source, width=40)$
+  transform_calculate(
+    # Generate Gaussian jitter with a Box-Muller transform
+    jitter='sqrt(-2*log(random()))*cos(2*PI*random())'
+  )$
+  mark_circle(size=8)$
+  encode(
+    x=alt$X(
+      'jitter:Q',
+      title=" ",
+      axis=alt$Axis(
+        values = list(0), 
+        ticks=TRUE, 
+        grid=FALSE, 
+        labels=FALSE),
+      scale=alt$Scale()
+    ),
+    y=alt$Y('IMDB_Rating:Q'),
+    color=alt$Color('Major_Genre:N', legend=NULL),
+    column=alt$Column(
+      'Major_Genre:N',
+      header=alt$Header(
+        labelAngle=-90,
+        titleOrient='top',
+        labelOrient='bottom',
+        labelAlign='right',
+        labelPadding=3
+      )
+    )
+  )$
+  configure_facet(spacing=0)$
+  configure_view(stroke="transparent")
+
+
+stripplot
+```
+
 ## Table Bubble Plot (Github Punch Card)
 
 [Altair example](https://altair-viz.github.io/gallery/scatter_with_labels.html)
@@ -477,14 +635,14 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$github())
+#glimpse(vega_data$github())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$github())$
+  alt$Chart(vega_data$github$url)$
   mark_circle()$
   encode(
     x = alt$X("time:O", timeUnit = "hours"),
@@ -504,21 +662,20 @@ This example demonstrates the need for a `ggplot2::facet_wrap()`-like capability
 #### Data
 
 ```{r}
-glimpse(vega_data$movies())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$movies())$
+  alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
-    x = "Worldwide_Gross:Q",
-    y = "US_DVD_Sales:Q",
-    column = "MPAA_Rating:N"
-  )$
-  properties(width = 200, height = 200)
+    x='Horsepower:Q',
+    y='Miles_per_Gallon:Q',
+    row='Origin:N'
+  )
 
 chart
 ```

@@ -37,8 +37,6 @@ It is not straightforward to preview the topological data, or the unemployment d
 - The `vega_data$us_10m` data is in topoJSON, not a data frame
 - The `vega_data$unemployment` data is in an unparsed format.
 
-Furthermore, we are using the URLs, which means that this example will not render in the RStudio IDE, although it will render in an external browser. 
-
 #### Data
 
 ```{r}
@@ -98,126 +96,24 @@ background <-
 # airport positions on background
 points <- 
   alt$Chart(airports)$
+  transform_aggregate(
+    latitude='mean(latitude)',
+    longitude='mean(longitude)',
+    count='count()',
+    groupby=list('state')
+  )$
   mark_circle()$
   encode(
     longitude = "longitude:Q",
     latitude = "latitude:Q",
-    size = alt$value(10),
-    color = alt$value("steelblue")
-  )
-
-chart <- (background + points)
-
-chart
-```
-
-## London Tube Lines 
-
-[Altair example](https://altair-viz.github.io/gallery/london_tube.html)
-
-> This example shows the London tube lines against the background of the borough boundaries. It is based on the [Vega-Lite example](https://vega.github.io/vega-lite/examples/geo_layer_line_london.html).
-
-#### Data
-
-```{r}
-boroughs <- alt$topo_feature(vega_data$londonBoroughs$url, "boroughs")
-tubelines <- alt$topo_feature(vega_data$londonTubeLines$url, "line")
-
-centroids <- vega_data$londonCentroids()
-glimpse(centroids)
-```
-
-#### Chart
-
-```{r}
-domain_line <- 
-  list("Bakerloo", "Central", "Circle", "District", "DLR", 
-       "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
-       "Piccadilly", "Victoria", "Waterloo & City" )
-
-range_line <- 
-  list("rgb(137,78,36)", "rgb(220,36,30)", "rgb(255,206,0)",
-       "rgb(1,114,41)", "rgb(0,175,173)", "rgb(215,153,175)",
-       "rgb(106,114,120)", "rgb(114,17,84)", "rgb(0,0,0)",
-       "rgb(0,24,168)", "rgb(0,160,226)", "rgb(106,187,170)")
-
-background <-
-  alt$Chart(boroughs)$
-  mark_geoshape(stroke = "white", strokeWidth = 2)$
-  encode(
-    color = alt$value("#eee")
-  )$
-  properties(width = 700, height = 500)
-
-labels <- 
-  alt$Chart(centroids)$
-  mark_text()$
-  encode(
-    longitude = "cx:Q",
-    latitude = "cy:Q",
-    text = "bLabel:N",
-    size = alt$value(8),
-    opacity = alt$value(0.6)
-  )$
-  transform_calculate("bLabel", "indexof (datum.name,' ') > 0  ? substring(datum.name,0,indexof(datum.name, ' ')) : datum.name")
-
-line_scale <- 
-  alt$Scale(domain = domain_line, range = range_line)
-
-lines <- 
-  alt$Chart(tubelines)$
-  mark_geoshape(filled = FALSE, strokeWidth = 2)$
-  encode(
-    color = alt$Color(
-      "id:N",
-      legend = alt$Legend(
-      title = NULL,
-      orient = "bottom-right",
-      offset = 0
-    )
-  )
-)
-
-chart <- (background + labels + lines)
-
-chart
-```
-
-## One Dot Per Zipcode
-
-[Altair example](https://altair-viz.github.io/gallery/one_dot_per_zipcode.html)
-
-If you are building a chart using a local data frame, the default is that there has to be less than 5000 observations. If you build a chart using a URL (local or remote), there is no such default.
-
-To modify this default:
-
-```r
-alt$data_transformers$enable('default', max_rows=<your new max>)
-```
-
-#### Data
-
-```{r}
-glimpse(vega_data$zipcodes())
-```
-
-#### Chart
-
-```{r}
-chart <- 
-  alt$Chart(vega_data$zipcodes$url)$
-  mark_circle(size = 3)$
-  encode(
-    longitude = "longitude:Q",
-    latitude = "latitude:Q",
-    color = "digit:N"
+    size = alt$Size('count:Q', title='Number of Airports'),
+    color = alt$value("steelblue"),
+    tooltip=list('state:N','count:Q')
   )$
   properties(
-    projection = list(type = "albersUsa"),
-    width = 650,
-    height = 400
-  )$
-  transform_calculate("digit", "substring(datum.zip_code, 0, 1)")
+    title='Number of airports in US')
+
+chart <- (background + points)
 
 chart
 ```
@@ -229,16 +125,14 @@ chart
 #### Data
 
 ```{r}
-pop_eng_hur <- vega_data$population_engineers_hurricanes()
-
-glimpse(pop_eng_hur)
+#glimpse(vega_data$population_engineers_hurricanes())
 ```
 
 #### Chart
 
 ```{r}
 states <- alt$topo_feature(vega_data$us_10m$url, "states")
-
+source <- vega_data$population_engineers_hurricanes$url
 variable_list <- list("population", "engineers", "hurricanes")
 
 chart <- 
@@ -249,7 +143,7 @@ chart <-
   )$
   transform_lookup(
     lookup = "id",
-    from_ = alt$LookupData(pop_eng_hur, "id", variable_list)
+    from_ = alt$LookupData(source, "id", variable_list)
   )$
   properties(width = 500, height = 300)$
   project(type = "albersUsa")$
@@ -259,68 +153,6 @@ chart <-
 chart
 ```
 
-## U.S. state capitals overlayed on a map of the U.S
-
-[Altair example](https://altair-viz.github.io/gallery/us_state_capitals.html)
-
-#### Data
-
-```{r}
-capitals <- vega_data$us_state_capitals()
-glimpse(capitals)
-```
-
-#### Chart
-
-```{r}
-states <- alt$topo_feature(vega_data$us_10m$url, "states")
-
-# US states background
-background <- 
-  alt$Chart(states)$
-  mark_geoshape(fill = "lightgray",stroke = "white")$
-  properties(title = "US State Capitols", width = 700, height = 400)$
-  project("albersUsa")
-
-# Points and text
-hover <- 
-  alt$selection(
-    type = "single", 
-    on = "mouseover", 
-    nearest = TRUE,
-    fields = list("lat", "lon")
-  )
-
-base <- 
-  alt$Chart(capitals)$
-  encode(
-    longitude = "lon:Q",
-    latitude = "lat:Q"
-  )
-
-text <- 
-  base$
-  mark_text(dy = -5, align = "right")$
-  encode(
-    alt$Text("city", type = "nominal"),
-    # switched from reference
-    opacity = alt$condition(hover, alt$value(1), alt$value(0))
-  )
-
-points <- 
-  base$
-  mark_point()$
-  encode(
-    color = alt$value("black"),
-    # switched from reference
-    size = alt$condition(hover, alt$value(100), alt$value(30))
-  )$
-  properties(selection = hover)
-
-chart <- (background + points + text)
-
-chart
-```
 
 ## World Projections 
 

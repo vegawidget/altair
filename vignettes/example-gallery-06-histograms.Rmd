@@ -35,20 +35,20 @@ vega_data <- import_vega_data()
 #### Data
 
 ```{r}
-glimpse(vega_data$movies())
+#glimpse(vega_data$movies())
 ```
 
 #### Chart
 
 ```{r}
-data <- vega_data$movies()
+data <- vega_data$movies$url
 
 bar <- 
   alt$Chart(data)$
   mark_bar()$
   encode(
     x = alt$X("IMDB_Rating:Q", bin=TRUE, axis=NULL),
-    y = alt$Y("count(IMDB_Rating)")
+    y = alt$Y("count()")
   )
 
 rule <- 
@@ -95,11 +95,8 @@ chart <-
   mark_area(opacity = 0.3, interpolate="step")$
   encode(
     x = alt$X("Measurement", bin = alt$Bin(maxbins = 100)),
-    y = alt$Y("count(Measurement)", stack = NULL),
-    color = alt$Color(
-      "Experiment",
-      scale = alt$Scale(range = list("#0000ff", "#008000", "#ff0000"))
-    )
+    y = alt$Y("count()", stack = NULL),
+    color = alt$Color("Experiment")
   )
 
 chart
