@@ -11,3 +11,4 @@
 ^pkgdown$
 ^\.gitattributes$
 ^CONTRIBUTING\.md$
+^CONTRIBUTING\.Rmd$
