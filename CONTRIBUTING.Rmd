@@ -88,11 +88,11 @@ Please build pkgdown as much as you would like - the `docs` folder is git-ignore
 
 ### Versioning
 
-The version nuumber may have as many as five components. The first three digits will mirror the version number of the supported (Python) Altair version; this is currently ``r altair::altair_version()$altair``. 
+The version nuumber may have as many as four components. The first two digits will mirror the first two digits of the version number of the supported (Python) Altair version; this is currently ``r altair::altair_version()$altair``. 
 
-The fourth component will correspond to a CRAN release of this package; these will be tagged.
+The third component will correspond to a CRAN release of this package; these will be tagged.
 
-A fifth component denotes a development version.
+A fourth component denotes a development version.
 
 Our goal is that each commit to the `master` branch will have an incremented version-number.
 
