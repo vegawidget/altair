@@ -40,7 +40,7 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget (>= 0.2.0.9012),
+    vegawidget (>= 0.2.1),
     repr
 Suggests:
     httr,
@@ -61,6 +61,5 @@ Suggests:
     rsvg,
     png,
     fs
-Remotes: vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
