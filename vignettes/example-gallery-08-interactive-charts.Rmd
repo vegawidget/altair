@@ -56,7 +56,7 @@ bars <-
 
 line <- 
   alt$Chart()$
-  mark_rule(color="firebrick")$
+  mark_rule(color = "firebrick")$
   encode(
     y = "mean(precipitation):Q",
     size = alt$SizeValue(3)
@@ -609,7 +609,7 @@ budget_sizing <-
 <details>
 <summary>Definition</summary>
 ```{r}
-source <- data_frame(
+source <- tibble(
   x = rnorm(100),
   y = rnorm(100),
   m = rnorm(100, 15, 1)
@@ -626,41 +626,31 @@ glimpse(source)
 
 ```{r}
 # interval selection in the scatter plot
-pts = alt$selection(type="interval", encodings=list("x"))
+pts <= alt$selection(type = "interval", encodings = list("x"))
 
 # left panel: scatter plot
-points = alt$Chart()$
-  mark_point(filled=TRUE, color="black")$
+points <- alt$Chart()$
+  mark_point(filled = TRUE, color = "black")$
   encode(
-    x='x',
-    y='y'
-  )$transform_filter(
-    pts
-  )$properties(
-    width=300,
-    height=300
-  )
+    x = "x",
+    y = "y"
+  )$
+  transform_filter(pts)$
+  properties(width = 300, height = 300)
 
 # right panel: histogram
-mag = alt$Chart()$mark_bar()$encode(
-  x='mbin:N',
-  y="count()",
-  color=alt$condition(pts, alt$value("black"), alt$value("lightgray"))
-)$properties(
-  width=300,
-  height=300
-)$add_selection(pts)
+mag <- alt$Chart()$mark_bar()$
+  encode(
+    x = "mbin:N",
+    y = "count()",
+    color = alt$condition(pts, alt$value("black"), alt$value("lightgray"))
+  )$
+  properties(width = 300, height = 300)$
+  add_selection(pts)
 
 # build the chart:
-alt$hconcat(
-  points,
-  mag,
-  data=source
-)$transform_bin(
-  "mbin",
-  field="m",
-  bin=alt$Bin(maxbins=20)
-)
+alt$hconcat(points, mag, data = source)$
+  transform_bin("mbin", field = "m", bin = alt$Bin(maxbins = 20))
 ```
 
 
@@ -834,26 +824,20 @@ source <- vega_data$unemployment_across_industries$url
 
 base <-
   alt$Chart(source)$
-  mark_area(
-    color='goldenrod',
-    opacity=0.3
-  )$
+  mark_area(color = "goldenrod", opacity = 0.3)$
   encode(
-    x='yearmonth(date):T',
-    y='sum(count):Q'
+    x = "yearmonth(date):T",
+    y = "sum(count):Q"
   )
 
-brush <-
-  alt$selection_interval(
-    encodings=list('x'), 
-    empty='all'
-  )
+brush <- alt$selection_interval(encodings = list("x"), empty = "all")
 
 background <- base$add_selection(brush)
+
 selected <- 
   base$
   transform_filter(brush)$
-  mark_area(color='goldenrod')
+  mark_area(color = "goldenrod")
 
 background + selected
 ```

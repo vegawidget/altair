@@ -49,12 +49,10 @@ chart <-
   encode(
     x = alt$X("X", scale = alt$Scale(zero = FALSE)),
     y = alt$Y("Y", scale = alt$Scale(zero = FALSE)),
-    column="Series"
+    column = "Series"
   )$
-  properties(
-    width = 180,
-    height = 180
-  )
+  properties(width = 180, height = 180)
+
 chart
 ```
 
@@ -66,7 +64,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$co2_concentration())
+glimpse(vega_data$co2_concentration())
 ```
 
 #### Chart
@@ -75,35 +73,31 @@ chart
 source <- vega_data$co2_concentration$url
 
 base <-
-  alt$Chart(
-    source,
-    title="Carbon Dioxide in the Atmosphere"
+  alt$Chart(source, title="Carbon Dioxide in the Atmosphere")$
+    transform_calculate(year = "year(datum.Date)")$
+    transform_calculate(decade = "floor(datum.year / 10)")$
+    transform_calculate(scaled_date = "(datum.year % 10) + (month(datum.Date)/12)")$
+    transform_window(
+      first_date = "first_value(scaled_date)",
+      last_date = "last_value(scaled_date)",
+      sort = list(alt$EncodingSortField(
+        field = "scaled_date", # field to use for the sort
+        order = "ascending"    # order to sort in
+      )
+    ),
+    groupby = list("decade"),
+    frame = list(NULL, NULL)
   )$transform_calculate(
-    year="year(datum.Date)"
-  )$transform_calculate(
-    decade="floor(datum.year / 10)"
-  )$transform_calculate(
-    scaled_date="(datum.year % 10) + (month(datum.Date)/12)"
-  )$transform_window(
-    first_date='first_value(scaled_date)',
-    last_date='last_value(scaled_date)',
-    sort = list(alt$EncodingSortField(
-      field = "scaled_date", # The field to use for the sort
-      order="ascending"  # The order to sort in
-    )),
-    groupby=list('decade'),
-    frame=list(NULL, NULL)
-  )$transform_calculate(
-    end="datum.first_date === datum.scaled_date ? 'first' : datum.last_date === datum.scaled_date ? 'last' : null"
+     end = "datum.first_date === datum.scaled_date ? 'first' : datum.last_date === datum.scaled_date ? 'last' : null"
   )$encode(
-    x=alt$X(
+    x = alt$X(
       "scaled_date:Q",
-      axis=alt$Axis(title="Year into Decade", tickCount=11)
+      axis = alt$Axis(title = "Year into Decade", tickCount = 11)
     ),
     y=alt$Y(
       "CO2:Q",
-      title="CO2 concentration in ppm",
-      scale=alt$Scale(zero=FALSE)
+      title = "CO2 concentration in ppm",
+      scale = alt$Scale(zero = FALSE)
     )
   )
 
@@ -113,28 +107,29 @@ line <-
   encode(
     color=alt$Color(
       "decade:O",
-      scale=alt$Scale(scheme="magma"),
-      legend=NULL
+      scale = alt$Scale(scheme = "magma"),
+      legend = NULL
     )
   )
 
-text <- base$encode(text="year:N")
+text <- base$encode(text = "year:N")
 
-start_year <- text$transform_filter(
-  "datum.end == 'first'"
-)$mark_text(baseline="top")
+start_year <- 
+  text$
+    transform_filter("datum.end == 'first'")$
+    mark_text(baseline = "top")
 
-end_year <- text$transform_filter(
-  "datum.end == 'last'"
-)$mark_text(baseline="bottom")
+end_year <- 
+  text$
+  transform_filter("datum.end == 'last'")$
+  mark_text(baseline="bottom")
 
 chart <- (line + start_year + end_year)
 
-chart <- chart$configure_text(
-  align="left",
-  dx=1,
-  dy=3
-)$properties(width=600, height=375)
+chart <- 
+  chart$
+    configure_text(align = "left", dx = 1, dy = 3)$
+    properties(width = 600, height = 375)
 
 chart
 ```
@@ -158,27 +153,33 @@ chart <-
   encode(
     x = alt$X(
       "yield", 
-      title="Barley Yield (bushels/acre)",
-      scale=alt$Scale(zero=FALSE),
-      axis=alt$Axis(grid=FALSE)),
+      title = "Barley Yield (bushels/acre)",
+      scale = alt$Scale(zero = FALSE),
+      axis = alt$Axis(grid = FALSE)
+    ),
     y = alt$Y(
       "variety",
-      title="",
+      title = "",
       sort = alt$EncodingSortField(
         field = "yield", 
         op = "sum", 
         order = "descending"
       ),
       scale = alt$Scale(rangeStep = 20),
-      axis=alt$Axis(grid=TRUE)
+      axis = alt$Axis(grid = TRUE)
     ),
-    color = alt$Color('year:N', legend=alt$Legend(title="Year")),
+    color = alt$Color("year:N", legend = alt$Legend(title = "Year")),
     row=alt$Row(
-      'site:N',
-      title="",
-      sort=alt$EncodingSortField(field='yield', op='sum', order='descending')
+      "site:N",
+      title = "",
+      sort = alt$EncodingSortField(
+        field = "yield", 
+        op = "sum", 
+        order = "descending"
+      )
     )
-  )$configure_view(stroke="transparent")
+  )$
+  configure_view(stroke = "transparent")
 
 chart
 ```
@@ -196,6 +197,7 @@ chart
 data <- 
   read_csv("https://frdata.wikimedia.org/donationdata-vs-day.csv") %>%
   mutate(date = as.character(date))
+
 glimpse(data)
 ```
 
@@ -221,7 +223,7 @@ chart <-
       timeUnit = "year", 
       legend = alt$Legend(title = "Year")
     ),
-    order = alt$Order("data:O", timeUnit= "year")
+    order = alt$Order("data:O", timeUnit = "year")
   )
 chart
 ```
@@ -335,7 +337,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$gapminder_health_income())
+glimpse(vega_data$gapminder_health_income())
 ```
 
 #### Chart
@@ -347,7 +349,7 @@ chart <-
   encode(
     alt$X("income:Q", scale = alt$Scale(type = "log")), 
     alt$Y("health:Q", scale = alt$Scale(zero = FALSE)), 
-    size="population:Q"
+    size = "population:Q"
   )
 chart
 ```
@@ -380,17 +382,17 @@ chart <-
   encode(
     x=alt$X(
       "year:T",
-      title="Year"
+      title = "Year"
     ),
     y=alt$Y(
       "net_generation:Q",
-      stack="normalize",
-      title="Share of net generation",
-      axis=alt$Axis(format=".0%")
+      stack = "normalize",
+      title = "Share of net generation",
+      axis = alt$Axis(format = ".0%")
     ),
     color=alt$Color(
       "source:N",
-      legend=alt$Legend(title="Electricity source")
+      legend = alt$Legend(title = "Electricity source")
     )
   )
 
@@ -480,23 +482,24 @@ color_scale <- alt$Scale(
 )
 
 ```
-
 </details>
 
 ```{r}
 chart <- 
   alt$Chart(source)$
-  mark_point(filled=TRUE, opacity=1, size=100)$
+  mark_point(filled = TRUE, opacity = 1, size = 100)$
   encode(
-    alt$X('x:O', axis=NULL),
-    alt$Y('animal:O', axis=NULL),
-    alt$Row('country:N', header=alt$Header(title='')),
-    alt$Shape('animal:N', legend=NULL, scale=shape_scale),
-    alt$Color('animal:N', legend=NULL, scale=color_scale)
-  )$transform_window(
-    x='rank()',
-    groupby=list('country', 'animal')
-  )$properties(width=550, height=140)
+    alt$X("x:O", axis = NULL),
+    alt$Y("animal:O", axis = NULL),
+    alt$Row("country:N", header = alt$Header(title = "")),
+    alt$Shape("animal:N", legend = NULL, scale = shape_scale),
+    alt$Color("animal:N", legend = NULL, scale = color_scale)
+  )$
+  transform_window(
+    x="rank()",
+    groupby = list("country", "animal")
+  )$
+  properties(width = 550, height = 140)
 
 chart
 ```
@@ -555,7 +558,6 @@ source <- fromJSON('[
       {"country": "United States", "animal": "sheep"}
   ]')
 ```
-
 </details>
 
 ```{r}
@@ -572,20 +574,23 @@ e_sheep <- emo::ji("sheep")
 
 chart <- 
   alt$Chart(source)$
-  mark_text(size=45, baseline='middle')$
+  mark_text(size = 45, baseline = "middle")$
   encode(
-    alt$X('x:O', axis=NULL),
-    alt$Y('animal:O', axis=NULL),
-    alt$Row('country:N', header=alt$Header(title='')),
-    alt$Text('emoji:N')
-  )$transform_calculate(
+    x = alt$X("x:O", axis = NULL),
+    y = alt$Y("animal:O", axis = NULL),
+    text = alt$Text("emoji:N"),
+    row = alt$Row("country:N", header = alt$Header(title = ""))
+  )$
+  transform_calculate(
     emoji = vegawidget::glue_js(
       "{'cattle': '${e_cow}', 'pigs': '${e_pig}', 'sheep': '${e_sheep}'}[datum.animal]"
     )
-  )$transform_window(
-    x = 'rank()',
-    groupby = list('country', 'animal')
-  )$properties(width=550, height=140)
+  )$
+  transform_window(
+    x = "rank()",
+    groupby = list("country", "animal")
+  )$
+  properties(width=550, height=140)
 
 chart
 ```
@@ -602,6 +607,7 @@ us <- vega_data$us_10m$url
 
 ```{r}
 airports <- vega_data$airports()
+
 glimpse(airports)
 ```
 
@@ -637,12 +643,13 @@ chart
 [Altair example](https://altair-viz.github.io/gallery/london_tube.html)
 
 > This example shows the London tube lines against the background of the borough boundaries. It is based on the [Vega-Lite example](https://vega.github.io/vega-lite/examples/geo_layer_line_london.html).
+
 #### Data
 
 ```{r}
 boroughs <- alt$topo_feature(vega_data$londonBoroughs$url, "boroughs")
 tubelines <- alt$topo_feature(vega_data$londonTubeLines$url, "line")
-#glimpse(vega_data$londonCentroids())
+glimpse(vega_data$londonCentroids())
 ```
 
 #### Chart
@@ -652,11 +659,13 @@ domain_line <-
   list("Bakerloo", "Central", "Circle", "District", "DLR", 
        "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
        "Piccadilly", "Victoria", "Waterloo & City" )
+
 range_line <- 
   list("rgb(137,78,36)", "rgb(220,36,30)", "rgb(255,206,0)",
        "rgb(1,114,41)", "rgb(0,175,173)", "rgb(215,153,175)",
        "rgb(106,114,120)", "rgb(114,17,84)", "rgb(0,0,0)",
        "rgb(0,24,168)", "rgb(0,160,226)", "rgb(106,187,170)")
+
 background <-
   alt$Chart(boroughs)$
   mark_geoshape(stroke = "white", strokeWidth = 2)$
@@ -675,8 +684,10 @@ labels <-
     opacity = alt$value(0.6)
   )$
   transform_calculate("bLabel", "indexof (datum.name,' ') > 0  ? substring(datum.name,0,indexof(datum.name, ' ')) : datum.name")
+
 line_scale <- 
   alt$Scale(domain = domain_line, range = range_line)
+
 lines <- 
   alt$Chart(tubelines)$
   mark_geoshape(filled = FALSE, strokeWidth = 2)$
@@ -690,6 +701,7 @@ lines <-
       )
     )
   )
+
 chart <- (background + labels + lines)
 chart
 ```
@@ -701,7 +713,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$disasters())
+glimpse(vega_data$disasters())
 ```
 
 #### Chart
@@ -773,8 +785,6 @@ chart
 
 > This example shows the 2010 daily high temperature (F) in Seattle, WA.
 
-
-
 #### Data
 
 ```{r}
@@ -790,18 +800,19 @@ source <- vega_data$seattle_temps$url
 chart <-
   alt$Chart(
     source,
-    title="2010 Daily High Temperature (F) in Seattle, WA"
+    title = "2010 Daily High Temperature (F) in Seattle, WA"
   )$
   mark_rect()$
   encode(
-    x='date(date):O',
-    y='month(date):O',
-    color=alt$Color('max(temp):Q', scale=alt$Scale(scheme="inferno")),
-    tooltip=list(
-      alt$Tooltip('monthdate(date):T', title='Date'),
-      alt$Tooltip('max(temp):Q', title='Max Temp')
+    x = "date(date):O",
+    y = "month(date):O",
+    color = alt$Color("max(temp):Q", scale = alt$Scale(scheme = "inferno")),
+    tooltip = list(
+      alt$Tooltip("monthdate(date):T", title = "Date"),
+      alt$Tooltip("max(temp):Q", title = "Max Temp")
     )
-  )$properties(width=550)
+  )$
+  properties(width = 550)
 
 chart
 ```
@@ -824,12 +835,15 @@ scale <- alt$Scale(
   domain = list("sun", "fog", "drizzle", "rain", "snow"),
   range = list("#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd")
 )
+
 color <- alt$Color("weather:N", scale = scale)
+
 # We create two selections:
 # - a brush that is active on the top panel
 # - a multi-click that is active on the bottom panel
 brush <- alt$selection_interval(encodings = list("x"))
 click <- alt$selection_multi(encodings = list("color"))
+
 # Top panel is scatter plot of temperature vs time
 points <- 
   alt$Chart(data = vega_data$seattle_weather())$
@@ -838,7 +852,7 @@ points <-
     x = alt$X(
       "date:T", 
       timeUnit = "monthdate", 
-      axis=alt$Axis(title="Date")
+      axis = alt$Axis(title = "Date")
     ),
     alt$Y(
       "temp_max:Q",
@@ -849,7 +863,8 @@ points <-
     size = alt$Size("precipitation:Q", scale = alt$Scale(range = list(5, 200)))
   )$
   properties(width = 600, height = 300, selection = brush)$
-  transform_filter(click$ref())
+  transform_filter(click)
+
 # Bottom panel is a bar chart of weather type
 bars <- 
   alt$Chart(data = vega_data$seattle_weather())$
@@ -859,11 +874,13 @@ bars <-
     y = "weather:N",
     color = alt$condition(click, color, alt$value("lightgray"))
   )$
-  transform_filter(brush$ref())$
+  transform_filter(brush)$
   properties(width = 600, selection = click)
+
 chart <- 
   (points & bars)$ 
   properties(title = "Seattle Weather: 2012-2015")  
+
 chart
 ```
 
@@ -898,48 +915,50 @@ presidents = fromJSON('[
 bars <-
   alt$Chart(
     source,
-    title="The U.S. employment crash during the Great Recession"
+    title = "The U.S. employment crash during the Great Recession"
   )$mark_bar()$
   encode(
-    x=alt$X("month:T", title=""),
-    y=alt$Y("nonfarm_change:Q", title="Change in non-farm employment (in thousands)"),
+    x = alt$X("month:T", title = ""),
+    y = alt$Y(
+      "nonfarm_change:Q", 
+      title = "Change in non-farm employment (in thousands)"
+    ),
     color=alt$condition(
-      'datum.nonfarm_change > 0',
+      "datum.nonfarm_change > 0",
       alt$value("steelblue"),
       alt$value("orange")
     )
   )
 
 rule <-
-  alt$Chart(presidents)$mark_rule(
-    color="black",
-    strokeWidth=2
-  )$encode(
-    x='end:T'
-  )$transform_filter('datum.president == "Bush"')
+  alt$Chart(presidents)$
+  mark_rule(color = "black",strokeWidth = 2)$
+  encode(
+    x = "end:T"
+  )$
+  transform_filter('datum.president == "Bush"')
 
 text <- 
   alt$Chart(presidents)$
   mark_text(
-    align='left',
-    baseline='middle',
-    dx=7,
-    dy=-135,
-    size=11
+    align = "left",
+    baseline = "middle",
+    dx = 7,
+    dy = -135,
+    size = 11
   )$encode(
-    x='start:T',
-    x2='end:T',
-    text='president',
-    color=alt$value('#000000')
+    x = "start:T",
+    x2 = "end:T",
+    text = "president",
+    color = alt$value("#000000")
   )
 
-chart <- (bars + rule + text)$properties(width=600)
+chart <- (bars + rule + text)$properties(width = 600)
 
 chart
 ```
 
 ## Top K Items
-
 
 [Altair Example](https://altair-viz.github.io/gallery/top_k_items.html)
 
@@ -949,7 +968,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$movies())
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -959,23 +978,25 @@ source <- vega_data$movies$url
 
 # Top 10 movies by IMBD rating
 chart <-
-  alt$Chart(
-    source
-  )$
+  alt$Chart(source)$
   mark_bar()$
   encode(
-    x=alt$X(
-      'Title:N',
-      sort=alt$EncodingSortField(field="IMDB_Rating", op="mean", order='descending')
+    x = alt$X(
+      "Title:N",
+      sort = alt$EncodingSortField(
+        field = "IMDB_Rating", 
+        op = "mean", 
+        order = "descending"
+      )
     ),
-    y=alt$Y('IMDB_Rating:Q'),
-    color=alt$Color('IMDB_Rating:Q')
-  )$transform_window(
-    rank='rank(IMDB_Rating)',
-    sort=list(alt$SortField('IMDB_Rating', order='descending'))
-  )$transform_filter(
-    ('datum.rank < 10')
-  )
+    y = alt$Y("IMDB_Rating:Q"),
+    color = alt$Color("IMDB_Rating:Q")
+  )$
+  transform_window(
+    rank = "rank(IMDB_Rating)",
+    sort = list(alt$SortField("IMDB_Rating", order = "descending"))
+  )$
+  transform_filter("datum.rank < 10")
 
 chart
 ```
@@ -1000,7 +1021,7 @@ ttxt <- txt %>%
   str_remove_all(' ') %>% 
   str_split(pattern = "")
 
-source <- data_frame(letters = ttxt[[1]])
+source <- tibble(letters = ttxt[[1]])
 ```
 </details>
 
@@ -1013,26 +1034,23 @@ glimpse(source)
 ```{r}
 chart <-
   alt$Chart(source)$
-  transform_aggregate(
-    count='count()',
-    groupby=list('letters')
-  )$
+  transform_aggregate(count = "count()", groupby = list("letters"))$
   transform_window(
-    rank='rank(count)',
-    sort=list(alt$SortField('count', order='descending'))
+    rank = "rank(count)",
+    sort = list(alt$SortField("count", order = "descending"))
   )$
-  transform_filter(
-    "datum.rank < 10"
-  )$
+  transform_filter("datum.rank < 10")$
   mark_bar()$
   encode(
-    y=alt$Y('letters:N',
-            sort=alt$EncodingSortField(
-              field='count', 
-              op='sum', 
-              order='descending')
+    y = alt$Y(
+      "letters:N",
+      sort = alt$EncodingSortField(
+        field = "count", 
+        op = "sum", 
+        order = "descending"
+      )
     ),
-    x='count:Q'
+    x = "count:Q"
   )
 
 chart
@@ -1046,7 +1064,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$us_state_capitals())
+glimpse(vega_data$us_state_capitals())
 ```
 
 #### Chart
@@ -1054,12 +1072,14 @@ chart
 ```{r}
 states <- alt$topo_feature(vega_data$us_10m$url, "states")
 capitals <- vega_data$us_state_capitals$url
+
 # US states background
 background <- 
   alt$Chart(states)$
   mark_geoshape(fill = "lightgray",stroke = "white")$
   properties(title = "US State Capitols", width = 700, height = 400)$
   project("albersUsa")
+
 # Points and text
 hover <- 
   alt$selection(
@@ -1068,12 +1088,14 @@ hover <-
     nearest = TRUE,
     fields = list("lat", "lon")
   )
+
 base <- 
   alt$Chart(capitals)$
   encode(
     longitude = "lon:Q",
     latitude = "lat:Q"
   )
+
 text <- 
   base$
   mark_text(dy = -5, align = "right")$
@@ -1082,6 +1104,7 @@ text <-
     # switched from reference
     opacity = alt$condition(hover, alt$value(1), alt$value(0))
   )
+
 points <- 
   base$
   mark_point()$
@@ -1091,7 +1114,9 @@ points <-
     size = alt$condition(hover, alt$value(100), alt$value(30))
   )$
   properties(selection = hover)
+
 chart <- (background + points + text)
+
 chart
 ```
 
@@ -1103,13 +1128,14 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$population())
+glimpse(vega_data$population())
 ```
 
 #### Chart
 
 ```{r}
 pop <- vega_data$population$url
+
 pink_blue <- 
   alt$Scale(
     domain = list("Male", "Female"),
@@ -1121,6 +1147,7 @@ year <- alt$selection_single(
   fields = list("year"), 
   bind = slider
 )
+
 chart <- 
   alt$Chart(pop)$
   mark_bar()$
@@ -1131,8 +1158,9 @@ chart <-
     column = "age:O"
   )$
   properties(width = 20, selection = year)$
-  transform_calculate("sex", JS('if(datum.sex == 1, "Male", "Female")'))$
+  transform_calculate("sex", "if(datum.sex == 1, 'Male', 'Female')")$
   transform_filter(year$ref())
+
 chart
 ```
 
@@ -1146,7 +1174,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$population())
+glimpse(vega_data$population())
 ```
 
 #### Chart
@@ -1154,64 +1182,67 @@ chart
 ```{r}
 source <- vega_data$population$url
 
-slider <- alt$binding_range(min=1850, max=2000, step=10)
+slider <- alt$binding_range(min = 1850, max = 2000, step = 10)
 
 select_year <- 
   alt$selection_single(
-    name='year', 
-    fields=list('year'),
-    bind=slider,
-    init=list(year = 2000))
+    name = "year", 
+    fields = list("year"),
+    bind = slider,
+    init = list(year = 2000)
+  )
 
 base <-
   alt$
   Chart(source)$
   add_selection(select_year)$
   transform_filter(select_year)$
-  transform_calculate("gender", JS('if(datum.sex == 1, "Male", "Female")'))$
+  transform_calculate("gender", "if(datum.sex == 1, 'Male', 'Female')")$
   properties(width=250)
 
 
 color_scale <-
   alt$Scale(
-    domain=list('Male', 'Female'),
-    range=list('#1f77b4', '#e377c2')
+    domain = list("Male", "Female"),
+    range = list("#1f77b4", "#e377c2")
   )
 
 left <-
   base$
-  transform_filter(
-    "datum.gender == 'Female'"
-  )$
+  transform_filter("datum.gender == 'Female'")$
   encode(
-    y=alt$Y('age:O', axis=NULL),
-    x=alt$X('sum(people):Q',
-            title='population',
-            sort=alt$SortOrder('descending')),
-    color=alt$Color('gender:N', scale=color_scale, legend=NULL)
+    y = alt$Y("age:O", axis=NULL),
+    x = alt$X(
+      "sum(people):Q",
+      title = "population",
+      sort = alt$SortOrder("descending")
+    ),
+    color = alt$Color("gender:N", scale = color_scale, legend = NULL)
   )$
   mark_bar()$
-  properties(title='Female')
+  properties(title = "Female")
 
-middle = base$encode(
-  y=alt$Y('age:O', axis=NULL),
-  text=alt$Text('age:Q')
-)$
+middle <- 
+  base$
+  encode(
+    y = alt$Y("age:O", axis = NULL),
+    text = alt$Text("age:Q")
+  )$
   mark_text()$
-  properties(width=20)
+  properties(width = 20)
 
-right = base$transform_filter(
-  "datum.gender == 'Male'"
-)$
+right <- 
+  base$
+  transform_filter("datum.gender == 'Male'")$
   encode(
-    y=alt$Y('age:O', axis=NULL),
-    x=alt$X('sum(people):Q', title='population'),
-    color=alt$Color('gender:N', scale=color_scale, legend=NULL)
+    y = alt$Y("age:O", axis = NULL),
+    x = alt$X("sum(people):Q", title = "population"),
+    color = alt$Color("gender:N", scale = color_scale, legend = NULL)
   )$
   mark_bar()$
-  properties(title='Male')
+  properties(title = "Male")
 
-chart <- alt$concat(left, middle, right, spacing=5)
+chart <- alt$concat(left, middle, right, spacing = 5)
 
 chart
 ```
@@ -1227,7 +1258,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$population())
+glimpse(vega_data$population())
 ```
 
 #### Chart
@@ -1239,18 +1270,19 @@ chart <-
   alt$Chart(source)$
   mark_area()$
   encode(
-    x='age:O',
-    y=alt$Y(
-      'sum(people):Q',
-      title='Population',
-      axis=alt$Axis(format='~s')
+    x = "age:O",
+    y = alt$Y(
+      "sum(people):Q",
+      title = "Population",
+      axis = alt$Axis(format = "~s")
     ),
-    facet='year:O'
-  )$properties(
-    title='US Age Distribution By Year',
-    columns=5,
-    width=90,
-    height=80
+    facet = "year:O"
+  )$
+  properties(
+    title = "US Age Distribution By Year",
+    columns = 5,
+    width = 90,
+    height = 80
   )
 
 chart
@@ -1277,87 +1309,71 @@ glimpse(vega_data$wheat())
 ```{r}
 base_wheat <-
   alt$Chart(vega_data$wheat$url)$
-  transform_calculate(year_end="+datum.year + 5")
+    transform_calculate(year_end = "+datum.year + 5")
 
 base_monarchs <- 
   alt$Chart(vega_data$monarchs$url)$
-  transform_calculate(
-    offset="((!datum.commonwealth && datum.index % 2) ? -1: 1) * 2 + 95",
-    off2="((!datum.commonwealth && datum.index % 2) ? -1: 1) + 95",
-    y="95",
-    x="+datum.start + (+datum.end - +datum.start)/2"
-  )
+    transform_calculate(
+      offset = "((!datum.commonwealth && datum.index % 2) ? -1: 1) * 2 + 95",
+      off2 = "((!datum.commonwealth && datum.index % 2) ? -1: 1) + 95",
+      y = "95",
+      x = "+datum.start + (+datum.end - +datum.start)/2"
+    )
 
 bars <-
-  base_wheat$mark_bar(
-    fill= "#aaa", 
-    stroke= "#999"
-  )$
+  base_wheat$
+  mark_bar(fill = "#aaa", stroke = "#999")$
   encode(
-    x=alt$X("year:Q", axis=alt$Axis(format='d', tickCount=5)),
-    y=alt$Y("wheat:Q", axis=alt$Axis(zindex=1)),
-    x2=alt$X2("year_end")
+    x = alt$X("year:Q", axis = alt$Axis(format = "d", tickCount = 5)),
+    y = alt$Y("wheat:Q", axis = alt$Axis(zindex = 1)),
+    x2 = alt$X2("year_end")
   )
 
 area <-
   base_wheat$
-  mark_area(
-    color="#a4cedb", 
-    opacity= 0.7
-  )$
+  mark_area(color="#a4cedb", opacity = 0.7)$
   encode(
-    x=alt$X("year:Q"),
-    y=alt$Y("wages:Q")
+    x = alt$X("year:Q"),
+    y = alt$Y("wages:Q")
   )
 
-area_line_1 <-
-  area$mark_line(
-    color= "#000", 
-    opacity= 0.7
-  )
-area_line_2 <-
-  area$mark_line(
-    yOffset= -2, 
-    color= "#EE8182"
-  )
+area_line_1 <- area$mark_line(color = "#000", opacity = 0.7)
+area_line_2 <-area$mark_line(yOffset= -2, color = "#EE8182")
 
 top_bars <- 
   base_monarchs$
-  mark_bar(stroke="#000")$
+  mark_bar(stroke = "#000")$
   encode(
-    x=alt$X("start:Q"),
-    x2=alt$X2("end"),
-    y=alt$Y("y:Q"),
-    y2=alt$Y2("offset"),
-    fill=alt$Fill("commonwealth:N", 
-                  legend=NULL, 
-                  scale=alt$Scale(range=list("black", "white"))
+    x = alt$X("start:Q"),
+    x2 = alt$X2("end"),
+    y = alt$Y("y:Q"),
+    y2 = alt$Y2("offset"),
+    fill = alt$Fill(
+      "commonwealth:N", 
+      legend = NULL, 
+      scale = alt$Scale(range = list("black", "white"))
     )
   )
 
-
-
 top_text <-
   base_monarchs$
-  mark_text(
-    yOffset= 14,
-    fontSize= 9, 
-    fontStyle="italic"
-  )$
+  mark_text(yOffset = 14, fontSize = 9, fontStyle ="italic")$
   encode(
-    x=alt$X("x:Q"),
-    y=alt$Y("off2:Q"),
-    text=alt$Text("name:N")
+    x = alt$X("x:Q"),
+    y = alt$Y("off2:Q"),
+    text = alt$Text("name:N")
   )
 
-chart <- (bars + area + area_line_1 + area_line_2 + top_bars + top_text)$
-  properties(
-    width=900, height=400
-  )$
+chart <- 
+  (bars + area + area_line_1 + area_line_2 + top_bars + top_text)$
+  properties(width = 900, height = 400)$
   configure_axis(
-    title=NULL, gridColor="white", gridOpacity=0.25, domain=FALSE
+    title = NULL, 
+    gridColor = "white", 
+    gridOpacity = 0.25, 
+    domain = FALSE
   )$
-  configure_view(stroke="transparent")
+  configure_view(stroke = "transparent")
 
 chart
 ```
