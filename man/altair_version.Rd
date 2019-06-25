@@ -14,5 +14,8 @@ Returns a named list of version tags for Altair, Vega, Vega-Lite,
 and Vega-Embed
 }
 \examples{
+if (interactive()) {
   altair_version()
+}
+
 }

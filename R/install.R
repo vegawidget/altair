@@ -129,7 +129,10 @@ check_altair <- function(quiet = FALSE) {
 #'
 #' @return named `list` of version tags
 #' @examples
+#' if (interactive()) {
 #'   altair_version()
+#' }
+#'
 #' @export
 #'
 altair_version <- function() {

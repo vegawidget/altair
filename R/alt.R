@@ -6,7 +6,9 @@
 #'
 #' @return altair object
 #' @examples
-#'   as_chart(vegawidget::spec_mtcars)
+#'   if (interactive()) {
+#'     as_chart(vegawidget::spec_mtcars)
+#'   }
 #' @export
 #'
 as_chart <- function(spec) {
