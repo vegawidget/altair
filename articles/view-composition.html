@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
       </span>
     </div>
 
@@ -124,7 +124,10 @@
       <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
     </li>
     <li>
-      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+      <a href="../articles/example-gallery-09-case-studies.html">Case Studies</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-10-other-charts.html">Other Charts</a>
     </li>
   </ul>
 </li>
@@ -152,13 +155,13 @@
 
       
       </header><script src="view-composition_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="view-composition_files/vega-5.4.0/vega.min.js"></script><script src="view-composition_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="view-composition_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="view-composition_files/vega-embed-4.2.0/vega-embed.js"></script><script src="view-composition_files/vegawidget-binding-0.2.0.9012/vegawidget.js"></script><div class="row">
+<script src="view-composition_files/vega-embed-4.2.0/vega-embed.js"></script><script src="view-composition_files/vegawidget-binding-0.2.1.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>View Composition</h1>
                         <h4 class="author">Alicia Schep</h4>
             
-            <h4 class="date">2019-06-24</h4>
+            <h4 class="date">2019-06-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/view-composition.Rmd"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
@@ -241,8 +244,8 @@
 <a class="sourceLine" id="cb1-8" data-line-number="8">line_plot &lt;-<span class="st"> </span>base<span class="op">$</span><span class="kw">mark_line</span>()</a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10">scatter_plot <span class="op">+</span><span class="st"> </span>line_plot</a></code></pre></div>
-<div id="htmlwidget-4beb99fdf386efa83531" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4beb99fdf386efa83531">{"x":{
+<div id="htmlwidget-26cce815c51e0a8e1653" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-26cce815c51e0a8e1653">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -1004,8 +1007,8 @@
 <a class="sourceLine" id="cb3-10" data-line-number="10">combined_plot2 &lt;-<span class="st"> </span>(scatter_plot2 <span class="op">+</span><span class="st"> </span>line_plot2)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">"Beaver 2"</span>, <span class="dt">width =</span> <span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12">combined_plot <span class="op">|</span><span class="st"> </span>combined_plot2</a></code></pre></div>
-<div id="htmlwidget-2998055836872509a48d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2998055836872509a48d">{"x":{
+<div id="htmlwidget-f783eb66be0da7d411fe" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f783eb66be0da7d411fe">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -2408,8 +2411,8 @@
 <a class="sourceLine" id="cb5-2" data-line-number="2">combined_plot2 &lt;-<span class="st"> </span>combined_plot2<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">combined_plot <span class="op">&amp;</span><span class="st"> </span>combined_plot2</a></code></pre></div>
-<div id="htmlwidget-6a91faceb26790f134ca" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a91faceb26790f134ca">{"x":{
+<div id="htmlwidget-40675ece6e8269a1cf66" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-40675ece6e8269a1cf66">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -3827,8 +3830,8 @@
 <a class="sourceLine" id="cb7-15" data-line-number="15">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb7-16" data-line-number="16"></a>
 <a class="sourceLine" id="cb7-17" data-line-number="17">(combined_plot <span class="op">|</span><span class="st"> </span>hist_plot) <span class="op">&amp;</span><span class="st"> </span>(combined_plot2 <span class="op">|</span><span class="st"> </span>hist_plot2)</a></code></pre></div>
-<div id="htmlwidget-57c69637d985a6c65ee4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-57c69637d985a6c65ee4">{"x":{
+<div id="htmlwidget-1ee07aacd85b28dcab7b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1ee07aacd85b28dcab7b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5285,8 +5288,8 @@
 <a class="sourceLine" id="cb8-10" data-line-number="10">  </a>
 <a class="sourceLine" id="cb8-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb8-12" data-line-number="12">plot<span class="op">$</span><span class="kw">facet</span>(<span class="dt">row =</span> <span class="st">"cyl:N"</span>, <span class="dt">column =</span> <span class="st">"gear:N"</span>)</a></code></pre></div>
-<div id="htmlwidget-997c94ef90136db1b2dd" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-997c94ef90136db1b2dd">{"x":{
+<div id="htmlwidget-cb0fb07e8df05c99eff2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb0fb07e8df05c99eff2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5772,8 +5775,8 @@
 <a class="sourceLine" id="cb9-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb9-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb9-14" data-line-number="14">plot2</a></code></pre></div>
-<div id="htmlwidget-c185c344a16fdf4f013f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c185c344a16fdf4f013f">{"x":{
+<div id="htmlwidget-bd53431f27d8874290a1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bd53431f27d8874290a1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {

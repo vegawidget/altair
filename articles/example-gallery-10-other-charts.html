@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
       </span>
     </div>
 
@@ -124,7 +124,10 @@
       <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
     </li>
     <li>
-      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+      <a href="../articles/example-gallery-09-case-studies.html">Case Studies</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-10-other-charts.html">Other Charts</a>
     </li>
   </ul>
 </li>
@@ -152,13 +155,13 @@
 
       
       </header><script src="example-gallery-10-other-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.4.0/vega.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-10-other-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.2.0.9012/vegawidget.js"></script><div class="row">
+<script src="example-gallery-10-other-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.2.1.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Other Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-06-24</h4>
+            <h4 class="date">2019-06-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-10-other-charts.Rmd"><code>vignettes/example-gallery-10-other-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-10-other-charts.Rmd</code></div>
@@ -169,21 +172,12 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#other-charts">Other Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># devtools::install_github("vegawidget/altair")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="bar-chart-with-highlighted-segment" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bar-chart-with-highlighted-segment" class="anchor"></a>Bar Chart with Highlighted Segment</h2>
@@ -202,39 +196,37 @@
 <h4 class="hasAnchor">
 <a href="#chart" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">wheat</span>()</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">threshold &lt;-<span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span>(<span class="dt">threshold =</span><span class="dv">90</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Warning: `data_frame()` is deprecated, use `tibble()`.</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; This warning is displayed once per session.</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">bars &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="dt">x=</span><span class="st">"year:O"</span>,</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">    <span class="dt">y=</span><span class="st">"wheat:Q"</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  )</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">highlight &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="st">  </span><span class="kw">mark_bar</span>(<span class="dt">color=</span><span class="st">"#e45755"</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="dt">x=</span><span class="st">'year:O'</span>,</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="dt">y=</span><span class="st">'baseline:Q'</span>,</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">    <span class="dt">y2=</span><span class="st">'wheat:Q'</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">  )<span class="op">$</span><span class="kw">transform_filter</span>(</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22">    <span class="st">"datum.wheat &gt; 90"</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">  )<span class="op">$</span><span class="kw">transform_calculate</span>(<span class="st">"baseline"</span>, <span class="st">"90"</span>)</a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">rule &lt;-</a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(threshold)<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-29" data-line-number="29">    <span class="dt">y=</span><span class="st">'threshold:Q'</span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30">  )</a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32">(bars <span class="op">+</span><span class="st"> </span>highlight <span class="op">+</span><span class="st"> </span>rule)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width=</span><span class="dv">600</span>)</a></code></pre></div>
-<div id="htmlwidget-e002ffef6ab3b8e1acda" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e002ffef6ab3b8e1acda">{"x":{
+<a class="sourceLine" id="cb3-2" data-line-number="2">threshold &lt;-<span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(<span class="dt">threshold =</span> <span class="dv">90</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">bars &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">y =</span> <span class="st">"wheat:Q"</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">  )</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">highlight &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw">mark_bar</span>(<span class="dt">color =</span> <span class="st">"#e45755"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="dt">y =</span> <span class="st">"baseline:Q"</span>,</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="dt">y2 =</span> <span class="st">"wheat:Q"</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="st">  </span><span class="kw">transform_filter</span>(<span class="st">"datum.wheat &gt; 90"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="st">"baseline"</span>, <span class="st">"90"</span>)</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">rule &lt;-</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(threshold)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">    <span class="dt">y =</span> <span class="st">"threshold:Q"</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">  )</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">(bars <span class="op">+</span><span class="st"> </span>highlight <span class="op">+</span><span class="st"> </span>rule)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">600</span>)</a></code></pre></div>
+<div id="htmlwidget-4ff050123eb587442b03" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4ff050123eb587442b03">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -611,19 +603,16 @@
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"median(yield)"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero=</span><span class="ot">FALSE</span>)),</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"median(yield)"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>)),</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety:O"</span>,</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="dt">facet =</span> <span class="st">"site:O"</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">  )<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">    <span class="dt">columns=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="dt">width=</span><span class="dv">200</span>,</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">    <span class="dt">height=</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">  )</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-ee0ce36fbc47f49773df" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ee0ce36fbc47f49773df">{"x":{
+<a class="sourceLine" id="cb5-9" data-line-number="9">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">columns =</span> <span class="dv">2</span>, <span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">chart</a></code></pre></div>
+<div id="htmlwidget-cbcface56259d72af272" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cbcface56259d72af272">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "columns": 2,
@@ -1403,7 +1392,25 @@
 <div id="data-2" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-2" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># glimpse(vega_data$movies())</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(vega_data<span class="op">$</span>movies<span class="op">$</span>url))</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Observations: 3,201</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Variables: 16</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; $ Title                  &lt;chr&gt; "The Land Girls", "First Love, Last Rites…</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; $ US_Gross               &lt;int&gt; 146083, 10876, 203134, 373615, 1009819, 2…</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; $ Worldwide_Gross        &lt;dbl&gt; 146083, 10876, 203134, 373615, 1087521, 2…</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; $ US_DVD_Sales           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; $ Production_Budget      &lt;int&gt; 8000000, 300000, 250000, 300000, 1000000,…</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; $ Release_Date           &lt;chr&gt; "Jun 12 1998", "Aug 07 1998", "Aug 28 199…</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; $ MPAA_Rating            &lt;chr&gt; "R", "R", NA, NA, "R", NA, "R", "R", "R",…</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; $ Running_Time_min       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; $ Distributor            &lt;chr&gt; "Gramercy", "Strand", "Lionsgate", "Fine …</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; $ Source                 &lt;chr&gt; NA, NA, NA, NA, "Original Screenplay", NA…</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; $ Major_Genre            &lt;chr&gt; NA, "Drama", "Comedy", "Comedy", "Drama",…</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; $ Creative_Type          &lt;chr&gt; NA, NA, NA, NA, "Contemporary Fiction", N…</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; $ Director               &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Christopher Nola…</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; $ Rotten_Tomatoes_Rating &lt;int&gt; NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 8…</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; $ IMDB_Rating            &lt;dbl&gt; 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8…</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; $ IMDB_Votes             &lt;int&gt; 1071, 207, 865, NA, 165, NA, 15133, 353, …</span></a></code></pre></div>
 </div>
 <div id="chart-2" class="section level4">
 <h4 class="hasAnchor">
@@ -1413,15 +1420,15 @@
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_rect</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"IMDB_Rating:Q"</span>, <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">60</span>)),</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"Rotten_Tomatoes_Rating:Q"</span>, <span class="dt">bin=</span>alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">40</span>)),</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"Rotten_Tomatoes_Rating:Q"</span>, <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">40</span>)),</a>
 <a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8">      <span class="st">"count(IMDB_Rating):Q"</span>, </a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">scheme =</span> <span class="st">"greenblue"</span>)</a>
 <a class="sourceLine" id="cb7-10" data-line-number="10">    )</a>
 <a class="sourceLine" id="cb7-11" data-line-number="11">  )</a>
 <a class="sourceLine" id="cb7-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-dc88e21263fe40fa60f7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dc88e21263fe40fa60f7">{"x":{
+<div id="htmlwidget-e684f2896e0d0e04c55b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e684f2896e0d0e04c55b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -1476,21 +1483,27 @@
 <blockquote>
 <p>This example shows how to make a basic box plot using US Population data from 2000.</p>
 </blockquote>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">#glimpse(vega_data$population())</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">population</span>())</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Observations: 570</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; $ age    &lt;dbl&gt; 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35, 3…</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; $ people &lt;dbl&gt; 1483789, 1450376, 1411067, 1359668, 1260099, 1216114, 107…</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; $ sex    &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, …</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; $ year   &lt;dbl&gt; 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 185…</span></a></code></pre></div>
 <div id="chart-3" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-3" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">chart &lt;-</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span>population<span class="op">$</span>url)<span class="op">$</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_boxplot</span>(<span class="dt">extent=</span><span class="st">'min-max'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_boxplot</span>(<span class="dt">extent=</span><span class="st">"min-max"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="dt">x=</span><span class="st">'age:O'</span>,</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="dt">y=</span><span class="st">'people:Q'</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"age:O"</span>,</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"people:Q"</span></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb9-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-c6767ee9760d1221f8af" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c6767ee9760d1221f8af">{"x":{
+<div id="htmlwidget-55d4351dffdc15b59561" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-55d4351dffdc15b59561">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -1755,42 +1768,45 @@
 <a class="sourceLine" id="cb12-4" data-line-number="4">    alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"#06982d"</span>),</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">    alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"#ae1325"</span>)</a>
 <a class="sourceLine" id="cb12-6" data-line-number="6">  )</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">rule &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(data)<span class="op">$</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb12-11" data-line-number="11">    alt<span class="op">$</span><span class="kw">X</span>(</a>
-<a class="sourceLine" id="cb12-12" data-line-number="12">      <span class="st">"date:T"</span>,</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13">      <span class="dt">timeUnit =</span> <span class="st">"yearmonthdate"</span>,</a>
-<a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(</a>
-<a class="sourceLine" id="cb12-15" data-line-number="15">        <span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb12-16" data-line-number="16">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">5</span>, <span class="dt">date=</span> <span class="dv">31</span>, <span class="dt">year=</span> <span class="dv">2009</span>),</a>
-<a class="sourceLine" id="cb12-17" data-line-number="17">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">7</span>, <span class="dt">date=</span> <span class="dv">1</span>, <span class="dt">year=</span> <span class="dv">2009</span>)</a>
-<a class="sourceLine" id="cb12-18" data-line-number="18">        )</a>
-<a class="sourceLine" id="cb12-19" data-line-number="19">      ),</a>
-<a class="sourceLine" id="cb12-20" data-line-number="20">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">format=</span><span class="st">"%m/%d"</span>, <span class="dt">title=</span><span class="st">"Date in 2009"</span>)</a>
-<a class="sourceLine" id="cb12-21" data-line-number="21">    ),</a>
-<a class="sourceLine" id="cb12-22" data-line-number="22">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb12-23" data-line-number="23">      <span class="st">"low"</span>,</a>
-<a class="sourceLine" id="cb12-24" data-line-number="24">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero=</span><span class="ot">FALSE</span>),</a>
-<a class="sourceLine" id="cb12-25" data-line-number="25">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title=</span><span class="st">"Price"</span>)</a>
-<a class="sourceLine" id="cb12-26" data-line-number="26">    ),</a>
-<a class="sourceLine" id="cb12-27" data-line-number="27">    alt<span class="op">$</span><span class="kw">Y2</span>(<span class="st">"high"</span>),</a>
-<a class="sourceLine" id="cb12-28" data-line-number="28">    <span class="dt">color =</span> open_close_color</a>
-<a class="sourceLine" id="cb12-29" data-line-number="29">  )</a>
-<a class="sourceLine" id="cb12-30" data-line-number="30">bar &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb12-31" data-line-number="31"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(data)<span class="op">$</span></a>
-<a class="sourceLine" id="cb12-32" data-line-number="32"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb12-33" data-line-number="33"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb12-34" data-line-number="34">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"date:T"</span>, <span class="dt">timeUnit =</span> <span class="st">"yearmonthdate"</span>),</a>
-<a class="sourceLine" id="cb12-35" data-line-number="35">    <span class="dt">y =</span> <span class="st">"open"</span>,</a>
-<a class="sourceLine" id="cb12-36" data-line-number="36">    <span class="dt">y2 =</span> <span class="st">"close"</span>,</a>
-<a class="sourceLine" id="cb12-37" data-line-number="37">    <span class="dt">color =</span> open_close_color</a>
-<a class="sourceLine" id="cb12-38" data-line-number="38">  )</a>
-<a class="sourceLine" id="cb12-39" data-line-number="39">chart &lt;-<span class="st"> </span>(rule <span class="op">+</span><span class="st"> </span>bar)</a>
-<a class="sourceLine" id="cb12-40" data-line-number="40">chart</a></code></pre></div>
-<div id="htmlwidget-61e30f8f1739e0a27532" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-61e30f8f1739e0a27532">{"x":{
+<a class="sourceLine" id="cb12-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">rule &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(data)<span class="op">$</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">    alt<span class="op">$</span><span class="kw">X</span>(</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">      <span class="st">"date:T"</span>,</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="dt">timeUnit =</span> <span class="st">"yearmonthdate"</span>,</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(</a>
+<a class="sourceLine" id="cb12-16" data-line-number="16">        <span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb12-17" data-line-number="17">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">5</span>, <span class="dt">date=</span> <span class="dv">31</span>, <span class="dt">year=</span> <span class="dv">2009</span>),</a>
+<a class="sourceLine" id="cb12-18" data-line-number="18">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">7</span>, <span class="dt">date=</span> <span class="dv">1</span>, <span class="dt">year=</span> <span class="dv">2009</span>)</a>
+<a class="sourceLine" id="cb12-19" data-line-number="19">        )</a>
+<a class="sourceLine" id="cb12-20" data-line-number="20">      ),</a>
+<a class="sourceLine" id="cb12-21" data-line-number="21">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">format =</span> <span class="st">"%m/%d"</span>, <span class="dt">title =</span> <span class="st">"Date in 2009"</span>)</a>
+<a class="sourceLine" id="cb12-22" data-line-number="22">    ),</a>
+<a class="sourceLine" id="cb12-23" data-line-number="23">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
+<a class="sourceLine" id="cb12-24" data-line-number="24">      <span class="st">"low"</span>,</a>
+<a class="sourceLine" id="cb12-25" data-line-number="25">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb12-26" data-line-number="26">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Price"</span>)</a>
+<a class="sourceLine" id="cb12-27" data-line-number="27">    ),</a>
+<a class="sourceLine" id="cb12-28" data-line-number="28">    alt<span class="op">$</span><span class="kw">Y2</span>(<span class="st">"high"</span>),</a>
+<a class="sourceLine" id="cb12-29" data-line-number="29">    <span class="dt">color =</span> open_close_color</a>
+<a class="sourceLine" id="cb12-30" data-line-number="30">  )</a>
+<a class="sourceLine" id="cb12-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb12-32" data-line-number="32">bar &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb12-33" data-line-number="33"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(data)<span class="op">$</span></a>
+<a class="sourceLine" id="cb12-34" data-line-number="34"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb12-35" data-line-number="35"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb12-36" data-line-number="36">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"date:T"</span>, <span class="dt">timeUnit =</span> <span class="st">"yearmonthdate"</span>),</a>
+<a class="sourceLine" id="cb12-37" data-line-number="37">    <span class="dt">y =</span> <span class="st">"open"</span>,</a>
+<a class="sourceLine" id="cb12-38" data-line-number="38">    <span class="dt">y2 =</span> <span class="st">"close"</span>,</a>
+<a class="sourceLine" id="cb12-39" data-line-number="39">    <span class="dt">color =</span> open_close_color</a>
+<a class="sourceLine" id="cb12-40" data-line-number="40">  )</a>
+<a class="sourceLine" id="cb12-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb12-42" data-line-number="42">chart &lt;-<span class="st"> </span>(rule <span class="op">+</span><span class="st"> </span>bar)</a>
+<a class="sourceLine" id="cb12-43" data-line-number="43">chart</a></code></pre></div>
+<div id="htmlwidget-abe58eed811459c189a0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-abe58eed811459c189a0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -2114,23 +2130,23 @@
 <a class="sourceLine" id="cb14-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3">error_bars &lt;-</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent=</span><span class="st">'stdev'</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'yield:Q'</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero=</span><span class="ot">FALSE</span>)),</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>)</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent =</span> <span class="st">"stdev"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>( </a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"yield:Q"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>)),</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"variety:N"</span>)</a>
 <a class="sourceLine" id="cb14-9" data-line-number="9">  )</a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb14-11" data-line-number="11">points &lt;-</a>
 <a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled=</span><span class="ot">TRUE</span>, <span class="dt">color=</span><span class="st">'black'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">"black"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'yield:Q'</span>, <span class="dt">aggregate=</span><span class="st">'mean'</span>),</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>)</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"yield:Q"</span>, <span class="dt">aggregate =</span> <span class="st">"mean"</span>),</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"variety:N"</span>)</a>
 <a class="sourceLine" id="cb14-17" data-line-number="17">  )</a>
 <a class="sourceLine" id="cb14-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb14-19" data-line-number="19">error_bars <span class="op">+</span><span class="st"> </span>points</a></code></pre></div>
-<div id="htmlwidget-095ef669373a2035a288" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-095ef669373a2035a288">{"x":{
+<div id="htmlwidget-1ce856470fa1ed393a63" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1ce856470fa1ed393a63">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -2944,23 +2960,23 @@
 <a class="sourceLine" id="cb16-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb16-3" data-line-number="3">error_bars &lt;-</a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent=</span><span class="st">'ci'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent =</span> <span class="st">"ci"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'yield:Q'</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero=</span><span class="ot">FALSE</span>)),</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>)</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"yield:Q"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>)),</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"variety:N"</span>)</a>
 <a class="sourceLine" id="cb16-9" data-line-number="9">  )</a>
 <a class="sourceLine" id="cb16-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb16-11" data-line-number="11">points &lt;-</a>
 <a class="sourceLine" id="cb16-12" data-line-number="12"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled=</span><span class="ot">TRUE</span>, <span class="dt">color=</span><span class="st">'black'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">"black"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb16-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb16-15" data-line-number="15">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'yield:Q'</span>, <span class="dt">aggregate=</span><span class="st">'mean'</span>),</a>
-<a class="sourceLine" id="cb16-16" data-line-number="16">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>)</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"yield:Q"</span>, <span class="dt">aggregate =</span> <span class="st">"mean"</span>),</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"variety:N"</span>)</a>
 <a class="sourceLine" id="cb16-17" data-line-number="17">  )</a>
 <a class="sourceLine" id="cb16-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb16-19" data-line-number="19">error_bars <span class="op">+</span><span class="st"> </span>points</a></code></pre></div>
-<div id="htmlwidget-d565628e4214dc625084" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d565628e4214dc625084">{"x":{
+<div id="htmlwidget-8cfecc31e7df559091de" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8cfecc31e7df559091de">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -3789,39 +3805,40 @@
 <a class="sourceLine" id="cb18-18" data-line-number="18"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris)<span class="op">$</span></a>
 <a class="sourceLine" id="cb18-19" data-line-number="19"><span class="st">  </span><span class="kw">mark_area</span>(<span class="dt">opacity =</span> <span class="fl">0.3</span>, <span class="dt">interpolate =</span> <span class="st">"step"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb18-20" data-line-number="20"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb18-21" data-line-number="21">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"sepalLength:Q"</span>,</a>
-<a class="sourceLine" id="cb18-22" data-line-number="22">              <span class="co"># when using bins, the axis scale is set through</span></a>
-<a class="sourceLine" id="cb18-23" data-line-number="23">              <span class="co"># the bin extent, so we do not specify the scale here</span></a>
-<a class="sourceLine" id="cb18-24" data-line-number="24">              <span class="co"># (which would be ignored anyway)</span></a>
-<a class="sourceLine" id="cb18-25" data-line-number="25">              <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">20</span>, <span class="dt">extent =</span> xscale<span class="op">$</span>domain),</a>
-<a class="sourceLine" id="cb18-26" data-line-number="26">              <span class="dt">stack =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb18-27" data-line-number="27">              <span class="dt">axis =</span> blank_axis</a>
-<a class="sourceLine" id="cb18-28" data-line-number="28">    ),</a>
-<a class="sourceLine" id="cb18-29" data-line-number="29">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"count(sepalLength)"</span>, <span class="dt">stack =</span> <span class="ot">NULL</span>, <span class="dt">axis =</span> blank_axis),</a>
-<a class="sourceLine" id="cb18-30" data-line-number="30">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"species:N"</span>)</a>
-<a class="sourceLine" id="cb18-31" data-line-number="31">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb18-32" data-line-number="32"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height=</span><span class="dv">60</span>)</a>
-<a class="sourceLine" id="cb18-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb18-34" data-line-number="34">right_hist &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb18-35" data-line-number="35"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris)<span class="op">$</span></a>
-<a class="sourceLine" id="cb18-36" data-line-number="36"><span class="st">  </span><span class="kw">mark_area</span>(<span class="dt">opacity=</span> <span class="fl">0.3</span>, <span class="dt">interpolate=</span> <span class="st">"step"</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb18-37" data-line-number="37"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb18-38" data-line-number="38">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"count(sepalWidth)"</span>, <span class="dt">stack=</span><span class="ot">NULL</span>, <span class="dt">axis=</span>blank_axis),</a>
-<a class="sourceLine" id="cb18-39" data-line-number="39">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb18-40" data-line-number="40">      <span class="st">"sepalWidth:Q"</span>,</a>
-<a class="sourceLine" id="cb18-41" data-line-number="41">      <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">20</span>, <span class="dt">extent =</span> yscale<span class="op">$</span>domain),</a>
-<a class="sourceLine" id="cb18-42" data-line-number="42">      <span class="dt">stack =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb18-43" data-line-number="43">      <span class="dt">axis =</span> blank_axis</a>
-<a class="sourceLine" id="cb18-44" data-line-number="44">    ),</a>
-<a class="sourceLine" id="cb18-45" data-line-number="45">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"species:N"</span>)</a>
-<a class="sourceLine" id="cb18-46" data-line-number="46">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb18-47" data-line-number="47"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width=</span><span class="dv">60</span>)</a>
-<a class="sourceLine" id="cb18-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb18-49" data-line-number="49">chart &lt;-<span class="st"> </span>(top_hist <span class="op">&amp;</span><span class="st"> </span>(points <span class="op">|</span><span class="st"> </span>right_hist))</a>
-<a class="sourceLine" id="cb18-50" data-line-number="50"></a>
-<a class="sourceLine" id="cb18-51" data-line-number="51">chart</a></code></pre></div>
-<div id="htmlwidget-6d4fdc302ef3ebcab234" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d4fdc302ef3ebcab234">{"x":{
+<a class="sourceLine" id="cb18-21" data-line-number="21">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(</a>
+<a class="sourceLine" id="cb18-22" data-line-number="22">      <span class="st">"sepalLength:Q"</span>,</a>
+<a class="sourceLine" id="cb18-23" data-line-number="23">      <span class="co"># when using bins, the axis scale is set through</span></a>
+<a class="sourceLine" id="cb18-24" data-line-number="24">      <span class="co"># the bin extent, so we do not specify the scale here</span></a>
+<a class="sourceLine" id="cb18-25" data-line-number="25">      <span class="co"># (which would be ignored anyway)</span></a>
+<a class="sourceLine" id="cb18-26" data-line-number="26">      <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">20</span>, <span class="dt">extent =</span> xscale<span class="op">$</span>domain),</a>
+<a class="sourceLine" id="cb18-27" data-line-number="27">      <span class="dt">stack =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb18-28" data-line-number="28">      <span class="dt">axis =</span> blank_axis</a>
+<a class="sourceLine" id="cb18-29" data-line-number="29">    ),</a>
+<a class="sourceLine" id="cb18-30" data-line-number="30">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"count(sepalLength)"</span>, <span class="dt">stack =</span> <span class="ot">NULL</span>, <span class="dt">axis =</span> blank_axis),</a>
+<a class="sourceLine" id="cb18-31" data-line-number="31">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"species:N"</span>)</a>
+<a class="sourceLine" id="cb18-32" data-line-number="32">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb18-33" data-line-number="33"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb18-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb18-35" data-line-number="35">right_hist &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb18-36" data-line-number="36"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris)<span class="op">$</span></a>
+<a class="sourceLine" id="cb18-37" data-line-number="37"><span class="st">  </span><span class="kw">mark_area</span>(<span class="dt">opacity =</span> <span class="fl">0.3</span>, <span class="dt">interpolate =</span> <span class="st">"step"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb18-38" data-line-number="38"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb18-39" data-line-number="39">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"count(sepalWidth)"</span>, <span class="dt">stack =</span> <span class="ot">NULL</span>, <span class="dt">axis =</span> blank_axis),</a>
+<a class="sourceLine" id="cb18-40" data-line-number="40">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
+<a class="sourceLine" id="cb18-41" data-line-number="41">      <span class="st">"sepalWidth:Q"</span>,</a>
+<a class="sourceLine" id="cb18-42" data-line-number="42">      <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">20</span>, <span class="dt">extent =</span> yscale<span class="op">$</span>domain),</a>
+<a class="sourceLine" id="cb18-43" data-line-number="43">      <span class="dt">stack =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb18-44" data-line-number="44">      <span class="dt">axis =</span> blank_axis</a>
+<a class="sourceLine" id="cb18-45" data-line-number="45">    ),</a>
+<a class="sourceLine" id="cb18-46" data-line-number="46">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"species:N"</span>)</a>
+<a class="sourceLine" id="cb18-47" data-line-number="47">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb18-48" data-line-number="48"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb18-49" data-line-number="49"></a>
+<a class="sourceLine" id="cb18-50" data-line-number="50">chart &lt;-<span class="st"> </span>(top_hist <span class="op">&amp;</span><span class="st"> </span>(points <span class="op">|</span><span class="st"> </span>right_hist))</a>
+<a class="sourceLine" id="cb18-51" data-line-number="51"></a>
+<a class="sourceLine" id="cb18-52" data-line-number="52">chart</a></code></pre></div>
+<div id="htmlwidget-d042007d67bc1029302c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d042007d67bc1029302c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5049,8 +5066,8 @@
 <a class="sourceLine" id="cb21-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb21-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb21-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-a5a5db435874debb9f17" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5a5db435874debb9f17">{"x":{
+<div id="htmlwidget-95192713daff6cbcdbc1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-95192713daff6cbcdbc1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5114,10 +5131,10 @@
 <h4 class="hasAnchor">
 <a href="#data-7" class="anchor"></a>Data</h4>
 <details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">101</span>)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">person =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">person =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"</span>)</a></code></pre></div>
 </details><div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co">#&gt; Observations: 101</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co">#&gt; Observations: 100</span></a>
 <a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">#&gt; Variables: 1</span></a>
 <a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">#&gt; $ id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…</span></a></code></pre></div>
 </div>
@@ -5126,27 +5143,20 @@
 <a href="#chart-9" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">chart &lt;-</a>
 <a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(data)<span class="op">$</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">transform_calculate</span>(</a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">    <span class="dt">row=</span><span class="st">"ceil(datum.id/10)"</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">  )<span class="op">$</span><span class="kw">transform_calculate</span>(</a>
-<a class="sourceLine" id="cb24-6" data-line-number="6">    <span class="dt">col=</span><span class="st">"datum.id - datum.row*10"</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">    <span class="dt">filled=</span><span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb24-9" data-line-number="9">    <span class="dt">size=</span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb24-11" data-line-number="11">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"col:O"</span>, <span class="dt">axis=</span><span class="ot">NULL</span>),</a>
-<a class="sourceLine" id="cb24-12" data-line-number="12">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"row:O"</span>, <span class="dt">axis=</span><span class="ot">NULL</span>),</a>
-<a class="sourceLine" id="cb24-13" data-line-number="13">    <span class="dt">shape=</span>alt<span class="op">$</span><span class="kw">ShapeValue</span>(person)</a>
-<a class="sourceLine" id="cb24-14" data-line-number="14">  )<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb24-15" data-line-number="15">    <span class="dt">width=</span><span class="dv">400</span>,</a>
-<a class="sourceLine" id="cb24-16" data-line-number="16">    <span class="dt">height=</span><span class="dv">400</span></a>
-<a class="sourceLine" id="cb24-17" data-line-number="17">  )<span class="op">$</span><span class="kw">configure_view</span>(</a>
-<a class="sourceLine" id="cb24-18" data-line-number="18">    <span class="dt">strokeWidth=</span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb24-19" data-line-number="19">  )</a>
-<a class="sourceLine" id="cb24-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb24-21" data-line-number="21">chart</a></code></pre></div>
-<div id="htmlwidget-062a011c4fef60da4c24" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-062a011c4fef60da4c24">{"x":{
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="dt">row =</span> <span class="st">"ceil(datum.id/10)"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="dt">col =</span> <span class="st">"datum.id - datum.row*10"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled =</span> <span class="ot">TRUE</span>, <span class="dt">size =</span> <span class="dv">50</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"col:O"</span>, <span class="dt">axis =</span> <span class="ot">NULL</span>),</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"row:O"</span>, <span class="dt">axis =</span> <span class="ot">NULL</span>),</a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">    <span class="dt">shape =</span> alt<span class="op">$</span><span class="kw">ShapeValue</span>(person)</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">400</span>, <span class="dt">height =</span> <span class="dv">400</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-12" data-line-number="12"><span class="st">  </span><span class="kw">configure_view</span>(<span class="dt">strokeWidth =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb24-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb24-14" data-line-number="14">chart</a></code></pre></div>
+<div id="htmlwidget-96252299e625dddc758d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-96252299e625dddc758d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5160,10 +5170,10 @@
       }
     },
     "data": {
-      "name": "data-09d7382b54ed818adc4209f0095ac149"
+      "name": "data-33e0d8fd414409bdd77cbb1bde37149a"
     },
     "datasets": {
-      "data-09d7382b54ed818adc4209f0095ac149": [
+      "data-33e0d8fd414409bdd77cbb1bde37149a": [
         {
           "id": 1
         },
@@ -5463,9 +5473,6 @@
         },
         {
           "id": 100
-        },
-        {
-          "id": 101
         }
       ]
     },
@@ -5530,16 +5537,16 @@
 <a class="sourceLine" id="cb26-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb26-3" data-line-number="3">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb26-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(stocks)<span class="op">$</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_line</span>(<span class="dt">point=</span><span class="ot">TRUE</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_line</span>(<span class="dt">point =</span> <span class="ot">TRUE</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb26-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb26-7" data-line-number="7">    <span class="dt">x=</span><span class="st">'date:T'</span>,</a>
-<a class="sourceLine" id="cb26-8" data-line-number="8">    <span class="dt">y=</span><span class="st">'price:Q'</span>,</a>
-<a class="sourceLine" id="cb26-9" data-line-number="9">    <span class="dt">color=</span><span class="st">'symbol:N'</span></a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">    <span class="dt">x =</span> <span class="st">"date:T"</span>,</a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">    <span class="dt">y =</span> <span class="st">"price:Q"</span>,</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9">    <span class="dt">color =</span> <span class="st">"symbol:N"</span></a>
 <a class="sourceLine" id="cb26-10" data-line-number="10">  )</a>
 <a class="sourceLine" id="cb26-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb26-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-73775d1a1d1763bcdcec" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73775d1a1d1763bcdcec">{"x":{
+<div id="htmlwidget-85e6bc5a7ea80150ff61" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-85e6bc5a7ea80150ff61">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -8412,29 +8419,31 @@
 <a class="sourceLine" id="cb28-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb28-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(</a>
-<a class="sourceLine" id="cb28-6" data-line-number="6">    <span class="dt">index=</span><span class="st">'count()'</span></a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">  )<span class="op">$</span><span class="kw">transform_fold</span>(</a>
-<a class="sourceLine" id="cb28-8" data-line-number="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'petalLength'</span>, <span class="st">'petalWidth'</span>, <span class="st">'sepalLength'</span>, <span class="st">'sepalWidth'</span>)</a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">  )<span class="op">$</span><span class="kw">transform_joinaggregate</span>(</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10">    <span class="dt">min=</span><span class="st">'min(value)'</span>,</a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">    <span class="dt">max=</span><span class="st">'max(value)'</span>,</a>
-<a class="sourceLine" id="cb28-12" data-line-number="12">    <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'key'</span>)</a>
-<a class="sourceLine" id="cb28-13" data-line-number="13">  )<span class="op">$</span><span class="kw">transform_calculate</span>(</a>
-<a class="sourceLine" id="cb28-14" data-line-number="14">    <span class="dt">minmax_value=</span><span class="st">'(datum.value-datum.min)/(datum.max-datum.min)'</span>,</a>
-<a class="sourceLine" id="cb28-15" data-line-number="15">    <span class="dt">mid=</span><span class="st">'(datum.min+datum.max)/2'</span></a>
-<a class="sourceLine" id="cb28-16" data-line-number="16">  )<span class="op">$</span><span class="kw">mark_line</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb28-17" data-line-number="17"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb28-18" data-line-number="18">    <span class="dt">x=</span><span class="st">'key:N'</span>,</a>
-<a class="sourceLine" id="cb28-19" data-line-number="19">    <span class="dt">y=</span><span class="st">'minmax_value:Q'</span>,</a>
-<a class="sourceLine" id="cb28-20" data-line-number="20">    <span class="dt">color=</span><span class="st">'species:N'</span>,</a>
-<a class="sourceLine" id="cb28-21" data-line-number="21">    <span class="dt">detail=</span><span class="st">'index:N'</span>,</a>
-<a class="sourceLine" id="cb28-22" data-line-number="22">    <span class="dt">opacity=</span>alt<span class="op">$</span><span class="kw">value</span>(<span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb28-23" data-line-number="23">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width=</span><span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb28-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb28-25" data-line-number="25">chart</a></code></pre></div>
-<div id="htmlwidget-961b3e2d442ee916e358" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-961b3e2d442ee916e358">{"x":{
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(<span class="dt">index=</span><span class="st">"count()"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_fold</span>(</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"><span class="st">  </span><span class="kw">transform_joinaggregate</span>(</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"key"</span>),</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">    <span class="dt">min =</span> <span class="st">"min(value)"</span>,</a>
+<a class="sourceLine" id="cb28-12" data-line-number="12">    <span class="dt">max =</span> <span class="st">"max(value)"</span></a>
+<a class="sourceLine" id="cb28-13" data-line-number="13">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-14" data-line-number="14"><span class="st">  </span><span class="kw">transform_calculate</span>(</a>
+<a class="sourceLine" id="cb28-15" data-line-number="15">    <span class="dt">minmax_value =</span> <span class="st">"(datum.value - datum.min) / (datum.max - datum.min)"</span>,</a>
+<a class="sourceLine" id="cb28-16" data-line-number="16">    <span class="dt">mid =</span> <span class="st">"(datum.min + datum.max) / 2"</span></a>
+<a class="sourceLine" id="cb28-17" data-line-number="17">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-18" data-line-number="18"><span class="st">  </span><span class="kw">mark_line</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-19" data-line-number="19"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb28-20" data-line-number="20">    <span class="dt">x =</span> <span class="st">"key:N"</span>,</a>
+<a class="sourceLine" id="cb28-21" data-line-number="21">    <span class="dt">y =</span> <span class="st">"minmax_value:Q"</span>,</a>
+<a class="sourceLine" id="cb28-22" data-line-number="22">    <span class="dt">color =</span> <span class="st">"species:N"</span>,</a>
+<a class="sourceLine" id="cb28-23" data-line-number="23">    <span class="dt">detail =</span> <span class="st">"index:N"</span>,</a>
+<a class="sourceLine" id="cb28-24" data-line-number="24">    <span class="dt">opacity =</span> alt<span class="op">$</span><span class="kw">value</span>(<span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb28-25" data-line-number="25">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb28-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb28-27" data-line-number="27">chart</a></code></pre></div>
+<div id="htmlwidget-bc841b36fb97ed595e6c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bc841b36fb97ed595e6c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -9561,11 +9570,11 @@
       },
       {
         "as": "minmax_value",
-        "calculate": "(datum.value-datum.min)/(datum.max-datum.min)"
+        "calculate": "(datum.value - datum.min) / (datum.max - datum.min)"
       },
       {
         "as": "mid",
-        "calculate": "(datum.min+datum.max)/2"
+        "calculate": "(datum.min + datum.max) / 2"
       }
     ],
     "width": 500
@@ -9603,22 +9612,23 @@
 <a class="sourceLine" id="cb30-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb30-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb30-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(</a>
-<a class="sourceLine" id="cb30-6" data-line-number="6">    <span class="dt">index=</span><span class="st">'count()'</span></a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">  )<span class="op">$</span><span class="kw">transform_fold</span>(</a>
-<a class="sourceLine" id="cb30-8" data-line-number="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'petalLength'</span>, <span class="st">'petalWidth'</span>, <span class="st">'sepalLength'</span>, <span class="st">'sepalWidth'</span>)</a>
-<a class="sourceLine" id="cb30-9" data-line-number="9">  )<span class="op">$</span><span class="kw">mark_line</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(<span class="dt">index =</span> <span class="st">"count()"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_fold</span>(</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9"><span class="st">  </span><span class="kw">mark_line</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb30-10" data-line-number="10"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb30-11" data-line-number="11">    <span class="dt">x=</span><span class="st">'key:N'</span>,</a>
-<a class="sourceLine" id="cb30-12" data-line-number="12">    <span class="dt">y=</span><span class="st">'value:Q'</span>,</a>
-<a class="sourceLine" id="cb30-13" data-line-number="13">    <span class="dt">color=</span><span class="st">'species:N'</span>,</a>
-<a class="sourceLine" id="cb30-14" data-line-number="14">    <span class="dt">detail=</span><span class="st">'index:N'</span>,</a>
-<a class="sourceLine" id="cb30-15" data-line-number="15">    <span class="dt">opacity=</span>alt<span class="op">$</span><span class="kw">value</span>(<span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb30-16" data-line-number="16">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width=</span><span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb30-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb30-18" data-line-number="18">chart</a></code></pre></div>
-<div id="htmlwidget-bdaf007f2c3b42a7d5d4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bdaf007f2c3b42a7d5d4">{"x":{
+<a class="sourceLine" id="cb30-11" data-line-number="11">    <span class="dt">x =</span> <span class="st">"key:N"</span>,</a>
+<a class="sourceLine" id="cb30-12" data-line-number="12">    <span class="dt">y =</span> <span class="st">"value:Q"</span>,</a>
+<a class="sourceLine" id="cb30-13" data-line-number="13">    <span class="dt">color =</span> <span class="st">"species:N"</span>,</a>
+<a class="sourceLine" id="cb30-14" data-line-number="14">    <span class="dt">detail =</span> <span class="st">"index:N"</span>,</a>
+<a class="sourceLine" id="cb30-15" data-line-number="15">    <span class="dt">opacity =</span> alt<span class="op">$</span><span class="kw">value</span>(<span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb30-16" data-line-number="16">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-17" data-line-number="17"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb30-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb30-19" data-line-number="19">chart</a></code></pre></div>
+<div id="htmlwidget-629e43e17295e90e35e8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-629e43e17295e90e35e8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -10811,8 +10821,8 @@
 <a class="sourceLine" id="cb33-38" data-line-number="38">  )</a>
 <a class="sourceLine" id="cb33-39" data-line-number="39"></a>
 <a class="sourceLine" id="cb33-40" data-line-number="40">chart</a></code></pre></div>
-<div id="htmlwidget-abc93b8fa328e4410c89" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-abc93b8fa328e4410c89">{"x":{
+<div id="htmlwidget-17c014e79bf86c2557af" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-17c014e79bf86c2557af">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -11055,56 +11065,57 @@
 <a href="#chart-14" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">seattle_weather</span>()</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3">step =<span class="st"> </span><span class="dv">20</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">overlap =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">step &lt;-<span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">overlap &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb35-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">chart &lt;-</a>
-<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="st">  </span><span class="kw">transform_timeunit</span>(</a>
-<a class="sourceLine" id="cb35-9" data-line-number="9">    <span class="dt">Month=</span><span class="st">'month(date)'</span></a>
-<a class="sourceLine" id="cb35-10" data-line-number="10">  )<span class="op">$</span><span class="kw">transform_joinaggregate</span>(</a>
-<a class="sourceLine" id="cb35-11" data-line-number="11">    <span class="dt">mean_temp=</span><span class="st">'mean(temp_max)'</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Month'</span>)</a>
-<a class="sourceLine" id="cb35-12" data-line-number="12">  )<span class="op">$</span><span class="kw">transform_bin</span>(</a>
-<a class="sourceLine" id="cb35-13" data-line-number="13">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'bin_max'</span>, <span class="st">'bin_min'</span>), <span class="st">'temp_max'</span></a>
-<a class="sourceLine" id="cb35-14" data-line-number="14">  )<span class="op">$</span><span class="kw">transform_aggregate</span>(</a>
-<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="dt">value=</span><span class="st">'count()'</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Month'</span>, <span class="st">'mean_temp'</span>, <span class="st">'bin_min'</span>, <span class="st">'bin_max'</span>)</a>
-<a class="sourceLine" id="cb35-16" data-line-number="16">  )<span class="op">$</span><span class="kw">transform_impute</span>(</a>
-<a class="sourceLine" id="cb35-17" data-line-number="17">    <span class="dt">impute=</span><span class="st">'value'</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Month'</span>, <span class="st">'mean_temp'</span>), <span class="dt">key=</span><span class="st">'bin_min'</span>, <span class="dt">value=</span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb35-18" data-line-number="18">  )<span class="op">$</span><span class="kw">mark_area</span>(</a>
-<a class="sourceLine" id="cb35-19" data-line-number="19">    <span class="dt">interpolate=</span><span class="st">'monotone'</span>,</a>
-<a class="sourceLine" id="cb35-20" data-line-number="20">    <span class="dt">fillOpacity=</span><span class="fl">0.8</span>,</a>
-<a class="sourceLine" id="cb35-21" data-line-number="21">    <span class="dt">stroke=</span><span class="st">'lightgray'</span>,</a>
-<a class="sourceLine" id="cb35-22" data-line-number="22">    <span class="dt">strokeWidth=</span><span class="fl">0.5</span></a>
-<a class="sourceLine" id="cb35-23" data-line-number="23">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb35-24" data-line-number="24">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'bin_min:Q'</span>, <span class="dt">bin=</span><span class="st">'binned'</span>, <span class="dt">title=</span><span class="st">'Maximum Daily Temperature (C)'</span>),</a>
-<a class="sourceLine" id="cb35-25" data-line-number="25">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb35-26" data-line-number="26">      <span class="st">'value:Q'</span>,</a>
-<a class="sourceLine" id="cb35-27" data-line-number="27">      <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">range=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(step, <span class="op">-</span>step <span class="op">*</span><span class="st"> </span>overlap)),</a>
-<a class="sourceLine" id="cb35-28" data-line-number="28">      <span class="dt">axis=</span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb35-29" data-line-number="29">    ),</a>
-<a class="sourceLine" id="cb35-30" data-line-number="30">    alt<span class="op">$</span><span class="kw">Fill</span>(</a>
-<a class="sourceLine" id="cb35-31" data-line-number="31">      <span class="st">'mean_temp:Q'</span>,</a>
-<a class="sourceLine" id="cb35-32" data-line-number="32">      <span class="dt">legend=</span><span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb35-33" data-line-number="33">      <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">30</span>, <span class="dv">5</span>), <span class="dt">scheme=</span><span class="st">'redyellowblue'</span>)</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">chart &lt;-alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="st">  </span><span class="kw">transform_timeunit</span>(<span class="dt">Month =</span> <span class="st">"month(date)"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="st">  </span><span class="kw">transform_joinaggregate</span>(</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">    <span class="dt">mean_temp =</span> <span class="st">"mean(temp_max)"</span>, </a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>)</a>
+<a class="sourceLine" id="cb35-11" data-line-number="11">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_bin</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), <span class="st">"temp_max"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-13" data-line-number="13"><span class="st">  </span><span class="kw">transform_aggregate</span>(</a>
+<a class="sourceLine" id="cb35-14" data-line-number="14">    <span class="dt">value =</span> <span class="st">"count()"</span>, </a>
+<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span>)</a>
+<a class="sourceLine" id="cb35-16" data-line-number="16">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-17" data-line-number="17"><span class="st">  </span><span class="kw">transform_impute</span>(</a>
+<a class="sourceLine" id="cb35-18" data-line-number="18">    <span class="dt">impute =</span> <span class="st">"value"</span>, </a>
+<a class="sourceLine" id="cb35-19" data-line-number="19">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>), </a>
+<a class="sourceLine" id="cb35-20" data-line-number="20">    <span class="dt">key =</span> <span class="st">"bin_min"</span>, </a>
+<a class="sourceLine" id="cb35-21" data-line-number="21">    <span class="dt">value =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb35-22" data-line-number="22">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-23" data-line-number="23"><span class="st">  </span><span class="kw">mark_area</span>(</a>
+<a class="sourceLine" id="cb35-24" data-line-number="24">    <span class="dt">interpolate =</span> <span class="st">"monotone"</span>,</a>
+<a class="sourceLine" id="cb35-25" data-line-number="25">    <span class="dt">fillOpacity =</span> <span class="fl">0.8</span>,</a>
+<a class="sourceLine" id="cb35-26" data-line-number="26">    <span class="dt">stroke =</span> <span class="st">"lightgray"</span>,</a>
+<a class="sourceLine" id="cb35-27" data-line-number="27">    <span class="dt">strokeWidth =</span> <span class="fl">0.5</span></a>
+<a class="sourceLine" id="cb35-28" data-line-number="28">  )<span class="op">$</span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb35-29" data-line-number="29">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"bin_min:Q"</span>, <span class="dt">bin =</span> <span class="st">"binned"</span>, <span class="dt">title =</span> <span class="st">"Maximum Daily Temperature (C)"</span>),</a>
+<a class="sourceLine" id="cb35-30" data-line-number="30">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
+<a class="sourceLine" id="cb35-31" data-line-number="31">      <span class="st">"value:Q"</span>,</a>
+<a class="sourceLine" id="cb35-32" data-line-number="32">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">range =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(step, <span class="op">-</span>step <span class="op">*</span><span class="st"> </span>overlap)),</a>
+<a class="sourceLine" id="cb35-33" data-line-number="33">      <span class="dt">axis =</span> <span class="ot">NULL</span></a>
 <a class="sourceLine" id="cb35-34" data-line-number="34">    ),</a>
-<a class="sourceLine" id="cb35-35" data-line-number="35">    alt<span class="op">$</span><span class="kw">Row</span>(</a>
-<a class="sourceLine" id="cb35-36" data-line-number="36">      <span class="st">'Month:T'</span>,</a>
-<a class="sourceLine" id="cb35-37" data-line-number="37">      <span class="dt">title=</span><span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb35-38" data-line-number="38">      <span class="dt">header=</span>alt<span class="op">$</span><span class="kw">Header</span>(<span class="dt">labelAngle=</span><span class="dv">0</span>, <span class="dt">labelAlign=</span><span class="st">'right'</span>, <span class="dt">format=</span><span class="st">'%B'</span>)</a>
-<a class="sourceLine" id="cb35-39" data-line-number="39">    )</a>
-<a class="sourceLine" id="cb35-40" data-line-number="40">  )<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb35-41" data-line-number="41">    <span class="dt">bounds=</span><span class="st">'flush'</span>, <span class="dt">title=</span><span class="st">'Seattle Weather'</span>, <span class="dt">height=</span>step</a>
-<a class="sourceLine" id="cb35-42" data-line-number="42">  )<span class="op">$</span><span class="kw">configure_facet</span>(</a>
-<a class="sourceLine" id="cb35-43" data-line-number="43">    <span class="dt">spacing=</span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb35-44" data-line-number="44">  )<span class="op">$</span><span class="kw">configure_view</span>(</a>
-<a class="sourceLine" id="cb35-45" data-line-number="45">    <span class="dt">stroke=</span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb35-46" data-line-number="46">  )<span class="op">$</span><span class="kw">configure_title</span>(</a>
-<a class="sourceLine" id="cb35-47" data-line-number="47">    <span class="dt">anchor=</span><span class="st">'end'</span></a>
-<a class="sourceLine" id="cb35-48" data-line-number="48">  )</a>
-<a class="sourceLine" id="cb35-49" data-line-number="49"></a>
-<a class="sourceLine" id="cb35-50" data-line-number="50">chart</a></code></pre></div>
-<div id="htmlwidget-861d6976953d0d026149" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-861d6976953d0d026149">{"x":{
+<a class="sourceLine" id="cb35-35" data-line-number="35">    alt<span class="op">$</span><span class="kw">Fill</span>(</a>
+<a class="sourceLine" id="cb35-36" data-line-number="36">      <span class="st">"mean_temp:Q"</span>,</a>
+<a class="sourceLine" id="cb35-37" data-line-number="37">      <span class="dt">legend =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb35-38" data-line-number="38">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">30</span>, <span class="dv">5</span>), <span class="dt">scheme =</span> <span class="st">"redyellowblue"</span>)</a>
+<a class="sourceLine" id="cb35-39" data-line-number="39">    ),</a>
+<a class="sourceLine" id="cb35-40" data-line-number="40">    alt<span class="op">$</span><span class="kw">Row</span>(</a>
+<a class="sourceLine" id="cb35-41" data-line-number="41">      <span class="st">"Month:T"</span>,</a>
+<a class="sourceLine" id="cb35-42" data-line-number="42">      <span class="dt">title =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb35-43" data-line-number="43">      <span class="dt">header =</span> alt<span class="op">$</span><span class="kw">Header</span>(<span class="dt">labelAngle =</span> <span class="dv">0</span>, <span class="dt">labelAlign =</span> <span class="st">"right"</span>, <span class="dt">format =</span> <span class="st">"%B"</span>)</a>
+<a class="sourceLine" id="cb35-44" data-line-number="44">    )</a>
+<a class="sourceLine" id="cb35-45" data-line-number="45">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-46" data-line-number="46"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">bounds =</span><span class="st">"flush"</span>, <span class="dt">title =</span> <span class="st">"Seattle Weather"</span>, <span class="dt">height =</span> step)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-47" data-line-number="47"><span class="st">  </span><span class="kw">configure_facet</span>(<span class="dt">spacing =</span> <span class="dv">0</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-48" data-line-number="48"><span class="st">  </span><span class="kw">configure_view</span>(<span class="dt">stroke =</span> <span class="ot">NULL</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-49" data-line-number="49"><span class="st">  </span><span class="kw">configure_title</span>(<span class="dt">anchor =</span> <span class="st">"end"</span>)</a>
+<a class="sourceLine" id="cb35-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb35-51" data-line-number="51">chart</a></code></pre></div>
+<div id="htmlwidget-379bc507170012f8f802" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-379bc507170012f8f802">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "bounds": "flush",
@@ -22952,33 +22963,30 @@
 <a class="sourceLine" id="cb37-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">points &lt;-</a>
 <a class="sourceLine" id="cb37-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled=</span><span class="ot">TRUE</span>, <span class="dt">color=</span><span class="st">'black'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_point</span>(<span class="dt">filled =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">"black"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb37-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'mean(yield):Q'</span>, <span class="dt">title=</span><span class="st">'Barley Yield'</span>),</a>
-<a class="sourceLine" id="cb37-8" data-line-number="8">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb37-9" data-line-number="9">      <span class="st">'variety'</span>,</a>
-<a class="sourceLine" id="cb37-10" data-line-number="10">      <span class="dt">sort=</span>alt<span class="op">$</span><span class="kw">EncodingSortField</span>(</a>
-<a class="sourceLine" id="cb37-11" data-line-number="11">        <span class="dt">field=</span><span class="st">'yield'</span>,</a>
-<a class="sourceLine" id="cb37-12" data-line-number="12">        <span class="dt">op=</span><span class="st">'mean'</span>,</a>
-<a class="sourceLine" id="cb37-13" data-line-number="13">        <span class="dt">order=</span><span class="st">'descending'</span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"mean(yield):Q"</span>, <span class="dt">title=</span><span class="st">"Barley Yield"</span>),</a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>( </a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">      <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">      <span class="dt">sort =</span> alt<span class="op">$</span><span class="kw">EncodingSortField</span>(</a>
+<a class="sourceLine" id="cb37-11" data-line-number="11">        <span class="dt">field =</span> <span class="st">"yield"</span>,</a>
+<a class="sourceLine" id="cb37-12" data-line-number="12">        <span class="dt">op =</span> <span class="st">"mean"</span>,</a>
+<a class="sourceLine" id="cb37-13" data-line-number="13">        <span class="dt">order =</span> <span class="st">"descending"</span></a>
 <a class="sourceLine" id="cb37-14" data-line-number="14">      )</a>
 <a class="sourceLine" id="cb37-15" data-line-number="15">    )</a>
-<a class="sourceLine" id="cb37-16" data-line-number="16">  )<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb37-17" data-line-number="17">    <span class="dt">width=</span><span class="dv">400</span>,</a>
-<a class="sourceLine" id="cb37-18" data-line-number="18">    <span class="dt">height=</span><span class="dv">250</span></a>
-<a class="sourceLine" id="cb37-19" data-line-number="19">  )</a>
-<a class="sourceLine" id="cb37-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb37-21" data-line-number="21">error_bars &lt;-</a>
-<a class="sourceLine" id="cb37-22" data-line-number="22"><span class="st">  </span>points<span class="op">$</span></a>
-<a class="sourceLine" id="cb37-23" data-line-number="23"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb37-24" data-line-number="24"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb37-25" data-line-number="25">    <span class="dt">x=</span><span class="st">'ci0(yield)'</span>,</a>
-<a class="sourceLine" id="cb37-26" data-line-number="26">    <span class="dt">x2=</span><span class="st">'ci1(yield)'</span></a>
-<a class="sourceLine" id="cb37-27" data-line-number="27">  )</a>
-<a class="sourceLine" id="cb37-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb37-29" data-line-number="29">points <span class="op">+</span><span class="st"> </span>error_bars</a></code></pre></div>
-<div id="htmlwidget-dff7c77d47faeb335fd0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dff7c77d47faeb335fd0">{"x":{
+<a class="sourceLine" id="cb37-16" data-line-number="16">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">400</span>, <span class="dt">height =</span> <span class="dv">250</span>)</a>
+<a class="sourceLine" id="cb37-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb37-18" data-line-number="18">error_bars &lt;-</a>
+<a class="sourceLine" id="cb37-19" data-line-number="19"><span class="st">  </span>points<span class="op">$</span></a>
+<a class="sourceLine" id="cb37-20" data-line-number="20"><span class="st">  </span><span class="kw">mark_rule</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb37-21" data-line-number="21"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb37-22" data-line-number="22">    <span class="dt">x =</span> <span class="st">"ci0(yield)"</span>,</a>
+<a class="sourceLine" id="cb37-23" data-line-number="23">    <span class="dt">x2 =</span> <span class="st">"ci1(yield)"</span></a>
+<a class="sourceLine" id="cb37-24" data-line-number="24">  )</a>
+<a class="sourceLine" id="cb37-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb37-26" data-line-number="26">points <span class="op">+</span><span class="st"> </span>error_bars</a></code></pre></div>
+<div id="htmlwidget-0c7696703882738594eb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0c7696703882738594eb">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -23799,10 +23807,10 @@
 </details><div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb39-2" data-line-number="2"><span class="co">#&gt; Observations: 100</span></a>
 <a class="sourceLine" id="cb39-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 7, 12, 15, 17, 20, 26, 26, 28, 28, 29, 30, 30, 31, 31, …</span></a>
-<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span></a>
-<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 7, 2, 5, 7, 0, 6, 6, 8, 8, 9, 0, 0, 1, 1, 2, 2, 4, 6, 6…</span></a>
-<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 1, 2, 3, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 7, 8, 9…</span></a></code></pre></div>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 9, 24, 24, 26, 31, 31, 32, 32, 32, 34, 35, 35, 35, 35, …</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 0, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 9, 4, 4, 6, 1, 1, 2, 2, 2, 4, 5, 5, 5, 5, 5, 7, 7, 8, 8…</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, …</span></a></code></pre></div>
 </div>
 <div id="chart-16" class="section level4">
 <h4 class="hasAnchor">
@@ -23822,8 +23830,8 @@
 <a class="sourceLine" id="cb40-13" data-line-number="13"><span class="st">  </span><span class="kw">configure_text</span>(<span class="dt">fontSize =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb40-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb40-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-b7697b7cd2728da914cc" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b7697b7cd2728da914cc">{"x":{
+<div id="htmlwidget-2c247d80bcb5b2c86bdf" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2c247d80bcb5b2c86bdf">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -23842,44 +23850,26 @@
       }
     },
     "data": {
-      "name": "data-6956c1a468d616704d0f18d15b6cedfb"
+      "name": "data-4ab1d51bb2a0cd38701c4439b68418bb"
     },
     "datasets": {
-      "data-6956c1a468d616704d0f18d15b6cedfb": [
+      "data-4ab1d51bb2a0cd38701c4439b68418bb": [
         {
-          "leaf": 7,
+          "leaf": 9,
           "position": 1,
-          "sample": 7,
+          "sample": 9,
           "stem": 0
         },
         {
-          "leaf": 2,
+          "leaf": 4,
           "position": 1,
-          "sample": 12,
-          "stem": 1
-        },
-        {
-          "leaf": 5,
-          "position": 2,
-          "sample": 15,
-          "stem": 1
-        },
-        {
-          "leaf": 7,
-          "position": 3,
-          "sample": 17,
-          "stem": 1
-        },
-        {
-          "leaf": 0,
-          "position": 1,
-          "sample": 20,
+          "sample": 24,
           "stem": 2
         },
         {
-          "leaf": 6,
+          "leaf": 4,
           "position": 2,
-          "sample": 26,
+          "sample": 24,
           "stem": 2
         },
         {
@@ -23889,98 +23879,116 @@
           "stem": 2
         },
         {
-          "leaf": 8,
-          "position": 4,
-          "sample": 28,
-          "stem": 2
-        },
-        {
-          "leaf": 8,
-          "position": 5,
-          "sample": 28,
-          "stem": 2
-        },
-        {
-          "leaf": 9,
-          "position": 6,
-          "sample": 29,
-          "stem": 2
-        },
-        {
-          "leaf": 0,
-          "position": 1,
-          "sample": 30,
-          "stem": 3
-        },
-        {
-          "leaf": 0,
-          "position": 2,
-          "sample": 30,
-          "stem": 3
-        },
-        {
           "leaf": 1,
-          "position": 3,
+          "position": 1,
           "sample": 31,
           "stem": 3
         },
         {
           "leaf": 1,
-          "position": 4,
+          "position": 2,
           "sample": 31,
           "stem": 3
         },
         {
           "leaf": 2,
-          "position": 5,
+          "position": 3,
           "sample": 32,
           "stem": 3
         },
         {
           "leaf": 2,
-          "position": 6,
+          "position": 4,
+          "sample": 32,
+          "stem": 3
+        },
+        {
+          "leaf": 2,
+          "position": 5,
           "sample": 32,
           "stem": 3
         },
         {
           "leaf": 4,
-          "position": 7,
+          "position": 6,
           "sample": 34,
           "stem": 3
         },
         {
-          "leaf": 6,
-          "position": 8,
-          "sample": 36,
+          "leaf": 5,
+          "position": 7,
+          "sample": 35,
           "stem": 3
         },
         {
-          "leaf": 6,
+          "leaf": 5,
+          "position": 8,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 5,
           "position": 9,
-          "sample": 36,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 5,
+          "position": 10,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 5,
+          "position": 11,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 7,
+          "position": 12,
+          "sample": 37,
+          "stem": 3
+        },
+        {
+          "leaf": 7,
+          "position": 13,
+          "sample": 37,
           "stem": 3
         },
         {
           "leaf": 8,
-          "position": 10,
+          "position": 14,
           "sample": 38,
           "stem": 3
         },
         {
           "leaf": 8,
-          "position": 11,
+          "position": 15,
+          "sample": 38,
+          "stem": 3
+        },
+        {
+          "leaf": 8,
+          "position": 16,
           "sample": 38,
           "stem": 3
         },
         {
           "leaf": 9,
-          "position": 12,
+          "position": 17,
           "sample": 39,
           "stem": 3
         },
         {
           "leaf": 9,
-          "position": 13,
+          "position": 18,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 19,
           "sample": 39,
           "stem": 3
         },
@@ -23991,290 +23999,236 @@
           "stem": 4
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 2,
+          "sample": 40,
+          "stem": 4
+        },
+        {
+          "leaf": 0,
+          "position": 3,
+          "sample": 40,
+          "stem": 4
+        },
+        {
+          "leaf": 1,
+          "position": 4,
           "sample": 41,
           "stem": 4
         },
         {
           "leaf": 1,
-          "position": 3,
+          "position": 5,
+          "sample": 41,
+          "stem": 4
+        },
+        {
+          "leaf": 1,
+          "position": 6,
           "sample": 41,
           "stem": 4
         },
         {
           "leaf": 2,
-          "position": 4,
+          "position": 7,
           "sample": 42,
           "stem": 4
         },
         {
           "leaf": 3,
-          "position": 5,
+          "position": 8,
           "sample": 43,
           "stem": 4
         },
         {
-          "leaf": 4,
-          "position": 6,
-          "sample": 44,
-          "stem": 4
-        },
-        {
-          "leaf": 6,
-          "position": 7,
-          "sample": 46,
-          "stem": 4
-        },
-        {
-          "leaf": 6,
-          "position": 8,
-          "sample": 46,
-          "stem": 4
-        },
-        {
-          "leaf": 6,
+          "leaf": 5,
           "position": 9,
+          "sample": 45,
+          "stem": 4
+        },
+        {
+          "leaf": 5,
+          "position": 10,
+          "sample": 45,
+          "stem": 4
+        },
+        {
+          "leaf": 5,
+          "position": 11,
+          "sample": 45,
+          "stem": 4
+        },
+        {
+          "leaf": 6,
+          "position": 12,
+          "sample": 46,
+          "stem": 4
+        },
+        {
+          "leaf": 6,
+          "position": 13,
+          "sample": 46,
+          "stem": 4
+        },
+        {
+          "leaf": 6,
+          "position": 14,
           "sample": 46,
           "stem": 4
         },
         {
           "leaf": 7,
-          "position": 10,
+          "position": 15,
           "sample": 47,
           "stem": 4
         },
         {
           "leaf": 7,
-          "position": 11,
+          "position": 16,
+          "sample": 47,
+          "stem": 4
+        },
+        {
+          "leaf": 7,
+          "position": 17,
           "sample": 47,
           "stem": 4
         },
         {
           "leaf": 8,
-          "position": 12,
+          "position": 18,
           "sample": 48,
           "stem": 4
         },
         {
           "leaf": 8,
-          "position": 13,
+          "position": 19,
           "sample": 48,
           "stem": 4
         },
         {
           "leaf": 8,
-          "position": 14,
+          "position": 20,
           "sample": 48,
           "stem": 4
         },
         {
           "leaf": 8,
-          "position": 15,
-          "sample": 48,
-          "stem": 4
-        },
-        {
-          "leaf": 8,
-          "position": 16,
+          "position": 21,
           "sample": 48,
           "stem": 4
         },
         {
           "leaf": 9,
-          "position": 17,
+          "position": 22,
           "sample": 49,
           "stem": 4
         },
         {
-          "leaf": 0,
+          "leaf": 9,
+          "position": 23,
+          "sample": 49,
+          "stem": 4
+        },
+        {
+          "leaf": 1,
           "position": 1,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 2,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 3,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 4,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 5,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 6,
-          "sample": 50,
-          "stem": 5
-        },
-        {
-          "leaf": 0,
-          "position": 7,
-          "sample": 50,
+          "sample": 51,
           "stem": 5
         },
         {
           "leaf": 1,
-          "position": 8,
+          "position": 2,
+          "sample": 51,
+          "stem": 5
+        },
+        {
+          "leaf": 1,
+          "position": 3,
+          "sample": 51,
+          "stem": 5
+        },
+        {
+          "leaf": 1,
+          "position": 4,
           "sample": 51,
           "stem": 5
         },
         {
           "leaf": 2,
-          "position": 9,
+          "position": 5,
           "sample": 52,
           "stem": 5
         },
         {
           "leaf": 2,
-          "position": 10,
+          "position": 6,
           "sample": 52,
           "stem": 5
         },
         {
           "leaf": 3,
-          "position": 11,
+          "position": 7,
+          "sample": 53,
+          "stem": 5
+        },
+        {
+          "leaf": 3,
+          "position": 8,
+          "sample": 53,
+          "stem": 5
+        },
+        {
+          "leaf": 3,
+          "position": 9,
           "sample": 53,
           "stem": 5
         },
         {
           "leaf": 4,
+          "position": 10,
+          "sample": 54,
+          "stem": 5
+        },
+        {
+          "leaf": 5,
+          "position": 11,
+          "sample": 55,
+          "stem": 5
+        },
+        {
+          "leaf": 5,
           "position": 12,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 6,
           "position": 13,
-          "sample": 54,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 6,
           "position": 14,
-          "sample": 54,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 7,
           "position": 15,
-          "sample": 54,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 16,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 17,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 18,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 6,
-          "position": 19,
-          "sample": 56,
-          "stem": 5
-        },
-        {
-          "leaf": 6,
-          "position": 20,
-          "sample": 56,
-          "stem": 5
-        },
-        {
-          "leaf": 6,
-          "position": 21,
-          "sample": 56,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 22,
-          "sample": 57,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 23,
-          "sample": 57,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 24,
-          "sample": 57,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 25,
-          "sample": 57,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 26,
           "sample": 57,
           "stem": 5
         },
         {
           "leaf": 8,
-          "position": 27,
+          "position": 16,
           "sample": 58,
           "stem": 5
         },
         {
           "leaf": 9,
-          "position": 28,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 29,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 30,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 31,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 32,
+          "position": 17,
           "sample": 59,
           "stem": 5
         },
@@ -24285,166 +24239,220 @@
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 2,
-          "sample": 60,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 3,
-          "sample": 60,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 4,
+          "leaf": 1,
           "position": 4,
-          "sample": 64,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 4,
+          "leaf": 1,
           "position": 5,
-          "sample": 64,
+          "sample": 61,
+          "stem": 6
+        },
+        {
+          "leaf": 2,
+          "position": 6,
+          "sample": 62,
+          "stem": 6
+        },
+        {
+          "leaf": 2,
+          "position": 7,
+          "sample": 62,
+          "stem": 6
+        },
+        {
+          "leaf": 2,
+          "position": 8,
+          "sample": 62,
+          "stem": 6
+        },
+        {
+          "leaf": 2,
+          "position": 9,
+          "sample": 62,
+          "stem": 6
+        },
+        {
+          "leaf": 2,
+          "position": 10,
+          "sample": 62,
+          "stem": 6
+        },
+        {
+          "leaf": 3,
+          "position": 11,
+          "sample": 63,
+          "stem": 6
+        },
+        {
+          "leaf": 3,
+          "position": 12,
+          "sample": 63,
+          "stem": 6
+        },
+        {
+          "leaf": 3,
+          "position": 13,
+          "sample": 63,
           "stem": 6
         },
         {
           "leaf": 4,
-          "position": 6,
+          "position": 14,
           "sample": 64,
           "stem": 6
         },
         {
-          "leaf": 6,
-          "position": 7,
-          "sample": 66,
+          "leaf": 5,
+          "position": 15,
+          "sample": 65,
+          "stem": 6
+        },
+        {
+          "leaf": 5,
+          "position": 16,
+          "sample": 65,
+          "stem": 6
+        },
+        {
+          "leaf": 5,
+          "position": 17,
+          "sample": 65,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 8,
+          "position": 18,
           "sample": 67,
           "stem": 6
         },
         {
-          "leaf": 8,
-          "position": 9,
-          "sample": 68,
+          "leaf": 7,
+          "position": 19,
+          "sample": 67,
           "stem": 6
         },
         {
-          "leaf": 8,
-          "position": 10,
-          "sample": 68,
-          "stem": 6
-        },
-        {
-          "leaf": 8,
-          "position": 11,
-          "sample": 68,
-          "stem": 6
-        },
-        {
-          "leaf": 8,
-          "position": 12,
-          "sample": 68,
-          "stem": 6
-        },
-        {
-          "leaf": 8,
-          "position": 13,
-          "sample": 68,
-          "stem": 6
-        },
-        {
-          "leaf": 8,
-          "position": 14,
-          "sample": 68,
+          "leaf": 7,
+          "position": 20,
+          "sample": 67,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 15,
+          "position": 21,
           "sample": 69,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 16,
+          "position": 22,
           "sample": 69,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 9,
+          "position": 23,
+          "sample": 69,
+          "stem": 6
+        },
+        {
+          "leaf": 9,
+          "position": 24,
+          "sample": 69,
+          "stem": 6
+        },
+        {
+          "leaf": 1,
           "position": 1,
-          "sample": 70,
-          "stem": 7
-        },
-        {
-          "leaf": 0,
-          "position": 2,
-          "sample": 70,
-          "stem": 7
-        },
-        {
-          "leaf": 0,
-          "position": 3,
-          "sample": 70,
-          "stem": 7
-        },
-        {
-          "leaf": 0,
-          "position": 4,
-          "sample": 70,
-          "stem": 7
-        },
-        {
-          "leaf": 1,
-          "position": 5,
-          "sample": 71,
-          "stem": 7
-        },
-        {
-          "leaf": 1,
-          "position": 6,
           "sample": 71,
           "stem": 7
         },
         {
           "leaf": 2,
-          "position": 7,
+          "position": 2,
           "sample": 72,
           "stem": 7
         },
         {
           "leaf": 2,
-          "position": 8,
+          "position": 3,
           "sample": 72,
           "stem": 7
         },
         {
           "leaf": 3,
-          "position": 9,
+          "position": 4,
           "sample": 73,
           "stem": 7
         },
         {
-          "leaf": 7,
-          "position": 10,
-          "sample": 77,
+          "leaf": 3,
+          "position": 5,
+          "sample": 73,
           "stem": 7
         },
         {
-          "leaf": 8,
-          "position": 11,
-          "sample": 78,
+          "leaf": 3,
+          "position": 6,
+          "sample": 73,
+          "stem": 7
+        },
+        {
+          "leaf": 4,
+          "position": 7,
+          "sample": 74,
+          "stem": 7
+        },
+        {
+          "leaf": 5,
+          "position": 8,
+          "sample": 75,
           "stem": 7
         },
         {
           "leaf": 9,
-          "position": 12,
+          "position": 9,
           "sample": 79,
           "stem": 7
+        },
+        {
+          "leaf": 1,
+          "position": 1,
+          "sample": 81,
+          "stem": 8
+        },
+        {
+          "leaf": 1,
+          "position": 2,
+          "sample": 81,
+          "stem": 8
+        },
+        {
+          "leaf": 2,
+          "position": 3,
+          "sample": 82,
+          "stem": 8
+        },
+        {
+          "leaf": 7,
+          "position": 4,
+          "sample": 87,
+          "stem": 8
         }
       ]
     },
@@ -24518,39 +24526,39 @@
 <a class="sourceLine" id="cb42-4" data-line-number="4">base &lt;-</a>
 <a class="sourceLine" id="cb42-5" data-line-number="5"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_aggregate</span>(</a>
-<a class="sourceLine" id="cb42-7" data-line-number="7">    <span class="dt">num_cars=</span><span class="st">'count()'</span>,</a>
-<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Origin'</span>, <span class="st">'Cylinders'</span>)</a>
+<a class="sourceLine" id="cb42-7" data-line-number="7">    <span class="dt">num_cars=</span><span class="st">"count()"</span>,</a>
+<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"Cylinders"</span>)</a>
 <a class="sourceLine" id="cb42-9" data-line-number="9">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb42-10" data-line-number="10">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'Cylinders:O'</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner=</span><span class="dv">0</span>)),</a>
-<a class="sourceLine" id="cb42-11" data-line-number="11">    alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'Origin:O'</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner=</span><span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb42-10" data-line-number="10">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"Cylinders:O"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner=</span><span class="dv">0</span>)),</a>
+<a class="sourceLine" id="cb42-11" data-line-number="11">    alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"Origin:O"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner=</span><span class="dv">0</span>))</a>
 <a class="sourceLine" id="cb42-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb42-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb42-14" data-line-number="14"><span class="co"># Configure heatmap</span></a>
 <a class="sourceLine" id="cb42-15" data-line-number="15">heatmap &lt;-<span class="st"> </span>base<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-16" data-line-number="16"><span class="st">  </span><span class="kw">mark_rect</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-17" data-line-number="17"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb42-18" data-line-number="18">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">'num_cars:Q'</span>,</a>
-<a class="sourceLine" id="cb42-19" data-line-number="19">                    <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">scheme=</span><span class="st">'viridis'</span>),</a>
-<a class="sourceLine" id="cb42-20" data-line-number="20">                    <span class="dt">legend=</span>alt<span class="op">$</span><span class="kw">Legend</span>(<span class="dt">direction=</span><span class="st">'horizontal'</span>)</a>
+<a class="sourceLine" id="cb42-18" data-line-number="18">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"num_cars:Q"</span>,</a>
+<a class="sourceLine" id="cb42-19" data-line-number="19">                    <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">scheme=</span><span class="st">"viridis"</span>),</a>
+<a class="sourceLine" id="cb42-20" data-line-number="20">                    <span class="dt">legend=</span>alt<span class="op">$</span><span class="kw">Legend</span>(<span class="dt">direction=</span><span class="st">"horizontal"</span>)</a>
 <a class="sourceLine" id="cb42-21" data-line-number="21">    )</a>
 <a class="sourceLine" id="cb42-22" data-line-number="22">  )</a>
 <a class="sourceLine" id="cb42-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb42-24" data-line-number="24"><span class="co"># Configure text</span></a>
 <a class="sourceLine" id="cb42-25" data-line-number="25">text &lt;-<span class="st"> </span>base<span class="op">$</span></a>
-<a class="sourceLine" id="cb42-26" data-line-number="26"><span class="st">  </span><span class="kw">mark_text</span>(<span class="dt">baseline=</span><span class="st">'middle'</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb42-26" data-line-number="26"><span class="st">  </span><span class="kw">mark_text</span>(<span class="dt">baseline=</span><span class="st">"middle"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-27" data-line-number="27"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb42-28" data-line-number="28">    <span class="dt">text=</span><span class="st">'num_cars:Q'</span>,</a>
+<a class="sourceLine" id="cb42-28" data-line-number="28">    <span class="dt">text=</span><span class="st">"num_cars:Q"</span>,</a>
 <a class="sourceLine" id="cb42-29" data-line-number="29">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(</a>
-<a class="sourceLine" id="cb42-30" data-line-number="30">      <span class="st">'datum.num_cars &gt; 100'</span>,</a>
-<a class="sourceLine" id="cb42-31" data-line-number="31">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'black'</span>),</a>
-<a class="sourceLine" id="cb42-32" data-line-number="32">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'white'</span>)</a>
+<a class="sourceLine" id="cb42-30" data-line-number="30">      <span class="st">"datum.num_cars &gt; 100"</span>,</a>
+<a class="sourceLine" id="cb42-31" data-line-number="31">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"black"</span>),</a>
+<a class="sourceLine" id="cb42-32" data-line-number="32">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"white"</span>)</a>
 <a class="sourceLine" id="cb42-33" data-line-number="33">    )</a>
 <a class="sourceLine" id="cb42-34" data-line-number="34">  )</a>
 <a class="sourceLine" id="cb42-35" data-line-number="35"></a>
 <a class="sourceLine" id="cb42-36" data-line-number="36"><span class="co"># Draw the chart</span></a>
 <a class="sourceLine" id="cb42-37" data-line-number="37">heatmap <span class="op">+</span><span class="st"> </span>text</a></code></pre></div>
-<div id="htmlwidget-166a6727f7ed16ad76e6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-166a6727f7ed16ad76e6">{"x":{
+<div id="htmlwidget-af5e9233fc64a6722641" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-af5e9233fc64a6722641">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -29135,9 +29143,9 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="violinplot-" class="section level2">
+<div id="violinplot" class="section level2">
 <h2 class="hasAnchor">
-<a href="#violinplot-" class="anchor"></a>Violinplot.</h2>
+<a href="#violinplot" class="anchor"></a>Violinplot</h2>
 <p><a href="https://altair-viz.github.io/gallery/violine_plot.html">Altair Example</a></p>
 <blockquote>
 <p>This example shows how to make a kind of a Violinplot.</p>
@@ -29166,32 +29174,32 @@
 <a class="sourceLine" id="cb44-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb44-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_filter</span>(</a>
-<a class="sourceLine" id="cb44-6" data-line-number="6">    <span class="st">'datum.Miles_per_Gallon &gt; 0'</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">    <span class="st">"datum.Miles_per_Gallon &gt; 0"</span></a>
 <a class="sourceLine" id="cb44-7" data-line-number="7">  )<span class="op">$</span><span class="kw">transform_bin</span>(</a>
-<a class="sourceLine" id="cb44-8" data-line-number="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'bin_max'</span>, <span class="st">'bin_min'</span>), <span class="dt">field=</span><span class="st">'Miles_per_Gallon'</span>, <span class="dt">bin=</span>alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins=</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), <span class="dt">field=</span><span class="st">"Miles_per_Gallon"</span>, <span class="dt">bin=</span>alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins=</span><span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb44-9" data-line-number="9">  )<span class="op">$</span><span class="kw">transform_calculate</span>(</a>
-<a class="sourceLine" id="cb44-10" data-line-number="10">    <span class="dt">binned=</span><span class="st">'(datum.bin_max + datum.bin_min) / 2'</span></a>
+<a class="sourceLine" id="cb44-10" data-line-number="10">    <span class="dt">binned=</span><span class="st">"(datum.bin_max + datum.bin_min) / 2"</span></a>
 <a class="sourceLine" id="cb44-11" data-line-number="11">  )<span class="op">$</span><span class="kw">transform_aggregate</span>(</a>
-<a class="sourceLine" id="cb44-12" data-line-number="12">    <span class="dt">value_count=</span><span class="st">'count()'</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Origin'</span>, <span class="st">'binned'</span>)</a>
+<a class="sourceLine" id="cb44-12" data-line-number="12">    <span class="dt">value_count=</span><span class="st">"count()"</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"binned"</span>)</a>
 <a class="sourceLine" id="cb44-13" data-line-number="13">  )<span class="op">$</span><span class="kw">transform_impute</span>(</a>
-<a class="sourceLine" id="cb44-14" data-line-number="14">    <span class="dt">impute=</span><span class="st">'value_count'</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">'Origin'</span>), <span class="dt">key=</span><span class="st">'binned'</span>, <span class="dt">value=</span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb44-14" data-line-number="14">    <span class="dt">impute=</span><span class="st">"value_count"</span>, <span class="dt">groupby=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>), <span class="dt">key=</span><span class="st">"binned"</span>, <span class="dt">value=</span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb44-15" data-line-number="15">  )<span class="op">$</span><span class="kw">mark_area</span>(</a>
-<a class="sourceLine" id="cb44-16" data-line-number="16">    <span class="dt">interpolate=</span><span class="st">'monotone'</span>,</a>
-<a class="sourceLine" id="cb44-17" data-line-number="17">    <span class="dt">orient=</span><span class="st">'horizontal'</span></a>
+<a class="sourceLine" id="cb44-16" data-line-number="16">    <span class="dt">interpolate=</span><span class="st">"monotone"</span>,</a>
+<a class="sourceLine" id="cb44-17" data-line-number="17">    <span class="dt">orient=</span><span class="st">"horizontal"</span></a>
 <a class="sourceLine" id="cb44-18" data-line-number="18">  )<span class="op">$</span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb44-19" data-line-number="19">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(</a>
-<a class="sourceLine" id="cb44-20" data-line-number="20">      <span class="st">'value_count:Q'</span>,</a>
+<a class="sourceLine" id="cb44-20" data-line-number="20">      <span class="st">"value_count:Q"</span>,</a>
 <a class="sourceLine" id="cb44-21" data-line-number="21">      <span class="dt">title=</span><span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb44-22" data-line-number="22">      <span class="dt">stack=</span><span class="st">'center'</span>,</a>
+<a class="sourceLine" id="cb44-22" data-line-number="22">      <span class="dt">stack=</span><span class="st">"center"</span>,</a>
 <a class="sourceLine" id="cb44-23" data-line-number="23">      <span class="dt">axis=</span>alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">labels=</span><span class="ot">FALSE</span>, <span class="dt">values=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">0</span>),<span class="dt">grid=</span><span class="ot">FALSE</span>, <span class="dt">ticks=</span><span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb44-24" data-line-number="24">    ),</a>
-<a class="sourceLine" id="cb44-25" data-line-number="25">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'binned:Q'</span>, <span class="dt">bin=</span><span class="st">'binned'</span>, <span class="dt">title=</span><span class="st">'Miles per Gallon'</span>),</a>
-<a class="sourceLine" id="cb44-26" data-line-number="26">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">'Origin:N'</span>, <span class="dt">legend=</span><span class="ot">NULL</span>),</a>
+<a class="sourceLine" id="cb44-25" data-line-number="25">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"binned:Q"</span>, <span class="dt">bin=</span><span class="st">"binned"</span>, <span class="dt">title=</span><span class="st">"Miles per Gallon"</span>),</a>
+<a class="sourceLine" id="cb44-26" data-line-number="26">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"Origin:N"</span>, <span class="dt">legend=</span><span class="ot">NULL</span>),</a>
 <a class="sourceLine" id="cb44-27" data-line-number="27">    <span class="dt">column=</span>alt<span class="op">$</span><span class="kw">Column</span>(</a>
-<a class="sourceLine" id="cb44-28" data-line-number="28">      <span class="st">'Origin:N'</span>,</a>
+<a class="sourceLine" id="cb44-28" data-line-number="28">      <span class="st">"Origin:N"</span>,</a>
 <a class="sourceLine" id="cb44-29" data-line-number="29">      <span class="dt">header=</span>alt<span class="op">$</span><span class="kw">Header</span>(</a>
-<a class="sourceLine" id="cb44-30" data-line-number="30">        <span class="dt">titleOrient=</span><span class="st">'bottom'</span>,</a>
-<a class="sourceLine" id="cb44-31" data-line-number="31">        <span class="dt">labelOrient=</span><span class="st">'bottom'</span>,</a>
+<a class="sourceLine" id="cb44-30" data-line-number="30">        <span class="dt">titleOrient=</span><span class="st">"bottom"</span>,</a>
+<a class="sourceLine" id="cb44-31" data-line-number="31">        <span class="dt">labelOrient=</span><span class="st">"bottom"</span>,</a>
 <a class="sourceLine" id="cb44-32" data-line-number="32">        <span class="dt">labelPadding=</span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb44-33" data-line-number="33">      )</a>
 <a class="sourceLine" id="cb44-34" data-line-number="34">    )</a>
@@ -29204,8 +29212,8 @@
 <a class="sourceLine" id="cb44-41" data-line-number="41">  )</a>
 <a class="sourceLine" id="cb44-42" data-line-number="42"></a>
 <a class="sourceLine" id="cb44-43" data-line-number="43">chart</a></code></pre></div>
-<div id="htmlwidget-e8369205533e290ff140" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e8369205533e290ff140">{"x":{
+<div id="htmlwidget-503be18f4f86decc6f37" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-503be18f4f86decc6f37">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -33808,7 +33816,7 @@
       <li><a href="#sorted-error-bars-showing-confidence-interval">Sorted Error Bars showing Confidence Interval</a></li>
       <li><a href="#steam-and-leaf-plot">Steam and Leaf Plot</a></li>
       <li><a href="#text-over-a-heatmap">Text over a Heatmap</a></li>
-      <li><a href="#violinplot-">Violinplot.</a></li>
+      <li><a href="#violinplot">Violinplot</a></li>
       </ul>
 </div>
       </div>

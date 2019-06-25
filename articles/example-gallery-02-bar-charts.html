@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
       </span>
     </div>
 
@@ -124,7 +124,10 @@
       <a href="../articles/example-gallery-08-interactive-charts.html">Interactive Charts</a>
     </li>
     <li>
-      <a href="../articles/example-gallery-09-other-charts.html">Other Charts</a>
+      <a href="../articles/example-gallery-09-case-studies.html">Case Studies</a>
+    </li>
+    <li>
+      <a href="../articles/example-gallery-10-other-charts.html">Other Charts</a>
     </li>
   </ul>
 </li>
@@ -152,13 +155,13 @@
 
       
       </header><script src="example-gallery-02-bar-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-02-bar-charts_files/vega-5.4.0/vega.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="example-gallery-02-bar-charts_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-02-bar-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-binding-0.2.0.9012/vegawidget.js"></script><div class="row">
+<script src="example-gallery-02-bar-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-binding-0.2.1.9000/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Bar Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-06-24</h4>
+            <h4 class="date">2019-06-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-02-bar-charts.Rmd"><code>vignettes/example-gallery-02-bar-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-02-bar-charts.Rmd</code></div>
@@ -169,12 +172,11 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#bar-charts">Bar Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># devtools::install_github("vegawidget/altair")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="bar-chart-with-highlighted-bar" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bar-chart-with-highlighted-bar" class="anchor"></a>Bar Chart with Highlighted Bar</h2>
@@ -201,14 +203,14 @@
 <a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="co"># The highlight will be set on the result of a conditional statement</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">      <span class="st">"datum.year == 1810"</span>,  <span class="co"># If the year is 1810 this test returns True,</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'orange'</span>),     <span class="co"># which sets the bar orange.</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'steelblue'</span>)   <span class="co"># And if it's not true it sets the bar steelblue.</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"orange"</span>),     <span class="co"># which sets the bar orange.</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"steelblue"</span>)   <span class="co"># If it's not True, it sets the bar steelblue.</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12">    )</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width=</span><span class="dv">600</span>)</a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-26ec732b1c4e9cad75ff" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-26ec732b1c4e9cad75ff">{"x":{
+<div id="htmlwidget-c59252c9e96371585aca" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c59252c9e96371585aca">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -536,7 +538,7 @@
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"wheat:Q"</span>,</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">y=</span><span class="st">"year:O"</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"year:O"</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">text &lt;-<span class="st"> </span></a>
@@ -546,11 +548,11 @@
 <a class="sourceLine" id="cb5-13" data-line-number="13">    <span class="dt">text =</span> <span class="st">"wheat:Q"</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14">  )</a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">chart &lt;-<span class="st"> </span>(bars <span class="op">+</span><span class="st"> </span>text)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height=</span><span class="dv">800</span>)</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">chart &lt;-<span class="st"> </span>(bars <span class="op">+</span><span class="st"> </span>text)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">800</span>)</a>
 <a class="sourceLine" id="cb5-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb5-18" data-line-number="18">chart</a></code></pre></div>
-<div id="htmlwidget-0450b1d7224ec3152f88" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0450b1d7224ec3152f88">{"x":{
+<div id="htmlwidget-421246008e54ca565b01" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-421246008e54ca565b01">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -898,22 +900,22 @@
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"year:O"</span>),</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"wheat:Q"</span>)</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">y =</span> <span class="st">"wheat:Q"</span></a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">  )</a>
 <a class="sourceLine" id="cb7-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb7-11" data-line-number="11">rule &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_rule</span>(<span class="dt">color =</span> <span class="st">"red"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">y =</span> <span class="st">"mean(wheat)"</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">y =</span> <span class="st">"mean(wheat):Q"</span></a>
 <a class="sourceLine" id="cb7-16" data-line-number="16">  )</a>
 <a class="sourceLine" id="cb7-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb7-18" data-line-number="18">chart &lt;-<span class="st"> </span>(bar <span class="op">+</span><span class="st"> </span>rule)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">600</span>)</a>
 <a class="sourceLine" id="cb7-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb7-20" data-line-number="20">chart</a></code></pre></div>
-<div id="htmlwidget-1181e1d49037ad19cdf5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1181e1d49037ad19cdf5">{"x":{
+<div id="htmlwidget-6f5ecafa2513f4f51e13" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6f5ecafa2513f4f51e13">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -1253,7 +1255,7 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">base &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"year:O"</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">    <span class="dt">x =</span> <span class="st">"year:O"</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">  )</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7">bar &lt;-<span class="st"> </span></a>
@@ -1268,7 +1270,7 @@
 <a class="sourceLine" id="cb9-16" data-line-number="16"><span class="st">  </span>base<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-17" data-line-number="17"><span class="st">  </span><span class="kw">mark_line</span>(<span class="dt">color =</span> <span class="st">"red"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-18" data-line-number="18"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb9-19" data-line-number="19">    <span class="dt">y=</span><span class="st">"wages:Q"</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">    <span class="dt">y =</span> <span class="st">"wages:Q"</span></a>
 <a class="sourceLine" id="cb9-20" data-line-number="20">  )</a>
 <a class="sourceLine" id="cb9-21" data-line-number="21"></a>
 <a class="sourceLine" id="cb9-22" data-line-number="22">chart &lt;-</a>
@@ -1276,8 +1278,8 @@
 <a class="sourceLine" id="cb9-24" data-line-number="24"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">600</span>)</a>
 <a class="sourceLine" id="cb9-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb9-26" data-line-number="26">chart</a></code></pre></div>
-<div id="htmlwidget-4ce164303b68ce5daace" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ce164303b68ce5daace">{"x":{
+<div id="htmlwidget-f7c68c29b2d0c6fc3c5b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f7c68c29b2d0c6fc3c5b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -1642,16 +1644,14 @@
 <a class="sourceLine" id="cb11-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"nonfarm_change:Q"</span>,</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(</a>
 <a class="sourceLine" id="cb11-8" data-line-number="8">      <span class="st">"datum.nonfarm_change &gt; 0"</span>,  </a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'steelblue'</span>), <span class="co"># The positive color</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">'orange'</span>) <span class="co"># The negative color</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"steelblue"</span>), <span class="co"># positive color</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"orange"</span>)     <span class="co"># negative color</span></a>
 <a class="sourceLine" id="cb11-11" data-line-number="11">    )</a>
 <a class="sourceLine" id="cb11-12" data-line-number="12">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">600</span>)</a>
 <a class="sourceLine" id="cb11-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb11-16" data-line-number="16">chart</a></code></pre></div>
-<div id="htmlwidget-5bc77d8d8d8dbb7d1a3e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5bc77d8d8d8dbb7d1a3e">{"x":{
+<a class="sourceLine" id="cb11-14" data-line-number="14">chart</a></code></pre></div>
+<div id="htmlwidget-5ff51d67863f0ba205be" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5ff51d67863f0ba205be">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -4847,28 +4847,28 @@
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(<span class="dt">data =</span> data)<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"project"</span>,</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"score"</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"project:O"</span>,</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"score:Q"</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb14-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb14-9" data-line-number="9">b &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(<span class="dt">data =</span> data)<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-11" data-line-number="11"><span class="st">  </span><span class="kw">mark_tick</span>(<span class="dt">color =</span> <span class="st">"red"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">    <span class="dt">x =</span> <span class="st">"project"</span>,</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">    <span class="dt">y =</span> <span class="st">"goal"</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">    <span class="dt">x =</span> <span class="st">"project:O"</span>,</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">    <span class="dt">y =</span> <span class="st">"goal:Q"</span></a>
 <a class="sourceLine" id="cb14-15" data-line-number="15">  )</a>
 <a class="sourceLine" id="cb14-16" data-line-number="16"></a>
 <a class="sourceLine" id="cb14-17" data-line-number="17">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb14-18" data-line-number="18"><span class="st">  </span>(a <span class="op">+</span><span class="st"> </span>b)<span class="op">$</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-19" data-line-number="19"><span class="st">  </span><span class="co"># controls the width of the tick</span></a>
-<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="st">  </span><span class="kw">configure_tick</span>(<span class="dt">thickness =</span> <span class="dv">2</span>, <span class="dt">bandSize=</span><span class="dv">35</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="st">  </span><span class="kw">configure_tick</span>(<span class="dt">thickness =</span> <span class="dv">2</span>, <span class="dt">bandSize =</span> <span class="dv">35</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb14-21" data-line-number="21"><span class="st">  </span><span class="co"># controls the width of the bar</span></a>
 <a class="sourceLine" id="cb14-22" data-line-number="22"><span class="st">  </span><span class="kw">configure_scale</span>(<span class="dt">rangeStep =</span> <span class="dv">40</span>)</a>
 <a class="sourceLine" id="cb14-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb14-24" data-line-number="24">chart</a></code></pre></div>
-<div id="htmlwidget-6af87490ce5754006836" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6af87490ce5754006836">{"x":{
+<div id="htmlwidget-9829ed1102355a945367" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9829ed1102355a945367">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -4934,7 +4934,7 @@
         "encoding": {
           "x": {
             "field": "project",
-            "type": "nominal"
+            "type": "ordinal"
           },
           "y": {
             "field": "score",
@@ -4950,7 +4950,7 @@
         "encoding": {
           "x": {
             "field": "project",
-            "type": "nominal"
+            "type": "ordinal"
           },
           "y": {
             "field": "goal",
@@ -4977,7 +4977,7 @@
 <p><a href="https://altair-viz.github.io/gallery/percentage_of_total.html">Altair example</a></p>
 <p>In the Altair example, we see some code like this:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" data-line-number="1">alt.WindowFieldDef(op<span class="op">=</span><span class="st">'sum'</span>, field<span class="op">=</span><span class="st">'Time'</span>, <span class="op">**</span>{<span class="st">'as'</span>: <span class="st">'TotalTime'</span>})</a></code></pre></div>
-<p>In R, supply the stuff inside the <code>**{}</code> as addition arguments to the function:</p>
+<p>In R, supply the stuff inside the <code>**{}</code> as additional arguments to the function:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">alt<span class="op">$</span><span class="kw">WindowFieldDef</span>(<span class="dt">op =</span> <span class="st">"sum"</span>, <span class="dt">field =</span> <span class="st">"Time"</span>, <span class="dt">as =</span> <span class="st">"TotalTime"</span>)</a></code></pre></div>
 <p>See the <a href="field-guide-python.html">Field Guide to Python Issues</a> for more details and more examples.</p>
 <div id="data-6" class="section level4">
@@ -5012,8 +5012,8 @@
 <a class="sourceLine" id="cb19-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="dt">PercentOfTotal =</span> <span class="st">"datum.Time / datum.TotalTime"</span>)</a>
 <a class="sourceLine" id="cb19-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb19-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-418dffdd014a09d1e548" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-418dffdd014a09d1e548">{"x":{
+<div id="htmlwidget-d920bc2b8d975d983852" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d920bc2b8d975d983852">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5482,8 +5482,8 @@
 <a class="sourceLine" id="cb22-34" data-line-number="34">  )</a>
 <a class="sourceLine" id="cb22-35" data-line-number="35"></a>
 <a class="sourceLine" id="cb22-36" data-line-number="36">chart</a></code></pre></div>
-<div id="htmlwidget-06f089b132c7b459e386" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-06f089b132c7b459e386">{"x":{
+<div id="htmlwidget-52303629c06b4061722b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-52303629c06b4061722b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5878,19 +5878,35 @@
 <h2 class="hasAnchor">
 <a href="#grouped-bar-chart" class="anchor"></a>Grouped Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/grouped_bar_chart.html">Altair example</a></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"sum(yield):Q"</span>,</a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
-<a class="sourceLine" id="cb23-8" data-line-number="8">    <span class="dt">column =</span> <span class="st">"site:N"</span></a>
-<a class="sourceLine" id="cb23-9" data-line-number="9">  )</a>
-<a class="sourceLine" id="cb23-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb23-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-2a2fc237c1cd139bbe9a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a2fc237c1cd139bbe9a">{"x":{
+<div id="data-8" class="section level4">
+<h4 class="hasAnchor">
+<a href="#data-8" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">barley</span>()</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(source)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+</div>
+<div id="chart-8" class="section level4">
+<h4 class="hasAnchor">
+<a href="#chart-8" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"sum(yield):Q"</span>,</a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">    <span class="dt">column =</span> <span class="st">"site:N"</span></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">  )</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11">chart</a></code></pre></div>
+<div id="htmlwidget-3fd0756f56bf7c8ff36e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3fd0756f56bf7c8ff36e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -6656,6 +6672,7 @@
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
+</div>
 <div id="grouped-bar-chart-with-error-bars" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped-bar-chart-with-error-bars" class="anchor"></a>Grouped Bar Chart with Error Bars</h2>
@@ -6663,52 +6680,52 @@
 <blockquote>
 <p>This example shows how to show error bars using covidence intervals. The confidence intervals are computed internally in vega by a non-parametric <a href="https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js">bootstrap of the mean</a>.</p>
 </blockquote>
-<div id="data-8" class="section level4">
+<div id="data-9" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-8" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-</div>
-<div id="chart-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-8" class="anchor"></a>Chart</h4>
+<a href="#data-9" class="anchor"></a>Data</h4>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">barley</span>()</a>
 <a class="sourceLine" id="cb25-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">bars &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb25-7" data-line-number="7">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
-<a class="sourceLine" id="cb25-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb25-9" data-line-number="9">      <span class="st">"mean(yield):Q"</span>,</a>
-<a class="sourceLine" id="cb25-10" data-line-number="10">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Mean Yield"</span>)</a>
-<a class="sourceLine" id="cb25-11" data-line-number="11">    ),</a>
-<a class="sourceLine" id="cb25-12" data-line-number="12">    <span class="dt">color =</span> <span class="st">"year:N"</span></a>
-<a class="sourceLine" id="cb25-13" data-line-number="13">  )</a>
-<a class="sourceLine" id="cb25-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb25-15" data-line-number="15">error_bars &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb25-16" data-line-number="16"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb25-17" data-line-number="17"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent=</span><span class="st">'ci'</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb25-18" data-line-number="18"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb25-19" data-line-number="19">    <span class="dt">x=</span><span class="st">'year:O'</span>,</a>
-<a class="sourceLine" id="cb25-20" data-line-number="20">    <span class="dt">y=</span><span class="st">'yield:Q'</span></a>
-<a class="sourceLine" id="cb25-21" data-line-number="21">  )</a>
-<a class="sourceLine" id="cb25-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb25-23" data-line-number="23">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb25-24" data-line-number="24"><span class="st">  </span>alt<span class="op">$</span><span class="kw">layer</span>(bars, error_bars, <span class="dt">data=</span>source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb25-25" data-line-number="25"><span class="st">  </span><span class="kw">facet</span>(</a>
-<a class="sourceLine" id="cb25-26" data-line-number="26">    <span class="dt">column=</span><span class="st">'site:N'</span></a>
-<a class="sourceLine" id="cb25-27" data-line-number="27">  )</a>
-<a class="sourceLine" id="cb25-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb25-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb25-30" data-line-number="30">chart</a></code></pre></div>
-<div id="htmlwidget-161fee5ac1f626f4ffe3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-161fee5ac1f626f4ffe3">{"x":{
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(source)</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+</div>
+<div id="chart-9" class="section level4">
+<h4 class="hasAnchor">
+<a href="#chart-9" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">bars &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">      <span class="st">"mean(yield):Q"</span>,</a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Mean Yield"</span>)</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9">    ),</a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">    <span class="dt">color =</span> <span class="st">"year:N"</span></a>
+<a class="sourceLine" id="cb26-11" data-line-number="11">  )</a>
+<a class="sourceLine" id="cb26-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb26-13" data-line-number="13">error_bars &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb26-14" data-line-number="14"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-15" data-line-number="15"><span class="st">  </span><span class="kw">mark_errorbar</span>(<span class="dt">extent =</span> <span class="st">"ci"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-16" data-line-number="16"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb26-17" data-line-number="17">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb26-18" data-line-number="18">    <span class="dt">y =</span> <span class="st">"yield:Q"</span></a>
+<a class="sourceLine" id="cb26-19" data-line-number="19">  )</a>
+<a class="sourceLine" id="cb26-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb26-21" data-line-number="21">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb26-22" data-line-number="22"><span class="st">  </span>alt<span class="op">$</span><span class="kw">layer</span>(bars, error_bars, <span class="dt">data =</span> source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb26-23" data-line-number="23"><span class="st">  </span><span class="kw">facet</span>(</a>
+<a class="sourceLine" id="cb26-24" data-line-number="24">    <span class="dt">column =</span> <span class="st">"site:N"</span></a>
+<a class="sourceLine" id="cb26-25" data-line-number="25">  )</a>
+<a class="sourceLine" id="cb26-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb26-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb26-28" data-line-number="28">chart</a></code></pre></div>
+<div id="htmlwidget-34692b706a1965ea1e31" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-34692b706a1965ea1e31">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -7507,31 +7524,31 @@
 <a href="#horizontal-bar-chart" class="anchor"></a>Horizontal Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/bar_chart_horizontal.html">Altair example</a></p>
 <p>Note that the argument to the <code>transform_filter()</code> function is a JavaScript expression that refers to a variable in the data using the <code>datum.</code> prefix.</p>
-<div id="data-9" class="section level4">
+<div id="data-10" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-9" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co">#&gt; Observations: 52</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78…</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0…</span></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610…</span></a></code></pre></div>
+<a href="#data-10" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co">#&gt; Observations: 52</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78…</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0…</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610…</span></a></code></pre></div>
 </div>
-<div id="chart-9" class="section level4">
+<div id="chart-10" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-9" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb27-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"wheat:Q"</span>,</a>
-<a class="sourceLine" id="cb27-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"year:O"</span></a>
-<a class="sourceLine" id="cb27-7" data-line-number="7">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">700</span>)</a>
-<a class="sourceLine" id="cb27-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb27-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-71424833e1ef03fa7354" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-71424833e1ef03fa7354">{"x":{
+<a href="#chart-10" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"wheat:Q"</span>,</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"year:O"</span></a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb28-8" data-line-number="8"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">700</span>)</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">chart</a></code></pre></div>
+<div id="htmlwidget-c3adb5e38bf1f8db32b7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c3adb5e38bf1f8db32b7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -7834,33 +7851,33 @@
 <h2 class="hasAnchor">
 <a href="#horizontal-grouped-bar-chart" class="anchor"></a>Horizontal Grouped Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/horizontal_stacked_bar_chart.html">Altair example</a></p>
-<div id="data-10" class="section level4">
+<div id="data-11" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-10" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb28-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a href="#data-11" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
 </div>
-<div id="chart-10" class="section level4">
+<div id="chart-11" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-10" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield):Q"</span>,</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"year:O"</span>,</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
-<a class="sourceLine" id="cb29-8" data-line-number="8">    <span class="dt">row =</span> <span class="st">"site:N"</span></a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">  )</a>
-<a class="sourceLine" id="cb29-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb29-11" data-line-number="11">chart</a></code></pre></div>
-<div id="htmlwidget-9e578c8512dc7aced27c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e578c8512dc7aced27c">{"x":{
+<a href="#chart-11" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield):Q"</span>,</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">    <span class="dt">row =</span> <span class="st">"site:N"</span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9">  )</a>
+<a class="sourceLine" id="cb30-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb30-11" data-line-number="11">chart</a></code></pre></div>
+<div id="htmlwidget-3afa3e6e609ca8885439" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3afa3e6e609ca8885439">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -8631,32 +8648,32 @@
 <h2 class="hasAnchor">
 <a href="#horizontal-stacked-bar-chart" class="anchor"></a>Horizontal Stacked Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/horizontal_stacked_bar_chart.html">Altair example</a></p>
-<div id="data-11" class="section level4">
+<div id="data-12" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-11" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a href="#data-12" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb31-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
 </div>
-<div id="chart-11" class="section level4">
+<div id="chart-12" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-11" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield)"</span>,</a>
-<a class="sourceLine" id="cb31-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
-<a class="sourceLine" id="cb31-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
-<a class="sourceLine" id="cb31-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb31-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb31-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-8a8d0ddaccf0a0cfe1db" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8a8d0ddaccf0a0cfe1db">{"x":{
+<a href="#chart-12" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield)"</span>,</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
+<a class="sourceLine" id="cb32-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb32-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb32-10" data-line-number="10">chart</a></code></pre></div>
+<div id="htmlwidget-558e761097f284d99a86" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-558e761097f284d99a86">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -9423,34 +9440,31 @@
 <h2 class="hasAnchor">
 <a href="#layered-bar-chart" class="anchor"></a>Layered Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/layered_bar_chart.html">Altair example</a></p>
-<div id="data-12" class="section level4">
+<div id="data-13" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-12" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co">#&gt; Observations: 51</span></a>
-<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, …</span></a>
-<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "…</span></a>
-<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, …</span></a></code></pre></div>
+<a href="#data-13" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#&gt; Observations: 51</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, …</span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "…</span></a>
+<a class="sourceLine" id="cb33-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, …</span></a></code></pre></div>
 </div>
-<div id="chart-12" class="section level4">
+<div id="chart-13" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-12" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>(<span class="dt">opacity =</span> <span class="fl">0.7</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb33-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
-<a class="sourceLine" id="cb33-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb33-7" data-line-number="7">      <span class="st">"net_generation:Q"</span>, </a>
-<a class="sourceLine" id="cb33-8" data-line-number="8">      <span class="dt">stack =</span> <span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb33-9" data-line-number="9">    ),</a>
-<a class="sourceLine" id="cb33-10" data-line-number="10">    <span class="dt">color =</span> <span class="st">"source"</span></a>
-<a class="sourceLine" id="cb33-11" data-line-number="11">  )</a>
-<a class="sourceLine" id="cb33-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb33-13" data-line-number="13">chart</a></code></pre></div>
-<div id="htmlwidget-5092b8de8ce6aa17f660" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5092b8de8ce6aa17f660">{"x":{
+<a href="#chart-13" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>(<span class="dt">opacity =</span> <span class="fl">0.7</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"year:O"</span>,</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"net_generation:Q"</span>, <span class="dt">stack =</span> <span class="ot">NULL</span>),</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"source"</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">chart</a></code></pre></div>
+<div id="htmlwidget-03ae3c10134c274d630d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-03ae3c10134c274d630d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -9755,32 +9769,32 @@
 <h2 class="hasAnchor">
 <a href="#normalized-stacked-bar-chart" class="anchor"></a>Normalized Stacked Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/normalized_stacked_bar_chart.html">Altair example</a></p>
-<div id="data-13" class="section level4">
+<div id="data-14" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-13" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a href="#data-14" class="anchor"></a>Data</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
 </div>
-<div id="chart-13" class="section level4">
+<div id="chart-14" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-13" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb35-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"sum(yield)"</span>, <span class="dt">stack =</span> <span class="st">"normalize"</span>),</a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
-<a class="sourceLine" id="cb35-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb35-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb35-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-0366baa96d9a9c799b8a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0366baa96d9a9c799b8a">{"x":{
+<a href="#chart-14" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"sum(yield)"</span>, <span class="dt">stack =</span> <span class="st">"normalize"</span>),</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">chart</a></code></pre></div>
+<div id="htmlwidget-b0780a78cc7399d629ad" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b0780a78cc7399d629ad">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -10548,34 +10562,34 @@
 <h2 class="hasAnchor">
 <a href="#sorted-bar-chart" class="anchor"></a>Sorted Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/bar_chart_sorter.html">Altair example</a></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-<div id="chart-14" class="section level4">
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<div id="chart-15" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-14" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield):Q"</span>,</a>
-<a class="sourceLine" id="cb37-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">      <span class="st">"site:N"</span>,</a>
-<a class="sourceLine" id="cb37-8" data-line-number="8">      <span class="dt">sort =</span> alt<span class="op">$</span><span class="kw">EncodingSortField</span>(</a>
-<a class="sourceLine" id="cb37-9" data-line-number="9">        <span class="dt">field =</span> <span class="st">"yield"</span>, <span class="co"># The field to use for the sort</span></a>
-<a class="sourceLine" id="cb37-10" data-line-number="10">        <span class="dt">op=</span><span class="st">"sum"</span>,  <span class="co"># The operation to run on the field prior to sorting</span></a>
-<a class="sourceLine" id="cb37-11" data-line-number="11">        <span class="dt">order=</span><span class="st">"descending"</span>  <span class="co"># The order to sort in</span></a>
-<a class="sourceLine" id="cb37-12" data-line-number="12">      )</a>
-<a class="sourceLine" id="cb37-13" data-line-number="13">    )</a>
-<a class="sourceLine" id="cb37-14" data-line-number="14">  )</a>
-<a class="sourceLine" id="cb37-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb37-16" data-line-number="16">chart</a></code></pre></div>
-<div id="htmlwidget-403404f39eddeee1e7d2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-403404f39eddeee1e7d2">{"x":{
+<a href="#chart-15" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"sum(yield):Q"</span>,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">      <span class="st">"site:N"</span>,</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">      <span class="dt">sort =</span> alt<span class="op">$</span><span class="kw">EncodingSortField</span>(</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">        <span class="dt">field =</span> <span class="st">"yield"</span>,     <span class="co"># field to use for the sort</span></a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">        <span class="dt">op =</span> <span class="st">"sum"</span>,          <span class="co"># operation to run on the field prior to sorting</span></a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">        <span class="dt">order =</span> <span class="st">"descending"</span> <span class="co"># order to sort in</span></a>
+<a class="sourceLine" id="cb38-12" data-line-number="12">      )</a>
+<a class="sourceLine" id="cb38-13" data-line-number="13">    )</a>
+<a class="sourceLine" id="cb38-14" data-line-number="14">  )</a>
+<a class="sourceLine" id="cb38-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb38-16" data-line-number="16">chart</a></code></pre></div>
+<div id="htmlwidget-ec5b61e4b7bf0de9c99b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ec5b61e4b7bf0de9c99b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -11343,28 +11357,28 @@
 <h2 class="hasAnchor">
 <a href="#stacked-bar-chart" class="anchor"></a>Stacked Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/stacked_bar_chart.html">Altair example</a></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-<div id="chart-15" class="section level4">
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<div id="chart-16" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-15" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb39-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"variety"</span>,</a>
-<a class="sourceLine" id="cb39-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"sum(yield)"</span>,</a>
-<a class="sourceLine" id="cb39-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
-<a class="sourceLine" id="cb39-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb39-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb39-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-2e99a4938073e4155910" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2e99a4938073e4155910">{"x":{
+<a href="#chart-16" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"sum(yield)"</span>,</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span></a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">chart</a></code></pre></div>
+<div id="htmlwidget-501f2e66c083784cea4b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-501f2e66c083784cea4b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -12131,33 +12145,33 @@
 <h2 class="hasAnchor">
 <a href="#stacked-bar-chart-with-sorted-segments" class="anchor"></a>Stacked Bar Chart with Sorted Segments</h2>
 <p><a href="https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html">Altair example</a></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-<div id="chart-16" class="section level4">
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<div id="chart-17" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-16" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
-<a class="sourceLine" id="cb41-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"sum(yield)"</span>,</a>
-<a class="sourceLine" id="cb41-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span>,</a>
-<a class="sourceLine" id="cb41-8" data-line-number="8">    <span class="dt">order =</span> alt<span class="op">$</span><span class="kw">Order</span>(</a>
-<a class="sourceLine" id="cb41-9" data-line-number="9">      <span class="co"># Sort the segments of the bars by this field</span></a>
-<a class="sourceLine" id="cb41-10" data-line-number="10">      <span class="st">'site'</span>,</a>
-<a class="sourceLine" id="cb41-11" data-line-number="11">      <span class="dt">sort=</span><span class="st">'ascending'</span></a>
-<a class="sourceLine" id="cb41-12" data-line-number="12">    )</a>
-<a class="sourceLine" id="cb41-13" data-line-number="13">  )</a>
-<a class="sourceLine" id="cb41-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb41-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-37393828b323ac4a7cb9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-37393828b323ac4a7cb9">{"x":{
+<a href="#chart-17" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb42-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"sum(yield)"</span>,</a>
+<a class="sourceLine" id="cb42-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span>,</a>
+<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">order =</span> alt<span class="op">$</span><span class="kw">Order</span>(</a>
+<a class="sourceLine" id="cb42-9" data-line-number="9">      <span class="co"># Sort the segments of the bars by this field</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10">      <span class="st">"site"</span>,</a>
+<a class="sourceLine" id="cb42-11" data-line-number="11">      <span class="dt">sort =</span><span class="st">"ascending"</span></a>
+<a class="sourceLine" id="cb42-12" data-line-number="12">    )</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13">  )</a>
+<a class="sourceLine" id="cb42-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb42-15" data-line-number="15">chart</a></code></pre></div>
+<div id="htmlwidget-1a8d249cff79a599dfe0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a8d249cff79a599dfe0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -12929,43 +12943,41 @@
 <h2 class="hasAnchor">
 <a href="#stacked-bar-chart-with-text-overlay" class="anchor"></a>Stacked Bar Chart with Text Overlay</h2>
 <p><a href="https://altair-viz.github.io/gallery/stacked_bar_chart_with_text.html">Altair example</a></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-<div id="chart-17" class="section level4">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<div id="chart-18" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-17" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">barley</span>()</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">bars &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb43-7" data-line-number="7">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'sum(yield):Q'</span>, <span class="dt">stack=</span><span class="st">'zero'</span>),</a>
-<a class="sourceLine" id="cb43-8" data-line-number="8">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>),</a>
-<a class="sourceLine" id="cb43-9" data-line-number="9">    <span class="dt">color=</span>alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">'site'</span>)</a>
-<a class="sourceLine" id="cb43-10" data-line-number="10">  )</a>
-<a class="sourceLine" id="cb43-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb43-12" data-line-number="12">text =<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
-<a class="sourceLine" id="cb43-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_text</span>(<span class="dt">dx=</span><span class="op">-</span><span class="dv">15</span>, <span class="dt">dy=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">'white'</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb43-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb43-15" data-line-number="15">    <span class="dt">x=</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">'sum(yield):Q'</span>, <span class="dt">stack=</span><span class="st">'zero'</span>),</a>
-<a class="sourceLine" id="cb43-16" data-line-number="16">    <span class="dt">y=</span>alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">'variety:N'</span>),</a>
-<a class="sourceLine" id="cb43-17" data-line-number="17">    <span class="dt">detail=</span><span class="st">'site:N'</span>,</a>
-<a class="sourceLine" id="cb43-18" data-line-number="18">    <span class="dt">text=</span>alt<span class="op">$</span><span class="kw">Text</span>(<span class="st">'sum(yield):Q'</span>, <span class="dt">format=</span><span class="st">'.1f'</span>)</a>
-<a class="sourceLine" id="cb43-19" data-line-number="19">  )</a>
-<a class="sourceLine" id="cb43-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb43-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb43-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb43-23" data-line-number="23">chart &lt;-<span class="st"> </span>(bars <span class="op">+</span><span class="st"> </span>text)</a>
-<a class="sourceLine" id="cb43-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb43-25" data-line-number="25">chart</a></code></pre></div>
-<div id="htmlwidget-52c2d96de8f43182c8c2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-52c2d96de8f43182c8c2">{"x":{
+<a href="#chart-18" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw">barley</span>()</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">bars &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"sum(yield):Q"</span>, <span class="dt">stack =</span> <span class="st">"zero"</span>),</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">    <span class="dt">y =</span> <span class="st">"variety:N"</span>,</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9">    <span class="dt">color =</span><span class="st">"site:N"</span></a>
+<a class="sourceLine" id="cb44-10" data-line-number="10">  )</a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb44-12" data-line-number="12">text =<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
+<a class="sourceLine" id="cb44-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_text</span>(<span class="dt">dx =</span> <span class="dv">-15</span>, <span class="dt">dy =</span> <span class="dv">3</span>, <span class="dt">color =</span> <span class="st">"white"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb44-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb44-15" data-line-number="15">    <span class="dt">x =</span>alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"sum(yield):Q"</span>, <span class="dt">stack =</span> <span class="st">"zero"</span>),</a>
+<a class="sourceLine" id="cb44-16" data-line-number="16">    <span class="dt">y =</span> <span class="st">"variety:N"</span>,</a>
+<a class="sourceLine" id="cb44-17" data-line-number="17">    <span class="dt">detail =</span> <span class="st">"site:N"</span>,</a>
+<a class="sourceLine" id="cb44-18" data-line-number="18">    <span class="dt">text=</span>alt<span class="op">$</span><span class="kw">Text</span>(<span class="st">"sum(yield):Q"</span>, <span class="dt">format =</span> <span class="st">".1f"</span>)</a>
+<a class="sourceLine" id="cb44-19" data-line-number="19">  )</a>
+<a class="sourceLine" id="cb44-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb44-21" data-line-number="21">chart &lt;-<span class="st"> </span>(bars <span class="op">+</span><span class="st"> </span>text)</a>
+<a class="sourceLine" id="cb44-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb44-23" data-line-number="23">chart</a></code></pre></div>
+<div id="htmlwidget-79e74d930c6b61502f7a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-79e74d930c6b61502f7a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -13770,30 +13782,30 @@
 <h2 class="hasAnchor">
 <a href="#trellis-stacked-bar-chart" class="anchor"></a>Trellis Stacked Bar Chart</h2>
 <p><a href="https://altair-viz.github.io/gallery/trellis_stacked_bar_chart.html">Altair example</a></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
-<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
-<div id="chart-18" class="section level4">
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
+<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
+<a class="sourceLine" id="cb45-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<div id="chart-19" class="section level4">
 <h4 class="hasAnchor">
-<a href="#chart-18" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb45-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"yield"</span>,</a>
-<a class="sourceLine" id="cb45-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
-<a class="sourceLine" id="cb45-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span>,</a>
-<a class="sourceLine" id="cb45-8" data-line-number="8">    <span class="dt">column =</span> <span class="st">"year"</span></a>
-<a class="sourceLine" id="cb45-9" data-line-number="9">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb45-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">220</span>)</a>
-<a class="sourceLine" id="cb45-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb45-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-fa7ae906fa5d53fa6cad" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fa7ae906fa5d53fa6cad">{"x":{
+<a href="#chart-19" class="anchor"></a>Chart</h4>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">chart &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw">barley</span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"yield"</span>,</a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety"</span>,</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"site"</span>,</a>
+<a class="sourceLine" id="cb46-8" data-line-number="8">    <span class="dt">column =</span> <span class="st">"year"</span></a>
+<a class="sourceLine" id="cb46-9" data-line-number="9">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb46-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">220</span>)</a>
+<a class="sourceLine" id="cb46-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb46-12" data-line-number="12">chart</a></code></pre></div>
+<div id="htmlwidget-3b24eaf30b6d6d81e144" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3b24eaf30b6d6d81e144">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
