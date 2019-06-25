@@ -36,8 +36,8 @@ installation steps. These steps are described in greater detail in the
 [Installation](https://vegawidget.github.io/altair/articles/installation.html)
 article.
 
-1.  Python must be installed on your system. I recommend using a
-    [Conda](https://conda.io/docs) installation;
+1.  Python must be installed on your system. We have has success using
+    [Conda](https://conda.io/docs);
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
     
@@ -95,8 +95,9 @@ Some things to keep in mind:
   - Where you see a `.` in the Python examples, use a `$` instead.
 
   - In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
-    Altair from throwing an error.
+    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+    Altair from throwing an error. Alternatively, you can use a
+    double-backslash, e.g. `Sepal\\.Width`.
 
 These and other “gotchas” are compiled, along with workarounds, in an
 article: [Field Guide to Python
@@ -108,8 +109,7 @@ The documentation for this package includes some
 [articles](https://vegawidget.github.io/altair/articles/index.html):
 
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
-    some more-detailed
-    instructions
+    some more-detailed instructions
 
   - [Manifesto](https://vegawidget.github.io/altair/articles/manifesto.html):
     an outline of some high-level development ideas, which may change
@@ -129,8 +129,7 @@ Examples:
 
   - [First
     Example](https://vegawidget.github.io/altair/articles/first-example.html):
-    a walkthrough to get a first chart to
-    work
+    a walkthrough to get a first chart to work
 
   - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
     shows how Vega-Lite implements tooltips as an encoding within a

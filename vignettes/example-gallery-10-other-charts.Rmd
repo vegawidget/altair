@@ -1010,29 +1010,30 @@ source <- vega_data$cars()
 base <-
   alt$Chart(source)$
   transform_aggregate(
-    num_cars="count()",
-    groupby=list("Origin", "Cylinders")
+    num_cars = "count()",
+    groupby = list("Origin", "Cylinders")
   )$encode(
-    alt$X("Cylinders:O", scale=alt$Scale(paddingInner=0)),
-    alt$Y("Origin:O", scale=alt$Scale(paddingInner=0))
+    alt$X("Cylinders:O", scale = alt$Scale(paddingInner = 0)),
+    alt$Y("Origin:O", scale = alt$Scale(paddingInner = 0))
   )
 
 # Configure heatmap
 heatmap <- base$
   mark_rect()$
   encode(
-    color=alt$Color("num_cars:Q",
-                    scale=alt$Scale(scheme="viridis"),
-                    legend=alt$Legend(direction="horizontal")
+    color=alt$Color(
+      "num_cars:Q",
+      scale = alt$Scale(scheme = "viridis"),
+      legend = alt$Legend(direction = "horizontal")
     )
   )
 
 # Configure text
 text <- base$
-  mark_text(baseline="middle")$
+  mark_text(baseline = "middle")$
   encode(
-    text="num_cars:Q",
-    color=alt$condition(
+    text = "num_cars:Q",
+    color = alt$condition(
       "datum.num_cars > 100",
       alt$value("black"),
       alt$value("white")
@@ -1042,8 +1043,6 @@ text <- base$
 # Draw the chart
 heatmap + text
 ```
-
-
 
 ## Violinplot
 
@@ -1065,43 +1064,50 @@ source <- vega_data$cars()
 
 chart <-
   alt$Chart(source)$
-  transform_filter(
-    "datum.Miles_per_Gallon > 0"
-  )$transform_bin(
-    list("bin_max", "bin_min"), field="Miles_per_Gallon", bin=alt$Bin(maxbins=20)
-  )$transform_calculate(
-    binned="(datum.bin_max + datum.bin_min) / 2"
-  )$transform_aggregate(
-    value_count="count()", groupby=list("Origin", "binned")
-  )$transform_impute(
-    impute="value_count", groupby=list("Origin"), key="binned", value=0
-  )$mark_area(
-    interpolate="monotone",
-    orient="horizontal"
-  )$encode(
-    x=alt$X(
+  transform_filter("datum.Miles_per_Gallon > 0")$
+  transform_bin(
+    list("bin_max", "bin_min"), 
+    field = "Miles_per_Gallon", 
+    bin = alt$Bin(maxbins = 20)
+  )$
+  transform_calculate(binned = "(datum.bin_max + datum.bin_min) / 2")$
+  transform_aggregate(
+    value_count = "count()", 
+    groupby = list("Origin", "binned")
+  )$
+  transform_impute(
+    impute = "value_count",
+    groupby = list("Origin"), 
+    key = "binned", 
+    value = 0
+  )$
+  mark_area(interpolate = "monotone", orient = "horizontal")$
+  encode(
+    x = alt$X(
       "value_count:Q",
-      title=NULL,
-      stack="center",
-      axis=alt$Axis(labels=FALSE, values=list(0),grid=FALSE, ticks=TRUE)
+      title = NULL,
+      stack = "center",
+      axis = alt$Axis(
+        labels = FALSE, 
+        values = list(0), 
+        grid = FALSE, 
+        ticks = TRUE
+      )
     ),
-    y=alt$Y("binned:Q", bin="binned", title="Miles per Gallon"),
-    color=alt$Color("Origin:N", legend=NULL),
-    column=alt$Column(
+    y = alt$Y("binned:Q", bin = "binned", title = "Miles per Gallon"),
+    color = alt$Color("Origin:N", legend = NULL),
+    column = alt$Column(
       "Origin:N",
-      header=alt$Header(
-        titleOrient="bottom",
-        labelOrient="bottom",
-        labelPadding=0
+      header = alt$Header(
+        titleOrient = "bottom",
+        labelOrient = "bottom",
+        labelPadding = 0
       )
     )
-  )$properties(
-    width=80
-  )$configure_facet(
-    spacing=0
-  )$configure_view(
-    stroke=NULL
-  )
+  )$
+  properties(width = 80)$
+  configure_facet(spacing = 0)$
+  configure_view(stroke = NULL)
 
 chart
 ```

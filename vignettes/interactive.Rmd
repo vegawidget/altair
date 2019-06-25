@@ -17,7 +17,7 @@ This document is adapted from the [linked-brush scatter-plot example](https://al
 
 A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the *selection* object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.
 
-Let's start again with our basic plot from the [first example](first-example.html):
+Let's start again with our basic plot from the [Getting Started article](altair.html):
 
 ```{r}
 library("altair")
