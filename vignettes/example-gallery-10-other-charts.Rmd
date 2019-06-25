@@ -18,8 +18,7 @@ This document is adapted from the [Other Charts](https://altair-viz.github.io/ga
 
 Our first step is to set up our environment:
 
-```{r}
-# devtools::install_github("vegawidget/altair")
+```{r message=FALSE}
 library("altair")
 library("tibble")
 library("dplyr")
