@@ -124,8 +124,10 @@ navbar:
           href: articles/example-gallery-07-maps.html
         - text: Interactive Charts
           href: articles/example-gallery-08-interactive-charts.html
+        - text: Case Studies
+          href: articles/example-gallery-09-case-studies.html
         - text: Other Charts
-          href: articles/example-gallery-09-other-charts.html
+          href: articles/example-gallery-10-other-charts.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/vegawidget/altair

@@ -19,7 +19,7 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 
 Our first step is to set up our environment:
 
-```{r}
+```{r message=FALSE}
 library("altair")
 library("tibble")
 library("tidyr")
