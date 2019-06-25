@@ -42,35 +42,35 @@ glimpse(vega_data$wheat())
 
 ```{r}
 source <- vega_data$wheat()
-threshold <- data_frame(threshold =90)
+threshold <- tibble(threshold = 90)
 
 bars <- 
   alt$Chart(source)$
   mark_bar()$
   encode(
-    x="year:O",
-    y="wheat:Q"
+    x = "year:O",
+    y = "wheat:Q"
   )
 
 highlight <- 
   alt$Chart(source)$
-  mark_bar(color="#e45755")$
+  mark_bar(color = "#e45755")$
   encode(
-    x='year:O',
-    y='baseline:Q',
-    y2='wheat:Q'
-  )$transform_filter(
-    "datum.wheat > 90"
-  )$transform_calculate("baseline", "90")
+    x = "year:O",
+    y = "baseline:Q",
+    y2 = "wheat:Q"
+  )$
+  transform_filter("datum.wheat > 90")$
+  transform_calculate("baseline", "90")
 
 rule <-
   alt$Chart(threshold)$
   mark_rule()$
   encode(
-    y='threshold:Q'
+    y = "threshold:Q"
   )
 
-(bars + highlight + rule)$properties(width=600)
+(bars + highlight + rule)$properties(width = 600)
 ```
 
 ## Becker’s Barley Trellis Plot (wrapped facet)
@@ -92,15 +92,12 @@ chart <-
   alt$Chart(vega_data$barley())$
   mark_point()$
   encode(
-    x = alt$X("median(yield)", scale=alt$Scale(zero=FALSE)),
+    x = alt$X("median(yield)", scale=alt$Scale(zero = FALSE)),
     y = "variety:O",
     color = "year:N",
     facet = "site:O"
-  )$properties(
-    columns=2,
-    width=200,
-    height=100
-  )
+  )$
+  properties(columns = 2, width = 200, height = 100)
 
 chart
 ```
@@ -113,7 +110,7 @@ chart
 #### Data
 
 ```{r}
-# glimpse(vega_data$movies())
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -124,7 +121,7 @@ chart <-
   mark_rect()$
   encode(
     x = alt$X("IMDB_Rating:Q", bin = alt$Bin(maxbins = 60)),
-    y = alt$Y("Rotten_Tomatoes_Rating:Q", bin=alt$Bin(maxbins = 40)),
+    y = alt$Y("Rotten_Tomatoes_Rating:Q", bin = alt$Bin(maxbins = 40)),
     color = alt$Color(
       "count(IMDB_Rating):Q", 
       scale = alt$Scale(scheme = "greenblue")
@@ -140,7 +137,7 @@ chart
 > This example shows how to make a basic box plot using US Population data from 2000.
 
 ```{r}
-#glimpse(vega_data$population())
+glimpse(vega_data$population())
 ```
 
 #### Chart
@@ -148,10 +145,10 @@ chart
 ```{r}
 chart <-
   alt$Chart(vega_data$population$url)$
-  mark_boxplot(extent='min-max')$
+  mark_boxplot(extent="min-max")$
   encode(
-    x='age:O',
-    y='people:Q'
+    x = "age:O",
+    y = "people:Q"
   )
 
 chart
@@ -384,6 +381,7 @@ open_close_color <-
     alt$value("#06982d"),
     alt$value("#ae1325")
   )
+
 rule <- 
   alt$Chart(data)$
   mark_rule()$
@@ -397,16 +395,17 @@ rule <-
           list(month= 7, date= 1, year= 2009)
         )
       ),
-      axis = alt$Axis(format="%m/%d", title="Date in 2009")
+      axis = alt$Axis(format = "%m/%d", title = "Date in 2009")
     ),
     alt$Y(
       "low",
-      scale = alt$Scale(zero=FALSE),
-      axis = alt$Axis(title="Price")
+      scale = alt$Scale(zero = FALSE),
+      axis = alt$Axis(title = "Price")
     ),
     alt$Y2("high"),
     color = open_close_color
   )
+
 bar <- 
   alt$Chart(data)$
   mark_bar()$
@@ -416,6 +415,7 @@ bar <-
     y2 = "close",
     color = open_close_color
   )
+
 chart <- (rule + bar)
 chart
 ```
@@ -438,18 +438,18 @@ source <- vega_data$barley()
 
 error_bars <-
   alt$Chart(source)$
-  mark_errorbar(extent='stdev')$
-  encode(
-    x=alt$X('yield:Q', scale=alt$Scale(zero=FALSE)),
-    y=alt$Y('variety:N')
+  mark_errorbar(extent = "stdev")$
+  encode( 
+    x = alt$X("yield:Q", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("variety:N")
   )
 
 points <-
   alt$Chart(source)$
-  mark_point(filled=TRUE, color='black')$
+  mark_point(filled = TRUE, color = "black")$
   encode(
-    x=alt$X('yield:Q', aggregate='mean'),
-    y=alt$Y('variety:N')
+    x = alt$X("yield:Q", aggregate = "mean"),
+    y = alt$Y("variety:N")
   )
 
 error_bars + points
@@ -475,18 +475,18 @@ source <- vega_data$barley()
 
 error_bars <-
   alt$Chart(source)$
-  mark_errorbar(extent='ci')$
+  mark_errorbar(extent = "ci")$
   encode(
-    x=alt$X('yield:Q', scale=alt$Scale(zero=FALSE)),
-    y=alt$Y('variety:N')
+    x = alt$X("yield:Q", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("variety:N")
   )
 
 points <-
   alt$Chart(source)$
-  mark_point(filled=TRUE, color='black')$
+  mark_point(filled = TRUE, color = "black")$
   encode(
-    x=alt$X('yield:Q', aggregate='mean'),
-    y=alt$Y('variety:N')
+    x = alt$X("yield:Q", aggregate = "mean"),
+    y = alt$Y("variety:N")
   )
 
 error_bars + points
@@ -527,24 +527,25 @@ top_hist <-
   alt$Chart(iris)$
   mark_area(opacity = 0.3, interpolate = "step")$
   encode(
-    x = alt$X("sepalLength:Q",
-              # when using bins, the axis scale is set through
-              # the bin extent, so we do not specify the scale here
-              # (which would be ignored anyway)
-              bin = alt$Bin(maxbins = 20, extent = xscale$domain),
-              stack = NULL,
-              axis = blank_axis
+    x = alt$X(
+      "sepalLength:Q",
+      # when using bins, the axis scale is set through
+      # the bin extent, so we do not specify the scale here
+      # (which would be ignored anyway)
+      bin = alt$Bin(maxbins = 20, extent = xscale$domain),
+      stack = NULL,
+      axis = blank_axis
     ),
     y = alt$Y("count(sepalLength)", stack = NULL, axis = blank_axis),
     color = alt$Color("species:N")
   )$
-  properties(height=60)
+  properties(height = 60)
 
 right_hist <- 
   alt$Chart(iris)$
-  mark_area(opacity= 0.3, interpolate= "step")$
+  mark_area(opacity = 0.3, interpolate = "step")$
   encode(
-    x = alt$X("count(sepalWidth)", stack=NULL, axis=blank_axis),
+    x = alt$X("count(sepalWidth)", stack = NULL, axis = blank_axis),
     y = alt$Y(
       "sepalWidth:Q",
       bin = alt$Bin(maxbins = 20, extent = yscale$domain),
@@ -553,7 +554,7 @@ right_hist <-
     ),
     color = alt$Color("species:N")
   )$
-  properties(width=60)
+  properties(width = 60)
 
 chart <- (top_hist & (points | right_hist))
 
@@ -608,8 +609,8 @@ chart
 <details>
 <summary>Definition</summary>
 ```{r}
-data <- data_frame(id = 1:101)
-person = c('M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z')
+data <- tibble(id = 1:100)
+person = c("M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z")
 ```
 </details>
 
@@ -622,23 +623,16 @@ glimpse(data)
 ```{r}
 chart <-
   alt$Chart(data)$
-  transform_calculate(
-    row="ceil(datum.id/10)"
-  )$transform_calculate(
-    col="datum.id - datum.row*10"
-  )$mark_point(
-    filled=TRUE,
-    size=50
-  )$encode(
-    x=alt$X("col:O", axis=NULL),
-    y=alt$Y("row:O", axis=NULL),
-    shape=alt$ShapeValue(person)
-  )$properties(
-    width=400,
-    height=400
-  )$configure_view(
-    strokeWidth=0
-  )
+  transform_calculate(row = "ceil(datum.id/10)")$
+  transform_calculate(col = "datum.id - datum.row*10")$
+  mark_point(filled = TRUE, size = 50)$
+  encode(
+    x = alt$X("col:O", axis = NULL),
+    y = alt$Y("row:O", axis = NULL),
+    shape = alt$ShapeValue(person)
+  )$
+  properties(width = 400, height = 400)$
+  configure_view(strokeWidth = 0)
 
 chart
 ```
@@ -661,11 +655,11 @@ stocks <- vega_data$stocks()
 
 chart <- 
   alt$Chart(stocks)$
-  mark_line(point=TRUE)$
+  mark_line(point = TRUE)$
   encode(
-    x='date:T',
-    y='price:Q',
-    color='symbol:N'
+    x = "date:T",
+    y = "price:Q",
+    color = "symbol:N"
   )
 
 chart
@@ -695,25 +689,27 @@ source <- vega_data$iris()
 
 chart <-
   alt$Chart(source)$
-  transform_window(
-    index='count()'
-  )$transform_fold(
-    list('petalLength', 'petalWidth', 'sepalLength', 'sepalWidth')
-  )$transform_joinaggregate(
-    min='min(value)',
-    max='max(value)',
-    groupby=list('key')
-  )$transform_calculate(
-    minmax_value='(datum.value-datum.min)/(datum.max-datum.min)',
-    mid='(datum.min+datum.max)/2'
-  )$mark_line()$
+  transform_window(index="count()")$
+  transform_fold(
+    list("petalLength", "petalWidth", "sepalLength", "sepalWidth")
+  )$
+  transform_joinaggregate(
+    groupby = list("key"),
+    min = "min(value)",
+    max = "max(value)"
+  )$
+  transform_calculate(
+    minmax_value = "(datum.value - datum.min) / (datum.max - datum.min)",
+    mid = "(datum.min + datum.max) / 2"
+  )$
+  mark_line()$
   encode(
-    x='key:N',
-    y='minmax_value:Q',
-    color='species:N',
-    detail='index:N',
-    opacity=alt$value(0.5)
-  )$properties(width=500)
+    x = "key:N",
+    y = "minmax_value:Q",
+    color = "species:N",
+    detail = "index:N",
+    opacity = alt$value(0.5)
+  )$properties(width = 500)
 
 chart
 ```
@@ -738,18 +734,19 @@ source <- vega_data$iris()
 
 chart <-
   alt$Chart(source)$
-  transform_window(
-    index='count()'
-  )$transform_fold(
-    list('petalLength', 'petalWidth', 'sepalLength', 'sepalWidth')
-  )$mark_line()$
+  transform_window(index = "count()")$
+  transform_fold(
+    list("petalLength", "petalWidth", "sepalLength", "sepalWidth")
+  )$
+  mark_line()$
   encode(
-    x='key:N',
-    y='value:Q',
-    color='species:N',
-    detail='index:N',
-    opacity=alt$value(0.5)
-  )$properties(width=500)
+    x = "key:N",
+    y = "value:Q",
+    color = "species:N",
+    detail = "index:N",
+    opacity = alt$value(0.5)
+  )$
+  properties(width = 500)
 
 chart
 ```
@@ -848,52 +845,53 @@ glimpse(vega_data$seattle_weather())
 ```{r}
 source <- vega_data$seattle_weather()
 
-step = 20
-overlap = 1
+step <- 20
+overlap <- 1
 
-chart <-
-  alt$Chart(source)$
-  transform_timeunit(
-    Month='month(date)'
-  )$transform_joinaggregate(
-    mean_temp='mean(temp_max)', groupby=list('Month')
-  )$transform_bin(
-    list('bin_max', 'bin_min'), 'temp_max'
-  )$transform_aggregate(
-    value='count()', groupby=list('Month', 'mean_temp', 'bin_min', 'bin_max')
-  )$transform_impute(
-    impute='value', groupby=list('Month', 'mean_temp'), key='bin_min', value=0
-  )$mark_area(
-    interpolate='monotone',
-    fillOpacity=0.8,
-    stroke='lightgray',
-    strokeWidth=0.5
+chart <-alt$Chart(source)$
+  transform_timeunit(Month = "month(date)")$
+  transform_joinaggregate(
+    mean_temp = "mean(temp_max)", 
+    groupby = list("Month")
+  )$
+  transform_bin(list("bin_max", "bin_min"), "temp_max")$
+  transform_aggregate(
+    value = "count()", 
+    groupby = list("Month", "mean_temp", "bin_min", "bin_max")
+  )$
+  transform_impute(
+    impute = "value", 
+    groupby = list("Month", "mean_temp"), 
+    key = "bin_min", 
+    value = 0
+  )$
+  mark_area(
+    interpolate = "monotone",
+    fillOpacity = 0.8,
+    stroke = "lightgray",
+    strokeWidth = 0.5
   )$encode(
-    alt$X('bin_min:Q', bin='binned', title='Maximum Daily Temperature (C)'),
+    alt$X("bin_min:Q", bin = "binned", title = "Maximum Daily Temperature (C)"),
     alt$Y(
-      'value:Q',
-      scale=alt$Scale(range=list(step, -step * overlap)),
-      axis=NULL
+      "value:Q",
+      scale = alt$Scale(range = list(step, -step * overlap)),
+      axis = NULL
     ),
     alt$Fill(
-      'mean_temp:Q',
-      legend=NULL,
-      scale=alt$Scale(domain=list(30, 5), scheme='redyellowblue')
+      "mean_temp:Q",
+      legend = NULL,
+      scale = alt$Scale(domain = list(30, 5), scheme = "redyellowblue")
     ),
     alt$Row(
-      'Month:T',
-      title=NULL,
-      header=alt$Header(labelAngle=0, labelAlign='right', format='%B')
+      "Month:T",
+      title = NULL,
+      header = alt$Header(labelAngle = 0, labelAlign = "right", format = "%B")
     )
-  )$properties(
-    bounds='flush', title='Seattle Weather', height=step
-  )$configure_facet(
-    spacing=0
-  )$configure_view(
-    stroke=NULL
-  )$configure_title(
-    anchor='end'
-  )
+  )$
+  properties(bounds ="flush", title = "Seattle Weather", height = step)$
+  configure_facet(spacing = 0)$
+  configure_view(stroke = NULL)$
+  configure_title(anchor = "end")
 
 chart
 ```
@@ -919,28 +917,25 @@ source <- vega_data$barley()
 
 points <-
   alt$Chart(source)$
-  mark_point(filled=TRUE, color='black')$
+  mark_point(filled = TRUE, color = "black")$
   encode(
-    x=alt$X('mean(yield):Q', title='Barley Yield'),
-    y=alt$Y(
-      'variety',
-      sort=alt$EncodingSortField(
-        field='yield',
-        op='mean',
-        order='descending'
+    x=alt$X("mean(yield):Q", title="Barley Yield"),
+    y=alt$Y( 
+      "variety",
+      sort = alt$EncodingSortField(
+        field = "yield",
+        op = "mean",
+        order = "descending"
       )
     )
-  )$properties(
-    width=400,
-    height=250
-  )
+  )$properties(width = 400, height = 250)
 
 error_bars <-
   points$
   mark_rule()$
   encode(
-    x='ci0(yield)',
-    x2='ci1(yield)'
+    x = "ci0(yield)",
+    x2 = "ci1(yield)"
   )
 
 points + error_bars
@@ -1016,32 +1011,32 @@ source <- vega_data$cars()
 base <-
   alt$Chart(source)$
   transform_aggregate(
-    num_cars='count()',
-    groupby=list('Origin', 'Cylinders')
+    num_cars="count()",
+    groupby=list("Origin", "Cylinders")
   )$encode(
-    alt$X('Cylinders:O', scale=alt$Scale(paddingInner=0)),
-    alt$Y('Origin:O', scale=alt$Scale(paddingInner=0))
+    alt$X("Cylinders:O", scale=alt$Scale(paddingInner=0)),
+    alt$Y("Origin:O", scale=alt$Scale(paddingInner=0))
   )
 
 # Configure heatmap
 heatmap <- base$
   mark_rect()$
   encode(
-    color=alt$Color('num_cars:Q',
-                    scale=alt$Scale(scheme='viridis'),
-                    legend=alt$Legend(direction='horizontal')
+    color=alt$Color("num_cars:Q",
+                    scale=alt$Scale(scheme="viridis"),
+                    legend=alt$Legend(direction="horizontal")
     )
   )
 
 # Configure text
 text <- base$
-  mark_text(baseline='middle')$
+  mark_text(baseline="middle")$
   encode(
-    text='num_cars:Q',
+    text="num_cars:Q",
     color=alt$condition(
-      'datum.num_cars > 100',
-      alt$value('black'),
-      alt$value('white')
+      "datum.num_cars > 100",
+      alt$value("black"),
+      alt$value("white")
     )
   )
 
@@ -1051,7 +1046,7 @@ heatmap + text
 
 
 
-## Violinplot.
+## Violinplot
 
 [Altair Example](https://altair-viz.github.io/gallery/violine_plot.html)
 
@@ -1072,32 +1067,32 @@ source <- vega_data$cars()
 chart <-
   alt$Chart(source)$
   transform_filter(
-    'datum.Miles_per_Gallon > 0'
+    "datum.Miles_per_Gallon > 0"
   )$transform_bin(
-    list('bin_max', 'bin_min'), field='Miles_per_Gallon', bin=alt$Bin(maxbins=20)
+    list("bin_max", "bin_min"), field="Miles_per_Gallon", bin=alt$Bin(maxbins=20)
   )$transform_calculate(
-    binned='(datum.bin_max + datum.bin_min) / 2'
+    binned="(datum.bin_max + datum.bin_min) / 2"
   )$transform_aggregate(
-    value_count='count()', groupby=list('Origin', 'binned')
+    value_count="count()", groupby=list("Origin", "binned")
   )$transform_impute(
-    impute='value_count', groupby=list('Origin'), key='binned', value=0
+    impute="value_count", groupby=list("Origin"), key="binned", value=0
   )$mark_area(
-    interpolate='monotone',
-    orient='horizontal'
+    interpolate="monotone",
+    orient="horizontal"
   )$encode(
     x=alt$X(
-      'value_count:Q',
+      "value_count:Q",
       title=NULL,
-      stack='center',
+      stack="center",
       axis=alt$Axis(labels=FALSE, values=list(0),grid=FALSE, ticks=TRUE)
     ),
-    y=alt$Y('binned:Q', bin='binned', title='Miles per Gallon'),
-    color=alt$Color('Origin:N', legend=NULL),
+    y=alt$Y("binned:Q", bin="binned", title="Miles per Gallon"),
+    color=alt$Color("Origin:N", legend=NULL),
     column=alt$Column(
-      'Origin:N',
+      "Origin:N",
       header=alt$Header(
-        titleOrient='bottom',
-        labelOrient='bottom',
+        titleOrient="bottom",
+        labelOrient="bottom",
         labelPadding=0
       )
     )
