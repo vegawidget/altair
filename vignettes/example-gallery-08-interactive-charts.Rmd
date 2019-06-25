@@ -11,17 +11,15 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 
 Our first step is to set up our environment:
 
-```{r}
-# devtools::install_github("vegawidget/altair")
+```{r message=FALSE}
 library("altair")
 library("tibble")
 library("dplyr")
 library("tidyr")
+library("jsonlite")
 
 vega_data <- import_vega_data()
 ```
-
-
 
 ## Interactive Average
 
@@ -51,7 +49,8 @@ bars <-
     opacity = alt$condition(
       brush, 
       alt$OpacityValue(1), 
-      alt$OpacityValue(0.7))
+      alt$OpacityValue(0.7)
+    )
   )$
   properties(selection = brush)
 
@@ -64,7 +63,7 @@ line <-
   )$
   transform_filter(brush$ref())
 
-chart <- alt$layer(bars, line, data=weather)
+chart <- alt$layer(bars, line, data = weather)
 
 chart
 ```
@@ -78,7 +77,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$movies)
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -146,7 +145,7 @@ Note: `alt$repeat()` must be translated to  `alt$\x60repeat\x60()`.
 #### Data
 
 ```{r}
-#glimpse(vega_data$flights_2k)
+glimpse(fromJSON(vega_data$flights_2k$url))
 ```
 
 #### Chart
@@ -230,7 +229,7 @@ chart
 <details>
 <summary>Definition</summary>
 ```{r}
-source <- data_frame(
+source <- tibble(
   gender = c(rep("M", 1000), rep("F", 1000)),
   height = c(rnorm(1000, 69, 7), rnorm(1000, 64, 6)),
   weight = c(rnorm(1000, 195.8, 144), rnorm(1000, 167, 100)),
@@ -246,44 +245,53 @@ glimpse(source)
 #### Chart
 
 ```{r}
-selector <- alt$selection_single(empty='all', fields=list('gender'))
+selector <- alt$selection_single(empty = "all", fields = list("gender"))
 
-color_scale <- alt$Scale(domain=list('M', 'F'),
-                         range=list('#1FC3AA', '#8624F5'))
+color_scale <- 
+  alt$Scale(
+    domain = list("M", "F"),
+    range = list('#1FC3AA', '#8624F5')
+  )
 
 base <- 
   alt$Chart(source)$
-  properties(
-    width=250,
-    height=250
-  )$
+  properties(width = 250, height = 250)$
   add_selection(selector)
 
 points <-
   base$mark_point(filled=TRUE, size=200)$
   encode(
-    x=alt$X('mean(height):Q',
-            scale=alt$Scale(domain=list(0,84))),
-    y=alt$Y('mean(weight):Q',
-            scale=alt$Scale(domain=list(0,250))),
-    color=alt$condition(selector,
-                        'gender:N',
-                        alt$value('lightgray'),
-                        scale=color_scale)
-  )$interactive()
+    x = alt$X(
+      "mean(height):Q",
+      scale = alt$Scale(domain = list(0, 84))
+    ),
+    y = alt$Y(
+      "mean(weight):Q",
+      scale = alt$Scale(domain=list(0,250))),
+      color = alt$condition(
+        selector,
+        "gender:N",
+        alt$value("lightgray"),
+        scale = color_scale
+    )
+  )$
+  interactive()
 
 hists <-
   base$
-  mark_bar(opacity=0.5, thickness=100)$
+  mark_bar(opacity = 0.5, thickness = 100)$
   encode(
-    x=alt$X('age',
-            bin=alt$Bin(step=5), # step keeps bin size the same
-            scale=alt$Scale(domain=list(0,100))),
-    y=alt$Y('count()',
-            stack=NULL,
-            scale=alt$Scale(domain=list(0,350))),
-    color=alt$Color('gender:N',
-                    scale=color_scale)
+    x = alt$X(
+      "age",
+      bin = alt$Bin(step = 5), # step keeps bin size the same
+      scale = alt$Scale(domain = list(0, 100))
+    ),
+    y = alt$Y(
+      "count()",
+      stack = NULL,
+      scale = alt$Scale(domain = list(0, 350))
+    ),
+    color = alt$Color("gender:N", scale = color_scale)
   )$
   transform_filter(selector)
 
@@ -459,23 +467,18 @@ glimpse(vega_data$cars())
 ```{r}
 source <- vega_data$cars()
 
-brush = alt$selection(type='interval', resolve='global')
+brush = alt$selection(type = "interval", resolve = "global")
 
 base = alt$Chart(source)$
   mark_point()$
   encode(
-    y='Miles_per_Gallon',
-    color=alt$condition(brush, 'Origin', alt$ColorValue('gray'))
+    y = "Miles_per_Gallon",
+    color=alt$condition(brush, "Origin", alt$ColorValue("gray"))
   )$
-  add_selection(
-    brush
-  )$
-  properties(
-    width=250,
-    height=250
-  )
+  add_selection(brush)$
+  properties(width = 250, height = 250)
 
-base$encode(x='Horsepower') | base$encode(x='Acceleration')
+base$encode(x = "Horsepower") | base$encode(x = "Acceleration")
 ```
 
 ## Multiple Interactions
@@ -491,81 +494,106 @@ base$encode(x='Horsepower') | base$encode(x='Acceleration')
 #### Chart
 
 ```{r}
-ratings = list('G', 'NC-17', 'PG', 'PG-13', 'R')
-genres = list('Action', 'Adventure', 'Black Comedy', 'Comedy',
-              'Concert/Performance', 'Documentary', 'Drama', 'Horror', 'Musical', 'Romantic Comedy', 'Thriller/Suspense', 'Western')
+ratings <- list("G", "NC-17", "PG", "PG-13", "R")
+genres <- 
+  list("Action", "Adventure", "Black Comedy", "Comedy", "Concert/Performance",
+       "Documentary", "Drama", "Horror", "Musical", "Romantic Comedy", 
+       "Thriller/Suspense", "Western")
 
 base <-
-  alt$Chart(vega_data$movies$url, 
-            width=200,
-            height=200
-  )$
-  mark_point(filled=TRUE)$
+  alt$Chart(vega_data$movies$url, width = 200, height = 200)$
+  mark_point(filled = TRUE)$
   transform_calculate(
     Rounded_IMDB_Rating = "floor(datum.IMDB_Rating)",
-    Hundred_Million_Production =  "datum.Production_Budget > 100000000.0 ? 100 : 10",
+    Hundred_Million_Production = "datum.Production_Budget > 100000000.0 ? 100 : 10",
     Release_Year = "year(datum.Release_Date)"
   )$transform_filter(
     "datum.IMDB_Rating > 0"
   )$transform_filter(
-    alt$FieldOneOfPredicate(field='MPAA_Rating', oneOf=ratings)
+    alt$FieldOneOfPredicate(field="MPAA_Rating", oneOf=ratings)
   )$encode(
-    x=alt$X('Worldwide_Gross:Q', scale=alt$Scale(domain=c(100000,10**9), clamp=TRUE)),
-    y='IMDB_Rating:Q',
-    tooltip="Title:N"
+    x = alt$X(
+      "Worldwide_Gross:Q", 
+      scale = alt$Scale(domain=c(100000,10**9), clamp = TRUE)
+    ),
+    y = "IMDB_Rating:Q",
+    tooltip = "Title:N"
   )
 
 # A slider filter
-year_slider = alt$binding_range(min=1969, max=2018, step=1)
-slider_selection = alt$selection_single(bind=year_slider, fields=list('Release_Year'), name="Release Year_")
+year_slider <- alt$binding_range(min = 1969, max = 2018, step = 1)
+slider_selection <- 
+  alt$selection_single(
+    bind = year_slider, 
+    fields = list("Release_Year"),
+    name = "Release Year_"
+  )
 
-
-filter_year = base$add_selection(
-  slider_selection
-)$transform_filter(
-  slider_selection
-)$properties(title="Slider Filtering")
+filter_year <- base$
+  add_selection(slider_selection)$
+  transform_filter(slider_selection)$
+  properties(title = "Slider Filtering")
 
 # A dropdown filter
-genre_dropdown = alt$binding_select(options=genres)
-genre_select = alt$selection_single(fields=list('Major_Genre'), bind=genre_dropdown, name="Genre")
+genre_dropdown <- alt$binding_select(options = genres)
+genre_select <- 
+  alt$selection_single(
+    fields = list("Major_Genre"), 
+    bind = genre_dropdown,
+    name = "Genre"
+  )
 
-filter_genres = base$add_selection(
-  genre_select
-)$transform_filter(
-  genre_select
-)$properties(title="Dropdown Filtering")
+filter_genres <- 
+  base$
+  add_selection(genre_select)$
+  transform_filter(genre_select)$
+  properties(title="Dropdown Filtering")
 
 #color changing marks
-rating_radio = alt$binding_radio(options=ratings)
+rating_radio <- alt$binding_radio(options=ratings)
 
-rating_select = alt$selection_single(fields=list('MPAA_Rating'), bind=rating_radio, name="Rating")
-rating_color_condition = alt$condition(rating_select,
-                                       alt$Color('MPAA_Rating:N', legend=NULL),
-                                       alt$value('lightgray'))
+rating_select <- 
+  alt$selection_single(
+    fields = list("MPAA_Rating"), 
+    bind = rating_radio, 
+    name = "Rating"
+  )
 
-highlight_ratings = base$add_selection(
-  rating_select
-)$encode(
-  color=rating_color_condition
-)$properties(title="Radio Button Highlighting")
+rating_color_condition <- 
+  alt$condition(
+    rating_select,
+    alt$Color("MPAA_Rating:N", legend = NULL),
+    alt$value("lightgray")
+  )
+
+highlight_ratings <-
+  base$
+  add_selection(rating_select)$
+  encode(
+    color = rating_color_condition
+  )$
+  properties(title = "Radio Button Highlighting")
 
 # Boolean selection for format changes
-input_checkbox = alt$binding_checkbox()
-checkbox_selection = alt$selection_single(bind=input_checkbox, name="Big Budget Films")
+input_checkbox <- alt$binding_checkbox()
+checkbox_selection <-
+  alt$selection_single(bind = input_checkbox, name = "Big Budget Films")
 
-size_checkbox_condition = alt$condition(checkbox_selection,
-                                        alt$SizeValue(25),
-                                        alt$Size('Hundred_Million_Production:Q')
-)
+size_checkbox_condition <-
+  alt$condition(
+    checkbox_selection,
+    alt$SizeValue(25),
+    alt$Size("Hundred_Million_Production:Q")
+  )
 
-budget_sizing = base$add_selection(
-  checkbox_selection
-)$encode(
-  size=size_checkbox_condition
-)$properties(title="Checkbox Formatting")
+budget_sizing <-
+  base$
+  add_selection(checkbox_selection)$
+  encode(
+    size = size_checkbox_condition)$
+  properties(title = "Checkbox Formatting")
 
-( filter_year | filter_genres) &  (highlight_ratings | budget_sizing  )
+(filter_year | filter_genres) & (highlight_ratings | budget_sizing)
 ```
 
 ## Scatter Plot and Histogram with Interval Selection

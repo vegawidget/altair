@@ -20,10 +20,10 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 Our first step is to set up our environment:
 
 ```{r}
-# devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
 library("tidyr")
+library("jsonlite")
 
 vega_data <- import_vega_data()
 ```
@@ -35,7 +35,7 @@ vega_data <- import_vega_data()
 #### Data
 
 ```{r}
-#glimpse(vega_data$movies())
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -47,8 +47,8 @@ bar <-
   alt$Chart(data)$
   mark_bar()$
   encode(
-    x = alt$X("IMDB_Rating:Q", bin=TRUE, axis=NULL),
-    y = alt$Y("count()")
+    x = alt$X("IMDB_Rating:Q", bin = TRUE, axis = NULL),
+    y = "count()"
   )
 
 rule <- 
@@ -74,7 +74,7 @@ chart
 <summary>Definition</summary>
 ```{r}
 data <- 
-  data_frame(
+  tibble(
     Trial_A = rnorm(1000, 0, 0.8),
     Trial_B = rnorm(1000, -2, 1),
     Trial_C = rnorm(1000, 3, 2)
