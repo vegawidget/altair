@@ -19,7 +19,6 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 Our first step is to set up our environment:
 
 ```{r}
-# devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
 library("jsonlite")
@@ -51,8 +50,8 @@ chart <-
     # The highlight will be set on the result of a conditional statement
     color=alt$condition(
       "datum.year == 1810",  # If the year is 1810 this test returns True,
-      alt$value('orange'),     # which sets the bar orange.
-      alt$value('steelblue')   # And if it's not true it sets the bar steelblue.
+      alt$value("orange"),     # which sets the bar orange.
+      alt$value("steelblue")   # If it's not True, it sets the bar steelblue.
     )
   )$properties(width=600)
 
@@ -80,7 +79,7 @@ bars <-
   mark_bar()$
   encode(
     x = "wheat:Q",
-    y="year:O"
+    y = "year:O"
   )
 
 text <- 
@@ -90,7 +89,7 @@ text <-
     text = "wheat:Q"
   )
 
-chart <- (bars + text)$properties(height=800)
+chart <- (bars + text)$properties(height = 800)
 
 chart
 ```
@@ -114,15 +113,15 @@ bar <-
   alt$Chart(source)$
   mark_bar()$
   encode(
-    x = alt$X("year:O"),
-    y = alt$Y("wheat:Q")
+    x = "year:O",
+    y = "wheat:Q"
   )
 
 rule <- 
   alt$Chart(source)$
   mark_rule(color = "red")$
   encode(
-    y = "mean(wheat)"
+    y = "mean(wheat):Q"
   )
 
 chart <- (bar + rule)$properties(width = 600)
@@ -148,7 +147,7 @@ glimpse(vega_data$wheat())
 base <- 
   alt$Chart(vega_data$wheat())$
   encode(
-    x = alt$X("year:O")
+    x = "year:O"
   )
 
 bar <- 
@@ -163,7 +162,7 @@ line <-
   base$
   mark_line(color = "red")$
   encode(
-    y="wages:Q"
+    y = "wages:Q"
   )
 
 chart <-
@@ -194,12 +193,10 @@ chart <-
     y = "nonfarm_change:Q",
     color = alt$condition(
       "datum.nonfarm_change > 0",  
-      alt$value('steelblue'), # The positive color
-      alt$value('orange') # The negative color
+      alt$value("steelblue"), # positive color
+      alt$value("orange")     # negative color
     )
   )$properties(width = 600)
-
-
 
 chart
 ```
@@ -235,22 +232,22 @@ a <-
   alt$Chart(data = data)$
   mark_bar()$
   encode(
-    x = "project",
-    y = "score"
+    x = "project:O",
+    y = "score:Q"
   )
 
 b <- 
   alt$Chart(data = data)$
   mark_tick(color = "red")$
   encode(
-    x = "project",
-    y = "goal"
+    x = "project:O",
+    y = "goal:Q"
   )
 
 chart <- 
   (a + b)$ 
   # controls the width of the tick
-  configure_tick(thickness = 2, bandSize=35)$
+  configure_tick(thickness = 2, bandSize = 35)$
   # controls the width of the bar
   configure_scale(rangeStep = 40)
 
@@ -268,7 +265,7 @@ In the Altair example, we see some code like this:
 alt.WindowFieldDef(op='sum', field='Time', **{'as': 'TotalTime'})
 ```
 
-In R, supply the stuff inside the `**{}` as addition arguments to the function:
+In R, supply the stuff inside the `**{}` as additional arguments to the function:
 
 ```r
 alt$WindowFieldDef(op = "sum", field = "Time", as = "TotalTime")
@@ -312,9 +309,6 @@ chart <-
 
 chart
 ```
-
-
-
 
 ## Diverging Stacked Bar Chart
 
@@ -708,6 +702,15 @@ chart
 
 [Altair example](https://altair-viz.github.io/gallery/grouped_bar_chart.html)
 
+#### Data
+
+```{r}
+source <- vega_data$barley()
+
+glimpse(source)
+```
+
+#### Chart
 
 ```{r}
 chart <- 
@@ -732,14 +735,14 @@ chart
 #### Data
 
 ```{r}
-glimpse(vega_data$barley())
+source <- vega_data$barley()
+
+glimpse(source)
 ```
 
 #### Chart
 
 ```{r}
-source <- vega_data$barley()
-
 bars <- 
   alt$Chart()$
   mark_bar()$
@@ -754,16 +757,16 @@ bars <-
 
 error_bars <- 
   alt$Chart()$
-  mark_errorbar(extent='ci')$
+  mark_errorbar(extent = "ci")$
   encode(
-    x='year:O',
-    y='yield:Q'
+    x = "year:O",
+    y = "yield:Q"
   )
 
 chart <- 
-  alt$layer(bars, error_bars, data=source)$
+  alt$layer(bars, error_bars, data = source)$
   facet(
-    column='site:N'
+    column = "site:N"
   )
 
 
@@ -870,10 +873,7 @@ chart <-
   mark_bar(opacity = 0.7)$
   encode(
     x = "year:O",
-    y = alt$Y(
-      "net_generation:Q", 
-      stack = NULL
-    ),
+    y = alt$Y("net_generation:Q", stack = NULL),
     color = "source"
   )
 
@@ -928,17 +928,15 @@ chart <-
     y = alt$Y(
       "site:N",
       sort = alt$EncodingSortField(
-        field = "yield", # The field to use for the sort
-        op="sum",  # The operation to run on the field prior to sorting
-        order="descending"  # The order to sort in
+        field = "yield",     # field to use for the sort
+        op = "sum",          # operation to run on the field prior to sorting
+        order = "descending" # order to sort in
       )
     )
   )
 
 chart
 ```
-
-
 
 ## Stacked Bar Chart
 
@@ -984,8 +982,8 @@ chart <-
     color = "site",
     order = alt$Order(
       # Sort the segments of the bars by this field
-      'site',
-      sort='ascending'
+      "site",
+      sort ="ascending"
     )
   )
 
@@ -1011,21 +1009,19 @@ bars <-
   alt$Chart(source)$
   mark_bar()$
   encode(
-    x=alt$X('sum(yield):Q', stack='zero'),
-    y=alt$Y('variety:N'),
-    color=alt$Color('site')
+    x = alt$X("sum(yield):Q", stack = "zero"),
+    y = "variety:N",
+    color ="site:N"
   )
 
 text = alt$Chart(source)$
-  mark_text(dx=-15, dy=3, color='white')$
+  mark_text(dx = -15, dy = 3, color = "white")$
   encode(
-    x=alt$X('sum(yield):Q', stack='zero'),
-    y=alt$Y('variety:N'),
-    detail='site:N',
-    text=alt$Text('sum(yield):Q', format='.1f')
+    x =alt$X("sum(yield):Q", stack = "zero"),
+    y = "variety:N",
+    detail = "site:N",
+    text=alt$Text("sum(yield):Q", format = ".1f")
   )
-
-
 
 chart <- (bars + text)
 

@@ -19,7 +19,6 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 Our first step is to set up our environment:
 
 ```{r}
-# devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
 library("jsonlite")
@@ -47,19 +46,17 @@ chart <-
   alt$Chart(vega_data$stocks())$
   mark_area(
     color = "lightblue",
-    interpolate='step-after',
-    line=TRUE
+    interpolate = "step-after",
+    line = TRUE
   )$
   encode(
-    x='date',
-    y='price'
+    x = "date",
+    y = "price"
   )$
   transform_filter("datum.symbol == 'GOOG'")
 
 chart
 ```
-
-
 
 ## Line chart with Confidence Interval Band
 
@@ -88,7 +85,7 @@ line <-
 
 confidence_interval <- 
   alt$Chart(cars)$
-  mark_area(opacity=0.3)$
+  mark_area(opacity = 0.3)$
   encode(
     x = "Year",
     y = alt$Y(
@@ -160,7 +157,7 @@ chart
 #### Data
 
 ```{r}
-jobs <- jsonlite::fromJSON("https://raw.githubusercontent.com/vega/vega-datasets/master/data/jobs.json") %>% sample_n(5000)
+jobs <- jsonlite::fromJSON(vega_data$jobs$url)
 
 glimpse(jobs)
 ```
@@ -169,10 +166,10 @@ glimpse(jobs)
 
 ```{r}
 chart <- 
-  alt$Chart(jobs)$
+  alt$Chart(vega_data$jobs$url)$
   mark_line()$
   encode(
-    x = alt$X("year:O"),
+    x = "year:O",
     y = alt$Y("perc:Q", axis = alt$Axis(format = "%")),
     color = "sex:N"
   )$
@@ -191,7 +188,7 @@ chart
 #### Data
 
 ```{r}
-source <- data_frame(
+source <- tibble(
   x = 1:100,
   `f(x)` = sin(x/5)
 )
@@ -263,8 +260,8 @@ chart <-
   mark_line()$
   encode(
     x = "date:T",
-    y = "price",
-    color = "symbol"
+    y = "price:Q",
+    color = "symbol:N"
   )
 
 chart

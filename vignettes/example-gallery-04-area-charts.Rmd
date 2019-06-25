@@ -19,7 +19,6 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 Our first step is to set up our environment:
 
 ```{r}
-# devtools::install_github("vegawidget/altair")
 library("altair")
 library("tibble")
 library("jsonlite")
@@ -62,7 +61,7 @@ glimpse(data)
 ```{r}
 area1 <- 
   alt$Chart(data)$
-  mark_area(clip = TRUE, interpolate="monotone")$
+  mark_area(clip = TRUE, interpolate = "monotone")$
   encode(
     x = alt$X("x", scale = alt$Scale(zero = FALSE, nice = FALSE)),
     y = alt$Y(
@@ -98,7 +97,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$sp500())
+glimpse(vega_data$sp500())
 ```
 
 #### Chart
@@ -197,7 +196,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$unemployment_across_industries())
+glimpse(vega_data$unemployment_across_industries())
 ```
 
 #### Chart
@@ -240,9 +239,9 @@ chart <-
   mark_area()$
   encode(
     x = "year:T",
-    y="net_generation:Q",
-    color="source:N",
-    row="source:N"
+    y = "net_generation:Q",
+    color = "source:N",
+    row = "source:N"
   )$
   properties(
     height = 100
@@ -274,7 +273,7 @@ chart <-
     x = "date:T", 
     y = "price:Q",
     color = "symbol:N",
-    row = alt$Row("symbol:N", sort=c('MSFT', 'AAPL', 'IBM', 'AMZN')
+    row = alt$Row("symbol:N", sort = c('MSFT', 'AAPL', 'IBM', 'AMZN')
     )
   )$
   properties(

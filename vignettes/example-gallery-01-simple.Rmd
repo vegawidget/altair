@@ -19,7 +19,6 @@ This document is adapted from the [Simple Charts](https://altair-viz.github.io/g
 Our first step is to set up our environment:
 
 ```{r message=FALSE}
-# devtools::install_github("vegawidget/altair")
 library("altair")
 library("reticulate")
 library("tibble")
@@ -39,7 +38,7 @@ vega_data <- import_vega_data()
 <summary>Definition</summary>
 ```{r}
 data <-  
-  data_frame(
+  tibble(
     a= c("A", "B", "C", "D", "E", "F", "G", "H", "I"),
     b =c(28, 55, 43, 91, 81, 53, 19, 87, 52)
   )
@@ -196,7 +195,6 @@ chart
 
 ```{r}
 glimpse(vega_data$iowa_electricity())
-
 ```
 
 #### Chart
@@ -206,9 +204,9 @@ chart <-
   alt$Chart(vega_data$iowa_electricity())$
   mark_area()$
   encode(
-    x="year:T",
-    y="net_generation:Q",
-    color="source:N"
+    x = "year:T",
+    y = "net_generation:Q",
+    color = "source:N"
   )
 
 chart

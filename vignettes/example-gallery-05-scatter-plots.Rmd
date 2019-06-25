@@ -18,13 +18,13 @@ This document is adapted from the [Bar Charts](https://altair-viz.github.io/gall
 
 Our first step is to set up our environment:
 
-```{r}
-# devtools::install_github("vegawidget/altair")
+```{r message=FALSE}
 library("altair")
 library("tibble")
 library("dplyr")
 library("purrr")
 library("tidyr")
+library("jsonlite")
 
 vega_data <- import_vega_data()
 ```
@@ -37,7 +37,7 @@ vega_data <- import_vega_data()
 #### Data
 
 ```{r}
-#glimpse(vega_data$movies())
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -49,7 +49,7 @@ chart <-
   encode(
     alt$X("IMDB_Rating:Q", bin = TRUE),
     alt$Y("Rotten_Tomatoes_Rating:Q", bin = TRUE),
-    size="count()"
+    size = "count()"
   )
 
 chart
@@ -81,64 +81,47 @@ points <-
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
-    color = alt$condition(brush, 'Cylinders:O', alt$value('grey'))
+    color = alt$condition(brush, "Cylinders:O", alt$value("grey"))
   )$add_selection(brush)
-
-
-
 
 # Base chart for data tables
 ranked_text <-
   alt$Chart(source)$
   mark_text()$
   encode(
-    y=alt$Y('row_number:O', axis=NULL)
-  )$transform_window(
-    row_number='row_number()'
-  )$transform_filter(
-    brush
-  )$transform_window(
-    rank='rank(row_number)'
-  )$transform_filter(
-    "datum.rank<20"
-  )
+    y = alt$Y('row_number:O', axis = NULL)
+  )$
+  transform_window(row_number = "row_number()")$
+  transform_filter(brush)$
+  transform_window(rank = "rank(row_number)")$
+  transform_filter("datum.rank<20")
 
 # Data Tables
 horsepower <- 
   ranked_text$
   encode(
-    text='Horsepower:N'
+    text = "Horsepower:N"
   )$
-  properties(
-    title='Horsepower'
-  )
+  properties(title = "Horsepower")
 
 mpg <- 
-  ranked_text$encode(
-    text='Miles_per_Gallon:N'
+  ranked_text$
+  encode(
+    text = "Miles_per_Gallon:N"
   )$
-  properties(
-    title='MPG'
-  )
+  properties(title = "MPG")
 
 origin <- 
-  ranked_text$encode(
-    text='Origin:N'
+  ranked_text$
+  encode(
+    text = "Origin:N"
   )$
-  properties(
-    title='Origin'
-  )
+  properties(title = "Origin")
 
-text <- alt$hconcat(horsepower, mpg, origin) # Combine data tables
+text <- (horsepower | mpg | origin) # Combine data tables
 
 # Build chart
-chart <- 
-  alt$hconcat(
-    points,
-    text
-  )$resolve_legend(
-    color="independent"
-  )
+chart <- (points | text)$resolve_legend(color = "independent")
 
 chart
 ```
@@ -190,7 +173,7 @@ lines <-
   encode(
     x = alt$X("miles", scale = alt$Scale(zero = FALSE)),
     y = alt$Y("gas", scale = alt$Scale(zero = FALSE)),
-    order="year"
+    order = "year"
   )
 
 points <- 
@@ -384,7 +367,8 @@ chart <-
   `repeat`(
     row = list("Horsepower", "Acceleration", "Miles_per_Gallon"),
     column = list("Miles_per_Gallon", "Acceleration", "Horsepower")
-  )$interactive()
+  )$
+  interactive()
 
 chart
 ```
@@ -414,9 +398,9 @@ chart <-
   encode(
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
-    color='Origin:N',
-    href='url:N',
-    tooltip=list('Name:N', 'url:N')
+    color = "Origin:N",
+    href = "url:N",
+    tooltip = list("Name:N", "url:N")
   )
 
 chart
@@ -447,12 +431,12 @@ line <-
     size = 3
   )$
   transform_window(
-    rolling_mean='mean(temp_max)',
-    frame=c(-15, 15)
+    rolling_mean = "mean(temp_max)",
+    frame = c(-15, 15)
   )$
   encode(
-    x = 'date:T',
-    y='rolling_mean:Q'
+    x = "date:T",
+    y = "rolling_mean:Q"
   )
 
 
@@ -460,10 +444,11 @@ points <-
   alt$Chart(source)$
   mark_point()$
   encode(
-    x = 'date:T',
-    y=alt$Y(
-      'temp_max:Q',
-      axis=alt$Axis(title='Max Temp'))
+    x = "date:T",
+    y = alt$Y(
+      "temp_max:Q",
+      axis = alt$Axis(title = "Max Temp")
+    )
   )
 
 points + line
@@ -499,21 +484,17 @@ glimpse(source)
 base <- 
   alt$Chart(source)$
   transform_calculate(
-    ymin="datum.y-datum.yerr",
-    ymax="datum.y+datum.yerr"
+    ymin = "datum.y-datum.yerr",
+    ymax = "datum.y+datum.yerr"
   )
 
 # generate the points
 points <- 
   base$
-  mark_point(
-    filled = TRUE,
-    size = 50,
-    color = "black"
-  )$
+  mark_point(filled = TRUE, size = 50, color = "black")$
   encode(
-    x=alt$X('x', scale=alt$Scale(domain=c(0, 6))),
-    y=alt$Y('y', scale=alt$Scale(domain=c(10, 11)))
+    x=alt$X("x", scale = alt$Scale(domain=c(0, 6))),
+    y=alt$Y("y", scale = alt$Scale(domain=c(10, 11)))
   )
 
 # generate the error bars
@@ -521,9 +502,9 @@ errorbars <-
   base$
   mark_errorbar()$
   encode(
-    x="x",
-    y="ymin:Q",
-    y2="ymax:Q"
+    x = "x",
+    y = "ymin:Q",
+    y2 = "ymax:Q"
   )
 
 points + errorbars
@@ -582,7 +563,7 @@ chart
 #### Data
 
 ```{r}
-#glimpse(vega_data$movies())
+glimpse(fromJSON(vega_data$movies$url))
 ```
 
 #### Chart
@@ -591,39 +572,39 @@ chart
 source <- vega_data$movies$url
 
 stripplot <-
-  alt$Chart(source, width=40)$
+  alt$Chart(source, width = 40)$
   transform_calculate(
     # Generate Gaussian jitter with a Box-Muller transform
-    jitter='sqrt(-2*log(random()))*cos(2*PI*random())'
+    jitter = 'sqrt(-2*log(random()))*cos(2*PI*random())'
   )$
-  mark_circle(size=8)$
+  mark_circle(size = 8)$
   encode(
-    x=alt$X(
+    x = alt$X(
       'jitter:Q',
-      title=" ",
-      axis=alt$Axis(
+      title = " ",
+      axis = alt$Axis(
         values = list(0), 
-        ticks=TRUE, 
-        grid=FALSE, 
-        labels=FALSE),
-      scale=alt$Scale()
+        ticks = TRUE, 
+        grid = FALSE, 
+        labels = FALSE
+      ),
+      scale = alt$Scale()
     ),
-    y=alt$Y('IMDB_Rating:Q'),
-    color=alt$Color('Major_Genre:N', legend=NULL),
-    column=alt$Column(
-      'Major_Genre:N',
-      header=alt$Header(
-        labelAngle=-90,
-        titleOrient='top',
-        labelOrient='bottom',
-        labelAlign='right',
-        labelPadding=3
+    y = alt$Y("IMDB_Rating:Q"),
+    color = alt$Color("Major_Genre:N", legend = NULL),
+    column = alt$Column(
+      "Major_Genre:N",
+      header = alt$Header(
+        labelAngle = -90,
+        titleOrient = "top",
+        labelOrient = "bottom",
+        labelAlign = "right",
+        labelPadding = 3
       )
     )
   )$
-  configure_facet(spacing=0)$
-  configure_view(stroke="transparent")
-
+  configure_facet(spacing = 0)$
+  configure_view(stroke = "transparent")
 
 stripplot
 ```
@@ -635,7 +616,7 @@ stripplot
 #### Data
 
 ```{r}
-#glimpse(vega_data$github())
+glimpse(vega_data$github())
 ```
 
 #### Chart
@@ -672,9 +653,9 @@ chart <-
   alt$Chart(vega_data$cars())$
   mark_point()$
   encode(
-    x='Horsepower:Q',
-    y='Miles_per_Gallon:Q',
-    row='Origin:N'
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    row = "Origin:N"
   )
 
 chart
