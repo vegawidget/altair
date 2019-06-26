@@ -128,12 +128,12 @@ Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 The documentation for this package includes some
 [articles](https://vegawidget.github.io/altair/articles/index.html):
 
+  - [Getting
+    Started](https://vegawidget.github.io/altair/articles/altair.html):
+    a walkthrough to get a first chart to work
+
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
     some more-detailed instructions
-
-  - [Manifesto](https://vegawidget.github.io/altair/articles/manifesto.html):
-    an outline of some high-level development ideas, which may change
-    from time to time
 
 Gallery:
 
@@ -146,10 +146,6 @@ Gallery:
     examples.
 
 Examples:
-
-  - [Getting
-    Started](https://vegawidget.github.io/altair/articles/altair.html):
-    a walkthrough to get a first chart to work
 
   - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
     shows how Vega-Lite implements tooltips as an encoding within a
@@ -174,11 +170,11 @@ Field Guides:
 
   - [Field Guide to Python
     Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html):
-    A place for “gotchas” and their workarounds
+    “gotchas” and their workarounds
 
   - [Field Guide to Rendering
     Charts](https://vegawidget.github.io/altair/articles/field-guide-rendering.html):
-    How to use the `vegawidget()` function to render charts as HTML
+    specify options to render charts as HTML
 
 ## Acknowledgements
 

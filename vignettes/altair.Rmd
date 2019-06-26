@@ -95,7 +95,7 @@ vega_data$cars$url
 chart <- alt$Chart(vega_data$cars$url)
 ```
 
-Note that referring to an external URL is generally not allowed in the RStudio IDE, so your chart may not render in the IDE. However, it will render in a regular browser.
+Note that referring to an external URL may not be allowed in the RStudio IDE, so your chart may not render in the IDE. However, it will render in a regular browser.
 
 ## Adding a mark
 

@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-This document is adapted from the [Bar Charts](https://altair-viz.github.io/gallery/index.html#bar-charts) section of the Altair Example Gallery.
+This document is adapted from the [Interactive Charts](https://altair-viz.github.io/gallery/index.html#interactive-charts) section of the Altair Example Gallery.
 
 Our first step is to set up our environment:
 

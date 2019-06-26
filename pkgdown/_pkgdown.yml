@@ -28,7 +28,7 @@ reference:
       - altair_concatenation
   - title: Rendering
     desc: >
-      Functions to render chart-specifications
+      Rendering functions re-exported from [vegawidget](https://vegawidget.github.io/vegawidget/reference/index.html)
     contents:
       - vegawidget
       - vega_embed
