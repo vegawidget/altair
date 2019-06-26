@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9010</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9011</span>
       </span>
     </div>
 
@@ -164,7 +164,7 @@
 
     
     
-<p>To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here’s the short version:</p>
+<p>To be clear, there is a bit of hassle to set-up Python to use your first R package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here’s the short version:</p>
 <ol style="list-style-type: decimal">
 <li><p>You are encouraged to use <a href="https://conda.io/docs/user-guide/install/index.html">Conda Python</a>. Miniconda works well, and installs much-more-quickly than full Conda.</p></li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>.</p></li>
@@ -197,7 +197,7 @@
 <div id="proxies" class="section level2">
 <h2 class="hasAnchor">
 <a href="#proxies" class="anchor"></a>Proxies and certificates</h2>
-<p>I would recommend using this section only if you are having SSL-related installation difficulties, which may happen if you work at a corporate or institutional environment.</p>
+<p>We would recommend using this section only if you are having SSL-related installation difficulties, which may happen if you work at a corporate or institutional environment.</p>
 <p>This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that information to different places on your computer:</p>
 <ul>
 <li>location of a valid certificate file: <code>&lt;/path/to/your/certificate/file.crt&gt;</code>
@@ -257,7 +257,7 @@ HTTP_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
 HTTPS_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
 <p>By setting these variables here, both your R session and any Python session will have access to the information they will need.</p>
 </details><details><p><summary>MacOS and Linux (Ubuntu)</summary></p>
-<p>On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
+<p>On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
 <p>The customary way to set environment-variables for R is to add variables to your <code>.Renviron</code> file; add and adapt the following lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># .Renviron
 
@@ -304,8 +304,8 @@ export HTTP_PROXY=${http_proxy}</code></pre>
 <div id="reticulate-python" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reticulate-python" class="anchor"></a>Reticulate and Python installation</h2>
-<p>Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html"><em>Installing Python Packages</em></a> article. Here, we amplify some opinions offered by RStudio. Because <a href="https://conda.io/docs/">Conda</a> is available for Windows, MacOS, and Linux, I recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.</p>
-<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
+<p>Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html"><em>Installing Python Packages</em></a> article. Here, we amplify some opinions offered by RStudio. Because <a href="https://conda.io/docs/">Conda</a> is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. We have found using that using Conda for Python 3.6 works well.</p>
+<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. We have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
 <p>If all is well, you will be able to update your Conda installation.</p>
 <p><strong>Open the menu-item below for instructions for your operating system:</strong></p>
 <details><p><summary>Windows</summary> At a new Anaconda prompt:</p>
@@ -334,8 +334,7 @@ conda update conda</code></pre>
 <h2 class="hasAnchor">
 <a href="#altair" class="anchor"></a>Altair Installation</h2>
 <p>If you have not already installed this package into your R library, this is a perfect occasion to do so:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"vegawidget/altair"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"altair"</span>)</a></code></pre></div>
 <p>Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">altair<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/altair/topics/install_altair">install_altair</a></span>()</a></code></pre></div>
 <p>You can confirm success by showing your Python configuration:</p>
