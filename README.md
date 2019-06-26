@@ -24,7 +24,14 @@ package.
 
 ## Installation
 
-A development version is available from [GitHub](https://github.com/):
+You can install altair from CRAN with:
+
+``` r
+install.packages("altair")
+```
+
+The development version of is available from
+[GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")

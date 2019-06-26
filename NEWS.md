@@ -1,4 +1,4 @@
-# altair 3.1.0 (development version)
+# altair 3.1.1
 
 * Remove references to `r_to_py()`, as **retuculate** manages this automatically. (#83)
 
