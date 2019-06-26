@@ -3,3 +3,19 @@
 .html-widget {
   margin-bottom: 10px;
 }
+
+/* appearance of jsoneditor widgets
+ * - using .html-widget to be more-specific than the jsoneditor css
+ * - see: https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+ */
+.html-widget .jsoneditor {
+  border-radius: 4px;
+}
+
+.html-widget .jsoneditor, .html-widget .jsoneditor-menu {
+  border-color: #8E8C84; /* from Bootswatch Sandstone */
+}
+
+.html-widget .jsoneditor-menu {
+  background-color: #8E8C84; /* from Bootswatch Sandstone */
+}

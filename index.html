@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9009</span>
       </span>
     </div>
 
@@ -48,6 +48,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="articles/altair.html">Getting Started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -67,10 +70,7 @@
     </li>
     <li class="divider">
     </li>
-<li class="dropdown-header">Getting Started</li>
-    <li>
-      <a href="articles/first-example.html">First Example</a>
-    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="articles/tooltips.html">Tooltips</a>
     </li>
@@ -91,11 +91,6 @@
     </li>
     <li>
       <a href="articles/field-guide-rendering.html">Rendering Charts</a>
-    </li>
-    <li class="divider">
-    </li>
-<li>
-      <a href="articles/manifesto.html">Manifesto</a>
     </li>
   </ul>
 </li>
@@ -184,7 +179,7 @@
 <p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Python must be installed on your system. I recommend using a <a href="https://conda.io/docs">Conda</a> installation; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>Python must be installed on your system. We have has success using <a href="https://conda.io/docs">Conda</a>; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
 <p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
@@ -193,6 +188,12 @@
 <p>You may wish to add a line like this to the <code><a href="https://www.rdocumentation.org/packages/base/topics/Startup">.First()</a></code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/reticulate/topics/use_python">use_condaenv</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
 <p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
+<div id="optional-installations" class="section level3">
+<h3 class="hasAnchor">
+<a href="#optional-installations" class="anchor"></a>Optional installations</h3>
+<p>If you have <strong><a href="https://nodejs.org">nodejs</a></strong> installed on your computer, you can use <a href="https://vegawidget.github.io/vegawidget/reference/image.html">vegawidget’s image-generating functions</a> to convert Altair charts into SVG strings or write SVG files. With the <strong><a href="https://CRAN.R-project.org/package=rsvg">rsvg</a></strong> and <strong><a href="https://CRAN.R-project.org/package=png">png</a></strong> packages installed, you can get a bitmap array, or write PNG files.</p>
+<p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that <a href="https://nodejs.org">nodejs</a> be installed on your system, as well as <a href="https://cran.r-project.org/package=rsvg">rsvg</a> and <a href="https://cran.r-project.org/package=png">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org">XQuartz</a>, to be installed.</p>
+</div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -211,8 +212,8 @@
 <a class="sourceLine" id="cb3-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-43b4a98c9da23e0d6d42" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-43b4a98c9da23e0d6d42">{"x":{
+<div id="htmlwidget-108cb1b38ff361d28dc0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-108cb1b38ff361d28dc0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -4720,7 +4721,7 @@
 },"evals":[],"jsHooks":[]}</script><p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
-<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error.</p></li>
+<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
 </ul>
 <p>These and other “gotchas” are compiled, along with workarounds, in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
 </div>
@@ -4738,7 +4739,7 @@
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p><a href="https://vegawidget.github.io/altair/articles/first-example.html">First Example</a>: a walkthrough to get a first chart to work</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/altair.html">Getting Started</a>: a walkthrough to get a first chart to work</p></li>
 <li><p><a href="https://vegawidget.github.io/altair/articles/tooltips.html">Tooltips</a>: shows how Vega-Lite implements tooltips as an encoding within a chart, with formatting options</p></li>
 <li><p><a href="https://vegawidget.github.io/altair/articles/vega-datasets.html">Vega Datasets</a>: work with <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> using <code><a href="reference/import_vega_data.html">import_vega_data()</a></code></p></li>
 <li><p><a href="https://vegawidget.github.io/altair/articles/view-composition.html">View Composition</a>: how to facet, add layers to, repeat, and concatenate charts</p></li>

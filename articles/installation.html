@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9009</span>
       </span>
     </div>
 
@@ -44,6 +44,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/altair.html">Getting Started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -62,10 +65,7 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Getting Started</li>
-    <li>
-      <a href="../articles/first-example.html">First Example</a>
-    </li>
+    <li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -85,10 +85,6 @@
     </li>
     <li>
       <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
-    </li>
-    <li class="divider">
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
     </li>
   </ul>
 </li>
@@ -159,7 +155,7 @@
     <div class="page-header toc-ignore">
       <h1>Installation</h1>
             
-            <h4 class="date">2019-06-25</h4>
+            <h4 class="date">2019-06-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/installation.Rmd"><code>vignettes/installation.Rmd</code></a></small>
       <div class="hidden name"><code>installation.Rmd</code></div>
@@ -177,7 +173,7 @@
 <p>If you do this, ensure that <code>RETICULATE_PYTHON</code> is <strong>not</strong> set in your <code>.Renviron</code> file.</p>
 <p>As usual, restart R for changes to take effect.</p>
 </li>
-<li><p><code>devtools::install_github("vegawidget/altair")</code></p></li>
+<li><p><code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("altair")</a></code></p></li>
 <li><p><code><a href="../reference/install_altair.html">altair::install_altair()</a></code></p></li>
 </ol>
 <p>To verify your installation, use <code><a href="../reference/check_altair.html">altair::check_altair()</a></code>; it will tell you which Altair version is installed, and which version is supported by this package.</p>

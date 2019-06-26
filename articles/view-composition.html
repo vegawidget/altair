@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9009</span>
       </span>
     </div>
 
@@ -44,6 +44,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/altair.html">Getting Started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -62,10 +65,7 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Getting Started</li>
-    <li>
-      <a href="../articles/first-example.html">First Example</a>
-    </li>
+    <li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -85,10 +85,6 @@
     </li>
     <li>
       <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
-    </li>
-    <li class="divider">
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
     </li>
   </ul>
 </li>
@@ -161,7 +157,7 @@
       <h1>View Composition</h1>
                         <h4 class="author">Alicia Schep</h4>
             
-            <h4 class="date">2019-06-25</h4>
+            <h4 class="date">2019-06-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/view-composition.Rmd"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
@@ -234,18 +230,21 @@
 <h2 class="hasAnchor">
 <a href="#layer" class="anchor"></a>Layered charts</h2>
 <p>Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the <code>+</code> operator or the <code>alt$layer</code> function. A common use case is to add more than one mark for the same set of encodings. For example, you could combine points and a line for time-series data. Here is an example using the “beaver1” data, which has body temperature for a beaver over time:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(altair)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">base &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver1)<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"time"</span>),</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"temp"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>))</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">scatter_plot &lt;-<span class="st"> </span>base<span class="op">$</span><span class="kw">mark_point</span>()</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">line_plot &lt;-<span class="st"> </span>base<span class="op">$</span><span class="kw">mark_line</span>()</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">base &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver1)<span class="op">$</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"time"</span>),</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"temp"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">scatter_plot <span class="op">+</span><span class="st"> </span>line_plot</a></code></pre></div>
-<div id="htmlwidget-26cce815c51e0a8e1653" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-26cce815c51e0a8e1653">{"x":{
+<a class="sourceLine" id="cb1-10" data-line-number="10">scatter_plot &lt;-<span class="st"> </span>base<span class="op">$</span><span class="kw">mark_point</span>()</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">line_plot &lt;-<span class="st"> </span>base<span class="op">$</span><span class="kw">mark_line</span>()</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">scatter_plot <span class="op">+</span><span class="st"> </span>line_plot</a></code></pre></div>
+<div id="htmlwidget-a25e18e3b0892210fcba" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a25e18e3b0892210fcba">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -995,20 +994,27 @@
 <h2 class="hasAnchor">
 <a href="#hconcat" class="anchor"></a>Horizontal concatenation</h2>
 <p>We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the <code>|</code> operator:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">base2 &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver2)<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"time"</span>),</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"temp"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>))</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">scatter_plot2 &lt;-<span class="st"> </span>base2<span class="op">$</span><span class="kw">mark_point</span>()</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">line_plot2 &lt;-<span class="st"> </span>base2<span class="op">$</span><span class="kw">mark_line</span>()</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">combined_plot &lt;-<span class="st"> </span>(scatter_plot <span class="op">+</span><span class="st"> </span>line_plot)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">"Beaver 1"</span>, <span class="dt">width =</span> <span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">combined_plot2 &lt;-<span class="st"> </span>(scatter_plot2 <span class="op">+</span><span class="st"> </span>line_plot2)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">"Beaver 2"</span>, <span class="dt">width =</span> <span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">combined_plot <span class="op">|</span><span class="st"> </span>combined_plot2</a></code></pre></div>
-<div id="htmlwidget-f783eb66be0da7d411fe" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f783eb66be0da7d411fe">{"x":{
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">base2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver2)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"time"</span>),</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"temp"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">scatter_plot2 &lt;-<span class="st"> </span>base2<span class="op">$</span><span class="kw">mark_point</span>()</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">line_plot2 &lt;-<span class="st"> </span>base2<span class="op">$</span><span class="kw">mark_line</span>()</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">combined_plot &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span>(scatter_plot <span class="op">+</span><span class="st"> </span>line_plot)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">"Beaver 1"</span>, <span class="dt">width =</span> <span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">combined_plot2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="st">  </span>(scatter_plot2 <span class="op">+</span><span class="st"> </span>line_plot2)<span class="op">$</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">"Beaver 2"</span>, <span class="dt">width =</span> <span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">combined_plot <span class="op">|</span><span class="st"> </span>combined_plot2</a></code></pre></div>
+<div id="htmlwidget-ab7b3fb06fc11468219d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab7b3fb06fc11468219d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -2411,8 +2417,8 @@
 <a class="sourceLine" id="cb5-2" data-line-number="2">combined_plot2 &lt;-<span class="st"> </span>combined_plot2<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">combined_plot <span class="op">&amp;</span><span class="st"> </span>combined_plot2</a></code></pre></div>
-<div id="htmlwidget-40675ece6e8269a1cf66" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-40675ece6e8269a1cf66">{"x":{
+<div id="htmlwidget-b938ecd64f4523e82c5c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b938ecd64f4523e82c5c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -3813,25 +3819,27 @@
 <h2 class="hasAnchor">
 <a href="#combining-vertical-and-horizontal-concatenation" class="anchor"></a>Combining vertical and horizontal concatenation</h2>
 <p>Compound plots can be combined to create more elaborate composed views. Here is an example of combining two plots for each beaver into a compound plot with four panels:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">hist_plot &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">  beaver1</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">  )<span class="op">$</span><span class="kw">mark_bar</span>(</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">  )<span class="op">$</span><span class="kw">encode</span>(</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">hist_plot &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver1)<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"temp:Q"</span>, <span class="dt">bin =</span> <span class="ot">TRUE</span>),</a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"count():Q"</span>)</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">hist_plot2 &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">  beaver2</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">  )<span class="op">$</span><span class="kw">mark_bar</span>(</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"temp:Q"</span>, <span class="dt">bin =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"count():Q"</span>)</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">(combined_plot <span class="op">|</span><span class="st"> </span>hist_plot) <span class="op">&amp;</span><span class="st"> </span>(combined_plot2 <span class="op">|</span><span class="st"> </span>hist_plot2)</a></code></pre></div>
-<div id="htmlwidget-1ee07aacd85b28dcab7b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1ee07aacd85b28dcab7b">{"x":{
+<a class="sourceLine" id="cb7-7" data-line-number="7">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">hist_plot2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(beaver2)<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"temp:Q"</span>, <span class="dt">bin =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"count():Q"</span>)</a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19">(combined_plot <span class="op">|</span><span class="st"> </span>hist_plot) <span class="op">&amp;</span><span class="st"> </span>(combined_plot2 <span class="op">|</span><span class="st"> </span>hist_plot2)</a></code></pre></div>
+<div id="htmlwidget-3cd8dfbe03f5da09a747" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3cd8dfbe03f5da09a747">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5277,19 +5285,17 @@
 <a href="#facet" class="anchor"></a>Faceting</h2>
 <p>Faceting will likely be familiar to R users comfortable with ggplot2. Faceting creates sub-panels for different subsets of the data. Faceting is specified in similar ways to encoding, using <code>$facet()</code> instead of <code>$encode()</code>. Here is an example of faceting with the mtcars data set, with the rows split by cylinders and the columns by gears:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">plot &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">    mtcars</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">    <span class="dt">y =</span> <span class="st">"hp:Q"</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">150</span>, <span class="dt">width =</span> <span class="dv">150</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">  )</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">  </a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">plot<span class="op">$</span><span class="kw">facet</span>(<span class="dt">row =</span> <span class="st">"cyl:N"</span>, <span class="dt">column =</span> <span class="st">"gear:N"</span>)</a></code></pre></div>
-<div id="htmlwidget-cb0fb07e8df05c99eff2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cb0fb07e8df05c99eff2">{"x":{
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(mtcars)<span class="op">$</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"mpg:Q"</span>,</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"hp:Q"</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">150</span>, <span class="dt">width =</span> <span class="dv">150</span>)</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">plot<span class="op">$</span><span class="kw">facet</span>(<span class="dt">row =</span> <span class="st">"cyl:N"</span>, <span class="dt">column =</span> <span class="st">"gear:N"</span>)</a></code></pre></div>
+<div id="htmlwidget-dea395e3412a1cea66d2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dea395e3412a1cea66d2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -5762,21 +5768,21 @@
 <p>Repeating is a little different than faceting. Repeating creates panels based on different encodings, with the same data in each panel. To create a repeating plot, you specify the encodings with <code>alt$`repeat`("column")</code> or <code>alt$`repeat`("row")</code> instead of an actual column variable. Then the encodings to use for the column or row are specified when calling <code>$`repeat`()</code> on the chart object. Note the use of the backticks around “repeat”; these backticks are necessary because <code>repeat</code> is a reserved word in R.</p>
 <p>Here is an example of creating plots with different x and y axes for the mtcars dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">plot2 &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">    mtcars</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">  )<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">    alt<span class="op">$</span><span class="kw">X</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"column"</span>), <span class="dt">type=</span><span class="st">"quantitative"</span>),</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">    alt<span class="op">$</span><span class="kw">Y</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"row"</span>), <span class="dt">type=</span><span class="st">"quantitative"</span>)</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">150</span>, <span class="dt">width =</span> <span class="dv">150</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">  )<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(mtcars)<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">    alt<span class="op">$</span><span class="kw">X</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"column"</span>), <span class="dt">type=</span><span class="st">"quantitative"</span>),</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">    alt<span class="op">$</span><span class="kw">Y</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"row"</span>), <span class="dt">type=</span><span class="st">"quantitative"</span>)</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">height =</span> <span class="dv">150</span>, <span class="dt">width =</span> <span class="dv">150</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="st">  `</span><span class="dt">repeat</span><span class="st">`</span>(</a>
 <a class="sourceLine" id="cb9-10" data-line-number="10">    <span class="dt">row =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"mpg"</span>, <span class="st">"qsec"</span>),</a>
 <a class="sourceLine" id="cb9-11" data-line-number="11">    <span class="dt">column =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"hp"</span>, <span class="st">"wt"</span>)</a>
 <a class="sourceLine" id="cb9-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb9-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb9-14" data-line-number="14">plot2</a></code></pre></div>
-<div id="htmlwidget-bd53431f27d8874290a1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bd53431f27d8874290a1">{"x":{
+<div id="htmlwidget-a8b9b6464d51dc256c92" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a8b9b6464d51dc256c92">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {

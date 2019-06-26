@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9009</span>
       </span>
     </div>
 
@@ -44,6 +44,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/altair.html">Getting Started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -62,10 +65,7 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Getting Started</li>
-    <li>
-      <a href="../articles/first-example.html">First Example</a>
-    </li>
+    <li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -85,10 +85,6 @@
     </li>
     <li>
       <a href="../articles/field-guide-rendering.html">Rendering Charts</a>
-    </li>
-    <li class="divider">
-    <li>
-      <a href="../articles/manifesto.html">Manifesto</a>
     </li>
   </ul>
 </li>
@@ -160,7 +156,7 @@
     <div class="page-header toc-ignore">
       <h1>Interactive Examples</h1>
             
-            <h4 class="date">2019-06-25</h4>
+            <h4 class="date">2019-06-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/interactive.Rmd"><code>vignettes/interactive.Rmd</code></a></small>
       <div class="hidden name"><code>interactive.Rmd</code></div>
@@ -171,7 +167,7 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot">linked-brush scatter-plot example</a> found in the Altair documentation.</p>
 <p>A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the <em>selection</em> object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
-<p>Let’s start again with our basic plot from the <a href="first-example.html">first example</a>:</p>
+<p>Let’s start again with our basic plot from the <a href="altair.html">Getting Started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
@@ -186,8 +182,8 @@
 <a class="sourceLine" id="cb1-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb1-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb1-14" data-line-number="14">chart_static</a></code></pre></div>
-<div id="htmlwidget-0f232332c4c8fb8cb137" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0f232332c4c8fb8cb137">{"x":{
+<div id="htmlwidget-0e0cc9ef193496e8a392" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0e0cc9ef193496e8a392">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -4695,14 +4691,11 @@
 },"evals":[],"jsHooks":[]}</script><p>Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an <em>interval</em> selection, other types of selections are detailed in the <a href="https://altair-viz.github.io/user_guide/API.html#altair.selection">API reference</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">brush &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">selection_interval</span>()</a></code></pre></div>
 <p>We can create a new chart where the brush is bound using the selection property:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">chart_brush &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span>chart_static<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="dt">selection =</span> brush</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  )</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">chart_brush</a></code></pre></div>
-<div id="htmlwidget-4e9976852464eb180313" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4e9976852464eb180313">{"x":{
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">chart_brush &lt;-<span class="st"> </span>chart_static<span class="op">$</span><span class="kw">add_selection</span>(brush) </a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">chart_brush</a></code></pre></div>
+<div id="htmlwidget-0ed48dd29fa747968323" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ed48dd29fa747968323">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -9221,21 +9214,20 @@
 <a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"Horsepower:Q"</span>,</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"Miles_per_Gallon:Q"</span>,</a>
 <a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  )<span class="op">$</span><span class="kw">mark_point</span>(</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">  )<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="dt">selection =</span> brush</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">  ) </a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co"># chart_selection</span></a></code></pre></div>
-<p>This works, but it appears there is an easier way. It appears that you can call the <code>encode()</code> method to overwrite specific encondings for an existing chart. Thus, we have a chart where you can “see” the effect of your selection.</p>
+<a class="sourceLine" id="cb4-8" data-line-number="8">  )<span class="op">$</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw">add_selection</span>(brush) </a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># chart_selection</span></a></code></pre></div>
+<p>This works, but it appears there is an easier way. It appears that you can call the <code>encode()</code> method to overwrite specific encodings for an existing chart. Thus, we have a chart where you can “see” the effect of your selection.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">chart_selection &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span>chart_brush<span class="op">$</span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">  )</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">chart_selection</a></code></pre></div>
-<div id="htmlwidget-617277ed7a69d5c6195c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-617277ed7a69d5c6195c">{"x":{
+<div id="htmlwidget-45dcdae9a765363b9f53" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-45dcdae9a765363b9f53">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {
@@ -13751,22 +13743,18 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>Not too shabby, eh!</p>
 <p>The capabilities become more-apparent when we combine charts. Let’s create charts that look at different aspects of the data. We will use <code>chart_selection</code> as our base-chart, then modify as needed.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">chart_mpg &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span>chart_selection<span class="op">$</span><span class="kw">properties</span>(</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">width =</span> <span class="dv">250</span>,</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">height =</span> <span class="dv">250</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  )</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">chart_disp &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">  </span>chart_mpg<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">x =</span> <span class="st">"Displacement:Q"</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">  )</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">chart_mpg &lt;-<span class="st"> </span>chart_selection<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">250</span>, <span class="dt">height =</span> <span class="dv">250</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">chart_disp &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span>chart_mpg<span class="op">$</span><span class="kw">encode</span>(</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"Displacement:Q"</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">  )</a></code></pre></div>
 <p>In essence, <code>chart_mpg</code> is a smaller version of <code>chart_selection</code>; <code>chart_disp</code> is derived from <code>chart_mpg</code>, showing displacement on its x-axis, rather than mpg. It remains to compose these into a compound chart and display:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">chart_compound &lt;-<span class="st"> </span>(chart_mpg <span class="op">|</span><span class="st"> </span>chart_disp)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">chart_compound</a></code></pre></div>
-<div id="htmlwidget-9d7d64cb182847b4fa16" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9d7d64cb182847b4fa16">{"x":{
+<div id="htmlwidget-1a6a92339caf864b1bf2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a6a92339caf864b1bf2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
     "config": {

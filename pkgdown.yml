@@ -2,6 +2,7 @@ pandoc: '2.2'
 pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
+  altair: altair.html
   example-gallery-01-simple: example-gallery-01-simple.html
   example-gallery-02-bar-charts: example-gallery-02-bar-charts.html
   example-gallery-03-line-charts: example-gallery-03-line-charts.html
@@ -14,10 +15,8 @@ articles:
   example-gallery-10-other-charts: example-gallery-10-other-charts.html
   field-guide-python: field-guide-python.html
   field-guide-rendering: field-guide-rendering.html
-  first-example: first-example.html
   installation: installation.html
   interactive: interactive.html
-  manifesto: manifesto.html
   tooltips: tooltips.html
   vega-datasets: vega-datasets.html
   view-composition: view-composition.html
