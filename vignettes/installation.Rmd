@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-To be clear, there is a bit of hassle to set-up Python to use your first R-package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here's the short version:
+To be clear, there is a bit of hassle to set-up Python to use your first R package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here's the short version:
 
 1. You are encouraged to use [Conda Python](https://conda.io/docs/user-guide/install/index.html). Miniconda works well, and installs much-more-quickly than full Conda.
 
@@ -46,7 +46,7 @@ Thanks to the reticulate package, once you have a "standard" Python environment 
 
 ## Proxies and certificates {#proxies}
 
-I would recommend using this section only if you are having SSL-related installation difficulties, which may happen if you work at a corporate or institutional environment.
+We would recommend using this section only if you are having SSL-related installation difficulties, which may happen if you work at a corporate or institutional environment.
 
 This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that information to different places on your computer:
 
@@ -122,7 +122,7 @@ By setting these variables here, both your R session and any Python session will
 <details>
 <summary>MacOS and Linux (Ubuntu)</summary>
 
-On MacOS and Linux, we may need to set this information in two places (I know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
+On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R *and* processes that start from the shell will both be well-informed.
 
 The customary way to set environment-variables for R is to add variables to your `.Renviron` file; add and adapt the following lines as needed. The angle-brackets , `<>`, are a quoting mechanism for demonstration; they should not be a part of your variables.
 
@@ -178,9 +178,9 @@ A new terminal-window will have access to these settings, which you can confirm 
 
 ## Reticulate and Python installation {#reticulate-python}
 
-Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article. Here, we amplify some opinions offered by RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, I recommend using a Conda Python installation. I have found using that using Conda for Python 3.6 works well.
+Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its [*Installing Python Packages*](https://rstudio.github.io/reticulate/articles/python_packages.html) article. Here, we amplify some opinions offered by RStudio. Because [Conda](https://conda.io/docs/) is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. We have found using that using Conda for Python 3.6 works well.
 
-Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. I have found that both work; the choice depends on how many Python packages you wish to install right away.
+Follow the [Conda installation instructions](https://conda.io/docs/user-guide/install/index.html) to suit your particular situation. You will have the choice to install Conda or Miniconda. We have found that both work; the choice depends on how many Python packages you wish to install right away.
 
 If all is well, you will be able to update your Conda installation.
 
@@ -230,8 +230,7 @@ Of course, you should restart your R session to let your new settings take effec
 If you have not already installed this package into your R library, this is a perfect occasion to do so:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("vegawidget/altair")
+install.packages("altair")
 ```
 
 Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:    
