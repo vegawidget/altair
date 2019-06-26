@@ -252,7 +252,7 @@ glimpse(vega_data$stocks())
 
 #### Chart
 
-A difference from the Python example is that you have to make sure that you delcare that the `date` variable is of type `"temporal"`
+A difference from the Python example is that you have to make sure that you declare that the `date` variable is of type `"temporal"`
 
 ```{r}
 chart <- 

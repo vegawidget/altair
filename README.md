@@ -69,6 +69,26 @@ The `use_condaenv()` function is called to provide a [hint to
 reticulate](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
 on which Python environment to use.
 
+### Optional installations
+
+If you have **[nodejs](https://nodejs.org)** installed on your computer,
+you can use [vegawidget’s image-generating
+functions](https://vegawidget.github.io/vegawidget/reference/image.html)
+to convert Altair charts into SVG strings or write SVG files. With the
+**[rsvg](https://CRAN.R-project.org/package=rsvg)** and
+**[png](https://CRAN.R-project.org/package=png)** packages installed,
+you can get a bitmap array, or write PNG files.
+
+When knitting to a non-HTML format, e.g. `github_document`, this package
+provides a `knit_print()` function that will intercept the normal
+renderer, using instead its own renderer, allowing you to specify
+`"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires
+that [nodejs](https://nodejs.org) be installed on your system, as well
+as [rsvg](https://cran.r-project.org/package=rsvg) and
+[png](https://cran.r-project.org/package=png). MacOS users will require
+an X11 system, such as [XQuartz](https://www.xquartz.org), to be
+installed.
+
 ## Example
 
 ``` r
@@ -127,8 +147,8 @@ Gallery:
 
 Examples:
 
-  - [First
-    Example](https://vegawidget.github.io/altair/articles/first-example.html):
+  - [Getting
+    Started](https://vegawidget.github.io/altair/articles/altair.html):
     a walkthrough to get a first chart to work
 
   - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):

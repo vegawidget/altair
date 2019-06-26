@@ -45,10 +45,7 @@ brush <- alt$selection_interval()
 We can create a new chart where the brush is bound using the selection property:
 
 ```{r}
-chart_brush <- 
-  chart_static$properties(
-    selection = brush
-  )
+chart_brush <- chart_static$add_selection(brush) 
 
 chart_brush
 ```
@@ -65,15 +62,14 @@ chart_selection <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = alt$condition(brush, "Origin:N", alt$value("lightgray"))
-  )$mark_point(
-  )$properties(
-    selection = brush
-  ) 
+  )$
+  mark_point()$
+  add_selection(brush) 
 
 # chart_selection
 ```
 
-This works, but it appears there is an easier way. It appears that you can call the `encode()` method to overwrite specific encondings for an existing chart. Thus, we have a chart where you can "see" the effect of your selection.
+This works, but it appears there is an easier way. It appears that you can call the `encode()` method to overwrite specific encodings for an existing chart. Thus, we have a chart where you can "see" the effect of your selection.
 
 ```{r}
 chart_selection <- 
@@ -89,11 +85,7 @@ Not too shabby, eh!
 The capabilities become more-apparent when we combine charts. Let's create charts that look at different aspects of the data. We will use `chart_selection` as our base-chart, then modify as needed.
 
 ```{r}
-chart_mpg <- 
-  chart_selection$properties(
-    width = 250,
-    height = 250
-  )
+chart_mpg <- chart_selection$properties(width = 250, height = 250)
 
 chart_disp <- 
   chart_mpg$encode(
