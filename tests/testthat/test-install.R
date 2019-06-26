@@ -21,6 +21,9 @@ test_that("get_version_components works", {
 
 test_that("check_altair_version works", {
 
+  # requires Python
+  skip_on_cran()
+
   expect_error(check_altair_version("1.2.0", "2.0.1"), "major")
 
   expect_warning(check_altair_version("2.1.0", "2.0.1"), "minor")

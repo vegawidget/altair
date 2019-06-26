@@ -46,11 +46,14 @@ Note that for "repeat", backticks are required around the word `repeat`. This is
 Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the `+` operator or the `alt$layer` function. A common use case is to add more than one mark for the same set of encodings.  For example, you could combine points and a line for time-series data. Here is an example using the "beaver1" data, which has body temperature for a beaver over time:
 
 ```{r}
-library(altair)
-base <- alt$Chart(beaver1)$encode(
-  x = alt$X("time"),
-  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
-)
+library("altair")
+
+base <- 
+  alt$Chart(beaver1)$
+  encode(
+    x = alt$X("time"),
+    y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
+  )
 
 scatter_plot <- base$mark_point()
 line_plot <- base$mark_line()
@@ -71,16 +74,23 @@ Passing the result of that function to `vegalite` would give the same output as 
 We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the `|` operator:
 
 ```{r}
-base2 <- alt$Chart(beaver2)$encode(
-  x = alt$X("time"),
-  y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
-)
+base2 <- 
+  alt$Chart(beaver2)$
+  encode(
+    x = alt$X("time"),
+    y = alt$Y("temp", scale = alt$Scale(zero = FALSE))
+  )
 
 scatter_plot2 <- base2$mark_point()
 line_plot2 <- base2$mark_line()
 
-combined_plot <- (scatter_plot + line_plot)$properties(title = "Beaver 1", width = 200)
-combined_plot2 <- (scatter_plot2 + line_plot2)$properties(title = "Beaver 2", width = 200)
+combined_plot <- 
+  (scatter_plot + line_plot)$
+  properties(title = "Beaver 1", width = 200)
+
+combined_plot2 <- 
+  (scatter_plot2 + line_plot2)$
+  properties(title = "Beaver 2", width = 200)
 
 combined_plot | combined_plot2
 ```
@@ -117,21 +127,23 @@ Passing the result of that function to `vegalite` would give the same output as 
 Compound plots can be combined to create more elaborate composed views. Here is an example of combining two plots for each beaver into a compound plot with four panels:
 
 ```{r}
-hist_plot <- alt$Chart(
-  beaver1
-  )$mark_bar(
-  )$encode(
+hist_plot <- 
+  alt$Chart(beaver1)$
+  mark_bar()$
+  encode(
     x = alt$X("temp:Q", bin = TRUE),
     y = alt$Y("count():Q")
-  )$properties(width = 200, height = 200)
+  )$
+  properties(width = 200, height = 200)
 
-hist_plot2 <- alt$Chart(
-  beaver2
-  )$mark_bar(
-  )$encode(
+hist_plot2 <- 
+  alt$Chart(beaver2)$
+  mark_bar()$
+  encode(
     x = alt$X("temp:Q", bin = TRUE),
     y = alt$Y("count():Q")
-  )$properties(width = 200, height = 200)
+  )$
+  properties(width = 200, height = 200)
 
 (combined_plot | hist_plot) & (combined_plot2 | hist_plot2)
 ```
@@ -144,16 +156,14 @@ Faceting will likely be familiar to R users comfortable with ggplot2. Faceting c
 
 ```{r}
 plot <- 
-  alt$Chart(
-    mtcars
-  )$mark_point(
-  )$encode(
+  alt$Chart(mtcars)$
+  mark_point()$
+  encode(
     x = "mpg:Q",
     y = "hp:Q"
-  )$properties(height = 150, width = 150
-  )
+  )$
+  properties(height = 150, width = 150)
   
-
 plot$facet(row = "cyl:N", column = "gear:N")
 ```
 
@@ -165,14 +175,14 @@ Here is an example of creating plots with different x and y axes for the mtcars 
 
 ```{r}
 plot2 <- 
-  alt$Chart(
-    mtcars
-  )$mark_point(
-  )$encode(
+  alt$Chart(mtcars)$
+  mark_point()$
+  encode(
     alt$X(alt$`repeat`("column"), type="quantitative"),
     alt$Y(alt$`repeat`("row"), type="quantitative")
-  )$properties(height = 150, width = 150
-  )$`repeat`(
+  )$
+  properties(height = 150, width = 150)$
+  `repeat`(
     row = c("mpg", "qsec"),
     column = c("hp", "wt")
   )

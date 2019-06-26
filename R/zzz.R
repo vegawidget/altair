@@ -13,7 +13,7 @@
 #' used in Python.
 #'
 #' @examples
-#' \dontrun{
+#' if (interactive()) {
 #'   vega_data <- import_vega_data()
 #'
 #'   plot_basic <-
@@ -24,6 +24,8 @@
 #'       color = "Origin:N"
 #'     )$
 #'     mark_point()
+#'
+#'    plot_basic
 #' }
 #'
 #' @seealso [Altair Python documentation](https://altair-viz.github.io/index.html),

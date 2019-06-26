@@ -19,22 +19,22 @@ In the documentation for this package, the convention is to
 assign this object to the name \code{vega_data}.
 }
 \examples{
-\dontrun{
+if (interactive()) {
   vega_data <- import_vega_data()
 
   # To list available datasets
-  vega_data$list_datasets()
+  print(vega_data$list_datasets())
 
   # When accessing a dataset, substitute any "-" in the name with a "_"
-  head(vega_data$sf_temps())
+  print(head(vega_data$sf_temps()))
 
   # Metadata are available for each dataset:
-  vega_data$anscombe$references
-  vega_data$anscombe$description
-  vega_data$anscombe$url
+  print(vega_data$anscombe$references)
+  print(vega_data$anscombe$description)
+  print(vega_data$anscombe$url)
 
   # For local datasets, local path is available
-  vega_data$sf_temps$filepath
+  print(vega_data$sf_temps$filepath)
 }
 }
 \seealso{

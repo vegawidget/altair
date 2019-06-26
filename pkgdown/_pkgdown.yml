@@ -45,9 +45,9 @@ articles:
   - title: Installation
     contents:
       - installation
-  - title: Getting started
+  - title: Introduction
     contents:
-      - first-example
+      - altair
       - tooltips
       - vega-datasets
       - view-composition
@@ -68,15 +68,14 @@ articles:
       - example-gallery-08-interactive-charts
       - example-gallery-09-case-studies
       - example-gallery-10-other-charts
-  - title: Manifesto
-    contents:
-      - manifesto
 
 navbar:
   title: "altair"
   left:
     - icon: fa-home fa-lg
       href: index.html
+    - text: "Getting Started"
+      href: "articles/altair.html"
     - text: "Reference"
       href: "reference/index.html"
     - text: "Changelog"
@@ -86,9 +85,7 @@ navbar:
         - text: Installation
           href: articles/installation.html
         - text: "----------"
-        - text: Getting Started
-        - text: First Example
-          href: articles/first-example.html
+        - text: Introduction
         - text: Tooltips
           href: articles/tooltips.html
         - text: Vega Datasets
@@ -103,9 +100,6 @@ navbar:
           href: articles/field-guide-python.html
         - text: Rendering Charts
           href: articles/field-guide-rendering.html
-        - text: "----------"
-        - text: Manifesto
-          href: articles/manifesto.html
     - text: Gallery
       menu:
         - text: Simple Charts

@@ -1,5 +1,5 @@
 ---
-title: "First Example"
+title: "Getting Started"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
 editor_options: 
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## Creating a chart
 
-Let's make a chart, then we'll look at the bits-and-pieces we used to put it together.
+First we'll make a chart, then we'll look at the bits-and-pieces we used to put it together.
 
 ```{r}
 library("altair")
@@ -81,7 +81,7 @@ Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. I
 chart <- alt$Chart(...)
 ```
 
-The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas Dataframe. Using this package, the reticulate package automatically converts R `data.frame`s to Pandas DataFrames.
+The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas DataFrame. Using this package, the reticulate package automatically converts R `data.frame`s to Pandas DataFrames.
 
 As well, the reticulate package offers us a function `r_to_py()`, and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
 
@@ -167,8 +167,8 @@ More details on rendering charts, including how sizing works, are found in the a
 
 You can examine the chart-specification by using `vegawidget::vw_examine()` function, which wraps `listviewer::jsonedit()`. To use this function, you will need to install the **listviewer** package from CRAN.
 
-```{r examine, out.height=300}
-vegawidget::vw_examine(chart)
+```{r examine, out.width="100%"}
+vegawidget::vw_examine(chart, mode = "code")
 ```
 
 

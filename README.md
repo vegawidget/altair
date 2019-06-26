@@ -36,8 +36,8 @@ installation steps. These steps are described in greater detail in the
 [Installation](https://vegawidget.github.io/altair/articles/installation.html)
 article.
 
-1.  Python must be installed on your system. I recommend using a
-    [Conda](https://conda.io/docs) installation;
+1.  Python must be installed on your system. We have has success using
+    [Conda](https://conda.io/docs);
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
     
@@ -69,6 +69,26 @@ The `use_condaenv()` function is called to provide a [hint to
 reticulate](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
 on which Python environment to use.
 
+### Optional installations
+
+If you have **[nodejs](https://nodejs.org)** installed on your computer,
+you can use [vegawidget’s image-generating
+functions](https://vegawidget.github.io/vegawidget/reference/image.html)
+to convert Altair charts into SVG strings or write SVG files. With the
+**[rsvg](https://CRAN.R-project.org/package=rsvg)** and
+**[png](https://CRAN.R-project.org/package=png)** packages installed,
+you can get a bitmap array, or write PNG files.
+
+When knitting to a non-HTML format, e.g. `github_document`, this package
+provides a `knit_print()` function that will intercept the normal
+renderer, using instead its own renderer, allowing you to specify
+`"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires
+that [nodejs](https://nodejs.org) be installed on your system, as well
+as [rsvg](https://cran.r-project.org/package=rsvg) and
+[png](https://cran.r-project.org/package=png). MacOS users will require
+an X11 system, such as [XQuartz](https://www.xquartz.org), to be
+installed.
+
 ## Example
 
 ``` r
@@ -95,8 +115,9 @@ Some things to keep in mind:
   - Where you see a `.` in the Python examples, use a `$` instead.
 
   - In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
-    Altair from throwing an error.
+    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+    Altair from throwing an error. Alternatively, you can use a
+    double-backslash, e.g. `Sepal\\.Width`.
 
 These and other “gotchas” are compiled, along with workarounds, in an
 article: [Field Guide to Python
@@ -108,8 +129,7 @@ The documentation for this package includes some
 [articles](https://vegawidget.github.io/altair/articles/index.html):
 
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
-    some more-detailed
-    instructions
+    some more-detailed instructions
 
   - [Manifesto](https://vegawidget.github.io/altair/articles/manifesto.html):
     an outline of some high-level development ideas, which may change
@@ -127,10 +147,9 @@ Gallery:
 
 Examples:
 
-  - [First
-    Example](https://vegawidget.github.io/altair/articles/first-example.html):
-    a walkthrough to get a first chart to
-    work
+  - [Getting
+    Started](https://vegawidget.github.io/altair/articles/altair.html):
+    a walkthrough to get a first chart to work
 
   - [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
     shows how Vega-Lite implements tooltips as an encoding within a

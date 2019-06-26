@@ -16,5 +16,7 @@ altair object
 Create Altair chart from  vegaspec
 }
 \examples{
-  as_chart(vegawidget::spec_mtcars)
+  if (interactive()) {
+    as_chart(vegawidget::spec_mtcars)
+  }
 }

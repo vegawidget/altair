@@ -21,7 +21,7 @@ In this package, use the \code{$} operator wherever you see the \code{.} operato
 used in Python.
 }
 \examples{
-\dontrun{
+if (interactive()) {
   vega_data <- import_vega_data()
 
   plot_basic <-
@@ -32,6 +32,8 @@ used in Python.
       color = "Origin:N"
     )$
     mark_point()
+
+   plot_basic
 }
 
 }
