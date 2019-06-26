@@ -210,7 +210,8 @@ authors:
 ## Contributing
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
-to abide by its terms.
+Conduct](https://vegawidget.github.io/altair/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.
 
-This project also has a [Contributing Guide](CONTRIBUTING.md).
+This project also has a [Contributing
+Guide](https://vegawidget.github.io/altair/CONTRIBUTING.html).
