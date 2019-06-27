@@ -114,14 +114,14 @@ documentation is at the “root” of the documentation site; the latest
 
 ### Versioning
 
-The version nuumber may have as many as five components. The first three
-digits will mirror the version number of the supported (Python) Altair
-version; this is currently `3.1.0`.
+The version number may have as many as four components. The first two
+digits will mirror the first two digits of the version number of the
+supported (Python) Altair version; this is currently `3.1.0`.
 
-The fourth component will correspond to a CRAN release of this package;
+The third component will correspond to a CRAN release of this package;
 these will be tagged.
 
-A fifth component denotes a development version.
+A fourth component denotes a development version.
 
 Our goal is that each commit to the `master` branch will have an
 incremented version-number.
@@ -129,7 +129,8 @@ incremented version-number.
 ### Pull requests
 
 Pull requests are very welcome. Accordingly, the branch into which you
-should make a pull-request will depend on the situation:
+should make a pull-request will depend on the
+situation:
 
 | Situation                  | Reference branch   | Add item to NEWS.md | Appreciated |
 | -------------------------- | ------------------ | ------------------- | ----------- |
@@ -138,6 +139,8 @@ should make a pull-request will depend on the situation:
 | adding a vignette          | `master`           | ✅                   | 😁           |
 | helping with a new feature | `<feature-branch>` | ❎                   | 😁           |
 | proposing a new feature    | `master`           | ✅                   | 😁           |
+
+<br>
 
 Please roxygenize as a part of your pull-request.
 

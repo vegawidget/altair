@@ -13,6 +13,10 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   dev = "svg"
 )
+
+url_local <- function(x) {
+  file.path("https://vegawidget.github.io/altair", x)
+}
 ```
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -141,7 +145,7 @@ This project is a collaborative effort. In addition to the principal authors:
 
 ## Contributing
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+Please note that this project is released with a [Contributor Code of Conduct](`r url_local("CODE_OF_CONDUCT.html")`).
 By participating in this project you agree to abide by its terms. 
 
-This project also has a [Contributing Guide](CONTRIBUTING.md).
+This project also has a [Contributing Guide](`r url_local("CONTRIBUTING.html")`).

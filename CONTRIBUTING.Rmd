@@ -88,7 +88,7 @@ Please build pkgdown as much as you would like - the `docs` folder is git-ignore
 
 ### Versioning
 
-The version nuumber may have as many as four components. The first two digits will mirror the first two digits of the version number of the supported (Python) Altair version; this is currently ``r altair::altair_version()$altair``. 
+The version number may have as many as four components. The first two digits will mirror the first two digits of the version number of the supported (Python) Altair version; this is currently ``r altair::altair_version()$altair``. 
 
 The third component will correspond to a CRAN release of this package; these will be tagged.
 
@@ -107,6 +107,8 @@ improving documentation    | `master`             | `r mark_no`           | `r g
 adding a vignette          | `master`             | `r mark_yes`          | `r grin`
 helping with a new feature | `<feature-branch>`   | `r mark_no`           | `r grin`
 proposing a new feature    | `master`             | `r mark_yes`          | `r grin`
+
+<br>
 
 Please roxygenize as a part of your pull-request.
 

@@ -6,7 +6,7 @@ template:
       index_name: altair
 
 development:
-  mode: unreleased
+  mode: auto
 
 reference:
   - title: Installation

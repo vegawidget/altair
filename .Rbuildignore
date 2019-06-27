@@ -12,3 +12,4 @@
 ^\.gitattributes$
 ^CONTRIBUTING\.md$
 ^CONTRIBUTING\.Rmd$
+^cran-comments\.md$
