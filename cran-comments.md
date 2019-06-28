@@ -1,4 +1,21 @@
-# altair 3.1.1
+# altair 3.1.1 (resubmission)
+
+## Resubmission
+
+This is a resubmission. Following Uwe's email of 2019-06-29:
+
+I have added Python and Altair as SystemRequirements - my apologies for missing this.
+
+The functions from the other package, 'vegawidget', are exported. 
+
+The purpose of the 'vegawidget' package is to *render* Vega and Vega-Lite 
+specifications in the browser. The purpose of the 'altair' package is to 
+*build* Vega-Lite specifications. 
+
+As such, in 'altair', the rendering functions are re-exported from 'vegawidget'.
+There may be developed other packages that build Vega and Vega-Lite 
+specifications, for which 'vegawidget' could provide a common set of 
+rendering functions.
 
 ## Test environments
 
