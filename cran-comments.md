@@ -19,7 +19,7 @@ This is a resubmission. Following Uwe's email of 2019-06-29:
   rendering functions.
 
   I have reassessed the functions that are re-exported. I have deprecated three
-  functions in favor of directing the user to use vegawidget directly.
+  of these functions, in favor of directing the user to use vegawidget directly.
 
 ## Test environments
 
