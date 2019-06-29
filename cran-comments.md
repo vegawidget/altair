@@ -4,22 +4,22 @@
 
 This is a resubmission. Following Uwe's email of 2019-06-29:
 
-I have added Python and Altair as `SystemRequirements` - my apologies for 
-missing this.
+* I have added Python and Altair as `SystemRequirements` - my apologies for 
+  missing this.
 
-The functions from the other package, 'vegawidget', are exported. 
+* The functions from the other package, 'vegawidget', are exported. 
 
-The purpose of the 'vegawidget' package is to *render* Vega and Vega-Lite 
-specifications in the browser. The purpose of the 'altair' package is to 
-*build* Vega-Lite specifications. 
+  The 'vegawidget' package offers functions to render 'Vega' and 'Vega-Lite'
+  specifications in the browser. The 'altair' package lets you  
+  build Vega-Lite specifications by exposing the Python Altair library. 
 
-As such, in 'altair', the rendering functions are re-exported from 'vegawidget'.
-There may be developed other packages that build Vega and Vega-Lite 
-specifications, for which 'vegawidget' could provide a common set of 
-rendering functions.
+  As such, 'altair' exports the 'vegawidget' rendering-functions.
+  There may be developed other packages that build Vega and Vega-Lite 
+  specifications, for which 'vegawidget' offers a common set of 
+  rendering functions.
 
-I have reassessed the functions that are re-exported. I have deprecated three
-functions in favor of directing the user to use vegawidget directly.
+  I have reassessed the functions that are re-exported. I have deprecated three
+  functions in favor of directing the user to use vegawidget directly.
 
 ## Test environments
 
