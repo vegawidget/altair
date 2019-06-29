@@ -24,7 +24,6 @@ reference:
       - import_vega_data
       - as_chart
       - as_vegaspec
-      - vw_as_json
       - altair_concatenation
   - title: Rendering
     desc: >
@@ -32,14 +31,19 @@ reference:
     contents:
       - vegawidget
       - vega_embed
-      - renderVegawidget
-      - vegawidgetOutput
       - knit_print.altair.vegalite.v3.api.TopLevelMixin
       - image
   - title: Package
     desc: Overview of the package
     contents:
       - altair
+  - title: Deprecated
+    desc: >
+      These functions are available in [vegawidget](https://vegawidget.github.io/vegawidget/reference/index.html)
+    contents:
+      - vw_as_json
+      - vegawidgetOutput
+      - renderVegawidget
 
 articles:
   - title: Installation

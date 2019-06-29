@@ -11,17 +11,6 @@
 #'
 NULL
 
-#' Coerce vegaspec to JSON
-#'
-#' See \code{vegawidget::\link[vegawidget]{vw_as_json}} for details.
-#'
-#' @name vw_as_json
-#' @rdname vw_as_json
-#' @importFrom vegawidget vw_as_json
-#' @export
-#'
-NULL
-
 #### print functions ####
 
 #' Knit-print method
@@ -74,37 +63,5 @@ NULL
 #'
 NULL
 
-#### shiny functions ####
 
-#' Shiny-output for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{vegawidgetOutput}} for details.
-#'
-#' @name vegawidgetOutput
-#' @rdname vegawidgetOutput
-#' @importFrom vegawidget vegawidgetOutput
-#' @export
-#'
-NULL
 
-#' Render shiny-output for vegawidget
-#'
-#' See \code{vegawidget::\link[vegawidget]{renderVegawidget}} for details.
-#'
-#' @name renderVegawidget
-#' @rdname renderVegawidget
-#' @importFrom vegawidget renderVegawidget
-#' @export
-#'
-NULL
-
-#### specs ####
-
-#' Example vegaspecs
-#'
-#' See \code{vegawidget::\link[vegawidget]{spec_mtcars}} for details.
-#'
-#' @name spec_mtcars
-#' @export
-#'
-spec_mtcars <- vegawidget::spec_mtcars

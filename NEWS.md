@@ -1,5 +1,7 @@
 # altair 3.1.1
 
+* Deprecate `vw_as_json()`, `vegawidgetOutput()`, `renderVegawidget()`; these are available in the **vegawidget** package. (#117)
+
 * Remove references to `r_to_py()`, as **retuculate** manages this automatically. (#83)
 
 * Update the JupyterLab renderers to Vega-Lite 3
@@ -36,7 +38,7 @@
 
 * adds `as_chart()`, to import a vegaspec as an Altair chart
  
-* revomes rendering functions in favor of a separate package, [**vegawidget**](https://github.com/vegawidget/vegawidget) - vegawidget functions imported and exported using templating function `vegawidget::use_vegawidget()`.
+* removes rendering functions in favor of a separate package, [**vegawidget**](https://github.com/vegawidget/vegawidget) - vegawidget functions imported and exported using templating function `vegawidget::use_vegawidget()`.
 
 * adds requirement to use reticulate (>=) 1.9, to avoid conflict between data-frame variable-names and python methods (#50, @aliciaschep) and to remove the need to use the `r_to_py()` function for data (#83)
 
