@@ -2,7 +2,7 @@
 
 ## Resubmission
 
-This is a resubmission. Following Uwe's email of 2019-06-29:
+This is a resubmission. Following Uwe's email of 2019-06-28:
 
 * I have added Python and Altair as `SystemRequirements` - my apologies for 
   missing this.
