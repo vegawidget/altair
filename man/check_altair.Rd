@@ -37,6 +37,7 @@ called \code{"r-reticulate"}, use \code{\link[=install_altair]{install_altair()}
 }
 \examples{
 \dontrun{
+  # not run because it requires Python
   check_altair()
 }
 }

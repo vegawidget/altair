@@ -2,7 +2,17 @@
 
 ## Resubmission
 
-This is a resubmission. Following Uwe's email of 2019-06-28:
+This is a resubmission. Following Martina Schmirl's email of 2019-07-07:
+
+* I have amended the title to remove the redundant R.
+
+* I have noted for each of the two remaining instances of `\dontrun{}` that
+  these examples make calls to Python (missing additional software). 
+  
+* I have amended an example-set to use `donttest{}` as these examples, as run, 
+  do not call Python.
+
+This is a resubmission. Following Uwe Ligge's email of 2019-06-28:
 
 * I have added Python and Altair as `SystemRequirements` - my apologies for 
   missing this.

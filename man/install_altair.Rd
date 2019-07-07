@@ -45,6 +45,7 @@ or in this package's \href{https://vegawidget.github.io/altair/articles/installa
 }
 \examples{
 \dontrun{
+  # not run because it requires Python
   install_altair()
 }
 }
