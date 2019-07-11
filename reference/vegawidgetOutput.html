@@ -40,7 +40,7 @@
   
 <meta property="og:title" content="Shiny-output for vegawidget — vegawidgetOutput" />
 
-<meta property="og:description" content="See vegawidget::vegawidgetOutput for details." />
+<meta property="og:description" content="Deprecated, please use vegawidget::vegawidgetOutput." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9011</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.1</span>
       </span>
     </div>
 
@@ -193,22 +193,49 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Shiny-output for vegawidget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/utils-vegawidget.R'><code>R/utils-vegawidget.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>vegawidgetOutput.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>See <code>vegawidget::<a href='https://www.rdocumentation.org/packages/vegawidget/topics/vegawidgetOutput'>vegawidgetOutput</a></code> for details.</p>
+    <p>Deprecated, please use <code>vegawidget::<a href='https://www.rdocumentation.org/packages/vegawidget/topics/vegawidgetOutput'>vegawidgetOutput</a></code>.</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>vegawidgetOutput</span>(<span class='no'>outputId</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='st'>"auto"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>outputId</th>
+      <td><p>output variable to read from</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>Must be a valid CSS unit (like <code>"100%"</code>,
+<code>"400px"</code>, <code>"auto"</code>) or a number, which will be coerced to a
+string and have <code>"px"</code> appended. For vegawidgets, <code>"auto"</code> is useful
+because, as of now, the spec determines the size of the widget, then the
+widget determines the size of the container.</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>Must be a valid CSS unit (like <code>"100%"</code>,
+<code>"400px"</code>, <code>"auto"</code>) or a number, which will be coerced to a
+string and have <code>"px"</code> appended. For vegawidgets, <code>"auto"</code> is useful
+because, as of now, the spec determines the size of the widget, then the
+widget determines the size of the container.</p></td>
+    </tr>
+    </table>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
                 </ul>
 
   </div>

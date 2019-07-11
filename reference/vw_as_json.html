@@ -40,7 +40,7 @@
   
 <meta property="og:title" content="Coerce vegaspec to JSON — vw_as_json" />
 
-<meta property="og:description" content="See vegawidget::vw_as_json for details." />
+<meta property="og:description" content="Deprecated, please use vegawidget::vw_as_json." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9011</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.1</span>
       </span>
     </div>
 
@@ -193,23 +193,44 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce vegaspec to JSON</h1>
-    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/utils-vegawidget.R'><code>R/utils-vegawidget.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/vegawidget/altair/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>vw_as_json.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>See <code>vegawidget::<a href='https://www.rdocumentation.org/packages/vegawidget/topics/vw_as_json'>vw_as_json</a></code> for details.</p>
+    <p>Deprecated, please use <code>vegawidget::<a href='https://www.rdocumentation.org/packages/vegawidget/topics/vw_as_json'>vw_as_json</a></code>.</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>vw_as_json</span>(<span class='no'>spec</span>, <span class='kw'>pretty</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>spec</th>
+      <td><p>An object to be coerced to <code>vegaspec</code>, a Vega/Vega-Lite specification</p></td>
+    </tr>
+    <tr>
+      <th>pretty</th>
+      <td><p><code>logical</code> indicates to use pretty (vs. minified) formatting</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>jsonlite::json</code> object</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
