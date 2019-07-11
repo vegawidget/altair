@@ -2,18 +2,18 @@
 % Please edit documentation in R/alt.R
 \name{as_chart}
 \alias{as_chart}
-\title{Create Altair chart from  vegaspec}
+\title{Create Altair chart from vegaspec}
 \usage{
 as_chart(spec)
 }
 \arguments{
-\item{spec}{vegaspec}
+\item{spec}{An object to be coerced to \code{vegaspec}, a Vega/Vega-Lite specification}
 }
 \value{
 altair object
 }
 \description{
-Create Altair chart from  vegaspec
+Create Altair chart from vegaspec
 }
 \examples{
   if (interactive()) {

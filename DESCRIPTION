@@ -1,6 +1,6 @@
 Package: altair
-Version: 3.1.0.9011
-Title: R Interface to 'Altair'
+Version: 3.1.1
+Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
   This package uses the 'Reticulate' framework 
@@ -26,6 +26,7 @@ Authors@R: c(
   person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
   person("Brian", "Granger", comment = "Altair library", role = c("ctb"))
   )
+SystemRequirements: Python (>= 3.5.0), (Python) Altair (>= 3.1.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

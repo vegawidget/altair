@@ -33,6 +33,7 @@
 #' [reticulate: Installing Python Packages](https://rstudio.github.io/reticulate/articles/python_packages.html)
 #' @examples
 #' \dontrun{
+#'   # not run because it requires Python
 #'   install_altair()
 #' }
 #' @export
@@ -114,6 +115,7 @@ install_altair <- function(method = c("conda", "virtualenv"),
 #' @seealso [reticulate::py_config()], [install_altair()], [altair_version()]
 #' @examples
 #' \dontrun{
+#'   # not run because it requires Python
 #'   check_altair()
 #' }
 #' @export
@@ -157,13 +159,14 @@ altair_version <- function() {
 #' @return invisible `NULL`, called for side-effects
 #' @keywords internal
 #' @examples
-#' \dontrun{
 #'   version_supported <- "2.0.1"
-#'   # issues error
-#'   check_altair_version("1.2", version_supported)
+#'   \donttest{
+#'     # issues error
+#'     check_altair_version("1.2", version_supported)
 #'
-#'   # issues warning
-#'   check_altair_version("2.1", version_supported)
+#'     # issues warning
+#'     check_altair_version("2.1", version_supported)
+#'   }
 #'
 #'   # issues message
 #'   check_altair_version("2.0.0", version_supported)
@@ -171,12 +174,15 @@ altair_version <- function() {
 #'
 #'   # does nothing
 #'   check_altair_version("2.0.1", version_supported)
-#' }
 #'
 check_altair_version <-
   function(version_installed = altair_version()$altair,
            version_supported = getOption("altair.python.version"),
            quiet = FALSE) {
+
+  if (is.null(version_supported)) {
+    stop("`version_supported` is NULL, is `altair` package loaded?")
+  }
 
   installed <- get_version_components(version_installed)
   supported <- get_version_components(version_supported)
