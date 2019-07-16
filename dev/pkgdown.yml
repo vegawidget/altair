@@ -1,0 +1,23 @@
+pandoc: '2.2'
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  altair: altair.html
+  example-gallery-01-simple: example-gallery-01-simple.html
+  example-gallery-02-bar-charts: example-gallery-02-bar-charts.html
+  example-gallery-03-line-charts: example-gallery-03-line-charts.html
+  example-gallery-04-area-charts: example-gallery-04-area-charts.html
+  example-gallery-05-scatter-plots: example-gallery-05-scatter-plots.html
+  example-gallery-06-histograms: example-gallery-06-histograms.html
+  example-gallery-07-maps: example-gallery-07-maps.html
+  example-gallery-08-interactive-charts: example-gallery-08-interactive-charts.html
+  example-gallery-09-case-studies: example-gallery-09-case-studies.html
+  example-gallery-10-other-charts: example-gallery-10-other-charts.html
+  field-guide-python: field-guide-python.html
+  field-guide-rendering: field-guide-rendering.html
+  installation: installation.html
+  interactive: interactive.html
+  tooltips: tooltips.html
+  vega-datasets: vega-datasets.html
+  view-composition: view-composition.html
+
