@@ -65,4 +65,4 @@ Suggests:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Remotes: 
-  vegawidget/vegawidget#108
+  vegawidget/vegawidget

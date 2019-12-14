@@ -1,5 +1,7 @@
 # altair 4.0.0.9000 (development version)
 
+* Upgrade to Altair 4.0.0
+
 # altair 3.1.1
 
 * Deprecate `vw_as_json()`, `vegawidgetOutput()`, `renderVegawidget()`; these are available in the **vegawidget** package. (#117)
