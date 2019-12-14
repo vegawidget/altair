@@ -18,7 +18,7 @@ py_mimebundle <- function(obj) {
 #' @importFrom repr repr_text
 #' @export
 #'
-repr_text.altair.vegalite.v3.api.Chart <- function(obj) {
+repr_text.altair.vegalite.v4.api.Chart <- function(obj) {
   py_mimebundle(obj)$`text/plain`
 }
 
@@ -31,6 +31,6 @@ repr_text.altair.vegalite.v3.api.Chart <- function(obj) {
 #' @importFrom repr repr_vegalite2
 #' @export
 #'
-repr_vegalite3.altair.vegalite.v3.api.Chart <- function(obj) {
-  py_mimebundle(obj)$`application/vnd.vegalite.v3+json`
+repr_vegalite4.altair.vegalite.v4.api.Chart <- function(obj) {
+  py_mimebundle(obj)$`application/vnd.vegalite.v4+json`
 }

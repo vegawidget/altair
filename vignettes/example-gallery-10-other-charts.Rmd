@@ -94,9 +94,9 @@ chart <-
     x = alt$X("median(yield)", scale=alt$Scale(zero = FALSE)),
     y = "variety:O",
     color = "year:N",
-    facet = "site:O"
+    facet = alt$Facet("site:O", columns = 2)
   )$
-  properties(columns = 2, width = 200, height = 100)
+  properties(width = 200, height = 100)
 
 chart
 ```

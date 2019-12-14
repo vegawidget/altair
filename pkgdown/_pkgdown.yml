@@ -31,7 +31,7 @@ reference:
     contents:
       - vegawidget
       - vega_embed
-      - knit_print.altair.vegalite.v3.api.TopLevelMixin
+      - knit_print.altair.vegalite.v4.api.TopLevelMixin
       - image
   - title: Package
     desc: Overview of the package
