@@ -1,4 +1,6 @@
-# altair 3.1.1 (development version)
+# altair 4.0.0.9000 (development version)
+
+* Upgrade to Altair 4.0.0
 
 # altair 3.1.1
 

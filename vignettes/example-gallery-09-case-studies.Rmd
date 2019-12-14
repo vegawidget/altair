@@ -164,7 +164,6 @@ chart <-
         op = "sum", 
         order = "descending"
       ),
-      scale = alt$Scale(rangeStep = 20),
       axis = alt$Axis(grid = TRUE)
     ),
     color = alt$Color("year:N", legend = alt$Legend(title = "Year")),
@@ -178,6 +177,7 @@ chart <-
       )
     )
   )$
+  properties(height = alt$Step(20))$
   configure_view(stroke = "transparent")
 
 chart
@@ -1275,11 +1275,10 @@ chart <-
       title = "Population",
       axis = alt$Axis(format = "~s")
     ),
-    facet = "year:O"
+    facet = alt$Facet("year:O", columns = 5)
   )$
   properties(
     title = "US Age Distribution By Year",
-    columns = 5,
     width = 90,
     height = 80
   )

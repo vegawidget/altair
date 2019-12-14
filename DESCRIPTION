@@ -1,5 +1,5 @@
 Package: altair
-Version: 3.1.1.9000
+Version: 4.0.0.9000
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
@@ -26,7 +26,7 @@ Authors@R: c(
   person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
   person("Brian", "Granger", comment = "Altair library", role = c("ctb"))
   )
-SystemRequirements: Python (>= 3.5.0), (Python) Altair (>= 3.1.0)
+SystemRequirements: Python (>= 3.5.0), (Python) Altair (>= 4.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -41,7 +41,7 @@ Imports:
     magrittr,
     jsonlite,
     utils,
-    vegawidget (>= 0.2.1),
+    vegawidget (>= 0.2.2.9000),
     repr
 Suggests:
     httr,
@@ -64,3 +64,5 @@ Suggests:
     fs
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+Remotes: 
+  vegawidget/vegawidget

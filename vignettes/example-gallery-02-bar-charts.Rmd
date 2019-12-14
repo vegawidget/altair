@@ -228,28 +228,28 @@ glimpse(data)
 #### Chart
 
 ```{r}
-a <- 
+bar <- 
   alt$Chart(data = data)$
   mark_bar()$
   encode(
     x = "project:O",
     y = "score:Q"
-  )
+  )$
+  properties(width = alt$Step(40))
 
-b <- 
+tick <- 
   alt$Chart(data = data)$
-  mark_tick(color = "red")$
+  mark_tick(
+    color = "red",
+    thickness = 2,
+    size = 40 * 0.9
+  )$
   encode(
     x = "project:O",
     y = "goal:Q"
   )
 
-chart <- 
-  (a + b)$ 
-  # controls the width of the tick
-  configure_tick(thickness = 2, bandSize = 35)$
-  # controls the width of the bar
-  configure_scale(rangeStep = 40)
+chart <- (bar + tick)
 
 chart
 ```

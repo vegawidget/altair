@@ -55,13 +55,13 @@
 NULL
 
 is_altair_chart <- function(x) {
-  inherits(x, "altair.vegalite.v3.api.TopLevelMixin")
+  inherits(x, "altair.vegalite.v4.api.TopLevelMixin")
 }
 
 #' @rdname altair_concatenation
 #' @export
 #'
-"|.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
+"|.altair.vegalite.v4.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to | is not an Altair Chart")
   }
@@ -71,7 +71,7 @@ is_altair_chart <- function(x) {
 #' @rdname altair_concatenation
 #' @export
 #'
-"+.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
+"+.altair.vegalite.v4.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to + is not an Altair Chart")
   }
@@ -81,7 +81,7 @@ is_altair_chart <- function(x) {
 #' @rdname altair_concatenation
 #' @export
 #'
-"&.altair.vegalite.v3.api.TopLevelMixin" <- function(e1, e2) {
+"&.altair.vegalite.v4.api.TopLevelMixin" <- function(e1, e2) {
   if (!is_altair_chart(e2)) {
     stop("Second argument to & is not an Altair Chart")
   }
