@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interactive Examples • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
       </span>
     </div>
 
@@ -137,7 +138,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -151,13 +152,14 @@
 <!--/.navbar -->
 
       
-      </header><script src="interactive_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="interactive_files/vega-5.4.0/vega.min.js"></script><script src="interactive_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="interactive_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="interactive_files/vega-embed-4.2.0/vega-embed.js"></script><script src="interactive_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="interactive_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="interactive_files/vega-5.9.0/vega.min.js"></script><script src="interactive_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="interactive_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="interactive_files/vega-embed-6.2.0/vega-embed.js"></script><script src="interactive_files/vegawidget-binding-0.3.0.9001/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Interactive Examples</h1>
             
-            <h4 class="date">2019-07-16</h4>
+            <h4 class="date">2019-12-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/interactive.Rmd"><code>vignettes/interactive.Rmd</code></a></small>
       <div class="hidden name"><code>interactive.Rmd</code></div>
@@ -169,12 +171,12 @@
 <p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot">linked-brush scatter-plot example</a> found in the Altair documentation.</p>
 <p>A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the <em>selection</em> object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
 <p>Let’s start again with our basic plot from the <a href="altair.html">Getting Started article</a>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">chart_static &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="dt">x =</span> <span class="st">"Horsepower:Q"</span>,</a>
@@ -183,17 +185,14 @@
 <a class="sourceLine" id="cb1-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb1-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb1-14" data-line-number="14">chart_static</a></code></pre></div>
-<div id="htmlwidget-d71266537c1d99991c8f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d71266537c1d99991c8f">{"x":{
+<div id="htmlwidget-a77ac233e038df5baee7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a77ac233e038df5baee7">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -4695,17 +4694,14 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">chart_brush &lt;-<span class="st"> </span>chart_static<span class="op">$</span><span class="kw">add_selection</span>(brush) </a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">chart_brush</a></code></pre></div>
-<div id="htmlwidget-cdf154d7aee107574878" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cdf154d7aee107574878">{"x":{
+<div id="htmlwidget-c74b49fcd740702876a4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c74b49fcd740702876a4">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -9207,14 +9203,14 @@
     "renderer": "canvas"
   }
 },"evals":[],"jsHooks":[]}</script><p>You can click-and-drag to draw a selection-box, then move it around. So far, so good, but it does not really <em>do</em> much. Let’s change that.</p>
-<p>We need to “tell” the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the <code><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition()</a></code> method to specify a light-gray color for observations that are not selected.</p>
+<p>We need to “tell” the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the <code><a href="https://rdrr.io/r/base/conditions.html">condition()</a></code> method to specify a light-gray color for observations that are not selected.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">chart_selection &lt;-</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">"Horsepower:Q"</span>,</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"Miles_per_Gallon:Q"</span>,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw">add_selection</span>(brush) </a>
@@ -9223,21 +9219,18 @@
 <p>This works, but it appears there is an easier way. It appears that you can call the <code>encode()</code> method to overwrite specific encodings for an existing chart. Thus, we have a chart where you can “see” the effect of your selection.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">chart_selection &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span>chart_brush<span class="op">$</span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(brush, <span class="st">"Origin:N"</span>, alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"lightgray"</span>))</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">  )</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">chart_selection</a></code></pre></div>
-<div id="htmlwidget-f472f4cf7645a461e8cb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f472f4cf7645a461e8cb">{"x":{
+<div id="htmlwidget-a3b4165d9de2f1efe199" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3b4165d9de2f1efe199">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -13754,17 +13747,14 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">chart_compound &lt;-<span class="st"> </span>(chart_mpg <span class="op">|</span><span class="st"> </span>chart_disp)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">chart_compound</a></code></pre></div>
-<div id="htmlwidget-0ab4f742367059e4888c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0ab4f742367059e4888c">{"x":{
+<div id="htmlwidget-350d53bda4507670a2d2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-350d53bda4507670a2d2">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -18307,9 +18297,11 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
       </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
@@ -18317,8 +18309,9 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

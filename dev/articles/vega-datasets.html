@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vega Datasets • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
       </span>
     </div>
 
@@ -137,7 +138,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -151,13 +152,14 @@
 <!--/.navbar -->
 
       
-      </header><script src="vega-datasets_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="vega-datasets_files/vega-5.4.0/vega.min.js"></script><script src="vega-datasets_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="vega-datasets_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="vega-datasets_files/vega-embed-4.2.0/vega-embed.js"></script><script src="vega-datasets_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="vega-datasets_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="vega-datasets_files/vega-5.9.0/vega.min.js"></script><script src="vega-datasets_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="vega-datasets_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="vega-datasets_files/vega-embed-6.2.0/vega-embed.js"></script><script src="vega-datasets_files/vegawidget-binding-0.3.0.9001/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Vega Datasets</h1>
             
-            <h4 class="date">2019-07-16</h4>
+            <h4 class="date">2019-12-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/vega-datasets.Rmd"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -191,24 +193,24 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">cars <span class="op">=</span> data.cars()</a></code></pre></div>
 <p>The Altair convention is to use the name <code>data</code> to refer to the <code>data</code> object in the <code>vega_datasets</code> package. This package offers a similar convention:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb2-5" data-line-number="5">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>()</a></code></pre></div>
 <p>Instead, our convention is to use an object called <code>vega_data</code>.</p>
 </div>
 <div id="accessing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#accessing" class="anchor"></a>Accessing</h2>
 <p>Our <code>vega_data</code> object has a method to list all its datasets:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "7zip"        "airports"    "anscombe"    "barley"      "birdstrikes"</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [6] "budget"</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "7zip"          "airports"      "annual-precip" "anscombe"     </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [5] "barley"        "birdstrikes"</span></a></code></pre></div>
 <p>Each dataset can be accessed using a method whose name is an element returned from <code>vega_data$list_datasets()</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tibble"</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/anscombe">anscombe</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/anscombe.html">anscombe</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; # A tibble: 44 x 3</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;    Series     X     Y</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;    &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></a>
@@ -223,7 +225,7 @@
 <a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  9 I         12 10.8 </span></a>
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 10 I          7  4.81</span></a>
 <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; # … with 34 more rows</span></a></code></pre></div>
-<p>It is useful to keep in mind that <strong>reticulate</strong> changes the names of the datasets, and presumably, Python objects in general. Where you see a <code>-</code> in a name of a Python object, a <code>_</code> will be used in the name of the reticulated object in R. For example, in Python: <code>data.sf-temps()</code>; in R:</p>
+<p>It is useful to keep in mind that <strong>reticulate</strong> changes the names of the datasets, and presumably, Python objects in general. Where you see a <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> in a name of a Python object, a <code>_</code> will be used in the name of the reticulated object in R. For example, in Python: <code>data.sf-temps()</code>; in R:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">sf_temps</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; # A tibble: 8,759 x 2</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;     temp date               </span></a>
@@ -245,14 +247,13 @@
 <a href="#metadata" class="anchor"></a>Metadata</h2>
 <p>Each dataset has some metadata, such as a description and references.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">wrapcat &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/strwrap">strwrap</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(<span class="dt">sep =</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/strwrap.html">strwrap</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="dt">sep =</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">}</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">vega_data<span class="op">$</span>anscombe<span class="op">$</span>description <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">wrapcat</span>()</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Anscombe's Quartet is a famous dataset constructed by Francis</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Anscombe [1]_. Common summary statistics are identical for each</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; subset of the data, despite the subsets having vastly different</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; characteristics.</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Anscombe's Quartet is a famous dataset constructed by Francis Anscombe</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; [1]_. Common summary statistics are identical for each subset of the</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; data, despite the subsets having vastly different characteristics.</span></a></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vega_data<span class="op">$</span>anscombe<span class="op">$</span>references <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">wrapcat</span>()</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Statistician. 27 (1): 17-21. JSTOR 2682899.</span></a></code></pre></div>
@@ -279,17 +280,14 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12">chart_iris</a></code></pre></div>
-<div id="htmlwidget-2e3aa233e40323f593fb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2e3aa233e40323f593fb">{"x":{
+<div id="htmlwidget-4af6a9052efb69ca725c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4af6a9052efb69ca725c">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -320,6 +318,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -336,13 +335,15 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

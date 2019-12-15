@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Other Charts • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
       </span>
     </div>
 
@@ -137,7 +138,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -151,14 +152,15 @@
 <!--/.navbar -->
 
       
-      </header><script src="example-gallery-10-other-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.4.0/vega.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-10-other-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="example-gallery-10-other-charts_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.9.0/vega.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-10-other-charts_files/vega-embed-6.2.0/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.3.0.9001/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Other Charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-07-16</h4>
+            <h4 class="date">2019-12-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-10-other-charts.Rmd"><code>vignettes/example-gallery-10-other-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-10-other-charts.Rmd</code></div>
@@ -169,10 +171,10 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#other-charts">Other Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"jsonlite"</span>)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="bar-chart-with-highlighted-segment" class="section level2">
@@ -185,9 +187,9 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">wheat</span>())</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Observations: 52</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78…</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0…</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610…</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 161…</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.…</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.9…</span></a></code></pre></div>
 </div>
 <div id="chart" class="section level4">
 <h4 class="hasAnchor">
@@ -222,17 +224,14 @@
 <a class="sourceLine" id="cb3-28" data-line-number="28">  )</a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"></a>
 <a class="sourceLine" id="cb3-30" data-line-number="30">(bars <span class="op">+</span><span class="st"> </span>highlight <span class="op">+</span><span class="st"> </span>rule)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">600</span>)</a></code></pre></div>
-<div id="htmlwidget-d792a6dedf4e369be544" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d792a6dedf4e369be544">{"x":{
+<div id="htmlwidget-375ee5cc483b9964fefa" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-375ee5cc483b9964fefa">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -588,10 +587,10 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></a></code></pre></div>
 </div>
 <div id="chart-1" class="section level4">
 <h4 class="hasAnchor">
@@ -603,23 +602,19 @@
 <a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"median(yield)"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>)),</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">"variety:O"</span>,</a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">"year:N"</span>,</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="dt">facet =</span> <span class="st">"site:O"</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="dt">facet =</span> alt<span class="op">$</span><span class="kw">Facet</span>(<span class="st">"site:O"</span>, <span class="dt">columns =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">columns =</span> <span class="dv">2</span>, <span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">200</span>, <span class="dt">height =</span> <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-b5f1e9338275d083629f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b5f1e9338275d083629f">{"x":{
+<div id="htmlwidget-5e1a62a774bad87c168a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e1a62a774bad87c168a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
-    "columns": 2,
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1355,6 +1350,7 @@
         "type": "nominal"
       },
       "facet": {
+        "columns": 2,
         "field": "site",
         "type": "ordinal"
       },
@@ -1389,25 +1385,25 @@
 <div id="data-2" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-2" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(vega_data<span class="op">$</span>movies<span class="op">$</span>url))</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(vega_data<span class="op">$</span>movies<span class="op">$</span>url))</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Observations: 3,201</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Variables: 16</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; $ Title                  &lt;chr&gt; "The Land Girls", "First Love, Last Rites…</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; $ US_Gross               &lt;int&gt; 146083, 10876, 203134, 373615, 1009819, 2…</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; $ Worldwide_Gross        &lt;dbl&gt; 146083, 10876, 203134, 373615, 1087521, 2…</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; $ US_DVD_Sales           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; $ Production_Budget      &lt;int&gt; 8000000, 300000, 250000, 300000, 1000000,…</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; $ Release_Date           &lt;chr&gt; "Jun 12 1998", "Aug 07 1998", "Aug 28 199…</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; $ MPAA_Rating            &lt;chr&gt; "R", "R", NA, NA, "R", NA, "R", "R", "R",…</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; $ Running_Time_min       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; $ Distributor            &lt;chr&gt; "Gramercy", "Strand", "Lionsgate", "Fine …</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; $ Source                 &lt;chr&gt; NA, NA, NA, NA, "Original Screenplay", NA…</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; $ Major_Genre            &lt;chr&gt; NA, "Drama", "Comedy", "Comedy", "Drama",…</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; $ Creative_Type          &lt;chr&gt; NA, NA, NA, NA, "Contemporary Fiction", N…</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; $ Director               &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Christopher Nola…</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; $ Rotten_Tomatoes_Rating &lt;int&gt; NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 8…</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; $ IMDB_Rating            &lt;dbl&gt; 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8…</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; $ IMDB_Votes             &lt;int&gt; 1071, 207, 865, NA, 165, NA, 15133, 353, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; $ Title                  &lt;chr&gt; "The Land Girls", "First Love, Last Rites", "I…</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; $ US_Gross               &lt;int&gt; 146083, 10876, 203134, 373615, 1009819, 24551,…</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; $ Worldwide_Gross        &lt;dbl&gt; 146083, 10876, 203134, 373615, 1087521, 262455…</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; $ US_DVD_Sales           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; $ Production_Budget      &lt;int&gt; 8000000, 300000, 250000, 300000, 1000000, 1600…</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; $ Release_Date           &lt;chr&gt; "Jun 12 1998", "Aug 07 1998", "Aug 28 1998", "…</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; $ MPAA_Rating            &lt;chr&gt; "R", "R", NA, NA, "R", NA, "R", "R", "R", NA, …</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; $ Running_Time_min       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; $ Distributor            &lt;chr&gt; "Gramercy", "Strand", "Lionsgate", "Fine Line"…</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; $ Source                 &lt;chr&gt; NA, NA, NA, NA, "Original Screenplay", NA, NA,…</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; $ Major_Genre            &lt;chr&gt; NA, "Drama", "Comedy", "Comedy", "Drama", NA, …</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; $ Creative_Type          &lt;chr&gt; NA, NA, NA, NA, "Contemporary Fiction", NA, NA…</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; $ Director               &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Christopher Nolan", N…</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; $ Rotten_Tomatoes_Rating &lt;int&gt; NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 81, 84…</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; $ IMDB_Rating            &lt;dbl&gt; 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8, 7.0…</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; $ IMDB_Votes             &lt;int&gt; 1071, 207, 865, NA, 165, NA, 15133, 353, 3275,…</span></a></code></pre></div>
 </div>
 <div id="chart-2" class="section level4">
 <h4 class="hasAnchor">
@@ -1424,17 +1420,14 @@
 <a class="sourceLine" id="cb7-10" data-line-number="10">    )</a>
 <a class="sourceLine" id="cb7-11" data-line-number="11">  )</a>
 <a class="sourceLine" id="cb7-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-0d857d0c5ee0e7971295" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0d857d0c5ee0e7971295">{"x":{
+<div id="htmlwidget-87fb250b7671496df4e2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-87fb250b7671496df4e2">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1483,10 +1476,10 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">population</span>())</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Observations: 570</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; $ age    &lt;dbl&gt; 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35, 3…</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; $ people &lt;dbl&gt; 1483789, 1450376, 1411067, 1359668, 1260099, 1216114, 107…</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; $ sex    &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, …</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; $ year   &lt;dbl&gt; 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 185…</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; $ year   &lt;dbl&gt; 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 18…</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; $ age    &lt;dbl&gt; 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35, 35, 40…</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; $ sex    &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,…</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; $ people &lt;dbl&gt; 1483789, 1450376, 1411067, 1359668, 1260099, 1216114, 1077133,…</span></a></code></pre></div>
 <div id="chart-3" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-3" class="anchor"></a>Chart</h4>
@@ -1499,17 +1492,14 @@
 <a class="sourceLine" id="cb9-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb9-9" data-line-number="9">chart</a></code></pre></div>
-<div id="htmlwidget-39b66b3e105e60a28970" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-39b66b3e105e60a28970">{"x":{
+<div id="htmlwidget-806e7f8b7b686da6ce59" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-806e7f8b7b686da6ce59">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1546,7 +1536,7 @@
 </blockquote>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span>jsonlite<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(<span class="st">'[</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span>jsonlite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(<span class="st">'[</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  {</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">    "date": "01-Jun-2009",</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">    "open": 28.7,</span></a>
@@ -1749,18 +1739,18 @@
 </details><div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; Observations: 22</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; Variables: 7</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ date   &lt;chr&gt; "01-Jun-2009", "02-Jun-2009", "03-Jun-2009", "04-Jun-2009…</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; $ open   &lt;dbl&gt; 28.70, 30.04, 29.62, 31.02, 29.39, 30.84, 29.77, 26.90, 2…</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; $ high   &lt;dbl&gt; 30.05, 30.13, 31.79, 31.02, 30.81, 31.82, 29.77, 29.74, 2…</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; $ low    &lt;dbl&gt; 28.45, 28.30, 29.62, 29.92, 28.85, 26.41, 27.79, 26.90, 2…</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; $ close  &lt;dbl&gt; 30.04, 29.63, 31.02, 30.18, 29.62, 29.77, 28.27, 28.46, 2…</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; $ signal &lt;chr&gt; "short", "short", "short", "short", "short", "short", "sh…</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; $ ret    &lt;dbl&gt; -4.8939641, -0.3225806, 3.6866359, 4.5101089, 6.0842434, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ date   &lt;chr&gt; "01-Jun-2009", "02-Jun-2009", "03-Jun-2009", "04-Jun-2009", "0…</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; $ open   &lt;dbl&gt; 28.70, 30.04, 29.62, 31.02, 29.39, 30.84, 29.77, 26.90, 27.36,…</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; $ high   &lt;dbl&gt; 30.05, 30.13, 31.79, 31.02, 30.81, 31.82, 29.77, 29.74, 28.11,…</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; $ low    &lt;dbl&gt; 28.45, 28.30, 29.62, 29.92, 28.85, 26.41, 27.79, 26.90, 26.81,…</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; $ close  &lt;dbl&gt; 30.04, 29.63, 31.02, 30.18, 29.62, 29.77, 28.27, 28.46, 28.11,…</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; $ signal &lt;chr&gt; "short", "short", "short", "short", "short", "short", "short",…</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; $ ret    &lt;dbl&gt; -4.8939641, -0.3225806, 3.6866359, 4.5101089, 6.0842434, 1.253…</span></a></code></pre></div>
 <div id="chart-4" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-4" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">open_close_color &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="st">"datum.open &lt; datum.close"</span>,</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4">    alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"#06982d"</span>),</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">    alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"#ae1325"</span>)</a>
@@ -1774,17 +1764,17 @@
 <a class="sourceLine" id="cb12-13" data-line-number="13">      <span class="st">"date:T"</span>,</a>
 <a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="dt">timeUnit =</span> <span class="st">"yearmonthdate"</span>,</a>
 <a class="sourceLine" id="cb12-15" data-line-number="15">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(</a>
-<a class="sourceLine" id="cb12-16" data-line-number="16">        <span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb12-17" data-line-number="17">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">5</span>, <span class="dt">date=</span> <span class="dv">31</span>, <span class="dt">year=</span> <span class="dv">2009</span>),</a>
-<a class="sourceLine" id="cb12-18" data-line-number="18">          <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">month=</span> <span class="dv">7</span>, <span class="dt">date=</span> <span class="dv">1</span>, <span class="dt">year=</span> <span class="dv">2009</span>)</a>
+<a class="sourceLine" id="cb12-16" data-line-number="16">        <span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
+<a class="sourceLine" id="cb12-17" data-line-number="17">          <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">month=</span> <span class="dv">5</span>, <span class="dt">date=</span> <span class="dv">31</span>, <span class="dt">year=</span> <span class="dv">2009</span>),</a>
+<a class="sourceLine" id="cb12-18" data-line-number="18">          <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">month=</span> <span class="dv">7</span>, <span class="dt">date=</span> <span class="dv">1</span>, <span class="dt">year=</span> <span class="dv">2009</span>)</a>
 <a class="sourceLine" id="cb12-19" data-line-number="19">        )</a>
 <a class="sourceLine" id="cb12-20" data-line-number="20">      ),</a>
-<a class="sourceLine" id="cb12-21" data-line-number="21">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">format =</span> <span class="st">"%m/%d"</span>, <span class="dt">title =</span> <span class="st">"Date in 2009"</span>)</a>
+<a class="sourceLine" id="cb12-21" data-line-number="21">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">format =</span> <span class="st">"%m/%d"</span>, <span class="dt">title =</span> <span class="st">"Date in 2009"</span>)</a>
 <a class="sourceLine" id="cb12-22" data-line-number="22">    ),</a>
 <a class="sourceLine" id="cb12-23" data-line-number="23">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
 <a class="sourceLine" id="cb12-24" data-line-number="24">      <span class="st">"low"</span>,</a>
 <a class="sourceLine" id="cb12-25" data-line-number="25">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>),</a>
-<a class="sourceLine" id="cb12-26" data-line-number="26">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Price"</span>)</a>
+<a class="sourceLine" id="cb12-26" data-line-number="26">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Price"</span>)</a>
 <a class="sourceLine" id="cb12-27" data-line-number="27">    ),</a>
 <a class="sourceLine" id="cb12-28" data-line-number="28">    alt<span class="op">$</span><span class="kw">Y2</span>(<span class="st">"high"</span>),</a>
 <a class="sourceLine" id="cb12-29" data-line-number="29">    <span class="dt">color =</span> open_close_color</a>
@@ -1802,17 +1792,14 @@
 <a class="sourceLine" id="cb12-41" data-line-number="41"></a>
 <a class="sourceLine" id="cb12-42" data-line-number="42">chart &lt;-<span class="st"> </span>(rule <span class="op">+</span><span class="st"> </span>bar)</a>
 <a class="sourceLine" id="cb12-43" data-line-number="43">chart</a></code></pre></div>
-<div id="htmlwidget-c12c668bc2e4ca2b6dac" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c12c668bc2e4ca2b6dac">{"x":{
+<div id="htmlwidget-367661045db6f9d136ac" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-367661045db6f9d136ac">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -2115,10 +2102,10 @@
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></a></code></pre></div>
 </div>
 <div id="chart-5" class="section level4">
 <h4 class="hasAnchor">
@@ -2142,17 +2129,14 @@
 <a class="sourceLine" id="cb14-17" data-line-number="17">  )</a>
 <a class="sourceLine" id="cb14-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb14-19" data-line-number="19">error_bars <span class="op">+</span><span class="st"> </span>points</a></code></pre></div>
-<div id="htmlwidget-2b1747d0d9273912a819" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2b1747d0d9273912a819">{"x":{
+<div id="htmlwidget-8dfc5b334116ca5106be" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8dfc5b334116ca5106be">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -2945,10 +2929,10 @@
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></a></code></pre></div>
 </div>
 <div id="chart-6" class="section level4">
 <h4 class="hasAnchor">
@@ -2972,17 +2956,14 @@
 <a class="sourceLine" id="cb16-17" data-line-number="17">  )</a>
 <a class="sourceLine" id="cb16-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb16-19" data-line-number="19">error_bars <span class="op">+</span><span class="st"> </span>points</a></code></pre></div>
-<div id="htmlwidget-13b621abef68cbf1fb93" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-13b621abef68cbf1fb93">{"x":{
+<div id="htmlwidget-28af198c019f30b3ee1b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-28af198c019f30b3ee1b">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -3770,24 +3751,24 @@
 <div id="data-5" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-5" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())</a>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>())</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co">#&gt; Observations: 150</span></a>
 <a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co">#&gt; Variables: 5</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.…</span></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.…</span></a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.…</span></a>
-<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.…</span></a>
-<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "s…</span></a></code></pre></div>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…</span></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "setosa…</span></a></code></pre></div>
 </div>
 <div id="chart-7" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-7" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">iris &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>()</a>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">iris &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>()</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">xscale &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="fl">4.0</span>, <span class="fl">8.0</span>))</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">yscale &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="fl">1.8</span>, <span class="fl">4.6</span>))</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">xscale &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">4.0</span>, <span class="fl">8.0</span>))</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">yscale &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1.8</span>, <span class="fl">4.6</span>))</a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">blank_axis &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">""</span>)</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">blank_axis &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">""</span>)</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb18-8" data-line-number="8">points &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb18-9" data-line-number="9"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(iris)<span class="op">$</span></a>
@@ -3834,17 +3815,14 @@
 <a class="sourceLine" id="cb18-50" data-line-number="50">chart &lt;-<span class="st"> </span>(top_hist <span class="op">&amp;</span><span class="st"> </span>(points <span class="op">|</span><span class="st"> </span>right_hist))</a>
 <a class="sourceLine" id="cb18-51" data-line-number="51"></a>
 <a class="sourceLine" id="cb18-52" data-line-number="52">chart</a></code></pre></div>
-<div id="htmlwidget-86692ae16cbde1f8d65a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86692ae16cbde1f8d65a">{"x":{
+<div id="htmlwidget-6b67db21e0706bb8060b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b67db21e0706bb8060b">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -5038,7 +5016,7 @@
 <a href="#data-6" class="anchor"></a>Data</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(<span class="st">'[</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(<span class="st">'[</span></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">    {"task": "A", "start": 1, "end": 3},</span></a>
 <a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">    {"task": "B", "start": 3, "end": 8},</span></a>
 <a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">    {"task": "C", "start": 8, "end": 10}</span></a>
@@ -5063,17 +5041,14 @@
 <a class="sourceLine" id="cb21-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb21-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb21-10" data-line-number="10">chart</a></code></pre></div>
-<div id="htmlwidget-71ce60d5d1f32a26d1de" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-71ce60d5d1f32a26d1de">{"x":{
+<div id="htmlwidget-1f2b858135c2fed12b82" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f2b858135c2fed12b82">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -5129,11 +5104,11 @@
 <a href="#data-7" class="anchor"></a>Data</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">person =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb22-2" data-line-number="2">person =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"</span>)</a></code></pre></div>
 </details><div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co">#&gt; Observations: 100</span></a>
 <a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">#&gt; Variables: 1</span></a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">#&gt; $ id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…</span></a></code></pre></div>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">#&gt; $ id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,…</span></a></code></pre></div>
 </div>
 <div id="chart-9" class="section level4">
 <h4 class="hasAnchor">
@@ -5152,18 +5127,15 @@
 <a class="sourceLine" id="cb24-12" data-line-number="12"><span class="st">  </span><span class="kw">configure_view</span>(<span class="dt">strokeWidth =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb24-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb24-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-8123bc9c77f2f759044b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8123bc9c77f2f759044b">{"x":{
+<div id="htmlwidget-5328cc072cde26e48106" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5328cc072cde26e48106">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "strokeWidth": 0,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400,
+        "strokeWidth": 0
       }
     },
     "data": {
@@ -5523,9 +5495,9 @@
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">stocks</span>())</a>
 <a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#&gt; Observations: 560</span></a>
 <a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "…</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-…</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 2…</span></a></code></pre></div>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></a></code></pre></div>
 </div>
 <div id="chart-10" class="section level4">
 <h4 class="hasAnchor">
@@ -5542,17 +5514,14 @@
 <a class="sourceLine" id="cb26-10" data-line-number="10">  )</a>
 <a class="sourceLine" id="cb26-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb26-12" data-line-number="12">chart</a></code></pre></div>
-<div id="htmlwidget-ff130fe9208be4862d4a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff130fe9208be4862d4a">{"x":{
+<div id="htmlwidget-42ee450808b9d3e59ce9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-42ee450808b9d3e59ce9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -8400,28 +8369,28 @@
 <div id="data-9" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-9" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())</a>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>())</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co">#&gt; Observations: 150</span></a>
 <a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#&gt; Variables: 5</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.…</span></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.…</span></a>
-<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.…</span></a>
-<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.…</span></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "s…</span></a></code></pre></div>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…</span></a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "setosa…</span></a></code></pre></div>
 </div>
 <div id="chart-11" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-11" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>()</a>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>()</a>
 <a class="sourceLine" id="cb28-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb28-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(<span class="dt">index=</span><span class="st">"count()"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb28-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_fold</span>(</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
 <a class="sourceLine" id="cb28-8" data-line-number="8">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb28-9" data-line-number="9"><span class="st">  </span><span class="kw">transform_joinaggregate</span>(</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"key"</span>),</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"key"</span>),</a>
 <a class="sourceLine" id="cb28-11" data-line-number="11">    <span class="dt">min =</span> <span class="st">"min(value)"</span>,</a>
 <a class="sourceLine" id="cb28-12" data-line-number="12">    <span class="dt">max =</span> <span class="st">"max(value)"</span></a>
 <a class="sourceLine" id="cb28-13" data-line-number="13">  )<span class="op">$</span></a>
@@ -8439,17 +8408,14 @@
 <a class="sourceLine" id="cb28-25" data-line-number="25">  )<span class="op">$</span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">500</span>)</a>
 <a class="sourceLine" id="cb28-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb28-27" data-line-number="27">chart</a></code></pre></div>
-<div id="htmlwidget-d546c7e2d910065406c2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d546c7e2d910065406c2">{"x":{
+<div id="htmlwidget-1c602a3ab1d59dc15288" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c602a3ab1d59dc15288">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -9593,25 +9559,25 @@
 <div id="data-10" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-10" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())</a>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>())</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co">#&gt; Observations: 150</span></a>
 <a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co">#&gt; Variables: 5</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.…</span></a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.…</span></a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.…</span></a>
-<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.…</span></a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "s…</span></a></code></pre></div>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#&gt; $ sepalLength &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="co">#&gt; $ sepalWidth  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…</span></a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="co">#&gt; $ petalLength &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…</span></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="co">#&gt; $ petalWidth  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…</span></a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="co">#&gt; $ species     &lt;chr&gt; "setosa", "setosa", "setosa", "setosa", "setosa", "setosa…</span></a></code></pre></div>
 </div>
 <div id="chart-12" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-12" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>()</a>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>()</a>
 <a class="sourceLine" id="cb30-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb30-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb30-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb30-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_window</span>(<span class="dt">index =</span> <span class="st">"count()"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb30-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_fold</span>(</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>, <span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
 <a class="sourceLine" id="cb30-8" data-line-number="8">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb30-9" data-line-number="9"><span class="st">  </span><span class="kw">mark_line</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb30-10" data-line-number="10"><span class="st">  </span><span class="kw">encode</span>(</a>
@@ -9624,17 +9590,14 @@
 <a class="sourceLine" id="cb30-17" data-line-number="17"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">500</span>)</a>
 <a class="sourceLine" id="cb30-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb30-19" data-line-number="19">chart</a></code></pre></div>
-<div id="htmlwidget-ff5e9dce5e1788589def" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff5e9dce5e1788589def">{"x":{
+<div id="htmlwidget-17050517004d046006ec" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-17050517004d046006ec">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -10755,25 +10718,25 @@
 <a href="#data-11" class="anchor"></a>Data</h4>
 <p>Cannot get the Vega-Lite data-layer to work.</p>
 <details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(vega_data<span class="op">$</span>countries<span class="op">$</span>url)</a>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(vega_data<span class="op">$</span>countries<span class="op">$</span>url)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2">data &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb31-3" data-line-number="3"><span class="st">  </span>data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb31-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span><span class="st">`</span><span class="dt">_comment</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb31-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(</a>
-<a class="sourceLine" id="cb31-6" data-line-number="6">    country <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span>),</a>
-<a class="sourceLine" id="cb31-7" data-line-number="7">    year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1955</span>, <span class="dv">2000</span>)</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">    country <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span>),</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">    year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1955</span>, <span class="dv">2000</span>)</a>
 <a class="sourceLine" id="cb31-8" data-line-number="8">  ) </a></code></pre></div>
 </details><div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co">#&gt; Observations: 10</span></a>
 <a class="sourceLine" id="cb32-3" data-line-number="3"><span class="co">#&gt; Variables: 8</span></a>
-<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co">#&gt; $ year          &lt;int&gt; 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2000, 19…</span></a>
-<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="co">#&gt; $ fertility     &lt;dbl&gt; 6.1501, 2.3450, 5.5900, 1.7000, 5.8961, 3.1132, 5.…</span></a>
-<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="co">#&gt; $ life_expect   &lt;dbl&gt; 53.28500, 71.00600, 50.54896, 72.02800, 40.24900, …</span></a>
-<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="co">#&gt; $ n_fertility   &lt;dbl&gt; 6.1501, NA, 5.7200, NA, 5.8216, NA, 5.6200, NA, 3.…</span></a>
-<a class="sourceLine" id="cb32-8" data-line-number="8"><span class="co">#&gt; $ n_life_expect &lt;dbl&gt; 55.66500, NA, 44.50136, NA, 43.60500, NA, 42.51800…</span></a>
-<a class="sourceLine" id="cb32-9" data-line-number="9"><span class="co">#&gt; $ country       &lt;chr&gt; "Brazil", "Brazil", "China", "China", "India", "In…</span></a>
-<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="co">#&gt; $ p_fertility   &lt;dbl&gt; NA, 2.4500, NA, 1.7810, NA, 3.4551, NA, 2.5500, NA…</span></a>
-<a class="sourceLine" id="cb32-11" data-line-number="11"><span class="co">#&gt; $ p_life_expect &lt;dbl&gt; NA, 69.388, NA, 70.426, NA, 61.765, NA, 66.041, NA…</span></a></code></pre></div>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co">#&gt; $ year          &lt;int&gt; 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2…</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="co">#&gt; $ fertility     &lt;dbl&gt; 6.1501, 2.3450, 5.5900, 1.7000, 5.8961, 3.1132, 5.6720,…</span></a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="co">#&gt; $ life_expect   &lt;dbl&gt; 53.28500, 71.00600, 50.54896, 72.02800, 40.24900, 62.87…</span></a>
+<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="co">#&gt; $ n_fertility   &lt;dbl&gt; 6.1501, NA, 5.7200, NA, 5.8216, NA, 5.6200, NA, 3.3140,…</span></a>
+<a class="sourceLine" id="cb32-8" data-line-number="8"><span class="co">#&gt; $ n_life_expect &lt;dbl&gt; 55.66500, NA, 44.50136, NA, 43.60500, NA, 42.51800, NA,…</span></a>
+<a class="sourceLine" id="cb32-9" data-line-number="9"><span class="co">#&gt; $ country       &lt;chr&gt; "Brazil", "Brazil", "China", "China", "India", "India",…</span></a>
+<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="co">#&gt; $ p_fertility   &lt;dbl&gt; NA, 2.4500, NA, 1.7810, NA, 3.4551, NA, 2.5500, NA, 1.9…</span></a>
+<a class="sourceLine" id="cb32-11" data-line-number="11"><span class="co">#&gt; $ p_life_expect &lt;dbl&gt; NA, 69.388, NA, 70.426, NA, 61.765, NA, 66.041, NA, 76.…</span></a></code></pre></div>
 </div>
 <div id="chart-13" class="section level4">
 <h4 class="hasAnchor">
@@ -10798,37 +10761,34 @@
 <a class="sourceLine" id="cb33-18" data-line-number="18">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(</a>
 <a class="sourceLine" id="cb33-19" data-line-number="19">      <span class="st">"year:O"</span>,</a>
 <a class="sourceLine" id="cb33-20" data-line-number="20">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(</a>
-<a class="sourceLine" id="cb33-21" data-line-number="21">        <span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"1955"</span>, <span class="st">"2000"</span>), </a>
-<a class="sourceLine" id="cb33-22" data-line-number="22">        <span class="dt">range =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"#e6959c"</span>, <span class="st">"#911a24"</span>)</a>
+<a class="sourceLine" id="cb33-21" data-line-number="21">        <span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"1955"</span>, <span class="st">"2000"</span>), </a>
+<a class="sourceLine" id="cb33-22" data-line-number="22">        <span class="dt">range =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"#e6959c"</span>, <span class="st">"#911a24"</span>)</a>
 <a class="sourceLine" id="cb33-23" data-line-number="23">      )</a>
 <a class="sourceLine" id="cb33-24" data-line-number="24">    )</a>
-<a class="sourceLine" id="cb33-25" data-line-number="25">  )<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()</a>
+<a class="sourceLine" id="cb33-25" data-line-number="25">  )<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()</a>
 <a class="sourceLine" id="cb33-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb33-27" data-line-number="27"><span class="co"># Compose charts, add data and transformations</span></a>
 <a class="sourceLine" id="cb33-28" data-line-number="28">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb33-29" data-line-number="29"><span class="st">  </span>(chart_line <span class="op">+</span><span class="st"> </span>chart_point)<span class="op">$</span></a>
 <a class="sourceLine" id="cb33-30" data-line-number="30"><span class="st">  </span><span class="kw">transform_filter</span>(</a>
-<a class="sourceLine" id="cb33-31" data-line-number="31">    <span class="dt">filter =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb33-31" data-line-number="31">    <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb33-32" data-line-number="32">      <span class="dt">field =</span> <span class="st">"country"</span>,</a>
-<a class="sourceLine" id="cb33-33" data-line-number="33">      <span class="dt">oneOf =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span>)</a>
+<a class="sourceLine" id="cb33-33" data-line-number="33">      <span class="dt">oneOf =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span>)</a>
 <a class="sourceLine" id="cb33-34" data-line-number="34">    )</a>
 <a class="sourceLine" id="cb33-35" data-line-number="35">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb33-36" data-line-number="36"><span class="st">  </span><span class="kw">transform_filter</span>(</a>
-<a class="sourceLine" id="cb33-37" data-line-number="37">    <span class="dt">filter =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">field =</span> <span class="st">"year"</span>, <span class="dt">oneOf =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">1955</span>, <span class="dv">2000</span>))</a>
+<a class="sourceLine" id="cb33-37" data-line-number="37">    <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">field =</span> <span class="st">"year"</span>, <span class="dt">oneOf =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">1955</span>, <span class="dv">2000</span>))</a>
 <a class="sourceLine" id="cb33-38" data-line-number="38">  )</a>
 <a class="sourceLine" id="cb33-39" data-line-number="39"></a>
 <a class="sourceLine" id="cb33-40" data-line-number="40">chart</a></code></pre></div>
-<div id="htmlwidget-1d8c2f034f6edbd7c182" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1d8c2f034f6edbd7c182">{"x":{
+<div id="htmlwidget-109b55d1f2c0aeaafbc7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-109b55d1f2c0aeaafbc7">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -11050,12 +11010,12 @@
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">seattle_weather</span>())</a>
 <a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt; Observations: 1,461</span></a>
 <a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt; Variables: 6</span></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt; $ date          &lt;dttm&gt; 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04, 2…</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; $ precipitation &lt;dbl&gt; 0.0, 10.9, 0.8, 20.3, 1.3, 2.5, 0.0, 0.0, 4.3, 1.0…</span></a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; $ temp_max      &lt;dbl&gt; 12.8, 10.6, 11.7, 12.2, 8.9, 4.4, 7.2, 10.0, 9.4, …</span></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; $ temp_min      &lt;dbl&gt; 5.0, 2.8, 7.2, 5.6, 2.8, 2.2, 2.8, 2.8, 5.0, 0.6, …</span></a>
-<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; $ wind          &lt;dbl&gt; 4.7, 4.5, 2.3, 4.7, 6.1, 2.2, 2.3, 2.0, 3.4, 3.4, …</span></a>
-<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="co">#&gt; $ weather       &lt;chr&gt; "drizzle", "rain", "rain", "rain", "rain", "rain",…</span></a></code></pre></div>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt; $ date          &lt;dttm&gt; 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04, 2012-0…</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; $ precipitation &lt;dbl&gt; 0.0, 10.9, 0.8, 20.3, 1.3, 2.5, 0.0, 0.0, 4.3, 1.0, 0.0…</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; $ temp_max      &lt;dbl&gt; 12.8, 10.6, 11.7, 12.2, 8.9, 4.4, 7.2, 10.0, 9.4, 6.1, …</span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; $ temp_min      &lt;dbl&gt; 5.0, 2.8, 7.2, 5.6, 2.8, 2.2, 2.8, 2.8, 5.0, 0.6, -1.1,…</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; $ wind          &lt;dbl&gt; 4.7, 4.5, 2.3, 4.7, 6.1, 2.2, 2.3, 2.0, 3.4, 3.4, 5.1, …</span></a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="co">#&gt; $ weather       &lt;chr&gt; "drizzle", "rain", "rain", "rain", "rain", "rain", "rai…</span></a></code></pre></div>
 </div>
 <div id="chart-14" class="section level4">
 <h4 class="hasAnchor">
@@ -11069,16 +11029,16 @@
 <a class="sourceLine" id="cb35-7" data-line-number="7"><span class="st">  </span><span class="kw">transform_timeunit</span>(<span class="dt">Month =</span> <span class="st">"month(date)"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb35-8" data-line-number="8"><span class="st">  </span><span class="kw">transform_joinaggregate</span>(</a>
 <a class="sourceLine" id="cb35-9" data-line-number="9">    <span class="dt">mean_temp =</span> <span class="st">"mean(temp_max)"</span>, </a>
-<a class="sourceLine" id="cb35-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>)</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Month"</span>)</a>
 <a class="sourceLine" id="cb35-11" data-line-number="11">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_bin</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), <span class="st">"temp_max"</span>)<span class="op">$</span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_bin</span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), <span class="st">"temp_max"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb35-13" data-line-number="13"><span class="st">  </span><span class="kw">transform_aggregate</span>(</a>
 <a class="sourceLine" id="cb35-14" data-line-number="14">    <span class="dt">value =</span> <span class="st">"count()"</span>, </a>
-<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span>)</a>
+<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span>)</a>
 <a class="sourceLine" id="cb35-16" data-line-number="16">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb35-17" data-line-number="17"><span class="st">  </span><span class="kw">transform_impute</span>(</a>
 <a class="sourceLine" id="cb35-18" data-line-number="18">    <span class="dt">impute =</span> <span class="st">"value"</span>, </a>
-<a class="sourceLine" id="cb35-19" data-line-number="19">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>), </a>
+<a class="sourceLine" id="cb35-19" data-line-number="19">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Month"</span>, <span class="st">"mean_temp"</span>), </a>
 <a class="sourceLine" id="cb35-20" data-line-number="20">    <span class="dt">key =</span> <span class="st">"bin_min"</span>, </a>
 <a class="sourceLine" id="cb35-21" data-line-number="21">    <span class="dt">value =</span> <span class="dv">0</span></a>
 <a class="sourceLine" id="cb35-22" data-line-number="22">  )<span class="op">$</span></a>
@@ -11091,13 +11051,13 @@
 <a class="sourceLine" id="cb35-29" data-line-number="29">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"bin_min:Q"</span>, <span class="dt">bin =</span> <span class="st">"binned"</span>, <span class="dt">title =</span> <span class="st">"Maximum Daily Temperature (C)"</span>),</a>
 <a class="sourceLine" id="cb35-30" data-line-number="30">    alt<span class="op">$</span><span class="kw">Y</span>(</a>
 <a class="sourceLine" id="cb35-31" data-line-number="31">      <span class="st">"value:Q"</span>,</a>
-<a class="sourceLine" id="cb35-32" data-line-number="32">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">range =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(step, <span class="op">-</span>step <span class="op">*</span><span class="st"> </span>overlap)),</a>
+<a class="sourceLine" id="cb35-32" data-line-number="32">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">range =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(step, <span class="op">-</span>step <span class="op">*</span><span class="st"> </span>overlap)),</a>
 <a class="sourceLine" id="cb35-33" data-line-number="33">      <span class="dt">axis =</span> <span class="ot">NULL</span></a>
 <a class="sourceLine" id="cb35-34" data-line-number="34">    ),</a>
 <a class="sourceLine" id="cb35-35" data-line-number="35">    alt<span class="op">$</span><span class="kw">Fill</span>(</a>
 <a class="sourceLine" id="cb35-36" data-line-number="36">      <span class="st">"mean_temp:Q"</span>,</a>
 <a class="sourceLine" id="cb35-37" data-line-number="37">      <span class="dt">legend =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb35-38" data-line-number="38">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">30</span>, <span class="dv">5</span>), <span class="dt">scheme =</span> <span class="st">"redyellowblue"</span>)</a>
+<a class="sourceLine" id="cb35-38" data-line-number="38">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">30</span>, <span class="dv">5</span>), <span class="dt">scheme =</span> <span class="st">"redyellowblue"</span>)</a>
 <a class="sourceLine" id="cb35-39" data-line-number="39">    ),</a>
 <a class="sourceLine" id="cb35-40" data-line-number="40">    alt<span class="op">$</span><span class="kw">Row</span>(</a>
 <a class="sourceLine" id="cb35-41" data-line-number="41">      <span class="st">"Month:T"</span>,</a>
@@ -11111,25 +11071,22 @@
 <a class="sourceLine" id="cb35-49" data-line-number="49"><span class="st">  </span><span class="kw">configure_title</span>(<span class="dt">anchor =</span> <span class="st">"end"</span>)</a>
 <a class="sourceLine" id="cb35-50" data-line-number="50"></a>
 <a class="sourceLine" id="cb35-51" data-line-number="51">chart</a></code></pre></div>
-<div id="htmlwidget-50a169602b3523fb84f0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-50a169602b3523fb84f0">{"x":{
+<div id="htmlwidget-a3678165b50eddcda7c9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3678165b50eddcda7c9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "bounds": "flush",
     "config": {
       "facet": {
         "spacing": 0
       },
-      "mark": {
-        "tooltip": null
-      },
       "title": {
         "anchor": "end"
       },
       "view": {
-        "height": 300,
-        "stroke": null,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400,
+        "stroke": null
       }
     },
     "data": {
@@ -22948,10 +22905,10 @@
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">barley</span>())</a>
 <a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; Observations: 120</span></a>
 <a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Gra…</span></a>
-<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Man…</span></a>
-<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span></a>
-<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.966…</span></a></code></pre></div>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span></a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></a></code></pre></div>
 </div>
 <div id="chart-15" class="section level4">
 <h4 class="hasAnchor">
@@ -22982,17 +22939,14 @@
 <a class="sourceLine" id="cb37-24" data-line-number="24">  )</a>
 <a class="sourceLine" id="cb37-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb37-26" data-line-number="26">points <span class="op">+</span><span class="st"> </span>error_bars</a></code></pre></div>
-<div id="htmlwidget-a8103dac5d631a25d033" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a8103dac5d631a25d033">{"x":{
+<div id="htmlwidget-89e0ed02d0328de983ea" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-89e0ed02d0328de983ea">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -23793,21 +23747,21 @@
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">data &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb38-3" data-line-number="3">    <span class="dt">sample =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(),</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">    <span class="dt">stem =</span> (sample <span class="op">/</span><span class="st"> </span>10L) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(),</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">    <span class="dt">sample =</span> <span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(),</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">    <span class="dt">stem =</span> (sample <span class="op">/</span><span class="st"> </span>10L) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(),</a>
 <a class="sourceLine" id="cb38-5" data-line-number="5">    <span class="dt">leaf =</span> sample <span class="op">%%</span><span class="st"> </span>10L</a>
 <a class="sourceLine" id="cb38-6" data-line-number="6">  ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb38-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(sample) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb38-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(stem) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(leaf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb38-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">position =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(leaf)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb38-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()</a></code></pre></div>
 </details><div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb39-2" data-line-number="2"><span class="co">#&gt; Observations: 100</span></a>
 <a class="sourceLine" id="cb39-3" data-line-number="3"><span class="co">#&gt; Variables: 4</span></a>
-<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 13, 18, 22, 24, 25, 26, 27, 27, 29, 30, 30, 31, 32, 32,…</span></a>
-<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span></a>
-<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 3, 8, 2, 4, 5, 6, 7, 7, 9, 0, 0, 1, 2, 2, 2, 2, 2, 3, 7…</span></a>
-<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 2, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1…</span></a></code></pre></div>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; $ sample   &lt;int&gt; 15, 17, 22, 22, 27, 28, 30, 31, 32, 33, 35, 36, 36, 36, 37, …</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt; $ stem     &lt;int&gt; 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; $ leaf     &lt;int&gt; 5, 7, 2, 2, 7, 8, 0, 1, 2, 3, 5, 6, 6, 6, 7, 7, 8, 8, 8, 8, …</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt; $ position &lt;int&gt; 1, 2, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,…</span></a></code></pre></div>
 </div>
 <div id="chart-16" class="section level4">
 <h4 class="hasAnchor">
@@ -23818,49 +23772,46 @@
 <a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb40-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(</a>
 <a class="sourceLine" id="cb40-6" data-line-number="6">      <span class="st">"position:Q"</span>,</a>
-<a class="sourceLine" id="cb40-7" data-line-number="7">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title=</span><span class="st">""</span>, <span class="dt">ticks =</span> <span class="ot">FALSE</span>, <span class="dt">labels =</span> <span class="ot">FALSE</span>, <span class="dt">grid =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title=</span><span class="st">""</span>, <span class="dt">ticks =</span> <span class="ot">FALSE</span>, <span class="dt">labels =</span> <span class="ot">FALSE</span>, <span class="dt">grid =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb40-8" data-line-number="8">    ),</a>
-<a class="sourceLine" id="cb40-9" data-line-number="9">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"stem:N"</span>, <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">""</span>, <span class="dt">tickSize =</span> <span class="dv">0</span>)),</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"stem:N"</span>, <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">""</span>, <span class="dt">tickSize =</span> <span class="dv">0</span>)),</a>
 <a class="sourceLine" id="cb40-10" data-line-number="10">    <span class="dt">text =</span> <span class="st">"leaf:N"</span></a>
 <a class="sourceLine" id="cb40-11" data-line-number="11">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb40-12" data-line-number="12"><span class="st">  </span><span class="kw">configure_axis</span>(<span class="dt">labelFontSize =</span> <span class="dv">20</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb40-13" data-line-number="13"><span class="st">  </span><span class="kw">configure_text</span>(<span class="dt">fontSize =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb40-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb40-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-241cf614f29ffb0d3c6d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-241cf614f29ffb0d3c6d">{"x":{
+<div id="htmlwidget-8e4b741d326a37ea6bb0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8e4b741d326a37ea6bb0">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
       "axis": {
         "labelFontSize": 20
-      },
-      "mark": {
-        "tooltip": null
       },
       "text": {
         "fontSize": 20
       },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
-      "name": "data-458f641ec8764b5f3d787029b8bce640"
+      "name": "data-dd60746f73a0f1adc83246fa774436b7"
     },
     "datasets": {
-      "data-458f641ec8764b5f3d787029b8bce640": [
+      "data-dd60746f73a0f1adc83246fa774436b7": [
         {
-          "leaf": 3,
+          "leaf": 5,
           "position": 1,
-          "sample": 13,
+          "sample": 15,
           "stem": 1
         },
         {
-          "leaf": 8,
+          "leaf": 7,
           "position": 2,
-          "sample": 18,
+          "sample": 17,
           "stem": 1
         },
         {
@@ -23870,39 +23821,21 @@
           "stem": 2
         },
         {
-          "leaf": 4,
+          "leaf": 2,
           "position": 2,
-          "sample": 24,
+          "sample": 22,
           "stem": 2
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 3,
-          "sample": 25,
+          "sample": 27,
           "stem": 2
         },
         {
-          "leaf": 6,
+          "leaf": 8,
           "position": 4,
-          "sample": 26,
-          "stem": 2
-        },
-        {
-          "leaf": 7,
-          "position": 5,
-          "sample": 27,
-          "stem": 2
-        },
-        {
-          "leaf": 7,
-          "position": 6,
-          "sample": 27,
-          "stem": 2
-        },
-        {
-          "leaf": 9,
-          "position": 7,
-          "sample": 29,
+          "sample": 28,
           "stem": 2
         },
         {
@@ -23912,51 +23845,51 @@
           "stem": 3
         },
         {
-          "leaf": 0,
-          "position": 2,
-          "sample": 30,
-          "stem": 3
-        },
-        {
           "leaf": 1,
-          "position": 3,
+          "position": 2,
           "sample": 31,
           "stem": 3
         },
         {
           "leaf": 2,
-          "position": 4,
-          "sample": 32,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
-          "position": 5,
-          "sample": 32,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
-          "position": 6,
-          "sample": 32,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
-          "position": 7,
-          "sample": 32,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
-          "position": 8,
+          "position": 3,
           "sample": 32,
           "stem": 3
         },
         {
           "leaf": 3,
-          "position": 9,
+          "position": 4,
           "sample": 33,
+          "stem": 3
+        },
+        {
+          "leaf": 5,
+          "position": 5,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 6,
+          "position": 6,
+          "sample": 36,
+          "stem": 3
+        },
+        {
+          "leaf": 6,
+          "position": 7,
+          "sample": 36,
+          "stem": 3
+        },
+        {
+          "leaf": 6,
+          "position": 8,
+          "sample": 36,
+          "stem": 3
+        },
+        {
+          "leaf": 7,
+          "position": 9,
+          "sample": 37,
           "stem": 3
         },
         {
@@ -23972,6 +23905,54 @@
           "stem": 3
         },
         {
+          "leaf": 8,
+          "position": 12,
+          "sample": 38,
+          "stem": 3
+        },
+        {
+          "leaf": 8,
+          "position": 13,
+          "sample": 38,
+          "stem": 3
+        },
+        {
+          "leaf": 8,
+          "position": 14,
+          "sample": 38,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 15,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 16,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 17,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 18,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 19,
+          "sample": 39,
+          "stem": 3
+        },
+        {
           "leaf": 0,
           "position": 1,
           "sample": 40,
@@ -23984,9 +23965,9 @@
           "stem": 4
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 3,
-          "sample": 40,
+          "sample": 41,
           "stem": 4
         },
         {
@@ -24008,21 +23989,21 @@
           "stem": 4
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 7,
-          "sample": 43,
+          "sample": 42,
+          "stem": 4
+        },
+        {
+          "leaf": 2,
+          "position": 8,
+          "sample": 42,
           "stem": 4
         },
         {
           "leaf": 3,
-          "position": 8,
-          "sample": 43,
-          "stem": 4
-        },
-        {
-          "leaf": 4,
           "position": 9,
-          "sample": 44,
+          "sample": 43,
           "stem": 4
         },
         {
@@ -24050,15 +24031,15 @@
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 5,
           "position": 14,
-          "sample": 46,
+          "sample": 45,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 5,
           "position": 15,
-          "sample": 46,
+          "sample": 45,
           "stem": 4
         },
         {
@@ -24074,15 +24055,15 @@
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 6,
           "position": 18,
-          "sample": 47,
+          "sample": 46,
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 6,
           "position": 19,
-          "sample": 47,
+          "sample": 46,
           "stem": 4
         },
         {
@@ -24106,6 +24087,12 @@
         {
           "leaf": 9,
           "position": 23,
+          "sample": 49,
+          "stem": 4
+        },
+        {
+          "leaf": 9,
+          "position": 24,
           "sample": 49,
           "stem": 4
         },
@@ -24140,81 +24127,81 @@
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 3,
           "position": 6,
-          "sample": 52,
+          "sample": 53,
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 3,
           "position": 7,
-          "sample": 52,
+          "sample": 53,
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 4,
           "position": 8,
-          "sample": 52,
+          "sample": 54,
           "stem": 5
         },
         {
-          "leaf": 3,
+          "leaf": 4,
           "position": 9,
-          "sample": 53,
+          "sample": 54,
           "stem": 5
         },
         {
-          "leaf": 3,
+          "leaf": 5,
           "position": 10,
-          "sample": 53,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 11,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 12,
-          "sample": 54,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 6,
           "position": 13,
-          "sample": 54,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 4,
+          "leaf": 6,
           "position": 14,
-          "sample": 54,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 15,
-          "sample": 55,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 16,
-          "sample": 55,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 17,
-          "sample": 55,
+          "sample": 56,
           "stem": 5
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 18,
-          "sample": 55,
+          "sample": 56,
           "stem": 5
         },
         {
@@ -24230,9 +24217,9 @@
           "stem": 5
         },
         {
-          "leaf": 7,
+          "leaf": 6,
           "position": 21,
-          "sample": 57,
+          "sample": 56,
           "stem": 5
         },
         {
@@ -24242,15 +24229,15 @@
           "stem": 5
         },
         {
-          "leaf": 8,
+          "leaf": 7,
           "position": 23,
-          "sample": 58,
+          "sample": 57,
           "stem": 5
         },
         {
-          "leaf": 8,
+          "leaf": 7,
           "position": 24,
-          "sample": 58,
+          "sample": 57,
           "stem": 5
         },
         {
@@ -24272,12 +24259,6 @@
           "stem": 5
         },
         {
-          "leaf": 9,
-          "position": 28,
-          "sample": 59,
-          "stem": 5
-        },
-        {
           "leaf": 0,
           "position": 1,
           "sample": 60,
@@ -24290,98 +24271,80 @@
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 1,
           "position": 3,
-          "sample": 60,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 2,
           "position": 4,
-          "sample": 60,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 1,
+          "leaf": 2,
           "position": 5,
-          "sample": 61,
-          "stem": 6
-        },
-        {
-          "leaf": 1,
-          "position": 6,
-          "sample": 61,
-          "stem": 6
-        },
-        {
-          "leaf": 2,
-          "position": 7,
-          "sample": 62,
-          "stem": 6
-        },
-        {
-          "leaf": 2,
-          "position": 8,
-          "sample": 62,
-          "stem": 6
-        },
-        {
-          "leaf": 2,
-          "position": 9,
           "sample": 62,
           "stem": 6
         },
         {
           "leaf": 3,
-          "position": 10,
+          "position": 6,
           "sample": 63,
           "stem": 6
         },
         {
-          "leaf": 4,
-          "position": 11,
-          "sample": 64,
+          "leaf": 3,
+          "position": 7,
+          "sample": 63,
           "stem": 6
         },
         {
-          "leaf": 4,
-          "position": 12,
-          "sample": 64,
+          "leaf": 3,
+          "position": 8,
+          "sample": 63,
           "stem": 6
         },
         {
-          "leaf": 5,
-          "position": 13,
-          "sample": 65,
+          "leaf": 3,
+          "position": 9,
+          "sample": 63,
           "stem": 6
         },
         {
-          "leaf": 5,
-          "position": 14,
-          "sample": 65,
+          "leaf": 6,
+          "position": 10,
+          "sample": 66,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 15,
+          "position": 11,
+          "sample": 67,
+          "stem": 6
+        },
+        {
+          "leaf": 7,
+          "position": 12,
+          "sample": 67,
+          "stem": 6
+        },
+        {
+          "leaf": 7,
+          "position": 13,
           "sample": 67,
           "stem": 6
         },
         {
           "leaf": 8,
-          "position": 16,
+          "position": 14,
           "sample": 68,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 17,
-          "sample": 69,
-          "stem": 6
-        },
-        {
-          "leaf": 9,
-          "position": 18,
+          "position": 15,
           "sample": 69,
           "stem": 6
         },
@@ -24392,21 +24355,21 @@
           "stem": 7
         },
         {
-          "leaf": 4,
+          "leaf": 2,
           "position": 2,
+          "sample": 72,
+          "stem": 7
+        },
+        {
+          "leaf": 4,
+          "position": 3,
           "sample": 74,
           "stem": 7
         },
         {
-          "leaf": 5,
-          "position": 3,
-          "sample": 75,
-          "stem": 7
-        },
-        {
-          "leaf": 5,
+          "leaf": 4,
           "position": 4,
-          "sample": 75,
+          "sample": 74,
           "stem": 7
         },
         {
@@ -24416,9 +24379,9 @@
           "stem": 7
         },
         {
-          "leaf": 6,
+          "leaf": 8,
           "position": 6,
-          "sample": 76,
+          "sample": 78,
           "stem": 7
         },
         {
@@ -24428,28 +24391,16 @@
           "stem": 7
         },
         {
-          "leaf": 9,
-          "position": 8,
-          "sample": 79,
-          "stem": 7
-        },
-        {
-          "leaf": 3,
+          "leaf": 1,
           "position": 1,
-          "sample": 83,
+          "sample": 81,
           "stem": 8
         },
         {
-          "leaf": 4,
-          "position": 2,
-          "sample": 84,
-          "stem": 8
-        },
-        {
-          "leaf": 5,
-          "position": 3,
-          "sample": 85,
-          "stem": 8
+          "leaf": 0,
+          "position": 1,
+          "sample": 90,
+          "stem": 9
         }
       ]
     },
@@ -24501,30 +24452,30 @@
 <div id="data-15" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-15" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>())</a>
 <a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co">#&gt; Observations: 406</span></a>
 <a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co">#&gt; Variables: 9</span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 1…</span></a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8,…</span></a>
-<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 39…</span></a>
-<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 19…</span></a>
-<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, Na…</span></a>
-<a class="sourceLine" id="cb41-9" data-line-number="9"><span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320…</span></a>
-<a class="sourceLine" id="cb41-10" data-line-number="10"><span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA"…</span></a>
-<a class="sourceLine" id="cb41-11" data-line-number="11"><span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312,…</span></a>
-<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01…</span></a></code></pre></div>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span></a>
+<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span></a>
+<a class="sourceLine" id="cb41-9" data-line-number="9"><span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span></a>
+<a class="sourceLine" id="cb41-10" data-line-number="10"><span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span></a>
+<a class="sourceLine" id="cb41-11" data-line-number="11"><span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span></a>
+<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></a></code></pre></div>
 </div>
 <div id="chart-17" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-17" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>()</a>
 <a class="sourceLine" id="cb42-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co"># Configure common options</span></a>
 <a class="sourceLine" id="cb42-4" data-line-number="4">base &lt;-</a>
 <a class="sourceLine" id="cb42-5" data-line-number="5"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_aggregate</span>(</a>
 <a class="sourceLine" id="cb42-7" data-line-number="7">    <span class="dt">num_cars =</span> <span class="st">"count()"</span>,</a>
-<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"Cylinders"</span>)</a>
+<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"Cylinders"</span>)</a>
 <a class="sourceLine" id="cb42-9" data-line-number="9">  )<span class="op">$</span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb42-10" data-line-number="10">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"Cylinders:O"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner =</span> <span class="dv">0</span>)),</a>
 <a class="sourceLine" id="cb42-11" data-line-number="11">    alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"Origin:O"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">paddingInner =</span> <span class="dv">0</span>))</a>
@@ -24546,7 +24497,7 @@
 <a class="sourceLine" id="cb42-27" data-line-number="27"><span class="st">  </span><span class="kw">mark_text</span>(<span class="dt">baseline =</span> <span class="st">"middle"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb42-28" data-line-number="28"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb42-29" data-line-number="29">    <span class="dt">text =</span> <span class="st">"num_cars:Q"</span>,</a>
-<a class="sourceLine" id="cb42-30" data-line-number="30">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(</a>
+<a class="sourceLine" id="cb42-30" data-line-number="30">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(</a>
 <a class="sourceLine" id="cb42-31" data-line-number="31">      <span class="st">"datum.num_cars &gt; 100"</span>,</a>
 <a class="sourceLine" id="cb42-32" data-line-number="32">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"black"</span>),</a>
 <a class="sourceLine" id="cb42-33" data-line-number="33">      alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"white"</span>)</a>
@@ -24555,17 +24506,14 @@
 <a class="sourceLine" id="cb42-36" data-line-number="36"></a>
 <a class="sourceLine" id="cb42-37" data-line-number="37"><span class="co"># Draw the chart</span></a>
 <a class="sourceLine" id="cb42-38" data-line-number="38">heatmap <span class="op">+</span><span class="st"> </span>text</a></code></pre></div>
-<div id="htmlwidget-36d496034be8e1d82d31" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-36d496034be8e1d82d31">{"x":{
+<div id="htmlwidget-7990257d27fcdcafd864" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7990257d27fcdcafd864">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -29151,40 +29099,40 @@
 <div id="data-16" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data-16" class="anchor"></a>Data</h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>())</a>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>())</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">#&gt; Observations: 406</span></a>
 <a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#&gt; Variables: 9</span></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 1…</span></a>
-<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8,…</span></a>
-<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 39…</span></a>
-<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 19…</span></a>
-<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, Na…</span></a>
-<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320…</span></a>
-<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA"…</span></a>
-<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312,…</span></a>
-<a class="sourceLine" id="cb43-12" data-line-number="12"><span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01…</span></a></code></pre></div>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span></a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span></a>
+<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span></a>
+<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span></a>
+<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span></a>
+<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span></a>
+<a class="sourceLine" id="cb43-12" data-line-number="12"><span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></a></code></pre></div>
 </div>
 <div id="chart-18" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-18" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>()</a>
 <a class="sourceLine" id="cb44-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb44-3" data-line-number="3">chart &lt;-</a>
 <a class="sourceLine" id="cb44-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(source)<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span><span class="kw">transform_filter</span>(<span class="st">"datum.Miles_per_Gallon &gt; 0"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">  </span><span class="kw">transform_bin</span>(</a>
-<a class="sourceLine" id="cb44-7" data-line-number="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), </a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">    <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"bin_max"</span>, <span class="st">"bin_min"</span>), </a>
 <a class="sourceLine" id="cb44-8" data-line-number="8">    <span class="dt">field =</span> <span class="st">"Miles_per_Gallon"</span>, </a>
 <a class="sourceLine" id="cb44-9" data-line-number="9">    <span class="dt">bin =</span> alt<span class="op">$</span><span class="kw">Bin</span>(<span class="dt">maxbins =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb44-10" data-line-number="10">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-11" data-line-number="11"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="dt">binned =</span> <span class="st">"(datum.bin_max + datum.bin_min) / 2"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-12" data-line-number="12"><span class="st">  </span><span class="kw">transform_aggregate</span>(</a>
 <a class="sourceLine" id="cb44-13" data-line-number="13">    <span class="dt">value_count =</span> <span class="st">"count()"</span>, </a>
-<a class="sourceLine" id="cb44-14" data-line-number="14">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"binned"</span>)</a>
+<a class="sourceLine" id="cb44-14" data-line-number="14">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Origin"</span>, <span class="st">"binned"</span>)</a>
 <a class="sourceLine" id="cb44-15" data-line-number="15">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb44-16" data-line-number="16"><span class="st">  </span><span class="kw">transform_impute</span>(</a>
 <a class="sourceLine" id="cb44-17" data-line-number="17">    <span class="dt">impute =</span> <span class="st">"value_count"</span>,</a>
-<a class="sourceLine" id="cb44-18" data-line-number="18">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"Origin"</span>), </a>
+<a class="sourceLine" id="cb44-18" data-line-number="18">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"Origin"</span>), </a>
 <a class="sourceLine" id="cb44-19" data-line-number="19">    <span class="dt">key =</span> <span class="st">"binned"</span>, </a>
 <a class="sourceLine" id="cb44-20" data-line-number="20">    <span class="dt">value =</span> <span class="dv">0</span></a>
 <a class="sourceLine" id="cb44-21" data-line-number="21">  )<span class="op">$</span></a>
@@ -29194,9 +29142,9 @@
 <a class="sourceLine" id="cb44-25" data-line-number="25">      <span class="st">"value_count:Q"</span>,</a>
 <a class="sourceLine" id="cb44-26" data-line-number="26">      <span class="dt">title =</span> <span class="ot">NULL</span>,</a>
 <a class="sourceLine" id="cb44-27" data-line-number="27">      <span class="dt">stack =</span> <span class="st">"center"</span>,</a>
-<a class="sourceLine" id="cb44-28" data-line-number="28">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(</a>
+<a class="sourceLine" id="cb44-28" data-line-number="28">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(</a>
 <a class="sourceLine" id="cb44-29" data-line-number="29">        <span class="dt">labels =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb44-30" data-line-number="30">        <span class="dt">values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">0</span>), </a>
+<a class="sourceLine" id="cb44-30" data-line-number="30">        <span class="dt">values =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">0</span>), </a>
 <a class="sourceLine" id="cb44-31" data-line-number="31">        <span class="dt">grid =</span> <span class="ot">FALSE</span>, </a>
 <a class="sourceLine" id="cb44-32" data-line-number="32">        <span class="dt">ticks =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb44-33" data-line-number="33">      )</a>
@@ -29217,21 +29165,18 @@
 <a class="sourceLine" id="cb44-48" data-line-number="48"><span class="st">  </span><span class="kw">configure_view</span>(<span class="dt">stroke =</span> <span class="ot">NULL</span>)</a>
 <a class="sourceLine" id="cb44-49" data-line-number="49"></a>
 <a class="sourceLine" id="cb44-50" data-line-number="50">chart</a></code></pre></div>
-<div id="htmlwidget-8636290072053370f5eb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8636290072053370f5eb">{"x":{
+<div id="htmlwidget-6956975cbdb8648d13fe" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6956975cbdb8648d13fe">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
       "facet": {
         "spacing": 0
       },
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "stroke": null,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400,
+        "stroke": null
       }
     },
     "data": {
@@ -33799,6 +33744,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -33829,13 +33775,15 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

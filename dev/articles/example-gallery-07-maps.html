@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maps • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
       </span>
     </div>
 
@@ -137,7 +138,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -151,14 +152,15 @@
 <!--/.navbar -->
 
       
-      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.4.0/vega.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-07-maps_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-07-maps_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.9.0/vega.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-07-maps_files/vega-embed-6.2.0/vega-embed.js"></script><script src="example-gallery-07-maps_files/vegawidget-binding-0.3.0.9001/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Maps</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-07-16</h4>
+            <h4 class="date">2019-12-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-07-maps.Rmd"><code>vignettes/example-gallery-07-maps.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-07-maps.Rmd</code></div>
@@ -169,10 +171,10 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#maps">Maps</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"purrr"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"purrr"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="choropleth-map" class="section level2">
@@ -201,23 +203,20 @@
 <a class="sourceLine" id="cb3-6" data-line-number="6">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw">transform_lookup</span>(</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">lookup =</span> <span class="st">"id"</span>,</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">from_ =</span> alt<span class="op">$</span><span class="kw">LookupData</span>(unemp_data, <span class="st">"id"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"rate"</span>))</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">from_ =</span> alt<span class="op">$</span><span class="kw">LookupData</span>(unemp_data, <span class="st">"id"</span>, <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"rate"</span>))</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">  </span><span class="kw">project</span>(<span class="dt">type =</span> <span class="st">"albersUsa"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">500</span>, <span class="dt">height =</span> <span class="dv">300</span>)</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-1064023708d431453cc5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1064023708d431453cc5">{"x":{
+<div id="htmlwidget-3f4c05ff308c255d7bd7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f4c05ff308c255d7bd7">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -273,13 +272,13 @@
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(airports)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Observations: 3,376</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Variables: 7</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; $ iata      &lt;chr&gt; "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C"…</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; $ name      &lt;chr&gt; "Thigpen", "Livingston Municipal", "Meadow Lake", "Per…</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; $ city      &lt;list&gt; ["Bay Springs", "Livingston", "Colorado Springs", "Pe…</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; $ state     &lt;list&gt; ["MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH"…</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; $ country   &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA"…</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; $ latitude  &lt;dbl&gt; 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.4…</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; $ longitude &lt;dbl&gt; -89.23450, -95.01793, -104.56989, -78.05208, -81.90594…</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; $ iata      &lt;chr&gt; "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C", "02…</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; $ name      &lt;chr&gt; "Thigpen", "Livingston Municipal", "Meadow Lake", "Perry-Wa…</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; $ city      &lt;list&gt; ["Bay Springs", "Livingston", "Colorado Springs", "Perry",…</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; $ state     &lt;list&gt; ["MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH", "MO…</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; $ country   &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; $ latitude  &lt;dbl&gt; 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.49167,…</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; $ longitude &lt;dbl&gt; -89.23450, -95.01793, -104.56989, -78.05208, -81.90594, -88…</span></a></code></pre></div>
 </div>
 <div id="chart-1" class="section level4">
 <h4 class="hasAnchor">
@@ -303,7 +302,7 @@
 <a class="sourceLine" id="cb6-17" data-line-number="17">    <span class="dt">latitude =</span> <span class="st">"mean(latitude)"</span>,</a>
 <a class="sourceLine" id="cb6-18" data-line-number="18">    <span class="dt">longitude =</span> <span class="st">"mean(longitude)"</span>,</a>
 <a class="sourceLine" id="cb6-19" data-line-number="19">    <span class="dt">count =</span> <span class="st">"count()"</span>,</a>
-<a class="sourceLine" id="cb6-20" data-line-number="20">    <span class="dt">groupby =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"state"</span>)</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">    <span class="dt">groupby =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"state"</span>)</a>
 <a class="sourceLine" id="cb6-21" data-line-number="21">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-22" data-line-number="22"><span class="st">  </span><span class="kw">mark_circle</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-23" data-line-number="23"><span class="st">  </span><span class="kw">encode</span>(</a>
@@ -311,24 +310,21 @@
 <a class="sourceLine" id="cb6-25" data-line-number="25">    <span class="dt">latitude =</span> <span class="st">"latitude:Q"</span>,</a>
 <a class="sourceLine" id="cb6-26" data-line-number="26">    <span class="dt">size =</span> alt<span class="op">$</span><span class="kw">Size</span>(<span class="st">'count:Q'</span>, <span class="dt">title =</span> <span class="st">"Number of Airports"</span>),</a>
 <a class="sourceLine" id="cb6-27" data-line-number="27">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">value</span>(<span class="st">"steelblue"</span>),</a>
-<a class="sourceLine" id="cb6-28" data-line-number="28">    <span class="dt">tooltip =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"state:N"</span>,<span class="st">"count:Q"</span>)</a>
+<a class="sourceLine" id="cb6-28" data-line-number="28">    <span class="dt">tooltip =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"state:N"</span>,<span class="st">"count:Q"</span>)</a>
 <a class="sourceLine" id="cb6-29" data-line-number="29">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-30" data-line-number="30"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">title =</span> <span class="st">'Number of airports in US'</span>)</a>
 <a class="sourceLine" id="cb6-31" data-line-number="31"></a>
 <a class="sourceLine" id="cb6-32" data-line-number="32">chart &lt;-<span class="st"> </span>(background <span class="op">+</span><span class="st"> </span>points)</a>
 <a class="sourceLine" id="cb6-33" data-line-number="33"></a>
 <a class="sourceLine" id="cb6-34" data-line-number="34">chart</a></code></pre></div>
-<div id="htmlwidget-8ab9688f7faa82d7789c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8ab9688f7faa82d7789c">{"x":{
+<div id="htmlwidget-16c2423946165a36ff37" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-16c2423946165a36ff37">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -30816,18 +30812,18 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">population_engineers_hurricanes</span>())</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Observations: 52</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Variables: 5</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; $ state      &lt;chr&gt; "Alabama", "Alaska", "Arizona", "Arkansas", "Californ…</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; $ id         &lt;dbl&gt; 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, …</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; $ population &lt;dbl&gt; 4863300, 741894, 6931071, 2988248, 39250017, 5540545,…</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; $ engineers  &lt;dbl&gt; 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0…</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; $ hurricanes &lt;dbl&gt; 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; $ state      &lt;chr&gt; "Alabama", "Alaska", "Arizona", "Arkansas", "California", …</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; $ id         &lt;dbl&gt; 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 2…</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; $ population &lt;dbl&gt; 4863300, 741894, 6931071, 2988248, 39250017, 5540545, 3576…</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; $ engineers  &lt;dbl&gt; 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0.0071…</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; $ hurricanes &lt;dbl&gt; 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, 0, 0,…</span></a></code></pre></div>
 </div>
 <div id="chart-2" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-2" class="anchor"></a>Chart</h4>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">states &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">topo_feature</span>(vega_data<span class="op">$</span>us_10m<span class="op">$</span>url, <span class="st">"states"</span>)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">source &lt;-<span class="st"> </span>vega_data<span class="op">$</span>population_engineers_hurricanes<span class="op">$</span>url</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">variable_list &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">variable_list &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span>)</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(states)<span class="op">$</span></a>
@@ -30845,17 +30841,14 @@
 <a class="sourceLine" id="cb8-18" data-line-number="18"><span class="st">  </span><span class="kw">resolve_scale</span>(<span class="dt">color =</span> <span class="st">"independent"</span>)</a>
 <a class="sourceLine" id="cb8-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb8-20" data-line-number="20">chart</a></code></pre></div>
-<div id="htmlwidget-7614f8c8b3b2aab33ecc" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7614f8c8b3b2aab33ecc">{"x":{
+<div id="htmlwidget-da521ba9aeafde68f3bc" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-da521ba9aeafde68f3bc">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "repeat": {
@@ -30929,7 +30922,7 @@
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_geoshape</span>(<span class="dt">fill =</span> <span class="st">"#666666"</span>,<span class="dt">stroke =</span> <span class="st">"white"</span>)<span class="op">$</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw">properties</span>(<span class="dt">width =</span> <span class="dv">300</span>, <span class="dt">height =</span> <span class="dv">180</span>)</a>
 <a class="sourceLine" id="cb9-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">projections &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span>)</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">projections &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span>)</a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co"># use purrr to fashion a facet_wrap</span></a>
 <a class="sourceLine" id="cb9-11" data-line-number="11">charts &lt;-<span class="st"> </span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span>(projections, <span class="op">~</span>base<span class="op">$</span><span class="kw">project</span>(.x)<span class="op">$</span><span class="kw">properties</span>(<span class="dt">title =</span> .x))</a>
@@ -30937,17 +30930,14 @@
 <a class="sourceLine" id="cb9-13" data-line-number="13">chart &lt;-<span class="st"> </span>(charts[[<span class="dv">1</span>]] <span class="op">|</span><span class="st"> </span>charts[[<span class="dv">2</span>]]) <span class="op">&amp;</span><span class="st"> </span>(charts[[<span class="dv">3</span>]] <span class="op">|</span><span class="st"> </span>charts[[<span class="dv">4</span>]])</a>
 <a class="sourceLine" id="cb9-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb9-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-403b905e0980521b132b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-403b905e0980521b132b">{"x":{
+<div id="htmlwidget-4bf8164c9944b14415d2" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4bf8164c9944b14415d2">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -31029,6 +31019,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -31044,13 +31035,15 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

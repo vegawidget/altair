@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Area charts • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
       </span>
     </div>
 
@@ -137,7 +138,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -151,14 +152,15 @@
 <!--/.navbar -->
 
       
-      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.4.0/vega.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-04-area-charts_files/vega-embed-4.2.0/vega-embed.js"></script><script src="example-gallery-04-area-charts_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.9.0/vega.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-04-area-charts_files/vega-embed-6.2.0/vega-embed.js"></script><script src="example-gallery-04-area-charts_files/vegawidget-binding-0.3.0.9001/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Area charts</h1>
                         <h4 class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2019-07-16</h4>
+            <h4 class="date">2019-12-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-04-area-charts.Rmd"><code>vignettes/example-gallery-04-area-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-04-area-charts.Rmd</code></div>
@@ -169,9 +171,9 @@
     
 <p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#area-charts">Area Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"jsonlite"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tibble"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"jsonlite"</span>)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a></code></pre></div>
 <div id="horizon-graph" class="section level2">
@@ -183,7 +185,7 @@
 <h4 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h4>
 <details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">fromJSON</a></span>(<span class="st">'[</span></a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(<span class="st">'[</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  {"x": 1,  "y": 28}, {"x": 2,  "y": 55},</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  {"x": 3,  "y": 43}, {"x": 4,  "y": 91},</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  {"x": 5,  "y": 81}, {"x": 6,  "y": 53},</span></a>
@@ -198,8 +200,8 @@
 </details><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(data)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Observations: 20</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Variables: 2</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; $ x &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; $ y &lt;int&gt; 28, 55, 43, 91, 81, 53, 19, 87, 52, 48, 24, 49, 87, 66, 17, 27…</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; $ x &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, …</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; $ y &lt;int&gt; 28, 55, 43, 91, 81, 53, 19, 87, 52, 48, 24, 49, 87, 66, 17, 27, 68,…</span></a></code></pre></div>
 </div>
 <div id="chart" class="section level4">
 <h4 class="hasAnchor">
@@ -211,8 +213,8 @@
 <a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"x"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">zero =</span> <span class="ot">FALSE</span>, <span class="dt">nice =</span> <span class="ot">FALSE</span>)),</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
 <a class="sourceLine" id="cb4-7" data-line-number="7">      <span class="st">"y"</span>, </a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">0</span>, <span class="dv">50</span>)), </a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"y"</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">      <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">0</span>, <span class="dv">50</span>)), </a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">"y"</span>)</a>
 <a class="sourceLine" id="cb4-10" data-line-number="10">    ),</a>
 <a class="sourceLine" id="cb4-11" data-line-number="11">    <span class="dt">opacity =</span> alt<span class="op">$</span><span class="kw">value</span>(<span class="fl">0.6</span>)</a>
 <a class="sourceLine" id="cb4-12" data-line-number="12">  )<span class="op">$</span></a>
@@ -224,24 +226,21 @@
 <a class="sourceLine" id="cb4-18" data-line-number="18">area2 &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb4-19" data-line-number="19"><span class="st">  </span>area1<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"ny:Q"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">0</span>, <span class="dv">50</span>)))</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"ny:Q"</span>, <span class="dt">scale=</span>alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">domain=</span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">0</span>, <span class="dv">50</span>)))</a>
 <a class="sourceLine" id="cb4-22" data-line-number="22">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="st">"ny"</span>, <span class="st">"datum.y - 50"</span>)</a>
 <a class="sourceLine" id="cb4-24" data-line-number="24"></a>
 <a class="sourceLine" id="cb4-25" data-line-number="25">chart &lt;-<span class="st"> </span>(area1 <span class="op">+</span><span class="st"> </span>area2)</a>
 <a class="sourceLine" id="cb4-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb4-27" data-line-number="27">chart</a></code></pre></div>
-<div id="htmlwidget-eba7e3f95ce71546b741" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eba7e3f95ce71546b741">{"x":{
+<div id="htmlwidget-bbe19da2c68529742828" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bbe19da2c68529742828">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -427,19 +426,19 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">sp500</span>())</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Observations: 123</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Variables: 2</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; $ date  &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-0…</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; $ price &lt;dbl&gt; 1394.46, 1366.42, 1498.58, 1452.43, 1420.60, 1454.60, 1430…</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; $ date  &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; $ price &lt;dbl&gt; 1394.46, 1366.42, 1498.58, 1452.43, 1420.60, 1454.60, 1430.83, …</span></a></code></pre></div>
 </div>
 <div id="chart-1" class="section level4">
 <h4 class="hasAnchor">
 <a href="#chart-1" class="anchor"></a>Chart</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">brush &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">selection</span>(<span class="dt">type =</span> <span class="st">"interval"</span>, <span class="dt">encodings =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"x"</span>))</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">brush &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">selection</span>(<span class="dt">type =</span> <span class="st">"interval"</span>, <span class="dt">encodings =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"x"</span>))</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">upper &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span>sp500<span class="op">$</span>url)<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">mark_area</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"date:T"</span>, <span class="dt">scale =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"domain"</span> =<span class="st"> </span>brush<span class="op">$</span><span class="kw">ref</span>())),</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"date:T"</span>, <span class="dt">scale =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"domain"</span> =<span class="st"> </span>brush<span class="op">$</span><span class="kw">ref</span>())),</a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">    <span class="dt">y =</span> <span class="st">"price:Q"</span></a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">  </span><span class="kw">properties</span>(</a>
@@ -457,17 +456,14 @@
 <a class="sourceLine" id="cb6-22" data-line-number="22">chart &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">vconcat</span>(upper, lower)</a>
 <a class="sourceLine" id="cb6-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb6-24" data-line-number="24">chart</a></code></pre></div>
-<div id="htmlwidget-4d9cbd28f304bf596f72" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4d9cbd28f304bf596f72">{"x":{
+<div id="htmlwidget-f36f99c91846bf7bbe6a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f36f99c91846bf7bbe6a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -541,9 +537,9 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Observations: 51</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, …</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "…</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, 2005-…</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "Fossi…</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, 42734…</span></a></code></pre></div>
 </div>
 <div id="chart-2" class="section level4">
 <h4 class="hasAnchor">
@@ -561,17 +557,14 @@
 <a class="sourceLine" id="cb8-11" data-line-number="11">  )</a>
 <a class="sourceLine" id="cb8-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb8-13" data-line-number="13">chart</a></code></pre></div>
-<div id="htmlwidget-43716b5fba7600031181" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-43716b5fba7600031181">{"x":{
+<div id="htmlwidget-a4fce672e4f46342e789" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a4fce672e4f46342e789">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -873,9 +866,9 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">iowa_electricity</span>())</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; Observations: 51</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, …</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "…</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, 2005-…</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "Fossi…</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, 42734…</span></a></code></pre></div>
 </div>
 <div id="chart-3" class="section level4">
 <h4 class="hasAnchor">
@@ -893,17 +886,14 @@
 <a class="sourceLine" id="cb10-11" data-line-number="11">  )</a>
 <a class="sourceLine" id="cb10-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb10-13" data-line-number="13">chart</a></code></pre></div>
-<div id="htmlwidget-851048743a25f394002c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-851048743a25f394002c">{"x":{
+<div id="htmlwidget-f0b58837be57761fd7da" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f0b58837be57761fd7da">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1202,12 +1192,12 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(vega_data<span class="op">$</span><span class="kw">unemployment_across_industries</span>())</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; Observations: 1,708</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; Variables: 6</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ count  &lt;dbl&gt; 430, 409, 311, 269, 370, 603, 545, 583, 408, 391, 384, 36…</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01 08:00:00, 2000-02-01 08:00:00, 2000-03-01 08:…</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; $ month  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, …</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; $ rate   &lt;dbl&gt; 2.1, 2.0, 1.5, 1.3, 1.9, 3.1, 2.9, 3.1, 2.1, 2.0, 1.9, 1.…</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; $ series &lt;chr&gt; "Government", "Government", "Government", "Government", "…</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; $ year   &lt;dbl&gt; 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 200…</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ series &lt;chr&gt; "Government", "Government", "Government", "Government", "Gover…</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; $ year   &lt;dbl&gt; 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 20…</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; $ month  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8,…</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; $ count  &lt;dbl&gt; 430, 409, 311, 269, 370, 603, 545, 583, 408, 391, 384, 365, 46…</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; $ rate   &lt;dbl&gt; 2.1, 2.0, 1.5, 1.3, 1.9, 3.1, 2.9, 3.1, 2.1, 2.0, 1.9, 1.8, 2.…</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01 08:00:00, 2000-02-01 08:00:00, 2000-03-01 08:00:00…</span></a></code></pre></div>
 </div>
 <div id="chart-4" class="section level4">
 <h4 class="hasAnchor">
@@ -1219,25 +1209,22 @@
 <a class="sourceLine" id="cb12-5" data-line-number="5">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(</a>
 <a class="sourceLine" id="cb12-6" data-line-number="6">      <span class="st">"date:T"</span>,</a>
 <a class="sourceLine" id="cb12-7" data-line-number="7">      <span class="dt">timeUnit =</span> <span class="st">"yearmonth"</span>,</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">format =</span> <span class="st">"%Y"</span>, <span class="dt">domain =</span> <span class="ot">FALSE</span>, <span class="dt">tickSize =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">format =</span> <span class="st">"%Y"</span>, <span class="dt">domain =</span> <span class="ot">FALSE</span>, <span class="dt">tickSize =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb12-9" data-line-number="9">    ),</a>
 <a class="sourceLine" id="cb12-10" data-line-number="10">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(<span class="st">"sum(count):Q"</span>, <span class="dt">stack =</span> <span class="st">"center"</span>, <span class="dt">axis =</span> <span class="ot">NULL</span>),</a>
 <a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">color =</span> alt<span class="op">$</span><span class="kw">Color</span>(<span class="st">"series:N"</span>, <span class="dt">scale =</span> alt<span class="op">$</span><span class="kw">Scale</span>(<span class="dt">scheme =</span> <span class="st">"category20b"</span>))</a>
 <a class="sourceLine" id="cb12-12" data-line-number="12">  )<span class="op">$</span></a>
-<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/interactive">interactive</a></span>()</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()</a>
 <a class="sourceLine" id="cb12-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb12-15" data-line-number="15">chart</a></code></pre></div>
-<div id="htmlwidget-88e40e257264979f0599" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-88e40e257264979f0599">{"x":{
+<div id="htmlwidget-9e55c5479d68c50d24e9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9e55c5479d68c50d24e9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1300,9 +1287,9 @@
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(source)</a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; Observations: 51</span></a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, …</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "…</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, 2005-…</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "Fossi…</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, 42734…</span></a></code></pre></div>
 </div>
 <div id="chart-5" class="section level4">
 <h4 class="hasAnchor">
@@ -1321,17 +1308,14 @@
 <a class="sourceLine" id="cb14-12" data-line-number="12">  )</a>
 <a class="sourceLine" id="cb14-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb14-14" data-line-number="14">chart</a></code></pre></div>
-<div id="htmlwidget-c3ef632f1da1ac081b35" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c3ef632f1da1ac081b35">{"x":{
+<div id="htmlwidget-942653af5ff916c4b84f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-942653af5ff916c4b84f">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1636,9 +1620,9 @@
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(source)</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; Observations: 560</span></a>
 <a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; Variables: 3</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "…</span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-…</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 2…</span></a></code></pre></div>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></a></code></pre></div>
 </div>
 <div id="chart-6" class="section level4">
 <h4 class="hasAnchor">
@@ -1651,7 +1635,7 @@
 <a class="sourceLine" id="cb16-6" data-line-number="6">    <span class="dt">x =</span> <span class="st">"date:T"</span>, </a>
 <a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="dt">y =</span> <span class="st">"price:Q"</span>,</a>
 <a class="sourceLine" id="cb16-8" data-line-number="8">    <span class="dt">color =</span> <span class="st">"symbol:N"</span>,</a>
-<a class="sourceLine" id="cb16-9" data-line-number="9">    <span class="dt">row =</span> alt<span class="op">$</span><span class="kw">Row</span>(<span class="st">"symbol:N"</span>, <span class="dt">sort =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'MSFT'</span>, <span class="st">'AAPL'</span>, <span class="st">'IBM'</span>, <span class="st">'AMZN'</span>)</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">    <span class="dt">row =</span> alt<span class="op">$</span><span class="kw">Row</span>(<span class="st">"symbol:N"</span>, <span class="dt">sort =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'MSFT'</span>, <span class="st">'AAPL'</span>, <span class="st">'IBM'</span>, <span class="st">'AMZN'</span>)</a>
 <a class="sourceLine" id="cb16-10" data-line-number="10">    )</a>
 <a class="sourceLine" id="cb16-11" data-line-number="11">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb16-12" data-line-number="12"><span class="st">  </span><span class="kw">properties</span>(</a>
@@ -1660,17 +1644,14 @@
 <a class="sourceLine" id="cb16-15" data-line-number="15">  )</a>
 <a class="sourceLine" id="cb16-16" data-line-number="16"></a>
 <a class="sourceLine" id="cb16-17" data-line-number="17">chart</a></code></pre></div>
-<div id="htmlwidget-fb62afd49bcaeeeee062" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fb62afd49bcaeeeee062">{"x":{
+<div id="htmlwidget-8aac831914071c8c3c75" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8aac831914071c8c3c75">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -4523,6 +4504,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -4541,13 +4523,15 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
