@@ -3,7 +3,6 @@
 \docType{package}
 \name{altair}
 \alias{altair}
-\alias{altair-package}
 \title{altair: Create and embed Vega-Lite charts using the Altair Python package}
 \description{
 The goal of altair is to help you build
