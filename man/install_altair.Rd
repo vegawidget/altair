@@ -4,9 +4,13 @@
 \alias{install_altair}
 \title{Install Altair Python package}
 \usage{
-install_altair(method = c("conda", "virtualenv"),
-  envname = "r-reticulate", pip = FALSE,
-  version = getOption("altair.python.version"), ...)
+install_altair(
+  method = c("conda", "virtualenv"),
+  envname = "r-reticulate",
+  pip = FALSE,
+  version = getOption("altair.python.version"),
+  ...
+)
 }
 \arguments{
 \item{method}{\code{character}, indicates to use \code{"conda"} or \code{"virtualenv"}}

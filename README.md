@@ -86,7 +86,7 @@ to convert Altair charts into SVG strings or write SVG files. With the
 **[png](https://CRAN.R-project.org/package=png)** packages installed,
 you can get a bitmap array, or write PNG files.
 
-When knitting to a non-HTML format, e.g. `github_document`, this package
+When knitting to a non-HTML format, e.g. `github_document`, this package
 provides a `knit_print()` function that will intercept the normal
 renderer, using instead its own renderer, allowing you to specify
 `"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires
@@ -122,9 +122,9 @@ Some things to keep in mind:
   - Where you see a `.` in the Python examples, use a `$` instead.
 
   - In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
     Altair from throwing an error. Alternatively, you can use a
-    double-backslash, e.g. `Sepal\\.Width`.
+    double-backslash, e.g. `Sepal\\.Width`.
 
 These and other “gotchas” are compiled, along with workarounds, in an
 article: [Field Guide to Python
@@ -137,8 +137,7 @@ The documentation for this package includes some
 
   - [Getting
     Started](https://vegawidget.github.io/altair/articles/altair.html):
-    a walkthrough to get a first chart to
-    work
+    a walkthrough to get a first chart to work
 
   - [Installation](https://vegawidget.github.io/altair/articles/installation.html):
     some more-detailed instructions
