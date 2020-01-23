@@ -1,50 +1,17 @@
-# altair 3.1.1 (resubmission)
-
-## Resubmission
-
-This is a resubmission. Following Martina Schmirl's email of 2019-07-07:
-
-* I have amended the title to remove the redundant R.
-
-* I have noted for each of the two remaining instances of `\dontrun{}` that
-  these examples make calls to Python (missing additional software). 
-  
-* I have amended an example-set to use `donttest{}` as these examples, as run, 
-  do not call Python.
-
-This is a resubmission. Following Uwe Ligge's email of 2019-06-28:
-
-* I have added Python and Altair as `SystemRequirements` - my apologies for 
-  missing this.
-
-* The functions from the other package, 'vegawidget', are exported. 
-
-  The 'vegawidget' package offers functions to render 'Vega' and 'Vega-Lite'
-  specifications in the browser. The 'altair' package lets you  
-  build Vega-Lite specifications by exposing the Python Altair library. 
-
-  As such, 'altair' exports the 'vegawidget' rendering-functions.
-  There may be developed other packages that build Vega and Vega-Lite 
-  specifications, for which 'vegawidget' offers a common set of 
-  rendering functions.
-
-  I have reassessed the functions that are re-exported. I have deprecated three
-  of these functions, in favor of using 'vegawidget' directly.
+# altair 4.0.1 
 
 ## Test environments
 
-* local OS X install, R 3.5.3
-* ubuntu 14.04 (on travis-ci), R (oldrel, release, and devel)
+* local OS X install, R 3.6.2
+* ubuntu 16.04 (on travis-ci), R (oldrel, release, and devel)
 * Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 * Ubuntu Linux 16.04 LTS, R-release, GCC
 * Fedora Linux, R-devel, clang, gfortran
-* win-builder (devel and release)
+* win-builder (devel)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+0 errors | 0 warnings | 0 notes
 
 ## Author notes
 
@@ -53,9 +20,9 @@ This is a resubmission. Following Uwe Ligge's email of 2019-06-28:
   and Python.
 
   As such, virtually all the examples and tests cannot be run on CRAN servers, 
-  hence the \dontrun{} and the like on examples, and skipping of tests. 
+  hence the `\dontrun{}` and the like on examples, and skipping of tests. 
 
   This functionality is tested on Travis, where the Python libraries are available.
 
-* The initial version (3.1.1) is advanced because we are using the first two
-  digits to mirror our supported version of Python Altair (3.1).
+* The version (4.0.1) is advanced because we are using the first two
+  digits to mirror our supported version of Python Altair (4.0).

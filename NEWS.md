@@ -6,7 +6,7 @@
 
 * Deprecate `vw_as_json()`, `vegawidgetOutput()`, `renderVegawidget()`; these are available in the **vegawidget** package. (#117)
 
-* Remove references to `r_to_py()`, as **retuculate** manages this automatically. (#83)
+* Remove references to `r_to_py()`, as **reticulate** manages this automatically. (#83)
 
 * Update the JupyterLab renderers to Vega-Lite 3
 
