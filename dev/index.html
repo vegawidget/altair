@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.0.9001</span>
       </span>
     </div>
 
@@ -190,7 +190,7 @@
 <h3 class="hasAnchor">
 <a href="#optional-installations" class="anchor"></a>Optional installations</h3>
 <p>If you have <strong><a href="https://nodejs.org">nodejs</a></strong> installed on your computer, you can use <a href="https://vegawidget.github.io/vegawidget/reference/image.html">vegawidget’s image-generating functions</a> to convert Altair charts into SVG strings or write SVG files. With the <strong><a href="https://CRAN.R-project.org/package=rsvg">rsvg</a></strong> and <strong><a href="https://CRAN.R-project.org/package=png">png</a></strong> packages installed, you can get a bitmap array, or write PNG files.</p>
-<p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that <a href="https://nodejs.org">nodejs</a> be installed on your system, as well as <a href="https://cran.r-project.org/package=rsvg">rsvg</a> and <a href="https://cran.r-project.org/package=png">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org">XQuartz</a>, to be installed.</p>
+<p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that <a href="https://nodejs.org">nodejs</a> be installed on your system, as well as <a href="https://cran.r-project.org/package=rsvg">rsvg</a> and <a href="https://cran.r-project.org/package=png">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org">XQuartz</a>, to be installed.</p>
 </div>
 </div>
 <div id="example" class="section level2">
@@ -214,7 +214,7 @@
 <p>Some things to keep in mind:</p>
 <ul>
 <li><p>Where you see a <code>.</code> in the Python examples, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
-<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
+<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
 </ul>
 <p>These and other “gotchas” are compiled, along with workarounds, in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
 </div>
