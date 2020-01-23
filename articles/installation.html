@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Installation • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -33,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.1</span>
       </span>
     </div>
 
@@ -136,7 +137,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -150,12 +151,13 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Installation</h1>
             
-            <h4 class="date">2019-07-11</h4>
+            <h4 class="date">2020-01-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/installation.Rmd"><code>vignettes/installation.Rmd</code></a></small>
       <div class="hidden name"><code>installation.Rmd</code></div>
@@ -169,11 +171,11 @@
 <li><p>You are encouraged to use <a href="https://conda.io/docs/user-guide/install/index.html">Conda Python</a>. Miniconda works well, and installs much-more-quickly than full Conda.</p></li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>.</p></li>
 <li>
-<p>Install the <strong>reticulate</strong> package, then give reticulate a hint for which Python environment to use. You can do this by putting <code><a href="https://www.rdocumentation.org/packages/reticulate/topics/use_python">reticulate::use_condaenv("r-reticulate")</a></code> into the <code><a href="https://www.rdocumentation.org/packages/base/topics/Startup">.First()</a></code> function in your <code>.Rprofile</code> file.</p>
+<p>Install the <strong>reticulate</strong> package, then give reticulate a hint for which Python environment to use. You can do this by putting <code><a href="https://rdrr.io/pkg/reticulate/man/use_python.html">reticulate::use_condaenv("r-reticulate")</a></code> into the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code> file.</p>
 <p>If you do this, ensure that <code>RETICULATE_PYTHON</code> is <strong>not</strong> set in your <code>.Renviron</code> file.</p>
 <p>As usual, restart R for changes to take effect.</p>
 </li>
-<li><p><code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("altair")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("altair")</a></code></p></li>
 <li><p><code><a href="../reference/install_altair.html">altair::install_altair()</a></code></p></li>
 </ol>
 <p>To verify your installation, use <code><a href="../reference/check_altair.html">altair::check_altair()</a></code>; it will tell you which Altair version is installed, and which version is supported by this package.</p>
@@ -215,7 +217,7 @@
 <h3 class="hasAnchor">
 <a href="#working-without-a-firewall" class="anchor"></a>Working without a firewall</h3>
 <p>If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the <strong>httr</strong> package installed, it will use the certificate file associated with the <strong>openssl</strong> package. You can determine the location of this certificate file by using:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"cacert.pem"</span>, <span class="dt">package =</span> <span class="st">"openssl"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"cacert.pem"</span>, <span class="dt">package =</span> <span class="st">"openssl"</span>)</a></code></pre></div>
 <p>At this point, you can note this location and move ahead to <a href="#manage-settings"><strong>Managing your settings</strong></a>.</p>
 </div>
 <div id="working-behind-a-firewall" class="section level3">
@@ -320,8 +322,8 @@ conda update conda</code></pre>
 <h2 class="hasAnchor">
 <a href="#python-env" class="anchor"></a>Python environment</h2>
 <p>For use with <strong>reticulate</strong>, RStudio <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies">recommend</a> using a Python environment called <code>"r-reticulate"</code>. You can do this for your Conda environment directly from an R command-prompt, and it should “just work”:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/reticulate/topics/conda-tools">conda_create</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
-<p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://www.rdocumentation.org/packages/base/topics/Startup">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/reticulate/man/conda-tools.html">conda_create</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
+<p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
 <pre><code># .Rprofile
 
 .First &lt;- function() {
@@ -334,17 +336,18 @@ conda update conda</code></pre>
 <h2 class="hasAnchor">
 <a href="#altair" class="anchor"></a>Altair Installation</h2>
 <p>If you have not already installed this package into your R library, this is a perfect occasion to do so:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"altair"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"altair"</span>)</a></code></pre></div>
 <p>Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">altair<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/altair/topics/install_altair">install_altair</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">altair<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/altair/man/install_altair.html">install_altair</a></span>()</a></code></pre></div>
 <p>You can confirm success by showing your Python configuration:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/reticulate/topics/py_config">py_config</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/reticulate/man/py_config.html">py_config</a></span>()</a></code></pre></div>
 <p>And by confirming your Altair installation:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">altair<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/altair/topics/check_altair">check_altair</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">altair<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/altair/man/check_altair.html">check_altair</a></span>()</a></code></pre></div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -361,13 +364,15 @@ conda update conda</code></pre>
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

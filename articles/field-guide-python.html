@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Field Guide to Python Issues • altair</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -33,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.1</span>
       </span>
     </div>
 
@@ -136,7 +137,7 @@
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -150,13 +151,14 @@
 <!--/.navbar -->
 
       
-      </header><script src="field-guide-python_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.4.0/vega.min.js"></script><script src="field-guide-python_files/vega-lite-3.3.0/vega-lite.min.js"></script><link href="field-guide-python_files/vega-embed-4.2.0/vega-embed.css" rel="stylesheet">
-<script src="field-guide-python_files/vega-embed-4.2.0/vega-embed.js"></script><script src="field-guide-python_files/vegawidget-binding-0.2.1.9001/vegawidget.js"></script><div class="row">
+
+      </header><script src="field-guide-python_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.9.0/vega.min.js"></script><script src="field-guide-python_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="field-guide-python_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
+<script src="field-guide-python_files/vega-embed-6.2.0/vega-embed.js"></script><script src="field-guide-python_files/vegawidget-binding-0.3.1/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Field Guide to Python Issues</h1>
             
-            <h4 class="date">2019-07-11</h4>
+            <h4 class="date">2020-01-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/field-guide-python.Rmd"><code>vignettes/field-guide-python.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-python.Rmd</code></div>
@@ -180,15 +182,15 @@
 <p>The <a href="https://altair-viz.github.io">Altair documentation</a> is the best resource for learning how to create charts. In the course of building and documenting this package, we have noted a few “gotchas” and their workarounds. If you find another, please let us know!</p>
 <p>Here’s the short version:</p>
 <ul>
-<li><p>Where you see a <code>.</code>, use a <code>$</code> instead.</p></li>
+<li><p>Where you see a <code>.</code>, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
 <li><p>Altair methods return a <em>copy</em> of the object. Assignment of a Python object returns a <em>reference</em>, not a copy.</p></li>
 <li><p>To get a copy a of “bare” Altair object, use a <code>$copy()</code> method.</p></li>
 <li><p>If you have a dataset that has variables with dots in their names, e.g. <code>Sepal.Width</code>, you have to make some accommodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to “[Sepal.Width]”.</p></li>
 <li><p>There is an Altair Chart method called <code>repeat()</code>, which in R is a reserved word, so it needs to be enclosed in backticks: <code>$`repeat`()</code>.</p></li>
 <li><p>Where you see an inversion operator, <code>~</code>, like <code>~highlight</code>, in Altair examples, call the method explicitly from R: <code>hightlight$`__invert__`()</code>. Alternatively, you may be able to rearrange the code so as to avoid using the inversion.</p></li>
 <li><p>Where you see a hyphen in the name of a Python object, use an underscore in R: <code>vega_data$sf_temps()</code></p></li>
-<li><p>Where you see a Python list, <code>["foo", "bar"]</code>, in Altair examples, use an unnamed list in R: <code><a href="https://www.rdocumentation.org/packages/base/topics/list">list("foo", "bar")</a></code>.</p></li>
-<li><p>Where you see a Python dictionary, <code>{'a' = "foo", 'b' = "bar"}</code>, in Altair examples, use a named list in R: <code><a href="https://www.rdocumentation.org/packages/base/topics/list">list(a = "foo", b = "bar")</a></code></p></li>
+<li><p>Where you see a Python list, <code>["foo", "bar"]</code>, in Altair examples, use an unnamed list in R: <code><a href="https://rdrr.io/r/base/list.html">list("foo", "bar")</a></code>.</p></li>
+<li><p>Where you see a Python dictionary, <code>{'a' = "foo", 'b' = "bar"}</code>, in Altair examples, use a named list in R: <code><a href="https://rdrr.io/r/base/list.html">list(a = "foo", b = "bar")</a></code></p></li>
 <li><p>Where you see a <code>None</code> in Altair examples, use a <code>NULL</code> in R.</p></li>
 <li><p>You may see a function call with <code>**</code>, <code>baz(a = 1, **{'foo': 'bar'})</code>, in an Altair example. In R, interpolate the dictionary into the rest of the arguments, <code>baz(a = 1, foo = "bar")</code>.</p></li>
 </ul>
@@ -208,10 +210,10 @@
 <a class="sourceLine" id="cb1-9" data-line-number="9">    color<span class="op">=</span><span class="st">'Origin'</span>,</a>
 <a class="sourceLine" id="cb1-10" data-line-number="10">).interactive()</a></code></pre></div>
 <p>In this case, we are supplying a Data Frame to a <code>Chart()</code> method.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"altair"</span>)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>()</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(cars)<span class="op">$</span></a>
@@ -229,10 +231,10 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Python</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">foo.bar()</a></code></pre></div>
 <p>You would use this notation in R:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">foo<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/plotmath">bar</a></span>()</a></code></pre></div>
-<p>In essence, you wherever you see a <code>.</code> in Python, use a <code>$</code> in R.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">foo<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/grDevices/plotmath.html">bar</a></span>()</a></code></pre></div>
+<p>In essence, you wherever you see a <code>.</code> in Python, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> in R.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_vega_data.html">import_vega_data</a></span>()</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/cars">cars</a></span>()</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">cars &lt;-<span class="st"> </span>vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>()</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">chart &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(cars)<span class="op">$</span></a>
@@ -247,14 +249,14 @@
 <h2 class="hasAnchor">
 <a href="#altair-method-returns-copy" class="anchor"></a>Altair method returns copy</h2>
 <p>In Python, Altair methods return a copy of the object. To verify this, let’s use `pryr::</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"pryr"</span>)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"pryr"</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   method      from</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   print.bytes Rcpp</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">chart_new &lt;-<span class="st"> </span>chart<span class="op">$</span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart)</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p>Although this <em>looks</em> like a reference-class method, the Altair method <em>acts</em> like an S3 method.</p>
 </div>
@@ -265,12 +267,12 @@
 <p>This becomes apparent when assigning a “bare” object:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">chart_new &lt;-<span class="st"> </span>chart</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart)</a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 <p>To return a copy of the object, use a copy method.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">chart_new &lt;-<span class="st"> </span>chart<span class="op">$</span><span class="kw">copy</span>()</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/inspect">address</a></span>(chart)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart_new) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span>(chart)</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 </div>
 <div id="dots-in-variable-names" class="section level2">
@@ -301,17 +303,14 @@
 <a class="sourceLine" id="cb10-8" data-line-number="8"><span class="st">  </span><span class="kw">mark_point</span>()</a>
 <a class="sourceLine" id="cb10-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb10-10" data-line-number="10">chart_iris_r</a></code></pre></div>
-<div id="htmlwidget-f401402bb88b56066cf5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f401402bb88b56066cf5">{"x":{
+<div id="htmlwidget-1997b12ce960c93e63c8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1997b12ce960c93e63c8">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -1398,26 +1397,23 @@
 <a class="sourceLine" id="cb11-3" data-line-number="3">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(</a>
 <a class="sourceLine" id="cb11-4" data-line-number="4">      <span class="dt">field =</span> <span class="st">"[Sepal.Width]"</span>, </a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">      <span class="dt">type =</span> <span class="st">"quantitative"</span>, </a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Sepal.Width"</span>)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Sepal.Width"</span>)</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7">    ),</a>
 <a class="sourceLine" id="cb11-8" data-line-number="8">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(</a>
 <a class="sourceLine" id="cb11-9" data-line-number="9">      <span class="dt">field =</span> <span class="st">"Sepal</span><span class="ch">\\</span><span class="st">.Length"</span>, </a>
 <a class="sourceLine" id="cb11-10" data-line-number="10">      <span class="dt">type =</span> <span class="st">"quantitative"</span>, </a>
-<a class="sourceLine" id="cb11-11" data-line-number="11">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Sepal.Length"</span>)</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">      <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">title =</span> <span class="st">"Sepal.Length"</span>)</a>
 <a class="sourceLine" id="cb11-12" data-line-number="12">    ),</a>
 <a class="sourceLine" id="cb11-13" data-line-number="13">    <span class="dt">color =</span> <span class="st">"Species:N"</span></a>
 <a class="sourceLine" id="cb11-14" data-line-number="14">  )</a></code></pre></div>
-<div id="htmlwidget-26e00ac53d202c6b00f4" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-26e00ac53d202c6b00f4">{"x":{
+<div id="htmlwidget-7d9a29f4845f809596ab" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7d9a29f4845f809596ab">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -2511,7 +2507,7 @@
 <p>As shown in the <a href="view-composition.html#repeat">View Composistion article</a>, you can use the <code>repeat()</code> method to compose one-or-more charts such that the only thing different among them is an encoding.</p>
 <p>However, the article notes, there is a catch: <code>repeat</code> is a reserved word in R, so we have to enclose it in backticks, e.g. <code>$`repeat`()</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">chart_repeat &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/datasets/topics/iris">iris</a></span>())<span class="op">$</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span>())<span class="op">$</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">encode</span>(</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"column"</span>), <span class="dt">type =</span> <span class="st">"quantitative"</span>),</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">    <span class="dt">y =</span> alt<span class="op">$</span><span class="kw">Y</span>(alt<span class="op">$</span><span class="st">`</span><span class="dt">repeat</span><span class="st">`</span>(<span class="st">"row"</span>), <span class="dt">type =</span> <span class="st">"quantitative"</span>),</a>
@@ -2523,22 +2519,19 @@
 <a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">height =</span> <span class="dv">200</span></a>
 <a class="sourceLine" id="cb12-12" data-line-number="12">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  `</span><span class="dt">repeat</span><span class="st">`</span>(</a>
-<a class="sourceLine" id="cb12-14" data-line-number="14">    <span class="dt">row =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>),</a>
-<a class="sourceLine" id="cb12-15" data-line-number="15">    <span class="dt">column =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">    <span class="dt">row =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span>),</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">    <span class="dt">column =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span>)</a>
 <a class="sourceLine" id="cb12-16" data-line-number="16">  )</a>
 <a class="sourceLine" id="cb12-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb12-18" data-line-number="18">chart_repeat</a></code></pre></div>
-<div id="htmlwidget-2dbe41ed111547500405" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2dbe41ed111547500405">{"x":{
+<div id="htmlwidget-ccca5be36aa584fd4143" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ccca5be36aa584fd4143">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "datasets": {
@@ -3655,41 +3648,42 @@
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span>alt<span class="op">$</span><span class="kw">selection</span>(</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4">    <span class="dt">type =</span> <span class="st">"single"</span>, </a>
 <a class="sourceLine" id="cb14-5" data-line-number="5">    <span class="dt">on =</span> <span class="st">"mouseover"</span>,</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="dt">fields =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"symbol"</span>), </a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="dt">fields =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"symbol"</span>), </a>
 <a class="sourceLine" id="cb14-7" data-line-number="7">    <span class="dt">nearest =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb14-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb14-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(highlight<span class="op">$</span><span class="st">`</span><span class="dt">__invert__</span><span class="st">`</span>(), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">1</span>), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">3</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb14-10" data-line-number="10">alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(highlight<span class="op">$</span><span class="st">`</span><span class="dt">__invert__</span><span class="st">`</span>(), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">1</span>), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">3</span>))</a></code></pre></div>
 <p>The second alternative is to swap the order of the <code>if_true</code> and <code>if_false</code> arguments in <code>alt$condition()</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># R</span></a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">highlight &lt;-</a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span>alt<span class="op">$</span><span class="kw">selection</span>(</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4">    <span class="dt">type =</span> <span class="st">"single"</span>, </a>
 <a class="sourceLine" id="cb15-5" data-line-number="5">    <span class="dt">on =</span> <span class="st">"mouseover"</span>,</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">    <span class="dt">fields =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"symbol"</span>), </a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">    <span class="dt">fields =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"symbol"</span>), </a>
 <a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="dt">nearest =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb15-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb15-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10">alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/conditions">condition</a></span>(highlight, alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">3</span>), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">1</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb15-10" data-line-number="10">alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">condition</a></span>(highlight, alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">3</span>), alt<span class="op">$</span><span class="kw">value</span>(<span class="dv">1</span>))</a></code></pre></div>
 </div>
 <div id="hyphens-in-python-names" class="section level2">
 <h2 class="hasAnchor">
 <a href="#hyphens-in-python-names" class="anchor"></a>Hyphens in Python Names</h2>
 <p>This comes up in Vega datasets. Let’s use the <code>$list_datasets()</code> method to get the names of the datasets that contain a hyphen.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">list_datasets</span>() <span class="op">%&gt;%</span><span class="st"> </span>stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_subset.html">str_subset</a></span>(<span class="st">"-"</span>)</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co">#&gt;  [1] "co2-concentration"              "flare-dependencies"            </span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt;  [3] "flights-10k"                    "flights-200k"                  </span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt;  [5] "flights-20k"                    "flights-2k"                    </span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  [7] "flights-3m"                     "flights-5k"                    </span></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  [9] "flights-airport"                "gapminder-health-income"       </span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt; [11] "iowa-electricity"               "la-riots"                      </span></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt; [13] "normal-2d"                      "seattle-temps"                 </span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt; [15] "seattle-weather"                "sf-temps"                      </span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt; [17] "unemployment-across-industries" "us-10m"                        </span></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt; [19] "us-employment"                  "us-state-capitals"             </span></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt; [21] "world-110m"</span></a></code></pre></div>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co">#&gt;  [1] "annual-precip"                  "co2-concentration"             </span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt;  [3] "flare-dependencies"             "flights-10k"                   </span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt;  [5] "flights-200k"                   "flights-20k"                   </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  [7] "flights-2k"                     "flights-3m"                    </span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  [9] "flights-5k"                     "flights-airport"               </span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt; [11] "gapminder-health-income"        "iowa-electricity"              </span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt; [13] "la-riots"                       "normal-2d"                     </span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt; [15] "seattle-temps"                  "seattle-weather"               </span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt; [17] "sf-temps"                       "unemployment-across-industries"</span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt; [19] "uniform-2d"                     "us-10m"                        </span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt; [21] "us-employment"                  "us-state-capitals"             </span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt; [23] "world-110m"</span></a></code></pre></div>
 <p>To refer to one of these datasets in R, substitute the hyphen with an underscore:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">sf_temps</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()</a>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">vega_data<span class="op">$</span><span class="kw">sf_temps</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co">#&gt;   temp                date</span></a>
 <a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co">#&gt; 1 47.8 2010-01-01 00:00:00</span></a>
 <a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co">#&gt; 2 47.4 2010-01-01 01:00:00</span></a>
@@ -3708,8 +3702,8 @@
 <a class="sourceLine" id="cb18-3" data-line-number="3">example_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
 <a class="sourceLine" id="cb18-4" data-line-number="4">example_dictionary <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>, <span class="st">'c'</span>: <span class="dv">3</span>}</a></code></pre></div>
 <p>In practice, we find that reticulate does the right thing if we provide an R <em>unnamed</em> list where Altair expects a list, and an R <em>named</em> list where Altair expects a dictionary.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">example_list &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">example_dictionary &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">example_list &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">example_dictionary &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>)</a></code></pre></div>
 <p>Consider this Altair <a href="https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html">example</a> that uses lists and dictionaries. This is some of the Python bits:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="im">import</span> altair <span class="im">as</span> alt</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="im">from</span> vega_datasets <span class="im">import</span> data</a>
@@ -3722,10 +3716,10 @@
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">flights &lt;-</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span>alt<span class="op">$</span><span class="kw">UrlData</span>(</a>
 <a class="sourceLine" id="cb21-3" data-line-number="3">    vega_data<span class="op">$</span>flights_2k<span class="op">$</span>url,</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">    <span class="dt">format =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">parse =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">date =</span> <span class="st">"date"</span>))</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">    <span class="dt">format =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">parse =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">date =</span> <span class="st">"date"</span>))</a>
 <a class="sourceLine" id="cb21-5" data-line-number="5">  )</a>
 <a class="sourceLine" id="cb21-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb21-7" data-line-number="7">brush &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">selection</span>(<span class="dt">type =</span> <span class="st">"interval"</span>, <span class="dt">encodings =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"x"</span>))</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">brush &lt;-<span class="st"> </span>alt<span class="op">$</span><span class="kw">selection</span>(<span class="dt">type =</span> <span class="st">"interval"</span>, <span class="dt">encodings =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"x"</span>))</a>
 <a class="sourceLine" id="cb21-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb21-9" data-line-number="9"><span class="co"># Define the base chart, with the common parts of the</span></a>
 <a class="sourceLine" id="cb21-10" data-line-number="10"><span class="co"># background and highlights</span></a>
@@ -3755,18 +3749,15 @@
 <a class="sourceLine" id="cb21-34" data-line-number="34">alt<span class="op">$</span></a>
 <a class="sourceLine" id="cb21-35" data-line-number="35"><span class="st">  </span><span class="kw">layer</span>(background, highlight, <span class="dt">data =</span> flights)<span class="op">$</span></a>
 <a class="sourceLine" id="cb21-36" data-line-number="36"><span class="st">  </span><span class="kw">transform_calculate</span>(<span class="st">"time"</span>, <span class="st">"hours(datum.date)"</span>)<span class="op">$</span></a>
-<a class="sourceLine" id="cb21-37" data-line-number="37"><span class="st">  `</span><span class="dt">repeat</span><span class="st">`</span>(<span class="dt">column =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span>))</a></code></pre></div>
-<div id="htmlwidget-fdcb9da051efac318500" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fdcb9da051efac318500">{"x":{
+<a class="sourceLine" id="cb21-37" data-line-number="37"><span class="st">  `</span><span class="dt">repeat</span><span class="st">`</span>(<span class="dt">column =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span>))</a></code></pre></div>
+<div id="htmlwidget-6c464c57642e370584ae" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6c464c57642e370584ae">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "repeat": {
@@ -3881,12 +3872,12 @@
 <a class="sourceLine" id="cb22-15" data-line-number="15">)</a></code></pre></div>
 <p>In this example, we have a list containing <code>None</code>, which reticulate associates with R’s <code>NULL</code>.</p>
 <p>We also have some syntax, <code>**{'as': 'TotalTime'}</code>. This is a mechanism to <a href="https://softwareengineering.stackexchange.com/a/131415">pass additional arguments</a> to a Python function, perhaps similar to <code>...</code> in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tibble"</span>)</a>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tibble"</span>)</a>
 <a class="sourceLine" id="cb23-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb23-3" data-line-number="3">activities &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb23-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span>(</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="dt">Activity =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sleeping"</span>, <span class="st">"Eating"</span>, <span class="st">"TV"</span>, <span class="st">"Work"</span>, <span class="st">"Exercise"</span>),</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="dt">Time =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="dt">Activity =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sleeping"</span>, <span class="st">"Eating"</span>, <span class="st">"TV"</span>, <span class="st">"Work"</span>, <span class="st">"Exercise"</span>),</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="dt">Time =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb23-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb23-8" data-line-number="8"><span class="co">#&gt; Warning: `data_frame()` is deprecated, use `tibble()`.</span></a>
 <a class="sourceLine" id="cb23-9" data-line-number="9"><span class="co">#&gt; This warning is displayed once per session.</span></a>
@@ -3895,30 +3886,27 @@
 <a class="sourceLine" id="cb23-12" data-line-number="12"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(activities)<span class="op">$</span></a>
 <a class="sourceLine" id="cb23-13" data-line-number="13"><span class="st">  </span><span class="kw">mark_bar</span>()<span class="op">$</span></a>
 <a class="sourceLine" id="cb23-14" data-line-number="14"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb23-15" data-line-number="15">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"PercentOfTotal:Q"</span>, <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/zAxis">Axis</a></span>(<span class="dt">format =</span><span class="st">".0%"</span>)),</a>
+<a class="sourceLine" id="cb23-15" data-line-number="15">    <span class="dt">x =</span> alt<span class="op">$</span><span class="kw">X</span>(<span class="st">"PercentOfTotal:Q"</span>, <span class="dt">axis =</span> alt<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/graphics/zAxis.html">Axis</a></span>(<span class="dt">format =</span><span class="st">".0%"</span>)),</a>
 <a class="sourceLine" id="cb23-16" data-line-number="16">    <span class="dt">y =</span> <span class="st">"Activity:N"</span></a>
 <a class="sourceLine" id="cb23-17" data-line-number="17">  )<span class="op">$</span></a>
 <a class="sourceLine" id="cb23-18" data-line-number="18"><span class="st">  </span><span class="kw">transform_window</span>(</a>
-<a class="sourceLine" id="cb23-19" data-line-number="19">    <span class="dt">window =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb23-19" data-line-number="19">    <span class="dt">window =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb23-20" data-line-number="20">      alt<span class="op">$</span><span class="kw">WindowFieldDef</span>(<span class="dt">op =</span> <span class="st">"sum"</span>, <span class="dt">field =</span> <span class="st">"Time"</span>, <span class="dt">as =</span> <span class="st">"TotalTime"</span>)</a>
 <a class="sourceLine" id="cb23-21" data-line-number="21">    ),</a>
-<a class="sourceLine" id="cb23-22" data-line-number="22">    <span class="dt">frame =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="ot">NULL</span>, <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb23-22" data-line-number="22">    <span class="dt">frame =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="ot">NULL</span>, <span class="ot">NULL</span>)</a>
 <a class="sourceLine" id="cb23-23" data-line-number="23">  )<span class="op">$</span><span class="kw">transform_calculate</span>(</a>
 <a class="sourceLine" id="cb23-24" data-line-number="24">    <span class="dt">PercentOfTotal =</span> <span class="kw"><a href="../reference/JS.html">JS</a></span>(<span class="st">"datum.Time / datum.TotalTime"</span>)</a>
 <a class="sourceLine" id="cb23-25" data-line-number="25">  )</a>
 <a class="sourceLine" id="cb23-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb23-27" data-line-number="27">chart</a></code></pre></div>
-<div id="htmlwidget-39a3198102d27f9d9c0a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-39a3198102d27f9d9c0a">{"x":{
+<div id="htmlwidget-9a5e23278e187bdb5259" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9a5e23278e187bdb5259">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.3.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
-      "mark": {
-        "tooltip": null
-      },
       "view": {
-        "height": 300,
-        "width": 400
+        "continuousHeight": 300,
+        "continuousWidth": 400
       }
     },
     "data": {
@@ -3991,6 +3979,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -4013,13 +4002,15 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
