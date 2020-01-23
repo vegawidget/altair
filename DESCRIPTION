@@ -36,10 +36,8 @@ BugReports: https://github.com/vegawidget/altair/issues
 Imports:
     reticulate (>= 1.9),
     htmlwidgets,
-    rlang (>= 0.1.2),
     assertthat,
     magrittr,
-    jsonlite,
     utils,
     vegawidget (>= 0.3.1),
     repr
