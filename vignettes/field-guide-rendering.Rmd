@@ -22,6 +22,40 @@ There are four foundations upon which this package rests:
 
 This article deals with the second two items; the [Field Guide to Python Issues](field-guide-python.html) deals with the first two.
 
+### Using the JSON data backend for Altair
+
+Rather than embed the data itself into the chart spec as JSON (this will become very slow as the data gets to be more than 5000 rows), Altair has an option (supported by Vegalite's url loader) that saves your data as a JSON file that is referenced in the chart spec.
+To use it in Python, you do would set `alt.data_transformers.enable('json')` so in R this becomes:
+
+```
+library("altair")
+alt$data_transformers$enable('json')
+```
+
+The problem is that you won't see charts in the RStudio pane anymore. This won't work:
+
+```
+vega_data <- import_vega_data()
+chart <- 
+     alt$Chart(vega_data$cars())$
+     mark_point()$
+     encode(
+         x = "Horsepower:Q",
+         y = "Miles_per_Gallon:Q",
+         color = "Origin:N",
+         tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
+     )
+chart
+```
+
+This is calling the print method on chart, which runs `vegawidget(chart)`, but instead you need to call it like:
+
+```
+vegawidget(chart, base_url='.')
+```
+
+and you'll see the chart now!
+
 ## Vegawidget
 
 All the rendering is handled by **vegawidget**; so you are referred to its article on [rendering](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html).
