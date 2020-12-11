@@ -2,6 +2,8 @@
 
 * Upgrade to Altair 4.0.0
 
+* Update `repr` methods to include top-level Altair class. (#127)
+
 # altair 3.1.1
 
 * Deprecate `vw_as_json()`, `vegawidgetOutput()`, `renderVegawidget()`; these are available in the **vegawidget** package. (#117)
