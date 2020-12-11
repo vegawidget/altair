@@ -69,4 +69,9 @@ on_altair_error <- function(e) {
         on_error = on_altair_error
       )
     )
+
+  vegawidget::s3_register(
+    "knitr::knit_print",
+    "altair.vegalite.v4.api.TopLevelMixin"
+  )
 }
