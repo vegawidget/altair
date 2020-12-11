@@ -23,8 +23,8 @@ install_altair(
 \item{version}{\code{character}, version of Altair to install. For general use of this package,
 this is set automatically, so you should not need to specify this.}
 
-\item{...}{other arguments sent to \code{\link[reticulate:conda_install]{reticulate::conda_install()}} or
-\code{\link[reticulate:virtualenv_install]{reticulate::virtualenv_install()}}}
+\item{...}{other arguments sent to \code{\link[reticulate:conda-tools]{reticulate::conda_install()}} or
+\code{\link[reticulate:virtualenv-tools]{reticulate::virtualenv_install()}}}
 }
 \value{
 invisible \code{NULL}, called for side-effects
@@ -42,7 +42,7 @@ different R packages, it is
 to use a common Python environment, called \code{"r-reticulate"}.
 
 Depending on your setup, you can create this environment using
-\code{\link[reticulate:conda_create]{reticulate::conda_create()}} or \code{\link[reticulate:virtualenv_create]{reticulate::virtualenv_create()}},
+\code{\link[reticulate:conda-tools]{reticulate::conda_create()}} or \code{\link[reticulate:virtualenv-tools]{reticulate::virtualenv_create()}},
 as described in this
 \href{https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation}{reticulate article},
 or in this package's \href{https://vegawidget.github.io/altair/articles/installation.html#python-env}{Installation article}.

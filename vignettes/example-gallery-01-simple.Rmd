@@ -118,7 +118,7 @@ chart <-
   alt$Chart(movies)$
   mark_bar()$
   encode(
-    alt$X("IMDB_Rating", bin = TRUE), 
+    alt$X("IMDB Rating:Q", bin = TRUE), 
     y = "count()"
   )
 
