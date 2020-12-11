@@ -106,18 +106,18 @@ vega_data$anscombe$url
 You can specify `data` using a URL that points to a dataset, rather than using a data frame explicitly. 
 
 ```{r}
-iris_url <- vega_data$iris$url
+cars_url <- vega_data$cars$url
 
-chart_iris <- 
-  alt$Chart(iris_url)$
+chart_cars <- 
+  alt$Chart(cars_url)$
   encode(
-    x = "sepalWidth:Q",
-    y = "sepalLength:Q",
-    color = "species:N"
+    x = "Weight_in_lbs:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Cylinders:N"
   )$
   mark_point()
 
-chart_iris
+chart_cars
 ```
 
-This works in your browser, but not might not work in the RStudio IDE. This is because, for security reasons, the RStudio IDE may not let you refer external URLs that are not on their whitelist (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
+This works in your browser, but not might not work in the RStudio IDE. This is because, for security reasons, the RStudio IDE may not let you refer external URLs that are not on their allow-list (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).
