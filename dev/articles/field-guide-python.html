@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9004</span>
       </span>
     </div>
 
@@ -155,7 +155,7 @@
 
       </header><script src="field-guide-python_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="field-guide-python_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="field-guide-python_files/anchor-sections-1.0/anchor-sections.js"></script><script src="field-guide-python_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.9.0/vega.min.js"></script><script src="field-guide-python_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="field-guide-python_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
-<script src="field-guide-python_files/vega-embed-6.2.0/vega-embed.js"></script><script src="field-guide-python_files/vegawidget-binding-0.3.1.9012/vegawidget.js"></script><div class="row">
+<script src="field-guide-python_files/vega-embed-6.2.0/vega-embed.js"></script><script src="field-guide-python_files/vegawidget-binding-0.3.1.9013/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Python Issues</h1>
@@ -287,34 +287,32 @@
 <h2 class="hasAnchor">
 <a href="#dots-in-variable-names" class="anchor"></a>Dots in variable names</h2>
 <p>In Python, dots can refer to a nested structure within a Data Frame variable. Vega-Lite supports such nesting, so it assumes that a dot in a variable-name will refer to a nested variable.</p>
-<p>This means that we can run into trouble using R’s <code>iris</code> dataset:</p>
+<p>This means that we can run into trouble using R’s <code>freeny</code> dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># does not render properly</span>
 
-<span class="va">chart_iris_r</span> <span class="op">&lt;-</span>
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">$</span>
+<span class="va">chart_freeny_r</span> <span class="op">&lt;-</span>
+  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">freeny</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Sepal.Width:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Sepal.Length:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Species:N"</span>
+    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"income.level:Q"</span>, zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"market.potential:Q"</span>, zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">chart_iris_r</span></code></pre></div>
-<p>The problem here is that there are variables whose names have dots in them, e.g. <code>Sepal.Width</code>. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, <code>\\</code>:</p>
+<span class="va">chart_freeny_r</span></code></pre></div>
+<p>The problem here is that there are variables whose names have dots in them, e.g. <code>income.level</code>. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, <code>\\</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_iris_r</span> <span class="op">&lt;-</span>
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">$</span>
+<code class="sourceCode R"><span class="va">chart_freeny_r</span> <span class="op">&lt;-</span>
+  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">freeny</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"[Sepal.Width]:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Sepal\\.Length:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Species:N"</span>
+    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"[income.level]:Q"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,
+    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"market\\.potential:Q"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">chart_iris_r</span></code></pre></div>
-<div id="htmlwidget-9e71aad730df7fadd0a9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e71aad730df7fadd0a9">{"x":{
+<span class="va">chart_freeny_r</span></code></pre></div>
+<div id="htmlwidget-df9e155ce1e8b7cfdd03" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-df9e155ce1e8b7cfdd03">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -324,1073 +322,298 @@
       }
     },
     "data": {
-      "name": "data-cec64a69603471250e34d4faa36aa021"
+      "name": "data-df1d3b74a619db2de4113ec28bf6578c"
     },
     "datasets": {
-      "data-cec64a69603471250e34d4faa36aa021": [
+      "data-df1d3b74a619db2de4113ec28bf6578c": [
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 5.8211,
+          "lag.quarterly.revenue": 8.79636,
+          "market.potential": 12.9699,
+          "price.index": 4.70997,
+          "y": 8.79236
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 5.82558,
+          "lag.quarterly.revenue": 8.79236,
+          "market.potential": 12.9733,
+          "price.index": 4.70217,
+          "y": 8.79137
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.7,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 5.83112,
+          "lag.quarterly.revenue": 8.79137,
+          "market.potential": 12.9774,
+          "price.index": 4.68944,
+          "y": 8.81486
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 5.84046,
+          "lag.quarterly.revenue": 8.81486,
+          "market.potential": 12.9806,
+          "price.index": 4.68558,
+          "y": 8.81301
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 5.85036,
+          "lag.quarterly.revenue": 8.81301,
+          "market.potential": 12.9831,
+          "price.index": 4.64019,
+          "y": 8.90751
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.9,
-          "Species": "setosa"
+          "income.level": 5.86464,
+          "lag.quarterly.revenue": 8.90751,
+          "market.potential": 12.9854,
+          "price.index": 4.62553,
+          "y": 8.93673
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.87769,
+          "lag.quarterly.revenue": 8.93673,
+          "market.potential": 12.99,
+          "price.index": 4.61991,
+          "y": 8.96161
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.89763,
+          "lag.quarterly.revenue": 8.96161,
+          "market.potential": 12.9943,
+          "price.index": 4.61654,
+          "y": 8.96044
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 2.9,
-          "Species": "setosa"
+          "income.level": 5.92574,
+          "lag.quarterly.revenue": 8.96044,
+          "market.potential": 12.9992,
+          "price.index": 4.61407,
+          "y": 9.00868
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 5.94232,
+          "lag.quarterly.revenue": 9.00868,
+          "market.potential": 13.0033,
+          "price.index": 4.60766,
+          "y": 9.03049
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
+          "income.level": 5.95365,
+          "lag.quarterly.revenue": 9.03049,
+          "market.potential": 13.0099,
+          "price.index": 4.60227,
+          "y": 9.06906
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.9612,
+          "lag.quarterly.revenue": 9.06906,
+          "market.potential": 13.0159,
+          "price.index": 4.5896,
+          "y": 9.05871
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 5.97805,
+          "lag.quarterly.revenue": 9.05871,
+          "market.potential": 13.0212,
+          "price.index": 4.57592,
+          "y": 9.10698
         },
         {
-          "Petal.Length": 1.1,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.3,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 6.00377,
+          "lag.quarterly.revenue": 9.10698,
+          "market.potential": 13.0265,
+          "price.index": 4.58661,
+          "y": 9.12685
         },
         {
-          "Petal.Length": 1.2,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 4,
-          "Species": "setosa"
+          "income.level": 6.02829,
+          "lag.quarterly.revenue": 9.12685,
+          "market.potential": 13.0351,
+          "price.index": 4.57997,
+          "y": 9.17096
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 4.4,
-          "Species": "setosa"
+          "income.level": 6.03475,
+          "lag.quarterly.revenue": 9.17096,
+          "market.potential": 13.0429,
+          "price.index": 4.57176,
+          "y": 9.18665
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.9,
-          "Species": "setosa"
+          "income.level": 6.03906,
+          "lag.quarterly.revenue": 9.18665,
+          "market.potential": 13.0497,
+          "price.index": 4.56104,
+          "y": 9.23823
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.05046,
+          "lag.quarterly.revenue": 9.23823,
+          "market.potential": 13.0551,
+          "price.index": 4.54906,
+          "y": 9.26487
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
+          "income.level": 6.05563,
+          "lag.quarterly.revenue": 9.26487,
+          "market.potential": 13.0634,
+          "price.index": 4.53957,
+          "y": 9.28436
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
+          "income.level": 6.06093,
+          "lag.quarterly.revenue": 9.28436,
+          "market.potential": 13.0693,
+          "price.index": 4.51018,
+          "y": 9.31378
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.07103,
+          "lag.quarterly.revenue": 9.31378,
+          "market.potential": 13.0737,
+          "price.index": 4.50352,
+          "y": 9.35025
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
+          "income.level": 6.08018,
+          "lag.quarterly.revenue": 9.35025,
+          "market.potential": 13.077,
+          "price.index": 4.4936,
+          "y": 9.35835
         },
         {
-          "Petal.Length": 1,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 6.08858,
+          "lag.quarterly.revenue": 9.35835,
+          "market.potential": 13.0849,
+          "price.index": 4.46505,
+          "y": 9.39767
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.5,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.3,
-          "Species": "setosa"
+          "income.level": 6.10199,
+          "lag.quarterly.revenue": 9.39767,
+          "market.potential": 13.0918,
+          "price.index": 4.44924,
+          "y": 9.4215
         },
         {
-          "Petal.Length": 1.9,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.11207,
+          "lag.quarterly.revenue": 9.4215,
+          "market.potential": 13.095,
+          "price.index": 4.43966,
+          "y": 9.44223
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 6.11596,
+          "lag.quarterly.revenue": 9.44223,
+          "market.potential": 13.0984,
+          "price.index": 4.42025,
+          "y": 9.48721
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.12129,
+          "lag.quarterly.revenue": 9.48721,
+          "market.potential": 13.1089,
+          "price.index": 4.4106,
+          "y": 9.52374
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.122,
+          "lag.quarterly.revenue": 9.52374,
+          "market.potential": 13.1169,
+          "price.index": 4.41151,
+          "y": 9.5398
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.13119,
+          "lag.quarterly.revenue": 9.5398,
+          "market.potential": 13.1222,
+          "price.index": 4.3981,
+          "y": 9.58123
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.7,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 6.14705,
+          "lag.quarterly.revenue": 9.58123,
+          "market.potential": 13.1266,
+          "price.index": 4.38513,
+          "y": 9.60048
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 6.15336,
+          "lag.quarterly.revenue": 9.60048,
+          "market.potential": 13.1356,
+          "price.index": 4.3732,
+          "y": 9.64496
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.15627,
+          "lag.quarterly.revenue": 9.64496,
+          "market.potential": 13.1415,
+          "price.index": 4.3277,
+          "y": 9.6439
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 4.1,
-          "Species": "setosa"
+          "income.level": 6.16274,
+          "lag.quarterly.revenue": 9.6439,
+          "market.potential": 13.1444,
+          "price.index": 4.32023,
+          "y": 9.69405
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 4.2,
-          "Species": "setosa"
+          "income.level": 6.17369,
+          "lag.quarterly.revenue": 9.69405,
+          "market.potential": 13.1459,
+          "price.index": 4.30909,
+          "y": 9.69958
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 6.16135,
+          "lag.quarterly.revenue": 9.69958,
+          "market.potential": 13.152,
+          "price.index": 4.30909,
+          "y": 9.68683
         },
         {
-          "Petal.Length": 1.2,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 6.18231,
+          "lag.quarterly.revenue": 9.68683,
+          "market.potential": 13.1593,
+          "price.index": 4.30552,
+          "y": 9.71774
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.18768,
+          "lag.quarterly.revenue": 9.71774,
+          "market.potential": 13.1579,
+          "price.index": 4.29627,
+          "y": 9.74924
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 6.19377,
+          "lag.quarterly.revenue": 9.74924,
+          "market.potential": 13.1625,
+          "price.index": 4.27839,
+          "y": 9.77536
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.5,
-          "Sepal.Width": 2.3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.6,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.9,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.3,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 7,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.3,
-          "Petal.Width": 1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.5,
-          "Petal.Width": 1,
-          "Sepal.Length": 5,
-          "Sepal.Width": 2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.6,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.3,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.7,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.5,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.8,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.7,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6,
-          "Sepal.Width": 3.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.3,
-          "Petal.Width": 1,
-          "Sepal.Length": 5,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.3,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 6,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.9,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 7.1,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.9,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.6,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 7.6,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.7,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.3,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 7.3,
-          "Sepal.Width": 2.9,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.3,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 2,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.3,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.7,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 3.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.9,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 2.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 2,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.7,
-          "Petal.Width": 2,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 7.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.4,
-          "Petal.Width": 2,
-          "Sepal.Length": 7.9,
-          "Sepal.Width": 3.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.4,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.4,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.9,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.2,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.2,
-          "Petal.Width": 2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.4,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 3.4,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3,
-          "Species": "virginica"
+          "income.level": 6.2003,
+          "lag.quarterly.revenue": 9.77536,
+          "market.potential": 13.1664,
+          "price.index": 4.27789,
+          "y": 9.79424
         }
       ]
     },
     "encoding": {
-      "color": {
-        "field": "Species",
-        "type": "nominal"
-      },
       "x": {
-        "field": "[Sepal.Width]",
+        "field": "[income.level]",
+        "scale": {
+          "zero": false
+        },
         "type": "quantitative"
       },
       "y": {
-        "field": "Sepal\\.Length",
+        "field": "market\\.potential",
+        "scale": {
+          "zero": false
+        },
         "type": "quantitative"
       }
     },
@@ -1403,22 +626,25 @@
 },"evals":[],"jsHooks":[]}</script><p>As you can see, this has the side-effect of showing the brackets and slashes in the scale labels.</p>
 <p>To fix the fix, you can set the title for each axis:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_iris_r</span><span class="op">$</span> 
+<code class="sourceCode R"><span class="va">chart_freeny_r</span> <span class="op">&lt;-</span>
+  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">freeny</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
     x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span>
-      field <span class="op">=</span> <span class="st">"[Sepal.Width]"</span>, 
-      type <span class="op">=</span> <span class="st">"quantitative"</span>, 
-      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sepal.Width"</span><span class="op">)</span>
+      <span class="st">"[income.level]:Q"</span>, 
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"income.level"</span><span class="op">)</span>
     <span class="op">)</span>,
     y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span>
-      field <span class="op">=</span> <span class="st">"Sepal\\.Length"</span>, 
-      type <span class="op">=</span> <span class="st">"quantitative"</span>, 
-      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sepal.Length"</span><span class="op">)</span>
-    <span class="op">)</span>,
-    color <span class="op">=</span> <span class="st">"Species:N"</span>
-  <span class="op">)</span></code></pre></div>
-<div id="htmlwidget-932ed22ef97e18e6ffe6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-932ed22ef97e18e6ffe6">{"x":{
+      <span class="st">"market\\.potential:Q"</span>, 
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"market.potential"</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span><span class="op">$</span>
+  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">chart_freeny_r</span></code></pre></div>
+<div id="htmlwidget-b43570f850664d041674" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b43570f850664d041674">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -1428,1079 +654,304 @@
       }
     },
     "data": {
-      "name": "data-cec64a69603471250e34d4faa36aa021"
+      "name": "data-df1d3b74a619db2de4113ec28bf6578c"
     },
     "datasets": {
-      "data-cec64a69603471250e34d4faa36aa021": [
+      "data-df1d3b74a619db2de4113ec28bf6578c": [
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 5.8211,
+          "lag.quarterly.revenue": 8.79636,
+          "market.potential": 12.9699,
+          "price.index": 4.70997,
+          "y": 8.79236
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 5.82558,
+          "lag.quarterly.revenue": 8.79236,
+          "market.potential": 12.9733,
+          "price.index": 4.70217,
+          "y": 8.79137
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.7,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 5.83112,
+          "lag.quarterly.revenue": 8.79137,
+          "market.potential": 12.9774,
+          "price.index": 4.68944,
+          "y": 8.81486
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 5.84046,
+          "lag.quarterly.revenue": 8.81486,
+          "market.potential": 12.9806,
+          "price.index": 4.68558,
+          "y": 8.81301
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 5.85036,
+          "lag.quarterly.revenue": 8.81301,
+          "market.potential": 12.9831,
+          "price.index": 4.64019,
+          "y": 8.90751
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.9,
-          "Species": "setosa"
+          "income.level": 5.86464,
+          "lag.quarterly.revenue": 8.90751,
+          "market.potential": 12.9854,
+          "price.index": 4.62553,
+          "y": 8.93673
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.87769,
+          "lag.quarterly.revenue": 8.93673,
+          "market.potential": 12.99,
+          "price.index": 4.61991,
+          "y": 8.96161
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.89763,
+          "lag.quarterly.revenue": 8.96161,
+          "market.potential": 12.9943,
+          "price.index": 4.61654,
+          "y": 8.96044
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 2.9,
-          "Species": "setosa"
+          "income.level": 5.92574,
+          "lag.quarterly.revenue": 8.96044,
+          "market.potential": 12.9992,
+          "price.index": 4.61407,
+          "y": 9.00868
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 5.94232,
+          "lag.quarterly.revenue": 9.00868,
+          "market.potential": 13.0033,
+          "price.index": 4.60766,
+          "y": 9.03049
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
+          "income.level": 5.95365,
+          "lag.quarterly.revenue": 9.03049,
+          "market.potential": 13.0099,
+          "price.index": 4.60227,
+          "y": 9.06906
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 5.9612,
+          "lag.quarterly.revenue": 9.06906,
+          "market.potential": 13.0159,
+          "price.index": 4.5896,
+          "y": 9.05871
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 5.97805,
+          "lag.quarterly.revenue": 9.05871,
+          "market.potential": 13.0212,
+          "price.index": 4.57592,
+          "y": 9.10698
         },
         {
-          "Petal.Length": 1.1,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.3,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 6.00377,
+          "lag.quarterly.revenue": 9.10698,
+          "market.potential": 13.0265,
+          "price.index": 4.58661,
+          "y": 9.12685
         },
         {
-          "Petal.Length": 1.2,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 4,
-          "Species": "setosa"
+          "income.level": 6.02829,
+          "lag.quarterly.revenue": 9.12685,
+          "market.potential": 13.0351,
+          "price.index": 4.57997,
+          "y": 9.17096
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 4.4,
-          "Species": "setosa"
+          "income.level": 6.03475,
+          "lag.quarterly.revenue": 9.17096,
+          "market.potential": 13.0429,
+          "price.index": 4.57176,
+          "y": 9.18665
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.9,
-          "Species": "setosa"
+          "income.level": 6.03906,
+          "lag.quarterly.revenue": 9.18665,
+          "market.potential": 13.0497,
+          "price.index": 4.56104,
+          "y": 9.23823
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.05046,
+          "lag.quarterly.revenue": 9.23823,
+          "market.potential": 13.0551,
+          "price.index": 4.54906,
+          "y": 9.26487
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
+          "income.level": 6.05563,
+          "lag.quarterly.revenue": 9.26487,
+          "market.potential": 13.0634,
+          "price.index": 4.53957,
+          "y": 9.28436
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
+          "income.level": 6.06093,
+          "lag.quarterly.revenue": 9.28436,
+          "market.potential": 13.0693,
+          "price.index": 4.51018,
+          "y": 9.31378
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.07103,
+          "lag.quarterly.revenue": 9.31378,
+          "market.potential": 13.0737,
+          "price.index": 4.50352,
+          "y": 9.35025
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
+          "income.level": 6.08018,
+          "lag.quarterly.revenue": 9.35025,
+          "market.potential": 13.077,
+          "price.index": 4.4936,
+          "y": 9.35835
         },
         {
-          "Petal.Length": 1,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 6.08858,
+          "lag.quarterly.revenue": 9.35835,
+          "market.potential": 13.0849,
+          "price.index": 4.46505,
+          "y": 9.39767
         },
         {
-          "Petal.Length": 1.7,
-          "Petal.Width": 0.5,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.3,
-          "Species": "setosa"
+          "income.level": 6.10199,
+          "lag.quarterly.revenue": 9.39767,
+          "market.potential": 13.0918,
+          "price.index": 4.44924,
+          "y": 9.4215
         },
         {
-          "Petal.Length": 1.9,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.11207,
+          "lag.quarterly.revenue": 9.4215,
+          "market.potential": 13.095,
+          "price.index": 4.43966,
+          "y": 9.44223
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3,
-          "Species": "setosa"
+          "income.level": 6.11596,
+          "lag.quarterly.revenue": 9.44223,
+          "market.potential": 13.0984,
+          "price.index": 4.42025,
+          "y": 9.48721
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.12129,
+          "lag.quarterly.revenue": 9.48721,
+          "market.potential": 13.1089,
+          "price.index": 4.4106,
+          "y": 9.52374
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.122,
+          "lag.quarterly.revenue": 9.52374,
+          "market.potential": 13.1169,
+          "price.index": 4.41151,
+          "y": 9.5398
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.13119,
+          "lag.quarterly.revenue": 9.5398,
+          "market.potential": 13.1222,
+          "price.index": 4.3981,
+          "y": 9.58123
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.7,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 6.14705,
+          "lag.quarterly.revenue": 9.58123,
+          "market.potential": 13.1266,
+          "price.index": 4.38513,
+          "y": 9.60048
         },
         {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 6.15336,
+          "lag.quarterly.revenue": 9.60048,
+          "market.potential": 13.1356,
+          "price.index": 4.3732,
+          "y": 9.64496
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
+          "income.level": 6.15627,
+          "lag.quarterly.revenue": 9.64496,
+          "market.potential": 13.1415,
+          "price.index": 4.3277,
+          "y": 9.6439
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 4.1,
-          "Species": "setosa"
+          "income.level": 6.16274,
+          "lag.quarterly.revenue": 9.6439,
+          "market.potential": 13.1444,
+          "price.index": 4.32023,
+          "y": 9.69405
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 4.2,
-          "Species": "setosa"
+          "income.level": 6.17369,
+          "lag.quarterly.revenue": 9.69405,
+          "market.potential": 13.1459,
+          "price.index": 4.30909,
+          "y": 9.69958
         },
         {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.1,
-          "Species": "setosa"
+          "income.level": 6.16135,
+          "lag.quarterly.revenue": 9.69958,
+          "market.potential": 13.152,
+          "price.index": 4.30909,
+          "y": 9.68683
         },
         {
-          "Petal.Length": 1.2,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
+          "income.level": 6.18231,
+          "lag.quarterly.revenue": 9.68683,
+          "market.potential": 13.1593,
+          "price.index": 4.30552,
+          "y": 9.71774
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
+          "income.level": 6.18768,
+          "lag.quarterly.revenue": 9.71774,
+          "market.potential": 13.1579,
+          "price.index": 4.29627,
+          "y": 9.74924
         },
         {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 3.6,
-          "Species": "setosa"
+          "income.level": 6.19377,
+          "lag.quarterly.revenue": 9.74924,
+          "market.potential": 13.1625,
+          "price.index": 4.27839,
+          "y": 9.77536
         },
         {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.4,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.5,
-          "Sepal.Width": 2.3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.3,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.4,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.6,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.5,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.9,
-          "Petal.Width": 0.4,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.3,
-          "Sepal.Length": 4.8,
-          "Sepal.Width": 3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.6,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 3.8,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 4.6,
-          "Sepal.Width": 3.2,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.5,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5.3,
-          "Sepal.Width": 3.7,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 1.4,
-          "Petal.Width": 0.2,
-          "Sepal.Length": 5,
-          "Sepal.Width": 3.3,
-          "Species": "setosa"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 7,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.3,
-          "Petal.Width": 1,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 5.2,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.5,
-          "Petal.Width": 1,
-          "Sepal.Length": 5,
-          "Sepal.Width": 2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.6,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3.2,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.3,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.7,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.5,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.8,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.7,
-          "Petal.Width": 1,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.9,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 5.4,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 6,
-          "Sepal.Width": 3.4,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.7,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.4,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.5,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.6,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.6,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3.3,
-          "Petal.Width": 1,
-          "Sepal.Length": 5,
-          "Sepal.Width": 2.3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.7,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.2,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 3,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.2,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.3,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.9,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 3,
-          "Petal.Width": 1.1,
-          "Sepal.Length": 5.1,
-          "Sepal.Width": 2.5,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 4.1,
-          "Petal.Width": 1.3,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.8,
-          "Species": "versicolor"
-        },
-        {
-          "Petal.Length": 6,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.9,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 7.1,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.9,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.6,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 7.6,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.5,
-          "Petal.Width": 1.7,
-          "Sepal.Length": 4.9,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.3,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 7.3,
-          "Sepal.Width": 2.9,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.3,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 2,
-          "Sepal.Length": 5.7,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.3,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.7,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 3.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.9,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 2.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6,
-          "Sepal.Width": 2.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 2,
-          "Sepal.Length": 5.6,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.7,
-          "Petal.Width": 2,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.9,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.8,
-          "Petal.Width": 1.6,
-          "Sepal.Length": 7.2,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 7.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.4,
-          "Petal.Width": 2,
-          "Sepal.Length": 7.9,
-          "Sepal.Width": 3.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.2,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.5,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.8,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 1.4,
-          "Sepal.Length": 6.1,
-          "Sepal.Width": 2.6,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 6.1,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 7.7,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 3.4,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.5,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6.4,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 4.8,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 6,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.4,
-          "Petal.Width": 2.1,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.6,
-          "Petal.Width": 2.4,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.9,
-          "Sepal.Width": 3.1,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 5.8,
-          "Sepal.Width": 2.7,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.9,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.8,
-          "Sepal.Width": 3.2,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.7,
-          "Petal.Width": 2.5,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3.3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.2,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.7,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5,
-          "Petal.Width": 1.9,
-          "Sepal.Length": 6.3,
-          "Sepal.Width": 2.5,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.2,
-          "Petal.Width": 2,
-          "Sepal.Length": 6.5,
-          "Sepal.Width": 3,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.4,
-          "Petal.Width": 2.3,
-          "Sepal.Length": 6.2,
-          "Sepal.Width": 3.4,
-          "Species": "virginica"
-        },
-        {
-          "Petal.Length": 5.1,
-          "Petal.Width": 1.8,
-          "Sepal.Length": 5.9,
-          "Sepal.Width": 3,
-          "Species": "virginica"
+          "income.level": 6.2003,
+          "lag.quarterly.revenue": 9.77536,
+          "market.potential": 13.1664,
+          "price.index": 4.27789,
+          "y": 9.79424
         }
       ]
     },
     "encoding": {
-      "color": {
-        "field": "Species",
-        "type": "nominal"
-      },
       "x": {
         "axis": {
-          "title": "Sepal.Width"
+          "title": "income.level"
         },
-        "field": "[Sepal.Width]",
+        "field": "[income.level]",
+        "scale": {
+          "zero": false
+        },
         "type": "quantitative"
       },
       "y": {
         "axis": {
-          "title": "Sepal.Length"
+          "title": "market.potential"
         },
-        "field": "Sepal\\.Length",
+        "field": "market\\.potential",
+        "scale": {
+          "zero": false
+        },
         "type": "quantitative"
       }
     },
@@ -2519,11 +970,18 @@
 <p>However, the article notes, there is a catch: <code>repeat</code> is a reserved word in R, so we have to enclose it in backticks, e.g. <code>$`repeat`()</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart_repeat</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">iris</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
+  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">freeny</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"column"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"row"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-    color <span class="op">=</span> <span class="st">"species:N"</span>
+    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span>
+      <span class="st">"[income.level]:Q"</span>,
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"income.level"</span><span class="op">)</span>      
+    <span class="op">)</span>,
+    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span>
+      <span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"column"</span><span class="op">)</span>, 
+      type <span class="op">=</span> <span class="st">"quantitative"</span>,
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+    <span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">properties</span><span class="op">(</span>
@@ -2531,13 +989,12 @@
     height <span class="op">=</span> <span class="fl">200</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">`repeat`</span><span class="op">(</span>
-    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"petalLength"</span>, <span class="st">"petalWidth"</span><span class="op">)</span>,
-    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"sepalLength"</span>, <span class="st">"sepalWidth"</span><span class="op">)</span>
+    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"[market.potential]"</span>, <span class="st">"[price.index]"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">chart_repeat</span></code></pre></div>
-<div id="htmlwidget-6ddc3b65ce7c128b69c6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6ddc3b65ce7c128b69c6">{"x":{
+<div id="htmlwidget-8dc71be6dac9ca7321c0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8dc71be6dac9ca7321c0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -2547,1087 +1004,309 @@
       }
     },
     "datasets": {
-      "data-a264acbd6e539a8b3afc0cb5f240fb57": [
+      "data-df1d3b74a619db2de4113ec28bf6578c": [
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.5,
-          "species": "setosa"
+          "income.level": 5.8211,
+          "lag.quarterly.revenue": 8.79636,
+          "market.potential": 12.9699,
+          "price.index": 4.70997,
+          "y": 8.79236
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 4.9,
-          "sepalWidth": 3,
-          "species": "setosa"
+          "income.level": 5.82558,
+          "lag.quarterly.revenue": 8.79236,
+          "market.potential": 12.9733,
+          "price.index": 4.70217,
+          "y": 8.79137
         },
         {
-          "petalLength": 1.3,
-          "petalWidth": 0.2,
-          "sepalLength": 4.7,
-          "sepalWidth": 3.2,
-          "species": "setosa"
+          "income.level": 5.83112,
+          "lag.quarterly.revenue": 8.79137,
+          "market.potential": 12.9774,
+          "price.index": 4.68944,
+          "y": 8.81486
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 4.6,
-          "sepalWidth": 3.1,
-          "species": "setosa"
+          "income.level": 5.84046,
+          "lag.quarterly.revenue": 8.81486,
+          "market.potential": 12.9806,
+          "price.index": 4.68558,
+          "y": 8.81301
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 5,
-          "sepalWidth": 3.6,
-          "species": "setosa"
+          "income.level": 5.85036,
+          "lag.quarterly.revenue": 8.81301,
+          "market.potential": 12.9831,
+          "price.index": 4.64019,
+          "y": 8.90751
         },
         {
-          "petalLength": 1.7,
-          "petalWidth": 0.4,
-          "sepalLength": 5.4,
-          "sepalWidth": 3.9,
-          "species": "setosa"
+          "income.level": 5.86464,
+          "lag.quarterly.revenue": 8.90751,
+          "market.potential": 12.9854,
+          "price.index": 4.62553,
+          "y": 8.93673
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.3,
-          "sepalLength": 4.6,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 5.87769,
+          "lag.quarterly.revenue": 8.93673,
+          "market.potential": 12.99,
+          "price.index": 4.61991,
+          "y": 8.96161
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 5,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 5.89763,
+          "lag.quarterly.revenue": 8.96161,
+          "market.potential": 12.9943,
+          "price.index": 4.61654,
+          "y": 8.96044
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 4.4,
-          "sepalWidth": 2.9,
-          "species": "setosa"
+          "income.level": 5.92574,
+          "lag.quarterly.revenue": 8.96044,
+          "market.potential": 12.9992,
+          "price.index": 4.61407,
+          "y": 9.00868
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.1,
-          "sepalLength": 4.9,
-          "sepalWidth": 3.1,
-          "species": "setosa"
+          "income.level": 5.94232,
+          "lag.quarterly.revenue": 9.00868,
+          "market.potential": 13.0033,
+          "price.index": 4.60766,
+          "y": 9.03049
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 5.4,
-          "sepalWidth": 3.7,
-          "species": "setosa"
+          "income.level": 5.95365,
+          "lag.quarterly.revenue": 9.03049,
+          "market.potential": 13.0099,
+          "price.index": 4.60227,
+          "y": 9.06906
         },
         {
-          "petalLength": 1.6,
-          "petalWidth": 0.2,
-          "sepalLength": 4.8,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 5.9612,
+          "lag.quarterly.revenue": 9.06906,
+          "market.potential": 13.0159,
+          "price.index": 4.5896,
+          "y": 9.05871
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.1,
-          "sepalLength": 4.8,
-          "sepalWidth": 3,
-          "species": "setosa"
+          "income.level": 5.97805,
+          "lag.quarterly.revenue": 9.05871,
+          "market.potential": 13.0212,
+          "price.index": 4.57592,
+          "y": 9.10698
         },
         {
-          "petalLength": 1.1,
-          "petalWidth": 0.1,
-          "sepalLength": 4.3,
-          "sepalWidth": 3,
-          "species": "setosa"
+          "income.level": 6.00377,
+          "lag.quarterly.revenue": 9.10698,
+          "market.potential": 13.0265,
+          "price.index": 4.58661,
+          "y": 9.12685
         },
         {
-          "petalLength": 1.2,
-          "petalWidth": 0.2,
-          "sepalLength": 5.8,
-          "sepalWidth": 4,
-          "species": "setosa"
+          "income.level": 6.02829,
+          "lag.quarterly.revenue": 9.12685,
+          "market.potential": 13.0351,
+          "price.index": 4.57997,
+          "y": 9.17096
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.4,
-          "sepalLength": 5.7,
-          "sepalWidth": 4.4,
-          "species": "setosa"
+          "income.level": 6.03475,
+          "lag.quarterly.revenue": 9.17096,
+          "market.potential": 13.0429,
+          "price.index": 4.57176,
+          "y": 9.18665
         },
         {
-          "petalLength": 1.3,
-          "petalWidth": 0.4,
-          "sepalLength": 5.4,
-          "sepalWidth": 3.9,
-          "species": "setosa"
+          "income.level": 6.03906,
+          "lag.quarterly.revenue": 9.18665,
+          "market.potential": 13.0497,
+          "price.index": 4.56104,
+          "y": 9.23823
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.3,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.5,
-          "species": "setosa"
+          "income.level": 6.05046,
+          "lag.quarterly.revenue": 9.23823,
+          "market.potential": 13.0551,
+          "price.index": 4.54906,
+          "y": 9.26487
         },
         {
-          "petalLength": 1.7,
-          "petalWidth": 0.3,
-          "sepalLength": 5.7,
-          "sepalWidth": 3.8,
-          "species": "setosa"
+          "income.level": 6.05563,
+          "lag.quarterly.revenue": 9.26487,
+          "market.potential": 13.0634,
+          "price.index": 4.53957,
+          "y": 9.28436
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.3,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.8,
-          "species": "setosa"
+          "income.level": 6.06093,
+          "lag.quarterly.revenue": 9.28436,
+          "market.potential": 13.0693,
+          "price.index": 4.51018,
+          "y": 9.31378
         },
         {
-          "petalLength": 1.7,
-          "petalWidth": 0.2,
-          "sepalLength": 5.4,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 6.07103,
+          "lag.quarterly.revenue": 9.31378,
+          "market.potential": 13.0737,
+          "price.index": 4.50352,
+          "y": 9.35025
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.4,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.7,
-          "species": "setosa"
+          "income.level": 6.08018,
+          "lag.quarterly.revenue": 9.35025,
+          "market.potential": 13.077,
+          "price.index": 4.4936,
+          "y": 9.35835
         },
         {
-          "petalLength": 1,
-          "petalWidth": 0.2,
-          "sepalLength": 4.6,
-          "sepalWidth": 3.6,
-          "species": "setosa"
+          "income.level": 6.08858,
+          "lag.quarterly.revenue": 9.35835,
+          "market.potential": 13.0849,
+          "price.index": 4.46505,
+          "y": 9.39767
         },
         {
-          "petalLength": 1.7,
-          "petalWidth": 0.5,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.3,
-          "species": "setosa"
+          "income.level": 6.10199,
+          "lag.quarterly.revenue": 9.39767,
+          "market.potential": 13.0918,
+          "price.index": 4.44924,
+          "y": 9.4215
         },
         {
-          "petalLength": 1.9,
-          "petalWidth": 0.2,
-          "sepalLength": 4.8,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 6.11207,
+          "lag.quarterly.revenue": 9.4215,
+          "market.potential": 13.095,
+          "price.index": 4.43966,
+          "y": 9.44223
         },
         {
-          "petalLength": 1.6,
-          "petalWidth": 0.2,
-          "sepalLength": 5,
-          "sepalWidth": 3,
-          "species": "setosa"
+          "income.level": 6.11596,
+          "lag.quarterly.revenue": 9.44223,
+          "market.potential": 13.0984,
+          "price.index": 4.42025,
+          "y": 9.48721
         },
         {
-          "petalLength": 1.6,
-          "petalWidth": 0.4,
-          "sepalLength": 5,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 6.12129,
+          "lag.quarterly.revenue": 9.48721,
+          "market.potential": 13.1089,
+          "price.index": 4.4106,
+          "y": 9.52374
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 5.2,
-          "sepalWidth": 3.5,
-          "species": "setosa"
+          "income.level": 6.122,
+          "lag.quarterly.revenue": 9.52374,
+          "market.potential": 13.1169,
+          "price.index": 4.41151,
+          "y": 9.5398
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 5.2,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 6.13119,
+          "lag.quarterly.revenue": 9.5398,
+          "market.potential": 13.1222,
+          "price.index": 4.3981,
+          "y": 9.58123
         },
         {
-          "petalLength": 1.6,
-          "petalWidth": 0.2,
-          "sepalLength": 4.7,
-          "sepalWidth": 3.2,
-          "species": "setosa"
+          "income.level": 6.14705,
+          "lag.quarterly.revenue": 9.58123,
+          "market.potential": 13.1266,
+          "price.index": 4.38513,
+          "y": 9.60048
         },
         {
-          "petalLength": 1.6,
-          "petalWidth": 0.2,
-          "sepalLength": 4.8,
-          "sepalWidth": 3.1,
-          "species": "setosa"
+          "income.level": 6.15336,
+          "lag.quarterly.revenue": 9.60048,
+          "market.potential": 13.1356,
+          "price.index": 4.3732,
+          "y": 9.64496
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.4,
-          "sepalLength": 5.4,
-          "sepalWidth": 3.4,
-          "species": "setosa"
+          "income.level": 6.15627,
+          "lag.quarterly.revenue": 9.64496,
+          "market.potential": 13.1415,
+          "price.index": 4.3277,
+          "y": 9.6439
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.1,
-          "sepalLength": 5.2,
-          "sepalWidth": 4.1,
-          "species": "setosa"
+          "income.level": 6.16274,
+          "lag.quarterly.revenue": 9.6439,
+          "market.potential": 13.1444,
+          "price.index": 4.32023,
+          "y": 9.69405
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 5.5,
-          "sepalWidth": 4.2,
-          "species": "setosa"
+          "income.level": 6.17369,
+          "lag.quarterly.revenue": 9.69405,
+          "market.potential": 13.1459,
+          "price.index": 4.30909,
+          "y": 9.69958
         },
         {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 4.9,
-          "sepalWidth": 3.1,
-          "species": "setosa"
+          "income.level": 6.16135,
+          "lag.quarterly.revenue": 9.69958,
+          "market.potential": 13.152,
+          "price.index": 4.30909,
+          "y": 9.68683
         },
         {
-          "petalLength": 1.2,
-          "petalWidth": 0.2,
-          "sepalLength": 5,
-          "sepalWidth": 3.2,
-          "species": "setosa"
+          "income.level": 6.18231,
+          "lag.quarterly.revenue": 9.68683,
+          "market.potential": 13.1593,
+          "price.index": 4.30552,
+          "y": 9.71774
         },
         {
-          "petalLength": 1.3,
-          "petalWidth": 0.2,
-          "sepalLength": 5.5,
-          "sepalWidth": 3.5,
-          "species": "setosa"
+          "income.level": 6.18768,
+          "lag.quarterly.revenue": 9.71774,
+          "market.potential": 13.1579,
+          "price.index": 4.29627,
+          "y": 9.74924
         },
         {
-          "petalLength": 1.4,
-          "petalWidth": 0.1,
-          "sepalLength": 4.9,
-          "sepalWidth": 3.6,
-          "species": "setosa"
+          "income.level": 6.19377,
+          "lag.quarterly.revenue": 9.74924,
+          "market.potential": 13.1625,
+          "price.index": 4.27839,
+          "y": 9.77536
         },
         {
-          "petalLength": 1.3,
-          "petalWidth": 0.2,
-          "sepalLength": 4.4,
-          "sepalWidth": 3,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.4,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.3,
-          "petalWidth": 0.3,
-          "sepalLength": 5,
-          "sepalWidth": 3.5,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.3,
-          "petalWidth": 0.3,
-          "sepalLength": 4.5,
-          "sepalWidth": 2.3,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.3,
-          "petalWidth": 0.2,
-          "sepalLength": 4.4,
-          "sepalWidth": 3.2,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.6,
-          "petalWidth": 0.6,
-          "sepalLength": 5,
-          "sepalWidth": 3.5,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.9,
-          "petalWidth": 0.4,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.8,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.4,
-          "petalWidth": 0.3,
-          "sepalLength": 4.8,
-          "sepalWidth": 3,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.6,
-          "petalWidth": 0.2,
-          "sepalLength": 5.1,
-          "sepalWidth": 3.8,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 4.6,
-          "sepalWidth": 3.2,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.5,
-          "petalWidth": 0.2,
-          "sepalLength": 5.3,
-          "sepalWidth": 3.7,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 1.4,
-          "petalWidth": 0.2,
-          "sepalLength": 5,
-          "sepalWidth": 3.3,
-          "species": "setosa"
-        },
-        {
-          "petalLength": 4.7,
-          "petalWidth": 1.4,
-          "sepalLength": 7,
-          "sepalWidth": 3.2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.5,
-          "sepalLength": 6.4,
-          "sepalWidth": 3.2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.9,
-          "petalWidth": 1.5,
-          "sepalLength": 6.9,
-          "sepalWidth": 3.1,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4,
-          "petalWidth": 1.3,
-          "sepalLength": 5.5,
-          "sepalWidth": 2.3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.6,
-          "petalWidth": 1.5,
-          "sepalLength": 6.5,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.3,
-          "sepalLength": 5.7,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.7,
-          "petalWidth": 1.6,
-          "sepalLength": 6.3,
-          "sepalWidth": 3.3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.3,
-          "petalWidth": 1,
-          "sepalLength": 4.9,
-          "sepalWidth": 2.4,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.6,
-          "petalWidth": 1.3,
-          "sepalLength": 6.6,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.9,
-          "petalWidth": 1.4,
-          "sepalLength": 5.2,
-          "sepalWidth": 2.7,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.5,
-          "petalWidth": 1,
-          "sepalLength": 5,
-          "sepalWidth": 2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.2,
-          "petalWidth": 1.5,
-          "sepalLength": 5.9,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4,
-          "petalWidth": 1,
-          "sepalLength": 6,
-          "sepalWidth": 2.2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.7,
-          "petalWidth": 1.4,
-          "sepalLength": 6.1,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.6,
-          "petalWidth": 1.3,
-          "sepalLength": 5.6,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.4,
-          "petalWidth": 1.4,
-          "sepalLength": 6.7,
-          "sepalWidth": 3.1,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.5,
-          "sepalLength": 5.6,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.1,
-          "petalWidth": 1,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.7,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.5,
-          "sepalLength": 6.2,
-          "sepalWidth": 2.2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.9,
-          "petalWidth": 1.1,
-          "sepalLength": 5.6,
-          "sepalWidth": 2.5,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.8,
-          "petalWidth": 1.8,
-          "sepalLength": 5.9,
-          "sepalWidth": 3.2,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4,
-          "petalWidth": 1.3,
-          "sepalLength": 6.1,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.9,
-          "petalWidth": 1.5,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.5,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.7,
-          "petalWidth": 1.2,
-          "sepalLength": 6.1,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.3,
-          "petalWidth": 1.3,
-          "sepalLength": 6.4,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.4,
-          "petalWidth": 1.4,
-          "sepalLength": 6.6,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.8,
-          "petalWidth": 1.4,
-          "sepalLength": 6.8,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 5,
-          "petalWidth": 1.7,
-          "sepalLength": 6.7,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.5,
-          "sepalLength": 6,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.5,
-          "petalWidth": 1,
-          "sepalLength": 5.7,
-          "sepalWidth": 2.6,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.8,
-          "petalWidth": 1.1,
-          "sepalLength": 5.5,
-          "sepalWidth": 2.4,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.7,
-          "petalWidth": 1,
-          "sepalLength": 5.5,
-          "sepalWidth": 2.4,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.9,
-          "petalWidth": 1.2,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.7,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 1.6,
-          "sepalLength": 6,
-          "sepalWidth": 2.7,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.5,
-          "sepalLength": 5.4,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.6,
-          "sepalLength": 6,
-          "sepalWidth": 3.4,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.7,
-          "petalWidth": 1.5,
-          "sepalLength": 6.7,
-          "sepalWidth": 3.1,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.4,
-          "petalWidth": 1.3,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.1,
-          "petalWidth": 1.3,
-          "sepalLength": 5.6,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4,
-          "petalWidth": 1.3,
-          "sepalLength": 5.5,
-          "sepalWidth": 2.5,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.4,
-          "petalWidth": 1.2,
-          "sepalLength": 5.5,
-          "sepalWidth": 2.6,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.6,
-          "petalWidth": 1.4,
-          "sepalLength": 6.1,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4,
-          "petalWidth": 1.2,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.6,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3.3,
-          "petalWidth": 1,
-          "sepalLength": 5,
-          "sepalWidth": 2.3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.2,
-          "petalWidth": 1.3,
-          "sepalLength": 5.6,
-          "sepalWidth": 2.7,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.2,
-          "petalWidth": 1.2,
-          "sepalLength": 5.7,
-          "sepalWidth": 3,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.2,
-          "petalWidth": 1.3,
-          "sepalLength": 5.7,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.3,
-          "petalWidth": 1.3,
-          "sepalLength": 6.2,
-          "sepalWidth": 2.9,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 3,
-          "petalWidth": 1.1,
-          "sepalLength": 5.1,
-          "sepalWidth": 2.5,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 4.1,
-          "petalWidth": 1.3,
-          "sepalLength": 5.7,
-          "sepalWidth": 2.8,
-          "species": "versicolor"
-        },
-        {
-          "petalLength": 6,
-          "petalWidth": 2.5,
-          "sepalLength": 6.3,
-          "sepalWidth": 3.3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 1.9,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.7,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.9,
-          "petalWidth": 2.1,
-          "sepalLength": 7.1,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 1.8,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.9,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.8,
-          "petalWidth": 2.2,
-          "sepalLength": 6.5,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.6,
-          "petalWidth": 2.1,
-          "sepalLength": 7.6,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.5,
-          "petalWidth": 1.7,
-          "sepalLength": 4.9,
-          "sepalWidth": 2.5,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.3,
-          "petalWidth": 1.8,
-          "sepalLength": 7.3,
-          "sepalWidth": 2.9,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.8,
-          "petalWidth": 1.8,
-          "sepalLength": 6.7,
-          "sepalWidth": 2.5,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.1,
-          "petalWidth": 2.5,
-          "sepalLength": 7.2,
-          "sepalWidth": 3.6,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 2,
-          "sepalLength": 6.5,
-          "sepalWidth": 3.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.3,
-          "petalWidth": 1.9,
-          "sepalLength": 6.4,
-          "sepalWidth": 2.7,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.5,
-          "petalWidth": 2.1,
-          "sepalLength": 6.8,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5,
-          "petalWidth": 2,
-          "sepalLength": 5.7,
-          "sepalWidth": 2.5,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 2.4,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.3,
-          "petalWidth": 2.3,
-          "sepalLength": 6.4,
-          "sepalWidth": 3.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.5,
-          "petalWidth": 1.8,
-          "sepalLength": 6.5,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.7,
-          "petalWidth": 2.2,
-          "sepalLength": 7.7,
-          "sepalWidth": 3.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.9,
-          "petalWidth": 2.3,
-          "sepalLength": 7.7,
-          "sepalWidth": 2.6,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5,
-          "petalWidth": 1.5,
-          "sepalLength": 6,
-          "sepalWidth": 2.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.7,
-          "petalWidth": 2.3,
-          "sepalLength": 6.9,
-          "sepalWidth": 3.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.9,
-          "petalWidth": 2,
-          "sepalLength": 5.6,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.7,
-          "petalWidth": 2,
-          "sepalLength": 7.7,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.9,
-          "petalWidth": 1.8,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.7,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.7,
-          "petalWidth": 2.1,
-          "sepalLength": 6.7,
-          "sepalWidth": 3.3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6,
-          "petalWidth": 1.8,
-          "sepalLength": 7.2,
-          "sepalWidth": 3.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.8,
-          "petalWidth": 1.8,
-          "sepalLength": 6.2,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.9,
-          "petalWidth": 1.8,
-          "sepalLength": 6.1,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 2.1,
-          "sepalLength": 6.4,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.8,
-          "petalWidth": 1.6,
-          "sepalLength": 7.2,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.1,
-          "petalWidth": 1.9,
-          "sepalLength": 7.4,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.4,
-          "petalWidth": 2,
-          "sepalLength": 7.9,
-          "sepalWidth": 3.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 2.2,
-          "sepalLength": 6.4,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 1.5,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.8,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 1.4,
-          "sepalLength": 6.1,
-          "sepalWidth": 2.6,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 6.1,
-          "petalWidth": 2.3,
-          "sepalLength": 7.7,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 2.4,
-          "sepalLength": 6.3,
-          "sepalWidth": 3.4,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.5,
-          "petalWidth": 1.8,
-          "sepalLength": 6.4,
-          "sepalWidth": 3.1,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 4.8,
-          "petalWidth": 1.8,
-          "sepalLength": 6,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.4,
-          "petalWidth": 2.1,
-          "sepalLength": 6.9,
-          "sepalWidth": 3.1,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.6,
-          "petalWidth": 2.4,
-          "sepalLength": 6.7,
-          "sepalWidth": 3.1,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 2.3,
-          "sepalLength": 6.9,
-          "sepalWidth": 3.1,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 1.9,
-          "sepalLength": 5.8,
-          "sepalWidth": 2.7,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.9,
-          "petalWidth": 2.3,
-          "sepalLength": 6.8,
-          "sepalWidth": 3.2,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.7,
-          "petalWidth": 2.5,
-          "sepalLength": 6.7,
-          "sepalWidth": 3.3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.2,
-          "petalWidth": 2.3,
-          "sepalLength": 6.7,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5,
-          "petalWidth": 1.9,
-          "sepalLength": 6.3,
-          "sepalWidth": 2.5,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.2,
-          "petalWidth": 2,
-          "sepalLength": 6.5,
-          "sepalWidth": 3,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.4,
-          "petalWidth": 2.3,
-          "sepalLength": 6.2,
-          "sepalWidth": 3.4,
-          "species": "virginica"
-        },
-        {
-          "petalLength": 5.1,
-          "petalWidth": 1.8,
-          "sepalLength": 5.9,
-          "sepalWidth": 3,
-          "species": "virginica"
+          "income.level": 6.2003,
+          "lag.quarterly.revenue": 9.77536,
+          "market.potential": 13.1664,
+          "price.index": 4.27789,
+          "y": 9.79424
         }
       ]
     },
     "repeat": {
       "column": [
-        "sepalLength",
-        "sepalWidth"
-      ],
-      "row": [
-        "petalLength",
-        "petalWidth"
+        "[market.potential]",
+        "[price.index]"
       ]
     },
     "spec": {
       "data": {
-        "name": "data-a264acbd6e539a8b3afc0cb5f240fb57"
+        "name": "data-df1d3b74a619db2de4113ec28bf6578c"
       },
       "encoding": {
-        "color": {
-          "field": "species",
-          "type": "nominal"
-        },
         "x": {
-          "field": {
-            "repeat": "column"
+          "axis": {
+            "title": "income.level"
+          },
+          "field": "[income.level]",
+          "scale": {
+            "zero": false
           },
           "type": "quantitative"
         },
         "y": {
           "field": {
-            "repeat": "row"
+            "repeat": "column"
+          },
+          "scale": {
+            "zero": false
           },
           "type": "quantitative"
         }
@@ -3641,7 +1320,7 @@
     "defaultStyle": true,
     "renderer": "canvas"
   }
-},"evals":[],"jsHooks":[]}</script>
+},"evals":[],"jsHooks":[]}</script><p>As you can see, the <code>repeat</code> operator does not give us a way to customize the axis titles.</p>
 </div>
 <div id="inversion" class="section level2">
 <h2 class="hasAnchor">
@@ -3768,8 +1447,8 @@
   <span class="fu">layer</span><span class="op">(</span><span class="va">background</span>, <span class="va">highlight</span>, data <span class="op">=</span> <span class="va">flights</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_calculate</span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"hours(datum.date)"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">`repeat`</span><span class="op">(</span>column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-30edf71b0b2d6ce68de7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-30edf71b0b2d6ce68de7">{"x":{
+<div id="htmlwidget-b2dafde3237c555e0adb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b2dafde3237c555e0adb">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -3920,8 +1599,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-8b00f20457ae038bd195" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8b00f20457ae038bd195">{"x":{
+<div id="htmlwidget-eebd455c9632c77ccee0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eebd455c9632c77ccee0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
