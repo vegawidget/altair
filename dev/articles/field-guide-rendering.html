@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9003</span>
       </span>
     </div>
 
@@ -159,7 +159,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Rendering Charts</h1>
             
-            <h4 class="date">2020-12-11</h4>
+            <h4 class="date">2020-12-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/field-guide-rendering.Rmd"><code>vignettes/field-guide-rendering.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-rendering.Rmd</code></div>
@@ -194,6 +194,43 @@
 <li>
 <a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies">Knitting strategies</a>, including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF.</li>
 </ul>
+</div>
+<div id="rendering-speed-for-interactive-work" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rendering-speed-for-interactive-work" class="anchor"></a>Rendering speed for interactive work</h2>
+<p>Rather than embed the data itself into the chart spec as JSON (this will become very slow as the data gets to be more than 5000 rows), Altair has an option (supported by Vega-Lite’s URL loader) that saves your data as a JSON file that is referenced in the chart spec.</p>
+<p>Keep in mind that this will work only for interactive (non-knitting) work. In Python you would set <code>alt.data_transformers.enable('json')</code>; in R this becomes:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<span class="va">alt</span><span class="op">$</span><span class="va">data_transformers</span><span class="op">$</span><span class="fu">enable</span><span class="op">(</span><span class="st">'json'</span><span class="op">)</span></code></pre></div>
+<p>The problem is that you won’t see charts in the RStudio pane anymore. This won’t work:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">chart</span> <span class="op">&lt;-</span> 
+     <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
+     <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
+     <span class="fu">encode</span><span class="op">(</span>
+         x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
+         y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
+         color <span class="op">=</span> <span class="st">"Origin:N"</span>,
+         tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
+     <span class="op">)</span>
+
+<span class="va">chart</span></code></pre></div>
+<p>This calls the print method on chart, which runs <code><a href="../reference/vegawidget.html">vegawidget(chart)</a></code>; instead, you need to tell <code><a href="../reference/vegawidget.html">vegawidget()</a></code> where it can expect your external file. If you use</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span>, base_url<span class="op">=</span><span class="st">'.'</span><span class="op">)</span></code></pre></div>
+<p>you’ll see the chart now!</p>
+<p>Keep in mind that by using <code>alt$data_transformers$enable('json')</code>, <strong>all</strong> charts you create subsequently will write out data files. You can also set an R option that <code><a href="../reference/vegawidget.html">vegawidget()</a></code> will use without needing to specify the <code>base_url</code> argument:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<span class="va">alt</span><span class="op">$</span><span class="va">data_transformers</span><span class="op">$</span><span class="fu">enable</span><span class="op">(</span><span class="st">'json'</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>vega.embed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>loader <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>baseURL <span class="op">=</span> <span class="st">'.'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Like the <code>data_transformers</code>, you need set the <code>option</code> only once in a session; see <code><a href="https://rdrr.io/pkg/vegawidget/man/vega_embed.html">vegawidget::vega_embed()</a></code> for more details.</p>
+<p>Then, this should <em>just work</em> interactively:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">chart</span></code></pre></div>
 </div>
   </div>
 
