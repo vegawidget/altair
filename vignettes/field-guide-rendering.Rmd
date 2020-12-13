@@ -37,3 +37,56 @@ These are discussed in these sections of the vegawidget rendering-article:
 - [Setting R options](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#setting-r-options), can be set a number of ways
 - [Knitting strategies](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies), including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF.
 
+## Rendering speed for interactive work 
+
+Rather than embed the data itself into the chart spec as JSON (this will become very slow as the data gets to be more than 5000 rows), Altair has an option (supported by Vega-Lite's URL loader) that saves your data as a JSON file that is referenced in the chart spec. 
+
+Keep in mind that this will work only for interactive (non-knitting) work. In Python you would set `alt.data_transformers.enable('json')`; in R this becomes:
+
+```r
+library("altair")
+alt$data_transformers$enable('json')
+```
+
+The problem is that you won't see charts in the RStudio pane anymore. This won't work:
+
+```r
+vega_data <- import_vega_data()
+
+chart <- 
+     alt$Chart(vega_data$cars())$
+     mark_point()$
+     encode(
+         x = "Horsepower:Q",
+         y = "Miles_per_Gallon:Q",
+         color = "Origin:N",
+         tooltip = c("Name", "Horsepower", "Miles_per_Gallon", "Origin")
+     )
+
+chart
+```
+
+This calls the print method on chart, which runs `vegawidget(chart)`; instead, you need to tell `vegawidget()` where it can expect your external file. If you use
+
+```r
+vegawidget(chart, base_url='.')
+```
+
+you'll see the chart now!
+
+Keep in mind that by using `alt$data_transformers$enable('json')`, **all** charts you create subsequently will write out data files. You can also set an R option that `vegawidget()` will use without needing to specify the `base_url` argument:
+
+```r
+library("altair")
+alt$data_transformers$enable('json')
+options(vega.embed = list(loader = list(baseURL = '.')))
+```
+
+Like the `data_transformers`, you need set the `option` only once in a session; see `vegawidget::vega_embed()` for more details.
+
+Then, this should *just work* interactively:
+
+```r
+chart
+```
+
