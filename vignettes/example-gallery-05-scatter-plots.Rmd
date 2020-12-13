@@ -254,21 +254,23 @@ chart
 
 #### Data
 
+We will use the cars dataset here.
+
 ```{r}
-glimpse(vega_data$iris())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
 chart <- 
-  alt$Chart(vega_data$iris())$
+  alt$Chart(vega_data$cars())$
   mark_circle()$
   encode(
-    x = alt$X("sepalLength", scale = alt$Scale(zero = FALSE)),
-    y = alt$Y("sepalWidth", scale = alt$Scale(zero = FALSE, padding = 1)),
-    color = "species",
-    size = "petalWidth"
+    x = alt$X("Weight_in_lbs", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("Miles_per_Gallon", scale = alt$Scale(zero = FALSE, padding = 1)),
+    color = alt$Color("Cylinders:N"),
+    size = "Displacement"
   )
 
 chart

@@ -495,70 +495,7 @@ error_bars + points
 
 [Altair Example](https://altair-viz.github.io/gallery/scatter_marginal_hist.html)
 
-There is a slight difference from the Altair example in the `yscale`, to get everything to line-up correctly.
-
-#### Data
-
-```{r}
-glimpse(vega_data$iris())
-```
-
-#### Chart
-
-```{r}
-iris <- vega_data$iris()
-
-xscale <- alt$Scale(domain = list(4.0, 8.0))
-yscale <- alt$Scale(domain = list(1.8, 4.6))
-
-blank_axis <- alt$Axis(title = "")
-
-points <- 
-  alt$Chart(iris)$
-  mark_circle()$
-  encode(
-    alt$X("sepalLength", scale = xscale),
-    alt$Y("sepalWidth", scale = yscale),
-    color = "species"
-  )
-
-top_hist <-
-  alt$Chart(iris)$
-  mark_area(opacity = 0.3, interpolate = "step")$
-  encode(
-    x = alt$X(
-      "sepalLength:Q",
-      # when using bins, the axis scale is set through
-      # the bin extent, so we do not specify the scale here
-      # (which would be ignored anyway)
-      bin = alt$Bin(maxbins = 20, extent = xscale$domain),
-      stack = NULL,
-      axis = blank_axis
-    ),
-    y = alt$Y("count(sepalLength)", stack = NULL, axis = blank_axis),
-    color = alt$Color("species:N")
-  )$
-  properties(height = 60)
-
-right_hist <- 
-  alt$Chart(iris)$
-  mark_area(opacity = 0.3, interpolate = "step")$
-  encode(
-    x = alt$X("count(sepalWidth)", stack = NULL, axis = blank_axis),
-    y = alt$Y(
-      "sepalWidth:Q",
-      bin = alt$Bin(maxbins = 20, extent = yscale$domain),
-      stack = NULL,
-      axis = blank_axis
-    ),
-    color = alt$Color("species:N")
-  )$
-  properties(width = 60)
-
-chart <- (top_hist & (points | right_hist))
-
-chart
-```
+Removing this example in anticipation of a new example using a suitable dataset.
 
 ## Gantt Chart
 
@@ -666,31 +603,32 @@ chart
 
 ## Normalized Parallel Coordinates Example
 
-
 [Altair Example](https://altair-viz.github.io/gallery/normed_parallel_coordinates.html)
 
 > A [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) chart is a chart that lets you visualize the individual data points by drawing a single line for each of them.
 >
 > Such a chart can be created in Altair by first transforming the data into a suitable representation.
 >
-> This example shows a modified parallel coordinates chart with the Iris dataset, where the y-axis shows the value after min-max rather than the raw value. It’s a simplified Altair version of [the VegaLite version](https://vega.github.io/vega-lite/examples/parallel_coordinate.html).
+> This example shows a modified parallel coordinates chart ..., where the y-axis shows the value after min-max rather than the raw value. It’s a simplified Altair version of [the VegaLite version](https://vega.github.io/vega-lite/examples/parallel_coordinate.html).
 
 #### Data
 
 ```{r}
-glimpse(vega_data$iris())
+glimpse(vega_data$cars())
 ```
 
 #### Chart
 
 ```{r}
-source <- vega_data$iris()
+source <- vega_data$cars()
+
+source <- source[complete.cases(source), ]
 
 chart <-
   alt$Chart(source)$
   transform_window(index="count()")$
   transform_fold(
-    list("petalLength", "petalWidth", "sepalLength", "sepalWidth")
+    list("Acceleration", "Displacement", "Horsepower", "Weight_in_lbs")
   )$
   transform_joinaggregate(
     groupby = list("key"),
@@ -705,51 +643,22 @@ chart <-
   encode(
     x = "key:N",
     y = "minmax_value:Q",
-    color = "species:N",
+    color = "Cylinders:N",
     detail = "index:N",
-    opacity = alt$value(0.5)
-  )$properties(width = 500)
-
-chart
-```
-
-## Parallel Coordinates Example
-
-
-[Altair Example](https://altair-viz.github.io/gallery/parallel_coordinates.html)
-
-> A [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a parallel coordinates chart with the Iris dataset.
-
-#### Data
-
-```{r}
-glimpse(vega_data$iris())
-```
-
-#### Chart
-
-```{r}
-source <- vega_data$iris()
-
-chart <-
-  alt$Chart(source)$
-  transform_window(index = "count()")$
-  transform_fold(
-    list("petalLength", "petalWidth", "sepalLength", "sepalWidth")
-  )$
-  mark_line()$
-  encode(
-    x = "key:N",
-    y = "value:Q",
-    color = "species:N",
-    detail = "index:N",
-    opacity = alt$value(0.5)
+    opacity = alt$value(0.3)
   )$
   properties(width = 500)
 
 chart
 ```
 
+## Parallel Coordinates Example
+
+[Altair Example](https://altair-viz.github.io/gallery/parallel_coordinates.html)
+
+> A [Parallel Coordinates](https://en.wikipedia.org/wiki/Parallel_coordinates) chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. 
+
+Removing this example in anticipation of a new example using a suitable dataset.
 
 ## Ranged Dot Plot
 
