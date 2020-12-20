@@ -47,8 +47,8 @@ chart <-
   alt$Chart(vega_data$movies$url)$
   mark_circle()$
   encode(
-    alt$X("IMDB Rating:Q", bin = TRUE),
-    alt$Y("Rotten Tomatoes Rating:Q", bin = TRUE),
+    alt$X("IMDB_Rating:Q", bin = TRUE),
+    alt$Y("Rotten_Tomatoes_Rating:Q", bin = TRUE),
     size = "count()"
   )
 

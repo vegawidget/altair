@@ -89,8 +89,8 @@ rect <-
   alt$Chart(vega_data$movies$url)$
   mark_rect()$
   encode(
-    x = alt$X("IMDB Rating:Q", bin = TRUE),
-    y = alt$Y("Rotten Tomatoes Rating:Q", bin=TRUE),
+    x = alt$X("IMDB_Rating:Q", bin = TRUE),
+    y = alt$Y("Rotten_Tomatoes_Rating:Q", bin=TRUE),
     color = alt$Color(
       "count()",
       scale = alt$Scale(scheme = "greenblue"),
@@ -114,7 +114,7 @@ bar <-
   alt$Chart(vega_data$movies$url)$
   mark_bar()$
   encode(
-    x = "Major Genre:N",
+    x = "Major_Genre:N",
     y = "count()",
     color = alt$condition(
       pts, 
@@ -518,25 +518,22 @@ base <-
   alt$Chart(movies, width = 200, height = 200)$
   mark_point(filled = TRUE)$
   transform_calculate(
-    # note - in a future release, this should be revisited
-    rtg = "datum['IMDB_Rating']",
-    rls_date = "datum['Release Date']",
-    Rounded_IMDB_Rating = "floor(datum.rtg)",
+    Rounded_IMDB_Rating = "floor(datum.IMDB_Rating)",
     Hundred_Million_Production = "datum.Production_Budget > 100000000.0 ? 100 : 10",
-    Release_Year = "year(datum.rls_date)"
+    Release_Year = "year(datum.Release_Date)"
   )$
   transform_filter(
-    "datum['IMDB Rating'] > 0"
+    "datum.IMDB_Rating > 0"
   )$
   transform_filter(
-    alt$FieldOneOfPredicate(field = "MPAA Rating", oneOf = ratings)
+    alt$FieldOneOfPredicate(field = "MPAA_Rating", oneOf = ratings)
   )$encode(
     x = alt$X(
-      field = "Worldwide Gross",
+      field = "Worldwide_Gross",
       type = "quantitative",
       scale = alt$Scale(domain = c(100000, 10**9), clamp = TRUE)
     ),
-    y = alt$Y(field = "IMDB Rating", type = "quantitative"),
+    y = alt$Y(field = "IMDB_Rating", type = "quantitative"),
     tooltip = "Title:N"
   )
 
@@ -558,7 +555,7 @@ filter_year <- base$
 genre_dropdown <- alt$binding_select(options = genres)
 genre_select <- 
   alt$selection_single(
-    fields = list("Major Genre"), 
+    fields = list("Major_Genre"), 
     bind = genre_dropdown,
     name = "Genre"
   )
@@ -574,7 +571,7 @@ rating_radio <- alt$binding_radio(options = ratings)
 
 rating_select <- 
   alt$selection_single(
-    fields = list("MPAA Rating"), 
+    fields = list("MPAA_Rating"), 
     bind = rating_radio, 
     name = "Rating"
   )
@@ -582,7 +579,7 @@ rating_select <-
 rating_color_condition <- 
   alt$condition(
     rating_select,
-    alt$Color("MPAA Rating:N", legend = NULL),
+    alt$Color("MPAA_Rating:N", legend = NULL),
     alt$value("lightgray")
   )
 

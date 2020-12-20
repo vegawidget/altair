@@ -983,17 +983,17 @@ chart <-
     x = alt$X(
       "Title:N",
       sort = alt$EncodingSortField(
-        field = "IMDB Rating", 
+        field = "IMDB_Rating", 
         op = "mean", 
         order = "descending"
       )
     ),
-    y = alt$Y("IMDB Rating:Q"),
-    color = alt$Color("IMDB Rating:Q")
+    y = alt$Y("IMDB_Rating:Q"),
+    color = alt$Color("IMDB_Rating:Q")
   )$
   transform_window(
     rank = "rank(IMDB_Rating)",
-    sort = list(alt$SortField("IMDB Rating", order = "descending"))
+    sort = list(alt$SortField("IMDB_Rating", order = "descending"))
   )$
   transform_filter("datum.rank < 10")
 
