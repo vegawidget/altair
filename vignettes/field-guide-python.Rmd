@@ -156,36 +156,34 @@ address(chart_new) == address(chart)
 
 In Python, dots can refer to a nested structure within a Data Frame variable. Vega-Lite supports such nesting, so it assumes that a dot in a variable-name will refer to a nested variable. 
 
-This means that we can run into trouble using R's `iris` dataset:
+This means that we can run into trouble using R's `freeny` dataset:
 
 ```{r eval = FALSE}
 # does not render properly
 
-chart_iris_r <-
-  alt$Chart(iris)$
+chart_freeny_r <-
+  alt$Chart(freeny)$
   encode(
-    x = "Sepal.Width:Q",
-    y = "Sepal.Length:Q",
-    color = "Species:N"
+    x = alt$X("income.level:Q", zero = FALSE),
+    y = alt$Y("market.potential:Q", zero = FALSE)
   )$
   mark_point()
 
-chart_iris_r
+chart_freeny_r
 ```
 
-The problem here is that there are variables whose names have dots in them, e.g. `Sepal.Width`. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, `\\`:
+The problem here is that there are variables whose names have dots in them, e.g. `income.level`. One workaround is to use square brackets when referring to such variable names; another is to use backslashes, `\\`:
 
 ```{r}
-chart_iris_r <-
-  alt$Chart(iris)$
+chart_freeny_r <-
+  alt$Chart(freeny)$
   encode(
-    x = "[Sepal.Width]:Q",
-    y = "Sepal\\.Length:Q",
-    color = "Species:N"
+    x = alt$X("[income.level]:Q", scale = alt$Scale(zero = FALSE)),
+    y = alt$Y("market\\.potential:Q", scale = alt$Scale(zero = FALSE))
   )$
   mark_point()
 
-chart_iris_r
+chart_freeny_r
 ```
 
 As you can see, this has the side-effect of showing the brackets and slashes in the scale labels.
@@ -193,20 +191,23 @@ As you can see, this has the side-effect of showing the brackets and slashes in 
 To fix the fix, you can set the title for each axis:
 
 ```{r}
-chart_iris_r$ 
+chart_freeny_r <-
+  alt$Chart(freeny)$
   encode(
     x = alt$X(
-      field = "[Sepal.Width]", 
-      type = "quantitative", 
-      axis = alt$Axis(title = "Sepal.Width")
+      "[income.level]:Q", 
+      scale = alt$Scale(zero = FALSE),
+      axis = alt$Axis(title = "income.level")
     ),
     y = alt$Y(
-      field = "Sepal\\.Length", 
-      type = "quantitative", 
-      axis = alt$Axis(title = "Sepal.Length")
-    ),
-    color = "Species:N"
-  )
+      "market\\.potential:Q", 
+      scale = alt$Scale(zero = FALSE),
+      axis = alt$Axis(title = "market.potential")
+    )
+  )$
+  mark_point()
+
+chart_freeny_r
 ```
 
 ## Repeat
@@ -217,11 +218,18 @@ However, the article notes, there is a catch: `repeat` is a reserved word in R, 
 
 ```{r repeat}
 chart_repeat <- 
-  alt$Chart(vega_data$iris())$
+  alt$Chart(freeny)$
   encode(
-    x = alt$X(alt$`repeat`("column"), type = "quantitative"),
-    y = alt$Y(alt$`repeat`("row"), type = "quantitative"),
-    color = "species:N"
+    x = alt$X(
+      "[income.level]:Q",
+      scale = alt$Scale(zero = FALSE),
+      axis = alt$Axis(title = "income.level")      
+    ),
+    y = alt$Y(
+      alt$`repeat`("column"), 
+      type = "quantitative",
+      scale = alt$Scale(zero = FALSE)
+    )
   )$
   mark_point()$
   properties(
@@ -229,12 +237,13 @@ chart_repeat <-
     height = 200
   )$
   `repeat`(
-    row = list("petalLength", "petalWidth"),
-    column = list("sepalLength", "sepalWidth")
+    column = list("[market.potential]", "[price.index]")
   )
 
 chart_repeat
 ```
+
+As you can see, the `repeat` operator does not give us a way to customize the axis titles.
 
 ## Inversion: `~`
 

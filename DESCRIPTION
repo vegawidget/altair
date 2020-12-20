@@ -1,5 +1,5 @@
 Package: altair
-Version: 4.0.1.9003
+Version: 4.0.1.9005
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite>.
