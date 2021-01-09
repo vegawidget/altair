@@ -2,6 +2,8 @@
 
 * Upgrade to Altair 4.0.0
 
+* Re-export `vegawidget::vw_set_base_url()`, sets default base URL when rendering specs.
+
 # altair 3.1.1
 
 * Deprecate `vw_as_json()`, `vegawidgetOutput()`, `renderVegawidget()`; these are available in the **vegawidget** package. (#117)
