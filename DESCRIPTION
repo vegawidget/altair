@@ -61,6 +61,6 @@ Suggests:
     png,
     fs
 Remotes:
-    vegawidget/vegawidget#133
+    vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
