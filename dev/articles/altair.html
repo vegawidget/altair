@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9004</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.0.1.9005</span>
       </span>
     </div>
 
@@ -43,7 +43,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -133,7 +133,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/vegawidget/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,15 +153,14 @@
 
       
 
-      </header><script src="altair_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="altair_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="altair_files/anchor-sections-1.0/anchor-sections.js"></script><script src="altair_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="altair_files/vega-5.9.0/vega.min.js"></script><script src="altair_files/vega-lite-4.0.2/vega-lite.min.js"></script><link href="altair_files/vega-embed-6.2.0/vega-embed.css" rel="stylesheet">
-<script src="altair_files/vega-embed-6.2.0/vega-embed.js"></script><script src="altair_files/vegawidget-binding-0.3.1.9013/vegawidget.js"></script><link href="altair_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
+      </header><script src="altair_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="altair_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="altair_files/vega-5.17.0/vega.min.js"></script><script src="altair_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="altair_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="altair_files/vega-embed-6.12.2/vega-embed.js"></script><script src="altair_files/vegawidget-binding-0.3.1.9016/vegawidget.js"></script><link href="altair_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
 <script src="altair_files/jsoneditor-5.25.6/jsoneditor.min.js"></script><script src="altair_files/jsonedit-binding-3.0.0/jsonedit.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started</h1>
             
-            <h4 class="date">2020-12-13</h4>
+            <h4 class="date">2021-01-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/altair.Rmd"><code>vignettes/altair.Rmd</code></a></small>
       <div class="hidden name"><code>altair.Rmd</code></div>
@@ -190,8 +189,8 @@
   <span class="op">)</span>
 
 <span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-439d2022732ea5e14ea8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-439d2022732ea5e14ea8">{"x":{
+<div id="htmlwidget-b572d7ae389a2a67553b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b572d7ae389a2a67553b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -4708,8 +4707,8 @@
     "mark": "point"
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><div id="installation" class="section level3">
 <h3 class="hasAnchor">
@@ -4800,8 +4799,8 @@
 <p>Now that we have specified our chart, it remains to display it. This package provides a function <code><a href="../reference/vegawidget.html">vegawidget()</a></code> that takes a chart object then renders and embeds it as an <a href="https://www.htmlwidgets.org">htmlwidget</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-efbf03fe00cce9425859" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-efbf03fe00cce9425859">{"x":{
+<div id="htmlwidget-674ce4daad8927676f27" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-674ce4daad8927676f27">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -9318,14 +9317,14 @@
     "mark": "point"
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>However, if you are using its defaults, you need not call the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function explicitly, as this package provides a <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> method and a <code>knit_print()</code> method.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-45c7f73b2bb91e52f348" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-45c7f73b2bb91e52f348">{"x":{
+<div id="htmlwidget-6053e06b6da6c12f6ba8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6053e06b6da6c12f6ba8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
     "config": {
@@ -13842,15 +13841,15 @@
     "mark": "point"
   },
   "embed_options": {
-    "defaultStyle": true,
-    "renderer": "canvas"
+    "renderer": "canvas",
+    "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>More details on rendering charts, including how sizing works, are found in the article <a href="field-guide-rendering.html">Field Guide to Rendering</a>.</p>
 <p>You can examine the chart-specification by using <code><a href="https://rdrr.io/pkg/vegawidget/man/vw_examine.html">vegawidget::vw_examine()</a></code> function, which wraps <code><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html">listviewer::jsonedit()</a></code>. To use this function, you will need to install the <strong>listviewer</strong> package from CRAN.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">vegawidget</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/vegawidget/man/vw_examine.html">vw_examine</a></span><span class="op">(</span><span class="va">chart</span>, mode <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-216c6a30358204f4a1fc" style="width:100%;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-216c6a30358204f4a1fc">{"x":{"data":{
+<div id="htmlwidget-2cdc07f89cb8deca6599" style="width:100%;height:432.632880098888px;" class="jsonedit html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2cdc07f89cb8deca6599">{"x":{"data":{
   "$schema": "https://vega.github.io/schema/vega-lite/v4.0.0.json",
   "config": {
     "view": {
