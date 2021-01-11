@@ -27,9 +27,7 @@ url_local <- function(x) {
 
 # altair
 
-The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite) visualizations. Using the [**reticulate**](https://rstudio.github.io/reticulate) package, it provides an interface to the [**Altair**](https://altair-viz.github.io) Python package.
-
-In this documentation, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
+The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite) visualizations. This R package uses [**reticulate**](https://rstudio.github.io/reticulate) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package. Accordingly, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
 
 ## Installation
 
@@ -39,16 +37,16 @@ You can install altair from CRAN with:
 install.packages("altair")
 ```
 
-The development version of is available from [GitHub](https://github.com/):
+The development version of is available from [GitHub](https://github.com/vegawidget/altair/):
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("vegawidget/altair") 
 ```
 
-Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the [Installation](https://vegawidget.github.io/altair/articles/installation.html) article.
+Because of Python, there may be some additional installation steps, described in greater detail in the [Installation](https://vegawidget.github.io/altair/articles/installation.html) article.
 
-1. Python must be installed on your system. We have has success using [Conda](https://conda.io/docs); [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
+1. Python must be installed on your system. We have had success using [Conda](https://conda.io/docs); [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
 
    If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a [section](https://vegawidget.github.io/altair/articles/installation.html#proxies) on this. 
    
@@ -95,7 +93,7 @@ Some things to keep in mind:
 
   - In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. `Sepal\\.Width`.
   
-These and other "gotchas" are compiled, along with workarounds, in an article: [Field Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).   
+These and other "gotchas" are compiled along with workarounds in an article: [Field Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).   
 
 ## Articles
 
