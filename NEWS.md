@@ -1,8 +1,12 @@
+# altair 4.1.0 (development version)
+
+* Upgrade to Altair 4.1.0
+
+* Re-export `vegawidget::vw_set_base_url()`, sets default base URL when rendering specs.
+
 # altair 4.0.1
 
 * Upgrade to Altair 4.0.0
-
-* Re-export `vegawidget::vw_set_base_url()`, sets default base URL when rendering specs.
 
 # altair 3.1.1
 
