@@ -12,12 +12,12 @@ status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org
 # altair
 
 The goal of altair is to help you build
-[**Vega-Lite**](https://vega.github.io/vega-lite) visualizations. This R
-package uses [**reticulate**](https://rstudio.github.io/reticulate) to
-provide an interface to the [**Altair**](https://altair-viz.github.io)
-Python package. Accordingly, the capitalized word **Altair** shall refer
-to the Python package; the lower-case word **altair** shall refer to
-this R package.
+[**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This
+R package uses [**reticulate**](https://rstudio.github.io/reticulate/)
+to provide an interface to the
+[**Altair**](https://altair-viz.github.io) Python package. Accordingly,
+the capitalized word **Altair** shall refer to the Python package; the
+lower-case word **altair** shall refer to this R package.
 
 ## Installation
 
