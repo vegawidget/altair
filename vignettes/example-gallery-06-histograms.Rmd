@@ -47,7 +47,7 @@ bar <-
   alt$Chart(data)$
   mark_bar()$
   encode(
-    x = alt$X("IMDB Rating:Q", bin = TRUE, axis = NULL),
+    x = alt$X("IMDB_Rating:Q", bin = TRUE, axis = NULL),
     y = "count()"
   )
 
@@ -55,7 +55,7 @@ rule <-
   alt$Chart(data)$
   mark_rule(color = "red")$
   encode(
-    x = "mean(IMDB Rating):Q",
+    x = "mean(IMDB_Rating):Q",
     size = alt$value(5)
   )
 

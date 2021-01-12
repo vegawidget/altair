@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## Creating a chart
 
-First we'll make a chart, then we'll look at the bits-and-pieces we used to put it together.
+First we'll make a chart, then we'll look at the bits-and-pieces used to put it together.
 
 ```{r}
 library("altair")
@@ -43,7 +43,8 @@ The first part of the code block is a call to load the package:
 library("altair")
 ```
 
-This assumes that your computer has a Python installation and an Altair installation. Please see the [Installation article](installation.html) for more information on how to get up-and-running.
+This assumes that your computer has a Python installation and an Altair installation. 
+Please see the [Installation article](installation.html) for more information on how to get up-and-running.
 
 The next bit is to get access to [Vega datasets](https://github.com/altair-viz/vega_datasets), which also has its own [article](vega-datasets.html) in this collection.
 
@@ -75,13 +76,15 @@ The next step is to create the chart itself. In Python, we would use language li
 chart = alt.Chart(...)
 ```
 
-Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. It exposes Python objects as R S3 objects that behave like [Reference Class](http://adv-r.had.co.nz/OO-essentials.html#rc) objects. In practical terms, wherever you see a `.` in the Altair Python documentation, use a `$` in your R code:
+Here's where [reticulate](https://rstudio.github.io/reticulate/) does its job. It exposes Python objects as R S3 objects that behave like [Reference Class](http://adv-r.had.co.nz/OO-essentials.html#rc) objects. 
+In practical terms, wherever you see a `.` in the Altair Python documentation, use a `$` in your R code:
 
 ```r
 chart <- alt$Chart(...)
 ```
 
-The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas DataFrame. Using this package, the reticulate package automatically converts R `data.frame`s to Pandas DataFrames.
+The argument to the `Chart()` function merits some explanation. In Python, a `data` argument is expected to be a Pandas DataFrame. 
+Using this package, the reticulate package automatically converts R `data.frame`s to Pandas DataFrames.
 
 As well, the reticulate package offers us a function `r_to_py()`, and its complement `py_to_r()` manage conversion back-and-forth between some common data-types "shared" by R and Python. The [reticulate documentation](https://rstudio.github.io/reticulate/index.html#type-conversions) has more information.
 

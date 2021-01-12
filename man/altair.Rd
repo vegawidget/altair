@@ -6,8 +6,8 @@
 \title{altair: Create and embed Vega-Lite charts using the Altair Python package}
 \description{
 The goal of altair is to help you build
-\href{https://vega.github.io/vega-lite}{Vega-Lite} visualizations. Using the
-\href{https://rstudio.github.io/reticulate}{reticulate} package, it provides
+\href{https://vega.github.io/vega-lite/}{Vega-Lite} visualizations. Using the
+\href{https://rstudio.github.io/reticulate/}{reticulate} package, it provides
 an interface to the \href{https://altair-viz.github.io}{Altair} Python package.
 }
 \details{
@@ -15,7 +15,7 @@ In this documentation, the capitalized word \strong{Altair} shall refer to the
 Python package; the lower-case word \strong{altair} shall refer to this R package.
 }
 \seealso{
-\href{https://vegawidget.github.io/altair}{altair pkgdown website},
+\href{https://vegawidget.github.io/altair/}{altair pkgdown website},
 \href{https://altair-viz.github.io/index.html}{Altair Python package},
-\href{https://vega.github.io/vega-lite}{Vega-Lite}
+\href{https://vega.github.io/vega-lite/}{Vega-Lite}
 }

@@ -6,25 +6,59 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org/package=altair)
-[![Travis build
-status](https://travis-ci.org/vegawidget/altair.svg?branch=master)](https://travis-ci.org/vegawidget/altair)
 [![R-CMD-check](https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/altair/actions)
 <!-- badges: end -->
 
 # altair
 
 The goal of altair is to help you build
-[**Vega-Lite**](https://vega.github.io/vega-lite) visualizations. Using
-the [**reticulate**](https://rstudio.github.io/reticulate) package, it
-provides an interface to the [**Altair**](https://altair-viz.github.io)
-Python package. This approach is distinct from efforts to build a native
-R interface to Vega-Lite, by [Bob Rudis](https://github.com/hrbrmstr)
-and coworkers: the [**vegalite**](https://github.com/hrbrmstr/vegalite)
-package, which has inspired this effort.
+[**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This
+package uses [**reticulate**](https://rstudio.github.io/reticulate/) to
+provide an interface to the [**Altair**](https://altair-viz.github.io)
+Python package, and the
+[**vegawidget**](https://vegawidget.github.io/vegawidget/) package to
+render charts as htmlwidgets. To avoid confusion, the capitalized word
+**Altair** shall refer to the Python package; the lower-case word
+**altair** shall refer to this R package.
 
-In this documentation, the capitalized word **Altair** shall refer to
-the Python package; the lower-case word **altair** shall refer to this R
-package.
+This version of the R package supports Python Altair version 4.1.0.
+
+## Example
+
+This example is discussed in detail in our [getting started
+article](https://vegawidget.github.io/altair/articles/altair.html):
+
+``` r
+library("altair")
+
+vega_data <- import_vega_data()
+
+chart <- 
+  alt$Chart(vega_data$cars())$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
+
+chart
+```
+
+![](man/figures/README-example-1.svg)<!-- -->
+
+Some things to keep in mind:
+
+  - Where you see a `.` in the Python examples, use a `$` instead.
+
+  - In your data, columns that contain dots can be wrapped in square
+    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+    Altair from throwing an error. Alternatively, you can use a
+    double-backslash, e.g. `Sepal\\.Width`.
+
+These and other “gotchas” are compiled along with workarounds in an
+article: [Field Guide to Python
+Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 
 ## Installation
 
@@ -35,20 +69,20 @@ install.packages("altair")
 ```
 
 The development version of is available from
-[GitHub](https://github.com/):
+[GitHub](https://github.com/vegawidget/altair/):
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("vegawidget/altair") 
 ```
 
-Because you are using a Python package, you may have some additional
-installation steps. These steps are described in greater detail in the
+Because of Python, there may be some additional installation steps,
+described in greater detail in the
 [Installation](https://vegawidget.github.io/altair/articles/installation.html)
 article.
 
-1.  Python must be installed on your system. We have has success using
-    [Conda](https://conda.io/docs);
+1.  Python must be installed on your system. We have had success using
+    [Conda](https://conda.io/docs): in particular,
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
     
@@ -100,38 +134,6 @@ as [rsvg](https://cran.r-project.org/package=rsvg) and
 an X11 system, such as [XQuartz](https://www.xquartz.org), to be
 installed.
 
-## Example
-
-``` r
-library("altair")
-
-vega_data <- import_vega_data()
-
-chart <- 
-  alt$Chart(vega_data$cars())$
-  mark_point()$
-  encode(
-    x = "Horsepower:Q",
-    y = "Miles_per_Gallon:Q",
-    color = "Origin:N"
-  )
-
-chart
-```
-
-Some things to keep in mind:
-
-  - Where you see a `.` in the Python examples, use a `$` instead.
-
-  - In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
-    Altair from throwing an error. Alternatively, you can use a
-    double-backslash, e.g. `Sepal\\.Width`.
-
-These and other “gotchas” are compiled, along with workarounds, in an
-article: [Field Guide to Python
-Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
-
 ## Articles
 
 The documentation for this package includes some
@@ -147,7 +149,7 @@ The documentation for this package includes some
 Gallery:
 
   - An adaptation to R of the [Altair Example
-    Gallery](https://altair-viz.github.io/gallery), to demonstrate (not
+    Gallery](https://altair-viz.github.io/gallery/), to demonstrate (not
     least to ourselves) that we are not missing any of the
     expressiveness of the Python API. You may be interested in the
     [Interactive
@@ -192,10 +194,10 @@ This package rests on these foundations:
   - [Altair](https://altair-viz.github.io): Python interface to
     Vega-Lite
 
-  - [reticulate](https://rstudio.github.io/reticulate): R framework to
+  - [reticulate](https://rstudio.github.io/reticulate/): R framework to
     work with Python
 
-  - [Vega-Lite](https://vega.github.io/vega-lite): a grammar of
+  - [Vega-Lite](https://vega.github.io/vega-lite/): a grammar of
     interactive graphics
 
   - [htmlwidgets](https://www.htmlwidgets.org/): R framework to work

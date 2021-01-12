@@ -4,7 +4,7 @@
 #'
 #' Uses the reticulate framework to access the Altair API.
 #'
-#' The Altair Python library is exposed through the `alt` object.
+#' The Altair Python package is exposed through the `alt` object.
 #' You can create and add to chart using its methods and classes,
 #' as outlined in the
 #' [Altair Python documentation](https://altair-viz.github.io/index.html).
@@ -59,7 +59,7 @@ on_altair_error <- function(e) {
 .onLoad <- function(libname, pkgname) {
 
   # sets the supported version
-  options(altair.python.version = "4.0.0")
+  options(altair.python.version = "4.1.0")
 
   alt <<-
     reticulate::import(
