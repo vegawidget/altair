@@ -14,7 +14,7 @@ alt
 Uses the reticulate framework to access the Altair API.
 }
 \details{
-The Altair Python library is exposed through the \code{alt} object.
+The Altair Python package is exposed through the \code{alt} object.
 You can create and add to chart using its methods and classes,
 as outlined in the
 \href{https://altair-viz.github.io/index.html}{Altair Python documentation}.

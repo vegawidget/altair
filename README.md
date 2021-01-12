@@ -17,9 +17,9 @@ package uses [**reticulate**](https://rstudio.github.io/reticulate/) to
 provide an interface to the [**Altair**](https://altair-viz.github.io)
 Python package, and the
 [**vegawidget**](https://vegawidget.github.io/vegawidget/) package to
-render charts as htmlwidgets. The capitalized word **Altair** shall
-refer to the Python package; the lower-case word **altair** shall refer
-to this R package.
+render charts as htmlwidgets. To avoid confusion, the capitalized word
+**Altair** shall refer to the Python package; the lower-case word
+**altair** shall refer to this R package.
 
 ## Example
 

@@ -27,7 +27,9 @@ url_local <- function(x) {
 
 # altair
 
-The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This package uses [**reticulate**](https://rstudio.github.io/reticulate/) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package, and the [**vegawidget**](https://vegawidget.github.io/vegawidget/) package to render charts as htmlwidgets. The capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
+The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. 
+This package uses [**reticulate**](https://rstudio.github.io/reticulate/) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package, and the [**vegawidget**](https://vegawidget.github.io/vegawidget/) package to render charts as htmlwidgets. 
+To avoid confusion, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
 
 ## Example
 
@@ -54,7 +56,8 @@ Some things to keep in mind:
 
   - Where you see a `.` in the Python examples, use a `$` instead.
 
-  - In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. `Sepal\\.Width`.
+  - In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep Altair from throwing an error. 
+    Alternatively, you can use a double-backslash, e.g. `Sepal\\.Width`.
   
 These and other "gotchas" are compiled along with workarounds in an article: [Field Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).   
 
@@ -75,13 +78,16 @@ devtools::install_github("vegawidget/altair")
 
 Because of Python, there may be some additional installation steps, described in greater detail in the [Installation](https://vegawidget.github.io/altair/articles/installation.html) article.
 
-1. Python must be installed on your system. We have had success using [Conda](https://conda.io/docs); [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
+1. Python must be installed on your system. 
+   We have had success using [Conda](https://conda.io/docs): in particular, [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
 
    If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a [section](https://vegawidget.github.io/altair/articles/installation.html#proxies) on this. 
    
-2. Create a Conda environment called `"r-reticulate"`. The reticulate folks [recommend](https://rstudio.github.io/reticulate/articles/python_packages.html) standardizing on a common name for all packages that use reticulate. For more information, there is a [section](https://vegawidget.github.io/altair/articles/installation.html#python-env) in the installation article. 
+1. Create a Conda environment called `"r-reticulate"`. 
+The reticulate folks [recommend](https://rstudio.github.io/reticulate/articles/python_packages.html) standardizing on a common name for all packages that use reticulate. 
+For more information, there is a [section](https://vegawidget.github.io/altair/articles/installation.html#python-env) in the installation article. 
 
-3. Install Altair into your `"r-reticulate"` environment using `altair::install_altair()`. 
+1. Install Altair into your `"r-reticulate"` environment using `altair::install_altair()`. 
 
 You may wish to add a line like this to the `.First()` function in your `.Rprofile`:
 
@@ -93,9 +99,12 @@ The `use_condaenv()` function is called to provide a [hint to reticulate](https:
 
 ### Optional installations
 
-If you have **[nodejs](https://nodejs.org)** installed on your computer, you can use [vegawidget's image-generating functions](https://vegawidget.github.io/vegawidget/reference/image.html) to convert Altair charts into SVG strings or write SVG files. With the **[rsvg](https://CRAN.R-project.org/package=rsvg)** and **[png](https://CRAN.R-project.org/package=png)** packages installed, you can get a bitmap array, or write PNG files. 
+If you have **[nodejs](https://nodejs.org)** installed on your computer, you can use [vegawidget's image-generating functions](https://vegawidget.github.io/vegawidget/reference/image.html) to convert Altair charts into SVG strings or write SVG files. 
+With the **[rsvg](https://CRAN.R-project.org/package=rsvg)** and **[png](https://CRAN.R-project.org/package=png)** packages installed, you can get a bitmap array, or write PNG files. 
 
-When knitting to a non-HTML format, e.g. `github_document`, this package provides a `knit_print()` function that will intercept the normal renderer, using instead its own renderer, allowing you to specify `"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires that [nodejs](https://nodejs.org) be installed on your system, as well as  [rsvg](https://cran.r-project.org/package=rsvg) and [png](https://cran.r-project.org/package=png). MacOS users will require an X11 system, such as [XQuartz](https://www.xquartz.org), to be installed.
+When knitting to a non-HTML format, e.g. `github_document`, this package provides a `knit_print()` function that will intercept the normal renderer, using instead its own renderer, allowing you to specify `"png"` , `"svg"` or `"pdf"`. 
+Like the image functions, this requires that [nodejs](https://nodejs.org) be installed on your system, as well as  [rsvg](https://cran.r-project.org/package=rsvg) and [png](https://cran.r-project.org/package=png). 
+MacOS users will require an X11 system, such as [XQuartz](https://www.xquartz.org), to be installed.
 
 ## Articles
 
@@ -107,7 +116,8 @@ The documentation for this package includes some [articles](https://vegawidget.g
 
 Gallery:
 
-- An adaptation to R of the [Altair Example Gallery](https://altair-viz.github.io/gallery/), to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the [Interactive Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html) examples.  
+- An adaptation to R of the [Altair Example Gallery](https://altair-viz.github.io/gallery/), to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. 
+You may be interested in the [Interactive Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html) examples.  
 
 Examples:
 
@@ -139,7 +149,8 @@ This package rests on these foundations:
 
 As well, a particular debt is owed to the folks behind the [vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided a lot of the inspiration for these efforts.
 
-This project is a collaborative effort. In addition to the principal authors:
+This project is a collaborative effort. 
+In addition to the principal authors:
 
 - [Alicia Schep](https://github.com/AliciaSchep) has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.
 
