@@ -27,7 +27,36 @@ url_local <- function(x) {
 
 # altair
 
-The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This R package uses [**reticulate**](https://rstudio.github.io/reticulate/) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package. Accordingly, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
+The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This package uses [**reticulate**](https://rstudio.github.io/reticulate/) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package, and the [**vegawidget**](https://vegawidget.github.io/vegawidget/) package to render charts as htmlwidgets. The capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
+
+## Example
+
+This example is discussed in detail in our [getting started article](https://vegawidget.github.io/altair/articles/altair.html):
+
+```{r example}
+library("altair")
+
+vega_data <- import_vega_data()
+
+chart <- 
+  alt$Chart(vega_data$cars())$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
+
+chart
+```
+
+Some things to keep in mind:
+
+  - Where you see a `.` in the Python examples, use a `$` instead.
+
+  - In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. `Sepal\\.Width`.
+  
+These and other "gotchas" are compiled along with workarounds in an article: [Field Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).   
 
 ## Installation
 
@@ -67,33 +96,6 @@ The `use_condaenv()` function is called to provide a [hint to reticulate](https:
 If you have **[nodejs](https://nodejs.org)** installed on your computer, you can use [vegawidget's image-generating functions](https://vegawidget.github.io/vegawidget/reference/image.html) to convert Altair charts into SVG strings or write SVG files. With the **[rsvg](https://CRAN.R-project.org/package=rsvg)** and **[png](https://CRAN.R-project.org/package=png)** packages installed, you can get a bitmap array, or write PNG files. 
 
 When knitting to a non-HTML format, e.g. `github_document`, this package provides a `knit_print()` function that will intercept the normal renderer, using instead its own renderer, allowing you to specify `"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires that [nodejs](https://nodejs.org) be installed on your system, as well as  [rsvg](https://cran.r-project.org/package=rsvg) and [png](https://cran.r-project.org/package=png). MacOS users will require an X11 system, such as [XQuartz](https://www.xquartz.org), to be installed.
-
-## Example
-
-```{r example}
-library("altair")
-
-vega_data <- import_vega_data()
-
-chart <- 
-  alt$Chart(vega_data$cars())$
-  mark_point()$
-  encode(
-    x = "Horsepower:Q",
-    y = "Miles_per_Gallon:Q",
-    color = "Origin:N"
-  )
-
-chart
-```
-
-Some things to keep in mind:
-
-  - Where you see a `.` in the Python examples, use a `$` instead.
-
-  - In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. `Sepal\\.Width`.
-  
-These and other "gotchas" are compiled along with workarounds in an article: [Field Guide to Python Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).   
 
 ## Articles
 

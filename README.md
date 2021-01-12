@@ -13,11 +13,50 @@ status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org
 
 The goal of altair is to help you build
 [**Vega-Lite**](https://vega.github.io/vega-lite/) visualizations. This
-R package uses [**reticulate**](https://rstudio.github.io/reticulate/)
-to provide an interface to the
-[**Altair**](https://altair-viz.github.io) Python package. Accordingly,
-the capitalized word **Altair** shall refer to the Python package; the
-lower-case word **altair** shall refer to this R package.
+package uses [**reticulate**](https://rstudio.github.io/reticulate/) to
+provide an interface to the [**Altair**](https://altair-viz.github.io)
+Python package, and the
+[**vegawidget**](https://vegawidget.github.io/vegawidget/) package to
+render charts as htmlwidgets. The capitalized word **Altair** shall
+refer to the Python package; the lower-case word **altair** shall refer
+to this R package.
+
+## Example
+
+This example is discussed in detail in our [getting started
+article](https://vegawidget.github.io/altair/articles/altair.html):
+
+``` r
+library("altair")
+
+vega_data <- import_vega_data()
+
+chart <- 
+  alt$Chart(vega_data$cars())$
+  mark_point()$
+  encode(
+    x = "Horsepower:Q",
+    y = "Miles_per_Gallon:Q",
+    color = "Origin:N"
+  )
+
+chart
+```
+
+![](man/figures/README-example-1.svg)<!-- -->
+
+Some things to keep in mind:
+
+  - Where you see a `.` in the Python examples, use a `$` instead.
+
+  - In your data, columns that contain dots can be wrapped in square
+    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+    Altair from throwing an error. Alternatively, you can use a
+    double-backslash, e.g. `Sepal\\.Width`.
+
+These and other “gotchas” are compiled along with workarounds in an
+article: [Field Guide to Python
+Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 
 ## Installation
 
@@ -92,40 +131,6 @@ as [rsvg](https://cran.r-project.org/package=rsvg) and
 [png](https://cran.r-project.org/package=png). MacOS users will require
 an X11 system, such as [XQuartz](https://www.xquartz.org), to be
 installed.
-
-## Example
-
-``` r
-library("altair")
-
-vega_data <- import_vega_data()
-
-chart <- 
-  alt$Chart(vega_data$cars())$
-  mark_point()$
-  encode(
-    x = "Horsepower:Q",
-    y = "Miles_per_Gallon:Q",
-    color = "Origin:N"
-  )
-
-chart
-```
-
-![](man/figures/README-example-1.svg)<!-- -->
-
-Some things to keep in mind:
-
-  - Where you see a `.` in the Python examples, use a `$` instead.
-
-  - In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
-    Altair from throwing an error. Alternatively, you can use a
-    double-backslash, e.g. `Sepal\\.Width`.
-
-These and other “gotchas” are compiled along with workarounds in an
-article: [Field Guide to Python
-Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html).
 
 ## Articles
 
