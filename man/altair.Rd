@@ -17,5 +17,5 @@ Python package; the lower-case word \strong{altair} shall refer to this R packag
 \seealso{
 \href{https://vegawidget.github.io/altair/}{altair pkgdown website},
 \href{https://altair-viz.github.io/index.html}{Altair Python package},
-\href{https://vega.github.io/vega-lite}{Vega-Lite}
+\href{https://vega.github.io/vega-lite/}{Vega-Lite}
 }
