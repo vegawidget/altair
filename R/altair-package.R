@@ -11,7 +11,7 @@
 #' @seealso
 #'   [altair pkgdown website](https://vegawidget.github.io/altair/),
 #'   [Altair Python package](https://altair-viz.github.io/index.html),
-#'   [Vega-Lite](https://vega.github.io/vega-lite)
+#'   [Vega-Lite](https://vega.github.io/vega-lite/)
 #'
 #' @docType package
 #' @name altair
