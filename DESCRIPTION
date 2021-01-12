@@ -61,7 +61,5 @@ Suggests:
     rsvg,
     png,
     fs
-Remotes:
-    vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
