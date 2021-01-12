@@ -1,17 +1,29 @@
 # altair 4.0.1 
 
-## Test environments
-
-* local OS X install, R 3.6.2
-* ubuntu 16.04 (on travis-ci), R (oldrel, release, and devel)
-* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
-* Ubuntu Linux 16.04 LTS, R-release, GCC
-* Fedora Linux, R-devel, clang, gfortran
-* win-builder (release)
-
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+Please note new email address for maintainer:
+
+> checking CRAN incoming feasibility ... NOTE
+  Maintainer: ‘Ian Lyttle <ian.lyttle@se.com>’
+  
+  New maintainer:
+    Ian Lyttle <ian.lyttle@se.com>
+  Old maintainer(s):
+    Ian Lyttle <ian.lyttle@schneider-electric.com>
+
+0 errors ✓ | 0 warnings ✓ | 1 note x
+
+## Test environments
+
+* local OS X install, R 4.0.3
+* GitHub Actions: windows-latest (release)
+* GitHub Actions: macOS-latest (release)
+* GitHub Actions: ubuntu-20.04 (release)
+* GitHub Actions: ubuntu-20.04 (devel)
+* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* Ubuntu Linux 16.04 LTS, R-release, GCC
+* win-builder (devel)
 
 ## Author notes
 

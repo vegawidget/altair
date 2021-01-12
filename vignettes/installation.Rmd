@@ -13,13 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-To be clear, there is a bit of hassle to set-up Python to use your first R package that uses reticulate. The purpose of this document is to help you minimize that hassle. Here's the short version:
+To be clear, there is a bit of hassle to set-up Python to use your first R package that uses [reticulate](https://rstudio.github.io/reticulate/). The purpose of this document is to help you minimize that hassle. Here's the short version:
 
 1. You are encouraged to use [Conda Python](https://conda.io/docs/user-guide/install/index.html). Miniconda works well, and installs much-more-quickly than full Conda.
 
 1. Create a Conda environment called `"r-reticulate"`.
 
-1. Install the **reticulate** package, then give reticulate a hint for which Python environment to use. You can do this by putting `reticulate::use_condaenv("r-reticulate")` into the `.First()` function in your `.Rprofile` file. 
+1. Install **reticulate**, then suggest to it which Python environment to use. You can do this by putting `reticulate::use_condaenv("r-reticulate")` into the `.First()` function in your `.Rprofile` file. 
 
    If you do this, ensure that `RETICULATE_PYTHON` is **not** set in your `.Renviron` file. 
    
