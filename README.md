@@ -21,6 +21,8 @@ render charts as htmlwidgets. To avoid confusion, the capitalized word
 **Altair** shall refer to the Python package; the lower-case word
 **altair** shall refer to this R package.
 
+This version of the R package supports Python Altair version 4.1.0.
+
 ## Example
 
 This example is discussed in detail in our [getting started
@@ -80,7 +82,7 @@ described in greater detail in the
 article.
 
 1.  Python must be installed on your system. We have had success using
-    [Conda](https://conda.io/docs);
+    [Conda](https://conda.io/docs): in particular,
     [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
     

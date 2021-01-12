@@ -31,6 +31,8 @@ The goal of altair is to help you build [**Vega-Lite**](https://vega.github.io/v
 This package uses [**reticulate**](https://rstudio.github.io/reticulate/) to provide an interface to the [**Altair**](https://altair-viz.github.io) Python package, and the [**vegawidget**](https://vegawidget.github.io/vegawidget/) package to render charts as htmlwidgets. 
 To avoid confusion, the capitalized word **Altair** shall refer to the Python package; the lower-case word **altair** shall refer to this R package.
 
+This version of the R package supports Python Altair version `r altair::altair_version()$altair`.
+
 ## Example
 
 This example is discussed in detail in our [getting started article](https://vegawidget.github.io/altair/articles/altair.html):
