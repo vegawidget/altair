@@ -6,26 +6,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interface to Altair • altair</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Interface to Altair">
 <meta property="og:description" content="Interface to Altair &lt;https://altair-viz.github.io&gt;, which itself 
-  is a Python interface to Vega-Lite &lt;https://vega.github.io/vega-lite&gt;.
+  is a Python interface to Vega-Lite &lt;https://vega.github.io/vega-lite/&gt;.
   This package uses the Reticulate framework 
-  &lt;https://rstudio.github.io/reticulate&gt; to manage the interface between R
+  &lt;https://rstudio.github.io/reticulate/&gt; to manage the interface between R
   and Python.">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -136,7 +136,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/vegawidget/altair">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,27 +163,57 @@
 <div id="altair" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#altair" class="anchor"></a>altair</h1></div>
-<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite"><strong>Vega-Lite</strong></a> visualizations. Using the <a href="https://rstudio.github.io/reticulate"><strong>reticulate</strong></a> package, it provides an interface to the <a href="https://altair-viz.github.io"><strong>Altair</strong></a> Python package. This approach is distinct from efforts to build a native R interface to Vega-Lite, by <a href="https://github.com/hrbrmstr">Bob Rudis</a> and coworkers: the <a href="https://github.com/hrbrmstr/vegalite"><strong>vegalite</strong></a> package, which has inspired this effort.</p>
-<p>In this documentation, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
+<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite/"><strong>Vega-Lite</strong></a> visualizations. This package uses <a href="https://rstudio.github.io/reticulate/"><strong>reticulate</strong></a> to provide an interface to the <a href="https://altair-viz.github.io"><strong>Altair</strong></a> Python package, and the <a href="https://vegawidget.github.io/vegawidget/"><strong>vegawidget</strong></a> package to render charts as htmlwidgets. To avoid confusion, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
+<p>This version of the R package supports Python Altair version 4.1.0.</p>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
+<p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html">getting started article</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+
+<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">chart</span> <span class="op">&lt;-</span> 
+  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
+  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
+  <span class="fu">encode</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
+    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
+    color <span class="op">=</span> <span class="st">"Origin:N"</span>
+  <span class="op">)</span>
+
+<span class="va">chart</span></code></pre></div>
+<p><img src="reference/figures/README-example-1.svg"><!-- --></p>
+<p>Some things to keep in mind:</p>
+<ul>
+<li><p>Where you see a <code>.</code> in the Python examples, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
+<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
+</ul>
+<p>These and other “gotchas” are compiled along with workarounds in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install altair from CRAN with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"altair"</span>)</a></code></pre></div>
-<p>The development version of is available from <a href="https://github.com/">GitHub</a>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"vegawidget/altair"</span>) </a></code></pre></div>
-<p>Because you are using a Python package, you may have some additional installation steps. These steps are described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
+<p>The development version of is available from <a href="https://github.com/vegawidget/altair/">GitHub</a>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vegawidget/altair"</span><span class="op">)</span> </code></pre></div>
+<p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
 <ol>
 <li>
-<p>Python must be installed on your system. We have has success using <a href="https://conda.io/docs">Conda</a>; <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs">Conda</a>: in particular, <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
 <p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
 <li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
 </ol>
 <p>You may wish to add a line like this to the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">reticulate<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/reticulate/man/use_python.html">use_condaenv</a></span>(<span class="st">"r-reticulate"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
 <p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
 <div id="optional-installations" class="section level3">
 <h3 class="hasAnchor">
@@ -191,31 +221,6 @@
 <p>If you have <strong><a href="https://nodejs.org">nodejs</a></strong> installed on your computer, you can use <a href="https://vegawidget.github.io/vegawidget/reference/image.html">vegawidget’s image-generating functions</a> to convert Altair charts into SVG strings or write SVG files. With the <strong><a href="https://CRAN.R-project.org/package=rsvg">rsvg</a></strong> and <strong><a href="https://CRAN.R-project.org/package=png">png</a></strong> packages installed, you can get a bitmap array, or write PNG files.</p>
 <p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that <a href="https://nodejs.org">nodejs</a> be installed on your system, as well as <a href="https://cran.r-project.org/package=rsvg">rsvg</a> and <a href="https://cran.r-project.org/package=png">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org">XQuartz</a>, to be installed.</p>
 </div>
-</div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"altair"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">vega_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/import_vega_data.html">import_vega_data</a></span>()</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">chart &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span>alt<span class="op">$</span><span class="kw">Chart</span>(vega_data<span class="op">$</span><span class="kw"><a href="https://rdrr.io/r/datasets/cars.html">cars</a></span>())<span class="op">$</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw">mark_point</span>()<span class="op">$</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw">encode</span>(</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">    <span class="dt">x =</span> <span class="st">"Horsepower:Q"</span>,</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="dt">y =</span> <span class="st">"Miles_per_Gallon:Q"</span>,</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">    <span class="dt">color =</span> <span class="st">"Origin:N"</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">  )</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">chart</a></code></pre></div>
-<p><img src="reference/figures/README-example-1.svg"><!-- --></p>
-<p>Some things to keep in mind:</p>
-<ul>
-<li><p>Where you see a <code>.</code> in the Python examples, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
-<li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
-</ul>
-<p>These and other “gotchas” are compiled, along with workarounds, in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
 </div>
 <div id="articles" class="section level2">
 <h2 class="hasAnchor">
@@ -227,7 +232,7 @@
 </ul>
 <p>Gallery:</p>
 <ul>
-<li>An adaptation to R of the <a href="https://altair-viz.github.io/gallery">Altair Example Gallery</a>, to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the <a href="https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html">Interactive Charts</a> examples.</li>
+<li>An adaptation to R of the <a href="https://altair-viz.github.io/gallery/">Altair Example Gallery</a>, to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the <a href="https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html">Interactive Charts</a> examples.</li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -248,8 +253,8 @@
 <p>This package rests on these foundations:</p>
 <ul>
 <li><p><a href="https://altair-viz.github.io">Altair</a>: Python interface to Vega-Lite</p></li>
-<li><p><a href="https://rstudio.github.io/reticulate">reticulate</a>: R framework to work with Python</p></li>
-<li><p><a href="https://vega.github.io/vega-lite">Vega-Lite</a>: a grammar of interactive graphics</p></li>
+<li><p><a href="https://rstudio.github.io/reticulate/">reticulate</a>: R framework to work with Python</p></li>
+<li><p><a href="https://vega.github.io/vega-lite/">Vega-Lite</a>: a grammar of interactive graphics</p></li>
 <li><p><a href="https://www.htmlwidgets.org/">htmlwidgets</a>: R framework to work with JavaScript visualizations</p></li>
 </ul>
 <p>As well, a particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, as it provided a lot of the inspiration for these efforts.</p>
@@ -269,13 +274,13 @@
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=altair">https://​cloud.r-project.org/​package=altair</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/vegawidget/altair">https://​github.com/​vegawidget/​altair</a>
+<li>Browse source code at <br><a href="https://github.com/vegawidget/altair/">https://​github.com/​vegawidget/​altair/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/vegawidget/altair/issues">https://​github.com/​vegawidget/​altair/​issues</a>
 </li>
@@ -298,7 +303,7 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Ian Lyttle <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9962-4849" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Ian Lyttle <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9962-4849" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Haley Jeppson <br><small class="roles"> Author </small>  </li>
 <li>Altair Developers <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
@@ -310,7 +315,7 @@
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/package=altair"><img src="https://www.r-pkg.org/badges/version/altair" alt="CRAN status"></a></li>
-<li><a href="https://travis-ci.org/vegawidget/altair"><img src="https://travis-ci.org/vegawidget/altair.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://github.com/vegawidget/altair/actions"><img src="https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 </div>
@@ -322,7 +327,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
