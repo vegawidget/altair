@@ -1,4 +1,4 @@
-# altair 4.0.1 
+# altair 4.1.1 
 
 ## R CMD check results
 
@@ -34,7 +34,7 @@ Please note new email address for maintainer:
   As such, virtually all the examples and tests cannot be run on CRAN servers, 
   hence the `\dontrun{}` and the like on examples, and skipping of tests. 
 
-  This functionality is tested on Travis, where the Python libraries are available.
+  This functionality is tested on GitHub Actions, where the Python libraries are available.
 
-* The version (4.0.1) is advanced because we are using the first two
-  digits to mirror our supported version of Python Altair (4.0).
+* The version (4.1.1) is advanced because we are using the first two
+  digits to mirror our supported version of Python Altair (4.1).
