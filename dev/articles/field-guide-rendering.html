@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9000</span>
       </span>
     </div>
 
@@ -158,7 +158,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Rendering Charts</h1>
             
-            <h4 class="date">2021-01-12</h4>
+            <h4 class="date">2021-01-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/field-guide-rendering.Rmd"><code>vignettes/field-guide-rendering.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-rendering.Rmd</code></div>
@@ -191,7 +191,7 @@
 <li>
 <a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#setting-r-options">Setting R options</a>, can be set a number of ways</li>
 <li>
-<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies">Knitting strategies</a>, including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF.</li>
+<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies">Knitting strategies</a>, including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF</li>
 </ul>
 </div>
 <div id="rendering-speed-for-interactive-work" class="section level2">
@@ -235,7 +235,12 @@
 <code class="sourceCode R"><span class="va">chart</span></code></pre></div>
 </li>
 </ul>
-<p>Keep in mind that by using <code>alt$data_transformers$enable('json')</code>, <strong>all</strong> charts you create subsequently will write out data files.</p>
+<p>Keep in mind that by using <code>alt$data_transformers$enable("json")</code>, <strong>all</strong> charts you create subsequently will write out data files until:</p>
+<ul>
+<li>you restart R.</li>
+<li>you enable a different transformer, e.g <code>alt$data_transformers$enable("default")</code>.</li>
+</ul>
+<p>Altair’s documentation has a <a href="https://altair-viz.github.io/user_guide/data_transformers.html">page dedicated to data transformers</a>.</p>
 </div>
   </div>
 
