@@ -35,7 +35,7 @@ These are discussed in these sections of the vegawidget rendering-article:
 
 - [Using vegawidget arguments](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#using-vegawidget-arguments), calling the `vegawidget()` function
 - [Setting R options](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#setting-r-options), can be set a number of ways
-- [Knitting strategies](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies), including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF.
+- [Knitting strategies](https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies), including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF
 
 ## Rendering speed for interactive work
 
@@ -90,7 +90,12 @@ You have a couple of choices here:
   chart
   ```
 
-Keep in mind that by using `alt$data_transformers$enable('json')`, **all** charts you create subsequently will write out data files. 
+Keep in mind that by using `alt$data_transformers$enable("json")`, **all** charts you create subsequently will write out data files until:
+
+- you restart R.
+- you enable a different transformer, e.g `alt$data_transformers$enable("default")`.
+
+Altair's documentation has a [page dedicated to data transformers](https://altair-viz.github.io/user_guide/data_transformers.html).
 
 
 

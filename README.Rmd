@@ -35,7 +35,7 @@ This version of the R package supports Python Altair version `r altair::altair_v
 
 ## Example
 
-This example is discussed in detail in our [getting started article](https://vegawidget.github.io/altair/articles/altair.html):
+This example is discussed in detail in our [Getting Started article](https://vegawidget.github.io/altair/articles/altair.html):
 
 ```{r example}
 library("altair")
@@ -78,7 +78,7 @@ The development version of is available from [GitHub](https://github.com/vegawid
 devtools::install_github("vegawidget/altair") 
 ```
 
-Because of Python, there may be some additional installation steps, described in greater detail in the [Installation](https://vegawidget.github.io/altair/articles/installation.html) article.
+Because of Python, there may be some additional installation steps, described in greater detail in the [Installation article](https://vegawidget.github.io/altair/articles/installation.html).
 
 1. Python must be installed on your system. 
    We have had success using [Conda](https://conda.io/docs): in particular, [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
@@ -146,6 +146,8 @@ This package rests on these foundations:
 - [reticulate](https://rstudio.github.io/reticulate/): R framework to work with Python
 
 - [Vega-Lite](https://vega.github.io/vega-lite/): a grammar of interactive graphics
+
+- [vegawidget](https://vegawidget.github.io/vegawidget/): R package to render Vega(-Lite) visualizations
 
 - [htmlwidgets](https://www.htmlwidgets.org/): R framework to work with JavaScript visualizations
 
