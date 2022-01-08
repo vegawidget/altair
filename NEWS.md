@@ -1,4 +1,4 @@
-# altair 4.1.1 (development version)
+# altair (development version)
 
 * Bump version for development
 
