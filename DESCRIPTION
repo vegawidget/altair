@@ -1,5 +1,5 @@
 Package: altair
-Version: 4.2.0.9000
+Version: 4.2.0.9001
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite/>.
@@ -41,7 +41,7 @@ Imports:
     assertthat,
     magrittr,
     utils,
-    vegawidget (>= 0.3.2),
+    vegawidget (>= 0.4),
     repr
 Suggests:
     httr,
@@ -62,5 +62,6 @@ Suggests:
     rsvg,
     png,
     fs
+Remotes: vegawidget/vegawidget@feature-169-multiple-versions
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
