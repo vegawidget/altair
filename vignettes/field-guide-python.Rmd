@@ -405,7 +405,7 @@ We also have some syntax, `**{'as': 'TotalTime'}`. This is a mechanism to [pass 
 library("tibble")
 
 activities <- 
-  data_frame(
+  tibble(
     Activity = c("Sleeping", "Eating", "TV", "Work", "Exercise"),
     Time = c(8, 2, 4, 8, 2)
   )
@@ -426,5 +426,6 @@ chart <-
     PercentOfTotal = JS("datum.Time / datum.TotalTime")
   )
 
-chart
+# TODO: work out problem with validation
+chart$to_json(validate = FALSE) %>% as_vegaspec()
 ```

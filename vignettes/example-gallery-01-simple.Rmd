@@ -135,7 +135,7 @@ chart
 <summary>Definition</summary>
 ```{r}
 data <- 
-  data_frame(
+  tibble(
     x = 0:100,
     sinx = sin(x / 5)
   ) 

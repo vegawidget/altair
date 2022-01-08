@@ -1,5 +1,5 @@
 Package: altair
-Version: 4.1.1.9000
+Version: 4.1.1.9001
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite/>.
@@ -26,16 +26,24 @@ Authors@R: c(
   person("Jake", "Vanderplas", comment = "Altair library", role = c("ctb")),
   person("Brian", "Granger", comment = "Altair library", role = c("ctb"))
   )
-SystemRequirements: Python (>= 3.5.0), (Python) Altair (>= 4.0.0). To use image functions, i.e. suggests: 
-  nodejs (> 8), and for MacOS: X11  
+SystemRequirements: Python (>= 3.5.0), (Python) Altair (>= 4.0.0),
+  vega_datasets (>= 0.9.0). 
+  To use image functions for MacOS: X11  
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 URL: https://github.com/vegawidget/altair
 BugReports: https://github.com/vegawidget/altair/issues
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "altair", version = "4.1.0"),
+      list(package = "vega_datasets")
+    )
+  )
 Imports:
-    reticulate (>= 1.9),
+    reticulate (>= 1.19),
     htmlwidgets,
     assertthat,
     magrittr,
@@ -62,4 +70,4 @@ Suggests:
     png,
     fs
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
