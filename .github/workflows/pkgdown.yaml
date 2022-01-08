@@ -35,7 +35,6 @@ jobs:
 
       - name: Install Altair
         run: |
-          Rscript -e "try(remotes::install_local())"
           Rscript -e "try(altair::install_altair())"
 
       - name: Confirm Python and check Altair
