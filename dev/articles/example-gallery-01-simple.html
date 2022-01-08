@@ -23,6 +23,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -35,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9001</span>
       </span>
     </div>
 
@@ -43,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +69,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -81,7 +84,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -132,8 +136,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,56 +157,56 @@
 
       
 
-      </header><script src="example-gallery-01-simple_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-01-simple_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="example-gallery-01-simple_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-01-simple_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-01-simple_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="example-gallery-01-simple_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-01-simple_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-01-simple_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-01-simple_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-01-simple_files/vegawidget-binding-0.3.3/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Simple Charts</h1>
-                        <h4 class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-01-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-01-simple.Rmd"><code>vignettes/example-gallery-01-simple.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-01-simple.Rmd" class="external-link"><code>vignettes/example-gallery-01-simple.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-01-simple.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/#simple-charts">Simple Charts</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/#simple-charts" class="external-link">Simple Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/reticulate">"reticulate"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org">"tidyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/reticulate" class="external-link">"reticulate"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org" class="external-link">"tidyr"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="simple-bar-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-bar-chart" class="anchor"></a>Simple Bar Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/simple_bar_chart.html">Altair example</a></p>
-<div id="data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="simple-bar-chart">Simple Bar Chart<a class="anchor" aria-label="anchor" href="#simple-bar-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/simple_bar_chart.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
-    a<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"I"</span><span class="op">)</span>,
-    b <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">55</span>, <span class="fl">43</span>, <span class="fl">91</span>, <span class="fl">81</span>, <span class="fl">53</span>, <span class="fl">19</span>, <span class="fl">87</span>, <span class="fl">52</span><span class="op">)</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+    a<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"I"</span><span class="op">)</span>,
+    b <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">55</span>, <span class="fl">43</span>, <span class="fl">91</span>, <span class="fl">81</span>, <span class="fl">53</span>, <span class="fl">19</span>, <span class="fl">87</span>, <span class="fl">52</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 9</span>
 <span class="co">#&gt; Columns: 2</span>
-<span class="co">#&gt; $ a &lt;chr&gt; "A", "B", "C", "D", "E", "F", "G", "H", "I"</span>
-<span class="co">#&gt; $ b &lt;dbl&gt; 28, 55, 43, 91, 81, 53, 19, 87, 52</span></code></pre></div>
+<span class="co">#&gt; $ a <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "A", "B", "C", "D", "E", "F", "G", "H", "I"</span>
+<span class="co">#&gt; $ b <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28, 55, 43, 91, 81, 53, 19, 87, 52</span></code></pre></div>
 </div>
-<div id="chart" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -213,8 +217,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-6ed7975e0779fcb2bb02" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6ed7975e0779fcb2bb02">{"x":{
+<div id="htmlwidget-e180a9fbdac2b9269406" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e180a9fbdac2b9269406">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -285,30 +289,30 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="simple-heatmap" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-heatmap" class="anchor"></a>Simple Heatmap</h2>
-<p><a href="https://altair-viz.github.io/gallery/simple_heatmap.html">Altair example</a></p>
-<div id="data-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-1" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="simple-heatmap">Simple Heatmap<a class="anchor" aria-label="anchor" href="#simple-heatmap"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/simple_heatmap.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Compute x^2 + y^2 across a 2D grid</span>
 <span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand.html">crossing</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand.html" class="external-link">crossing</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 121</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ x &lt;int&gt; -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -4, -4, -4, -4, -4, -4,…</span>
-<span class="co">#&gt; $ y &lt;int&gt; -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, -5, -4, -3, -2, -1, 0, 1, 2, …</span>
-<span class="co">#&gt; $ z &lt;dbl&gt; 50, 41, 34, 29, 26, 25, 26, 29, 34, 41, 50, 41, 32, 25, 20, 17, 16,…</span></code></pre></div>
+<span class="co">#&gt; $ x <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -4, -4, -4, -4, -4, -4, …</span>
+<span class="co">#&gt; $ y <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, -5, -4, -3, -2, -1, 0, 1, 2, 3…</span>
+<span class="co">#&gt; $ z <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 50, 41, 34, 29, 26, 25, 26, 29, 34, 41, 50, 41, 32, 25, 20, 17, 16, …</span></code></pre></div>
 </div>
-<div id="chart-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-1" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -320,8 +324,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-6d8de8e99d6dcbe279c8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d8de8e99d6dcbe279c8">{"x":{
+<div id="htmlwidget-5335cf4c2c78d9abdb68" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5335cf4c2c78d9abdb68">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -965,41 +969,41 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="simple-histogram" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-histogram" class="anchor"></a>Simple Histogram</h2>
-<p><a href="https://altair-viz.github.io/gallery/simple_histogram.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="simple-histogram">Simple Histogram<a class="anchor" aria-label="anchor" href="#simple-histogram"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/simple_histogram.html" class="external-link">Altair example</a></p>
 <blockquote>
-<p>This example shows how to make a basic histogram, based on the <a href="https://vega.github.io/vega-lite/examples/histogram.html">vega-lite docs</a>.</p>
+<p>This example shows how to make a basic histogram, based on the <a href="https://vega.github.io/vega-lite/examples/histogram.html" class="external-link">vega-lite docs</a>.</p>
 </blockquote>
-<div id="data-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-2" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">movies</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-datasets/data/movies.json"</span><span class="op">)</span>
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">movies</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">movies</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="st">"https://vega.github.io/vega-datasets/data/movies.json"</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">movies</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 3,201</span>
 <span class="co">#&gt; Columns: 16</span>
-<span class="co">#&gt; $ Title                    &lt;chr&gt; "The Land Girls", "First Love, Last Rites", …</span>
-<span class="co">#&gt; $ `US Gross`               &lt;int&gt; 146083, 10876, 203134, 373615, 1009819, 2455…</span>
-<span class="co">#&gt; $ `Worldwide Gross`        &lt;dbl&gt; 146083, 10876, 203134, 373615, 1087521, 2624…</span>
-<span class="co">#&gt; $ `US DVD Sales`           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ `Production Budget`      &lt;int&gt; 8000000, 300000, 250000, 300000, 1000000, 16…</span>
-<span class="co">#&gt; $ `Release Date`           &lt;chr&gt; "Jun 12 1998", "Aug 07 1998", "Aug 28 1998",…</span>
-<span class="co">#&gt; $ `MPAA Rating`            &lt;chr&gt; "R", "R", NA, NA, "R", NA, "R", "R", "R", NA…</span>
-<span class="co">#&gt; $ `Running Time min`       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ Distributor              &lt;chr&gt; "Gramercy", "Strand", "Lionsgate", "Fine Lin…</span>
-<span class="co">#&gt; $ Source                   &lt;chr&gt; NA, NA, NA, NA, "Original Screenplay", NA, N…</span>
-<span class="co">#&gt; $ `Major Genre`            &lt;chr&gt; NA, "Drama", "Comedy", "Comedy", "Drama", NA…</span>
-<span class="co">#&gt; $ `Creative Type`          &lt;chr&gt; NA, NA, NA, NA, "Contemporary Fiction", NA, …</span>
-<span class="co">#&gt; $ Director                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Christopher Nolan",…</span>
-<span class="co">#&gt; $ `Rotten Tomatoes Rating` &lt;int&gt; NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 81, …</span>
-<span class="co">#&gt; $ `IMDB Rating`            &lt;dbl&gt; 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8, 7…</span>
-<span class="co">#&gt; $ `IMDB Votes`             &lt;int&gt; 1071, 207, 865, NA, 165, NA, 15133, 353, 327…</span></code></pre></div>
+<span class="co">#&gt; $ Title                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "The Land Girls", "First Love, Last Rites", "…</span>
+<span class="co">#&gt; $ `US Gross`               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 146083, 10876, 203134, 373615, 1009819, 24551…</span>
+<span class="co">#&gt; $ `Worldwide Gross`        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 146083, 10876, 203134, 373615, 1087521, 26245…</span>
+<span class="co">#&gt; $ `US DVD Sales`           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
+<span class="co">#&gt; $ `Production Budget`      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 8000000, 300000, 250000, 300000, 1000000, 160…</span>
+<span class="co">#&gt; $ `Release Date`           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jun 12 1998", "Aug 07 1998", "Aug 28 1998", …</span>
+<span class="co">#&gt; $ `MPAA Rating`            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "R", "R", NA, NA, "R", NA, "R", "R", "R", NA,…</span>
+<span class="co">#&gt; $ `Running Time min`       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
+<span class="co">#&gt; $ Distributor              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Gramercy", "Strand", "Lionsgate", "Fine Line…</span>
+<span class="co">#&gt; $ Source                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, "Original Screenplay", NA, NA…</span>
+<span class="co">#&gt; $ `Major Genre`            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, "Drama", "Comedy", "Comedy", "Drama", NA,…</span>
+<span class="co">#&gt; $ `Creative Type`          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, "Contemporary Fiction", NA, N…</span>
+<span class="co">#&gt; $ Director                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, "Christopher Nolan", …</span>
+<span class="co">#&gt; $ `Rotten Tomatoes Rating` <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 81, 8…</span>
+<span class="co">#&gt; $ `IMDB Rating`            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8, 7.…</span>
+<span class="co">#&gt; $ `IMDB Votes`             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1071, 207, 865, NA, 165, NA, 15133, 353, 3275…</span></code></pre></div>
 </div>
-<div id="chart-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-2" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">movies</span><span class="op">)</span><span class="op">$</span>
@@ -1010,8 +1014,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ba06da58efb54cb2e611" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba06da58efb54cb2e611">{"x":{
+<div id="htmlwidget-21f090e29504468888ee" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-21f090e29504468888ee">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -58665,34 +58669,30 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="simple-line-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-line-chart" class="anchor"></a>Simple Line Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/simple_line_chart.html">Altair example</a></p>
-<div id="data-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-3" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="simple-line-chart">Simple Line Chart<a class="anchor" aria-label="anchor" href="#simple-line-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/simple_line_chart.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
     x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,
-    sinx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">5</span><span class="op">)</span>
-  <span class="op">)</span> 
-<span class="co">#&gt; Warning: `data_frame()` is deprecated as of tibble 1.1.0.</span>
-<span class="co">#&gt; Please use `tibble()` instead.</span>
-<span class="co">#&gt; This warning is displayed once every 8 hours.</span>
-<span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span></code></pre></div>
+    sinx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">5</span><span class="op">)</span>
+  <span class="op">)</span> </code></pre></div>
 </details><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 101</span>
 <span class="co">#&gt; Columns: 2</span>
-<span class="co">#&gt; $ x    &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…</span>
-<span class="co">#&gt; $ sinx &lt;dbl&gt; 0.00000000, 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.84…</span></code></pre></div>
+<span class="co">#&gt; $ x    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…</span>
+<span class="co">#&gt; $ sinx <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000, 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.841…</span></code></pre></div>
 </div>
-<div id="chart-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-3" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-3">Chart<a class="anchor" aria-label="anchor" href="#chart-3"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -58703,8 +58703,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-73812af0e225f7e48237" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73812af0e225f7e48237">{"x":{
+<div id="htmlwidget-c02f00092568164e1daa" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c02f00092568164e1daa">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -59143,30 +59143,30 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="simple-scatter-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-scatter-plot" class="anchor"></a>Simple Scatter Plot</h2>
-<p><a href="https://altair-viz.github.io/gallery/scatter_tooltips.html">Altair example</a></p>
-<div id="data-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-4" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="simple-scatter-plot">Simple Scatter Plot<a class="anchor" aria-label="anchor" href="#simple-scatter-plot"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/scatter_tooltips.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-4">Data<a class="anchor" aria-label="anchor" href="#data-4"></a>
+</h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-4" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-4">Chart<a class="anchor" aria-label="anchor" href="#chart-4"></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -59175,13 +59175,13 @@
     x <span class="op">=</span> <span class="st">"Horsepower"</span>,
     y <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>,
     color <span class="op">=</span> <span class="st">"Origin"</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
+    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">interactive</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-1dacdb86c143bf897b1e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1dacdb86c143bf897b1e">{"x":{
+<div id="htmlwidget-256d7883994d55800fe1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-256d7883994d55800fe1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -63714,24 +63714,24 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="simple-stacked-area-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simple-stacked-area-chart" class="anchor"></a>Simple Stacked Area Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/simple_stacked_area_chart.html">Altair example</a></p>
-<div id="data-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-5" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="simple-stacked-area-chart">Simple Stacked Area Chart<a class="anchor" aria-label="anchor" href="#simple-stacked-area-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/simple_stacked_area_chart.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-5">Data<a class="anchor" aria-label="anchor" href="#data-5"></a>
+</h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">iowa_electricity</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">iowa_electricity</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 51</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ year           &lt;dttm&gt; 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, 2005-…</span>
-<span class="co">#&gt; $ source         &lt;chr&gt; "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "Fossi…</span>
-<span class="co">#&gt; $ net_generation &lt;dbl&gt; 35361, 35991, 36234, 36205, 36883, 37014, 41389, 42734…</span></code></pre></div>
+<span class="co">#&gt; $ year           <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2001-01-01, 2002-01-01, 2003-01-01, 2004-01-01, 2005-0…</span>
+<span class="co">#&gt; $ source         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Fossil Fuels", "Fossil Fuels", "Fossil Fuels", "Fossil…</span>
+<span class="co">#&gt; $ net_generation <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 35361, 35991, 36234, 36205, 36883, 37014, 41389, 42734,…</span></code></pre></div>
 </div>
-<div id="chart-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-5" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-5">Chart<a class="anchor" aria-label="anchor" href="#chart-5"></a>
+</h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">iowa_electricity</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -63743,8 +63743,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f0a53ce1b93553628814" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f0a53ce1b93553628814">{"x":{
+<div id="htmlwidget-9680f59a935d9de02fb1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9680f59a935d9de02fb1">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -64038,30 +64038,30 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="strip-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#strip-plot" class="anchor"></a>Strip Plot</h2>
-<p><a href="https://altair-viz.github.io/gallery/strip_plot.html">Altair example</a></p>
-<div id="data-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-6" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="strip-plot">Strip Plot<a class="anchor" aria-label="anchor" href="#strip-plot"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/strip_plot.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-6">Data<a class="anchor" aria-label="anchor" href="#data-6"></a>
+</h4>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-6" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-6">Chart<a class="anchor" aria-label="anchor" href="#chart-6"></a>
+</h4>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -64072,8 +64072,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ec30b6370959be1e8ce1" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ec30b6370959be1e8ce1">{"x":{
+<div id="htmlwidget-466d74c8212e66e932b5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-466d74c8212e66e932b5">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -68587,11 +68587,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

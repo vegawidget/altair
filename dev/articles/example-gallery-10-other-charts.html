@@ -23,6 +23,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -35,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9001</span>
       </span>
     </div>
 
@@ -43,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +69,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -81,7 +84,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -132,8 +136,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,52 +157,52 @@
 
       
 
-      </header><script src="example-gallery-10-other-charts_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-10-other-charts_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="example-gallery-10-other-charts_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-10-other-charts_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-binding-0.3.3/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Other Charts</h1>
-                        <h4 class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-01-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-10-other-charts.Rmd"><code>vignettes/example-gallery-10-other-charts.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-10-other-charts.Rmd" class="external-link"><code>vignettes/example-gallery-10-other-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-10-other-charts.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#other-charts">Other Charts</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#other-charts" class="external-link">Other Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805">"jsonlite"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="bar-chart-with-highlighted-segment" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bar-chart-with-highlighted-segment" class="anchor"></a>Bar Chart with Highlighted Segment</h2>
-<p><a href="https://altair-viz.github.io/gallery/bar_chart_with_highlighted_segment.html">Altair Example</a></p>
-<div id="data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="bar-chart-with-highlighted-segment">Bar Chart with Highlighted Segment<a class="anchor" aria-label="anchor" href="#bar-chart-with-highlighted-segment"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/bar_chart_with_highlighted_segment.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 52</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 161…</span>
-<span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.…</span>
-<span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.9…</span></code></pre></div>
+<span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 1615…</span>
+<span class="co">#&gt; $ wheat <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.0…</span>
+<span class="co">#&gt; $ wages <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.94…</span></code></pre></div>
 </div>
-<div id="chart" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span>
-<span class="va">threshold</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">90</span><span class="op">)</span>
+<span class="va">threshold</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>threshold <span class="op">=</span> <span class="fl">90</span><span class="op">)</span>
 
 <span class="va">bars</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
@@ -227,8 +231,8 @@
   <span class="op">)</span>
 
 <span class="op">(</span><span class="va">bars</span> <span class="op">+</span> <span class="va">highlight</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-09e3893340a346dc471c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-09e3893340a346dc471c">{"x":{
+<div id="htmlwidget-0b9aa840c03655d91df3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b9aa840c03655d91df3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -580,25 +584,25 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="beckers-barley-trellis-plot-wrapped-facet" class="section level2">
-<h2 class="hasAnchor">
-<a href="#beckers-barley-trellis-plot-wrapped-facet" class="anchor"></a>Becker’s Barley Trellis Plot (wrapped facet)</h2>
-<p><a href="https://altair-viz.github.io/gallery/beckers_barley_wrapped_facet.html">Altair Example</a></p>
-<div id="data-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-1" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="beckers-barley-trellis-plot-wrapped-facet">Becker’s Barley Trellis Plot (wrapped facet)<a class="anchor" aria-label="anchor" href="#beckers-barley-trellis-plot-wrapped-facet"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/beckers_barley_wrapped_facet.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 120</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span>
-<span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span>
-<span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span>
-<span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></code></pre></div>
+<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
+<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
+<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span>
+<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
 </div>
-<div id="chart-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-1" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -612,8 +616,8 @@
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-27b5d108035130698a35" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-27b5d108035130698a35">{"x":{
+<div id="htmlwidget-cf311df19298012fe8c9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf311df19298012fe8c9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -1383,52 +1387,53 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="binned-movie-rating-heatmap" class="section level2">
-<h2 class="hasAnchor">
-<a href="#binned-movie-rating-heatmap" class="anchor"></a>Binned Movie Rating Heatmap</h2>
-<p><a href="https://altair-viz.github.io/gallery/binned_heatmap.html">Altair Example</a></p>
-<div id="data-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-2" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="binned-movie-rating-heatmap">Binned Movie Rating Heatmap<a class="anchor" aria-label="anchor" href="#binned-movie-rating-heatmap"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/binned_heatmap.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">movies</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">movies</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 3,201</span>
 <span class="co">#&gt; Columns: 16</span>
-<span class="co">#&gt; $ Title                  &lt;chr&gt; "The Land Girls", "First Love, Last Rites", "I…</span>
-<span class="co">#&gt; $ US_Gross               &lt;int&gt; 146083, 10876, 203134, 373615, 1009819, 24551,…</span>
-<span class="co">#&gt; $ Worldwide_Gross        &lt;dbl&gt; 146083, 10876, 203134, 373615, 1087521, 262455…</span>
-<span class="co">#&gt; $ US_DVD_Sales           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ Production_Budget      &lt;int&gt; 8000000, 300000, 250000, 300000, 1000000, 1600…</span>
-<span class="co">#&gt; $ Release_Date           &lt;chr&gt; "Jun 12 1998", "Aug 07 1998", "Aug 28 1998", "…</span>
-<span class="co">#&gt; $ MPAA_Rating            &lt;chr&gt; "R", "R", NA, NA, "R", NA, "R", "R", "R", NA, …</span>
-<span class="co">#&gt; $ Running_Time_min       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ Distributor            &lt;chr&gt; "Gramercy", "Strand", "Lionsgate", "Fine Line"…</span>
-<span class="co">#&gt; $ Source                 &lt;chr&gt; NA, NA, NA, NA, "Original Screenplay", NA, NA,…</span>
-<span class="co">#&gt; $ Major_Genre            &lt;chr&gt; NA, "Drama", "Comedy", "Comedy", "Drama", NA, …</span>
-<span class="co">#&gt; $ Creative_Type          &lt;chr&gt; NA, NA, NA, NA, "Contemporary Fiction", NA, NA…</span>
-<span class="co">#&gt; $ Director               &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Christopher Nolan", N…</span>
-<span class="co">#&gt; $ Rotten_Tomatoes_Rating &lt;int&gt; NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 81, 84…</span>
-<span class="co">#&gt; $ IMDB_Rating            &lt;dbl&gt; 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8, 7.0…</span>
-<span class="co">#&gt; $ IMDB_Votes             &lt;int&gt; 1071, 207, 865, NA, 165, NA, 15133, 353, 3275,…</span></code></pre></div>
+<span class="co">#&gt; $ Title                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "The Land Girls", "First Love, Last Rites", "I …</span>
+<span class="co">#&gt; $ US_Gross               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 146083, 10876, 203134, 373615, 1009819, 24551, …</span>
+<span class="co">#&gt; $ Worldwide_Gross        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 146083, 10876, 203134, 373615, 1087521, 2624551…</span>
+<span class="co">#&gt; $ US_DVD_Sales           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ Production_Budget      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 8000000, 300000, 250000, 300000, 1000000, 16000…</span>
+<span class="co">#&gt; $ Release_Date           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jun 12 1998", "Aug 07 1998", "Aug 28 1998", "S…</span>
+<span class="co">#&gt; $ MPAA_Rating            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "R", "R", NA, NA, "R", NA, "R", "R", "R", NA, N…</span>
+<span class="co">#&gt; $ Running_Time_min       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ Distributor            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Gramercy", "Strand", "Lionsgate", "Fine Line",…</span>
+<span class="co">#&gt; $ Source                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, "Original Screenplay", NA, NA, …</span>
+<span class="co">#&gt; $ Major_Genre            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, "Drama", "Comedy", "Comedy", "Drama", NA, N…</span>
+<span class="co">#&gt; $ Creative_Type          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, "Contemporary Fiction", NA, NA,…</span>
+<span class="co">#&gt; $ Director               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, "Christopher Nolan", NA…</span>
+<span class="co">#&gt; $ Rotten_Tomatoes_Rating <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, 13, 62, NA, NA, NA, 25, 86, 81, 84,…</span>
+<span class="co">#&gt; $ IMDB_Rating            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.1, 6.9, 6.8, NA, 3.4, NA, 7.7, 3.8, 5.8, 7.0,…</span>
+<span class="co">#&gt; $ IMDB_Votes             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1071, 207, 865, NA, 165, NA, 15133, 353, 3275, …</span></code></pre></div>
 </div>
-<div id="chart-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-2" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">movies</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">mark_rect</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"IMDB Rating:Q"</span>, bin <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Bin</span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">60</span><span class="op">)</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"Rotten Tomatoes Rating:Q"</span>, bin <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Bin</span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">40</span><span class="op">)</span><span class="op">)</span>,
+    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"IMDB_Rating:Q"</span>, bin <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Bin</span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">60</span><span class="op">)</span><span class="op">)</span>,
+    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"Rotten_Tomatoes_Rating:Q"</span>, bin <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Bin</span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">40</span><span class="op">)</span><span class="op">)</span>,
     color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span>
-      <span class="st">"count(IMDB_Rating):Q"</span>, 
+      <span class="st">"count():Q"</span>, 
       scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>scheme <span class="op">=</span> <span class="st">"greenblue"</span><span class="op">)</span>
     <span class="op">)</span>
   <span class="op">)</span>
+
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-255add7728e1326184a9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-255add7728e1326184a9">{"x":{
+<div id="htmlwidget-ae0ca9d722cfadfdf554" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae0ca9d722cfadfdf554">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -1443,7 +1448,6 @@
     "encoding": {
       "color": {
         "aggregate": "count",
-        "field": "IMDB_Rating",
         "scale": {
           "scheme": "greenblue"
         },
@@ -1453,14 +1457,14 @@
         "bin": {
           "maxbins": 60
         },
-        "field": "IMDB Rating",
+        "field": "IMDB_Rating",
         "type": "quantitative"
       },
       "y": {
         "bin": {
           "maxbins": 40
         },
-        "field": "Rotten Tomatoes Rating",
+        "field": "Rotten_Tomatoes_Rating",
         "type": "quantitative"
       }
     },
@@ -1473,24 +1477,24 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="box-plot-with-minmax-whiskers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#box-plot-with-minmax-whiskers" class="anchor"></a>Box Plot with Min/Max Whiskers</h2>
-<p><a href="https://altair-viz.github.io/gallery/boxplot_max_min.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="box-plot-with-minmax-whiskers">Box Plot with Min/Max Whiskers<a class="anchor" aria-label="anchor" href="#box-plot-with-minmax-whiskers"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/boxplot_max_min.html" class="external-link">Altair example</a></p>
 <blockquote>
 <p>This example shows how to make a basic box plot using US Population data from 2000.</p>
 </blockquote>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 570</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ year   &lt;dbl&gt; 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 18…</span>
-<span class="co">#&gt; $ age    &lt;dbl&gt; 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35, 35, 40…</span>
-<span class="co">#&gt; $ sex    &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,…</span>
-<span class="co">#&gt; $ people &lt;dbl&gt; 1483789, 1450376, 1411067, 1359668, 1260099, 1216114, 1077133,…</span></code></pre></div>
-<div id="chart-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-3" class="anchor"></a>Chart</h4>
+<span class="co">#&gt; $ year   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 1850, 185…</span>
+<span class="co">#&gt; $ age    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 5, 5, 10, 10, 15, 15, 20, 20, 25, 25, 30, 30, 35, 35, 40,…</span>
+<span class="co">#&gt; $ sex    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, …</span>
+<span class="co">#&gt; $ people <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1483789, 1450376, 1411067, 1359668, 1260099, 1216114, 1077133, …</span></code></pre></div>
+<div class="section level4">
+<h4 id="chart-3">Chart<a class="anchor" aria-label="anchor" href="#chart-3"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span>
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">population</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span>
@@ -1501,8 +1505,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-0cf3a0e8704c486f6751" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0cf3a0e8704c486f6751">{"x":{
+<div id="htmlwidget-fb0436d1dc43d2d07848" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb0436d1dc43d2d07848">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -1536,31 +1540,31 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="candlestick-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#candlestick-chart" class="anchor"></a>Candlestick Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/candlestick_chart.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="candlestick-chart">Candlestick Chart<a class="anchor" aria-label="anchor" href="#candlestick-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/candlestick_chart.html" class="external-link">Altair example</a></p>
 <blockquote>
-<p>A candlestick chart <a href="http://mbostock.github.io/protovis/ex/candlestick.html">inspired from Protovis</a>. This example shows the performance of the Chicago Board Options Exchange Volatility Index (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red. #### Data</p>
+<p>A candlestick chart <a href="http://mbostock.github.io/protovis/ex/candlestick.html" class="external-link">inspired from Protovis</a>. This example shows the performance of the Chicago Board Options Exchange Volatility Index (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red. #### Data</p>
 </blockquote>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">[3547 chars quoted with ''']</span><span class="op">)</span></code></pre></div>
+  <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="st">[3547 chars quoted with ''']</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 22</span>
 <span class="co">#&gt; Columns: 7</span>
-<span class="co">#&gt; $ date   &lt;chr&gt; "01-Jun-2009", "02-Jun-2009", "03-Jun-2009", "04-Jun-2009", "0…</span>
-<span class="co">#&gt; $ open   &lt;dbl&gt; 28.70, 30.04, 29.62, 31.02, 29.39, 30.84, 29.77, 26.90, 27.36,…</span>
-<span class="co">#&gt; $ high   &lt;dbl&gt; 30.05, 30.13, 31.79, 31.02, 30.81, 31.82, 29.77, 29.74, 28.11,…</span>
-<span class="co">#&gt; $ low    &lt;dbl&gt; 28.45, 28.30, 29.62, 29.92, 28.85, 26.41, 27.79, 26.90, 26.81,…</span>
-<span class="co">#&gt; $ close  &lt;dbl&gt; 30.04, 29.63, 31.02, 30.18, 29.62, 29.77, 28.27, 28.46, 28.11,…</span>
-<span class="co">#&gt; $ signal &lt;chr&gt; "short", "short", "short", "short", "short", "short", "short",…</span>
-<span class="co">#&gt; $ ret    &lt;dbl&gt; -4.8939641, -0.3225806, 3.6866359, 4.5101089, 6.0842434, 1.253…</span></code></pre></div>
-<div id="chart-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-4" class="anchor"></a>Chart</h4>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "01-Jun-2009", "02-Jun-2009", "03-Jun-2009", "04-Jun-2009", "05…</span>
+<span class="co">#&gt; $ open   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28.70, 30.04, 29.62, 31.02, 29.39, 30.84, 29.77, 26.90, 27.36, …</span>
+<span class="co">#&gt; $ high   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 30.05, 30.13, 31.79, 31.02, 30.81, 31.82, 29.77, 29.74, 28.11, …</span>
+<span class="co">#&gt; $ low    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28.45, 28.30, 29.62, 29.92, 28.85, 26.41, 27.79, 26.90, 26.81, …</span>
+<span class="co">#&gt; $ close  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 30.04, 29.63, 31.02, 30.18, 29.62, 29.77, 28.27, 28.46, 28.11, …</span>
+<span class="co">#&gt; $ signal <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "short", "short", "short", "short", "short", "short", "short", …</span>
+<span class="co">#&gt; $ ret    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -4.8939641, -0.3225806, 3.6866359, 4.5101089, 6.0842434, 1.2539…</span></code></pre></div>
+<div class="section level4">
+<h4 id="chart-4">Chart<a class="anchor" aria-label="anchor" href="#chart-4"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">open_close_color</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span>
@@ -1577,9 +1581,9 @@
       <span class="st">"date:T"</span>,
       timeUnit <span class="op">=</span> <span class="st">"yearmonthdate"</span>,
       scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>
-        domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-          <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>month<span class="op">=</span> <span class="fl">5</span>, date<span class="op">=</span> <span class="fl">31</span>, year<span class="op">=</span> <span class="fl">2009</span><span class="op">)</span>,
-          <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>month<span class="op">=</span> <span class="fl">7</span>, date<span class="op">=</span> <span class="fl">1</span>, year<span class="op">=</span> <span class="fl">2009</span><span class="op">)</span>
+        domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+          <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>month<span class="op">=</span> <span class="fl">5</span>, date<span class="op">=</span> <span class="fl">31</span>, year<span class="op">=</span> <span class="fl">2009</span><span class="op">)</span>,
+          <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>month<span class="op">=</span> <span class="fl">7</span>, date<span class="op">=</span> <span class="fl">1</span>, year<span class="op">=</span> <span class="fl">2009</span><span class="op">)</span>
         <span class="op">)</span>
       <span class="op">)</span>,
       axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%m/%d"</span>, title <span class="op">=</span> <span class="st">"Date in 2009"</span><span class="op">)</span>
@@ -1605,8 +1609,8 @@
 
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">rule</span> <span class="op">+</span> <span class="va">bar</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-7fa2d8645395562a622c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7fa2d8645395562a622c">{"x":{
+<div id="htmlwidget-dc5c54580d7a4aaf025d" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dc5c54580d7a4aaf025d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -1905,25 +1909,25 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="error-bar-with-standard-deviation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#error-bar-with-standard-deviation" class="anchor"></a>Error Bar with Standard Deviation</h2>
-<p><a href="https://altair-viz.github.io/gallery/errorbars_with_std.html">Altair Example</a></p>
-<div id="data-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-3" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="error-bar-with-standard-deviation">Error Bar with Standard Deviation<a class="anchor" aria-label="anchor" href="#error-bar-with-standard-deviation"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/errorbars_with_std.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
+</h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 120</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span>
-<span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span>
-<span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span>
-<span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></code></pre></div>
+<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
+<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
+<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span>
+<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
 </div>
-<div id="chart-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-5" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-5">Chart<a class="anchor" aria-label="anchor" href="#chart-5"></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span>
 
@@ -1944,8 +1948,8 @@
   <span class="op">)</span>
 
 <span class="va">error_bars</span> <span class="op">+</span> <span class="va">points</span></code></pre></div>
-<div id="htmlwidget-f82e074cac7b6a7612b6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f82e074cac7b6a7612b6">{"x":{
+<div id="htmlwidget-20a38a4ec0777097a385" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-20a38a4ec0777097a385">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -2731,28 +2735,28 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="error-bars-showing-confidence-interval" class="section level2">
-<h2 class="hasAnchor">
-<a href="#error-bars-showing-confidence-interval" class="anchor"></a>Error Bars showing Confidence Interval</h2>
-<p><a href="https://altair-viz.github.io/gallery/errorbars_with_ci.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="error-bars-showing-confidence-interval">Error Bars showing Confidence Interval<a class="anchor" aria-label="anchor" href="#error-bars-showing-confidence-interval"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/errorbars_with_ci.html" class="external-link">Altair Example</a></p>
 <blockquote>
-<p>This example shows how to show error bars using confidence intervals. The confidence intervals are computed internally in vega by a non-parametric <a href="https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js">bootstrap of the mean</a>.</p>
+<p>This example shows how to show error bars using confidence intervals. The confidence intervals are computed internally in vega by a non-parametric <a href="https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js" class="external-link">bootstrap of the mean</a>.</p>
 </blockquote>
-<div id="data-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-4" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-4">Data<a class="anchor" aria-label="anchor" href="#data-4"></a>
+</h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 120</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span>
-<span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span>
-<span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span>
-<span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></code></pre></div>
+<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
+<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
+<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span>
+<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
 </div>
-<div id="chart-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-6" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-6">Chart<a class="anchor" aria-label="anchor" href="#chart-6"></a>
+</h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span>
 
@@ -2773,8 +2777,8 @@
   <span class="op">)</span>
 
 <span class="va">error_bars</span> <span class="op">+</span> <span class="va">points</span></code></pre></div>
-<div id="htmlwidget-f8bacd8f8bd78cc87e97" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f8bacd8f8bd78cc87e97">{"x":{
+<div id="htmlwidget-f91c51e922c43dd3c094" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f91c51e922c43dd3c094">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -3560,38 +3564,38 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="facetted-scatterplot-with-marginal-histograms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#facetted-scatterplot-with-marginal-histograms" class="anchor"></a>Facetted Scatterplot with marginal histograms</h2>
-<p><a href="https://altair-viz.github.io/gallery/scatter_marginal_hist.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="facetted-scatterplot-with-marginal-histograms">Facetted Scatterplot with marginal histograms<a class="anchor" aria-label="anchor" href="#facetted-scatterplot-with-marginal-histograms"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/scatter_marginal_hist.html" class="external-link">Altair Example</a></p>
 <p>Removing this example in anticipation of a new example using a suitable dataset.</p>
 </div>
-<div id="gantt-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#gantt-chart" class="anchor"></a>Gantt Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/gantt_chart.html">Altair example</a></p>
-<div id="data-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-5" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="gantt-chart">Gantt Chart<a class="anchor" aria-label="anchor" href="#gantt-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/gantt_chart.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-5">Data<a class="anchor" aria-label="anchor" href="#data-5"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">'[
+  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="st">'[
     {"task": "A", "start": 1, "end": 3},
     {"task": "B", "start": 3, "end": 8},
     {"task": "C", "start": 8, "end": 10}
   ]'</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 3</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ task  &lt;chr&gt; "A", "B", "C"</span>
-<span class="co">#&gt; $ start &lt;int&gt; 1, 3, 8</span>
-<span class="co">#&gt; $ end   &lt;int&gt; 3, 8, 10</span></code></pre></div>
+<span class="co">#&gt; $ task  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "A", "B", "C"</span>
+<span class="co">#&gt; $ start <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 3, 8</span>
+<span class="co">#&gt; $ end   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 8, 10</span></code></pre></div>
 </div>
-<div id="chart-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-7" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-7">Chart<a class="anchor" aria-label="anchor" href="#chart-7"></a>
+</h4>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -3603,8 +3607,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f6b6d26a1a7e125fb6ad" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6b6d26a1a7e125fb6ad">{"x":{
+<div id="htmlwidget-3f13f37242bf9a9358bb" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f13f37242bf9a9358bb">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -3657,26 +3661,26 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="isotype-grid" class="section level2">
-<h2 class="hasAnchor">
-<a href="#isotype-grid" class="anchor"></a>Isotype Grid</h2>
-<p><a href="https://altair-viz.github.io/gallery/isotype_grid.html">Altair Example</a></p>
-<div id="data-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-6" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="isotype-grid">Isotype Grid<a class="anchor" aria-label="anchor" href="#isotype-grid"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/isotype_grid.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-6">Data<a class="anchor" aria-label="anchor" href="#data-6"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>
-<span class="va">person</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>
+<span class="va">person</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 100</span>
 <span class="co">#&gt; Columns: 1</span>
-<span class="co">#&gt; $ id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,…</span></code></pre></div>
+<span class="co">#&gt; $ id <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, …</span></code></pre></div>
 </div>
-<div id="chart-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-8" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-8">Chart<a class="anchor" aria-label="anchor" href="#chart-8"></a>
+</h4>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span>
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -3692,8 +3696,8 @@
   <span class="fu">configure_view</span><span class="op">(</span>strokeWidth <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-265e048cb5f293d17ab3" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-265e048cb5f293d17ab3">{"x":{
+<div id="htmlwidget-cf93a55397a90acdff92" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf93a55397a90acdff92">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -4050,24 +4054,24 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="multiple-marks" class="section level2">
-<h2 class="hasAnchor">
-<a href="#multiple-marks" class="anchor"></a>Multiple Marks</h2>
-<p><a href="https://altair-viz.github.io/gallery/multiple_marks.html">Altair Example</a></p>
-<div id="data-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-7" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="multiple-marks">Multiple Marks<a class="anchor" aria-label="anchor" href="#multiple-marks"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/multiple_marks.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-7">Data<a class="anchor" aria-label="anchor" href="#data-7"></a>
+</h4>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 560</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span>
-<span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span>
-<span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></code></pre></div>
+<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
+<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
 </div>
-<div id="chart-9" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-9" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-9">Chart<a class="anchor" aria-label="anchor" href="#chart-9"></a>
+</h4>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span>
 
@@ -4081,8 +4085,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-cb01fe6b57a06b6c0257" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cb01fe6b57a06b6c0257">{"x":{
+<div id="htmlwidget-8215e6571ec9bb7b270b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8215e6571ec9bb7b270b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -6924,48 +6928,48 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="normalized-parallel-coordinates-example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#normalized-parallel-coordinates-example" class="anchor"></a>Normalized Parallel Coordinates Example</h2>
-<p><a href="https://altair-viz.github.io/gallery/normed_parallel_coordinates.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="normalized-parallel-coordinates-example">Normalized Parallel Coordinates Example<a class="anchor" aria-label="anchor" href="#normalized-parallel-coordinates-example"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/normed_parallel_coordinates.html" class="external-link">Altair Example</a></p>
 <blockquote>
-<p>A <a href="https://en.wikipedia.org/wiki/Parallel_coordinates">Parallel Coordinates</a> chart is a chart that lets you visualize the individual data points by drawing a single line for each of them.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Parallel_coordinates" class="external-link">Parallel Coordinates</a> chart is a chart that lets you visualize the individual data points by drawing a single line for each of them.</p>
 <p>Such a chart can be created in Altair by first transforming the data into a suitable representation.</p>
-<p>This example shows a modified parallel coordinates chart …, where the y-axis shows the value after min-max rather than the raw value. It’s a simplified Altair version of <a href="https://vega.github.io/vega-lite/examples/parallel_coordinate.html">the VegaLite version</a>.</p>
+<p>This example shows a modified parallel coordinates chart …, where the y-axis shows the value after min-max rather than the raw value. It’s a simplified Altair version of <a href="https://vega.github.io/vega-lite/examples/parallel_coordinate.html" class="external-link">the VegaLite version</a>.</p>
 </blockquote>
-<div id="data-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-8" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-8">Data<a class="anchor" aria-label="anchor" href="#data-8"></a>
+</h4>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-10" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-10" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-10">Chart<a class="anchor" aria-label="anchor" href="#chart-10"></a>
+</h4>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">source</span> <span class="op">&lt;-</span> <span class="va">source</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>, <span class="op">]</span>
+<span class="va">source</span> <span class="op">&lt;-</span> <span class="va">source</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/complete.cases.html" class="external-link">complete.cases</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>, <span class="op">]</span>
 
 <span class="va">chart</span> <span class="op">&lt;-</span>
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_window</span><span class="op">(</span>index<span class="op">=</span><span class="st">"count()"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_fold</span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Weight_in_lbs"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Acceleration"</span>, <span class="st">"Displacement"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Weight_in_lbs"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_joinaggregate</span><span class="op">(</span>
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"key"</span><span class="op">)</span>,
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"key"</span><span class="op">)</span>,
     min <span class="op">=</span> <span class="st">"min(value)"</span>,
     max <span class="op">=</span> <span class="st">"max(value)"</span>
   <span class="op">)</span><span class="op">$</span>
@@ -6984,8 +6988,8 @@
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-9e7e5622722b8bde7039" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e7e5622722b8bde7039">{"x":{
+<div id="htmlwidget-6fc900b1969c9c725013" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6fc900b1969c9c725013">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -11387,52 +11391,52 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="parallel-coordinates-example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#parallel-coordinates-example" class="anchor"></a>Parallel Coordinates Example</h2>
-<p><a href="https://altair-viz.github.io/gallery/parallel_coordinates.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="parallel-coordinates-example">Parallel Coordinates Example<a class="anchor" aria-label="anchor" href="#parallel-coordinates-example"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/parallel_coordinates.html" class="external-link">Altair Example</a></p>
 <blockquote>
-<p>A <a href="https://en.wikipedia.org/wiki/Parallel_coordinates">Parallel Coordinates</a> chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Parallel_coordinates" class="external-link">Parallel Coordinates</a> chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation.</p>
 </blockquote>
 <p>Removing this example in anticipation of a new example using a suitable dataset.</p>
 </div>
-<div id="ranged-dot-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ranged-dot-plot" class="anchor"></a>Ranged Dot Plot</h2>
-<p><a href="https://altair-viz.github.io/gallery/ranged_dot_plot.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="ranged-dot-plot">Ranged Dot Plot<a class="anchor" aria-label="anchor" href="#ranged-dot-plot"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/ranged_dot_plot.html" class="external-link">Altair Example</a></p>
 <blockquote>
 <p>This example shows a ranged dot plot that uses <em>layer</em> to convey changing life expectancy for the five most populous countries (between 1955 and 2000).</p>
 </blockquote>
-<div id="data-9" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-9" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-9">Data<a class="anchor" aria-label="anchor" href="#data-9"></a>
+</h4>
 <p>Cannot get the Vega-Lite data-layer to work.</p>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">countries</span><span class="op">$</span><span class="va">url</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">countries</span><span class="op">$</span><span class="va">url</span><span class="op">)</span>
 <span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="va">data</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">`_comment`</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>
-    <span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span><span class="op">)</span>,
-    <span class="va">year</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1955</span>, <span class="fl">2000</span><span class="op">)</span>
+  <span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">`_comment`</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span>
+    <span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span><span class="op">)</span>,
+    <span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1955</span>, <span class="fl">2000</span><span class="op">)</span>
   <span class="op">)</span> </code></pre></div>
 </details><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 10</span>
 <span class="co">#&gt; Columns: 8</span>
-<span class="co">#&gt; $ year          &lt;int&gt; 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2…</span>
-<span class="co">#&gt; $ fertility     &lt;dbl&gt; 6.1501, 2.3450, 5.5900, 1.7000, 5.8961, 3.1132, 5.6720,…</span>
-<span class="co">#&gt; $ life_expect   &lt;dbl&gt; 53.28500, 71.00600, 50.54896, 72.02800, 40.24900, 62.87…</span>
-<span class="co">#&gt; $ n_fertility   &lt;dbl&gt; 6.1501, NA, 5.7200, NA, 5.8216, NA, 5.6200, NA, 3.3140,…</span>
-<span class="co">#&gt; $ n_life_expect &lt;dbl&gt; 55.66500, NA, 44.50136, NA, 43.60500, NA, 42.51800, NA,…</span>
-<span class="co">#&gt; $ country       &lt;chr&gt; "Brazil", "Brazil", "China", "China", "India", "India",…</span>
-<span class="co">#&gt; $ p_fertility   &lt;dbl&gt; NA, 2.4500, NA, 1.7810, NA, 3.4551, NA, 2.5500, NA, 1.9…</span>
-<span class="co">#&gt; $ p_life_expect &lt;dbl&gt; NA, 69.388, NA, 70.426, NA, 61.765, NA, 66.041, NA, 76.…</span></code></pre></div>
+<span class="co">#&gt; $ year          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1955, 2000, 1955, 2000, 1955, 2000, 1955, 2000, 1955, 20…</span>
+<span class="co">#&gt; $ fertility     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.1501, 2.3450, 5.5900, 1.7000, 5.8961, 3.1132, 5.6720, …</span>
+<span class="co">#&gt; $ life_expect   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 53.28500, 71.00600, 50.54896, 72.02800, 40.24900, 62.879…</span>
+<span class="co">#&gt; $ n_fertility   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.1501, NA, 5.7200, NA, 5.8216, NA, 5.6200, NA, 3.3140, …</span>
+<span class="co">#&gt; $ n_life_expect <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 55.66500, NA, 44.50136, NA, 43.60500, NA, 42.51800, NA, …</span>
+<span class="co">#&gt; $ country       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Brazil", "Brazil", "China", "China", "India", "India", …</span>
+<span class="co">#&gt; $ p_fertility   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, 2.4500, NA, 1.7810, NA, 3.4551, NA, 2.5500, NA, 1.99…</span>
+<span class="co">#&gt; $ p_life_expect <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, 69.388, NA, 70.426, NA, 61.765, NA, 66.041, NA, 76.8…</span></code></pre></div>
 </div>
-<div id="chart-11" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-11" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-11">Chart<a class="anchor" aria-label="anchor" href="#chart-11"></a>
+</h4>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Line between life expectancy in 1955 &amp; 2000</span>
 <span class="va">chart_line</span> <span class="op">&lt;-</span>
@@ -11454,8 +11458,8 @@
     color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span>
       <span class="st">"year:O"</span>,
       scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>
-        domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"1955"</span>, <span class="st">"2000"</span><span class="op">)</span>, 
-        range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"#e6959c"</span>, <span class="st">"#911a24"</span><span class="op">)</span>
+        domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"1955"</span>, <span class="st">"2000"</span><span class="op">)</span>, 
+        range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"#e6959c"</span>, <span class="st">"#911a24"</span><span class="op">)</span>
       <span class="op">)</span>
     <span class="op">)</span>
   <span class="op">)</span><span class="op">$</span><span class="fu">interactive</span><span class="op">(</span><span class="op">)</span>
@@ -11464,18 +11468,18 @@
 <span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="op">(</span><span class="va">chart_line</span> <span class="op">+</span> <span class="va">chart_point</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_filter</span><span class="op">(</span>
-    filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
       field <span class="op">=</span> <span class="st">"country"</span>,
-      oneOf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span><span class="op">)</span>
+      oneOf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"China"</span>, <span class="st">"India"</span>, <span class="st">"United States"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Brazil"</span><span class="op">)</span>
     <span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_filter</span><span class="op">(</span>
-    filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"year"</span>, oneOf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1955</span>, <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
+    filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>field <span class="op">=</span> <span class="st">"year"</span>, oneOf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1955</span>, <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-60003884fc5fc224d434" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60003884fc5fc224d434">{"x":{
+<div id="htmlwidget-b879d4dbc101a0c0e80f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b879d4dbc101a0c0e80f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -11689,31 +11693,31 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="ridgeline-plot-example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ridgeline-plot-example" class="anchor"></a>Ridgeline plot Example</h2>
-<p><a href="https://altair-viz.github.io/gallery/ridgeline_plot.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="ridgeline-plot-example">Ridgeline plot Example<a class="anchor" aria-label="anchor" href="#ridgeline-plot-example"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/ridgeline_plot.html" class="external-link">Altair Example</a></p>
 <blockquote>
-<p>A <a href="https://serialmentor.com/blog/2017/9/15/goodbye-joyplots">Ridgeline plot</a> chart is a chart that lets you visualize distribution of a numeric value for several groups.</p>
+<p>A <a href="https://serialmentor.com/blog/2017/9/15/goodbye-joyplots" class="external-link">Ridgeline plot</a> chart is a chart that lets you visualize distribution of a numeric value for several groups.</p>
 <p>Such a chart can be created in Altair by first transforming the data into a suitable representation.</p>
 </blockquote>
-<div id="data-10" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-10" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-10">Data<a class="anchor" aria-label="anchor" href="#data-10"></a>
+</h4>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">seattle_weather</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">seattle_weather</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 1,461</span>
 <span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ date          &lt;dttm&gt; 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04, 2012-0…</span>
-<span class="co">#&gt; $ precipitation &lt;dbl&gt; 0.0, 10.9, 0.8, 20.3, 1.3, 2.5, 0.0, 0.0, 4.3, 1.0, 0.0…</span>
-<span class="co">#&gt; $ temp_max      &lt;dbl&gt; 12.8, 10.6, 11.7, 12.2, 8.9, 4.4, 7.2, 10.0, 9.4, 6.1, …</span>
-<span class="co">#&gt; $ temp_min      &lt;dbl&gt; 5.0, 2.8, 7.2, 5.6, 2.8, 2.2, 2.8, 2.8, 5.0, 0.6, -1.1,…</span>
-<span class="co">#&gt; $ wind          &lt;dbl&gt; 4.7, 4.5, 2.3, 4.7, 6.1, 2.2, 2.3, 2.0, 3.4, 3.4, 5.1, …</span>
-<span class="co">#&gt; $ weather       &lt;chr&gt; "drizzle", "rain", "rain", "rain", "rain", "rain", "rai…</span></code></pre></div>
+<span class="co">#&gt; $ date          <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2012-01-01, 2012-01-02, 2012-01-03, 2012-01-04, 2012-01…</span>
+<span class="co">#&gt; $ precipitation <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0, 10.9, 0.8, 20.3, 1.3, 2.5, 0.0, 0.0, 4.3, 1.0, 0.0,…</span>
+<span class="co">#&gt; $ temp_max      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.8, 10.6, 11.7, 12.2, 8.9, 4.4, 7.2, 10.0, 9.4, 6.1, 6…</span>
+<span class="co">#&gt; $ temp_min      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.0, 2.8, 7.2, 5.6, 2.8, 2.2, 2.8, 2.8, 5.0, 0.6, -1.1, …</span>
+<span class="co">#&gt; $ wind          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 4.7, 4.5, 2.3, 4.7, 6.1, 2.2, 2.3, 2.0, 3.4, 3.4, 5.1, 1…</span>
+<span class="co">#&gt; $ weather       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "drizzle", "rain", "rain", "rain", "rain", "rain", "rain…</span></code></pre></div>
 </div>
-<div id="chart-12" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-12" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-12">Chart<a class="anchor" aria-label="anchor" href="#chart-12"></a>
+</h4>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">seattle_weather</span><span class="op">(</span><span class="op">)</span>
 
@@ -11724,16 +11728,16 @@
   <span class="fu">transform_timeunit</span><span class="op">(</span>Month <span class="op">=</span> <span class="st">"month(date)"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_joinaggregate</span><span class="op">(</span>
     mean_temp <span class="op">=</span> <span class="st">"mean(temp_max)"</span>, 
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Month"</span><span class="op">)</span>
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Month"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_bin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"bin_max"</span>, <span class="st">"bin_min"</span><span class="op">)</span>, <span class="st">"temp_max"</span><span class="op">)</span><span class="op">$</span>
+  <span class="fu">transform_bin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"bin_max"</span>, <span class="st">"bin_min"</span><span class="op">)</span>, <span class="st">"temp_max"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_aggregate</span><span class="op">(</span>
     value <span class="op">=</span> <span class="st">"count()"</span>, 
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Month"</span>, <span class="st">"mean_temp"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span><span class="op">)</span>
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Month"</span>, <span class="st">"mean_temp"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_impute</span><span class="op">(</span>
     impute <span class="op">=</span> <span class="st">"value"</span>, 
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Month"</span>, <span class="st">"mean_temp"</span><span class="op">)</span>, 
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Month"</span>, <span class="st">"mean_temp"</span><span class="op">)</span>, 
     key <span class="op">=</span> <span class="st">"bin_min"</span>, 
     value <span class="op">=</span> <span class="fl">0</span>
   <span class="op">)</span><span class="op">$</span>
@@ -11746,13 +11750,13 @@
     <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"bin_min:Q"</span>, bin <span class="op">=</span> <span class="st">"binned"</span>, title <span class="op">=</span> <span class="st">"Maximum Daily Temperature (C)"</span><span class="op">)</span>,
     <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span>
       <span class="st">"value:Q"</span>,
-      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">step</span>, <span class="op">-</span><span class="va">step</span> <span class="op">*</span> <span class="va">overlap</span><span class="op">)</span><span class="op">)</span>,
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">step</span>, <span class="op">-</span><span class="va">step</span> <span class="op">*</span> <span class="va">overlap</span><span class="op">)</span><span class="op">)</span>,
       axis <span class="op">=</span> <span class="cn">NULL</span>
     <span class="op">)</span>,
     <span class="va">alt</span><span class="op">$</span><span class="fu">Fill</span><span class="op">(</span>
       <span class="st">"mean_temp:Q"</span>,
       legend <span class="op">=</span> <span class="cn">NULL</span>,
-      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>, scheme <span class="op">=</span> <span class="st">"redyellowblue"</span><span class="op">)</span>
+      scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>domain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>, scheme <span class="op">=</span> <span class="st">"redyellowblue"</span><span class="op">)</span>
     <span class="op">)</span>,
     <span class="va">alt</span><span class="op">$</span><span class="fu">Row</span><span class="op">(</span>
       <span class="st">"Month:T"</span>,
@@ -11766,8 +11770,8 @@
   <span class="fu">configure_title</span><span class="op">(</span>anchor <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-1113697704534d14427f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1113697704534d14427f">{"x":{
+<div id="htmlwidget-2a9300ada623f111d57e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a9300ada623f111d57e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "bounds": "flush",
@@ -23587,28 +23591,28 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="sorted-error-bars-showing-confidence-interval" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sorted-error-bars-showing-confidence-interval" class="anchor"></a>Sorted Error Bars showing Confidence Interval</h2>
-<p><a href="https://altair-viz.github.io/gallery/sorted_error_bars_with_ci.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="sorted-error-bars-showing-confidence-interval">Sorted Error Bars showing Confidence Interval<a class="anchor" aria-label="anchor" href="#sorted-error-bars-showing-confidence-interval"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/sorted_error_bars_with_ci.html" class="external-link">Altair Example</a></p>
 <blockquote>
 <p>This example shows how to show error bars using confidence intervals, while also sorting the y-axis based on x-axis values.</p>
 </blockquote>
-<div id="data-11" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-11" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-11">Data<a class="anchor" aria-label="anchor" href="#data-11"></a>
+</h4>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 120</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span>
-<span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span>
-<span class="co">#&gt; $ year    &lt;dbl&gt; 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1…</span>
-<span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></code></pre></div>
+<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
+<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
+<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 1931, 19…</span>
+<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
 </div>
-<div id="chart-13" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-13" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-13">Chart<a class="anchor" aria-label="anchor" href="#chart-13"></a>
+</h4>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span>
 
@@ -23636,8 +23640,8 @@
   <span class="op">)</span>
 
 <span class="va">points</span> <span class="op">+</span> <span class="va">error_bars</span></code></pre></div>
-<div id="htmlwidget-b6f1ad7fd99a44482432" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b6f1ad7fd99a44482432">{"x":{
+<div id="htmlwidget-a74d119b80730c0d00d0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a74d119b80730c0d00d0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -24434,37 +24438,37 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="steam-and-leaf-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#steam-and-leaf-plot" class="anchor"></a>Steam and Leaf Plot</h2>
-<p><a href="https://altair-viz.github.io/gallery/stem_and_leaf.html">Altair Example</a></p>
-<div id="data-12" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-12" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="steam-and-leaf-plot">Steam and Leaf Plot<a class="anchor" aria-label="anchor" href="#steam-and-leaf-plot"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/stem_and_leaf.html" class="external-link">Altair Example</a></p>
+<div class="section level4">
+<h4 id="data-12">Data<a class="anchor" aria-label="anchor" href="#data-12"></a>
+</h4>
 <details><p><summary>Definition</summary></p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
-    sample <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">50</span>, <span class="fl">15</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">)</span>,
-    stem <span class="op">=</span> <span class="op">(</span><span class="va">sample</span> <span class="op">/</span> <span class="fl">10L</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">)</span>,
-    leaf <span class="op">=</span> <span class="va">sample</span> <span class="op">%%</span> <span class="fl">10L</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sample</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">stem</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">leaf</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+    sample <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">50</span>, <span class="fl">15</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="op">)</span>,
+    stem <span class="op">=</span> <span class="op">(</span><span class="va">sample</span> <span class="op">/</span> <span class="fl">10L</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="op">)</span>,
+    leaf <span class="op">=</span> <span class="va">sample</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">10L</span>
+  <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">sample</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">stem</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">leaf</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 100</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ sample   &lt;int&gt; 10, 12, 20, 21, 24, 26, 27, 27, 29, 30, 31, 32, 33, 35, 35, …</span>
-<span class="co">#&gt; $ stem     &lt;int&gt; 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …</span>
-<span class="co">#&gt; $ leaf     &lt;int&gt; 0, 2, 0, 1, 4, 6, 7, 7, 9, 0, 1, 2, 3, 5, 5, 6, 7, 7, 7, 8, …</span>
-<span class="co">#&gt; $ position &lt;int&gt; 1, 2, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11…</span></code></pre></div>
+<span class="co">#&gt; $ sample   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6, 14, 18, 20, 23, 25, 26, 27, 28, 29, 29, 30, 31, 33, 34, 34…</span>
+<span class="co">#&gt; $ stem     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span>
+<span class="co">#&gt; $ leaf     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6, 4, 8, 0, 3, 5, 6, 7, 8, 9, 9, 0, 1, 3, 4, 4, 6, 6, 6, 7, 7…</span>
+<span class="co">#&gt; $ position <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 2, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1…</span></code></pre></div>
 </div>
-<div id="chart-14" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-14" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-14">Chart<a class="anchor" aria-label="anchor" href="#chart-14"></a>
+</h4>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">$</span>
@@ -24481,8 +24485,8 @@
   <span class="fu">configure_text</span><span class="op">(</span>fontSize <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-9339e58d9bb292e74a3a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9339e58d9bb292e74a3a">{"x":{
+<div id="htmlwidget-5bbc4933702eceb1e019" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5bbc4933702eceb1e019">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -24498,20 +24502,26 @@
       }
     },
     "data": {
-      "name": "data-c28b588e5a2b68beb70608de77442c99"
+      "name": "data-85a2f5ece6b1c298a9aff51466c92254"
     },
     "datasets": {
-      "data-c28b588e5a2b68beb70608de77442c99": [
+      "data-85a2f5ece6b1c298a9aff51466c92254": [
         {
-          "leaf": 0,
+          "leaf": 6,
           "position": 1,
-          "sample": 10,
+          "sample": 6,
+          "stem": 0
+        },
+        {
+          "leaf": 4,
+          "position": 1,
+          "sample": 14,
           "stem": 1
         },
         {
-          "leaf": 2,
+          "leaf": 8,
           "position": 2,
-          "sample": 12,
+          "sample": 18,
           "stem": 1
         },
         {
@@ -24521,15 +24531,15 @@
           "stem": 2
         },
         {
-          "leaf": 1,
+          "leaf": 3,
           "position": 2,
-          "sample": 21,
+          "sample": 23,
           "stem": 2
         },
         {
-          "leaf": 4,
+          "leaf": 5,
           "position": 3,
-          "sample": 24,
+          "sample": 25,
           "stem": 2
         },
         {
@@ -24545,14 +24555,20 @@
           "stem": 2
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 6,
-          "sample": 27,
+          "sample": 28,
           "stem": 2
         },
         {
           "leaf": 9,
           "position": 7,
+          "sample": 29,
+          "stem": 2
+        },
+        {
+          "leaf": 9,
+          "position": 8,
           "sample": 29,
           "stem": 2
         },
@@ -24569,27 +24585,27 @@
           "stem": 3
         },
         {
-          "leaf": 2,
-          "position": 3,
-          "sample": 32,
-          "stem": 3
-        },
-        {
           "leaf": 3,
-          "position": 4,
+          "position": 3,
           "sample": 33,
           "stem": 3
         },
         {
-          "leaf": 5,
-          "position": 5,
-          "sample": 35,
+          "leaf": 4,
+          "position": 4,
+          "sample": 34,
           "stem": 3
         },
         {
-          "leaf": 5,
+          "leaf": 4,
+          "position": 5,
+          "sample": 34,
+          "stem": 3
+        },
+        {
+          "leaf": 6,
           "position": 6,
-          "sample": 35,
+          "sample": 36,
           "stem": 3
         },
         {
@@ -24599,9 +24615,9 @@
           "stem": 3
         },
         {
-          "leaf": 7,
+          "leaf": 6,
           "position": 8,
-          "sample": 37,
+          "sample": 36,
           "stem": 3
         },
         {
@@ -24617,9 +24633,9 @@
           "stem": 3
         },
         {
-          "leaf": 8,
+          "leaf": 7,
           "position": 11,
-          "sample": 38,
+          "sample": 37,
           "stem": 3
         },
         {
@@ -24635,39 +24651,27 @@
           "stem": 3
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 14,
-          "sample": 38,
-          "stem": 3
-        },
-        {
-          "leaf": 9,
-          "position": 15,
           "sample": 39,
           "stem": 3
         },
         {
-          "leaf": 9,
-          "position": 16,
-          "sample": 39,
-          "stem": 3
-        },
-        {
-          "leaf": 1,
+          "leaf": 0,
           "position": 1,
-          "sample": 41,
+          "sample": 40,
           "stem": 4
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 2,
-          "sample": 41,
+          "sample": 40,
           "stem": 4
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 3,
-          "sample": 41,
+          "sample": 40,
           "stem": 4
         },
         {
@@ -24683,39 +24687,39 @@
           "stem": 4
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 6,
-          "sample": 42,
+          "sample": 41,
           "stem": 4
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 7,
-          "sample": 42,
+          "sample": 41,
           "stem": 4
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 8,
-          "sample": 42,
-          "stem": 4
-        },
-        {
-          "leaf": 2,
-          "position": 9,
-          "sample": 42,
-          "stem": 4
-        },
-        {
-          "leaf": 2,
-          "position": 10,
-          "sample": 42,
+          "sample": 41,
           "stem": 4
         },
         {
           "leaf": 3,
-          "position": 11,
+          "position": 9,
           "sample": 43,
+          "stem": 4
+        },
+        {
+          "leaf": 3,
+          "position": 10,
+          "sample": 43,
+          "stem": 4
+        },
+        {
+          "leaf": 4,
+          "position": 11,
+          "sample": 44,
           "stem": 4
         },
         {
@@ -24731,27 +24735,27 @@
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 4,
           "position": 14,
-          "sample": 46,
+          "sample": 44,
+          "stem": 4
+        },
+        {
+          "leaf": 5,
+          "position": 15,
+          "sample": 45,
+          "stem": 4
+        },
+        {
+          "leaf": 5,
+          "position": 16,
+          "sample": 45,
           "stem": 4
         },
         {
           "leaf": 6,
-          "position": 15,
-          "sample": 46,
-          "stem": 4
-        },
-        {
-          "leaf": 7,
-          "position": 16,
-          "sample": 47,
-          "stem": 4
-        },
-        {
-          "leaf": 7,
           "position": 17,
-          "sample": 47,
+          "sample": 46,
           "stem": 4
         },
         {
@@ -24767,9 +24771,9 @@
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 20,
-          "sample": 47,
+          "sample": 48,
           "stem": 4
         },
         {
@@ -24785,9 +24789,9 @@
           "stem": 4
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 23,
-          "sample": 48,
+          "sample": 49,
           "stem": 4
         },
         {
@@ -24815,27 +24819,15 @@
           "stem": 4
         },
         {
-          "leaf": 9,
-          "position": 28,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 29,
-          "sample": 49,
-          "stem": 4
-        },
-        {
           "leaf": 0,
           "position": 1,
           "sample": 50,
           "stem": 5
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 2,
-          "sample": 51,
+          "sample": 50,
           "stem": 5
         },
         {
@@ -24863,21 +24855,21 @@
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 3,
           "position": 7,
-          "sample": 52,
+          "sample": 53,
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 3,
           "position": 8,
-          "sample": 52,
+          "sample": 53,
           "stem": 5
         },
         {
-          "leaf": 2,
+          "leaf": 3,
           "position": 9,
-          "sample": 52,
+          "sample": 53,
           "stem": 5
         },
         {
@@ -24929,9 +24921,9 @@
           "stem": 5
         },
         {
-          "leaf": 5,
+          "leaf": 6,
           "position": 18,
-          "sample": 55,
+          "sample": 56,
           "stem": 5
         },
         {
@@ -24977,9 +24969,9 @@
           "stem": 5
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 1,
-          "sample": 61,
+          "sample": 60,
           "stem": 6
         },
         {
@@ -24989,118 +24981,130 @@
           "stem": 6
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 3,
-          "sample": 63,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 4,
-          "sample": 63,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 5,
-          "sample": 63,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 3,
+          "leaf": 2,
           "position": 6,
-          "sample": 63,
+          "sample": 62,
           "stem": 6
         },
         {
-          "leaf": 4,
+          "leaf": 6,
           "position": 7,
-          "sample": 64,
-          "stem": 6
-        },
-        {
-          "leaf": 4,
-          "position": 8,
-          "sample": 64,
-          "stem": 6
-        },
-        {
-          "leaf": 5,
-          "position": 9,
-          "sample": 65,
-          "stem": 6
-        },
-        {
-          "leaf": 6,
-          "position": 10,
-          "sample": 66,
-          "stem": 6
-        },
-        {
-          "leaf": 6,
-          "position": 11,
-          "sample": 66,
-          "stem": 6
-        },
-        {
-          "leaf": 6,
-          "position": 12,
           "sample": 66,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 13,
+          "position": 8,
           "sample": 67,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 14,
+          "position": 9,
+          "sample": 67,
+          "stem": 6
+        },
+        {
+          "leaf": 7,
+          "position": 10,
           "sample": 67,
           "stem": 6
         },
         {
           "leaf": 8,
-          "position": 15,
+          "position": 11,
+          "sample": 68,
+          "stem": 6
+        },
+        {
+          "leaf": 8,
+          "position": 12,
           "sample": 68,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 16,
+          "position": 13,
           "sample": 69,
           "stem": 6
         },
         {
-          "leaf": 0,
+          "leaf": 4,
           "position": 1,
-          "sample": 70,
+          "sample": 74,
           "stem": 7
         },
         {
-          "leaf": 0,
+          "leaf": 5,
           "position": 2,
-          "sample": 70,
+          "sample": 75,
           "stem": 7
         },
         {
-          "leaf": 0,
+          "leaf": 5,
           "position": 3,
-          "sample": 70,
+          "sample": 75,
           "stem": 7
         },
         {
-          "leaf": 2,
+          "leaf": 5,
           "position": 4,
-          "sample": 72,
+          "sample": 75,
           "stem": 7
         },
         {
-          "leaf": 8,
+          "leaf": 6,
           "position": 5,
-          "sample": 78,
+          "sample": 76,
           "stem": 7
+        },
+        {
+          "leaf": 9,
+          "position": 6,
+          "sample": 79,
+          "stem": 7
+        },
+        {
+          "leaf": 4,
+          "position": 1,
+          "sample": 84,
+          "stem": 8
+        },
+        {
+          "leaf": 6,
+          "position": 2,
+          "sample": 86,
+          "stem": 8
+        },
+        {
+          "leaf": 7,
+          "position": 3,
+          "sample": 87,
+          "stem": 8
+        },
+        {
+          "leaf": 4,
+          "position": 1,
+          "sample": 94,
+          "stem": 9
         }
       ]
     },
@@ -25142,33 +25146,33 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="text-over-a-heatmap" class="section level2">
-<h2 class="hasAnchor">
-<a href="#text-over-a-heatmap" class="anchor"></a>Text over a Heatmap</h2>
-<p><a href="https://altair-viz.github.io/gallery/layered_heatmap_text.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="text-over-a-heatmap">Text over a Heatmap<a class="anchor" aria-label="anchor" href="#text-over-a-heatmap"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/layered_heatmap_text.html" class="external-link">Altair Example</a></p>
 <blockquote>
 <p>An example of a layered chart of text over a heatmap using the cars dataset.</p>
 </blockquote>
-<div id="data-13" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-13" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-13">Data<a class="anchor" aria-label="anchor" href="#data-13"></a>
+</h4>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-15" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-15" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-15">Chart<a class="anchor" aria-label="anchor" href="#chart-15"></a>
+</h4>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
 
@@ -25177,7 +25181,7 @@
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_aggregate</span><span class="op">(</span>
     num_cars <span class="op">=</span> <span class="st">"count()"</span>,
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Origin"</span>, <span class="st">"Cylinders"</span><span class="op">)</span>
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Origin"</span>, <span class="st">"Cylinders"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span>
     <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"Cylinders:O"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>paddingInner <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,
     <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"Origin:O"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>paddingInner <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>
@@ -25208,8 +25212,8 @@
 
 <span class="co"># Draw the chart</span>
 <span class="va">heatmap</span> <span class="op">+</span> <span class="va">text</span></code></pre></div>
-<div id="htmlwidget-7b0b6509004c10203f4c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7b0b6509004c10203f4c">{"x":{
+<div id="htmlwidget-b421d3f6f15f68533ee7" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b421d3f6f15f68533ee7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -29791,33 +29795,33 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="violinplot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#violinplot" class="anchor"></a>Violinplot</h2>
-<p><a href="https://altair-viz.github.io/gallery/violine_plot.html">Altair Example</a></p>
+<div class="section level2">
+<h2 id="violinplot">Violinplot<a class="anchor" aria-label="anchor" href="#violinplot"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/violine_plot.html" class="external-link">Altair Example</a></p>
 <blockquote>
 <p>This example shows how to make a kind of a Violinplot.</p>
 </blockquote>
-<div id="data-14" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-14" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-14">Data<a class="anchor" aria-label="anchor" href="#data-14"></a>
+</h4>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-16" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-16" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-16">Chart<a class="anchor" aria-label="anchor" href="#chart-16"></a>
+</h4>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
 
@@ -29825,18 +29829,18 @@
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.Miles_per_Gallon &gt; 0"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_bin</span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"bin_max"</span>, <span class="st">"bin_min"</span><span class="op">)</span>, 
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"bin_max"</span>, <span class="st">"bin_min"</span><span class="op">)</span>, 
     field <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>, 
     bin <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Bin</span><span class="op">(</span>maxbins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_calculate</span><span class="op">(</span>binned <span class="op">=</span> <span class="st">"(datum.bin_max + datum.bin_min) / 2"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_aggregate</span><span class="op">(</span>
     value_count <span class="op">=</span> <span class="st">"count()"</span>, 
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Origin"</span>, <span class="st">"binned"</span><span class="op">)</span>
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Origin"</span>, <span class="st">"binned"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_impute</span><span class="op">(</span>
     impute <span class="op">=</span> <span class="st">"value_count"</span>,
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Origin"</span><span class="op">)</span>, 
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Origin"</span><span class="op">)</span>, 
     key <span class="op">=</span> <span class="st">"binned"</span>, 
     value <span class="op">=</span> <span class="fl">0</span>
   <span class="op">)</span><span class="op">$</span>
@@ -29848,7 +29852,7 @@
       stack <span class="op">=</span> <span class="st">"center"</span>,
       axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>
         labels <span class="op">=</span> <span class="cn">FALSE</span>, 
-        values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>, 
+        values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>, 
         grid <span class="op">=</span> <span class="cn">FALSE</span>, 
         ticks <span class="op">=</span> <span class="cn">TRUE</span>
       <span class="op">)</span>
@@ -29869,8 +29873,8 @@
   <span class="fu">configure_view</span><span class="op">(</span>stroke <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-85e12c4749ff58ef0598" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-85e12c4749ff58ef0598">{"x":{
+<div id="htmlwidget-293d45605b6e7e9b29ba" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-293d45605b6e7e9b29ba">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -34458,11 +34462,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

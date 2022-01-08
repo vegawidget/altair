@@ -23,6 +23,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -35,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.1.1.9001</span>
       </span>
     </div>
 
@@ -43,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +69,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -81,7 +84,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -132,8 +136,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,50 +157,50 @@
 
       
 
-      </header><script src="example-gallery-03-line-charts_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-03-line-charts_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="example-gallery-03-line-charts_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-03-line-charts_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-binding-0.3.3/vegawidget.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Line Charts</h1>
-                        <h4 class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-01-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-03-line-charts.Rmd"><code>vignettes/example-gallery-03-line-charts.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-03-line-charts.Rmd" class="external-link"><code>vignettes/example-gallery-03-line-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-03-line-charts.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html##line-charts">Line Charts</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html##line-charts" class="external-link">Line Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805">"jsonlite"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org">"readr"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org" class="external-link">"readr"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="filled-step-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#filled-step-chart" class="anchor"></a>Filled step chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/filled_step_chart.html">Altair example</a></p>
-<div id="data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="filled-step-chart">Filled step chart<a class="anchor" aria-label="anchor" href="#filled-step-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/filled_step_chart.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 560</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span>
-<span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span>
-<span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></code></pre></div>
+<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
+<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
 </div>
-<div id="chart" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -212,8 +216,8 @@
   <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-153d5bceef95c1527a7f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-153d5bceef95c1527a7f">{"x":{
+<div id="htmlwidget-cd37c67778e5d4d00942" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd37c67778e5d4d00942">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -3058,33 +3062,33 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="line-chart-with-confidence-interval-band" class="section level2">
-<h2 class="hasAnchor">
-<a href="#line-chart-with-confidence-interval-band" class="anchor"></a>Line chart with Confidence Interval Band</h2>
-<p><a href="https://altair-viz.github.io/gallery/line_with_ci.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="line-chart-with-confidence-interval-band">Line chart with Confidence Interval Band<a class="anchor" aria-label="anchor" href="#line-chart-with-confidence-interval-band"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/line_with_ci.html" class="external-link">Altair example</a></p>
 <blockquote>
 <p>This example shows how to make a line chart with a bootstrapped 95% confidence interval band.</p>
 </blockquote>
-<div id="data-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-1" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 406</span>
 <span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             &lt;chr&gt; "chevrolet chevelle malibu", "buick skylark 320", "p…</span>
-<span class="co">#&gt; $ Miles_per_Gallon &lt;dbl&gt; 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, Na…</span>
-<span class="co">#&gt; $ Cylinders        &lt;dbl&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8…</span>
-<span class="co">#&gt; $ Displacement     &lt;dbl&gt; 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 13…</span>
-<span class="co">#&gt; $ Horsepower       &lt;dbl&gt; 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 11…</span>
-<span class="co">#&gt; $ Weight_in_lbs    &lt;dbl&gt; 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425…</span>
-<span class="co">#&gt; $ Acceleration     &lt;dbl&gt; 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, …</span>
-<span class="co">#&gt; $ Year             &lt;dttm&gt; 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 197…</span>
-<span class="co">#&gt; $ Origin           &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span></code></pre></div>
+<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
+<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
+<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
+<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
+<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
+<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
+<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
+<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
+<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
 </div>
-<div id="chart-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-1" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
 
@@ -3111,8 +3115,8 @@
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">confidence_interval</span> <span class="op">+</span> <span class="va">line</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-43c645085bcd01a9bc79" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-43c645085bcd01a9bc79">{"x":{
+<div id="htmlwidget-25b9f473074d459fdd7a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-25b9f473074d459fdd7a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -7645,27 +7649,27 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="line-chart-with-layered-aggregates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#line-chart-with-layered-aggregates" class="anchor"></a>Line Chart with Layered Aggregates</h2>
-<p><a href="https://altair-viz.github.io/gallery/layer_line_color_rule.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="line-chart-with-layered-aggregates">Line Chart with Layered Aggregates<a class="anchor" aria-label="anchor" href="#line-chart-with-layered-aggregates"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/layer_line_color_rule.html" class="external-link">Altair example</a></p>
 <blockquote>
 <p>This example shows how to make a multi series line chart of the daily closing stock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000 and 2010, along with a layered rule showing the average values.</p>
 </blockquote>
-<div id="data-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-2" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 560</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span>
-<span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span>
-<span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></code></pre></div>
+<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
+<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
 </div>
-<div id="chart-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-2" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span>
 
@@ -7697,8 +7701,8 @@
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">line</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-15806e6e10409d367ecd" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-15806e6e10409d367ecd">{"x":{
+<div id="htmlwidget-bf28467a4ef532612f12" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bf28467a4ef532612f12">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -10562,28 +10566,28 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="line-chart-with-percent-axis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#line-chart-with-percent-axis" class="anchor"></a>Line Chart with Percent axis</h2>
-<p><a href="https://altair-viz.github.io/gallery/line_percent.html">Altair example</a></p>
-<div id="data-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-3" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="line-chart-with-percent-axis">Line Chart with Percent axis<a class="anchor" aria-label="anchor" href="#line-chart-with-percent-axis"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/line_percent.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jobs</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">jobs</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span>
 
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 7,650</span>
 <span class="co">#&gt; Columns: 5</span>
-<span class="co">#&gt; $ job   &lt;chr&gt; "Accountant / Auditor", "Accountant / Auditor", "Accountant / A…</span>
-<span class="co">#&gt; $ sex   &lt;chr&gt; "men", "men", "men", "men", "men", "men", "men", "men", "men", …</span>
-<span class="co">#&gt; $ year  &lt;int&gt; 1850, 1860, 1870, 1880, 1900, 1910, 1920, 1930, 1940, 1950, 196…</span>
-<span class="co">#&gt; $ count &lt;int&gt; 708, 1805, 1310, 2295, 11753, 0, 111209, 181482, 0, 330352, 425…</span>
-<span class="co">#&gt; $ perc  &lt;dbl&gt; 1.309607e-04, 2.140037e-04, 9.977882e-05, 1.253599e-04, 3.95860…</span></code></pre></div>
+<span class="co">#&gt; $ job   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Accountant / Auditor", "Accountant / Auditor", "Accountant / Au…</span>
+<span class="co">#&gt; $ sex   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "men", "men", "men", "men", "men", "men", "men", "men", "men", "…</span>
+<span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1850, 1860, 1870, 1880, 1900, 1910, 1920, 1930, 1940, 1950, 1960…</span>
+<span class="co">#&gt; $ count <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 708, 1805, 1310, 2295, 11753, 0, 111209, 181482, 0, 330352, 4250…</span>
+<span class="co">#&gt; $ perc  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.309607e-04, 2.140037e-04, 9.977882e-05, 1.253599e-04, 3.958602…</span></code></pre></div>
 </div>
-<div id="chart-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-3" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-3">Chart<a class="anchor" aria-label="anchor" href="#chart-3"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span>
@@ -10597,8 +10601,8 @@
   <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.job == 'Welder'"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-efef43ae0c833488db04" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-efef43ae0c833488db04">{"x":{
+<div id="htmlwidget-299af27dddc2121188d0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-299af27dddc2121188d0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -10642,28 +10646,28 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="line-chart-with-points" class="section level2">
-<h2 class="hasAnchor">
-<a href="#line-chart-with-points" class="anchor"></a>Line Chart with Points</h2>
-<p><a href="https://altair-viz.github.io/gallery/line_chart_with_points.html">Altair example</a></p>
-<div id="data-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-4" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="line-chart-with-points">Line Chart with Points<a class="anchor" aria-label="anchor" href="#line-chart-with-points"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/line_chart_with_points.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-4">Data<a class="anchor" aria-label="anchor" href="#data-4"></a>
+</h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
   x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>,
-  `f(x)` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span>
+  `f(x)` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 100</span>
 <span class="co">#&gt; Columns: 2</span>
-<span class="co">#&gt; $ x      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…</span>
-<span class="co">#&gt; $ `f(x)` &lt;dbl&gt; 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.84147098, 0.…</span></code></pre></div>
+<span class="co">#&gt; $ x      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, …</span>
+<span class="co">#&gt; $ `f(x)` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.84147098, 0.9…</span></code></pre></div>
 </div>
-<div id="chart-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-4" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-4">Chart<a class="anchor" aria-label="anchor" href="#chart-4"></a>
+</h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
@@ -10674,8 +10678,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-40223a7c7329fdd81b1f" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-40223a7c7329fdd81b1f">{"x":{
+<div id="htmlwidget-cbc42452e79350ad2e79" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cbc42452e79350ad2e79">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -11113,24 +11117,24 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="line-chart-with-varying-size" class="section level2">
-<h2 class="hasAnchor">
-<a href="#line-chart-with-varying-size" class="anchor"></a>Line Chart with Varying Size</h2>
-<p><a href="https://altair-viz.github.io/gallery/trail_marker.html">Altair example</a></p>
-<div id="data-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-5" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="line-chart-with-varying-size">Line Chart with Varying Size<a class="anchor" aria-label="anchor" href="#line-chart-with-varying-size"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/trail_marker.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-5">Data<a class="anchor" aria-label="anchor" href="#data-5"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 52</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ year  &lt;dbl&gt; 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 161…</span>
-<span class="co">#&gt; $ wheat &lt;dbl&gt; 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.…</span>
-<span class="co">#&gt; $ wages &lt;dbl&gt; 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.9…</span></code></pre></div>
+<span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 1615…</span>
+<span class="co">#&gt; $ wheat <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.0…</span>
+<span class="co">#&gt; $ wages <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.94…</span></code></pre></div>
 </div>
-<div id="chart-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-5" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-5">Chart<a class="anchor" aria-label="anchor" href="#chart-5"></a>
+</h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -11142,8 +11146,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-d510fbea7a20e96e9817" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d510fbea7a20e96e9817">{"x":{
+<div id="htmlwidget-cb347fa2cf9255e6d6ef" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb347fa2cf9255e6d6ef">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -11442,24 +11446,24 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="multi-series-line-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#multi-series-line-chart" class="anchor"></a>Multi Series Line Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/multi_series_line.html">Altair example</a></p>
-<div id="data-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-6" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="multi-series-line-chart">Multi Series Line Chart<a class="anchor" aria-label="anchor" href="#multi-series-line-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/multi_series_line.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-6">Data<a class="anchor" aria-label="anchor" href="#data-6"></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 560</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span>
-<span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span>
-<span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></code></pre></div>
+<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
+<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
 </div>
-<div id="chart-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-6" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-6">Chart<a class="anchor" aria-label="anchor" href="#chart-6"></a>
+</h4>
 <p>A difference from the Python example is that you have to make sure that you declare that the <code>date</code> variable is of type <code>"temporal"</code></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
@@ -11472,8 +11476,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-3cd8793bf42b308de91a" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3cd8793bf42b308de91a">{"x":{
+<div id="htmlwidget-f0153134b867865e3c4c" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f0153134b867865e3c4c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -14312,29 +14316,29 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="slope-graph" class="section level2">
-<h2 class="hasAnchor">
-<a href="#slope-graph" class="anchor"></a>Slope Graph</h2>
-<p><a href="https://altair-viz.github.io/gallery/slope_graph.html">Altair example</a></p>
-<div id="data-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-7" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="slope-graph">Slope Graph<a class="anchor" aria-label="anchor" href="#slope-graph"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/slope_graph.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-7">Data<a class="anchor" aria-label="anchor" href="#data-7"></a>
+</h4>
 <p>The year here is stored by pandas as an integer. When treating columns as dates, it is best to use either a string representation or a datetime representation.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">barley</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span>
-<span class="va">barley</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">barley</span><span class="op">$</span><span class="va">year</span><span class="op">)</span>
+<span class="va">barley</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">barley</span><span class="op">$</span><span class="va">year</span><span class="op">)</span>
 
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">barley</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">barley</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 120</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   &lt;dbl&gt; 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 4…</span>
-<span class="co">#&gt; $ variety &lt;chr&gt; "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuri…</span>
-<span class="co">#&gt; $ year    &lt;chr&gt; "1931", "1931", "1931", "1931", "1931", "1931", "1931", "1931…</span>
-<span class="co">#&gt; $ site    &lt;chr&gt; "University Farm", "Waseca", "Morris", "Crookston", "Grand Ra…</span></code></pre></div>
+<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
+<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
+<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1931", "1931", "1931", "1931", "1931", "1931", "1931", "1931"…</span>
+<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
 </div>
-<div id="chart-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-7" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-7">Chart<a class="anchor" aria-label="anchor" href="#chart-7"></a>
+</h4>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">barley</span><span class="op">)</span><span class="op">$</span>
@@ -14346,8 +14350,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-e42c1546ac79bce0eedd" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e42c1546ac79bce0eedd">{"x":{
+<div id="htmlwidget-1b6a31aac08065ce9c40" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b6a31aac08065ce9c40">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -15107,27 +15111,27 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="step-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#step-chart" class="anchor"></a>Step Chart</h2>
-<p><a href="https://altair-viz.github.io/gallery/step_chart.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="step-chart">Step Chart<a class="anchor" aria-label="anchor" href="#step-chart"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/step_chart.html" class="external-link">Altair example</a></p>
 <blockquote>
 <p>This example shows Google’s stock price over time. This uses the <code>step-after</code> interpolation scheme. The full list of interpolation options includes <code>linear</code>, <code>linear-closed</code>, <code>step</code>, <code>step-before</code>, <code>step-after</code>, <code>basis</code>, <code>basis-open</code>, <code>basis-closed</code>, <code>cardinal</code>, <code>cardinal-open</code>, <code>cardinal-closed</code>, <code>bundle</code>, and <code>monotone</code>.</p>
 </blockquote>
-<div id="data-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-8" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data-8">Data<a class="anchor" aria-label="anchor" href="#data-8"></a>
+</h4>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 560</span>
 <span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol &lt;chr&gt; "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT"…</span>
-<span class="co">#&gt; $ date   &lt;dttm&gt; 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 2…</span>
-<span class="co">#&gt; $ price  &lt;dbl&gt; 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53,…</span></code></pre></div>
+<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
+<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
+<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
 </div>
-<div id="chart-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-8" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-8">Chart<a class="anchor" aria-label="anchor" href="#chart-8"></a>
+</h4>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -15139,8 +15143,8 @@
   <span class="fu">transform_filter</span><span class="op">(</span><span class="fu"><a href="../reference/JS.html">JS</a></span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-56b1f80b2207d5c7b7a0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-56b1f80b2207d5c7b7a0">{"x":{
+<div id="htmlwidget-6b32871f11c44408a614" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b32871f11c44408a614">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
     "config": {
@@ -17996,11 +18000,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
