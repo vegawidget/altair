@@ -11,7 +11,7 @@
 #' to use a common Python environment, called `"r-reticulate"`.
 #'
 #' Depending on your setup, you can create this environment using
-#' [reticulate::conda_create()] or [reticulate::virtualenv_create()],
+#' `reticulate::conda_create()` or [reticulate::virtualenv_create()],
 #' as described in this
 #' [reticulate article](https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation),
 #' or in this package's [Installation article](https://vegawidget.github.io/altair/articles/installation.html#python-env).
@@ -22,7 +22,7 @@
 #'   (will be set to TRUE for release-candidates)
 #' @param version `character`, version of Altair to install. For general use of this package,
 #'   this is set automatically, so you should not need to specify this.
-#' @param ... other arguments sent to [reticulate::conda_install()] or
+#' @param ... other arguments sent to `reticulate::conda_install()` or
 #'    [reticulate::virtualenv_install()]
 #'
 #' @return invisible `NULL`, called for side-effects
