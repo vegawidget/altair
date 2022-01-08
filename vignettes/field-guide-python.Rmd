@@ -426,6 +426,5 @@ chart <-
     PercentOfTotal = JS("datum.Time / datum.TotalTime")
   )
 
-# TODO: work out problem with validation
-chart$to_json(validate = FALSE) %>% as_vegaspec()
+chart
 ```

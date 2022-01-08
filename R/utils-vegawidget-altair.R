@@ -4,10 +4,6 @@
 #'
 as_vegaspec.altair.vegalite.v4.api.TopLevelMixin <- function(spec, ...) {
 
-  # TODO: if needed, insert code to convert your object to
-  # something that can be coerced to a vegaspec.
-  #
-  # e.g.:
   spec <- spec$to_json()
 
   vegawidget::as_vegaspec(spec, ...)

@@ -130,7 +130,8 @@ chart <-
     configure_text(align = "left", dx = 1, dy = 3)$
     properties(width = 600, height = 375)
 
-chart$to_json(validate = FALSE) %>% as_vegaspec()
+#chart$to_json(validate = FALSE) %>% as_vegaspec()
+chart
 ```
 
 ## Becker's Barley Trellis Plot

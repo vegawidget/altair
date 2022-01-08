@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Upgrade to Altair 4.2.0. (#148)
+
 * Bump version for development
 
 # altair 4.1.1

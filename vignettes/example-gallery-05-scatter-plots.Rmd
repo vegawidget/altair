@@ -453,10 +453,8 @@ points <-
     )
   )
 
-# there seems to be a problem with spec-validation in Altair
-# TODO: check using Altair 4.2.0
 chart <- points + line
-chart$to_json(validate = FALSE) %>% as_vegaspec()
+chart
 ```
 
 
