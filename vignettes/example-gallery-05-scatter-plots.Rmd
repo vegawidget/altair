@@ -290,7 +290,7 @@ chart
 n <- 40
 
 data <- 
-  tibble(
+  data_frame(
     x = runif(n)**2,
     y = 10 - 1 / (x + 0.1) + runif(n)
   )
@@ -453,10 +453,7 @@ points <-
     )
   )
 
-# there seems to be a problem with spec-validation in Altair
-# TODO: check using Altair 4.2.0
-chart <- points + line
-chart$to_json(validate = FALSE) %>% as_vegaspec()
+points + line
 ```
 
 
@@ -470,7 +467,7 @@ chart$to_json(validate = FALSE) %>% as_vegaspec()
 <summary>Definition</summary>
 ```{r}
 set.seed(0)
-source <- tibble(
+source <- data_frame(
   x = 1:5, 
   y = rnorm(5, 10, 0.5),
   yerr = 0.2
@@ -528,7 +525,7 @@ Layering can now work with the `+` operator as it does in Python. Additionally, 
 <summary>Definition</summary>
 ```{r}
 data <- 
-  tibble(
+  data_frame(
     x = c(1, 3, 5, 7, 9),
     y = c(1, 3, 5, 7, 9),
     label = c("A", "B", "C", "D", "E")

@@ -130,7 +130,7 @@ chart <-
     configure_text(align = "left", dx = 1, dy = 3)$
     properties(width = 600, height = 375)
 
-chart$to_json(validate = FALSE) %>% as_vegaspec()
+chart
 ```
 
 ## Becker's Barley Trellis Plot
@@ -565,7 +565,12 @@ glimpse(source)
 
 #### Chart
 
-```{r}
+```{r eval = FALSE}
+# devtools::install_github("hadley/emo")
+e_cow <- emo::ji("cow2")
+e_pig <- emo::ji("pig2")
+e_sheep <- emo::ji("sheep") 
+
 chart <- 
   alt$Chart(source)$
   mark_text(size = 45, baseline = "middle")$
@@ -576,7 +581,9 @@ chart <-
     row = alt$Row("country:N", header = alt$Header(title = ""))
   )$
   transform_calculate(
-    emoji = "{'cattle': '🐄', 'pigs': '🐖', 'sheep': '🐏'}[datum.animal]"
+    emoji = vegawidget::glue_js(
+      "{'cattle': '${e_cow}', 'pigs': '${e_pig}', 'sheep': '${e_sheep}'}[datum.animal]"
+    )
   )$
   transform_window(
     x = "rank()",

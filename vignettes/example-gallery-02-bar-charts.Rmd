@@ -213,7 +213,7 @@ chart
 <summary>Definition</summary>
 ```{r}
 data <- 
-  tibble(
+  data_frame(
     project = c("a", "b", "c", "d", "e", "f", "g"),
     score = c(25, 57, 23, 19, 8, 47, 8),
     goal = c(25, 47, 30, 27, 38, 19, 4)
@@ -280,7 +280,7 @@ and more examples.
 <summary>Definition</summary>
 ```{r}
 activities <- 
-  tibble(
+  data_frame(
     Activity = c("Sleeping", "Eating", "TV", "Work", "Exercise"),
     Time = c(8, 2, 4, 8, 2)
   )
@@ -296,15 +296,16 @@ glimpse(activities)
 ```{r}
 chart <- 
   alt$Chart(activities)$
-  transform_joinaggregate(
-    TotalTime = "sum(Time)"
-  )$
-  transform_calculate(PercentOfTotal = "datum.Time / datum.TotalTime")$
   mark_bar()$
   encode(
     alt$X("PercentOfTotal:Q", axis = alt$Axis(format = ".0%")),
     y = "Activity:N"
-  )
+  )$
+  transform_window(
+    window = list(alt$WindowFieldDef(op = "sum", field = "Time", as = "TotalTime")),
+    frame = list(NULL, NULL)
+  )$
+  transform_calculate(PercentOfTotal = "datum.Time / datum.TotalTime")
 
 chart
 ```
