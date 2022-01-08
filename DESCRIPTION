@@ -35,13 +35,6 @@ LazyData: true
 ByteCompile: true
 URL: https://github.com/vegawidget/altair
 BugReports: https://github.com/vegawidget/altair/issues
-Config/reticulate:
-  list(
-    packages = list(
-      list(package = "altair", version = "4.1.0"),
-      list(package = "vega_datasets")
-    )
-  )
 Imports:
     reticulate (>= 1.19),
     htmlwidgets,
