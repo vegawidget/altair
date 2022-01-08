@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9001</span>
       </span>
     </div>
 
@@ -329,7 +329,7 @@ conda update conda</code></pre>
 </h2>
 <p>For use with <strong>reticulate</strong>, RStudio <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies" class="external-link">recommend</a> using a Python environment called <code>"r-reticulate"</code>. You can do this for your Conda environment directly from an R command-prompt, and it should “just work”:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/conda_create.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/conda-tools.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
 <p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
 <pre><code># .Rprofile
 
