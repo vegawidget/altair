@@ -52,12 +52,12 @@ on_altair_error <- function(e) {
     sep = "\n"
   )
   print(reticulate::py_config())
-  cat(
-    "",
-    "Output from reticulate::py_list_packages():",
-    sep = "\n"
-  )
-  print(reticulate::py_list_packages())
+  # cat(
+  #   "",
+  #   "Output from reticulate::py_list_packages():",
+  #   sep = "\n"
+  # )
+  # print(reticulate::py_list_packages())
 }
 
 # =============================================================================
