@@ -46,6 +46,7 @@ on_altair_load <- function() {
 on_altair_error <- function(e) {
   cat(
     "Error importing Altair python package",
+    e,
     "Please try using install_altair() to install",
     "",
     "Output from reticulate::py_config():",

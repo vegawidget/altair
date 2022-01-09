@@ -52,7 +52,6 @@ jobs:
       - name: Install Altair
         run: |
           Rscript -e "altair::install_altair()"
-          Rscript -e "reticulate::import('altair')[['__version__']]"
 
       - name: Confirm Python and check Altair
         run: |
