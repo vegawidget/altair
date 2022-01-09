@@ -52,7 +52,6 @@ jobs:
 
       - name: Install Altair
         run: |
-          Rscript -e "remotes::install_local()"
           Rscript -e "altair::install_altair()"
 
       - name: Confirm Python and check Altair
@@ -60,4 +59,5 @@ jobs:
           Rscript -e "reticulate::py_config()"
           Rscript -e "print(altair:::alt_schema())"
           Rscript -e "altair::check_altair(quiet = FALSE)"
+
       - uses: r-lib/actions/check-r-package@v1
