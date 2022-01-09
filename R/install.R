@@ -144,7 +144,7 @@ altair_version <- function() {
   )
 }
 
-#' Check two verision-strings
+#' Check two version-strings
 #'
 #' Given two version-strings, issue an error, warning, message, or do nothing.
 #'

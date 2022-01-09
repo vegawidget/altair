@@ -48,7 +48,10 @@ on_altair_error <- function(e) {
   message("Please try using install_altair() to install")
   message("")
   message("Output from reticulate::py_config()")
-  reticulate::py_config()
+  message(reticulate::py_config())
+  message("")
+  message("Output from reticulate::py_list_packages()")
+  message(reticulate::py_list_packages())
 }
 
 # =============================================================================
