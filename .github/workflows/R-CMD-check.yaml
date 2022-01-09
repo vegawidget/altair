@@ -46,11 +46,10 @@ jobs:
       - name: Install Python
         run: |
           Rscript -e "reticulate::install_miniconda()"
-          Rscript -e "reticulate::conda_create('r-reticulate')"
 
       - name: Install Altair
         run: |
-          Rscript -e "altair::install_altair()"
+          Rscript -e "altair::install_altair(envname = NULL)"
 
       - name: Confirm Python and check Altair
         run: |
