@@ -41,14 +41,18 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: rcmdcheck
+          extra-packages:
+            rcmdcheck
+            remotes
 
       - name: Install Python
         run: |
           Rscript -e "reticulate::install_miniconda()"
+          Rscript -e "reticulate::conda_create('r-reticulate')"
 
       - name: Install Altair
         run: |
+          Rscript -e "remotes::install_local()"
           Rscript -e "altair::install_altair()"
 
       - name: Confirm Python and check Altair
