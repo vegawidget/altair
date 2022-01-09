@@ -26,6 +26,7 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RETICULATE_PYTHON: r-reticulate
       R_KEEP_PKG_SOURCE: yes
 
     steps:
@@ -49,7 +50,7 @@ jobs:
 
       - name: Install Altair
         run: |
-          Rscript -e "altair::install_altair(envname = 'r-reticulate')"
+          Rscript -e "altair::install_altair()"
 
       - name: Confirm Python and check Altair
         run: |
