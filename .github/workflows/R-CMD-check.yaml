@@ -49,7 +49,7 @@ jobs:
 
       - name: Install Altair
         run: |
-          Rscript -e "altair::install_altair(envname = NULL)"
+          Rscript -e "altair::install_altair(pip = TRUE)"
 
       - name: Confirm Python and check Altair
         run: |
