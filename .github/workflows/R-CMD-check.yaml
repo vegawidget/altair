@@ -45,16 +45,16 @@ jobs:
 
       - name: Install Python
         run: |
-          Rscript -e "try(reticulate::install_miniconda())"
-          Rscript -e "try(reticulate::conda_create('r-reticulate'))"
+          Rscript -e 'reticulate::install_miniconda()'
+          Rscript -e 'reticulate::conda_create("r-reticulate")'
 
       - name: Install Altair
         run: |
-          Rscript -e "try(altair::install_altair())"
+          Rscript -e 'altair::install_altair()'
 
       - name: Confirm Python and check Altair
         run: |
-          Rscript -e "try(reticulate::py_config())"
-          Rscript -e "try(altair::check_altair(quiet = FALSE))"
+          Rscript -e 'reticulate::py_config()'
+          Rscript -e 'altair::check_altair(quiet = FALSE)'
 
       - uses: r-lib/actions/check-r-package@v1
