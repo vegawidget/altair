@@ -84,3 +84,7 @@ on_altair_error <- function(e) {
     "altair.vegalite.v4.api.TopLevelMixin"
   )
 }
+
+alt_schema <- function() {
+  alt[["SCHEMA_VERSION"]]
+}
