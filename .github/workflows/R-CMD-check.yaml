@@ -26,7 +26,6 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RETICULATE_PYTHON: r-reticulate
       R_KEEP_PKG_SOURCE: yes
 
     steps:
