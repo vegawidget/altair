@@ -42,7 +42,7 @@ jobs:
           Rscript -e "reticulate::py_config()"
           Rscript -e "reticulate::py_list_packages()"
           Rscript -e "altair::alt$Chart"
-          Rscript -e 'altair::check_altair(quiet = FALSE)'
+          Rscript -e "altair::check_altair(quiet = FALSE)"
 
       - name: Deploy package
         run: |

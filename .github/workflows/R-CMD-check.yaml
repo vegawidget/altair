@@ -57,5 +57,5 @@ jobs:
           Rscript -e "reticulate::py_config()"
           Rscript -e "reticulate::py_list_packages()"
           Rscript -e "print(altair:::alt_schema())"
-          Rscript -e "altair::check_altair(quiet = FALSE)""
+          Rscript -e "altair::check_altair(quiet = FALSE)"
       - uses: r-lib/actions/check-r-package@v1
