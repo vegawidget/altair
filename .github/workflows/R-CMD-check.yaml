@@ -49,10 +49,9 @@ jobs:
           extra-packages:
             rcmdcheck
 
-      - name: Install Python
+      - name: Install reticulate
         run: |
           reticulate::install_miniconda()
-          reticulate::conda_create("r-reticulate")
 
       # - name: Install Altair
       #   run: |
