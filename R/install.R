@@ -43,6 +43,8 @@ install_altair <- function(method = c("conda", "virtualenv"),
   # validate stage, method arguments
   method <- match.arg(method)
 
+  pip <- TRUE # until other installation stuff is sorted out on reticulate
+
   # determine if this is a release candidate
   is_release_candidate <- grepl(version, "rc")
 
@@ -65,7 +67,8 @@ install_altair <- function(method = c("conda", "virtualenv"),
   reticulate::py_install(
     packages = packages,
     envname = envname,
-    pip = TRUE,
+    method = method,
+    pip = pip,
     pip_ignore_installed = TRUE,
     ...
   )
