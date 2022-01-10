@@ -63,7 +63,7 @@ Suggests:
     png,
     fs
 Remotes: 
-    rstudio/reticulate
+    rstudio/reticulate,
     vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
