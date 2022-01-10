@@ -27,7 +27,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-#      CONDA_DLL_SEARCH_MODIFICATION_ENABLE: 1
+      CONDA_DLL_SEARCH_MODIFICATION_ENABLE: 1
 
     steps:
       - uses: actions/checkout@v2
