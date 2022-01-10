@@ -60,11 +60,11 @@ jobs:
 
       - name: Install Altair
         run: |
-          reticulate::py_install(packages = "altair", envname = "r-reticulate", pip = TRUE, pip_ignore_installed = TRUE)
+          reticulate::py_install(packages = "numpy", envname = "r-reticulate", pip = TRUE, pip_ignore_installed = TRUE)
 
       - name: Confirm Python and check Altair
         run: |
           reticulate::py_config()
-          altair::check_altair(quiet = FALSE)
-
-      - uses: r-lib/actions/check-r-package@v1
+      #     altair::check_altair(quiet = FALSE)
+      #
+      # - uses: r-lib/actions/check-r-package@v1
