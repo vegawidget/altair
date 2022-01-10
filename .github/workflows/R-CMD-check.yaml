@@ -56,8 +56,7 @@ jobs:
 
       - name: Install Numpy
         run: |
-          reticulate::py_install(envname = "r-reticulate", packages = "numpy",
-                                 pip = TRUE, pip_ignore_installed = TRUE)
+          Rscript -e "reticulate::py_install(envname = 'r-reticulate', packages = 'numpy', pip = TRUE, pip_ignore_installed = TRUE)"
 
       - name: Confirm Python and check Altair
         run: |
