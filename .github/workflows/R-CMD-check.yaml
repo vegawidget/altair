@@ -27,7 +27,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      CONDA_DLL_SEARCH_MODIFICATION_ENABLE: 1
+      # CONDA_DLL_SEARCH_MODIFICATION_ENABLE: 1
 
     steps:
       - uses: actions/checkout@v2
@@ -53,6 +53,11 @@ jobs:
       - name: Install Altair
         run: |
           Rscript -e "altair::install_altair()"
+
+      - name: Install Numpy
+        run: |
+          reticulate::py_install(envname = "r-reticulate", packages = "numpy",
+                                 pip = TRUE, pip_ignore_installed = TRUE)
 
       - name: Confirm Python and check Altair
         run: |
