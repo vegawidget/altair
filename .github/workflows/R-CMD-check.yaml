@@ -49,18 +49,18 @@ jobs:
           extra-packages:
             rcmdcheck
 
-      - name: Install reticulate
+      - name: Install miniconda
         run: |
           reticulate::install_miniconda()
 
-      # - name: Install Altair
-      #   run: |
-      #     altair::install_altair()
-
       - name: Install Altair
         run: |
-          reticulate::py_install(packages = "altair", envname = "r-reticulate",
-                                 pip = TRUE, pip_ignore_installed = TRUE)
+          altair::install_altair()
+
+      # - name: Install Altair
+      #   run: |
+      #     reticulate::py_install(packages = "altair", envname = "r-reticulate",
+      #                            pip = TRUE, pip_ignore_installed = TRUE)
 
       - name: Confirm Python and check Altair
         run: |

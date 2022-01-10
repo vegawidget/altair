@@ -18,12 +18,9 @@
 #'
 #' @param method `character`, indicates to use `"conda"` or `"virtualenv"`
 #' @param envname `character`, name of environment into which to install
-#' @param pip, `logical`, used for conda installation to indicate to use pip
-#'   (will be set to TRUE for release-candidates)
 #' @param version `character`, version of Altair to install. For general use of this package,
 #'   this is set automatically, so you should not need to specify this.
-#' @param ... other arguments sent to `reticulate::conda_install()` or
-#'    [reticulate::virtualenv_install()]
+#' @param ... other arguments sent to `reticulate::py_install()`
 #'
 #' @return invisible `NULL`, called for side-effects
 #'
@@ -40,7 +37,6 @@
 #'
 install_altair <- function(method = c("conda", "virtualenv"),
                            envname = "r-reticulate",
-                           pip = FALSE,
                            version = getOption("altair.python.version"),
                            ...) {
 
@@ -66,23 +62,13 @@ install_altair <- function(method = c("conda", "virtualenv"),
 
   packages <- c(altair_pkg_version, "vega_datasets")
 
-  # call installer
-  if (identical(method, "conda")) {
-    reticulate::conda_install(
-      packages = packages,
-      envname = envname,
-      pip = pip,
-      ...
-    )
-  }
-
-  if (identical(method, "virtualenv")) {
-    reticulate::virtualenv_install(
-      packages = packages,
-      envname = envname,
-      ...
-    )
-  }
+  reticulate::py_install(
+    packages = packages,
+    envname = envname,
+    pip = TRUE,
+    pip_ignore_installed = TRUE,
+    ...
+  )
 
   invisible(NULL)
 }
