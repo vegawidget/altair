@@ -169,11 +169,11 @@
 <div class="page-header"><h1 id="altair">altair<a class="anchor" aria-label="anchor" href="#altair"></a>
 </h1></div>
 <p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite/" class="external-link"><strong>Vega-Lite</strong></a> visualizations. This package uses <a href="https://rstudio.github.io/reticulate/" class="external-link"><strong>reticulate</strong></a> to provide an interface to the <a href="https://altair-viz.github.io" class="external-link"><strong>Altair</strong></a> Python package, and the <a href="https://vegawidget.github.io/vegawidget/" class="external-link"><strong>vegawidget</strong></a> package to render charts as htmlwidgets. To avoid confusion, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
-<p>This version of the R package supports Python Altair version 4.2.0.</p>
+<p>This version of the R package supports Python Altair version 4.1.0.</p>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html" class="external-link">Getting Started article</a>:</p>
+<p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html" class="external-link">getting started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
@@ -207,7 +207,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vegawidget/altair"</span><span class="op">)</span> </code></pre></div>
-<p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation article</a>.</p>
+<p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation</a> article.</p>
 <ol style="list-style-type: decimal">
 <li>
 <p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs" class="external-link">Conda</a>: in particular, <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda" class="external-link">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
@@ -260,7 +260,6 @@
 <li><p><a href="https://altair-viz.github.io" class="external-link">Altair</a>: Python interface to Vega-Lite</p></li>
 <li><p><a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a>: R framework to work with Python</p></li>
 <li><p><a href="https://vega.github.io/vega-lite/" class="external-link">Vega-Lite</a>: a grammar of interactive graphics</p></li>
-<li><p><a href="https://vegawidget.github.io/vegawidget/" class="external-link">vegawidget</a>: R package to render Vega(-Lite) visualizations</p></li>
 <li><p><a href="https://www.htmlwidgets.org/" class="external-link">htmlwidgets</a>: R framework to work with JavaScript visualizations</p></li>
 </ul>
 <p>As well, a particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite" class="external-link">vegalite</a> package, as it provided a lot of the inspiration for these efforts.</p>
