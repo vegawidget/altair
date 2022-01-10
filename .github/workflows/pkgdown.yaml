@@ -31,7 +31,6 @@ jobs:
       - name: Install Python
         run: |
           Rscript -e "reticulate::install_miniconda()"
-          Rscript -e "reticulate::conda_create('r-reticulate')"
 
       - name: Install Altair
         run: |
@@ -40,12 +39,10 @@ jobs:
       - name: Confirm Python and check Altair
         run: |
           Rscript -e "reticulate::py_config()"
-          Rscript -e "reticulate::py_list_packages()"
-          Rscript -e "altair::alt$Chart"
           Rscript -e "altair::check_altair(quiet = FALSE)"
 
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+          Rscript -e "pkgdown::deploy_to_branch(new_process = FALSE)"

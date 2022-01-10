@@ -22,11 +22,11 @@ jobs:
       fail-fast: false
       matrix:
         config:
-#          - {os: macOS-latest,   r: 'release'}
+          - {os: macOS-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
-#          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
-#          - {os: ubuntu-latest,   r: 'oldrel-1'}
+          - {os: ubuntu-latest,   r: 'oldrel-1'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -56,11 +56,6 @@ jobs:
       - name: Install Altair
         run: |
           altair::install_altair()
-
-      # - name: Install Altair
-      #   run: |
-      #     reticulate::py_install(packages = "altair", envname = "r-reticulate",
-      #                            pip = TRUE, pip_ignore_installed = TRUE)
 
       - name: Confirm Python and check Altair
         run: |
