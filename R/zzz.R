@@ -59,6 +59,8 @@ on_altair_error <- function(e) {
   #   sep = "\n"
   # )
   # print(reticulate::py_list_packages())
+
+  NULL
 }
 
 # =============================================================================
@@ -84,8 +86,4 @@ on_altair_error <- function(e) {
     "knitr::knit_print",
     "altair.vegalite.v4.api.TopLevelMixin"
   )
-}
-
-alt_schema <- function() {
-  alt[["SCHEMA_VERSION"]]
 }
