@@ -114,8 +114,8 @@ on which Python environment to use.
 
 ### Optional installations
 
-If you have **[nodejs](https://nodejs.org)** installed on your computer,
-you can use [vegawidget’s image-generating
+If you have the **[V8](https://CRAN.R-project.org/package=V8)**
+installed, you can use [vegawidget’s image-generating
 functions](https://vegawidget.github.io/vegawidget/reference/image.html)
 to convert Altair charts into SVG strings or write SVG files. With the
 **[rsvg](https://CRAN.R-project.org/package=rsvg)** and
@@ -126,8 +126,8 @@ When knitting to a non-HTML format, e.g. `github_document`, this package
 provides a `knit_print()` function that will intercept the normal
 renderer, using instead its own renderer, allowing you to specify
 `"png"` , `"svg"` or `"pdf"`. Like the image functions, this requires
-that [nodejs](https://nodejs.org) be installed on your system, as well
-as [rsvg](https://cran.r-project.org/package=rsvg) and
+that the V8 package be installed, as well as
+[rsvg](https://cran.r-project.org/package=rsvg) and
 [png](https://cran.r-project.org/package=png). MacOS users will require
 an X11 system, such as [XQuartz](https://www.xquartz.org), to be
 installed.
