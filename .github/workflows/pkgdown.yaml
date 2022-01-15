@@ -28,18 +28,18 @@ jobs:
           extra-packages: pkgdown, local::.
           needs: website
 
-      - name: Install Python
+      - name: Install miniconda
         run: |
-          Rscript -e "reticulate::install_miniconda()"
+          reticulate::install_miniconda()
 
       - name: Install Altair
         run: |
-          Rscript -e "altair::install_altair()"
+          altair::install_altair()
 
       - name: Confirm Python and check Altair
         run: |
-          Rscript -e "reticulate::py_config()"
-          Rscript -e "altair::check_altair(quiet = FALSE)"
+          reticulate::py_config()
+          altair::check_altair(quiet = FALSE)
 
       - name: Deploy package
         run: |
