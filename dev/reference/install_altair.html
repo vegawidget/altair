@@ -18,7 +18,7 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9002</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
     </div>
 
     <div class="ref-description">
-    <p>This function wraps installation functions from <a href="https://rdrr.io/pkg/reticulate/man/reticulate.html" class="external-link">reticulate</a> to install the Python packages
+    <p>This function wraps installation functions from <a href="https://rstudio.github.io/reticulate/reference/reticulate.html" class="external-link">reticulate</a> to install the Python packages
 <strong>altair</strong> and <strong>vega_datasets</strong>.</p>
     </div>
 
@@ -141,7 +141,6 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">install_altair</span><span class="op">(</span>
   method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"conda"</span>, <span class="st">"virtualenv"</span><span class="op">)</span>,
   envname <span class="op">=</span> <span class="st">"r-reticulate"</span>,
-  pip <span class="op">=</span> <span class="cn">FALSE</span>,
   version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"altair.python.version"</span><span class="op">)</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
@@ -153,15 +152,11 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
 <dd><p><code>character</code>, indicates to use <code>"conda"</code> or <code>"virtualenv"</code></p></dd>
 <dt>envname</dt>
 <dd><p><code>character</code>, name of environment into which to install</p></dd>
-<dt>pip, </dt>
-<dd><p><code>logical</code>, used for conda installation to indicate to use pip
-(will be set to TRUE for release-candidates)</p></dd>
 <dt>version</dt>
 <dd><p><code>character</code>, version of Altair to install. For general use of this package,
 this is set automatically, so you should not need to specify this.</p></dd>
 <dt>...</dt>
-<dd><p>other arguments sent to <code><a href="https://rdrr.io/pkg/reticulate/man/conda_install.html" class="external-link">reticulate::conda_install()</a></code> or
-<code><a href="https://rdrr.io/pkg/reticulate/man/virtualenv-tools.html" class="external-link">reticulate::virtualenv_install()</a></code></p></dd>
+<dd><p>other arguments sent to <code><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">reticulate::py_install()</a></code></p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -169,14 +164,14 @@ this is set automatically, so you should not need to specify this.</p></dd>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>This package uses the <a href="https://rdrr.io/pkg/reticulate/man/reticulate.html" class="external-link">reticulate</a> package
+    <p>This package uses the <a href="https://rstudio.github.io/reticulate/reference/reticulate.html" class="external-link">reticulate</a> package
 to make an interface with the <a href="https://altair-viz.github.io/index.html" class="external-link">Altair</a>
 Python package. To promote consistency in usage of <strong>reticulate</strong> among
 different R packages, it is
 <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies" class="external-link">recommended</a>
 to use a common Python environment, called <code>"r-reticulate"</code>.</p>
 <p>Depending on your setup, you can create this environment using
-<code><a href="https://rdrr.io/pkg/reticulate/man/conda_create.html" class="external-link">reticulate::conda_create()</a></code> or <code><a href="https://rdrr.io/pkg/reticulate/man/virtualenv-tools.html" class="external-link">reticulate::virtualenv_create()</a></code>,
+<code><a href="https://rstudio.github.io/reticulate/reference/conda-tools.html" class="external-link">reticulate::conda_create()</a></code> or <code><a href="https://rstudio.github.io/reticulate/reference/virtualenv-tools.html" class="external-link">reticulate::virtualenv_create()</a></code>,
 as described in this
 <a href="https://rstudio.github.io/reticulate/articles/python_packages.html#conda-installation" class="external-link">reticulate article</a>,
 or in this package's <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env" class="external-link">Installation article</a>.</p>
@@ -208,7 +203,7 @@ or in this package's <a href="https://vegawidget.github.io/altair/articles/insta
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

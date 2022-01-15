@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9002</span>
       </span>
     </div>
 
@@ -156,16 +156,16 @@
 </ul><p>In the documentation, we use <em>specification</em> or <em>spec</em> to describe the JSON or the list; we use <em>chart</em> to describe the rendering, the finished product. These seem to be the terms-of-art that Vega-Lite uses.</p>
 <p>In documentation, we reserve the use of “capital-A” <strong>Altair</strong> to refer to the Python package, and the use of “small-a” to refer to this package.</p>
 <p>Although we are mimicking calls to Python code, even copying-and-pasting Python examples, we should make the syntax of the calls as R-like as possible. Consider this Python example from Altair:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
-<span id="cb2-3"><a href="#cb2-3"></a>cars <span class="op">=</span> data.cars()</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>chart <span class="op">=</span> alt.Chart(cars).mark_point().encode(</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    x<span class="op">=</span><span class="st">'Horsepower'</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    y<span class="op">=</span><span class="st">'Miles_per_Gallon'</span>,</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    color<span class="op">=</span><span class="st">'Origin'</span>,</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    shape<span class="op">=</span><span class="st">'Origin'</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cars <span class="op">=</span> data.cars()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(cars).mark_point().encode(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Horsepower'</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Miles_per_Gallon'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Origin'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    shape<span class="op">=</span><span class="st">'Origin'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>And how we would write this in R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
@@ -262,7 +262,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

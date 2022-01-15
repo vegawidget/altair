@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9002</span>
       </span>
     </div>
 
@@ -157,14 +157,14 @@
 
       
 
-      </header><script src="example-gallery-01-simple_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-01-simple_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-01-simple_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-01-simple_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+      </header><script src="example-gallery-01-simple_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-01-simple_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-01-simple_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
 <script src="example-gallery-01-simple_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-01-simple_files/vegawidget-vl4-binding-0.4.0.9000/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Simple Charts</h1>
                         <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2022-01-10</h4>
+            <h4 data-toc-skip class="date">2022-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-01-simple.Rmd" class="external-link"><code>vignettes/example-gallery-01-simple.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-01-simple.Rmd</code></div>
@@ -177,7 +177,7 @@
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/reticulate" class="external-link">"reticulate"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://rstudio.github.io/reticulate/" class="external-link">"reticulate"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org" class="external-link">"tidyr"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
@@ -190,8 +190,9 @@
 <div class="section level4">
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
-<details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<details><summary>
+Definition
+</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
     a<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"I"</span><span class="op">)</span>,
@@ -217,8 +218,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-c0563cf5ad0677acdae0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c0563cf5ad0677acdae0">{"x":{
+<div id="htmlwidget-99355b2d92783fb5d6f3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-99355b2d92783fb5d6f3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -296,11 +297,12 @@
 <div class="section level4">
 <h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
 </h4>
-<details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details><summary>
+Definition
+</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Compute x^2 + y^2 across a 2D grid</span>
 <span class="va">data</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/expand.html" class="external-link">crossing</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand.html" class="external-link">crossing</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 </details><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
@@ -324,8 +326,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-087f9f36289dada10bd3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-087f9f36289dada10bd3">{"x":{
+<div id="htmlwidget-5e58e3ff0abc7626df1f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e58e3ff0abc7626df1f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1014,8 +1016,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ca8d558490f9db64297c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ca8d558490f9db64297c">{"x":{
+<div id="htmlwidget-bb6c064348aa612d6232" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb6c064348aa612d6232">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -58676,8 +58678,9 @@
 <div class="section level4">
 <h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
 </h4>
-<details><p><summary>Definition</summary></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details><summary>
+Definition
+</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
     x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,
@@ -58703,8 +58706,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-adc25ff75ed84fd7b739" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-adc25ff75ed84fd7b739">{"x":{
+<div id="htmlwidget-311c53de9eaa3e1b09cd" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-311c53de9eaa3e1b09cd">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -58714,10 +58717,10 @@
       }
     },
     "data": {
-      "name": "data-540aa2a6dba9561961089860e89dd6dc"
+      "name": "data-8a691a2e8f41a86f3325eb89325d4d3f"
     },
     "datasets": {
-      "data-540aa2a6dba9561961089860e89dd6dc": [
+      "data-8a691a2e8f41a86f3325eb89325d4d3f": [
         {
           "sinx": 0,
           "x": 0
@@ -58887,7 +58890,7 @@
           "x": 41
         },
         {
-          "sinx": 0.854598908088281,
+          "sinx": 0.85459890808828,
           "x": 42
         },
         {
@@ -59007,7 +59010,7 @@
           "x": 71
         },
         {
-          "sinx": 0.965657776549278,
+          "sinx": 0.965657776549277,
           "x": 72
         },
         {
@@ -59051,7 +59054,7 @@
           "x": 82
         },
         {
-          "sinx": -0.778352078534299,
+          "sinx": -0.778352078534298,
           "x": 83
         },
         {
@@ -59111,7 +59114,7 @@
           "x": 97
         },
         {
-          "sinx": 0.681963620068135,
+          "sinx": 0.681963620068136,
           "x": 98
         },
         {
@@ -59180,8 +59183,8 @@
   <span class="fu">interactive</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-b06c8df27068dae1da89" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b06c8df27068dae1da89">{"x":{
+<div id="htmlwidget-f45cd33bcd3346942a00" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f45cd33bcd3346942a00">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -63743,8 +63746,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-2ba8db6381aa43399494" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2ba8db6381aa43399494">{"x":{
+<div id="htmlwidget-fb4adae796a78bec2e3e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb4adae796a78bec2e3e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -64072,8 +64075,8 @@
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-c644411e801c8f0801f8" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c644411e801c8f0801f8">{"x":{
+<div id="htmlwidget-5df44d94c7489bb3f425" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5df44d94c7489bb3f425">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -68593,7 +68596,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

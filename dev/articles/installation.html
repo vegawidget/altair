@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9002</span>
       </span>
     </div>
 
@@ -157,12 +157,12 @@
 
       
 
-      </header><script src="installation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Installation</h1>
             
-            <h4 data-toc-skip class="date">2022-01-10</h4>
+            <h4 data-toc-skip class="date">2022-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/installation.Rmd" class="external-link"><code>vignettes/installation.Rmd</code></a></small>
       <div class="hidden name"><code>installation.Rmd</code></div>
@@ -246,8 +246,9 @@
 </h3>
 <p>Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it. How you make this information known will depend on your operating-system.</p>
 <p><strong>Open the menu-item below for instructions for your operating system:</strong></p>
-<details><p><summary>Windows</summary></p>
-<p>In Windows, the customary way to set or change environment variables is to use <code>Control Panel\All Control Panel Items\System</code> then “Advanced System Settings” and “Environment Variables”. This may vary according to your version of Windows.</p>
+<details><summary>
+Windows
+</summary><p>In Windows, the customary way to set or change environment variables is to use <code>Control Panel\All Control Panel Items\System</code> then “Advanced System Settings” and “Environment Variables”. This may vary according to your version of Windows.</p>
 <p>Set each of these variables, adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># Windows environment variables
 # 
@@ -264,8 +265,9 @@ NO_PROXY : 127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;
 HTTP_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
 HTTPS_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
 <p>By setting these variables here, both your R session and any Python session will have access to the information they will need.</p>
-</details><details><p><summary>MacOS and Linux (Ubuntu)</summary></p>
-<p>On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
+</details><details><summary>
+MacOS and Linux (Ubuntu)
+</summary><p>On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
 <p>The customary way to set environment-variables for R is to add variables to your <code>.Renviron</code> file; add and adapt the following lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code><span class="co"># .Renviron</span>
 
@@ -316,10 +318,14 @@ export HTTP_PROXY=${http_proxy}</code></pre>
 <p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html" class="external-link">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. We have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
 <p>If all is well, you will be able to update your Conda installation.</p>
 <p><strong>Open the menu-item below for instructions for your operating system:</strong></p>
-<details><p><summary>Windows</summary> At a new Anaconda prompt:</p>
+<details><summary>
+Windows
+</summary><p>At a new Anaconda prompt:</p>
 <pre><code># Anaconda prompt
 conda update conda</code></pre>
-</details><details><p><summary>MacOS and Linux (Ubuntu)</summary> At a new terminal window:</p>
+</details><details><summary>
+MacOS and Linux (Ubuntu)
+</summary><p>At a new terminal window:</p>
 <pre><code># Terminal window
 conda update conda</code></pre>
 </details>
@@ -329,7 +335,7 @@ conda update conda</code></pre>
 </h2>
 <p>For use with <strong>reticulate</strong>, RStudio <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies" class="external-link">recommend</a> using a Python environment called <code>"r-reticulate"</code>. You can do this for your Conda environment directly from an R command-prompt, and it should “just work”:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/conda_create.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/conda-tools.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
 <p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
 <pre><code># .Rprofile
 
@@ -350,7 +356,7 @@ conda update conda</code></pre>
 <code class="sourceCode R"><span class="fu">altair</span><span class="fu">::</span><span class="fu"><a href="../reference/install_altair.html">install_altair</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>You can confirm success by showing your Python configuration:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_config.html" class="external-link">py_config</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_config.html" class="external-link">py_config</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>And by confirming your Altair installation:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">altair</span><span class="fu">::</span><span class="fu"><a href="../reference/check_altair.html">check_altair</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -374,7 +380,7 @@ conda update conda</code></pre>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
