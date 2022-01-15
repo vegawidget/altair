@@ -36,7 +36,7 @@ ByteCompile: true
 URL: https://github.com/vegawidget/altair
 BugReports: https://github.com/vegawidget/altair/issues
 Imports:
-    reticulate (>= 1.22-9000),
+    reticulate (>= 1.23),
     htmlwidgets,
     assertthat,
     magrittr,
@@ -63,7 +63,6 @@ Suggests:
     png,
     fs
 Remotes: 
-    rstudio/reticulate,
     vegawidget/vegawidget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
