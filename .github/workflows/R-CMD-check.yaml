@@ -47,14 +47,17 @@ jobs:
       - name: Install miniconda
         run: |
           reticulate::install_miniconda()
+        shell: Rscript {0}
 
       - name: Install Altair
         run: |
           altair::install_altair()
+        shell: Rscript {0}
 
       - name: Confirm Python and check Altair
         run: |
           reticulate::py_config()
           altair::check_altair(quiet = FALSE)
+        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
