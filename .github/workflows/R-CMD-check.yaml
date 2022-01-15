@@ -41,9 +41,10 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck, local::.
+          extra-packages: any::rcmdcheck, local::. # install local package also
           needs: check
 
+        # start local mods
       - name: Install miniconda
         run: |
           reticulate::install_miniconda()
@@ -59,5 +60,6 @@ jobs:
           reticulate::py_config()
           altair::check_altair(quiet = FALSE)
         shell: Rscript {0}
+        # end local mods
 
       - uses: r-lib/actions/check-r-package@v2
