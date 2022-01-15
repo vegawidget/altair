@@ -7,7 +7,6 @@
 install_altair(
   method = c("conda", "virtualenv"),
   envname = "r-reticulate",
-  pip = FALSE,
   version = getOption("altair.python.version"),
   ...
 )
@@ -17,14 +16,10 @@ install_altair(
 
 \item{envname}{\code{character}, name of environment into which to install}
 
-\item{pip, }{\code{logical}, used for conda installation to indicate to use pip
-(will be set to TRUE for release-candidates)}
-
 \item{version}{\code{character}, version of Altair to install. For general use of this package,
 this is set automatically, so you should not need to specify this.}
 
-\item{...}{other arguments sent to \code{reticulate::conda_install()} or
-\code{\link[reticulate:virtualenv-tools]{reticulate::virtualenv_install()}}}
+\item{...}{other arguments sent to \code{reticulate::py_install()}}
 }
 \value{
 invisible \code{NULL}, called for side-effects
