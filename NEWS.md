@@ -1,6 +1,6 @@
 # altair (development version)
 
-* Upgrade to vegawidget 0.4. (#150)
+* Upgrade to vegawidget 0.4. (#150, #154)
 
 * Upgrade to Altair 4.2.0. (#148)
 
