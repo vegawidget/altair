@@ -1,29 +1,14 @@
-# altair 4.1.1 
-
 ## R CMD check results
 
-Please note new email address for maintainer:
 
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘Ian Lyttle <ian.lyttle@se.com>’
-  
-  New maintainer:
-    Ian Lyttle <ian.lyttle@se.com>
-  Old maintainer(s):
-    Ian Lyttle <ian.lyttle@schneider-electric.com>
+0 errors | 0 warnings  | 0 notes
 
-0 errors ✓ | 0 warnings ✓ | 1 note x
+## revdepcheck results
 
-## Test environments
+We checked 1 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-* local OS X install, R 4.0.3
-* GitHub Actions: windows-latest (release)
-* GitHub Actions: macOS-latest (release)
-* GitHub Actions: ubuntu-20.04 (release)
-* GitHub Actions: ubuntu-20.04 (devel)
-* Ubuntu Linux 16.04 LTS, R-release, GCC
-* Fedora Linux, R-devel, clang, gfortran
-* win-builder (devel)
+ * We saw 0 new problems
+ * We failed to check 0 packages
 
 ## Author notes
 
@@ -36,5 +21,3 @@ Please note new email address for maintainer:
 
   This functionality is tested on GitHub Actions, where the Python libraries are available.
 
-* The version (4.1.1) is advanced because we are using the first two
-  digits to mirror our supported version of Python Altair (4.1).
