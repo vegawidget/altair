@@ -12,12 +12,12 @@ We checked 1 reverse dependencies, comparing R CMD check results across CRAN and
 
 ## Author notes
 
-* This package offers a pass-through to a Python library, Altair. Its 
-  functionality is to install Altair, then to establish the connection between R
-  and Python.
+This package offers a pass-through to a Python library, Altair. Its 
+functionality is to install Altair, then to establish the connection between R
+and Python.
 
-  As such, virtually all the examples and tests cannot be run on CRAN servers, 
-  hence the `\dontrun{}` and the like on examples, and skipping of tests. 
+As such, virtually all the examples and tests cannot be run on CRAN servers, 
+hence the `\dontrun{}` and the like on examples, and skipping of tests. 
 
-  This functionality is tested on GitHub Actions, where the Python libraries are available.
+This functionality is tested on GitHub Actions, where the Python libraries are available.
 
