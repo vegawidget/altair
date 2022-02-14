@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,15 +156,15 @@
 
       
 
-      </header><script src="field-guide-python_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="field-guide-python_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.17.0/vega.min.js"></script><script src="field-guide-python_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="field-guide-python_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="field-guide-python_files/vega-embed-6.12.2/vega-embed.js"></script><script src="field-guide-python_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="field-guide-python_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="field-guide-python_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="field-guide-python_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="field-guide-python_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="field-guide-python_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Python Issues</h1>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/field-guide-python.Rmd"><code>vignettes/field-guide-python.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/field-guide-python.Rmd" class="external-link"><code>vignettes/field-guide-python.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-python.Rmd</code></div>
 
     </div>
@@ -169,49 +173,49 @@
     
 <p>There are four foundations upon which this package rests:</p>
 <ul>
-<li>the <a href="https://altair-viz.github.io/">Altair</a> Python package, to build chart specifications</li>
-<li>the <a href="https://rstudio.github.io/reticulate/index.html">reticulate</a> R package, to provide inter-operability with Python</li>
-<li>the <a href="https://vega.github.io/vega-lite/">Vega-Lite</a> JavaScript framework, to render chart specifications in an HTML file</li>
-<li>the <a href="https://www.htmlwidgets.org/">htmlwidgets</a> R package, to provide inter-operability with HTML and JavaScript</li>
+<li>the <a href="https://altair-viz.github.io/" class="external-link">Altair</a> Python package, to build chart specifications</li>
+<li>the <a href="https://rstudio.github.io/reticulate/index.html" class="external-link">reticulate</a> R package, to provide inter-operability with Python</li>
+<li>the <a href="https://vega.github.io/vega-lite/" class="external-link">Vega-Lite</a> JavaScript framework, to render chart specifications in an HTML file</li>
+<li>the <a href="https://www.htmlwidgets.org/" class="external-link">htmlwidgets</a> R package, to provide inter-operability with HTML and JavaScript</li>
 </ul>
 <p>This article deals with the first two items; the <a href="field-guide-rendering.html">Field Guide to Rendering</a> deals with the other two.</p>
 <p>The purpose of this document is to try to collect in one place, in a semi-organized fashion, all the fiddly-bits we have found dealing with Python stuff. If you get a cryptic Python error, check here. If you find a workaround for something that isn’t here, please let us know!</p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p>The <a href="https://altair-viz.github.io">Altair documentation</a> is the best resource for learning how to create charts. In the course of building and documenting this package, we have noted a few “gotchas” and their workarounds. If you find another, please let us know!</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The <a href="https://altair-viz.github.io" class="external-link">Altair documentation</a> is the best resource for learning how to create charts. In the course of building and documenting this package, we have noted a few “gotchas” and their workarounds. If you find another, please let us know!</p>
 <p>Here’s the short version:</p>
 <ul>
-<li><p>Where you see a <code>.</code>, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
+<li><p>Where you see a <code>.</code>, use a <code>$</code> instead.</p></li>
 <li><p>Altair methods return a <em>copy</em> of the object. Assignment of a Python object returns a <em>reference</em>, not a copy.</p></li>
 <li><p>To get a copy a of “bare” Altair object, use a <code>$copy()</code> method.</p></li>
 <li><p>If you have a dataset that has variables with dots in their names, e.g. <code>Sepal.Width</code>, you have to make some accommodation when referring to such names in Altiar. As a workaround, you can use square-brackets to refer to “[Sepal.Width]”.</p></li>
 <li><p>There is an Altair Chart method called <code>repeat()</code>, which in R is a reserved word, so it needs to be enclosed in backticks: <code>$`repeat`()</code>.</p></li>
-<li><p>Where you see an inversion operator, <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>, like <code>~highlight</code>, in Altair examples, call the method explicitly from R: <code>hightlight$`__invert__`()</code>. Alternatively, you may be able to rearrange the code so as to avoid using the inversion.</p></li>
+<li><p>Where you see an inversion operator, <code>~</code>, like <code>~highlight</code>, in Altair examples, call the method explicitly from R: <code>hightlight$`__invert__`()</code>. Alternatively, you may be able to rearrange the code so as to avoid using the inversion.</p></li>
 <li><p>Where you see a hyphen in the name of a Python object, use an underscore in R: <code>vega_data$sf_temps()</code></p></li>
-<li><p>Where you see a Python list, <code>["foo", "bar"]</code>, in Altair examples, use an unnamed list in R: <code><a href="https://rdrr.io/r/base/list.html">list("foo", "bar")</a></code>.</p></li>
-<li><p>Where you see a Python dictionary, <code>{'a' = "foo", 'b' = "bar"}</code>, in Altair examples, use a named list in R: <code><a href="https://rdrr.io/r/base/list.html">list(a = "foo", b = "bar")</a></code></p></li>
+<li><p>Where you see a Python list, <code>["foo", "bar"]</code>, in Altair examples, use an unnamed list in R: <code>list("foo", "bar")</code>.</p></li>
+<li><p>Where you see a Python dictionary, <code>{'a' = "foo", 'b' = "bar"}</code>, in Altair examples, use a named list in R: <code>list(a = "foo", b = "bar")</code></p></li>
 <li><p>Where you see a <code>None</code> in Altair examples, use a <code>NULL</code> in R.</p></li>
 <li><p>You may see a function call with <code>**</code>, <code>baz(a = 1, **{'foo': 'bar'})</code>, in an Altair example. In R, interpolate the dictionary into the rest of the arguments, <code>baz(a = 1, foo = "bar")</code>.</p></li>
 </ul>
 </div>
-<div id="data-frames" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-frames" class="anchor"></a>Data frames</h2>
+<div class="section level2">
+<h2 id="data-frames">Data frames<a class="anchor" aria-label="anchor" href="#data-frames"></a>
+</h2>
 <p>Consider this Python example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Python</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
-<span id="cb1-4"><a href="#cb1-4"></a>cars <span class="op">=</span> data.cars()</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>alt.Chart(cars).mark_point().encode(</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    x<span class="op">=</span><span class="st">'Horsepower'</span>,</span>
-<span id="cb1-8"><a href="#cb1-8"></a>    y<span class="op">=</span><span class="st">'Miles_per_Gallon'</span>,</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    color<span class="op">=</span><span class="st">'Origin'</span>,</span>
-<span id="cb1-10"><a href="#cb1-10"></a>).interactive()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cars <span class="op">=</span> data.cars()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>alt.Chart(cars).mark_point().encode(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Horsepower'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Miles_per_Gallon'</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Origin'</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>).interactive()</span></code></pre></div>
 <p>In this case, we are supplying a Data Frame to a <code>Chart()</code> method.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
@@ -225,16 +229,16 @@
     color <span class="op">=</span> <span class="st">"Origin:N"</span>
   <span class="op">)</span></code></pre></div>
 </div>
-<div id="method-chaining" class="section level2">
-<h2 class="hasAnchor">
-<a href="#method-chaining" class="anchor"></a>Method chaining</h2>
+<div class="section level2">
+<h2 id="method-chaining">Method chaining<a class="anchor" aria-label="anchor" href="#method-chaining"></a>
+</h2>
 <p>When <strong>reticulate</strong> returns a Python object with a custom class, it appears in R as an S3 object that <em>behaves</em> like a reference class. This means that if you see this sort of notation in Python:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Python</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>foo.bar()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>foo.bar()</span></code></pre></div>
 <p>You would use this notation in R:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">foo</span><span class="op">$</span><span class="fu">bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>In essence, you wherever you see a <code>.</code> in Python, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> in R.</p>
+<p>In essence, you wherever you see a <code>.</code> in Python, use a <code>$</code> in R.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
@@ -248,42 +252,39 @@
     color <span class="op">=</span> <span class="st">"Origin:N"</span>
   <span class="op">)</span></code></pre></div>
 </div>
-<div id="altair-method-returns-copy" class="section level2">
-<h2 class="hasAnchor">
-<a href="#altair-method-returns-copy" class="anchor"></a>Altair method returns copy</h2>
+<div class="section level2">
+<h2 id="altair-method-returns-copy">Altair method returns copy<a class="anchor" aria-label="anchor" href="#altair-method-returns-copy"></a>
+</h2>
 <p>In Python, Altair methods return a copy of the object. To verify this, let’s use `pryr::</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/hadley/pryr">"pryr"</a></span><span class="op">)</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
-<span class="co">#&gt;   method      from</span>
-<span class="co">#&gt;   print.bytes Rcpp</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/hadley/pryr" class="external-link">"pryr"</a></span><span class="op">)</span>
 
 <span class="va">chart_new</span> <span class="op">&lt;-</span> <span class="va">chart</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>Although this <em>looks</em> like a reference-class method, the Altair method <em>acts</em> like an S3 method.</p>
 </div>
-<div id="python-assignment-returns-reference" class="section level2">
-<h2 class="hasAnchor">
-<a href="#python-assignment-returns-reference" class="anchor"></a>Python assignment returns reference</h2>
-<p>The object returned by an Altair method is a modified copy of the calling-object, much as we are accustomed-to in R. However, it is important to note that using the R assignment operator (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>, <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, <code><a href="https://rdrr.io/r/base/assignOps.html">-&gt;</a></code>) on a Python object returns a <em>reference</em> to the object rather than a copy.</p>
+<div class="section level2">
+<h2 id="python-assignment-returns-reference">Python assignment returns reference<a class="anchor" aria-label="anchor" href="#python-assignment-returns-reference"></a>
+</h2>
+<p>The object returned by an Altair method is a modified copy of the calling-object, much as we are accustomed-to in R. However, it is important to note that using the R assignment operator (<code>&lt;-</code>, <code>=</code>, <code>-&gt;</code>) on a Python object returns a <em>reference</em> to the object rather than a copy.</p>
 <p>This becomes apparent when assigning a “bare” object:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart_new</span> <span class="op">&lt;-</span> <span class="va">chart</span>
 
-<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>To return a copy of the object, use a copy method.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart_new</span> <span class="op">&lt;-</span> <span class="va">chart</span><span class="op">$</span><span class="fu">copy</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart_new</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/pkg/pryr/man/inspect.html" class="external-link">address</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
-<div id="dots-in-variable-names" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dots-in-variable-names" class="anchor"></a>Dots in variable names</h2>
+<div class="section level2">
+<h2 id="dots-in-variable-names">Dots in variable names<a class="anchor" aria-label="anchor" href="#dots-in-variable-names"></a>
+</h2>
 <p>In Python, dots can refer to a nested structure within a Data Frame variable. Vega-Lite supports such nesting, so it assumes that a dot in a variable-name will refer to a nested variable.</p>
 <p>This means that we can run into trouble using R’s <code>freeny</code> dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -309,10 +310,10 @@
   <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">chart_freeny_r</span></code></pre></div>
-<div id="htmlwidget-5f0ae4a4b2a14f35be5e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5f0ae4a4b2a14f35be5e">{"x":{
+<div id="htmlwidget-76a265a7a6b11d7b5780" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-76a265a7a6b11d7b5780">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -641,10 +642,10 @@
   <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">chart_freeny_r</span></code></pre></div>
-<div id="htmlwidget-23f94f184325432145d0" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-23f94f184325432145d0">{"x":{
+<div id="htmlwidget-ae8ad9f3531f4b7d9a09" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae8ad9f3531f4b7d9a09">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -961,9 +962,9 @@
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="repeat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#repeat" class="anchor"></a>Repeat</h2>
+<div class="section level2">
+<h2 id="repeat">Repeat<a class="anchor" aria-label="anchor" href="#repeat"></a>
+</h2>
 <p>As shown in the <a href="view-composition.html#repeat">View Composistion article</a>, you can use the <code>repeat()</code> method to compose one-or-more charts such that the only thing different among them is an encoding.</p>
 <p>However, the article notes, there is a catch: <code>repeat</code> is a reserved word in R, so we have to enclose it in backticks, e.g. <code>$`repeat`()</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -987,14 +988,14 @@
     height <span class="op">=</span> <span class="fl">200</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">`repeat`</span><span class="op">(</span>
-    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"[market.potential]"</span>, <span class="st">"[price.index]"</span><span class="op">)</span>
+    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"[market.potential]"</span>, <span class="st">"[price.index]"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">chart_repeat</span></code></pre></div>
-<div id="htmlwidget-23069e691cb081b8cd1b" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-23069e691cb081b8cd1b">{"x":{
+<div id="htmlwidget-b88b1772828e418b1d47" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b88b1772828e418b1d47">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -1320,17 +1321,16 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>As you can see, the <code>repeat</code> operator does not give us a way to customize the axis titles.</p>
 </div>
-<div id="inversion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inversion" class="anchor"></a>Inversion: <code>~</code>
+<div class="section level2">
+<h2 id="inversion">Inversion: <code>~</code><a class="anchor" aria-label="anchor" href="#inversion"></a>
 </h2>
-<p>This is another case where an operator has a completely different meaning in Python than it has in R. As you know, the <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> operator is used to construct a formula. In Python, it is the <a href="https://stackoverflow.com/questions/8305199/the-tilde-operator-in-python">bitwise inversion operator</a>.</p>
-<p>You might come across this in an <a href="https://altair-viz.github.io/gallery/multiline_highlight.html">Altair example</a> where the operator is used to invert a selection.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Python</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>highlight <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'single'</span>, on<span class="op">=</span><span class="st">'mouseover'</span>,</span>
-<span id="cb13-3"><a href="#cb13-3"></a>                          fields<span class="op">=</span>[<span class="st">'symbol'</span>], nearest<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a></span>
-<span id="cb13-5"><a href="#cb13-5"></a>alt.condition(<span class="op">~</span>highlight, alt.value(<span class="dv">1</span>), alt.value(<span class="dv">3</span>))</span></code></pre></div>
+<p>This is another case where an operator has a completely different meaning in Python than it has in R. As you know, the <code>~</code> operator is used to construct a formula. In Python, it is the <a href="https://stackoverflow.com/questions/8305199/the-tilde-operator-in-python" class="external-link">bitwise inversion operator</a>.</p>
+<p>You might come across this in an <a href="https://altair-viz.github.io/gallery/multiline_highlight.html" class="external-link">Altair example</a> where the operator is used to invert a selection.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'single'</span>, on<span class="op">=</span><span class="st">'mouseover'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                          fields<span class="op">=</span>[<span class="st">'symbol'</span>], nearest<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>alt.condition(<span class="op">~</span>highlight, alt.value(<span class="dv">1</span>), alt.value(<span class="dv">3</span>))</span></code></pre></div>
 <p>There are a couple of alternatives available here, the first is to invoke the <code>$__invert__()</code> operator explicitly.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># R</span>
@@ -1338,7 +1338,7 @@
   <span class="va">alt</span><span class="op">$</span><span class="fu">selection</span><span class="op">(</span>
     type <span class="op">=</span> <span class="st">"single"</span>, 
     on <span class="op">=</span> <span class="st">"mouseover"</span>,
-    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"symbol"</span><span class="op">)</span>, 
+    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"symbol"</span><span class="op">)</span>, 
     nearest <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span>
 
@@ -1350,18 +1350,18 @@
   <span class="va">alt</span><span class="op">$</span><span class="fu">selection</span><span class="op">(</span>
     type <span class="op">=</span> <span class="st">"single"</span>, 
     on <span class="op">=</span> <span class="st">"mouseover"</span>,
-    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"symbol"</span><span class="op">)</span>, 
+    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"symbol"</span><span class="op">)</span>, 
     nearest <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span>
 
 <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">highlight</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="hyphens-in-python-names" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hyphens-in-python-names" class="anchor"></a>Hyphens in Python Names</h2>
+<div class="section level2">
+<h2 id="hyphens-in-python-names">Hyphens in Python Names<a class="anchor" aria-label="anchor" href="#hyphens-in-python-names"></a>
+</h2>
 <p>This comes up in Vega datasets. Let’s use the <code>$list_datasets()</code> method to get the names of the datasets that contain a hyphen.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">list_datasets</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_subset.html">str_subset</a></span><span class="op">(</span><span class="st">"-"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">list_datasets</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_subset.html" class="external-link">str_subset</a></span><span class="op">(</span><span class="st">"-"</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "annual-precip"                  "co2-concentration"             </span>
 <span class="co">#&gt;  [3] "flare-dependencies"             "flights-10k"                   </span>
 <span class="co">#&gt;  [5] "flights-200k"                   "flights-20k"                   </span>
@@ -1376,7 +1376,7 @@
 <span class="co">#&gt; [23] "world-110m"</span></code></pre></div>
 <p>To refer to one of these datasets in R, substitute the hyphen with an underscore:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">sf_temps</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">sf_temps</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;   temp                date</span>
 <span class="co">#&gt; 1 47.8 2010-01-01 00:00:00</span>
 <span class="co">#&gt; 2 47.4 2010-01-01 01:00:00</span>
@@ -1385,36 +1385,35 @@
 <span class="co">#&gt; 5 46.0 2010-01-01 04:00:00</span>
 <span class="co">#&gt; 6 45.8 2010-01-01 05:00:00</span></code></pre></div>
 </div>
-<div id="lists-and-dictionaries" class="section level2">
-<h2 class="hasAnchor">
-<a href="#lists-and-dictionaries" class="anchor"></a>Lists: <code>[]</code> and Dictionaries: <code>{}</code>
+<div class="section level2">
+<h2 id="lists-and-dictionaries">Lists: <code>[]</code> and Dictionaries: <code>{}</code><a class="anchor" aria-label="anchor" href="#lists-and-dictionaries"></a>
 </h2>
 <p>A Python list corresponds to an atomic vector in R; a Python dictionary corresponds to a named list in R.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Python</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a>example_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb18-4"><a href="#cb18-4"></a>example_dictionary <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>, <span class="st">'c'</span>: <span class="dv">3</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>example_dictionary <span class="op">=</span> {<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>, <span class="st">'c'</span>: <span class="dv">3</span>}</span></code></pre></div>
 <p>In practice, we find that reticulate does the right thing if we provide an R <em>unnamed</em> list where Altair expects a list, and an R <em>named</em> list where Altair expects a dictionary.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="va">example_dictionary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<p>Consider this Altair <a href="https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html">example</a> that uses lists and dictionaries. This is some of the Python bits:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
-<span id="cb20-3"><a href="#cb20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4"></a>flights <span class="op">=</span> alt.UrlData(data.flights_2k.url,</span>
-<span id="cb20-5"><a href="#cb20-5"></a>                      <span class="bu">format</span><span class="op">=</span>{<span class="st">'parse'</span>: {<span class="st">'date'</span>: <span class="st">'date'</span>}})</span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a>brush <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'interval'</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span></code></pre></div>
+<code class="sourceCode R"><span class="va">example_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">example_dictionary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<p>Consider this Altair <a href="https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html" class="external-link">example</a> that uses lists and dictionaries. This is some of the Python bits:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> alt.UrlData(data.flights_2k.url,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                      <span class="bu">format</span><span class="op">=</span>{<span class="st">'parse'</span>: {<span class="st">'date'</span>: <span class="st">'date'</span>}})</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>brush <span class="op">=</span> alt.selection(<span class="bu">type</span><span class="op">=</span><span class="st">'interval'</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span></code></pre></div>
 <p>Here’s an R translation of the complete example, which demonstrates interactive cross-filtering.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flights</span> <span class="op">&lt;-</span>
   <span class="va">alt</span><span class="op">$</span><span class="fu">UrlData</span><span class="op">(</span>
     <span class="va">vega_data</span><span class="op">$</span><span class="va">flights_2k</span><span class="op">$</span><span class="va">url</span>,
-    format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>parse <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>date <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span><span class="op">)</span>
+    format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>parse <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span>
 
-<span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"interval"</span>, encodings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"interval"</span>, encodings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Define the base chart, with the common parts of the</span>
 <span class="co"># background and highlights</span>
@@ -1444,11 +1443,11 @@
 <span class="va">alt</span><span class="op">$</span>
   <span class="fu">layer</span><span class="op">(</span><span class="va">background</span>, <span class="va">highlight</span>, data <span class="op">=</span> <span class="va">flights</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_calculate</span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"hours(datum.date)"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">`repeat`</span><span class="op">(</span>column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-f4530aeb093fce2016af" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f4530aeb093fce2016af">{"x":{
+  <span class="fu">`repeat`</span><span class="op">(</span>column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-ffde6a7650b51f036e5c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ffde6a7650b51f036e5c">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -1545,40 +1544,35 @@
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="none-and" class="section level2">
-<h2 class="hasAnchor">
-<a href="#none-and" class="anchor"></a>None and <code>**{}</code>
+<div class="section level2">
+<h2 id="none-and">None and <code>**{}</code><a class="anchor" aria-label="anchor" href="#none-and"></a>
 </h2>
 <p>These concepts are not related other that they are found in the same example:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a>activities <span class="op">=</span> pd.DataFrame({<span class="st">'Activity'</span>: [<span class="st">'Sleeping'</span>, <span class="st">'Eating'</span>, <span class="st">'TV'</span>, <span class="st">'Work'</span>, <span class="st">'Exercise'</span>],</span>
-<span id="cb22-5"><a href="#cb22-5"></a>                           <span class="st">'Time'</span>: [<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">2</span>]})</span>
-<span id="cb22-6"><a href="#cb22-6"></a></span>
-<span id="cb22-7"><a href="#cb22-7"></a>alt.Chart(activities).mark_bar().encode(</span>
-<span id="cb22-8"><a href="#cb22-8"></a>    alt.X(<span class="st">'PercentOfTotal:Q'</span>, axis<span class="op">=</span>alt.Axis(<span class="bu">format</span><span class="op">=</span><span class="st">'.0%'</span>)),</span>
-<span id="cb22-9"><a href="#cb22-9"></a>    y<span class="op">=</span><span class="st">'Activity:N'</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>).transform_window(</span>
-<span id="cb22-11"><a href="#cb22-11"></a>    window<span class="op">=</span>[alt.WindowFieldDef(op<span class="op">=</span><span class="st">'sum'</span>, field<span class="op">=</span><span class="st">'Time'</span>, <span class="op">**</span>{<span class="st">'as'</span>: <span class="st">'TotalTime'</span>})],</span>
-<span id="cb22-12"><a href="#cb22-12"></a>    frame<span class="op">=</span>[<span class="va">None</span>, <span class="va">None</span>]</span>
-<span id="cb22-13"><a href="#cb22-13"></a>).transform_calculate(</span>
-<span id="cb22-14"><a href="#cb22-14"></a>    PercentOfTotal<span class="op">=</span><span class="st">"datum.Time / datum.TotalTime"</span></span>
-<span id="cb22-15"><a href="#cb22-15"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>activities <span class="op">=</span> pd.DataFrame({<span class="st">'Activity'</span>: [<span class="st">'Sleeping'</span>, <span class="st">'Eating'</span>, <span class="st">'TV'</span>, <span class="st">'Work'</span>, <span class="st">'Exercise'</span>],</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'Time'</span>: [<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">2</span>]})</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>alt.Chart(activities).mark_bar().encode(</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    alt.X(<span class="st">'PercentOfTotal:Q'</span>, axis<span class="op">=</span>alt.Axis(<span class="bu">format</span><span class="op">=</span><span class="st">'.0%'</span>)),</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Activity:N'</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>).transform_window(</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    window<span class="op">=</span>[alt.WindowFieldDef(op<span class="op">=</span><span class="st">'sum'</span>, field<span class="op">=</span><span class="st">'Time'</span>, <span class="op">**</span>{<span class="st">'as'</span>: <span class="st">'TotalTime'</span>})],</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">=</span>[<span class="va">None</span>, <span class="va">None</span>]</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    PercentOfTotal<span class="op">=</span><span class="st">"datum.Time / datum.TotalTime"</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>In this example, we have a list containing <code>None</code>, which reticulate associates with R’s <code>NULL</code>.</p>
-<p>We also have some syntax, <code>**{'as': 'TotalTime'}</code>. This is a mechanism to <a href="https://softwareengineering.stackexchange.com/a/131415">pass additional arguments</a> to a Python function, perhaps similar to <code>...</code> in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:</p>
+<p>We also have some syntax, <code>**{'as': 'TotalTime'}</code>. This is a mechanism to <a href="https://softwareengineering.stackexchange.com/a/131415" class="external-link">pass additional arguments</a> to a Python function, perhaps similar to <code>...</code> in R. It is passing a dictionary, so perhaps we can add the additional named argument in R:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/">"tibble"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
 
 <span class="va">activities</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>
-    Activity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sleeping"</span>, <span class="st">"Eating"</span>, <span class="st">"TV"</span>, <span class="st">"Work"</span>, <span class="st">"Exercise"</span><span class="op">)</span>,
-    Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">2</span><span class="op">)</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+    Activity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sleeping"</span>, <span class="st">"Eating"</span>, <span class="st">"TV"</span>, <span class="st">"Work"</span>, <span class="st">"Exercise"</span><span class="op">)</span>,
+    Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">2</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="co">#&gt; Warning: `data_frame()` is deprecated as of tibble 1.1.0.</span>
-<span class="co">#&gt; Please use `tibble()` instead.</span>
-<span class="co">#&gt; This warning is displayed once every 8 hours.</span>
-<span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span>
 
 <span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">activities</span><span class="op">)</span><span class="op">$</span>
@@ -1588,19 +1582,19 @@
     y <span class="op">=</span> <span class="st">"Activity:N"</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_window</span><span class="op">(</span>
-    window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
       <span class="va">alt</span><span class="op">$</span><span class="fu">WindowFieldDef</span><span class="op">(</span>op <span class="op">=</span> <span class="st">"sum"</span>, field <span class="op">=</span> <span class="st">"Time"</span>, as <span class="op">=</span> <span class="st">"TotalTime"</span><span class="op">)</span>
     <span class="op">)</span>,
-    frame <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>
+    frame <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span><span class="fu">transform_calculate</span><span class="op">(</span>
     PercentOfTotal <span class="op">=</span> <span class="fu"><a href="../reference/JS.html">JS</a></span><span class="op">(</span><span class="st">"datum.Time / datum.TotalTime"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-d6693475523327795cf9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d6693475523327795cf9">{"x":{
+<div id="htmlwidget-85932fcd17aea0dd311a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-85932fcd17aea0dd311a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -1687,11 +1681,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

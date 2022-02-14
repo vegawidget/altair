@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,15 +156,15 @@
 
       
 
-      </header><script src="tooltips_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="tooltips_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="tooltips_files/vega-5.17.0/vega.min.js"></script><script src="tooltips_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="tooltips_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="tooltips_files/vega-embed-6.12.2/vega-embed.js"></script><script src="tooltips_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="tooltips_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="tooltips_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="tooltips_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="tooltips_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="tooltips_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="tooltips_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tooltips</h1>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/tooltips.Rmd"><code>vignettes/tooltips.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/tooltips.Rmd" class="external-link"><code>vignettes/tooltips.Rmd</code></a></small>
       <div class="hidden name"><code>tooltips.Rmd</code></div>
 
     </div>
@@ -170,7 +174,7 @@
 <p>In Vega-Lite, a tooltip is an encoding to which variables are attached.</p>
 <p>The Altair Python package offers us a shortcut to specify the tooltip encoding, by supplying the names of the variables we wish to appear in the tooltip. Altair and Vega-Lite apply some default behaviors.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -181,14 +185,14 @@
     x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
     y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
     color <span class="op">=</span> <span class="st">"Origin:N"</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
+    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f7e87b360e78f64c3493" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f7e87b360e78f64c3493">{"x":{
+<div id="htmlwidget-07d17e79f0636407950a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-07d17e79f0636407950a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -4712,7 +4716,7 @@
   <span class="va">chart</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
     tooltip <span class="op">=</span> 
-      <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Name"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,
         <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
         <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
@@ -4721,10 +4725,10 @@
   <span class="op">)</span>
 
 <span class="va">chart_new</span></code></pre></div>
-<div id="htmlwidget-a0a7b6f2eef859b82754" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a0a7b6f2eef859b82754">{"x":{
+<div id="htmlwidget-b5045523d8f3314512f3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b5045523d8f3314512f3">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -9248,7 +9252,7 @@
   <span class="va">chart</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
     tooltip <span class="op">=</span> 
-      <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Name"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,
         <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>
           field <span class="op">=</span> <span class="st">"Year"</span>,
@@ -9268,10 +9272,10 @@
   <span class="op">)</span>
 
 <span class="va">chart_new</span></code></pre></div>
-<div id="htmlwidget-aec2c34661dd6474c5d6" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aec2c34661dd6474c5d6">{"x":{
+<div id="htmlwidget-2b17e76beef7518aba7d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b17e76beef7518aba7d">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -13798,15 +13802,15 @@
     "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>If there is no aggregation or time-unit specified, Vega-Lite will use the variable-name as the title for the field. Otherwise, Vega-Lite will modify the variable-name to indicate the time-unit or the aggregation. You can use the <code>title</code> option to override the default that Vega-Lite will propose.</p>
-<p>Also, you can specify the <a href="https://vega.github.io/vega-lite/docs/format.html">format</a> of the values using the <code>format</code> option. For quantitative variables, <a href="https://github.com/d3/d3-format">d3-format</a> is used; for temporal variables, <a href="https://github.com/d3/d3-time-format">d3-time-format</a> is used.</p>
-<div id="further-reading" class="section level2">
-<h2 class="hasAnchor">
-<a href="#further-reading" class="anchor"></a>Further reading</h2>
+<p>Also, you can specify the <a href="https://vega.github.io/vega-lite/docs/format.html" class="external-link">format</a> of the values using the <code>format</code> option. For quantitative variables, <a href="https://github.com/d3/d3-format" class="external-link">d3-format</a> is used; for temporal variables, <a href="https://github.com/d3/d3-time-format" class="external-link">d3-time-format</a> is used.</p>
+<div class="section level2">
+<h2 id="further-reading">Further reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
+</h2>
 <ul>
-<li><p><a href="https://vega.github.io/vega-lite/docs/tooltip.html">Vega-Lite tooltips</a></p></li>
-<li><p><a href="https://vega.github.io/vega-lite/docs/format.html">Vega-Lite format</a></p></li>
-<li><p><a href="https://github.com/d3/d3-format">D3 format</a></p></li>
-<li><p><a href="https://github.com/d3/d3-time-format">D3 time format</a></p></li>
+<li><p><a href="https://vega.github.io/vega-lite/docs/tooltip.html" class="external-link">Vega-Lite tooltips</a></p></li>
+<li><p><a href="https://vega.github.io/vega-lite/docs/format.html" class="external-link">Vega-Lite format</a></p></li>
+<li><p><a href="https://github.com/d3/d3-format" class="external-link">D3 format</a></p></li>
+<li><p><a href="https://github.com/d3/d3-time-format" class="external-link">D3 time format</a></p></li>
 </ul>
 </div>
   </div>
@@ -13822,11 +13826,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

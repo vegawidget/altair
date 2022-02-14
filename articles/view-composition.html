@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,25 +156,25 @@
 
       
 
-      </header><script src="view-composition_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="view-composition_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="view-composition_files/vega-embed-6.12.2/vega-embed.js"></script><script src="view-composition_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="view-composition_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="view-composition_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="view-composition_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>View Composition</h1>
-                        <h4 class="author">Alicia Schep</h4>
+                        <h4 data-toc-skip class="author">Alicia Schep</h4>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/view-composition.Rmd"><code>vignettes/view-composition.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/view-composition.Rmd" class="external-link"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
 
     </div>
 
     
     
-<div id="combining-multiple-data-displays" class="section level2">
-<h2 class="hasAnchor">
-<a href="#combining-multiple-data-displays" class="anchor"></a>Combining multiple data displays</h2>
+<div class="section level2">
+<h2 id="combining-multiple-data-displays">Combining multiple data displays<a class="anchor" aria-label="anchor" href="#combining-multiple-data-displays"></a>
+</h2>
 <p>Vega-lite and Altair have several methods to help combine different views of these data.</p>
 <ul>
 <li>
@@ -226,14 +230,14 @@
 </tr>
 </tbody>
 </table>
-<p>Note that for “repeat”, backticks are required around the word <code>repeat</code>. This is because <code>repeat</code> is a <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">reserved word</a> in R!</p>
+<p>Note that for “repeat”, backticks are required around the word <code>repeat</code>. This is because <code>repeat</code> is a <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">reserved word</a> in R!</p>
 </div>
-<div id="layer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#layer" class="anchor"></a>Layered charts</h2>
-<p>Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> operator or the <code>alt$layer</code> function. A common use case is to add more than one mark for the same set of encodings. For example, you could combine points and a line for time-series data. Here is an example using the “beaver1” data, which has body temperature for a beaver over time:</p>
+<div class="section level2">
+<h2 id="layer">Layered charts<a class="anchor" aria-label="anchor" href="#layer"></a>
+</h2>
+<p>Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the <code>+</code> operator or the <code>alt$layer</code> function. A common use case is to add more than one mark for the same set of encodings. For example, you could combine points and a line for time-series data. Here is an example using the “beaver1” data, which has body temperature for a beaver over time:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
 <span class="va">base</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span>
@@ -246,10 +250,10 @@
 <span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></code></pre></div>
-<div id="htmlwidget-cabd5f92f4aa70ad2d90" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cabd5f92f4aa70ad2d90">{"x":{
+<div id="htmlwidget-fb7dbe10ca1560e3804e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb7dbe10ca1560e3804e">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -989,12 +993,12 @@
 },"evals":[],"jsHooks":[]}</script><p>This layered plot could also have been made using:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">layer</span><span class="op">(</span><span class="va">scatter_plot</span>, <span class="va">line_plot</span><span class="op">)</span></code></pre></div>
-<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>.</p>
+<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code>+</code>.</p>
 </div>
-<div id="hconcat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hconcat" class="anchor"></a>Horizontal concatenation</h2>
-<p>We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> operator:</p>
+<div class="section level2">
+<h2 id="hconcat">Horizontal concatenation<a class="anchor" aria-label="anchor" href="#hconcat"></a>
+</h2>
+<p>We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the <code>|</code> operator:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">base2</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span>
@@ -1015,10 +1019,10 @@
   <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 
 <span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></code></pre></div>
-<div id="htmlwidget-a38fefecc25d52068fe8" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a38fefecc25d52068fe8">{"x":{
+<div id="htmlwidget-b699b4d086ac1bcaabbe" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b699b4d086ac1bcaabbe">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -2407,21 +2411,21 @@
 },"evals":[],"jsHooks":[]}</script><p>This plot could also have been made using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">hconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></code></pre></div>
-<p>Rendering the result of that function would give the same output as using <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code>.</p>
+<p>Rendering the result of that function would give the same output as using <code>|</code>.</p>
 </div>
-<div id="vconcat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vconcat" class="anchor"></a>Vertical concatenation</h2>
-<p>Those two plots could alternatively have been concatenated vertically using <code><a href="https://rdrr.io/r/base/Logic.html">&amp;</a></code>:</p>
+<div class="section level2">
+<h2 id="vconcat">Vertical concatenation<a class="anchor" aria-label="anchor" href="#vconcat"></a>
+</h2>
+<p>Those two plots could alternatively have been concatenated vertically using <code>&amp;</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">combined_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 <span class="va">combined_plot2</span> <span class="op">&lt;-</span> <span class="va">combined_plot2</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 
 <span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></code></pre></div>
-<div id="htmlwidget-3475b9e9f5e88c97aa04" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3475b9e9f5e88c97aa04">{"x":{
+<div id="htmlwidget-bed88fec50189f3110b9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bed88fec50189f3110b9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -3812,11 +3816,11 @@
 },"evals":[],"jsHooks":[]}</script><p>This plot could also have been made using:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">vconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></code></pre></div>
-<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code><a href="https://rdrr.io/r/base/Logic.html">&amp;</a></code>.</p>
+<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code>&amp;</code>.</p>
 </div>
-<div id="combining-vertical-and-horizontal-concatenation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#combining-vertical-and-horizontal-concatenation" class="anchor"></a>Combining vertical and horizontal concatenation</h2>
+<div class="section level2">
+<h2 id="combining-vertical-and-horizontal-concatenation">Combining vertical and horizontal concatenation<a class="anchor" aria-label="anchor" href="#combining-vertical-and-horizontal-concatenation"></a>
+</h2>
 <p>Compound plots can be combined to create more elaborate composed views. Here is an example of combining two plots for each beaver into a compound plot with four panels:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hist_plot</span> <span class="op">&lt;-</span> 
@@ -3838,10 +3842,10 @@
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 
 <span class="op">(</span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">hist_plot</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">combined_plot2</span> <span class="op">|</span> <span class="va">hist_plot2</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-ec3de952b07f8f1041a5" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ec3de952b07f8f1041a5">{"x":{
+<div id="htmlwidget-4f7306737fc766d8ee1a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4f7306737fc766d8ee1a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -5277,9 +5281,9 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>Note the use of parentheses to make sure the order of operations is correct.</p>
 </div>
-<div id="facet" class="section level2">
-<h2 class="hasAnchor">
-<a href="#facet" class="anchor"></a>Faceting</h2>
+<div class="section level2">
+<h2 id="facet">Faceting<a class="anchor" aria-label="anchor" href="#facet"></a>
+</h2>
 <p>Faceting will likely be familiar to R users comfortable with ggplot2. Faceting creates sub-panels for different subsets of the data. Faceting is specified in similar ways to encoding, using <code>$facet()</code> instead of <code>$encode()</code>. Here is an example of faceting with the mtcars data set, with the rows split by cylinders and the columns by gears:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> 
@@ -5292,10 +5296,10 @@
   <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span>
   
 <span class="va">plot</span><span class="op">$</span><span class="fu">facet</span><span class="op">(</span>row <span class="op">=</span> <span class="st">"cyl:N"</span>, column <span class="op">=</span> <span class="st">"gear:N"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-3d6b45152e8653224daa" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3d6b45152e8653224daa">{"x":{
+<div id="htmlwidget-2c11a07f619d73b0b1f3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2c11a07f619d73b0b1f3">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -5757,9 +5761,9 @@
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="repeat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#repeat" class="anchor"></a>Repeating</h2>
+<div class="section level2">
+<h2 id="repeat">Repeating<a class="anchor" aria-label="anchor" href="#repeat"></a>
+</h2>
 <p>Repeating is a little different than faceting. Repeating creates panels based on different encodings, with the same data in each panel. To create a repeating plot, you specify the encodings with <code>alt$`repeat`("column")</code> or <code>alt$`repeat`("row")</code> instead of an actual column variable. Then the encodings to use for the column or row are specified when calling <code>$`repeat`()</code> on the chart object. Note the use of the backticks around “repeat”; these backticks are necessary because <code>repeat</code> is a reserved word in R.</p>
 <p>Here is an example of creating plots with different x and y axes for the mtcars dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -5772,15 +5776,15 @@
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">`repeat`</span><span class="op">(</span>
-    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"qsec"</span><span class="op">)</span>,
-    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span>
+    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"qsec"</span><span class="op">)</span>,
+    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="va">plot2</span></code></pre></div>
-<div id="htmlwidget-264e17d1bb928175c574" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-264e17d1bb928175c574">{"x":{
+<div id="htmlwidget-bf957dcf5e1c174ee07d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bf957dcf5e1c174ee07d">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -6246,10 +6250,10 @@
   }
 },"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="more-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#more-information" class="anchor"></a>More information</h2>
-<p>For more information on view composition in Vega-lite and Altair, check out the <a href="https://vega.github.io/vega-lite/docs/composition.html">Vega-lite</a> or <a href="https://altair-viz.github.io/user_guide/compound_charts.html#">Altair</a> documentation about the subject!</p>
+<div class="section level2">
+<h2 id="more-information">More information<a class="anchor" aria-label="anchor" href="#more-information"></a>
+</h2>
+<p>For more information on view composition in Vega-lite and Altair, check out the <a href="https://vega.github.io/vega-lite/docs/composition.html" class="external-link">Vega-lite</a> or <a href="https://altair-viz.github.io/user_guide/compound_charts.html#" class="external-link">Altair</a> documentation about the subject!</p>
 </div>
   </div>
 
@@ -6264,11 +6268,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

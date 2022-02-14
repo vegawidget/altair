@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,50 +156,50 @@
 
       
 
-      </header><script src="example-gallery-07-maps_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="example-gallery-07-maps_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.17.0/vega.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.js"></script><script src="example-gallery-07-maps_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-07-maps_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Maps</h1>
-                        <h4 class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/example-gallery-07-maps.Rmd"><code>vignettes/example-gallery-07-maps.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-07-maps.Rmd" class="external-link"><code>vignettes/example-gallery-07-maps.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-07-maps.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#maps">Maps</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#maps" class="external-link">Maps</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://purrr.tidyverse.org">"purrr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://purrr.tidyverse.org" class="external-link">"purrr"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="choropleth-map" class="section level2">
-<h2 class="hasAnchor">
-<a href="#choropleth-map" class="anchor"></a>Choropleth Map</h2>
-<p><a href="https://altair-viz.github.io/gallery/choropleth.html">Altair example</a></p>
+<div class="section level2">
+<h2 id="choropleth-map">Choropleth Map<a class="anchor" aria-label="anchor" href="#choropleth-map"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/choropleth.html" class="external-link">Altair example</a></p>
 <p>It is not straightforward to preview the topological data, or the unemployment data:</p>
 <ul>
 <li>The <code>vega_data$us_10m</code> data is in topoJSON, not a data frame</li>
 <li>The <code>vega_data$unemployment</code> data is in an unparsed format.</li>
 </ul>
-<div id="data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h4>
+<div class="section level4">
+<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counties</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"counties"</span><span class="op">)</span>
 <span class="va">unemp_data</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">unemployment</span><span class="op">$</span><span class="va">url</span></code></pre></div>
 </div>
-<div id="chart" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">counties</span><span class="op">)</span><span class="op">$</span>
@@ -205,16 +209,16 @@
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_lookup</span><span class="op">(</span>
     lookup <span class="op">=</span> <span class="st">"id"</span>,
-    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">unemp_data</span>, <span class="st">"id"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"rate"</span><span class="op">)</span><span class="op">)</span>
+    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">unemp_data</span>, <span class="st">"id"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"rate"</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">project</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"albersUsa"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-9a15843c1f36c9ffc681" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9a15843c1f36c9ffc681">{"x":{
+<div id="htmlwidget-57b02a835d0d9c16f0aa" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-57b02a835d0d9c16f0aa">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -262,31 +266,31 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="locations-of-us-airports" class="section level2">
-<h2 class="hasAnchor">
-<a href="#locations-of-us-airports" class="anchor"></a>Locations of US Airports</h2>
-<p><a href="https://altair-viz.github.io/gallery/airports.html">Altair example</a></p>
-<div id="data-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-1" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="locations-of-us-airports">Locations of US Airports<a class="anchor" aria-label="anchor" href="#locations-of-us-airports"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/airports.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">us</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">airports</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">airports</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 3,376</span>
 <span class="co">#&gt; Columns: 7</span>
-<span class="co">#&gt; $ iata      &lt;chr&gt; "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C", "02…</span>
-<span class="co">#&gt; $ name      &lt;chr&gt; "Thigpen", "Livingston Municipal", "Meadow Lake", "Perry-Wa…</span>
-<span class="co">#&gt; $ city      &lt;list&gt; ["Bay Springs", "Livingston", "Colorado Springs", "Perry",…</span>
-<span class="co">#&gt; $ state     &lt;list&gt; ["MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH", "MO…</span>
-<span class="co">#&gt; $ country   &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "US…</span>
-<span class="co">#&gt; $ latitude  &lt;dbl&gt; 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.49167,…</span>
-<span class="co">#&gt; $ longitude &lt;dbl&gt; -89.23450, -95.01793, -104.56989, -78.05208, -81.90594, -88…</span></code></pre></div>
+<span class="co">#&gt; $ iata      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C", "02G…</span>
+<span class="co">#&gt; $ name      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Thigpen", "Livingston Municipal", "Meadow Lake", "Perry-War…</span>
+<span class="co">#&gt; $ city      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "Bay Springs", "Livingston", "Colorado Springs", "Perry", "…</span>
+<span class="co">#&gt; $ state     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH", "MO",…</span>
+<span class="co">#&gt; $ country   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span>
+<span class="co">#&gt; $ latitude  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.49167, …</span>
+<span class="co">#&gt; $ longitude <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -89.23450, -95.01793, -104.56989, -78.05208, -81.90594, -88.…</span></code></pre></div>
 </div>
-<div id="chart-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-1" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">us</span>, feature <span class="op">=</span> <span class="st">"states"</span><span class="op">)</span>
 
@@ -307,7 +311,7 @@
     latitude <span class="op">=</span> <span class="st">"mean(latitude)"</span>,
     longitude <span class="op">=</span> <span class="st">"mean(longitude)"</span>,
     count <span class="op">=</span> <span class="st">"count()"</span>,
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span>
+    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">mark_circle</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">encode</span><span class="op">(</span>
@@ -315,17 +319,17 @@
     latitude <span class="op">=</span> <span class="st">"latitude:Q"</span>,
     size <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Size</span><span class="op">(</span><span class="st">'count:Q'</span>, title <span class="op">=</span> <span class="st">"Number of Airports"</span><span class="op">)</span>,
     color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"steelblue"</span><span class="op">)</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"state:N"</span>,<span class="st">"count:Q"</span><span class="op">)</span>
+    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state:N"</span>,<span class="st">"count:Q"</span><span class="op">)</span>
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Number of airports in US'</span><span class="op">)</span>
 
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-95461c3c54d27942e489" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-95461c3c54d27942e489">{"x":{
+<div id="htmlwidget-746e66d19101e2275705" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-746e66d19101e2275705">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -30807,30 +30811,30 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="repeated-choropleth-map" class="section level2">
-<h2 class="hasAnchor">
-<a href="#repeated-choropleth-map" class="anchor"></a>Repeated Choropleth Map</h2>
-<p><a href="https://altair-viz.github.io/gallery/choropleth_repeat.html">Altair example</a></p>
-<div id="data-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#data-2" class="anchor"></a>Data</h4>
+<div class="section level2">
+<h2 id="repeated-choropleth-map">Repeated Choropleth Map<a class="anchor" aria-label="anchor" href="#repeated-choropleth-map"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/choropleth_repeat.html" class="external-link">Altair example</a></p>
+<div class="section level4">
+<h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population_engineers_hurricanes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population_engineers_hurricanes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 52</span>
 <span class="co">#&gt; Columns: 5</span>
-<span class="co">#&gt; $ state      &lt;chr&gt; "Alabama", "Alaska", "Arizona", "Arkansas", "California", …</span>
-<span class="co">#&gt; $ id         &lt;dbl&gt; 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 2…</span>
-<span class="co">#&gt; $ population &lt;dbl&gt; 4863300, 741894, 6931071, 2988248, 39250017, 5540545, 3576…</span>
-<span class="co">#&gt; $ engineers  &lt;dbl&gt; 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0.0071…</span>
-<span class="co">#&gt; $ hurricanes &lt;dbl&gt; 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, 0, 0,…</span></code></pre></div>
+<span class="co">#&gt; $ state      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Alabama", "Alaska", "Arizona", "Arkansas", "California", "…</span>
+<span class="co">#&gt; $ id         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20…</span>
+<span class="co">#&gt; $ population <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 4863300, 741894, 6931071, 2988248, 39250017, 5540545, 35764…</span>
+<span class="co">#&gt; $ engineers  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0.00712…</span>
+<span class="co">#&gt; $ hurricanes <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, 0, 0, …</span></code></pre></div>
 </div>
-<div id="chart-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#chart-2" class="anchor"></a>Chart</h4>
+<div class="section level4">
+<h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"states"</span><span class="op">)</span>
 <span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">population_engineers_hurricanes</span><span class="op">$</span><span class="va">url</span>
-<span class="va">variable_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span><span class="op">)</span>
+<span class="va">variable_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span><span class="op">)</span>
 
 <span class="va">chart</span> <span class="op">&lt;-</span> 
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">states</span><span class="op">)</span><span class="op">$</span>
@@ -30848,10 +30852,10 @@
   <span class="fu">resolve_scale</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"independent"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-c8eb629f3551b5718156" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c8eb629f3551b5718156">{"x":{
+<div id="htmlwidget-7d21f122290af978bbda" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7d21f122290af978bbda">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -30917,11 +30921,11 @@
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div id="world-projections" class="section level2">
-<h2 class="hasAnchor">
-<a href="#world-projections" class="anchor"></a>World Projections</h2>
-<p><a href="https://altair-viz.github.io/gallery/world_projections.html">Altair example</a></p>
-<p>Please see the <a href="https://vega.github.io/vega-lite/docs/projection.html">Vega documentation</a> for more details on the projections available.</p>
+<div class="section level2">
+<h2 id="world-projections">World Projections<a class="anchor" aria-label="anchor" href="#world-projections"></a>
+</h2>
+<p><a href="https://altair-viz.github.io/gallery/world_projections.html" class="external-link">Altair example</a></p>
+<p>Please see the <a href="https://vega.github.io/vega-lite/docs/projection.html" class="external-link">Vega documentation</a> for more details on the projections available.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">countries</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">world_110m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"countries"</span><span class="op">)</span>
 
@@ -30930,18 +30934,18 @@
   <span class="fu">mark_geoshape</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#666666"</span>,stroke <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">$</span>
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">300</span>, height <span class="op">=</span> <span class="fl">180</span><span class="op">)</span>
 
-<span class="va">projections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span><span class="op">)</span>
+<span class="va">projections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span><span class="op">)</span>
 
 <span class="co"># use purrr to fashion a facet_wrap</span>
-<span class="va">charts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">projections</span>, <span class="op">~</span><span class="va">base</span><span class="op">$</span><span class="fu">project</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span>
+<span class="va">charts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">projections</span>, <span class="op">~</span><span class="va">base</span><span class="op">$</span><span class="fu">project</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-cc3b8c5214b3522f76dd" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cc3b8c5214b3522f76dd">{"x":{
+<div id="htmlwidget-e13818c7cc1dafb19aca" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e13818c7cc1dafb19aca">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -31037,11 +31041,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,26 +156,26 @@
 
       
 
-      </header><script src="interactive_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="interactive_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="interactive_files/vega-5.17.0/vega.min.js"></script><script src="interactive_files/vega-lite-4.17.0/vega-lite.min.js"></script><link href="interactive_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="interactive_files/vega-embed-6.12.2/vega-embed.js"></script><script src="interactive_files/vegawidget-binding-0.3.2.9000/vegawidget.js"></script><div class="row">
+      </header><script src="interactive_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="interactive_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="interactive_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="interactive_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="interactive_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="interactive_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Interactive Examples</h1>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/interactive.Rmd"><code>vignettes/interactive.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/interactive.Rmd" class="external-link"><code>vignettes/interactive.Rmd</code></a></small>
       <div class="hidden name"><code>interactive.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot">linked-brush scatter-plot example</a> found in the Altair documentation.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot" class="external-link">linked-brush scatter-plot example</a> found in the Altair documentation.</p>
 <p>A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the <em>selection</em> object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
 <p>Let’s start again with our basic plot from the <a href="altair.html">Getting Started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -185,10 +189,10 @@
   <span class="op">)</span>
 
 <span class="va">chart_static</span></code></pre></div>
-<div id="htmlwidget-d6c1a0a32e7f15f577e9" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d6c1a0a32e7f15f577e9">{"x":{
+<div id="htmlwidget-05b515c08f99cb1ffff9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-05b515c08f99cb1ffff9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -4688,7 +4692,7 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an <em>interval</em> selection, other types of selections are detailed in the <a href="https://altair-viz.github.io/user_guide/API.html#altair.selection">API reference</a>.</p>
+},"evals":[],"jsHooks":[]}</script><p>Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an <em>interval</em> selection, other types of selections are detailed in the <a href="https://altair-viz.github.io/user_guide/API.html#altair.selection" class="external-link">API reference</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection_interval</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>We can create a new chart where the brush is bound using the selection property:</p>
@@ -4696,10 +4700,10 @@
 <code class="sourceCode R"><span class="va">chart_brush</span> <span class="op">&lt;-</span> <span class="va">chart_static</span><span class="op">$</span><span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> 
 
 <span class="va">chart_brush</span></code></pre></div>
-<div id="htmlwidget-79056065e039a387f50e" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-79056065e039a387f50e">{"x":{
+<div id="htmlwidget-fd27c1272cd721206752" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd27c1272cd721206752">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -9205,7 +9209,7 @@
     "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>You can click-and-drag to draw a selection-box, then move it around. So far, so good, but it does not really <em>do</em> much. Let’s change that.</p>
-<p>We need to “tell” the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the <code><a href="https://rdrr.io/r/base/conditions.html">condition()</a></code> method to specify a light-gray color for observations that are not selected.</p>
+<p>We need to “tell” the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the <code><a href="https://rdrr.io/r/base/conditions.html" class="external-link">condition()</a></code> method to specify a light-gray color for observations that are not selected.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chart_selection</span> <span class="op">&lt;-</span>
   <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
@@ -9227,10 +9231,10 @@
   <span class="op">)</span>
 
 <span class="va">chart_selection</span></code></pre></div>
-<div id="htmlwidget-a6976165ee87b8625528" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a6976165ee87b8625528">{"x":{
+<div id="htmlwidget-c9358f5b5973580dec41" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c9358f5b5973580dec41">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -13753,10 +13757,10 @@
 <code class="sourceCode R"><span class="va">chart_compound</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">chart_mpg</span> <span class="op">|</span> <span class="va">chart_disp</span><span class="op">)</span>
 
 <span class="va">chart_compound</span></code></pre></div>
-<div id="htmlwidget-d9be124465a235468350" style="width:auto;height:auto;" class="vegawidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d9be124465a235468350">{"x":{
+<div id="htmlwidget-c95b0c6ac4c90c7b5a66" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c95b0c6ac4c90c7b5a66">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
       "view": {
         "continuousHeight": 300,
@@ -18311,11 +18315,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

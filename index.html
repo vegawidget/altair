@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -46,7 +48,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -70,7 +72,8 @@
       <a href="articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="articles/tooltips.html">Tooltips</a>
     </li>
@@ -84,7 +87,8 @@
       <a href="articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -135,8 +139,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -160,17 +164,17 @@
   <div class="contents col-md-9">
 
 
-<div id="altair" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#altair" class="anchor"></a>altair</h1></div>
-<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite/"><strong>Vega-Lite</strong></a> visualizations. This package uses <a href="https://rstudio.github.io/reticulate/"><strong>reticulate</strong></a> to provide an interface to the <a href="https://altair-viz.github.io"><strong>Altair</strong></a> Python package, and the <a href="https://vegawidget.github.io/vegawidget/"><strong>vegawidget</strong></a> package to render charts as htmlwidgets. To avoid confusion, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
-<p>This version of the R package supports Python Altair version 4.1.0.</p>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html">getting started article</a>:</p>
+<div class="section level1">
+<div class="page-header"><h1 id="altair">altair<a class="anchor" aria-label="anchor" href="#altair"></a>
+</h1></div>
+<p>The goal of altair is to help you build <a href="https://vega.github.io/vega-lite/" class="external-link"><strong>Vega-Lite</strong></a> visualizations. This package uses <a href="https://rstudio.github.io/reticulate/" class="external-link"><strong>reticulate</strong></a> to provide an interface to the <a href="https://altair-viz.github.io" class="external-link"><strong>Altair</strong></a> Python package, and the <a href="https://vegawidget.github.io/vegawidget/" class="external-link"><strong>vegawidget</strong></a> package to render charts as htmlwidgets. To avoid confusion, the capitalized word <strong>Altair</strong> shall refer to the Python package; the lower-case word <strong>altair</strong> shall refer to this R package.</p>
+<p>This version of the R package supports Python Altair version 4.2.0.</p>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html" class="external-link">Getting Started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair">"altair"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
 
 <span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -187,88 +191,89 @@
 <p><img src="reference/figures/README-example-1.svg"><!-- --></p>
 <p>Some things to keep in mind:</p>
 <ul>
-<li><p>Where you see a <code>.</code> in the Python examples, use a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> instead.</p></li>
+<li><p>Where you see a <code>.</code> in the Python examples, use a <code>$</code> instead.</p></li>
 <li><p>In your data, columns that contain dots can be wrapped in square brackets in Altair specifications, e.g. <code>[Sepal.Width]</code>, to keep Altair from throwing an error. Alternatively, you can use a double-backslash, e.g. <code>Sepal\\.Width</code>.</p></li>
 </ul>
-<p>These and other “gotchas” are compiled along with workarounds in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>.</p>
+<p>These and other “gotchas” are compiled along with workarounds in an article: <a href="https://vegawidget.github.io/altair/articles/field-guide-python.html" class="external-link">Field Guide to Python Issues</a>.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install altair from CRAN with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
-<p>The development version of is available from <a href="https://github.com/vegawidget/altair/">GitHub</a>:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
+<p>The development version of is available from <a href="https://github.com/vegawidget/altair/" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vegawidget/altair"</span><span class="op">)</span> </code></pre></div>
-<p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a> article.</p>
-<ol>
+<p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation article</a>.</p>
+<ol style="list-style-type: decimal">
 <li>
-<p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs">Conda</a>: in particular, <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
-<p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies">section</a> on this.</p>
+<p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs" class="external-link">Conda</a>: in particular, <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda" class="external-link">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies" class="external-link">section</a> on this.</p>
 </li>
-<li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env">section</a> in the installation article.</p></li>
+<li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html" class="external-link">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env" class="external-link">section</a> in the installation article.</p></li>
 <li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
 </ol>
-<p>You may wish to add a line like this to the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code>:</p>
+<p>You may wish to add a line like this to the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
-<p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery">hint to reticulate</a> on which Python environment to use.</p>
-<div id="optional-installations" class="section level3">
-<h3 class="hasAnchor">
-<a href="#optional-installations" class="anchor"></a>Optional installations</h3>
-<p>If you have <strong><a href="https://nodejs.org">nodejs</a></strong> installed on your computer, you can use <a href="https://vegawidget.github.io/vegawidget/reference/image.html">vegawidget’s image-generating functions</a> to convert Altair charts into SVG strings or write SVG files. With the <strong><a href="https://CRAN.R-project.org/package=rsvg">rsvg</a></strong> and <strong><a href="https://CRAN.R-project.org/package=png">png</a></strong> packages installed, you can get a bitmap array, or write PNG files.</p>
-<p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that <a href="https://nodejs.org">nodejs</a> be installed on your system, as well as <a href="https://cran.r-project.org/package=rsvg">rsvg</a> and <a href="https://cran.r-project.org/package=png">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org">XQuartz</a>, to be installed.</p>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
+<p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery" class="external-link">hint to reticulate</a> on which Python environment to use.</p>
+<div class="section level3">
+<h3 id="optional-installations">Optional installations<a class="anchor" aria-label="anchor" href="#optional-installations"></a>
+</h3>
+<p>If you have the <strong><a href="https://CRAN.R-project.org/package=V8" class="external-link">V8</a></strong> installed, you can use <a href="https://vegawidget.github.io/vegawidget/reference/image.html" class="external-link">vegawidget’s image-generating functions</a> to convert Altair charts into SVG strings or write SVG files. With the <strong><a href="https://CRAN.R-project.org/package=rsvg" class="external-link">rsvg</a></strong> and <strong><a href="https://CRAN.R-project.org/package=png" class="external-link">png</a></strong> packages installed, you can get a bitmap array, or write PNG files.</p>
+<p>When knitting to a non-HTML format, e.g. <code>github_document</code>, this package provides a <code>knit_print()</code> function that will intercept the normal renderer, using instead its own renderer, allowing you to specify <code>"png"</code> , <code>"svg"</code> or <code>"pdf"</code>. Like the image functions, this requires that the V8 package be installed, as well as <a href="https://cran.r-project.org/package=rsvg" class="external-link">rsvg</a> and <a href="https://cran.r-project.org/package=png" class="external-link">png</a>. MacOS users will require an X11 system, such as <a href="https://www.xquartz.org" class="external-link">XQuartz</a>, to be installed.</p>
 </div>
 </div>
-<div id="articles" class="section level2">
-<h2 class="hasAnchor">
-<a href="#articles" class="anchor"></a>Articles</h2>
-<p>The documentation for this package includes some <a href="https://vegawidget.github.io/altair/articles/index.html">articles</a>:</p>
+<div class="section level2">
+<h2 id="articles">Articles<a class="anchor" aria-label="anchor" href="#articles"></a>
+</h2>
+<p>The documentation for this package includes some <a href="https://vegawidget.github.io/altair/articles/index.html" class="external-link">articles</a>:</p>
 <ul>
-<li><p><a href="https://vegawidget.github.io/altair/articles/altair.html">Getting Started</a>: a walkthrough to get a first chart to work</p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/installation.html">Installation</a>: some more-detailed instructions</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/altair.html" class="external-link">Getting Started</a>: a walkthrough to get a first chart to work</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation</a>: some more-detailed instructions</p></li>
 </ul>
 <p>Gallery:</p>
 <ul>
-<li>An adaptation to R of the <a href="https://altair-viz.github.io/gallery/">Altair Example Gallery</a>, to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the <a href="https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html">Interactive Charts</a> examples.</li>
+<li>An adaptation to R of the <a href="https://altair-viz.github.io/gallery/" class="external-link">Altair Example Gallery</a>, to demonstrate (not least to ourselves) that we are not missing any of the expressiveness of the Python API. You may be interested in the <a href="https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html" class="external-link">Interactive Charts</a> examples.</li>
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p><a href="https://vegawidget.github.io/altair/articles/tooltips.html">Tooltips</a>: shows how Vega-Lite implements tooltips as an encoding within a chart, with formatting options</p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/vega-datasets.html">Vega Datasets</a>: work with <a href="https://github.com/altair-viz/vega_datasets">Vega datasets</a> using <code><a href="reference/import_vega_data.html">import_vega_data()</a></code></p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/view-composition.html">View Composition</a>: how to facet, add layers to, repeat, and concatenate charts</p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/interactive.html">Interactive Examples</a>: a set of examples that work towards linked-brushing of two scatterplots</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/tooltips.html" class="external-link">Tooltips</a>: shows how Vega-Lite implements tooltips as an encoding within a chart, with formatting options</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/vega-datasets.html" class="external-link">Vega Datasets</a>: work with <a href="https://github.com/altair-viz/vega_datasets" class="external-link">Vega datasets</a> using <code><a href="reference/import_vega_data.html">import_vega_data()</a></code></p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/view-composition.html" class="external-link">View Composition</a>: how to facet, add layers to, repeat, and concatenate charts</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/interactive.html" class="external-link">Interactive Examples</a>: a set of examples that work towards linked-brushing of two scatterplots</p></li>
 </ul>
 <p>Field Guides:</p>
 <ul>
-<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-python.html">Field Guide to Python Issues</a>: “gotchas” and their workarounds</p></li>
-<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-rendering.html">Field Guide to Rendering Charts</a>: specify options to render charts as HTML</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-python.html" class="external-link">Field Guide to Python Issues</a>: “gotchas” and their workarounds</p></li>
+<li><p><a href="https://vegawidget.github.io/altair/articles/field-guide-rendering.html" class="external-link">Field Guide to Rendering Charts</a>: specify options to render charts as HTML</p></li>
 </ul>
 </div>
-<div id="acknowledgements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
 <p>This package rests on these foundations:</p>
 <ul>
-<li><p><a href="https://altair-viz.github.io">Altair</a>: Python interface to Vega-Lite</p></li>
-<li><p><a href="https://rstudio.github.io/reticulate/">reticulate</a>: R framework to work with Python</p></li>
-<li><p><a href="https://vega.github.io/vega-lite/">Vega-Lite</a>: a grammar of interactive graphics</p></li>
-<li><p><a href="https://www.htmlwidgets.org/">htmlwidgets</a>: R framework to work with JavaScript visualizations</p></li>
+<li><p><a href="https://altair-viz.github.io" class="external-link">Altair</a>: Python interface to Vega-Lite</p></li>
+<li><p><a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a>: R framework to work with Python</p></li>
+<li><p><a href="https://vega.github.io/vega-lite/" class="external-link">Vega-Lite</a>: a grammar of interactive graphics</p></li>
+<li><p><a href="https://vegawidget.github.io/vegawidget/" class="external-link">vegawidget</a>: R package to render Vega(-Lite) visualizations</p></li>
+<li><p><a href="https://www.htmlwidgets.org/" class="external-link">htmlwidgets</a>: R framework to work with JavaScript visualizations</p></li>
 </ul>
-<p>As well, a particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite">vegalite</a> package, as it provided a lot of the inspiration for these efforts.</p>
+<p>As well, a particular debt is owed to the folks behind the <a href="https://github.com/hrbrmstr/vegalite" class="external-link">vegalite</a> package, as it provided a lot of the inspiration for these efforts.</p>
 <p>This project is a collaborative effort. In addition to the principal authors:</p>
 <ul>
-<li><p><a href="https://github.com/AliciaSchep">Alicia Schep</a> has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.</p></li>
-<li><p><a href="https://github.com/heike">Heike Hofmann</a> has been an invaluable advisor, providing incisive feedback, and insight into the fundamentals of interactive graphics.</p></li>
+<li><p><a href="https://github.com/AliciaSchep" class="external-link">Alicia Schep</a> has contributed the concatenation functions, as well as sorted out many of the Python, JavaScript, and package-API issues.</p></li>
+<li><p><a href="https://github.com/heike" class="external-link">Heike Hofmann</a> has been an invaluable advisor, providing incisive feedback, and insight into the fundamentals of interactive graphics.</p></li>
 </ul>
 </div>
-<div id="contributing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>Please note that this project is released with a <a href="https://vegawidget.github.io/altair/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
-<p>This project also has a <a href="https://vegawidget.github.io/altair/CONTRIBUTING.html">Contributing Guide</a>.</p>
+<div class="section level2">
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2>
+<p>Please note that this project is released with a <a href="https://vegawidget.github.io/altair/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>This project also has a <a href="https://vegawidget.github.io/altair/CONTRIBUTING.html" class="external-link">Contributing Guide</a>.</p>
 </div>
 </div>
 
@@ -276,58 +281,67 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=altair">https://​cloud.r-project.org/​package=altair</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/vegawidget/altair/">https://​github.com/​vegawidget/​altair/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/vegawidget/altair/issues">https://​github.com/​vegawidget/​altair/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=altair" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/vegawidget/altair/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/vegawidget/altair/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Ian Lyttle <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9962-4849" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Haley Jeppson <br><small class="roles"> Author </small>  </li>
-<li>Altair Developers <br><small class="roles"> Author </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing altair</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
-<li><a href="https://cran.r-project.org/package=altair"><img src="https://www.r-pkg.org/badges/version/altair" alt="CRAN status"></a></li>
-<li><a href="https://github.com/vegawidget/altair/actions"><img src="https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li>Ian Lyttle <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9962-4849" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Haley Jeppson <br><small class="roles"> Author </small>  </li>
+<li>Altair Developers <br><small class="roles"> Author </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=altair" class="external-link"><img src="https://www.r-pkg.org/badges/version/altair" alt="CRAN status"></a></li>
+<li><a href="https://github.com/vegawidget/altair/actions" class="external-link"><img src="https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

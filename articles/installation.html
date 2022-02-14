@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +68,8 @@
       <a href="../articles/installation.html">Installation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Introduction</li>
+    </li>
+<li class="dropdown-header">Introduction</li>
     <li>
       <a href="../articles/tooltips.html">Tooltips</a>
     </li>
@@ -80,7 +83,8 @@
       <a href="../articles/interactive.html">Interactive Charts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Field Guides</li>
+    </li>
+<li class="dropdown-header">Field Guides</li>
     <li>
       <a href="../articles/field-guide-python.html">Python Issues</a>
     </li>
@@ -131,8 +135,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vegawidget/altair">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/vegawidget/altair" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,37 +156,37 @@
 
       
 
-      </header><script src="installation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Installation</h1>
             
-            <h4 class="date">2021-01-14</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/master/vignettes/installation.Rmd"><code>vignettes/installation.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/installation.Rmd" class="external-link"><code>vignettes/installation.Rmd</code></a></small>
       <div class="hidden name"><code>installation.Rmd</code></div>
 
     </div>
 
     
     
-<p>To be clear, there is a bit of hassle to set-up Python to use your first R package that uses <a href="https://rstudio.github.io/reticulate/">reticulate</a>. The purpose of this document is to help you minimize that hassle. Here’s the short version:</p>
+<p>To be clear, there is a bit of hassle to set-up Python to use your first R package that uses <a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a>. The purpose of this document is to help you minimize that hassle. Here’s the short version:</p>
 <ol style="list-style-type: decimal">
-<li><p>You are encouraged to use <a href="https://conda.io/docs/user-guide/install/index.html">Conda Python</a>. Miniconda works well, and installs much-more-quickly than full Conda.</p></li>
+<li><p>You are encouraged to use <a href="https://conda.io/docs/user-guide/install/index.html" class="external-link">Conda Python</a>. Miniconda works well, and installs much-more-quickly than full Conda.</p></li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>.</p></li>
 <li>
-<p>Install <strong>reticulate</strong>, then suggest to it which Python environment to use. You can do this by putting <code><a href="https://rdrr.io/pkg/reticulate/man/use_python.html">reticulate::use_condaenv("r-reticulate")</a></code> into the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code> file.</p>
+<p>Install <strong>reticulate</strong>, then suggest to it which Python environment to use. You can do this by putting <code>reticulate::use_condaenv("r-reticulate")</code> into the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code> file.</p>
 <p>If you do this, ensure that <code>RETICULATE_PYTHON</code> is <strong>not</strong> set in your <code>.Renviron</code> file.</p>
 <p>As usual, restart R for changes to take effect.</p>
 </li>
-<li><p><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("altair")</a></code></p></li>
+<li><p><code>install.packages("altair")</code></p></li>
 <li><p><code><a href="../reference/install_altair.html">altair::install_altair()</a></code></p></li>
 </ol>
 <p>To verify your installation, use <code><a href="../reference/check_altair.html">altair::check_altair()</a></code>; it will tell you which Altair version is installed, and which version is supported by this package.</p>
 <p>If you have any SSL-related difficulties, perhaps because you are working in a corporate or institutional environment, please see the <a href="#proxies"><strong>Proxies and certificates</strong></a> section of this article.</p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>The remainder of this article is divided into four sections:</p>
 <ul>
 <li>
@@ -196,9 +200,9 @@
 </ul>
 <p>Thanks to the reticulate package, once you have a “standard” Python environment working, each subsequent installation is, in theory, a single command-line call in addition to installing the R package. If you have a working Python (Conda recommended) environment called <code>"r-reticulate"</code>, you can skip to the <a href="#altair"><strong>Altair installation</strong></a> section of this article.</p>
 </div>
-<div id="proxies" class="section level2">
-<h2 class="hasAnchor">
-<a href="#proxies" class="anchor"></a>Proxies and certificates</h2>
+<div class="section level2">
+<h2 id="proxies">Proxies and certificates<a class="anchor" aria-label="anchor" href="#proxies"></a>
+</h2>
 <p>We would recommend using this section only if you are having SSL-related installation difficulties, which may happen if you work at a corporate or institutional environment.</p>
 <p>This first step is the most bothersome; you may need to collect some information on certificates (and proxies, if you work behind a firewall), then distribute that information to different places on your computer:</p>
 <ul>
@@ -213,19 +217,19 @@
 </li>
 </ul>
 <p>Please note that the angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
-<div id="working-without-a-firewall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#working-without-a-firewall" class="anchor"></a>Working without a firewall</h3>
+<div class="section level3">
+<h3 id="working-without-a-firewall">Working without a firewall<a class="anchor" aria-label="anchor" href="#working-without-a-firewall"></a>
+</h3>
 <p>If you do not work behind a firewall, you need only determine the location of a valid certificate file. If you have the <strong>httr</strong> package installed, it will use the certificate file associated with the <strong>openssl</strong> package. You can determine the location of this certificate file by using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"cacert.pem"</span>, package <span class="op">=</span> <span class="st">"openssl"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"cacert.pem"</span>, package <span class="op">=</span> <span class="st">"openssl"</span><span class="op">)</span></code></pre></div>
 <p>At this point, you can note this location and move ahead to <a href="#manage-settings"><strong>Managing your settings</strong></a>.</p>
 </div>
-<div id="working-behind-a-firewall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#working-behind-a-firewall" class="anchor"></a>Working behind a firewall</h3>
-<p>If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called <a href="https://smarie.github.io/develop-behind-proxy/">develop-behind-proxy</a>, from which we take some inspiration.</p>
-<p>It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers <a href="https://smarie.github.io/develop-behind-proxy/know_your_proxy/">some advice</a> to find this certificate bundle, or you can ask your IT department for its location.</p>
+<div class="section level3">
+<h3 id="working-behind-a-firewall">Working behind a firewall<a class="anchor" aria-label="anchor" href="#working-behind-a-firewall"></a>
+</h3>
+<p>If you work behind a firewall, it may be a little trickier to find your certificate file. Sylvain Marié has put together a field-guide called <a href="https://smarie.github.io/develop-behind-proxy/" class="external-link">develop-behind-proxy</a>, from which we take some inspiration.</p>
+<p>It is possible that your IT department requires that your certificate bundle be modified to include a certificate that your IT department can use to monitor your traffic. In this case, Sylvain offers <a href="https://smarie.github.io/develop-behind-proxy/know_your_proxy/" class="external-link">some advice</a> to find this certificate bundle, or you can ask your IT department for its location.</p>
 <p>Your proxy is likely set using environment variables, named some combination of:</p>
 <ul>
 <li>
@@ -236,13 +240,14 @@
 <p>It is also possible that you use your <code>.Renviron</code> file to set your proxy and no-proxy variables. If you have the <strong>usethis</strong> package installed, it can be very easy to find and open: <code>usethis::edit_r_environ()</code>.</p>
 <p>Once you have noted your proxy and no-proxy settings, as well as the location of a certificate file, you are ready to move on.</p>
 </div>
-<div id="manage-settings" class="section level3">
-<h3 class="hasAnchor">
-<a href="#manage-settings" class="anchor"></a>Managing your settings</h3>
+<div class="section level3">
+<h3 id="manage-settings">Managing your settings<a class="anchor" aria-label="anchor" href="#manage-settings"></a>
+</h3>
 <p>Now that you have your information on your certificate (and proxy), the next step is to make this information known to all the programs on your computer that need it. How you make this information known will depend on your operating-system.</p>
 <p><strong>Open the menu-item below for instructions for your operating system:</strong></p>
-<details><p><summary>Windows</summary></p>
-<p>In Windows, the customary way to set or change environment variables is to use <code>Control Panel\All Control Panel Items\System</code> then “Advanced System Settings” and “Environment Variables”. This may vary according to your version of Windows.</p>
+<details><summary>
+Windows
+</summary><p>In Windows, the customary way to set or change environment variables is to use <code>Control Panel\All Control Panel Items\System</code> then “Advanced System Settings” and “Environment Variables”. This may vary according to your version of Windows.</p>
 <p>Set each of these variables, adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># Windows environment variables
 # 
@@ -259,27 +264,28 @@ NO_PROXY : 127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;
 HTTP_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;
 HTTPS_PROXY : http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;</code></pre>
 <p>By setting these variables here, both your R session and any Python session will have access to the information they will need.</p>
-</details><details><p><summary>MacOS and Linux (Ubuntu)</summary></p>
-<p>On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
+</details><details><summary>
+MacOS and Linux (Ubuntu)
+</summary><p>On MacOS and Linux, we may need to set this information in two places (we know), so that processes that start from R <em>and</em> processes that start from the shell will both be well-informed.</p>
 <p>The customary way to set environment-variables for R is to add variables to your <code>.Renviron</code> file; add and adapt the following lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
-<pre><code># .Renviron
+<pre><code><span class="co"># .Renviron</span>
 
-# path to a certificate file 
-SSL_CERT_FILE = "&lt;/path/to/your/certificate/file.crt&gt;"
-REQUESTS_CA_BUNDLE = "${SSL_CERT_FILE}"
+<span class="co"># path to a certificate file </span>
+<span class="va">SSL_CERT_FILE</span> <span class="op">=</span> <span class="st">"&lt;/path/to/your/certificate/file.crt&gt;"</span>
+<span class="va">REQUESTS_CA_BUNDLE</span> <span class="op">=</span> <span class="st">"${SSL_CERT_FILE}"</span>
 
-# --------------------------------------
-# continue if you work behind a firewall
+<span class="co"># --------------------------------------</span>
+<span class="co"># continue if you work behind a firewall</span>
 
-# addresses for which proxy is not to be used
-no_proxy = "127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;"
+<span class="co"># addresses for which proxy is not to be used</span>
+<span class="va">no_proxy</span> <span class="op">=</span> <span class="st">"127.0.0.1,localhost,&lt;other.hostnames.go.here&gt;"</span>
 
-# proxy addresses
-https_proxy = "http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;"
-http_proxy = "${https_proxy}" 
+<span class="co"># proxy addresses</span>
+<span class="va">https_proxy</span> <span class="op">=</span> <span class="st">"http://&lt;your.proxy.ip.address&gt;:&lt;port&gt;"</span>
+<span class="va">http_proxy</span> <span class="op">=</span> <span class="st">"${https_proxy}"</span> 
 
-HTTPS_PROXY = "${https_proxy}"
-HTTP_PROXY = "${http_proxy}"</code></pre>
+<span class="va">HTTPS_PROXY</span> <span class="op">=</span> <span class="st">"${https_proxy}"</span>
+<span class="va">HTTP_PROXY</span> <span class="op">=</span> <span class="st">"${http_proxy}"</span></code></pre>
 <p>On MacOS, your <code>~/.bash_profile</code> file acts in a similar way as <code>.Renviron</code>, but the syntax is just a little different. On Ubuntu Linux, this file is called <code>~/.bashrc</code> - you may have to determine this name for your particular flavor of Linux.</p>
 <p>Using your favorite text editor, find and edit your <code>.bash_profile</code> (or <code>.bashrc</code>), adding and adapting these lines as needed. The angle-brackets , <code>&lt;&gt;</code>, are a quoting mechanism for demonstration; they should not be a part of your variables.</p>
 <pre><code># MacOS .bash_profile, Ubuntu .bashrc
@@ -304,28 +310,32 @@ export HTTP_PROXY=${http_proxy}</code></pre>
 </details>
 </div>
 </div>
-<div id="reticulate-python" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reticulate-python" class="anchor"></a>Reticulate and Python installation</h2>
-<p>Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html"><em>Installing Python Packages</em></a> article. Here, we amplify some opinions offered by RStudio. Because <a href="https://conda.io/docs/">Conda</a> is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. We have found using that using Conda for Python 3.6 works well.</p>
-<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. We have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
+<div class="section level2">
+<h2 id="reticulate-python">Reticulate and Python installation<a class="anchor" aria-label="anchor" href="#reticulate-python"></a>
+</h2>
+<p>Reticulate offers a number of ways to manage the installation of Python packages into a Python environment, as described in its <a href="https://rstudio.github.io/reticulate/articles/python_packages.html" class="external-link"><em>Installing Python Packages</em></a> article. Here, we amplify some opinions offered by RStudio. Because <a href="https://conda.io/docs/" class="external-link">Conda</a> is available for Windows, MacOS, and Linux, we recommend using a Conda Python installation. We have found using that using Conda for Python 3.6 works well.</p>
+<p>Follow the <a href="https://conda.io/docs/user-guide/install/index.html" class="external-link">Conda installation instructions</a> to suit your particular situation. You will have the choice to install Conda or Miniconda. We have found that both work; the choice depends on how many Python packages you wish to install right away.</p>
 <p>If all is well, you will be able to update your Conda installation.</p>
 <p><strong>Open the menu-item below for instructions for your operating system:</strong></p>
-<details><p><summary>Windows</summary> At a new Anaconda prompt:</p>
+<details><summary>
+Windows
+</summary><p>At a new Anaconda prompt:</p>
 <pre><code># Anaconda prompt
 conda update conda</code></pre>
-</details><details><p><summary>MacOS and Linux (Ubuntu)</summary> At a new terminal window:</p>
+</details><details><summary>
+MacOS and Linux (Ubuntu)
+</summary><p>At a new terminal window:</p>
 <pre><code># Terminal window
 conda update conda</code></pre>
 </details>
 </div>
-<div id="python-env" class="section level2">
-<h2 class="hasAnchor">
-<a href="#python-env" class="anchor"></a>Python environment</h2>
-<p>For use with <strong>reticulate</strong>, RStudio <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies">recommend</a> using a Python environment called <code>"r-reticulate"</code>. You can do this for your Conda environment directly from an R command-prompt, and it should “just work”:</p>
+<div class="section level2">
+<h2 id="python-env">Python environment<a class="anchor" aria-label="anchor" href="#python-env"></a>
+</h2>
+<p>For use with <strong>reticulate</strong>, RStudio <a href="https://rstudio.github.io/reticulate/articles/package.html#installing-python-dependencies" class="external-link">recommend</a> using a Python environment called <code>"r-reticulate"</code>. You can do this for your Conda environment directly from an R command-prompt, and it should “just work”:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/conda-tools.html">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
-<p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://rdrr.io/r/base/Startup.html">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/conda-tools.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
+<p>To leave a hint for <strong>reticulate</strong> to use this Python environment by default, you can add this line to the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code> (<code>usethis::edit_r_profile()</code> can be useful):</p>
 <pre><code># .Rprofile
 
 .First &lt;- function() {
@@ -334,18 +344,18 @@ conda update conda</code></pre>
 }</code></pre>
 <p>Of course, you should restart your R session to let your new settings take effect.</p>
 </div>
-<div id="altair" class="section level2">
-<h2 class="hasAnchor">
-<a href="#altair" class="anchor"></a>Altair Installation</h2>
+<div class="section level2">
+<h2 id="altair">Altair Installation<a class="anchor" aria-label="anchor" href="#altair"></a>
+</h2>
 <p>If you have not already installed this package into your R library, this is a perfect occasion to do so:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
 <p>Thanks to all the preparatory work you have made, it should be (in theory) relatively straightforward to install the Altair Python package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">altair</span><span class="fu">::</span><span class="fu"><a href="../reference/install_altair.html">install_altair</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>You can confirm success by showing your Python configuration:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_config.html">py_config</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_config.html" class="external-link">py_config</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>And by confirming your Altair installation:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">altair</span><span class="fu">::</span><span class="fu"><a href="../reference/check_altair.html">check_altair</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -363,11 +373,13 @@ conda update conda</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
+  <p></p>
+<p>Developed by Ian Lyttle, Haley Jeppson, Altair Developers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
