@@ -1,5 +1,5 @@
 Package: altair
-Version: 4.2.0.9003
+Version: 4.2.0.9004
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite/>.
@@ -31,7 +31,6 @@ SystemRequirements: Python (>= 3.6.0), (Python) Altair (>= 4.2.0),
   To use image functions for MacOS: X11  
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 ByteCompile: true
 URL: https://github.com/vegawidget/altair
 BugReports: https://github.com/vegawidget/altair/issues
