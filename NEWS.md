@@ -1,4 +1,4 @@
-# altair (development version)
+# altair 4.2.1
 
 * Upgrade to [vegawidget](https://vegawidget.github.io/vegawidget/) 0.4.1. (#150, #154)
 
