@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.0.9004</span>
       </span>
     </div>
 
@@ -164,7 +164,7 @@
       <h1 data-toc-skip>Case Studies</h1>
                         <h4 data-toc-skip class="author">Haley Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2022-01-30</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-09-case-studies.Rmd" class="external-link"><code>vignettes/example-gallery-09-case-studies.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-09-case-studies.Rmd</code></div>
@@ -214,8 +214,8 @@
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">180</span>, height <span class="op">=</span> <span class="fl">180</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-7af365792e7f158c6cba" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7af365792e7f158c6cba">{"x":{
+<div id="htmlwidget-8928fef745533afbbec5" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8928fef745533afbbec5">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -563,8 +563,8 @@
 
 <span class="co">#chart$to_json(validate = FALSE) %&gt;% as_vegaspec()</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-36df7682ca557bab07e0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-36df7682ca557bab07e0">{"x":{
+<div id="htmlwidget-386ddf4d65ddc63a99f3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-386ddf4d65ddc63a99f3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -881,8 +881,8 @@
   <span class="fu">configure_view</span><span class="op">(</span>stroke <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-d10f7bc52f022ae4dbda" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d10f7bc52f022ae4dbda">{"x":{
+<div id="htmlwidget-c16d9178df684d36cde7" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c16d9178df684d36cde7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1688,7 +1688,7 @@
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> 
   <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://frdata.wikimedia.org/donationdata-vs-day.csv"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">4815</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">9</span></span>
+<span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">4830</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">9</span></span>
 <span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
 <span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span>
 <span class="co">#&gt; <span style="color: #00BB00;">dbl</span>  (8): sum, refund_sum, donations, refunds, avg, max, ytdsum, ytdloss</span>
@@ -1698,7 +1698,7 @@
 <span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set <span style="color: #262626; background-color: #DADADA;">`show_col_types = FALSE`</span> to quiet this message.</span>
 
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 4,815</span>
+<span class="co">#&gt; Rows: 4,830</span>
 <span class="co">#&gt; Columns: 9</span>
 <span class="co">#&gt; $ date       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2007-12-31", "2008-11-03", "2008-11-04", "2008-11-05", "20…</span>
 <span class="co">#&gt; $ sum        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 250.00, 24.00, 2882.16, 97295.89, 97362.30, 75486.06, 65156…</span>
@@ -1736,8 +1736,8 @@
     order <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Order</span><span class="op">(</span><span class="st">"data:O"</span>, timeUnit <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-b786010f4beb3f537ff4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b786010f4beb3f537ff4">{"x":{
+<div id="htmlwidget-082cd61fa56bfa862e60" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-082cd61fa56bfa862e60">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1747,10 +1747,10 @@
       }
     },
     "data": {
-      "name": "data-0c8909427c7d5e213f188bd505a1a947"
+      "name": "data-78bce28fdf222b6459c1349ed757ee75"
     },
     "datasets": {
-      "data-0c8909427c7d5e213f188bd505a1a947": [
+      "data-78bce28fdf222b6459c1349ed757ee75": [
         {
           "avg": 250,
           "date": "2007-12-31",
@@ -54376,15 +54376,15 @@
           "ytdsum": 117436509.74
         },
         {
-          "avg": 22.970691,
+          "avg": 22.971,
           "date": "2021-12-31",
-          "donations": 80178,
+          "donations": 80187,
           "max": 10400,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 1841744.09,
+          "sum": 1841975.55,
           "ytdloss": 0,
-          "ytdsum": 119278253.83
+          "ytdsum": 119278485.29
         },
         {
           "avg": 69.899124,
@@ -54530,15 +54530,15 @@
           "ytdsum": 635426.04
         },
         {
-          "avg": 21.948708,
+          "avg": 21.901413,
           "date": "2022-01-14",
-          "donations": 627,
+          "donations": 630,
           "max": 624,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 13761.84,
+          "sum": 13797.89,
           "ytdloss": 0,
-          "ytdsum": 649187.88
+          "ytdsum": 649223.93
         },
         {
           "avg": 20.679264,
@@ -54549,7 +54549,7 @@
           "refunds": 0,
           "sum": 13772.39,
           "ytdloss": 0,
-          "ytdsum": 662960.27
+          "ytdsum": 662996.32
         },
         {
           "avg": 22.079327,
@@ -54560,62 +54560,62 @@
           "refunds": 0,
           "sum": 12143.63,
           "ytdloss": 0,
-          "ytdsum": 675103.9
+          "ytdsum": 675139.95
         },
         {
-          "avg": 25.429689,
+          "avg": 25.420328,
           "date": "2022-01-17",
-          "donations": 579,
+          "donations": 580,
           "max": 3257.7,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 14723.79,
+          "sum": 14743.79,
           "ytdloss": 0,
-          "ytdsum": 689827.69
+          "ytdsum": 689883.74
         },
         {
-          "avg": 21.811659,
+          "avg": 21.780092,
           "date": "2022-01-18",
-          "donations": 651,
+          "donations": 652,
           "max": 520,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 14199.39,
+          "sum": 14200.62,
           "ytdloss": 0,
-          "ytdsum": 704027.08
+          "ytdsum": 704084.36
         },
         {
-          "avg": 35.259012,
+          "avg": 35.571062,
           "date": "2022-01-19",
-          "donations": 658,
+          "donations": 659,
           "max": 7100,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 23200.43,
+          "sum": 23441.33,
           "ytdloss": 0,
-          "ytdsum": 727227.51
+          "ytdsum": 727525.69
         },
         {
-          "avg": 20.457,
+          "avg": 20.486355,
           "date": "2022-01-20",
-          "donations": 500,
+          "donations": 502,
           "max": 832,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 10228.5,
+          "sum": 10284.15,
           "ytdloss": 0,
-          "ytdsum": 737456.01
+          "ytdsum": 737809.84
         },
         {
-          "avg": 22.610071,
+          "avg": 22.5804,
           "date": "2022-01-21",
-          "donations": 424,
+          "donations": 425,
           "max": 680.84,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 9586.67,
+          "sum": 9596.67,
           "ytdloss": 0,
-          "ytdsum": 747042.68
+          "ytdsum": 747406.51
         },
         {
           "avg": 21.230698,
@@ -54626,7 +54626,7 @@
           "refunds": 0,
           "sum": 7303.36,
           "ytdloss": 0,
-          "ytdsum": 754346.04
+          "ytdsum": 754709.87
         },
         {
           "avg": 21.932727,
@@ -54637,7 +54637,7 @@
           "refunds": 0,
           "sum": 6755.28,
           "ytdloss": 0,
-          "ytdsum": 761101.32
+          "ytdsum": 761465.15
         },
         {
           "avg": 23.932269,
@@ -54648,18 +54648,18 @@
           "refunds": 0,
           "sum": 9596.84,
           "ytdloss": 0,
-          "ytdsum": 770698.16
+          "ytdsum": 771061.99
         },
         {
-          "avg": 25.988857,
+          "avg": 26.39104,
           "date": "2022-01-25",
-          "donations": 350,
+          "donations": 375,
           "max": 1159.63,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 9096.1,
+          "sum": 9896.64,
           "ytdloss": 0,
-          "ytdsum": 779794.26
+          "ytdsum": 780958.63
         },
         {
           "avg": 19.960893,
@@ -54670,7 +54670,7 @@
           "refunds": 0,
           "sum": 6706.86,
           "ytdloss": 0,
-          "ytdsum": 786501.12
+          "ytdsum": 787665.49
         },
         {
           "avg": 19.989129,
@@ -54681,7 +54681,7 @@
           "refunds": 0,
           "sum": 6196.63,
           "ytdloss": 0,
-          "ytdsum": 792697.75
+          "ytdsum": 793862.12
         },
         {
           "avg": 30.289226,
@@ -54692,7 +54692,7 @@
           "refunds": 0,
           "sum": 8995.9,
           "ytdloss": 0,
-          "ytdsum": 801693.65
+          "ytdsum": 802858.02
         },
         {
           "avg": 21.866801,
@@ -54703,18 +54703,183 @@
           "refunds": 0,
           "sum": 6494.44,
           "ytdloss": 0,
-          "ytdsum": 808188.09
+          "ytdsum": 809352.46
         },
         {
-          "avg": 14.3352,
+          "avg": 30.507491,
           "date": "2022-01-30",
-          "donations": 125,
-          "max": 208,
+          "donations": 287,
+          "max": 1390.48,
           "refund_sum": 0,
           "refunds": 0,
-          "sum": 1791.9,
+          "sum": 8755.65,
           "ytdloss": 0,
-          "ytdsum": 809979.99
+          "ytdsum": 818108.11
+        },
+        {
+          "avg": 22.608796,
+          "date": "2022-01-31",
+          "donations": 11769,
+          "max": 2500,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 266082.92,
+          "ytdloss": 0,
+          "ytdsum": 1084191.03
+        },
+        {
+          "avg": 23.019978,
+          "date": "2022-02-01",
+          "donations": 455,
+          "max": 499.2,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 10474.09,
+          "ytdloss": 0,
+          "ytdsum": 1094665.12
+        },
+        {
+          "avg": 22.520249,
+          "date": "2022-02-02",
+          "donations": 442,
+          "max": 1500,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 9953.95,
+          "ytdloss": 0,
+          "ytdsum": 1104619.07
+        },
+        {
+          "avg": 23.233238,
+          "date": "2022-02-03",
+          "donations": 349,
+          "max": 1100,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 8108.4,
+          "ytdloss": 0,
+          "ytdsum": 1112727.47
+        },
+        {
+          "avg": 33.707432,
+          "date": "2022-02-04",
+          "donations": 366,
+          "max": 1355.23,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 12336.92,
+          "ytdloss": 0,
+          "ytdsum": 1125064.39
+        },
+        {
+          "avg": 34.645222,
+          "date": "2022-02-05",
+          "donations": 293,
+          "max": 2270.23,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 10151.05,
+          "ytdloss": 0,
+          "ytdsum": 1135215.44
+        },
+        {
+          "avg": 20.334503,
+          "date": "2022-02-06",
+          "donations": 322,
+          "max": 229.35,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 6547.71,
+          "ytdloss": 0,
+          "ytdsum": 1141763.15
+        },
+        {
+          "avg": 12.390421,
+          "date": "2022-02-07",
+          "donations": 48491,
+          "max": 1135.12,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 600823.89,
+          "ytdloss": 0,
+          "ytdsum": 1742587.04
+        },
+        {
+          "avg": 13.996078,
+          "date": "2022-02-08",
+          "donations": 7540,
+          "max": 1000,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 105530.43,
+          "ytdloss": 0,
+          "ytdsum": 1848117.47
+        },
+        {
+          "avg": 14.739708,
+          "date": "2022-02-09",
+          "donations": 3462,
+          "max": 1189.34,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 51028.87,
+          "ytdloss": 0,
+          "ytdsum": 1899146.34
+        },
+        {
+          "avg": 15.858223,
+          "date": "2022-02-10",
+          "donations": 2268,
+          "max": 1142,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 35966.45,
+          "ytdloss": 0,
+          "ytdsum": 1935112.79
+        },
+        {
+          "avg": 14.949617,
+          "date": "2022-02-11",
+          "donations": 1647,
+          "max": 573.75,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 24622.02,
+          "ytdloss": 0,
+          "ytdsum": 1959734.81
+        },
+        {
+          "avg": 15.431313,
+          "date": "2022-02-12",
+          "donations": 1203,
+          "max": 1040,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 18563.87,
+          "ytdloss": 0,
+          "ytdsum": 1978298.68
+        },
+        {
+          "avg": 17.786031,
+          "date": "2022-02-13",
+          "donations": 1043,
+          "max": 1000,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 18550.83,
+          "ytdloss": 0,
+          "ytdsum": 1996849.51
+        },
+        {
+          "avg": 12.811191,
+          "date": "2022-02-14",
+          "donations": 10281,
+          "max": 594.63,
+          "refund_sum": 0,
+          "refunds": 0,
+          "sum": 131711.85,
+          "ytdloss": 0,
+          "ytdsum": 2128561.36
         }
       ]
     },
@@ -54824,8 +54989,8 @@ Definition
   <span class="op">)</span>
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">rect</span> <span class="op">+</span> <span class="va">line</span> <span class="op">+</span> <span class="va">point</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f9f06af36c2cf4f9d316" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f9f06af36c2cf4f9d316">{"x":{
+<div id="htmlwidget-0b5950e209865c3b3ab3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b5950e209865c3b3ab3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -55115,8 +55280,8 @@ Definition
     size <span class="op">=</span> <span class="st">"population:Q"</span>
   <span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-c40dfbe4be69300c19a4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c40dfbe4be69300c19a4">{"x":{
+<div id="htmlwidget-b6caab030f82d0dde16e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b6caab030f82d0dde16e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -55205,8 +55370,8 @@ Definition
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-6b87fccb70719caddb80" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6b87fccb70719caddb80">{"x":{
+<div id="htmlwidget-fe6fe349f650abfe77cc" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fe6fe349f650abfe77cc">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -55570,8 +55735,8 @@ Scales
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">550</span>, height <span class="op">=</span> <span class="fl">140</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f069909c8c43981ea26d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f069909c8c43981ea26d">{"x":{
+<div id="htmlwidget-2a6f248ea2206fcf2fee" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a6f248ea2206fcf2fee">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -55867,8 +56032,8 @@ Definition
   <span class="fu">properties</span><span class="op">(</span>width<span class="op">=</span><span class="fl">550</span>, height<span class="op">=</span><span class="fl">140</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-d3dc12bc59fbb1e69c16" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d3dc12bc59fbb1e69c16">{"x":{
+<div id="htmlwidget-15b52be97bb895b7da7d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-15b52be97bb895b7da7d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -56138,8 +56303,8 @@ Definition
   <span class="op">)</span>
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-78ecd3aa88e353ea1186" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-78ecd3aa88e353ea1186">{"x":{
+<div id="htmlwidget-eb2f70f82c1cf0ac6f9b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb2f70f82c1cf0ac6f9b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -86660,8 +86825,8 @@ Definition
 
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">labels</span> <span class="op">+</span> <span class="va">lines</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f637afb473117a75288b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f637afb473117a75288b">{"x":{
+<div id="htmlwidget-85527957cda383859cfd" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-85527957cda383859cfd">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -86800,8 +86965,8 @@ Definition
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.Entity != 'All natural disasters'"</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-82a2db4eb60289f48660" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-82a2db4eb60289f48660">{"x":{
+<div id="htmlwidget-1b1b452ef7a7cb4ed2c7" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b1b452ef7a7cb4ed2c7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -86905,8 +87070,8 @@ Definition
   <span class="op">)</span><span class="op">$</span>
   <span class="fu">transform_calculate</span><span class="op">(</span><span class="st">"digit"</span>, <span class="st">"substring(datum.zip_code, 0, 1)"</span><span class="op">)</span>
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-1c9c2a081ea017f76fca" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c9c2a081ea017f76fca">{"x":{
+<div id="htmlwidget-a3a69aae981b3412d688" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3a69aae981b3412d688">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -86997,8 +87162,8 @@ Definition
   <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">550</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-5293d04f0f619a6f4eb4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5293d04f0f619a6f4eb4">{"x":{
+<div id="htmlwidget-bfe21b39d2b3f77e8fae" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bfe21b39d2b3f77e8fae">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -87127,8 +87292,8 @@ Definition
   <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Seattle Weather: 2012-2015"</span><span class="op">)</span>  
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-2f9184799785c2cbaefb" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2f9184799785c2cbaefb">{"x":{
+<div id="htmlwidget-c5588f245150b1f4d31d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c5588f245150b1f4d31d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -99075,8 +99240,8 @@ Definition
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">bars</span> <span class="op">+</span> <span class="va">rule</span> <span class="op">+</span> <span class="va">text</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-7ac2ed744e109e574c3a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ac2ed744e109e574c3a">{"x":{
+<div id="htmlwidget-06c5f5e8bcb5e811d240" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-06c5f5e8bcb5e811d240">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -102372,8 +102537,8 @@ Definition
   <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.rank &lt; 10"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-c03021118caed19b016e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c03021118caed19b016e">{"x":{
+<div id="htmlwidget-cd951eb08d47364d7e1f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd951eb08d47364d7e1f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -102487,8 +102652,8 @@ Definition
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-cd1a96499e7da58e5db1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd1a96499e7da58e5db1">{"x":{
+<div id="htmlwidget-0268021a1ce00090d838" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0268021a1ce00090d838">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -104052,8 +104217,8 @@ Definition
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span> <span class="op">+</span> <span class="va">text</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-f9d54b71ea109e48daef" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f9d54b71ea109e48daef">{"x":{
+<div id="htmlwidget-68ca61f94caf107fba1f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-68ca61f94caf107fba1f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -104211,8 +104376,8 @@ Definition
   <span class="fu">transform_filter</span><span class="op">(</span><span class="va">year</span><span class="op">$</span><span class="fu">ref</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ba1b6b5f215ed18e9c97" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba1b6b5f215ed18e9c97">{"x":{
+<div id="htmlwidget-54e81b2c3f43153f541f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-54e81b2c3f43153f541f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -104384,8 +104549,8 @@ Definition
 <span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">concat</span><span class="op">(</span><span class="va">left</span>, <span class="va">middle</span>, <span class="va">right</span>, spacing <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-8b838665d8dfe99e3f74" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8b838665d8dfe99e3f74">{"x":{
+<div id="htmlwidget-ad5c9e7cb7f80f7fd2ef" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ad5c9e7cb7f80f7fd2ef">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "concat": [
@@ -104624,8 +104789,8 @@ Definition
   <span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-11e4a8df5b6f62b805cb" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-11e4a8df5b6f62b805cb">{"x":{
+<div id="htmlwidget-65c8ab935302495d8629" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-65c8ab935302495d8629">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -104761,8 +104926,8 @@ Definition
   <span class="fu">configure_view</span><span class="op">(</span>stroke <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span>
 
 <span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ede158bd6ec00175e3e7" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ede158bd6ec00175e3e7">{"x":{
+<div id="htmlwidget-e602002b35c30a23bcad" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e602002b35c30a23bcad">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
