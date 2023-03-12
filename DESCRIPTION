@@ -1,5 +1,5 @@
 Package: altair
-Version: 4.2.1.9000
+Version: 4.2.1.9001
 Title: Interface to 'Altair'
 Description: Interface to 'Altair' <https://altair-viz.github.io>, which itself 
   is a 'Python' interface to 'Vega-Lite' <https://vega.github.io/vega-lite/>.
@@ -10,7 +10,7 @@ Authors@R: c(
   person(
     given = "Ian", 
     family = "Lyttle", 
-    email = "ian.lyttle@se.com", 
+    email = "ijlyttle@me.com", 
     role = c("aut", "cre"), 
     comment = c(ORCID = "0000-0001-9962-4849")
   ),
