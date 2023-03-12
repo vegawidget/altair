@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Update signatures of `repr_text()` and `repr_vegalite4()` to align with signatures of their generics. (#158)
+
 # altair 4.2.1
 
 * Upgrade to [vegawidget](https://vegawidget.github.io/vegawidget/) 0.4.1. (#150, #154)
