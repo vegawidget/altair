@@ -18,7 +18,7 @@ py_mimebundle <- function(obj) {
 #' @importFrom repr repr_text
 #' @export
 #'
-repr_text.altair.vegalite.v4.api.TopLevelMixin <- function(obj) {
+repr_text.altair.vegalite.v4.api.TopLevelMixin <- function(obj, ...) {
   py_mimebundle(obj)$`text/plain`
 }
 
@@ -31,6 +31,6 @@ repr_text.altair.vegalite.v4.api.TopLevelMixin <- function(obj) {
 #' @importFrom repr repr_vegalite4
 #' @export
 #'
-repr_vegalite4.altair.vegalite.v4.api.TopLevelMixin <- function(obj) {
+repr_vegalite4.altair.vegalite.v4.api.TopLevelMixin <- function(obj, ...) {
   py_mimebundle(obj)$`application/vnd.vegalite.v4+json`
 }
