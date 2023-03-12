@@ -4,7 +4,7 @@
 \alias{repr_vegalite4.altair.vegalite.v4.api.TopLevelMixin}
 \title{MIME method for chart rendering}
 \usage{
-\method{repr_vegalite4}{altair.vegalite.v4.api.TopLevelMixin}(obj)
+\method{repr_vegalite4}{altair.vegalite.v4.api.TopLevelMixin}(obj, ...)
 }
 \arguments{
 \item{obj}{Altair chart object to be rendered}

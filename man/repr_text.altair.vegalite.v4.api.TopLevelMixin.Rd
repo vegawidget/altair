@@ -4,7 +4,7 @@
 \alias{repr_text.altair.vegalite.v4.api.TopLevelMixin}
 \title{MIME method for text}
 \usage{
-\method{repr_text}{altair.vegalite.v4.api.TopLevelMixin}(obj)
+\method{repr_text}{altair.vegalite.v4.api.TopLevelMixin}(obj, ...)
 }
 \arguments{
 \item{obj}{Altair chart object to be rendered}
