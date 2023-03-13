@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Update case-study vignette to allow for more than 5000 rows. (#159)
+
 * Update signatures of `repr_text()` and `repr_vegalite4()` to align with signatures of their generics. (#158)
 
 # altair 4.2.1

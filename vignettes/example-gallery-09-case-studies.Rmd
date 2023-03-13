@@ -204,6 +204,8 @@ glimpse(data)
 #### Chart
 
 ```{r}
+alt$data_transformers$disable_max_rows()
+
 chart <- 
   alt$Chart(data)$
   mark_line()$
