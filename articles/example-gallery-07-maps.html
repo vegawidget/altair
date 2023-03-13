@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.2</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -94,7 +94,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -156,14 +156,15 @@
 
       
 
-      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-07-maps_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-07-maps_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Maps</h1>
-                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley
+Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-07-maps.Rmd" class="external-link"><code>vignettes/example-gallery-07-maps.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-07-maps.Rmd</code></div>
@@ -172,51 +173,56 @@
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#maps" class="external-link">Maps</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html#maps" class="external-link">Maps</a>
+section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://purrr.tidyverse.org" class="external-link">"purrr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://purrr.tidyverse.org/" class="external-link">"purrr"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="choropleth-map">Choropleth Map<a class="anchor" aria-label="anchor" href="#choropleth-map"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/choropleth.html" class="external-link">Altair example</a></p>
-<p>It is not straightforward to preview the topological data, or the unemployment data:</p>
+<p><a href="https://altair-viz.github.io/gallery/choropleth.html" class="external-link">Altair
+example</a></p>
+<p>It is not straightforward to preview the topological data, or the
+unemployment data:</p>
 <ul>
-<li>The <code>vega_data$us_10m</code> data is in topoJSON, not a data frame</li>
-<li>The <code>vega_data$unemployment</code> data is in an unparsed format.</li>
+<li>The <code>vega_data$us_10m</code> data is in topoJSON, not a data
+frame</li>
+<li>The <code>vega_data$unemployment</code> data is in an unparsed
+format.</li>
 </ul>
 <div class="section level4">
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">counties</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"counties"</span><span class="op">)</span>
-<span class="va">unemp_data</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">unemployment</span><span class="op">$</span><span class="va">url</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">counties</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"counties"</span><span class="op">)</span></span>
+<span><span class="va">unemp_data</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">unemployment</span><span class="op">$</span><span class="va">url</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
 </h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">counties</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_geoshape</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    color <span class="op">=</span> <span class="st">"rate:Q"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_lookup</span><span class="op">(</span>
-    lookup <span class="op">=</span> <span class="st">"id"</span>,
-    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">unemp_data</span>, <span class="st">"id"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"rate"</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">project</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"albersUsa"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-bbb526cfbfd9134b6049" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bbb526cfbfd9134b6049">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">counties</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_geoshape</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="st">"rate:Q"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_lookup</span><span class="op">(</span></span>
+<span>    lookup <span class="op">=</span> <span class="st">"id"</span>,</span>
+<span>    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">unemp_data</span>, <span class="st">"id"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"rate"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">project</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"albersUsa"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-0d7f83f4fd294efffee3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-0d7f83f4fd294efffee3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -269,65 +275,66 @@
 <div class="section level2">
 <h2 id="locations-of-us-airports">Locations of US Airports<a class="anchor" aria-label="anchor" href="#locations-of-us-airports"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/airports.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/airports.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">us</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">us</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">airports</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">airports</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 3,376</span>
-<span class="co">#&gt; Columns: 7</span>
-<span class="co">#&gt; $ iata      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C", "02G…</span>
-<span class="co">#&gt; $ name      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Thigpen", "Livingston Municipal", "Meadow Lake", "Perry-War…</span>
-<span class="co">#&gt; $ city      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "Bay Springs", "Livingston", "Colorado Springs", "Perry", "…</span>
-<span class="co">#&gt; $ state     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH", "MO",…</span>
-<span class="co">#&gt; $ country   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span>
-<span class="co">#&gt; $ latitude  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.49167, …</span>
-<span class="co">#&gt; $ longitude <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -89.23450, -95.01793, -104.56989, -78.05208, -81.90594, -88.…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">airports</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">airports</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 3,376</span></span>
+<span><span class="co">#&gt; Columns: 7</span></span>
+<span><span class="co">#&gt; $ iata      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "00M", "00R", "00V", "01G", "01J", "01M", "02A", "02C", "02G…</span></span>
+<span><span class="co">#&gt; $ name      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Thigpen", "Livingston Municipal", "Meadow Lake", "Perry-War…</span></span>
+<span><span class="co">#&gt; $ city      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "Bay Springs", "Livingston", "Colorado Springs", "Perry", "…</span></span>
+<span><span class="co">#&gt; $ state     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "MS", "TX", "CO", "NY", "FL", "MS", "AL", "WI", "OH", "MO",…</span></span>
+<span><span class="co">#&gt; $ country   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></span>
+<span><span class="co">#&gt; $ latitude  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 31.95376, 30.68586, 38.94575, 42.74135, 30.68801, 34.49167, …</span></span>
+<span><span class="co">#&gt; $ longitude <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -89.23450, -95.01793, -104.56989, -78.05208, -81.90594, -88.…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">us</span>, feature <span class="op">=</span> <span class="st">"states"</span><span class="op">)</span>
-
-<span class="co"># US states background</span>
-<span class="va">background</span> <span class="op">&lt;-</span>
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">states</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_geoshape</span><span class="op">(</span>
-    fill <span class="op">=</span> <span class="st">"lightgray"</span>,
-    stroke <span class="op">=</span> <span class="st">"white"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">project</span><span class="op">(</span><span class="st">"albersUsa"</span><span class="op">)</span>
-
-<span class="co"># airport positions on background</span>
-<span class="va">points</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">airports</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_aggregate</span><span class="op">(</span>
-    latitude <span class="op">=</span> <span class="st">"mean(latitude)"</span>,
-    longitude <span class="op">=</span> <span class="st">"mean(longitude)"</span>,
-    count <span class="op">=</span> <span class="st">"count()"</span>,
-    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_circle</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    longitude <span class="op">=</span> <span class="st">"longitude:Q"</span>,
-    latitude <span class="op">=</span> <span class="st">"latitude:Q"</span>,
-    size <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Size</span><span class="op">(</span><span class="st">'count:Q'</span>, title <span class="op">=</span> <span class="st">"Number of Airports"</span><span class="op">)</span>,
-    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"steelblue"</span><span class="op">)</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state:N"</span>,<span class="st">"count:Q"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Number of airports in US'</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-fa9dadf167d294bbc977" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fa9dadf167d294bbc977">{"x":{
+<code class="sourceCode R"><span><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">us</span>, feature <span class="op">=</span> <span class="st">"states"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># US states background</span></span>
+<span><span class="va">background</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">states</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_geoshape</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">"lightgray"</span>,</span>
+<span>    stroke <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">project</span><span class="op">(</span><span class="st">"albersUsa"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># airport positions on background</span></span>
+<span><span class="va">points</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">airports</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_aggregate</span><span class="op">(</span></span>
+<span>    latitude <span class="op">=</span> <span class="st">"mean(latitude)"</span>,</span>
+<span>    longitude <span class="op">=</span> <span class="st">"mean(longitude)"</span>,</span>
+<span>    count <span class="op">=</span> <span class="st">"count()"</span>,</span>
+<span>    groupby <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_circle</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    longitude <span class="op">=</span> <span class="st">"longitude:Q"</span>,</span>
+<span>    latitude <span class="op">=</span> <span class="st">"latitude:Q"</span>,</span>
+<span>    size <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Size</span><span class="op">(</span><span class="st">'count:Q'</span>, title <span class="op">=</span> <span class="st">"Number of Airports"</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"steelblue"</span><span class="op">)</span>,</span>
+<span>    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"state:N"</span>,<span class="st">"count:Q"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Number of airports in US'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-ffbd8bca6829ab1dc842" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-ffbd8bca6829ab1dc842">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -30814,46 +30821,47 @@
 <div class="section level2">
 <h2 id="repeated-choropleth-map">Repeated Choropleth Map<a class="anchor" aria-label="anchor" href="#repeated-choropleth-map"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/choropleth_repeat.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/choropleth_repeat.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population_engineers_hurricanes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 52</span>
-<span class="co">#&gt; Columns: 5</span>
-<span class="co">#&gt; $ state      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Alabama", "Alaska", "Arizona", "Arkansas", "California", "…</span>
-<span class="co">#&gt; $ id         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20…</span>
-<span class="co">#&gt; $ population <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 4863300, 741894, 6931071, 2988248, 39250017, 5540545, 35764…</span>
-<span class="co">#&gt; $ engineers  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0.00712…</span>
-<span class="co">#&gt; $ hurricanes <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, 0, 0, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">population_engineers_hurricanes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 52</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; $ state      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Alabama", "Alaska", "Arizona", "Arkansas", "California", "…</span></span>
+<span><span class="co">#&gt; $ id         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20…</span></span>
+<span><span class="co">#&gt; $ population <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 4863300, 741894, 6931071, 2988248, 39250017, 5540545, 35764…</span></span>
+<span><span class="co">#&gt; $ engineers  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.003421545, 0.001590524, 0.004774154, 0.002439557, 0.00712…</span></span>
+<span><span class="co">#&gt; $ hurricanes <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 22, 0, 0, 0, 0, 0, 10, 2, 0, 110, 20, 0, 0, 0, 0, 0, 0, 0, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"states"</span><span class="op">)</span>
-<span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">population_engineers_hurricanes</span><span class="op">$</span><span class="va">url</span>
-<span class="va">variable_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">states</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_geoshape</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"row"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_lookup</span><span class="op">(</span>
-    lookup <span class="op">=</span> <span class="st">"id"</span>,
-    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">source</span>, <span class="st">"id"</span>, <span class="va">variable_list</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">project</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"albersUsa"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">`repeat`</span><span class="op">(</span>row <span class="op">=</span> <span class="va">variable_list</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">resolve_scale</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"independent"</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-634f7c0d9f204bd9afdb" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-634f7c0d9f204bd9afdb">{"x":{
+<code class="sourceCode R"><span><span class="va">states</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">us_10m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"states"</span><span class="op">)</span></span>
+<span><span class="va">source</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">population_engineers_hurricanes</span><span class="op">$</span><span class="va">url</span></span>
+<span><span class="va">variable_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"population"</span>, <span class="st">"engineers"</span>, <span class="st">"hurricanes"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">states</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_geoshape</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"row"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_lookup</span><span class="op">(</span></span>
+<span>    lookup <span class="op">=</span> <span class="st">"id"</span>,</span>
+<span>    from_ <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">LookupData</span><span class="op">(</span><span class="va">source</span>, <span class="st">"id"</span>, <span class="va">variable_list</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">project</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"albersUsa"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">`repeat`</span><span class="op">(</span>row <span class="op">=</span> <span class="va">variable_list</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">resolve_scale</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"independent"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-69a5f0ec93de99fc245d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-69a5f0ec93de99fc245d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -30924,26 +30932,28 @@
 <div class="section level2">
 <h2 id="world-projections">World Projections<a class="anchor" aria-label="anchor" href="#world-projections"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/world_projections.html" class="external-link">Altair example</a></p>
-<p>Please see the <a href="https://vega.github.io/vega-lite/docs/projection.html" class="external-link">Vega documentation</a> for more details on the projections available.</p>
+<p><a href="https://altair-viz.github.io/gallery/world_projections.html" class="external-link">Altair
+example</a></p>
+<p>Please see the <a href="https://vega.github.io/vega-lite/docs/projection.html" class="external-link">Vega
+documentation</a> for more details on the projections available.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">countries</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">world_110m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"countries"</span><span class="op">)</span>
-
-<span class="va">base</span> <span class="op">&lt;-</span>  
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">countries</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_geoshape</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#666666"</span>,stroke <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">300</span>, height <span class="op">=</span> <span class="fl">180</span><span class="op">)</span>
-
-<span class="va">projections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span><span class="op">)</span>
-
-<span class="co"># use purrr to fashion a facet_wrap</span>
-<span class="va">charts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">projections</span>, <span class="op">~</span><span class="va">base</span><span class="op">$</span><span class="fu">project</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-0d2e5a345575446125e1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0d2e5a345575446125e1">{"x":{
+<code class="sourceCode R"><span><span class="va">countries</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">topo_feature</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">world_110m</span><span class="op">$</span><span class="va">url</span>, <span class="st">"countries"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span>  </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">countries</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_geoshape</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#666666"</span>,stroke <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">300</span>, height <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">projections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"equirectangular"</span>, <span class="st">"mercator"</span>, <span class="st">"orthographic"</span>, <span class="st">"gnomonic"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># use purrr to fashion a facet_wrap</span></span>
+<span><span class="va">charts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">projections</span>, <span class="op">~</span><span class="va">base</span><span class="op">$</span><span class="fu">project</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-393163b3823385af9683" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-393163b3823385af9683">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -31047,7 +31057,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

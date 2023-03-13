@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.2</span>
       </span>
     </div>
 
@@ -62,7 +62,7 @@
   <a href="news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -98,7 +98,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -174,20 +174,20 @@
 </h2>
 <p>This example is discussed in detail in our <a href="https://vegawidget.github.io/altair/articles/altair.html" class="external-link">Getting Started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Origin:N"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Origin:N"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.svg"><!-- --></p>
 <p>Some things to keep in mind:</p>
 <ul>
@@ -201,11 +201,11 @@
 </h2>
 <p>You can install altair from CRAN with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"altair"</span><span class="op">)</span></span></code></pre></div>
 <p>The development version of is available from <a href="https://github.com/vegawidget/altair/" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vegawidget/altair"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vegawidget/altair"</span><span class="op">)</span> </span></code></pre></div>
 <p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation article</a>.</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -215,9 +215,9 @@
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html" class="external-link">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env" class="external-link">section</a> in the installation article.</p></li>
 <li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
 </ol>
-<p>You may wish to add a line like this to the <code><a href="https://rdrr.io/r/base/Startup.html" class="external-link">.First()</a></code> function in your <code>.Rprofile</code>:</p>
+<p>You may wish to add a line like this to the <code>.First()</code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">"r-reticulate"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>use_condaenv()</code> function is called to provide a <a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery" class="external-link">hint to reticulate</a> on which Python environment to use.</p>
 <div class="section level3">
 <h3 id="optional-installations">Optional installations<a class="anchor" aria-label="anchor" href="#optional-installations"></a>
@@ -322,13 +322,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=altair" class="external-link"><img src="https://www.r-pkg.org/badges/version/altair" alt="CRAN status"></a></li>
-<li><a href="https://github.com/vegawidget/altair/actions" class="external-link"><img src="https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
@@ -341,7 +335,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
