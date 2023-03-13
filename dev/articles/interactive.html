@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -157,13 +157,13 @@
 
       
 
-      </header><script src="interactive_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="interactive_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="interactive_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="interactive_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="interactive_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="interactive_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="interactive_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="interactive_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="interactive_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="interactive_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="interactive_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="interactive_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Interactive Examples</h1>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/interactive.Rmd" class="external-link"><code>vignettes/interactive.Rmd</code></a></small>
       <div class="hidden name"><code>interactive.Rmd</code></div>
@@ -172,26 +172,30 @@
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot" class="external-link">linked-brush scatter-plot example</a> found in the Altair documentation.</p>
-<p>A goal of Vega-Lite is to implement a declarative grammar not only of visualization, but also of interaction. The core concept of this interactive grammar is the <em>selection</em> object. Selection mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/user_guide/selections.html#example-linked-brush-scatter-plot" class="external-link">linked-brush
+scatter-plot example</a> found in the Altair documentation.</p>
+<p>A goal of Vega-Lite is to implement a declarative grammar not only of
+visualization, but also of interaction. The core concept of this
+interactive grammar is the <em>selection</em> object. Selection
+mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
 <p>Let’s start again with our basic plot from the <a href="altair.html">Getting Started article</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart_static</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Origin:N"</span>
-  <span class="op">)</span>
-
-<span class="va">chart_static</span></code></pre></div>
-<div id="htmlwidget-56179cd9a787e89f8e77" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-56179cd9a787e89f8e77">{"x":{
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_static</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Origin:N"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_static</span></span></code></pre></div>
+<div id="htmlwidget-601b6f42130b0e6e8600" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-601b6f42130b0e6e8600">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -4693,16 +4697,20 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>Nothing new, so far. Our first step towards interactivity is to create a selection mechanism. This is an <em>interval</em> selection, other types of selections are detailed in the <a href="https://altair-viz.github.io/user_guide/API.html#altair.selection" class="external-link">API reference</a>.</p>
+},"evals":[],"jsHooks":[]}</script><p>Nothing new, so far. Our first step towards interactivity is to
+create a selection mechanism. This is an <em>interval</em> selection,
+other types of selections are detailed in the <a href="https://altair-viz.github.io/user_guide/API.html#altair.selection" class="external-link">API
+reference</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection_interval</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>We can create a new chart where the brush is bound using the selection property:</p>
+<code class="sourceCode R"><span><span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection_interval</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>We can create a new chart where the brush is bound using the
+selection property:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_brush</span> <span class="op">&lt;-</span> <span class="va">chart_static</span><span class="op">$</span><span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> 
-
-<span class="va">chart_brush</span></code></pre></div>
-<div id="htmlwidget-a35cd7f9f00b617d4782" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a35cd7f9f00b617d4782">{"x":{
+<code class="sourceCode R"><span><span class="va">chart_brush</span> <span class="op">&lt;-</span> <span class="va">chart_static</span><span class="op">$</span><span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">chart_brush</span></span></code></pre></div>
+<div id="htmlwidget-15952b1152bf24a1e506" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-15952b1152bf24a1e506">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -9209,31 +9217,39 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>You can click-and-drag to draw a selection-box, then move it around. So far, so good, but it does not really <em>do</em> much. Let’s change that.</p>
-<p>We need to “tell” the encoding to pay attention to the selection. We could do that by respecifying the entire chart. We introduce the <code><a href="https://rdrr.io/r/base/conditions.html" class="external-link">condition()</a></code> method to specify a light-gray color for observations that are not selected.</p>
+},"evals":[],"jsHooks":[]}</script><p>You can click-and-drag to draw a selection-box, then move it around.
+So far, so good, but it does not really <em>do</em> much. Let’s change
+that.</p>
+<p>We need to “tell” the encoding to pay attention to the selection. We
+could do that by respecifying the entire chart. We introduce the
+<code>condition()</code> method to specify a light-gray color for
+observations that are not selected.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_selection</span> <span class="op">&lt;-</span>
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">brush</span>, <span class="st">"Origin:N"</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> 
-
-<span class="co"># chart_selection</span></code></pre></div>
-<p>This works, but it appears there is an easier way. It appears that you can call the <code>encode()</code> method to overwrite specific encodings for an existing chart. Thus, we have a chart where you can “see” the effect of your selection.</p>
+<code class="sourceCode R"><span><span class="va">chart_selection</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">brush</span>, <span class="st">"Origin:N"</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># chart_selection</span></span></code></pre></div>
+<p>This works, but it appears there is an easier way. It appears that
+you can call the <code>encode()</code> method to overwrite specific
+encodings for an existing chart. Thus, we have a chart where you can
+“see” the effect of your selection.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_selection</span> <span class="op">&lt;-</span> 
-  <span class="va">chart_brush</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span>
-    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">brush</span>, <span class="st">"Origin:N"</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">chart_selection</span></code></pre></div>
-<div id="htmlwidget-edec9a5626aeaf0c10c1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-edec9a5626aeaf0c10c1">{"x":{
+<code class="sourceCode R"><span><span class="va">chart_selection</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">chart_brush</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">brush</span>, <span class="st">"Origin:N"</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_selection</span></span></code></pre></div>
+<div id="htmlwidget-55f83126a01fb4e21d63" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-55f83126a01fb4e21d63">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -13745,21 +13761,27 @@
     "defaultStyle": true
   }
 },"evals":[],"jsHooks":[]}</script><p>Not too shabby, eh!</p>
-<p>The capabilities become more-apparent when we combine charts. Let’s create charts that look at different aspects of the data. We will use <code>chart_selection</code> as our base-chart, then modify as needed.</p>
+<p>The capabilities become more-apparent when we combine charts. Let’s
+create charts that look at different aspects of the data. We will use
+<code>chart_selection</code> as our base-chart, then modify as
+needed.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_mpg</span> <span class="op">&lt;-</span> <span class="va">chart_selection</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">250</span>, height <span class="op">=</span> <span class="fl">250</span><span class="op">)</span>
-
-<span class="va">chart_disp</span> <span class="op">&lt;-</span> 
-  <span class="va">chart_mpg</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Displacement:Q"</span>
-  <span class="op">)</span></code></pre></div>
-<p>In essence, <code>chart_mpg</code> is a smaller version of <code>chart_selection</code>; <code>chart_disp</code> is derived from <code>chart_mpg</code>, showing displacement on its x-axis, rather than mpg. It remains to compose these into a compound chart and display:</p>
+<code class="sourceCode R"><span><span class="va">chart_mpg</span> <span class="op">&lt;-</span> <span class="va">chart_selection</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">250</span>, height <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_disp</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">chart_mpg</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Displacement:Q"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>In essence, <code>chart_mpg</code> is a smaller version of
+<code>chart_selection</code>; <code>chart_disp</code> is derived from
+<code>chart_mpg</code>, showing displacement on its x-axis, rather than
+mpg. It remains to compose these into a compound chart and display:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart_compound</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">chart_mpg</span> <span class="op">|</span> <span class="va">chart_disp</span><span class="op">)</span>
-
-<span class="va">chart_compound</span></code></pre></div>
-<div id="htmlwidget-2a5a46feac72fa286dc0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a5a46feac72fa286dc0">{"x":{
+<code class="sourceCode R"><span><span class="va">chart_compound</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">chart_mpg</span> <span class="op">|</span> <span class="va">chart_disp</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_compound</span></span></code></pre></div>
+<div id="htmlwidget-1d33dd9b0b6a766c60f3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-1d33dd9b0b6a766c60f3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -18304,7 +18326,8 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>You can select observations from either side. This is just a taste of what we can do using Vega-Lite, using the Altair API.</p>
+},"evals":[],"jsHooks":[]}</script><p>You can select observations from either side. This is just a taste of
+what we can do using Vega-Lite, using the Altair API.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -18322,7 +18345,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

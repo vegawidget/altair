@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -157,14 +157,15 @@
 
       
 
-      </header><script src="example-gallery-03-line-charts_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-03-line-charts_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Line Charts</h1>
-                        <h4 data-toc-skip class="author">Haley Jeppson</h4>
+                        <h4 data-toc-skip class="author">Haley
+Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-03-line-charts.Rmd" class="external-link"><code>vignettes/example-gallery-03-line-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-03-line-charts.Rmd</code></div>
@@ -173,51 +174,53 @@
 
     
     
-<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html##line-charts" class="external-link">Line Charts</a> section of the Altair Example Gallery.</p>
+<p>This document is adapted from the <a href="https://altair-viz.github.io/gallery/index.html##line-charts" class="external-link">Line
+Charts</a> section of the Altair Example Gallery.</p>
 <p>Our first step is to set up our environment:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org" class="external-link">"readr"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org" class="external-link">"readr"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="filled-step-chart">Filled step chart<a class="anchor" aria-label="anchor" href="#filled-step-chart"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/filled_step_chart.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/filled_step_chart.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 560</span>
-<span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
-<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
-<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 560</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span></span>
+<span><span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span></span>
+<span><span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart">Chart<a class="anchor" aria-label="anchor" href="#chart"></a>
 </h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_area</span><span class="op">(</span>
-    color <span class="op">=</span> <span class="st">"lightblue"</span>,
-    interpolate <span class="op">=</span> <span class="st">"step-after"</span>,
-    line <span class="op">=</span> <span class="cn">TRUE</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"date"</span>,
-    y <span class="op">=</span> <span class="st">"price"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-5a6366807b9b403a5f21" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5a6366807b9b403a5f21">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_area</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
+<span>    interpolate <span class="op">=</span> <span class="st">"step-after"</span>,</span>
+<span>    line <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"date"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"price"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-49f51917683084c8efd5" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-49f51917683084c8efd5">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -3065,58 +3068,60 @@
 <div class="section level2">
 <h2 id="line-chart-with-confidence-interval-band">Line chart with Confidence Interval Band<a class="anchor" aria-label="anchor" href="#line-chart-with-confidence-interval-band"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/line_with_ci.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/line_with_ci.html" class="external-link">Altair
+example</a></p>
 <blockquote>
-<p>This example shows how to make a line chart with a bootstrapped 95% confidence interval band.</p>
+<p>This example shows how to make a line chart with a bootstrapped 95%
+confidence interval band.</p>
 </blockquote>
 <div class="section level4">
 <h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 406</span>
-<span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span>
-<span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span>
-<span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span>
-<span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span>
-<span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span>
-<span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span>
-<span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span>
-<span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span>
-<span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 406</span></span>
+<span><span class="co">#&gt; Columns: 9</span></span>
+<span><span class="co">#&gt; $ Name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chevrolet chevelle malibu", "buick skylark 320", "pl…</span></span>
+<span><span class="co">#&gt; $ Miles_per_Gallon <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 15, 18, 16, 17, 15, 14, 14, 14, 15, NaN, NaN, NaN…</span></span>
+<span><span class="co">#&gt; $ Cylinders        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 8, 8, 8, 8, 8, 8, 8,…</span></span>
+<span><span class="co">#&gt; $ Displacement     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 307, 350, 318, 304, 302, 429, 454, 440, 455, 390, 133…</span></span>
+<span><span class="co">#&gt; $ Horsepower       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 115…</span></span>
+<span><span class="co">#&gt; $ Weight_in_lbs    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3504, 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425,…</span></span>
+<span><span class="co">#&gt; $ Acceleration     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8…</span></span>
+<span><span class="co">#&gt; $ Year             <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 1970-01-01, 1970-01-01, 1970-01-01, 1970-01-01, 1970…</span></span>
+<span><span class="co">#&gt; $ Origin           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">line</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Year"</span>,
-    y <span class="op">=</span> <span class="st">"mean(Miles_per_Gallon)"</span>
-  <span class="op">)</span>
-
-<span class="va">confidence_interval</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_area</span><span class="op">(</span>opacity <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Year"</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span>
-      <span class="st">"ci0(Miles_per_Gallon)"</span>, 
-      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Miles/Gallon"</span><span class="op">)</span>
-    <span class="op">)</span>,
-    y2 <span class="op">=</span> <span class="st">"ci1(Miles_per_Gallon)"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">confidence_interval</span> <span class="op">+</span> <span class="va">line</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-59962e3ead7d7f671df9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-59962e3ead7d7f671df9">{"x":{
+<code class="sourceCode R"><span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">line</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"mean(Miles_per_Gallon)"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">confidence_interval</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_area</span><span class="op">(</span>opacity <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span></span>
+<span>      <span class="st">"ci0(Miles_per_Gallon)"</span>, </span>
+<span>      axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Miles/Gallon"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    y2 <span class="op">=</span> <span class="st">"ci1(Miles_per_Gallon)"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">confidence_interval</span> <span class="op">+</span> <span class="va">line</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-3f4e6fa29d03eb7c8c53" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-3f4e6fa29d03eb7c8c53">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -7652,57 +7657,60 @@
 <div class="section level2">
 <h2 id="line-chart-with-layered-aggregates">Line Chart with Layered Aggregates<a class="anchor" aria-label="anchor" href="#line-chart-with-layered-aggregates"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/layer_line_color_rule.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/layer_line_color_rule.html" class="external-link">Altair
+example</a></p>
 <blockquote>
-<p>This example shows how to make a multi series line chart of the daily closing stock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000 and 2010, along with a layered rule showing the average values.</p>
+<p>This example shows how to make a multi series line chart of the daily
+closing stock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000
+and 2010, along with a layered rule showing the average values.</p>
 </blockquote>
 <div class="section level4">
 <h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 560</span>
-<span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
-<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
-<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 560</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span></span>
+<span><span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span></span>
+<span><span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-2">Chart<a class="anchor" aria-label="anchor" href="#chart-2"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">base</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">stocks</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>
-    width <span class="op">=</span> <span class="fl">550</span>,
-    title <span class="op">=</span> <span class="st">"Daily closing prices with their aggregate prices"</span>
-  <span class="op">)</span>
-
-<span class="va">line</span> <span class="op">&lt;-</span> 
-  <span class="va">base</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"date"</span>,
-    y <span class="op">=</span> <span class="st">"price"</span>,
-    color <span class="op">=</span> <span class="st">"symbol"</span>
-  <span class="op">)</span>
-
-<span class="va">rule</span> <span class="op">&lt;-</span> 
-  <span class="va">base</span><span class="op">$</span>
-  <span class="fu">mark_rule</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"average(price)"</span><span class="op">)</span>,
-    color <span class="op">=</span> <span class="st">"symbol"</span>,
-    size <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">line</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-deb1916a20aaa61a274b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-deb1916a20aaa61a274b">{"x":{
+<code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">stocks</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fl">550</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Daily closing prices with their aggregate prices"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">line</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">base</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"date"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"price"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"symbol"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">rule</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">base</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_rule</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"average(price)"</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"symbol"</span>,</span>
+<span>    size <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">line</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-7c3347017f8dcfe95ae7" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-7c3347017f8dcfe95ae7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -10569,40 +10577,41 @@
 <div class="section level2">
 <h2 id="line-chart-with-percent-axis">Line Chart with Percent axis<a class="anchor" aria-label="anchor" href="#line-chart-with-percent-axis"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/line_percent.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/line_percent.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jobs</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span>
-
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 7,650</span>
-<span class="co">#&gt; Columns: 5</span>
-<span class="co">#&gt; $ job   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Accountant / Auditor", "Accountant / Auditor", "Accountant / Au…</span>
-<span class="co">#&gt; $ sex   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "men", "men", "men", "men", "men", "men", "men", "men", "men", "…</span>
-<span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1850, 1860, 1870, 1880, 1900, 1910, 1920, 1930, 1940, 1950, 1960…</span>
-<span class="co">#&gt; $ count <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 708, 1805, 1310, 2295, 11753, 0, 111209, 181482, 0, 330352, 4250…</span>
-<span class="co">#&gt; $ perc  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.309607e-04, 2.140037e-04, 9.977882e-05, 1.253599e-04, 3.958602…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">jobs</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 7,650</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; $ job   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Accountant / Auditor", "Accountant / Auditor", "Accountant / Au…</span></span>
+<span><span class="co">#&gt; $ sex   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "men", "men", "men", "men", "men", "men", "men", "men", "men", "…</span></span>
+<span><span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1850, 1860, 1870, 1880, 1900, 1910, 1920, 1930, 1940, 1950, 1960…</span></span>
+<span><span class="co">#&gt; $ count <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 708, 1805, 1310, 2295, 11753, 0, 111209, 181482, 0, 330352, 4250…</span></span>
+<span><span class="co">#&gt; $ perc  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.309607e-04, 2.140037e-04, 9.977882e-05, 1.253599e-04, 3.958602…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-3">Chart<a class="anchor" aria-label="anchor" href="#chart-3"></a>
 </h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"year:O"</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"perc:Q"</span>, axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%"</span><span class="op">)</span><span class="op">)</span>,
-    color <span class="op">=</span> <span class="st">"sex:N"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Percent of work-force working as Welders"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.job == 'Welder'"</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-10a766c952899b13ccb6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-10a766c952899b13ccb6">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">jobs</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"year:O"</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"perc:Q"</span>, axis <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Axis</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"sex:N"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Percent of work-force working as Welders"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.job == 'Welder'"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-01f5b7f81304612df431" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-01f5b7f81304612df431">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -10649,37 +10658,38 @@
 <div class="section level2">
 <h2 id="line-chart-with-points">Line Chart with Points<a class="anchor" aria-label="anchor" href="#line-chart-with-points"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/line_chart_with_points.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/line_chart_with_points.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-4">Data<a class="anchor" aria-label="anchor" href="#data-4"></a>
 </h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
-  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>,
-  `f(x)` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 100</span>
-<span class="co">#&gt; Columns: 2</span>
-<span class="co">#&gt; $ x      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, …</span>
-<span class="co">#&gt; $ `f(x)` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.84147098, 0.9…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">source</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>,</span>
+<span>  `f(x)` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 100</span></span>
+<span><span class="co">#&gt; Columns: 2</span></span>
+<span><span class="co">#&gt; $ x      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, …</span></span>
+<span><span class="co">#&gt; $ `f(x)` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.19866933, 0.38941834, 0.56464247, 0.71735609, 0.84147098, 0.9…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-4">Chart<a class="anchor" aria-label="anchor" href="#chart-4"></a>
 </h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span>point <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"x"</span>,
-    y <span class="op">=</span> <span class="st">"f(x)"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ddc89dc051beaec1dbb8" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ddc89dc051beaec1dbb8">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">source</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span>point <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"f(x)"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-b279d6ce0a7e02cfdfd8" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-b279d6ce0a7e02cfdfd8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -11120,34 +11130,35 @@
 <div class="section level2">
 <h2 id="line-chart-with-varying-size">Line Chart with Varying Size<a class="anchor" aria-label="anchor" href="#line-chart-with-varying-size"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/trail_marker.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/trail_marker.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-5">Data<a class="anchor" aria-label="anchor" href="#data-5"></a>
 </h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 52</span>
-<span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 1615…</span>
-<span class="co">#&gt; $ wheat <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.0…</span>
-<span class="co">#&gt; $ wages <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.94…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 52</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ year  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1565, 1570, 1575, 1580, 1585, 1590, 1595, 1600, 1605, 1610, 1615…</span></span>
+<span><span class="co">#&gt; $ wheat <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.0, 45.0, 42.0, 49.0, 41.5, 47.0, 64.0, 27.0, 33.0, 32.0, 33.0…</span></span>
+<span><span class="co">#&gt; $ wages <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.00, 5.05, 5.08, 5.12, 5.15, 5.25, 5.54, 5.61, 5.69, 5.78, 5.94…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-5">Chart<a class="anchor" aria-label="anchor" href="#chart-5"></a>
 </h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_trail</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"year:T"</span>,
-    y <span class="op">=</span> <span class="st">"wheat:Q"</span>,
-    size <span class="op">=</span> <span class="st">"wheat:Q"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-31eacfd020b65e90e5b6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-31eacfd020b65e90e5b6">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">wheat</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_trail</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"year:T"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"wheat:Q"</span>,</span>
+<span>    size <span class="op">=</span> <span class="st">"wheat:Q"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-a6a3b9ad2c4745420224" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-a6a3b9ad2c4745420224">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -11449,35 +11460,38 @@
 <div class="section level2">
 <h2 id="multi-series-line-chart">Multi Series Line Chart<a class="anchor" aria-label="anchor" href="#multi-series-line-chart"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/multi_series_line.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/multi_series_line.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-6">Data<a class="anchor" aria-label="anchor" href="#data-6"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 560</span>
-<span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
-<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
-<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 560</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span></span>
+<span><span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span></span>
+<span><span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-6">Chart<a class="anchor" aria-label="anchor" href="#chart-6"></a>
 </h4>
-<p>A difference from the Python example is that you have to make sure that you declare that the <code>date</code> variable is of type <code>"temporal"</code></p>
+<p>A difference from the Python example is that you have to make sure
+that you declare that the <code>date</code> variable is of type
+<code>"temporal"</code></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"date:T"</span>,
-    y <span class="op">=</span> <span class="st">"price:Q"</span>,
-    color <span class="op">=</span> <span class="st">"symbol:N"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-cd631de308626e4467d3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd631de308626e4467d3">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"date:T"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"price:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"symbol:N"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-e99f0ad31136b3ee9928" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-e99f0ad31136b3ee9928">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -14319,39 +14333,42 @@
 <div class="section level2">
 <h2 id="slope-graph">Slope Graph<a class="anchor" aria-label="anchor" href="#slope-graph"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/slope_graph.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/slope_graph.html" class="external-link">Altair
+example</a></p>
 <div class="section level4">
 <h4 id="data-7">Data<a class="anchor" aria-label="anchor" href="#data-7"></a>
 </h4>
-<p>The year here is stored by pandas as an integer. When treating columns as dates, it is best to use either a string representation or a datetime representation.</p>
+<p>The year here is stored by pandas as an integer. When treating
+columns as dates, it is best to use either a string representation or a
+datetime representation.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">barley</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span>
-<span class="va">barley</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">barley</span><span class="op">$</span><span class="va">year</span><span class="op">)</span>
-
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">barley</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 120</span>
-<span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span>
-<span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span>
-<span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1931", "1931", "1931", "1931", "1931", "1931", "1931", "1931"…</span>
-<span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">barley</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">barley</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">barley</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">barley</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">barley</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 120</span></span>
+<span><span class="co">#&gt; Columns: 4</span></span>
+<span><span class="co">#&gt; $ yield   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.00000, 48.86667, 27.43334, 39.93333, 32.96667, 28.96667, 43…</span></span>
+<span><span class="co">#&gt; $ variety <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Manchuria", "Manchuria", "Manchuria", "Manchuria", "Manchuria…</span></span>
+<span><span class="co">#&gt; $ year    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1931", "1931", "1931", "1931", "1931", "1931", "1931", "1931"…</span></span>
+<span><span class="co">#&gt; $ site    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "University Farm", "Waseca", "Morris", "Crookston", "Grand Rap…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-7">Chart<a class="anchor" aria-label="anchor" href="#chart-7"></a>
 </h4>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">barley</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"year"</span>,
-    y <span class="op">=</span> <span class="st">"median(yield)"</span>,
-    color <span class="op">=</span> <span class="st">"site"</span>
-  <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-ba67e0aa72e131d3ee3a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba67e0aa72e131d3ee3a">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">barley</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"median(yield)"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"site"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-652f33634ba9486d11d9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-652f33634ba9486d11d9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -15114,37 +15131,45 @@
 <div class="section level2">
 <h2 id="step-chart">Step Chart<a class="anchor" aria-label="anchor" href="#step-chart"></a>
 </h2>
-<p><a href="https://altair-viz.github.io/gallery/step_chart.html" class="external-link">Altair example</a></p>
+<p><a href="https://altair-viz.github.io/gallery/step_chart.html" class="external-link">Altair
+example</a></p>
 <blockquote>
-<p>This example shows Google’s stock price over time. This uses the <code>step-after</code> interpolation scheme. The full list of interpolation options includes <code>linear</code>, <code>linear-closed</code>, <code>step</code>, <code>step-before</code>, <code>step-after</code>, <code>basis</code>, <code>basis-open</code>, <code>basis-closed</code>, <code>cardinal</code>, <code>cardinal-open</code>, <code>cardinal-closed</code>, <code>bundle</code>, and <code>monotone</code>.</p>
+<p>This example shows Google’s stock price over time. This uses the
+<code>step-after</code> interpolation scheme. The full list of
+interpolation options includes <code>linear</code>,
+<code>linear-closed</code>, <code>step</code>, <code>step-before</code>,
+<code>step-after</code>, <code>basis</code>, <code>basis-open</code>,
+<code>basis-closed</code>, <code>cardinal</code>,
+<code>cardinal-open</code>, <code>cardinal-closed</code>,
+<code>bundle</code>, and <code>monotone</code>.</p>
 </blockquote>
 <div class="section level4">
 <h4 id="data-8">Data<a class="anchor" aria-label="anchor" href="#data-8"></a>
 </h4>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 560</span>
-<span class="co">#&gt; Columns: 3</span>
-<span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span>
-<span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span>
-<span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 560</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ symbol <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT", "MSFT",…</span></span>
+<span><span class="co">#&gt; $ date   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2000-01-01, 2000-02-01, 2000-03-01, 2000-04-01, 2000-05-01, 20…</span></span>
+<span><span class="co">#&gt; $ price  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.81, 36.35, 43.22, 28.37, 25.45, 32.54, 28.40, 28.40, 24.53, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-8">Chart<a class="anchor" aria-label="anchor" href="#chart-8"></a>
 </h4>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_line</span><span class="op">(</span>interpolate <span class="op">=</span> <span class="st">"step-after"</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"date"</span>,
-    y <span class="op">=</span> <span class="st">"price"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">transform_filter</span><span class="op">(</span><span class="fu"><a href="../reference/JS.html">JS</a></span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-dbd05d53ed96b2189daa" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dbd05d53ed96b2189daa">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">stocks</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_line</span><span class="op">(</span>interpolate <span class="op">=</span> <span class="st">"step-after"</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"date"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"price"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="fu"><a href="../reference/JS.html">JS</a></span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-c8a685b96a52e25eb6b2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-c8a685b96a52e25eb6b2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -18006,7 +18031,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

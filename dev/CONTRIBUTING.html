@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -38,7 +38,7 @@
   <a href="news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -70,7 +70,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -148,10 +148,10 @@
 <p><a href="http://style.tidyverse.org/code-documentation.html#documenting-parameters" class="external-link">Documenting parameters</a>:</p>
 <p>For <code>@param</code> and <code>@return</code>, the text should starting with the expected class (or possible classes) of the argument or return value, followed by a comma, then the (uncapitalized) description. If omitting the class name, then begin the description with a capital letter.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#' @param spec  An object to be coerced to `vegaspec`, a Vega/Vega-Lite specification</span>
-<span class="co">#' @param width `integer`, sets the view width in pixels</span>
-<span class="co">#'</span>
-<span class="co">#' @return `logical` indicating success</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#' @param spec  An object to be coerced to `vegaspec`, a Vega/Vega-Lite specification</span></span>
+<span><span class="co">#' @param width `integer`, sets the view width in pixels</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return `logical` indicating success</span></span></code></pre></div>
 </li>
 </ul><p>In the documentation, we use <em>specification</em> or <em>spec</em> to describe the JSON or the list; we use <em>chart</em> to describe the rendering, the finished product. These seem to be the terms-of-art that Vega-Lite uses.</p>
 <p>In documentation, we reserve the use of “capital-A” <strong>Altair</strong> to refer to the Python package, and the use of “small-a” to refer to this package.</p>
@@ -168,20 +168,20 @@
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>And how we would write this in R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span>
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>,
-    color <span class="op">=</span> <span class="st">"Origin"</span>,
-    shape <span class="op">=</span> <span class="st">"Origin"</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Origin"</span>,</span>
+<span>    shape <span class="op">=</span> <span class="st">"Origin"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>This formatting-style is an experiment. Clearly, the <code>$</code> operator is not a pipe, <code>%&gt;%</code>. However, it can be used across line-breaks such that we could format the code in the same style as a pipe. This may not be completely satisfying, but it at least resembles a <strong>ggplot2</strong> style.</p>
 </div>
 <div class="section level2">
@@ -199,7 +199,7 @@
 <div class="section level3">
 <h3 id="pull-requests">Pull requests<a class="anchor" aria-label="anchor" href="#pull-requests"></a></h3>
 <p>Pull requests are very welcome. Accordingly, the branch into which you should make a pull-request will depend on the situation:</p>
-<table class="table"><thead><tr class="header"><th>Situation</th>
+<table class="table"><colgroup><col width="35%"><col width="24%"><col width="25%"><col width="14%"></colgroup><thead><tr class="header"><th>Situation</th>
 <th>Reference branch</th>
 <th>Add item to NEWS.md</th>
 <th>Appreciated</th>
@@ -262,7 +262,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

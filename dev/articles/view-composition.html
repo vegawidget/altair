@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -157,14 +157,15 @@
 
       
 
-      </header><script src="view-composition_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="view-composition_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="view-composition_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="view-composition_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="view-composition_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="view-composition_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>View Composition</h1>
-                        <h4 data-toc-skip class="author">Alicia Schep</h4>
+                        <h4 data-toc-skip class="author">Alicia
+Schep</h4>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/view-composition.Rmd" class="external-link"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
@@ -176,21 +177,36 @@
 <div class="section level2">
 <h2 id="combining-multiple-data-displays">Combining multiple data displays<a class="anchor" aria-label="anchor" href="#combining-multiple-data-displays"></a>
 </h2>
-<p>Vega-lite and Altair have several methods to help combine different views of these data.</p>
+<p>Vega-lite and Altair have several methods to help combine different
+views of these data.</p>
 <ul>
 <li>
-<a href="#layer"><strong>Layering</strong></a>: Combine several displays on the same set of axes</li>
+<a href="#layer"><strong>Layering</strong></a>: Combine several
+displays on the same set of axes</li>
 <li>
-<a href="#hconcat"><strong>Horizontal Concatenation</strong></a>: Position several displays next to each other, horizontally.</li>
+<a href="#hconcat"><strong>Horizontal Concatenation</strong></a>:
+Position several displays next to each other, horizontally.</li>
 <li>
-<a href="#vconcat"><strong>Vertical Concatenation</strong></a>: Position several displays next to each other, vertically</li>
+<a href="#vconcat"><strong>Vertical Concatenation</strong></a>:
+Position several displays next to each other, vertically</li>
 <li>
-<a href="#facet"><strong>Faceting</strong></a>: Create panels showing the same view of different subsets of the data</li>
+<a href="#facet"><strong>Faceting</strong></a>: Create panels
+showing the same view of different subsets of the data</li>
 <li>
-<a href="#repeat"><strong>Repeating</strong></a>: Create panels that differ in the encoding of one or more channels</li>
+<a href="#repeat"><strong>Repeating</strong></a>: Create panels that
+differ in the encoding of one or more channels</li>
 </ul>
-<p>For the first three methods, Altair has functions that take in two chart objects. Those chart objects can either be a simple chart made by <code>alt$Chart</code>, or a compound chart made by any of the methods above. Altair and this R package also provides operators for these methods:</p>
+<p>For the first three methods, Altair has functions that take in two
+chart objects. Those chart objects can either be a simple chart made by
+<code>alt$Chart</code>, or a compound chart made by any of the methods
+above. Altair and this R package also provides operators for these
+methods:</p>
 <table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
 <thead><tr class="header">
 <th>Operation</th>
 <th>Function Syntax</th>
@@ -214,7 +230,9 @@
 </tr>
 </tbody>
 </table>
-<p>In contrast, faceting and repeating are methods for Chart objects, so if you had created a chart called <code>chart1</code> you would call them using <code>chart1$</code>:</p>
+<p>In contrast, faceting and repeating are methods for Chart objects, so
+if you had created a chart called <code>chart1</code> you would call
+them using <code>chart1$</code>:</p>
 <table class="table">
 <thead><tr class="header">
 <th>Operation</th>
@@ -231,28 +249,36 @@
 </tr>
 </tbody>
 </table>
-<p>Note that for “repeat”, backticks are required around the word <code>repeat</code>. This is because <code>repeat</code> is a <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">reserved word</a> in R!</p>
+<p>Note that for “repeat”, backticks are required around the word
+<code>repeat</code>. This is because <code>repeat</code> is a <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">reserved
+word</a> in R!</p>
 </div>
 <div class="section level2">
 <h2 id="layer">Layered charts<a class="anchor" aria-label="anchor" href="#layer"></a>
 </h2>
-<p>Layering involves combining multiple displays on the same set of axes. Two chart objections can be layered using either the <code>+</code> operator or the <code>alt$layer</code> function. A common use case is to add more than one mark for the same set of encodings. For example, you could combine points and a line for time-series data. Here is an example using the “beaver1” data, which has body temperature for a beaver over time:</p>
+<p>Layering involves combining multiple displays on the same set of
+axes. Two chart objections can be layered using either the
+<code>+</code> operator or the <code>alt$layer</code> function. A common
+use case is to add more than one mark for the same set of encodings. For
+example, you could combine points and a line for time-series data. Here
+is an example using the “beaver1” data, which has body temperature for a
+beaver over time:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">base</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">scatter_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
-<span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></code></pre></div>
-<div id="htmlwidget-663b68c2adfd061513c9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-663b68c2adfd061513c9">{"x":{
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">scatter_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></span></code></pre></div>
+<div id="htmlwidget-37b94359cfe71b11c38d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-37b94359cfe71b11c38d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -993,35 +1019,38 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>This layered plot could also have been made using:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">layer</span><span class="op">(</span><span class="va">scatter_plot</span>, <span class="va">line_plot</span><span class="op">)</span></code></pre></div>
-<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code>+</code>.</p>
+<code class="sourceCode R"><span><span class="va">alt</span><span class="op">$</span><span class="fu">layer</span><span class="op">(</span><span class="va">scatter_plot</span>, <span class="va">line_plot</span><span class="op">)</span></span></code></pre></div>
+<p>Passing the result of that function to <code>vegalite</code> would
+give the same output as using <code>+</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="hconcat">Horizontal concatenation<a class="anchor" aria-label="anchor" href="#hconcat"></a>
 </h2>
-<p>We will now make a similar plot for another beaver, using the beaver2 dataset. We will use horizontal concatenation to juxtapose those two plots, using the <code>|</code> operator:</p>
+<p>We will now make a similar plot for another beaver, using the beaver2
+dataset. We will use horizontal concatenation to juxtapose those two
+plots, using the <code>|</code> operator:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">base2</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">scatter_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
-<span class="va">line_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">combined_plot</span> <span class="op">&lt;-</span> 
-  <span class="op">(</span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 1"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-
-<span class="va">combined_plot2</span> <span class="op">&lt;-</span> 
-  <span class="op">(</span><span class="va">scatter_plot2</span> <span class="op">+</span> <span class="va">line_plot2</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-
-<span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></code></pre></div>
-<div id="htmlwidget-ba4f8894d29e05b3c8eb" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba4f8894d29e05b3c8eb">{"x":{
+<code class="sourceCode R"><span><span class="va">base2</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">scatter_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">line_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">combined_plot</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="op">(</span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 1"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">combined_plot2</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="op">(</span><span class="va">scatter_plot2</span> <span class="op">+</span> <span class="va">line_plot2</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></span></code></pre></div>
+<div id="htmlwidget-36fce33133a4840d931b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-36fce33133a4840d931b">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -2411,20 +2440,22 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>This plot could also have been made using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">hconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></code></pre></div>
-<p>Rendering the result of that function would give the same output as using <code>|</code>.</p>
+<code class="sourceCode R"><span><span class="va">alt</span><span class="op">$</span><span class="fu">hconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></span></code></pre></div>
+<p>Rendering the result of that function would give the same output as
+using <code>|</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="vconcat">Vertical concatenation<a class="anchor" aria-label="anchor" href="#vconcat"></a>
 </h2>
-<p>Those two plots could alternatively have been concatenated vertically using <code>&amp;</code>:</p>
+<p>Those two plots could alternatively have been concatenated vertically
+using <code>&amp;</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">combined_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-<span class="va">combined_plot2</span> <span class="op">&lt;-</span> <span class="va">combined_plot2</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-
-<span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></code></pre></div>
-<div id="htmlwidget-b30a926b098d33c36592" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b30a926b098d33c36592">{"x":{
+<code class="sourceCode R"><span><span class="va">combined_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="va">combined_plot2</span> <span class="op">&lt;-</span> <span class="va">combined_plot2</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></span></code></pre></div>
+<div id="htmlwidget-2109be6f000b3ef31ee4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-2109be6f000b3ef31ee4">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -3816,35 +3847,38 @@
   }
 },"evals":[],"jsHooks":[]}</script><p>This plot could also have been made using:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">alt</span><span class="op">$</span><span class="fu">vconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></code></pre></div>
-<p>Passing the result of that function to <code>vegalite</code> would give the same output as using <code>&amp;</code>.</p>
+<code class="sourceCode R"><span><span class="va">alt</span><span class="op">$</span><span class="fu">vconcat</span><span class="op">(</span><span class="va">combined_plot</span>, <span class="va">combined_plot2</span><span class="op">)</span></span></code></pre></div>
+<p>Passing the result of that function to <code>vegalite</code> would
+give the same output as using <code>&amp;</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="combining-vertical-and-horizontal-concatenation">Combining vertical and horizontal concatenation<a class="anchor" aria-label="anchor" href="#combining-vertical-and-horizontal-concatenation"></a>
 </h2>
-<p>Compound plots can be combined to create more elaborate composed views. Here is an example of combining two plots for each beaver into a compound plot with four panels:</p>
+<p>Compound plots can be combined to create more elaborate composed
+views. Here is an example of combining two plots for each beaver into a
+compound plot with four panels:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hist_plot</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_bar</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"temp:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"count():Q"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-
-<span class="va">hist_plot2</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_bar</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"temp:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"count():Q"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-
-<span class="op">(</span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">hist_plot</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">combined_plot2</span> <span class="op">|</span> <span class="va">hist_plot2</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-bd7db8719f9e9cc70e07" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bd7db8719f9e9cc70e07">{"x":{
+<code class="sourceCode R"><span><span class="va">hist_plot</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_bar</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"temp:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"count():Q"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">hist_plot2</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_bar</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"temp:Q"</span>, bin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"count():Q"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">hist_plot</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">combined_plot2</span> <span class="op">|</span> <span class="va">hist_plot2</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-12ba88d35ef2f147f5c0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-12ba88d35ef2f147f5c0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -5280,25 +5314,31 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>Note the use of parentheses to make sure the order of operations is correct.</p>
+},"evals":[],"jsHooks":[]}</script><p>Note the use of parentheses to make sure the order of operations is
+correct.</p>
 </div>
 <div class="section level2">
 <h2 id="facet">Faceting<a class="anchor" aria-label="anchor" href="#facet"></a>
 </h2>
-<p>Faceting will likely be familiar to R users comfortable with ggplot2. Faceting creates sub-panels for different subsets of the data. Faceting is specified in similar ways to encoding, using <code>$facet()</code> instead of <code>$encode()</code>. Here is an example of faceting with the mtcars data set, with the rows split by cylinders and the columns by gears:</p>
+<p>Faceting will likely be familiar to R users comfortable with ggplot2.
+Faceting creates sub-panels for different subsets of the data. Faceting
+is specified in similar ways to encoding, using <code>$facet()</code>
+instead of <code>$encode()</code>. Here is an example of faceting with
+the mtcars data set, with the rows split by cylinders and the columns by
+gears:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"mpg:Q"</span>,
-    y <span class="op">=</span> <span class="st">"hp:Q"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span>
-  
-<span class="va">plot</span><span class="op">$</span><span class="fu">facet</span><span class="op">(</span>row <span class="op">=</span> <span class="st">"cyl:N"</span>, column <span class="op">=</span> <span class="st">"gear:N"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-dbcd3ecbca829e92073c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dbcd3ecbca829e92073c">{"x":{
+<code class="sourceCode R"><span><span class="va">plot</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"mpg:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"hp:Q"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">plot</span><span class="op">$</span><span class="fu">facet</span><span class="op">(</span>row <span class="op">=</span> <span class="st">"cyl:N"</span>, column <span class="op">=</span> <span class="st">"gear:N"</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-0590d7a8e3319c532e1d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-0590d7a8e3319c532e1d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -5765,25 +5805,34 @@
 <div class="section level2">
 <h2 id="repeat">Repeating<a class="anchor" aria-label="anchor" href="#repeat"></a>
 </h2>
-<p>Repeating is a little different than faceting. Repeating creates panels based on different encodings, with the same data in each panel. To create a repeating plot, you specify the encodings with <code>alt$`repeat`("column")</code> or <code>alt$`repeat`("row")</code> instead of an actual column variable. Then the encodings to use for the column or row are specified when calling <code>$`repeat`()</code> on the chart object. Note the use of the backticks around “repeat”; these backticks are necessary because <code>repeat</code> is a reserved word in R.</p>
-<p>Here is an example of creating plots with different x and y axes for the mtcars dataset:</p>
+<p>Repeating is a little different than faceting. Repeating creates
+panels based on different encodings, with the same data in each panel.
+To create a repeating plot, you specify the encodings with
+<code>alt$`repeat`("column")</code> or <code>alt$`repeat`("row")</code>
+instead of an actual column variable. Then the encodings to use for the
+column or row are specified when calling <code>$`repeat`()</code> on the
+chart object. Note the use of the backticks around “repeat”; these
+backticks are necessary because <code>repeat</code> is a reserved word
+in R.</p>
+<p>Here is an example of creating plots with different x and y axes for
+the mtcars dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">plot2</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"column"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"quantitative"</span><span class="op">)</span>,
-    <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"row"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"quantitative"</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">`repeat`</span><span class="op">(</span>
-    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"qsec"</span><span class="op">)</span>,
-    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">plot2</span></code></pre></div>
-<div id="htmlwidget-c78a15f1fd1bc3a99811" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c78a15f1fd1bc3a99811">{"x":{
+<code class="sourceCode R"><span><span class="va">plot2</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"column"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"quantitative"</span><span class="op">)</span>,</span>
+<span>    <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="va">alt</span><span class="op">$</span><span class="fu">`repeat`</span><span class="op">(</span><span class="st">"row"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"quantitative"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">`repeat`</span><span class="op">(</span></span>
+<span>    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"qsec"</span><span class="op">)</span>,</span>
+<span>    column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot2</span></span></code></pre></div>
+<div id="htmlwidget-1c0190e7994438a576f9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-1c0190e7994438a576f9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -6254,7 +6303,10 @@
 <div class="section level2">
 <h2 id="more-information">More information<a class="anchor" aria-label="anchor" href="#more-information"></a>
 </h2>
-<p>For more information on view composition in Vega-lite and Altair, check out the <a href="https://vega.github.io/vega-lite/docs/composition.html" class="external-link">Vega-lite</a> or <a href="https://altair-viz.github.io/user_guide/compound_charts.html#" class="external-link">Altair</a> documentation about the subject!</p>
+<p>For more information on view composition in Vega-lite and Altair,
+check out the <a href="https://vega.github.io/vega-lite/docs/composition.html" class="external-link">Vega-lite</a>
+or <a href="https://altair-viz.github.io/user_guide/compound_charts.html#" class="external-link">Altair</a>
+documentation about the subject!</p>
 </div>
   </div>
 
@@ -6275,7 +6327,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

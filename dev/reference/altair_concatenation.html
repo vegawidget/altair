@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -71,7 +71,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -152,56 +152,61 @@
     <h2>Arguments</h2>
     <dl><dt>e1</dt>
 <dd><p>Altair chart object</p></dd>
+
+
 <dt>e2</dt>
 <dd><p>Altair chart object</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Compound Altair chart object</p>
+    
+
+<p>Compound Altair chart object</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># Examples using the beaver1 and beaver2 body temperature data sets</span></span>
-<span class="r-in">  <span class="co"># Layering Charts</span></span>
-<span class="r-in">  <span class="va">base</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span></span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">'time'</span><span class="op">)</span>,</span>
-<span class="r-in">    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">'temp'</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">scatter_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">combined_plot</span> <span class="op">&lt;-</span> <span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># Horizontal Concatenation</span></span>
-<span class="r-in">  <span class="va">base2</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span></span>
-<span class="r-in">    <span class="fu">encode</span><span class="op">(</span></span>
-<span class="r-in">      x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,</span>
-<span class="r-in">      y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">scatter_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">line_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">combined_plot</span> <span class="op">&lt;-</span></span>
-<span class="r-in">    <span class="op">(</span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span><span class="op">)</span><span class="op">$</span></span>
-<span class="r-in">    <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 1"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">combined_plot2</span> <span class="op">&lt;-</span></span>
-<span class="r-in">    <span class="op">(</span><span class="va">scatter_plot2</span> <span class="op">+</span> <span class="va">line_plot2</span><span class="op">)</span><span class="op">$</span></span>
-<span class="r-in">    <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">hconcat_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># Vertical Concatenation</span></span>
-<span class="r-in">  <span class="va">vconcat_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Examples using the beaver1 and beaver2 body temperature data sets</span></span></span>
+<span class="r-in"><span>  <span class="co"># Layering Charts</span></span></span>
+<span class="r-in"><span>  <span class="va">base</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver1</span><span class="op">)</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">'time'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">'temp'</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">scatter_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">combined_plot</span> <span class="op">&lt;-</span> <span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Horizontal Concatenation</span></span></span>
+<span class="r-in"><span>  <span class="va">base2</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">beaver2</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">encode</span><span class="op">(</span></span></span>
+<span class="r-in"><span>      x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"time"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"temp"</span>, scale <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Scale</span><span class="op">(</span>zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">scatter_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">line_plot2</span> <span class="op">&lt;-</span> <span class="va">base2</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">combined_plot</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>    <span class="op">(</span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 1"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">combined_plot2</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>    <span class="op">(</span><span class="va">scatter_plot2</span> <span class="op">+</span> <span class="va">line_plot2</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">hconcat_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Vertical Concatenation</span></span></span>
+<span class="r-in"><span>  <span class="va">vconcat_plot</span> <span class="op">&lt;-</span> <span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -216,7 +221,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

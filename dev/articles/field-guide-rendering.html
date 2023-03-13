@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -162,7 +162,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Rendering Charts</h1>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/field-guide-rendering.Rmd" class="external-link"><code>vignettes/field-guide-rendering.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-rendering.Rmd</code></div>
@@ -173,78 +173,109 @@
     
 <p>There are four foundations upon which this package rests:</p>
 <ul>
-<li>the <a href="https://altair-viz.github.io/" class="external-link">Altair</a> Python package, to build chart specifications</li>
-<li>the <a href="https://rstudio.github.io/reticulate/index.html" class="external-link">reticulate</a> R package, to provide inter-operability with Python</li>
-<li>the <a href="https://vega.github.io/vega-lite/" class="external-link">Vega-Lite</a> JavaScript framework, to render chart specifications in an HTML file</li>
-<li>the <a href="https://vegawidget.github.io" class="external-link">vegawidget</a> R package, which relies on <a href="https://www.htmlwidgets.org/" class="external-link">htmlwidgets</a> to provide inter-operability with HTML and JavaScript</li>
+<li>the <a href="https://altair-viz.github.io/" class="external-link">Altair</a> Python
+package, to build chart specifications</li>
+<li>the <a href="https://rstudio.github.io/reticulate/index.html" class="external-link">reticulate</a> R
+package, to provide inter-operability with Python</li>
+<li>the <a href="https://vega.github.io/vega-lite/" class="external-link">Vega-Lite</a>
+JavaScript framework, to render chart specifications in an HTML
+file</li>
+<li>the <a href="https://vegawidget.github.io" class="external-link">vegawidget</a> R package,
+which relies on <a href="https://www.htmlwidgets.org/" class="external-link">htmlwidgets</a>
+to provide inter-operability with HTML and JavaScript</li>
 </ul>
-<p>This article deals with the second two items; the <a href="field-guide-python.html">Field Guide to Python Issues</a> deals with the first two.</p>
+<p>This article deals with the second two items; the <a href="field-guide-python.html">Field Guide to Python Issues</a> deals
+with the first two.</p>
 <div class="section level2">
 <h2 id="vegawidget">Vegawidget<a class="anchor" aria-label="anchor" href="#vegawidget"></a>
 </h2>
-<p>All the rendering is handled by <strong>vegawidget</strong>; so you are referred to its article on <a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html" class="external-link">rendering</a>.</p>
+<p>All the rendering is handled by <strong>vegawidget</strong>; so you
+are referred to its article on <a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html" class="external-link">rendering</a>.</p>
 <p>The two main issues on rendering are:</p>
 <ul>
 <li>sizing</li>
-<li>arguments passed to <a href="https://github.com/vega/vega-embed" class="external-link">vega-embed</a> (more specialized)</li>
+<li>arguments passed to <a href="https://github.com/vega/vega-embed" class="external-link">vega-embed</a> (more
+specialized)</li>
 </ul>
-<p>These are discussed in these sections of the vegawidget rendering-article:</p>
+<p>These are discussed in these sections of the vegawidget
+rendering-article:</p>
 <ul>
 <li>
-<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#using-vegawidget-arguments" class="external-link">Using vegawidget arguments</a>, calling the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function</li>
+<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#using-vegawidget-arguments" class="external-link">Using
+vegawidget arguments</a>, calling the <code><a href="../reference/vegawidget.html">vegawidget()</a></code>
+function</li>
 <li>
-<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#setting-r-options" class="external-link">Setting R options</a>, can be set a number of ways</li>
+<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#setting-r-options" class="external-link">Setting
+R options</a>, can be set a number of ways</li>
 <li>
-<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies" class="external-link">Knitting strategies</a>, including how to render Vega(-Lite) charts when knitting to a non-HTML format such as PDF</li>
+<a href="https://vegawidget.github.io/vegawidget/articles/articles/render-vegawidget.html#knitting-strategies" class="external-link">Knitting
+strategies</a>, including how to render Vega(-Lite) charts when knitting
+to a non-HTML format such as PDF</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="rendering-speed-for-interactive-work">Rendering speed for interactive work<a class="anchor" aria-label="anchor" href="#rendering-speed-for-interactive-work"></a>
 </h2>
-<p>This section applies to <em>interactive</em> work; it does not apply to RMarkdown documents.</p>
-<p>Rather than embed the data itself into the chart spec as JSON (this will become very slow as the data gets to be more than 5000 rows), Altair has an option (supported by Vega-Lite’s URL loader) that saves your data as a JSON file that is referenced in the chart spec.</p>
-<p>Keep in mind that this will work only for interactive (non-knitting) work. In Python you would set <code>alt.data_transformers.enable('json')</code>; in R this becomes:</p>
+<p>This section applies to <em>interactive</em> work; it does not apply
+to RMarkdown documents.</p>
+<p>Rather than embed the data itself into the chart spec as JSON (this
+will become very slow as the data gets to be more than 5000 rows),
+Altair has an option (supported by Vega-Lite’s URL loader) that saves
+your data as a JSON file that is referenced in the chart spec.</p>
+<p>Keep in mind that this will work only for interactive (non-knitting)
+work. In Python you would set
+<code>alt.data_transformers.enable('json')</code>; in R this
+becomes:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-<span class="va">alt</span><span class="op">$</span><span class="va">data_transformers</span><span class="op">$</span><span class="fu">enable</span><span class="op">(</span><span class="st">'json'</span><span class="op">)</span></code></pre></div>
-<p>The problem is that you won’t see charts in the RStudio pane anymore. This won’t work:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span><span class="va">alt</span><span class="op">$</span><span class="va">data_transformers</span><span class="op">$</span><span class="fu">enable</span><span class="op">(</span><span class="st">'json'</span><span class="op">)</span></span></code></pre></div>
+<p>The problem is that you won’t see charts in the RStudio pane anymore.
+This won’t work:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> 
-     <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-     <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-     <span class="fu">encode</span><span class="op">(</span>
-         x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-         y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-         color <span class="op">=</span> <span class="st">"Origin:N"</span>,
-         tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
-     <span class="op">)</span>
-
-<span class="va">chart</span></code></pre></div>
-<p>This calls the print method on chart, which runs <code>vegawidget(chart)</code>; instead, you need to tell <code><a href="../reference/vegawidget.html">vegawidget()</a></code> where it can expect your external file.</p>
+<code class="sourceCode R"><span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>     <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>     <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>     <span class="fu">encode</span><span class="op">(</span></span>
+<span>         x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>         color <span class="op">=</span> <span class="st">"Origin:N"</span>,</span>
+<span>         tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span></span>
+<span>     <span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span></span></code></pre></div>
+<p>This calls the print method on chart, which runs
+<code>vegawidget(chart)</code>; instead, you need to tell
+<code><a href="../reference/vegawidget.html">vegawidget()</a></code> where it can expect your external file.</p>
 <p>You have a couple of choices here:</p>
 <ul>
 <li>
-<p>you can call <code><a href="../reference/vegawidget.html">vegawidget()</a></code> supplying a value for <code>base_url</code>:</p>
+<p>you can call <code><a href="../reference/vegawidget.html">vegawidget()</a></code> supplying a value for
+<code>base_url</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span>, base_url<span class="op">=</span><span class="st">"."</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span>, base_url<span class="op">=</span><span class="st">"."</span><span class="op">)</span></span></code></pre></div>
 </li>
 <li>
-<p><strong>or</strong> you can set the <code>base_url</code> <em>once</em> for your session using:</p>
+<p><strong>or</strong> you can set the <code>base_url</code>
+<em>once</em> for your session using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/vw_set_base_url.html">vw_set_base_url</a></span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/vw_set_base_url.html">vw_set_base_url</a></span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span></code></pre></div>
 <p>then, this should <em>just work</em> interactively:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">chart</span></span></code></pre></div>
 </li>
 </ul>
-<p>Keep in mind that by using <code>alt$data_transformers$enable("json")</code>, <strong>all</strong> charts you create subsequently will write out data files until:</p>
+<p>Keep in mind that by using
+<code>alt$data_transformers$enable("json")</code>, <strong>all</strong>
+charts you create subsequently will write out data files until:</p>
 <ul>
 <li>you restart R.</li>
-<li>you enable a different transformer, e.g <code>alt$data_transformers$enable("default")</code>.</li>
+<li>you enable a different transformer, e.g
+<code>alt$data_transformers$enable("default")</code>.</li>
 </ul>
-<p>Altair’s documentation has a <a href="https://altair-viz.github.io/user_guide/data_transformers.html" class="external-link">page dedicated to data transformers</a>.</p>
+<p>Altair’s documentation has a <a href="https://altair-viz.github.io/user_guide/data_transformers.html" class="external-link">page
+dedicated to data transformers</a>.</p>
 </div>
   </div>
 
@@ -265,7 +296,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

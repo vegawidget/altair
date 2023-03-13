@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -157,14 +157,14 @@
 
       
 
-      </header><script src="altair_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="altair_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="altair_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="altair_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="altair_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="altair_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><link href="altair_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
+      </header><script src="altair_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="altair_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="altair_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="altair_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="altair_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="altair_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><link href="altair_files/jsoneditor-5.25.6/jsoneditor.min.css" rel="stylesheet">
 <script src="altair_files/jsoneditor-5.25.6/jsoneditor.min.js"></script><script src="altair_files/jsonedit-binding-3.0.0/jsonedit.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started</h1>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/altair.Rmd" class="external-link"><code>vignettes/altair.Rmd</code></a></small>
       <div class="hidden name"><code>altair.Rmd</code></div>
@@ -176,25 +176,26 @@
 <div class="section level2">
 <h2 id="creating-a-chart">Creating a chart<a class="anchor" aria-label="anchor" href="#creating-a-chart"></a>
 </h2>
-<p>First we’ll make a chart, then we’ll look at the bits-and-pieces used to put it together.</p>
+<p>First we’ll make a chart, then we’ll look at the bits-and-pieces used
+to put it together.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Origin:N"</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-2a9afcccde956d13733e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a9afcccde956d13733e">{"x":{
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Origin:N"</span>,</span>
+<span>    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-d12b4ebd2c36266f3421" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d12b4ebd2c36266f3421">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -4719,92 +4720,132 @@
 </h3>
 <p>The first part of the code block is a call to load the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></code></pre></div>
-<p>This assumes that your computer has a Python installation and an Altair installation. Please see the <a href="installation.html">Installation article</a> for more information on how to get up-and-running.</p>
-<p>The next bit is to get access to <a href="https://github.com/altair-viz/vega_datasets" class="external-link">Vega datasets</a>, which also has its own <a href="vega-datasets.html">article</a> in this collection.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span></code></pre></div>
+<p>This assumes that your computer has a Python installation and an
+Altair installation. Please see the <a href="installation.html">Installation article</a> for more information
+on how to get up-and-running.</p>
+<p>The next bit is to get access to <a href="https://github.com/altair-viz/vega_datasets" class="external-link">Vega datasets</a>,
+which also has its own <a href="vega-datasets.html">article</a> in this
+collection.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="chart-object">Chart object<a class="anchor" aria-label="anchor" href="#chart-object"></a>
 </h3>
 <p>The next part of the code block creates a chart object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>There’s a few things going on here. The first is that the altair (R) package exposes Altair (Python) methods and objects using the variable <code>alt</code>; the same convention is used in the <a href="https://altair-viz.github.io/getting_started/overview.html" class="external-link">Altair documentation</a>.</p>
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>There’s a few things going on here. The first is that the altair (R)
+package exposes Altair (Python) methods and objects using the variable
+<code>alt</code>; the same convention is used in the <a href="https://altair-viz.github.io/getting_started/overview.html" class="external-link">Altair
+documentation</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span></code></pre></div>
-<p>We expose the “same” variable, by default, as a part of the package-loading process.</p>
-<p>The next step is to create the chart itself. In Python, we would use language like this:</p>
+<p>We expose the “same” variable, by default, as a part of the
+package-loading process.</p>
+<p>The next step is to create the chart itself. In Python, we would use
+language like this:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(...)</span></code></pre></div>
-<p>Here’s where <a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a> does its job. It exposes Python objects as R S3 objects that behave like <a href="http://adv-r.had.co.nz/OO-essentials.html#rc" class="external-link">Reference Class</a> objects. In practical terms, wherever you see a <code>.</code> in the Altair Python documentation, use a <code>$</code> in your R code:</p>
+<p>Here’s where <a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a> does its
+job. It exposes Python objects as R S3 objects that behave like <a href="http://adv-r.had.co.nz/OO-essentials.html#rc" class="external-link">Reference Class</a>
+objects. In practical terms, wherever you see a <code>.</code> in the
+Altair Python documentation, use a <code>$</code> in your R code:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></code></pre></div>
-<p>The argument to the <code>Chart()</code> function merits some explanation. In Python, a <code>data</code> argument is expected to be a Pandas DataFrame. Using this package, the reticulate package automatically converts R <code>data.frame</code>s to Pandas DataFrames.</p>
-<p>As well, the reticulate package offers us a function <code>r_to_py()</code>, and its complement <code>py_to_r()</code> manage conversion back-and-forth between some common data-types “shared” by R and Python. The <a href="https://rstudio.github.io/reticulate/index.html#type-conversions" class="external-link">reticulate documentation</a> has more information.</p>
-<p>As you follow the <a href="https://altair-viz.github.io/gallery/index.html" class="external-link">Altair examples</a>, you will come across other Python-R translation issues. We have compiled our discoveries and workarounds in an article, <a href="field-guide-python.html">Field Guide to Python</a>.</p>
-<p>The <code>data</code> argument to a chart function need not be a data frame; it can be a <em>reference</em> to a data frame like a URL:</p>
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<p>The argument to the <code>Chart()</code> function merits some
+explanation. In Python, a <code>data</code> argument is expected to be a
+Pandas DataFrame. Using this package, the reticulate package
+automatically converts R <code>data.frame</code>s to Pandas
+DataFrames.</p>
+<p>As well, the reticulate package offers us a function
+<code>r_to_py()</code>, and its complement <code>py_to_r()</code> manage
+conversion back-and-forth between some common data-types “shared” by R
+and Python. The <a href="https://rstudio.github.io/reticulate/index.html#type-conversions" class="external-link">reticulate
+documentation</a> has more information.</p>
+<p>As you follow the <a href="https://altair-viz.github.io/gallery/index.html" class="external-link">Altair
+examples</a>, you will come across other Python-R translation issues. We
+have compiled our discoveries and workarounds in an article, <a href="field-guide-python.html">Field Guide to Python</a>.</p>
+<p>The <code>data</code> argument to a chart function need not be a data
+frame; it can be a <em>reference</em> to a data frame like a URL:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span>
-<span class="co">#&gt; [1] "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/cars.json"</span>
-
-<span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span><span class="op">)</span></code></pre></div>
-<p>Note that referring to an external URL may not be allowed in the RStudio IDE, so your chart may not render in the IDE. However, it will render in a regular browser.</p>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span></span>
+<span><span class="co">#&gt; [1] "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/cars.json"</span></span>
+<span></span>
+<span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span><span class="op">)</span></span></code></pre></div>
+<p>Note that referring to an external URL may not be allowed in the
+RStudio IDE, so your chart may not render in the IDE. However, it will
+render in a regular browser.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="adding-a-mark">Adding a mark<a class="anchor" aria-label="anchor" href="#adding-a-mark"></a>
 </h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>In Vega, “mark” is a similar concept to “geom” in ggplot2. In this case, we are saying we want to represent our data using points.</p>
-<p>In Python, methods can be chained using the <code>.</code> operator (<code>$</code> in our case), a little bit like how the <code>%&gt;%</code> operator is used in Tidyverse. To specify that we want points, we append <code>$mark_point()</code> to our Chart object.</p>
-<p>Note that we can extend the <code>$</code> operation across lines, giving us the illusion of piping. In the future, it may be interesting to wrap operators like <code>$foo</code> using functions that could be piped, <code>alt_foo(chart, ...)</code>.</p>
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>In Vega, “mark” is a similar concept to “geom” in ggplot2. In this
+case, we are saying we want to represent our data using points.</p>
+<p>In Python, methods can be chained using the <code>.</code> operator
+(<code>$</code> in our case), a little bit like how the
+<code>%&gt;%</code> operator is used in Tidyverse. To specify that we
+want points, we append <code>$mark_point()</code> to our Chart
+object.</p>
+<p>Note that we can extend the <code>$</code> operation across lines,
+giving us the illusion of piping. In the future, it may be interesting
+to wrap operators like <code>$foo</code> using functions that could be
+piped, <code>alt_foo(chart, ...)</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="adding-encoding">Adding encoding<a class="anchor" aria-label="anchor" href="#adding-encoding"></a>
 </h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Origin:N"</span>,
-    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
-<p>In Vega, “encode” plays a similar role to “aesthetics” in ggplot2. We are mapping variables in the data to scales in the plot. We can pass multiple variables to the tooltip by giving a list of variables.</p>
-<p>What we see here is, in fact, a shorthand. As explained in the <a href="https://altair-viz.github.io/user_guide/encoding.html#encoding-shorthands" class="external-link">Altair documentation</a>, there’s a longer version:</p>
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Horsepower:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Origin:N"</span>,</span>
+<span>    tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Miles_per_Gallon"</span>, <span class="st">"Origin"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>In Vega, “encode” plays a similar role to “aesthetics” in ggplot2. We
+are mapping variables in the data to scales in the plot. We can pass
+multiple variables to the tooltip by giving a list of variables.</p>
+<p>What we see here is, in fact, a shorthand. As explained in the <a href="https://altair-viz.github.io/user_guide/encoding.html#encoding-shorthands" class="external-link">Altair
+documentation</a>, there’s a longer version:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"Miles_per_Gallon"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span><span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,
-    tooltip <span class="op">=</span> 
-      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Name"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,
-        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,
-        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>
-      <span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
-<p>Altair recognizes <a href="https://altair-viz.github.io/user_guide/encoding.html#data-types" class="external-link">four types of data</a>, <code>"quantitative"</code>, <code>"nominal"</code>, <code>"ordinal"</code>, and <code>"temporal"</code>.</p>
+<code class="sourceCode R"><span><span class="va">chart</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Y</span><span class="op">(</span><span class="st">"Miles_per_Gallon"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">Color</span><span class="op">(</span><span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,</span>
+<span>    tooltip <span class="op">=</span> </span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Name"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span>,</span>
+<span>        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Horsepower"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,</span>
+<span>        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Miles_per_Gallon"</span>, type <span class="op">=</span> <span class="st">"quantitative"</span><span class="op">)</span>,</span>
+<span>        <span class="va">alt</span><span class="op">$</span><span class="fu">Tooltip</span><span class="op">(</span>field <span class="op">=</span> <span class="st">"Origin"</span>, type <span class="op">=</span> <span class="st">"nominal"</span><span class="op">)</span></span>
+<span>      <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>Altair recognizes <a href="https://altair-viz.github.io/user_guide/encoding.html#data-types" class="external-link">four
+types of data</a>, <code>"quantitative"</code>, <code>"nominal"</code>,
+<code>"ordinal"</code>, and <code>"temporal"</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="displaying-and-examining">Displaying and Examining<a class="anchor" aria-label="anchor" href="#displaying-and-examining"></a>
 </h2>
-<p>Now that we have specified our chart, it remains to display it. This package provides a function <code><a href="../reference/vegawidget.html">vegawidget()</a></code> that takes a chart object then renders and embeds it as an <a href="https://www.htmlwidgets.org" class="external-link">htmlwidget</a>.</p>
+<p>Now that we have specified our chart, it remains to display it. This
+package provides a function <code><a href="../reference/vegawidget.html">vegawidget()</a></code> that takes a chart
+object then renders and embeds it as an <a href="https://www.htmlwidgets.org" class="external-link">htmlwidget</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-6746d44f0a4cb7c98a31" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6746d44f0a4cb7c98a31">{"x":{
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/vegawidget.html">vegawidget</a></span><span class="op">(</span><span class="va">chart</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-a127e980403f8a134c9c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-a127e980403f8a134c9c">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -9324,11 +9365,14 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>However, if you are using its defaults, you need not call the <code><a href="../reference/vegawidget.html">vegawidget()</a></code> function explicitly, as this package provides a <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> method and a <code>knit_print()</code> method.</p>
+},"evals":[],"jsHooks":[]}</script><p>However, if you are using its defaults, you need not call the
+<code><a href="../reference/vegawidget.html">vegawidget()</a></code> function explicitly, as this package provides
+a <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> method and a <code>knit_print()</code>
+method.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">chart</span></code></pre></div>
-<div id="htmlwidget-60b9400d3b2a1adbf2c1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60b9400d3b2a1adbf2c1">{"x":{
+<code class="sourceCode R"><span><span class="va">chart</span></span></code></pre></div>
+<div id="htmlwidget-377e5fb6691789512368" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-377e5fb6691789512368">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -13848,12 +13892,17 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>More details on rendering charts, including how sizing works, are found in the article <a href="field-guide-rendering.html">Field Guide to Rendering</a>.</p>
-<p>You can examine the chart-specification by using <code><a href="https://vegawidget.github.io/vegawidget/reference/vw_examine.html" class="external-link">vegawidget::vw_examine()</a></code> function, which wraps <code><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">listviewer::jsonedit()</a></code>. To use this function, you will need to install the <strong>listviewer</strong> package from CRAN.</p>
+},"evals":[],"jsHooks":[]}</script><p>More details on rendering charts, including how sizing works, are
+found in the article <a href="field-guide-rendering.html">Field Guide to
+Rendering</a>.</p>
+<p>You can examine the chart-specification by using
+<code><a href="https://vegawidget.github.io/vegawidget/reference/vw_examine.html" class="external-link">vegawidget::vw_examine()</a></code> function, which wraps
+<code><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">listviewer::jsonedit()</a></code>. To use this function, you will need
+to install the <strong>listviewer</strong> package from CRAN.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">vegawidget</span><span class="fu">::</span><span class="fu"><a href="https://vegawidget.github.io/vegawidget/reference/vw_examine.html" class="external-link">vw_examine</a></span><span class="op">(</span><span class="va">chart</span>, mode <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-bcd189d53370e0b75780" style="width:100%;height:432.632880098888px;" class="jsonedit html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bcd189d53370e0b75780">{"x":{"data":{
+<code class="sourceCode R"><span><span class="fu">vegawidget</span><span class="fu">::</span><span class="fu"><a href="https://vegawidget.github.io/vegawidget/reference/vw_examine.html" class="external-link">vw_examine</a></span><span class="op">(</span><span class="va">chart</span>, mode <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span></span></code></pre></div>
+<div class="jsonedit html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1818a55a97792671b4f6" style="width:100%;height:432.632880098888px;"></div>
+<script type="application/json" data-for="htmlwidget-1818a55a97792671b4f6">{"x":{"data":{
   "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
   "config": {
     "view": {
@@ -18388,7 +18437,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

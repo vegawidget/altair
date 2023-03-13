@@ -18,7 +18,7 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -71,7 +71,7 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -138,29 +138,38 @@ altair and vega_datasets."><meta name="robots" content="noindex"><!-- mathjax --
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">install_altair</span><span class="op">(</span>
-  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"conda"</span>, <span class="st">"virtualenv"</span><span class="op">)</span>,
-  envname <span class="op">=</span> <span class="st">"r-reticulate"</span>,
-  version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"altair.python.version"</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">install_altair</span><span class="op">(</span></span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"conda"</span>, <span class="st">"virtualenv"</span><span class="op">)</span>,</span>
+<span>  envname <span class="op">=</span> <span class="st">"r-reticulate"</span>,</span>
+<span>  version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"altair.python.version"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>method</dt>
 <dd><p><code>character</code>, indicates to use <code>"conda"</code> or <code>"virtualenv"</code></p></dd>
+
+
 <dt>envname</dt>
 <dd><p><code>character</code>, name of environment into which to install</p></dd>
+
+
 <dt>version</dt>
 <dd><p><code>character</code>, version of Altair to install. For general use of this package,
 this is set automatically, so you should not need to specify this.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>other arguments sent to <code><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">reticulate::py_install()</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>invisible <code>NULL</code>, called for side-effects</p>
+    
+
+<p>invisible <code>NULL</code>, called for side-effects</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -185,10 +194,10 @@ or in this package's <a href="https://vegawidget.github.io/altair/articles/insta
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="co"># not run because it requires Python</span></span>
-<span class="r-in">  <span class="fu">install_altair</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># not run because it requires Python</span></span></span>
+<span class="r-in"><span>  <span class="fu">install_altair</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -203,7 +212,7 @@ or in this package's <a href="https://vegawidget.github.io/altair/articles/insta
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

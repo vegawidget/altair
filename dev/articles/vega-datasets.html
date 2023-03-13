@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.1.9002</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -95,7 +95,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Gallery
      
     <span class="caret"></span>
@@ -157,13 +157,13 @@
 
       
 
-      </header><script src="vega-datasets_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="vega-datasets_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="vega-datasets_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="vega-datasets_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="vega-datasets_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="vega-datasets_files/vegawidget-vl4-binding-0.4.1/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="vega-datasets_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="vega-datasets_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="vega-datasets_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="vega-datasets_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+<script src="vega-datasets_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="vega-datasets_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Vega Datasets</h1>
             
-            <h4 data-toc-skip class="date">2022-02-14</h4>
+            <h4 data-toc-skip class="date">2023-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/vega-datasets.Rmd" class="external-link"><code>vignettes/vega-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>vega-datasets.Rmd</code></div>
@@ -175,16 +175,31 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The purpose of this article is to demonstrate how to use data provided by the <a href="https://github.com/altair-viz/vega_datasets" class="external-link">Vega datasets</a> Python package.</p>
+<p>The purpose of this article is to demonstrate how to use data
+provided by the <a href="https://github.com/altair-viz/vega_datasets" class="external-link">Vega datasets</a>
+Python package.</p>
 <p>Here’s the short version:</p>
 <ul>
-<li><p>We can access the Vega datasets using the <code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This package’s convention is to assign this to an object named <code>vega_data</code>.</p></li>
-<li><p>To access the data for a specific dataset, call the method for that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen in a dataset name in the Altair documentation, use an underscore instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
-<li><p>These datasets have metadata that include a description, references, and a URL: e.g. <code>vega_data$cars$references</code>.</p></li>
+<li><p>We can access the Vega datasets using the
+<code><a href="../reference/import_vega_data.html">import_vega_data()</a></code> function. This package’s convention is
+to assign this to an object named <code>vega_data</code>.</p></li>
+<li><p>To access the data for a specific dataset, call the method for
+that dataset: e.g. <code>vega_data$cars()</code>. Where you see a hyphen
+in a dataset name in the Altair documentation, use an underscore
+instead, e.g. <code>vega_data$sf_temps()</code>.</p></li>
+<li><p>These datasets have metadata that include a description,
+references, and a URL:
+e.g. <code>vega_data$cars$references</code>.</p></li>
 <li>
-<p>When you create an <code>alt$Chart()</code>, the <code>data</code> argument need not be a data frame; it can be a reference to a data frame, such as a URL.</p>
+<p>When you create an <code>alt$Chart()</code>, the
+<code>data</code> argument need not be a data frame; it can be a
+reference to a data frame, such as a URL.</p>
 <ul>
-<li>If your chart contains a reference to an external resource, such as <code>vega_data$cars$url</code>, it will not render in the RStudio IDE due to RStudio’s (well founded) security policy. If you view such a chart using an external browser, it should work OK if your computer can access the remote data.</li>
+<li>If your chart contains a reference to an external resource, such as
+<code>vega_data$cars$url</code>, it will not render in the RStudio IDE
+due to RStudio’s (well founded) security policy. If you view such a
+chart using an external browser, it should work OK if your computer can
+access the remote data.</li>
 </ul>
 </li>
 </ul>
@@ -192,109 +207,126 @@
 <div class="section level2">
 <h2 id="importing">Importing<a class="anchor" aria-label="anchor" href="#importing"></a>
 </h2>
-<p>In the <a href="https://altair-viz.github.io/getting_started/installation.html" class="external-link">Altair documentation</a>, you will see this code used often:</p>
+<p>In the <a href="https://altair-viz.github.io/getting_started/installation.html" class="external-link">Altair
+documentation</a>, you will see this code used often:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cars <span class="op">=</span> data.cars()</span></code></pre></div>
-<p>The Altair convention is to use the name <code>data</code> to refer to the <code>data</code> object in the <code>vega_datasets</code> package. This package offers a similar convention:</p>
+<p>The Altair convention is to use the name <code>data</code> to refer
+to the <code>data</code> object in the <code>vega_datasets</code>
+package. This package offers a similar convention:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Instead, our convention is to use an object called <code>vega_data</code>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="fu">cars</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Instead, our convention is to use an object called
+<code>vega_data</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="accessing">Accessing<a class="anchor" aria-label="anchor" href="#accessing"></a>
 </h2>
-<p>Our <code>vega_data</code> object has a method to list all its datasets:</p>
+<p>Our <code>vega_data</code> object has a method to list all its
+datasets:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">list_datasets</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "7zip"          "airports"      "annual-precip" "anscombe"     </span>
-<span class="co">#&gt; [5] "barley"        "birdstrikes"</span></code></pre></div>
-<p>Each dataset can be accessed using a method whose name is an element returned from <code>vega_data$list_datasets()</code>.</p>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="fu">list_datasets</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "7zip"          "airports"      "annual-precip" "anscombe"     </span></span>
+<span><span class="co">#&gt; [5] "barley"        "birdstrikes"</span></span></code></pre></div>
+<p>Each dataset can be accessed using a method whose name is an element
+returned from <code>vega_data$list_datasets()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span>
-
-<span class="va">vega_data</span><span class="op">$</span><span class="fu">anscombe</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 44 × 3</span></span>
-<span class="co">#&gt;    Series     X     Y</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> I         10  8.04</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> I          8  6.95</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> I         13  7.58</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> I          9  8.81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> I         11  8.33</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> I         14  9.96</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> I          6  7.24</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> I          4  4.26</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> I         12 10.8 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> I          7  4.81</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 34 more rows</span></span></code></pre></div>
-<p>It is useful to keep in mind that <strong>reticulate</strong> changes the names of the datasets, and presumably, Python objects in general. Where you see a <code>-</code> in a name of a Python object, a <code>_</code> will be used in the name of the reticulated object in R. For example, in Python: <code>data.sf-temps()</code>; in R:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vega_data</span><span class="op">$</span><span class="fu">anscombe</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 44 × 3</span></span></span>
+<span><span class="co">#&gt;    Series     X     Y</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> I         10  8.04</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> I          8  6.95</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> I         13  7.58</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> I          9  8.81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> I         11  8.33</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> I         14  9.96</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> I          6  7.24</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> I          4  4.26</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> I         12 10.8 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> I          7  4.81</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 34 more rows</span></span></span></code></pre></div>
+<p>It is useful to keep in mind that <strong>reticulate</strong> changes
+the names of the datasets, and presumably, Python objects in general.
+Where you see a <code>-</code> in a name of a Python object, a
+<code>_</code> will be used in the name of the reticulated object in R.
+For example, in Python: <code>data.sf-temps()</code>; in R:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="fu">sf_temps</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 8,759 × 2</span></span>
-<span class="co">#&gt;     temp date               </span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  47.8 2010-01-01 <span style="color: #949494;">00:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  47.4 2010-01-01 <span style="color: #949494;">01:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  46.9 2010-01-01 <span style="color: #949494;">02:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  46.5 2010-01-01 <span style="color: #949494;">03:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  46   2010-01-01 <span style="color: #949494;">04:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  45.8 2010-01-01 <span style="color: #949494;">05:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  45.9 2010-01-01 <span style="color: #949494;">06:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  45.9 2010-01-01 <span style="color: #949494;">07:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  46.4 2010-01-01 <span style="color: #949494;">08:00:00</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  48   2010-01-01 <span style="color: #949494;">09:00:00</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 8,749 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="fu">sf_temps</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8,759 × 2</span></span></span>
+<span><span class="co">#&gt;     temp date               </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  47.8 2010-01-01 <span style="color: #949494;">00:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  47.4 2010-01-01 <span style="color: #949494;">01:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  46.9 2010-01-01 <span style="color: #949494;">02:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  46.5 2010-01-01 <span style="color: #949494;">03:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  46   2010-01-01 <span style="color: #949494;">04:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  45.8 2010-01-01 <span style="color: #949494;">05:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  45.9 2010-01-01 <span style="color: #949494;">06:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  45.9 2010-01-01 <span style="color: #949494;">07:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  46.4 2010-01-01 <span style="color: #949494;">08:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  48   2010-01-01 <span style="color: #949494;">09:00:00</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 8,749 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="metadata">Metadata<a class="anchor" aria-label="anchor" href="#metadata"></a>
 </h2>
-<p>Each dataset has some metadata, such as a description and references.</p>
+<p>Each dataset has some metadata, such as a description and
+references.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wrapcat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/strwrap.html" class="external-link">strwrap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">description</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">wrapcat</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Anscombe's Quartet is a famous dataset constructed by Francis Anscombe</span>
-<span class="co">#&gt; [1]_. Common summary statistics are identical for each subset of the</span>
-<span class="co">#&gt; data, despite the subsets having vastly different characteristics.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">wrapcat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/strwrap.html" class="external-link">strwrap</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">description</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">wrapcat</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Anscombe's Quartet is a famous dataset constructed by Francis Anscombe</span></span>
+<span><span class="co">#&gt; [1]_. Common summary statistics are identical for each subset of the</span></span>
+<span><span class="co">#&gt; data, despite the subsets having vastly different characteristics.</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">references</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">wrapcat</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American</span>
-<span class="co">#&gt; Statistician. 27 (1): 17-21. JSTOR 2682899.</span></code></pre></div>
-<p>Some of the datasets are stored locally as a part of the Vega datasets Python package, others are not. The method that returns the data, e.g. <code>vega_data$anscombe()</code> will do the right thing. You can use the <code>is_local</code> property to find out what the right thing is for a dataset.</p>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">references</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">wrapcat</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American</span></span>
+<span><span class="co">#&gt; Statistician. 27 (1): 17-21. JSTOR 2682899.</span></span></code></pre></div>
+<p>Some of the datasets are stored locally as a part of the Vega
+datasets Python package, others are not. The method that returns the
+data, e.g. <code>vega_data$anscombe()</code> will do the right thing.
+You can use the <code>is_local</code> property to find out what the
+right thing is for a dataset.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">is_local</span>
-<span class="co">#&gt; [1] TRUE</span></code></pre></div>
-<p>Each dataset has a remote URL, which you can use instead of a data frame in any Altair <code>data</code> argument.</p>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">is_local</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<p>Each dataset has a remote URL, which you can use instead of a data
+frame in any Altair <code>data</code> argument.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">url</span>
-<span class="co">#&gt; [1] "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/anscombe.json"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">vega_data</span><span class="op">$</span><span class="va">anscombe</span><span class="op">$</span><span class="va">url</span></span>
+<span><span class="co">#&gt; [1] "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/anscombe.json"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="using-a-url">Using a URL<a class="anchor" aria-label="anchor" href="#using-a-url"></a>
 </h2>
-<p>You can specify <code>data</code> using a URL that points to a dataset, rather than using a data frame explicitly.</p>
+<p>You can specify <code>data</code> using a URL that points to a
+dataset, rather than using a data frame explicitly.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cars_url</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span>
-
-<span class="va">chart_cars</span> <span class="op">&lt;-</span> 
-  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars_url</span><span class="op">)</span><span class="op">$</span>
-  <span class="fu">encode</span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Weight_in_lbs:Q"</span>,
-    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,
-    color <span class="op">=</span> <span class="st">"Cylinders:N"</span>
-  <span class="op">)</span><span class="op">$</span>
-  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">chart_cars</span></code></pre></div>
-<div id="htmlwidget-1af49180fc4b9a1d3188" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1af49180fc4b9a1d3188">{"x":{
+<code class="sourceCode R"><span><span class="va">cars_url</span> <span class="op">&lt;-</span> <span class="va">vega_data</span><span class="op">$</span><span class="va">cars</span><span class="op">$</span><span class="va">url</span></span>
+<span></span>
+<span><span class="va">chart_cars</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">cars_url</span><span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Weight_in_lbs:Q"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Miles_per_Gallon:Q"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Cylinders:N"</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chart_cars</span></span></code></pre></div>
+<div id="htmlwidget-0aeaa668e0edee8bf6c3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-0aeaa668e0edee8bf6c3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -326,7 +358,11 @@
     "renderer": "canvas",
     "defaultStyle": true
   }
-},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not might not work in the RStudio IDE. This is because, for security reasons, the RStudio IDE may not let you refer external URLs that are not on their allow-list (such as YouTube and Vimeo). If you open this up in a browser, it works just fine (as long as you have access to the internet).</p>
+},"evals":[],"jsHooks":[]}</script><p>This works in your browser, but not might not work in the RStudio
+IDE. This is because, for security reasons, the RStudio IDE may not let
+you refer external URLs that are not on their allow-list (such as
+YouTube and Vimeo). If you open this up in a browser, it works just fine
+(as long as you have access to the internet).</p>
 </div>
   </div>
 
@@ -347,7 +383,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
