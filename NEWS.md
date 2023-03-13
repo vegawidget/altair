@@ -1,3 +1,5 @@
+# altair (development version)
+
 # altair 4.2.2
 
 * Update case-study vignette to allow for more than 5000 rows. (#159)
