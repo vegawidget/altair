@@ -47,12 +47,12 @@ chart
 
 Some things to keep in mind:
 
--   Where you see a `.` in the Python examples, use a `$` instead.
+- Where you see a `.` in the Python examples, use a `$` instead.
 
--   In your data, columns that contain dots can be wrapped in square
-    brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
-    Altair from throwing an error. Alternatively, you can use a
-    double-backslash, e.g. `Sepal\\.Width`.
+- In your data, columns that contain dots can be wrapped in square
+  brackets in Altair specifications, e.g. `[Sepal.Width]`, to keep
+  Altair from throwing an error. Alternatively, you can use a
+  double-backslash, e.g. `Sepal\\.Width`.
 
 These and other “gotchas” are compiled along with workarounds in an
 article: [Field Guide to Python
@@ -136,72 +136,69 @@ installed.
 The documentation for this package includes some
 [articles](https://vegawidget.github.io/altair/articles/index.html):
 
--   [Getting
-    Started](https://vegawidget.github.io/altair/articles/altair.html):
-    a walkthrough to get a first chart to work
+- [Getting
+  Started](https://vegawidget.github.io/altair/articles/altair.html): a
+  walkthrough to get a first chart to work
 
--   [Installation](https://vegawidget.github.io/altair/articles/installation.html):
-    some more-detailed instructions
+- [Installation](https://vegawidget.github.io/altair/articles/installation.html):
+  some more-detailed instructions
 
 Gallery:
 
--   An adaptation to R of the [Altair Example
-    Gallery](https://altair-viz.github.io/gallery/), to demonstrate (not
-    least to ourselves) that we are not missing any of the
-    expressiveness of the Python API. You may be interested in the
-    [Interactive
-    Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html)
-    examples.
+- An adaptation to R of the [Altair Example
+  Gallery](https://altair-viz.github.io/gallery/), to demonstrate (not
+  least to ourselves) that we are not missing any of the expressiveness
+  of the Python API. You may be interested in the [Interactive
+  Charts](https://vegawidget.github.io/altair/articles/example-gallery-08-interactive-charts.html)
+  examples.
 
 Examples:
 
--   [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
-    shows how Vega-Lite implements tooltips as an encoding within a
-    chart, with formatting options
+- [Tooltips](https://vegawidget.github.io/altair/articles/tooltips.html):
+  shows how Vega-Lite implements tooltips as an encoding within a chart,
+  with formatting options
 
--   [Vega
-    Datasets](https://vegawidget.github.io/altair/articles/vega-datasets.html):
-    work with [Vega
-    datasets](https://github.com/altair-viz/vega_datasets) using
-    `import_vega_data()`
+- [Vega
+  Datasets](https://vegawidget.github.io/altair/articles/vega-datasets.html):
+  work with [Vega datasets](https://github.com/altair-viz/vega_datasets)
+  using `import_vega_data()`
 
--   [View
-    Composition](https://vegawidget.github.io/altair/articles/view-composition.html):
-    how to facet, add layers to, repeat, and concatenate charts
+- [View
+  Composition](https://vegawidget.github.io/altair/articles/view-composition.html):
+  how to facet, add layers to, repeat, and concatenate charts
 
--   [Interactive
-    Examples](https://vegawidget.github.io/altair/articles/interactive.html):
-    a set of examples that work towards linked-brushing of two
-    scatterplots
+- [Interactive
+  Examples](https://vegawidget.github.io/altair/articles/interactive.html):
+  a set of examples that work towards linked-brushing of two
+  scatterplots
 
 Field Guides:
 
--   [Field Guide to Python
-    Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html):
-    “gotchas” and their workarounds
+- [Field Guide to Python
+  Issues](https://vegawidget.github.io/altair/articles/field-guide-python.html):
+  “gotchas” and their workarounds
 
--   [Field Guide to Rendering
-    Charts](https://vegawidget.github.io/altair/articles/field-guide-rendering.html):
-    specify options to render charts as HTML
+- [Field Guide to Rendering
+  Charts](https://vegawidget.github.io/altair/articles/field-guide-rendering.html):
+  specify options to render charts as HTML
 
 ## Acknowledgements
 
 This package rests on these foundations:
 
--   [Altair](https://altair-viz.github.io): Python interface to
-    Vega-Lite
+- [Altair](https://altair-viz.github.io): Python interface to Vega-Lite
 
--   [reticulate](https://rstudio.github.io/reticulate/): R framework to
-    work with Python
+- [reticulate](https://rstudio.github.io/reticulate/): R framework to
+  work with Python
 
--   [Vega-Lite](https://vega.github.io/vega-lite/): a grammar of
-    interactive graphics
+- [Vega-Lite](https://vega.github.io/vega-lite/): a grammar of
+  interactive graphics
 
--   [vegawidget](https://vegawidget.github.io/vegawidget/): R package to
-    render Vega(-Lite) visualizations
+- [vegawidget](https://vegawidget.github.io/vegawidget/): R package to
+  render Vega(-Lite) visualizations
 
--   [htmlwidgets](https://www.htmlwidgets.org/): R framework to work
-    with JavaScript visualizations
+- [htmlwidgets](https://www.htmlwidgets.org/): R framework to work with
+  JavaScript visualizations
 
 As well, a particular debt is owed to the folks behind the
 [vegalite](https://github.com/hrbrmstr/vegalite) package, as it provided
@@ -210,13 +207,13 @@ a lot of the inspiration for these efforts.
 This project is a collaborative effort. In addition to the principal
 authors:
 
--   [Alicia Schep](https://github.com/AliciaSchep) has contributed the
-    concatenation functions, as well as sorted out many of the Python,
-    JavaScript, and package-API issues.
+- [Alicia Schep](https://github.com/AliciaSchep) has contributed the
+  concatenation functions, as well as sorted out many of the Python,
+  JavaScript, and package-API issues.
 
--   [Heike Hofmann](https://github.com/heike) has been an invaluable
-    advisor, providing incisive feedback, and insight into the
-    fundamentals of interactive graphics.
+- [Heike Hofmann](https://github.com/heike) has been an invaluable
+  advisor, providing incisive feedback, and insight into the
+  fundamentals of interactive graphics.
 
 ## Contributing
 
