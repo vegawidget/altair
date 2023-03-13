@@ -17,3 +17,4 @@
 ^\.github$
 ^revdep$
 ^venv$
+^CRAN-SUBMISSION$
