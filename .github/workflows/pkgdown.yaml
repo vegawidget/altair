@@ -42,7 +42,8 @@ jobs:
 
       - name: Install Altair
         run: |
-          altair::install_altair()
+          reticulate::virtualenv_create("venv")
+          altair::install_altair("virtualenv", envname = "venv")
         shell: Rscript {0}
 
       - name: Confirm Python and check Altair
