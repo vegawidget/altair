@@ -81,7 +81,7 @@ devtools::install_github("vegawidget/altair")
 Because of Python, there may be some additional installation steps, described in greater detail in the [Installation article](https://vegawidget.github.io/altair/articles/installation.html).
 
 1. Python must be installed on your system. 
-   We have had success using [Conda](https://conda.io/docs): in particular, [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
+   We have had success using [Conda](https://conda.io/docs): in particular, [Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html#anaconda-or-miniconda) works well and installs more-quickly than Anaconda.
 
    If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a [section](https://vegawidget.github.io/altair/articles/installation.html#proxies) on this. 
    

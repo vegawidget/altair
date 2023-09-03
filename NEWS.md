@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Update URLs in documentation. (#164)
+
 * Update package-documentation to comport with Roxygen updates. (#165)
 
 * Update actions - note that for Altair 4.2.0, you must use Pandas<=1.5.3 (#163)

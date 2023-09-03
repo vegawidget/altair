@@ -5,6 +5,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org/package=altair)
 [![R-CMD-check](https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/altair/actions)
+[![R-CMD-check](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # altair
@@ -80,7 +81,7 @@ article](https://vegawidget.github.io/altair/articles/installation.html).
 
 1.  Python must be installed on your system. We have had success using
     [Conda](https://conda.io/docs): in particular,
-    [Miniconda](https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda)
+    [Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html#anaconda-or-miniconda)
     works well and installs more-quickly than Anaconda.
 
     If you work in a corporate or institutional environment, you may
@@ -99,6 +100,10 @@ article](https://vegawidget.github.io/altair/articles/installation.html).
 
 3.  Install Altair into your `"r-reticulate"` environment using
     `altair::install_altair()`.
+
+4.  **Important**: (Python) Altair 4.2.0 does note work with Pandas 2.0;
+    use Pandas 1.5.3 (for example). This is fixed for (Python) Altair 5,
+    which will be made available in an upcoming release of (R) altair.
 
 You may wish to add a line like this to the `.First()` function in your
 `.Rprofile`:
