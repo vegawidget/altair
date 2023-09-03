@@ -36,10 +36,9 @@ jobs:
           needs: website
 
         # start local mods
-      - name: Install miniconda
-        run: |
-          reticulate::install_miniconda()
-        shell: Rscript {0}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       - name: Install Altair
         run: |
