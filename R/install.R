@@ -65,7 +65,7 @@ install_altair <- function(method = c("conda", "virtualenv"),
   # TODO: patch until we can use Altair 5
   pandas_pkg_version <- paste("pandas", "1.5.3", sep = version_sep)
 
-  packages <- c(altair_pkg_version, "vega_datasets", pandas_pkg_version)
+  packages <- c(pandas_pkg_version, altair_pkg_version, "vega_datasets")
 
   reticulate::py_install(
     packages = packages,

@@ -41,7 +41,8 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          # needs local::. for install_altair()
+          extra-packages: any::rcmdcheck, local::.
           needs: check
 
         # start local mods

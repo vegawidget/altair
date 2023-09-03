@@ -13,6 +13,5 @@
 #'   [Altair Python package](https://altair-viz.github.io/index.html),
 #'   [Vega-Lite](https://vega.github.io/vega-lite/)
 #'
-#' @docType package
-#' @name altair
-NULL
+#' @keywords internal
+"_PACKAGE"
