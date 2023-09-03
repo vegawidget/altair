@@ -40,10 +40,15 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Run Python commands
+        run: |
+          pip install --upgrade pip
+          python -m venv ./venv
+          source ./venv/bin/activate
+
       - name: Install Altair
         run: |
-          reticulate::virtualenv_create("venv")
-          altair::install_altair("virtualenv", envname = "venv")
+          altair::install_altair("virtualenv", envname = "./venv")
         shell: Rscript {0}
 
       - name: Confirm Python and check Altair
