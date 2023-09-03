@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.2.9001</span>
       </span>
     </div>
 
@@ -157,7 +157,7 @@
 
       
 
-      </header><script src="example-gallery-10-other-charts_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+      </header><script src="example-gallery-10-other-charts_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-10-other-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-10-other-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
 <script src="example-gallery-10-other-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-10-other-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -165,7 +165,7 @@
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-13</h4>
+            <h4 data-toc-skip class="date">2023-09-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-10-other-charts.Rmd" class="external-link"><code>vignettes/example-gallery-10-other-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-10-other-charts.Rmd</code></div>
@@ -181,7 +181,7 @@ Charts</a> section of the Altair Example Gallery.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://jeroen.r-universe.dev/jsonlite" class="external-link">"jsonlite"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
@@ -234,8 +234,8 @@ Example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="op">(</span><span class="va">bars</span> <span class="op">+</span> <span class="va">highlight</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-5aa0126b6899e9904e1d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-5aa0126b6899e9904e1d">{"x":{
+<div id="htmlwidget-86ac2e567b509ea70e05" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-86ac2e567b509ea70e05">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -620,8 +620,8 @@ Example</a></p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-fdc743a529f3237f93b4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-fdc743a529f3237f93b4">{"x":{
+<div id="htmlwidget-49110346b68ecb2457c2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-49110346b68ecb2457c2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1437,8 +1437,8 @@ Example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-ba225d5f7c37a2114e49" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-ba225d5f7c37a2114e49">{"x":{
+<div id="htmlwidget-d7ff6f8cebb47494cfbe" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d7ff6f8cebb47494cfbe">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1512,8 +1512,8 @@ data from 2000.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-3c870eaa1c664f203d8b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-3c870eaa1c664f203d8b">{"x":{
+<div id="htmlwidget-13784ad40ee13e3654e3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-13784ad40ee13e3654e3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1822,8 +1822,8 @@ Definition
 <span></span>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">rule</span> <span class="op">+</span> <span class="va">bar</span><span class="op">)</span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-a4ed23af2c224d172744" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a4ed23af2c224d172744">{"x":{
+<div id="htmlwidget-6e817a2c35e7b1eeda89" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-6e817a2c35e7b1eeda89">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -2162,8 +2162,8 @@ Example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">error_bars</span> <span class="op">+</span> <span class="va">points</span></span></code></pre></div>
-<div id="htmlwidget-06cd9c7e157aa5a47329" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-06cd9c7e157aa5a47329">{"x":{
+<div id="htmlwidget-b06a4ade2f3a50b3ff1e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-b06a4ade2f3a50b3ff1e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -2995,8 +2995,8 @@ of the mean</a>.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">error_bars</span> <span class="op">+</span> <span class="va">points</span></span></code></pre></div>
-<div id="htmlwidget-8e7e80a1fedc36ec8243" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-8e7e80a1fedc36ec8243">{"x":{
+<div id="htmlwidget-f03feab6d2bf9384682e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-f03feab6d2bf9384682e">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -3829,8 +3829,8 @@ Definition
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-a58196f2c19138af03c1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a58196f2c19138af03c1">{"x":{
+<div id="htmlwidget-f2a8d047e18e7d38172f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-f2a8d047e18e7d38172f">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -3920,8 +3920,8 @@ Definition
 <span>  <span class="fu">configure_view</span><span class="op">(</span>strokeWidth <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-b62b4f7d1229f5a535d9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-b62b4f7d1229f5a535d9">{"x":{
+<div id="htmlwidget-ddb56259ac3d464dbc85" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-ddb56259ac3d464dbc85">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -4310,8 +4310,8 @@ Example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-efe32743b7fcc589ec0f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-efe32743b7fcc589ec0f">{"x":{
+<div id="htmlwidget-b3175badd4689e70214a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-b3175badd4689e70214a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -7220,8 +7220,8 @@ VegaLite version</a>.</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-283cde2f989cc25862f4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-283cde2f989cc25862f4">{"x":{
+<div id="htmlwidget-8be7ceb46bfdafa6bdc3" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-8be7ceb46bfdafa6bdc3">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -11720,8 +11720,8 @@ Definition
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-3dac6a2f61e45100a0cf" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-3dac6a2f61e45100a0cf">{"x":{
+<div id="htmlwidget-0961b1f670a174157b68" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-0961b1f670a174157b68">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -12016,8 +12016,8 @@ into a suitable representation.</p>
 <span>  <span class="fu">configure_title</span><span class="op">(</span>anchor <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-999155a0cdd385907bd5" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-999155a0cdd385907bd5">{"x":{
+<div id="htmlwidget-812a398528c2863ab369" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-812a398528c2863ab369">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "bounds": "flush",
@@ -23888,8 +23888,8 @@ while also sorting the y-axis based on x-axis values.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">points</span> <span class="op">+</span> <span class="va">error_bars</span></span></code></pre></div>
-<div id="htmlwidget-df1deb6a1426fc2625ad" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-df1deb6a1426fc2625ad">{"x":{
+<div id="htmlwidget-702e40f88470c1ae6998" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-702e40f88470c1ae6998">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -24711,10 +24711,10 @@ Definition
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 100</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; $ sample   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 22, 25, 26, 27, 28, 31, 31, 32, 32, 32, 33, 34, 35, 35, 36…</span></span>
-<span><span class="co">#&gt; $ stem     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span></span>
-<span><span class="co">#&gt; $ leaf     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 2, 5, 6, 7, 8, 1, 1, 2, 2, 2, 3, 4, 5, 5, 6, 6, 7, 7, 8, 8…</span></span>
-<span><span class="co">#&gt; $ position <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, …</span></span></code></pre></div>
+<span><span class="co">#&gt; $ sample   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 11, 15, 21, 27, 28, 29, 29, 32, 33, 33, 34, 34, 34, 35, 36, 3…</span></span>
+<span><span class="co">#&gt; $ stem     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…</span></span>
+<span><span class="co">#&gt; $ leaf     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 5, 1, 7, 8, 9, 9, 2, 3, 3, 4, 4, 4, 5, 6, 7, 7, 7, 7, 8, 8…</span></span>
+<span><span class="co">#&gt; $ position <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="chart-14">Chart<a class="anchor" aria-label="anchor" href="#chart-14"></a>
@@ -24735,8 +24735,8 @@ Definition
 <span>  <span class="fu">configure_text</span><span class="op">(</span>fontSize <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-54aa020265ee4e3ad541" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-54aa020265ee4e3ad541">{"x":{
+<div id="htmlwidget-6e3c7a4275717cd87f73" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-6e3c7a4275717cd87f73">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -24752,110 +24752,116 @@ Definition
       }
     },
     "data": {
-      "name": "data-0ef14d05a82652cae53e4b16bac6c057"
+      "name": "data-d84f2cd9199fe4760c9758828945fa32"
     },
     "datasets": {
-      "data-0ef14d05a82652cae53e4b16bac6c057": [
+      "data-d84f2cd9199fe4760c9758828945fa32": [
         {
-          "leaf": 4,
+          "leaf": 1,
           "position": 1,
-          "sample": 4,
-          "stem": 0
-        },
-        {
-          "leaf": 2,
-          "position": 1,
-          "sample": 22,
-          "stem": 2
+          "sample": 11,
+          "stem": 1
         },
         {
           "leaf": 5,
           "position": 2,
-          "sample": 25,
-          "stem": 2
+          "sample": 15,
+          "stem": 1
         },
         {
-          "leaf": 6,
-          "position": 3,
-          "sample": 26,
+          "leaf": 1,
+          "position": 1,
+          "sample": 21,
           "stem": 2
         },
         {
           "leaf": 7,
-          "position": 4,
+          "position": 2,
           "sample": 27,
           "stem": 2
         },
         {
           "leaf": 8,
-          "position": 5,
+          "position": 3,
           "sample": 28,
           "stem": 2
         },
         {
-          "leaf": 1,
-          "position": 1,
-          "sample": 31,
-          "stem": 3
-        },
-        {
-          "leaf": 1,
-          "position": 2,
-          "sample": 31,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
-          "position": 3,
-          "sample": 32,
-          "stem": 3
-        },
-        {
-          "leaf": 2,
+          "leaf": 9,
           "position": 4,
-          "sample": 32,
-          "stem": 3
+          "sample": 29,
+          "stem": 2
+        },
+        {
+          "leaf": 9,
+          "position": 5,
+          "sample": 29,
+          "stem": 2
         },
         {
           "leaf": 2,
-          "position": 5,
+          "position": 1,
           "sample": 32,
           "stem": 3
         },
         {
           "leaf": 3,
-          "position": 6,
+          "position": 2,
+          "sample": 33,
+          "stem": 3
+        },
+        {
+          "leaf": 3,
+          "position": 3,
           "sample": 33,
           "stem": 3
         },
         {
           "leaf": 4,
-          "position": 7,
+          "position": 4,
+          "sample": 34,
+          "stem": 3
+        },
+        {
+          "leaf": 4,
+          "position": 5,
+          "sample": 34,
+          "stem": 3
+        },
+        {
+          "leaf": 4,
+          "position": 6,
           "sample": 34,
           "stem": 3
         },
         {
           "leaf": 5,
+          "position": 7,
+          "sample": 35,
+          "stem": 3
+        },
+        {
+          "leaf": 6,
           "position": 8,
-          "sample": 35,
+          "sample": 36,
           "stem": 3
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 9,
-          "sample": 35,
+          "sample": 37,
           "stem": 3
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 10,
-          "sample": 36,
+          "sample": 37,
           "stem": 3
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 11,
-          "sample": 36,
+          "sample": 37,
           "stem": 3
         },
         {
@@ -24865,9 +24871,9 @@ Definition
           "stem": 3
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 13,
-          "sample": 37,
+          "sample": 38,
           "stem": 3
         },
         {
@@ -24877,9 +24883,9 @@ Definition
           "stem": 3
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 15,
-          "sample": 38,
+          "sample": 39,
           "stem": 3
         },
         {
@@ -24891,6 +24897,12 @@ Definition
         {
           "leaf": 9,
           "position": 17,
+          "sample": 39,
+          "stem": 3
+        },
+        {
+          "leaf": 9,
+          "position": 18,
           "sample": 39,
           "stem": 3
         },
@@ -24907,33 +24919,33 @@ Definition
           "stem": 4
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 3,
+          "sample": 41,
+          "stem": 4
+        },
+        {
+          "leaf": 2,
+          "position": 4,
+          "sample": 42,
+          "stem": 4
+        },
+        {
+          "leaf": 2,
+          "position": 5,
+          "sample": 42,
+          "stem": 4
+        },
+        {
+          "leaf": 2,
+          "position": 6,
           "sample": 42,
           "stem": 4
         },
         {
           "leaf": 3,
-          "position": 4,
-          "sample": 43,
-          "stem": 4
-        },
-        {
-          "leaf": 3,
-          "position": 5,
-          "sample": 43,
-          "stem": 4
-        },
-        {
-          "leaf": 3,
-          "position": 6,
-          "sample": 43,
-          "stem": 4
-        },
-        {
-          "leaf": 4,
           "position": 7,
-          "sample": 44,
+          "sample": 43,
           "stem": 4
         },
         {
@@ -24943,116 +24955,68 @@ Definition
           "stem": 4
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 9,
-          "sample": 45,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 5,
+          "leaf": 7,
           "position": 10,
-          "sample": 45,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 11,
-          "sample": 46,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 7,
           "position": 12,
-          "sample": 46,
+          "sample": 47,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 8,
           "position": 13,
-          "sample": 46,
+          "sample": 48,
           "stem": 4
         },
         {
-          "leaf": 6,
+          "leaf": 8,
           "position": 14,
-          "sample": 46,
+          "sample": 48,
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 15,
-          "sample": 47,
+          "sample": 48,
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 8,
           "position": 16,
-          "sample": 47,
+          "sample": 48,
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 9,
           "position": 17,
-          "sample": 47,
+          "sample": 49,
           "stem": 4
         },
         {
-          "leaf": 7,
+          "leaf": 9,
           "position": 18,
-          "sample": 47,
+          "sample": 49,
           "stem": 4
         },
         {
-          "leaf": 8,
+          "leaf": 9,
           "position": 19,
-          "sample": 48,
-          "stem": 4
-        },
-        {
-          "leaf": 8,
-          "position": 20,
-          "sample": 48,
-          "stem": 4
-        },
-        {
-          "leaf": 8,
-          "position": 21,
-          "sample": 48,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 22,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 23,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 24,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 25,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 26,
-          "sample": 49,
-          "stem": 4
-        },
-        {
-          "leaf": 9,
-          "position": 27,
           "sample": 49,
           "stem": 4
         },
@@ -25063,134 +25027,152 @@ Definition
           "stem": 5
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 2,
-          "sample": 51,
+          "sample": 50,
+          "stem": 5
+        },
+        {
+          "leaf": 0,
+          "position": 3,
+          "sample": 50,
+          "stem": 5
+        },
+        {
+          "leaf": 0,
+          "position": 4,
+          "sample": 50,
           "stem": 5
         },
         {
           "leaf": 1,
-          "position": 3,
+          "position": 5,
           "sample": 51,
           "stem": 5
         },
         {
           "leaf": 2,
-          "position": 4,
+          "position": 6,
           "sample": 52,
           "stem": 5
         },
         {
           "leaf": 3,
-          "position": 5,
+          "position": 7,
           "sample": 53,
           "stem": 5
         },
         {
           "leaf": 3,
-          "position": 6,
+          "position": 8,
+          "sample": 53,
+          "stem": 5
+        },
+        {
+          "leaf": 3,
+          "position": 9,
+          "sample": 53,
+          "stem": 5
+        },
+        {
+          "leaf": 3,
+          "position": 10,
+          "sample": 53,
+          "stem": 5
+        },
+        {
+          "leaf": 3,
+          "position": 11,
           "sample": 53,
           "stem": 5
         },
         {
           "leaf": 4,
-          "position": 7,
+          "position": 12,
           "sample": 54,
           "stem": 5
         },
         {
           "leaf": 4,
-          "position": 8,
+          "position": 13,
+          "sample": 54,
+          "stem": 5
+        },
+        {
+          "leaf": 4,
+          "position": 14,
           "sample": 54,
           "stem": 5
         },
         {
           "leaf": 5,
-          "position": 9,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 10,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 11,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 12,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 5,
-          "position": 13,
-          "sample": 55,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
-          "position": 14,
-          "sample": 57,
-          "stem": 5
-        },
-        {
-          "leaf": 7,
           "position": 15,
-          "sample": 57,
+          "sample": 55,
           "stem": 5
         },
         {
-          "leaf": 7,
+          "leaf": 5,
           "position": 16,
+          "sample": 55,
+          "stem": 5
+        },
+        {
+          "leaf": 6,
+          "position": 17,
+          "sample": 56,
+          "stem": 5
+        },
+        {
+          "leaf": 6,
+          "position": 18,
+          "sample": 56,
+          "stem": 5
+        },
+        {
+          "leaf": 7,
+          "position": 19,
           "sample": 57,
           "stem": 5
         },
         {
           "leaf": 7,
-          "position": 17,
+          "position": 20,
+          "sample": 57,
+          "stem": 5
+        },
+        {
+          "leaf": 7,
+          "position": 21,
+          "sample": 57,
+          "stem": 5
+        },
+        {
+          "leaf": 7,
+          "position": 22,
+          "sample": 57,
+          "stem": 5
+        },
+        {
+          "leaf": 7,
+          "position": 23,
           "sample": 57,
           "stem": 5
         },
         {
           "leaf": 9,
-          "position": 18,
+          "position": 24,
           "sample": 59,
           "stem": 5
         },
         {
           "leaf": 9,
-          "position": 19,
+          "position": 25,
           "sample": 59,
           "stem": 5
         },
         {
           "leaf": 9,
-          "position": 20,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 21,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 22,
-          "sample": 59,
-          "stem": 5
-        },
-        {
-          "leaf": 9,
-          "position": 23,
+          "position": 26,
           "sample": 59,
           "stem": 5
         },
@@ -25213,9 +25195,9 @@ Definition
           "stem": 6
         },
         {
-          "leaf": 1,
+          "leaf": 0,
           "position": 4,
-          "sample": 61,
+          "sample": 60,
           "stem": 6
         },
         {
@@ -25231,15 +25213,15 @@ Definition
           "stem": 6
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 7,
-          "sample": 62,
+          "sample": 61,
           "stem": 6
         },
         {
-          "leaf": 2,
+          "leaf": 1,
           "position": 8,
-          "sample": 62,
+          "sample": 61,
           "stem": 6
         },
         {
@@ -25261,50 +25243,80 @@ Definition
           "stem": 6
         },
         {
-          "leaf": 4,
+          "leaf": 3,
           "position": 12,
+          "sample": 63,
+          "stem": 6
+        },
+        {
+          "leaf": 3,
+          "position": 13,
+          "sample": 63,
+          "stem": 6
+        },
+        {
+          "leaf": 3,
+          "position": 14,
+          "sample": 63,
+          "stem": 6
+        },
+        {
+          "leaf": 4,
+          "position": 15,
           "sample": 64,
           "stem": 6
         },
         {
           "leaf": 4,
-          "position": 13,
+          "position": 16,
           "sample": 64,
           "stem": 6
         },
         {
-          "leaf": 5,
-          "position": 14,
-          "sample": 65,
+          "leaf": 4,
+          "position": 17,
+          "sample": 64,
           "stem": 6
         },
         {
           "leaf": 6,
-          "position": 15,
+          "position": 18,
+          "sample": 66,
+          "stem": 6
+        },
+        {
+          "leaf": 6,
+          "position": 19,
           "sample": 66,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 16,
+          "position": 20,
           "sample": 67,
           "stem": 6
         },
         {
           "leaf": 7,
-          "position": 17,
+          "position": 21,
           "sample": 67,
           "stem": 6
         },
         {
           "leaf": 8,
-          "position": 18,
+          "position": 22,
           "sample": 68,
           "stem": 6
         },
         {
           "leaf": 9,
-          "position": 19,
+          "position": 23,
+          "sample": 69,
+          "stem": 6
+        },
+        {
+          "leaf": 9,
+          "position": 24,
           "sample": 69,
           "stem": 6
         },
@@ -25315,15 +25327,15 @@ Definition
           "stem": 7
         },
         {
-          "leaf": 1,
+          "leaf": 2,
           "position": 2,
-          "sample": 71,
+          "sample": 72,
           "stem": 7
         },
         {
-          "leaf": 3,
+          "leaf": 4,
           "position": 3,
-          "sample": 73,
+          "sample": 74,
           "stem": 7
         },
         {
@@ -25333,28 +25345,16 @@ Definition
           "stem": 7
         },
         {
-          "leaf": 5,
-          "position": 5,
-          "sample": 75,
-          "stem": 7
-        },
-        {
-          "leaf": 5,
-          "position": 6,
-          "sample": 75,
-          "stem": 7
-        },
-        {
           "leaf": 0,
           "position": 1,
           "sample": 80,
           "stem": 8
         },
         {
-          "leaf": 1,
-          "position": 2,
-          "sample": 81,
-          "stem": 8
+          "leaf": 3,
+          "position": 1,
+          "sample": 93,
+          "stem": 9
         }
       ]
     },
@@ -25464,8 +25464,8 @@ dataset.</p>
 <span></span>
 <span><span class="co"># Draw the chart</span></span>
 <span><span class="va">heatmap</span> <span class="op">+</span> <span class="va">text</span></span></code></pre></div>
-<div id="htmlwidget-56a317ea0a7473cc8d8e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-56a317ea0a7473cc8d8e">{"x":{
+<div id="htmlwidget-7f8d883fcc82f2092887" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-7f8d883fcc82f2092887">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -30126,8 +30126,8 @@ Example</a></p>
 <span>  <span class="fu">configure_view</span><span class="op">(</span>stroke <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-4fcc2b86e41c4b975fb8" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-4fcc2b86e41c4b975fb8">{"x":{
+<div id="htmlwidget-e9f4b7f9d9307039c3b7" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-e9f4b7f9d9307039c3b7">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
