@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Update actions - note that for Altair 4.2.0, you must use Pandas<=1.5.3 (#163)
+
 # altair 4.2.2
 
 * Update case-study vignette to allow for more than 5000 rows. (#159)
