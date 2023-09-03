@@ -59,8 +59,9 @@ jobs:
         # end local mods
 
       - name: Build site
+        env:
+          RETICULATE_PYTHON_ENV: "./venv"
         run:  |
-          reticulate::use_virtualenv("./venv")
           pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
