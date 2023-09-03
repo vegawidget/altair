@@ -22,6 +22,7 @@ url_local <- function(x) {
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org/package=altair)
 [![R-CMD-check](https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/altair/actions)
+[![R-CMD-check](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # altair
@@ -89,6 +90,9 @@ The reticulate folks [recommend](https://rstudio.github.io/reticulate/articles/p
 For more information, there is a [section](https://vegawidget.github.io/altair/articles/installation.html#python-env) in the installation article. 
 
 1. Install Altair into your `"r-reticulate"` environment using `altair::install_altair()`. 
+
+1. **Important**: (Python) Altair 4.2.0 does note work with Pandas 2.0; use Pandas 1.5.3 (for example).
+   This is fixed for (Python) Altair 5, which will be made available in an upcoming release of (R) altair.
 
 You may wish to add a line like this to the `.First()` function in your `.Rprofile`:
 
