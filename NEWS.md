@@ -1,5 +1,7 @@
 # altair (development version)
 
+* Update package-documentation to comport with Roxygen updates. (#165)
+
 # altair 4.2.2
 
 * Update case-study vignette to allow for more than 5000 rows. (#159)
