@@ -67,8 +67,6 @@ install_altair <- function(method = c("conda", "virtualenv"),
 
   packages <- c(pandas_pkg_version, altair_pkg_version, "vega_datasets")
 
-  print(packages)
-
   reticulate::py_install(
     packages = packages,
     envname = envname,
