@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.3</span>
       </span>
     </div>
 
@@ -156,7 +156,7 @@
 
       
 
-      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
 <script src="example-gallery-04-area-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-04-area-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -164,7 +164,7 @@
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-13</h4>
+            <h4 data-toc-skip class="date">2023-09-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-04-area-charts.Rmd" class="external-link"><code>vignettes/example-gallery-04-area-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-04-area-charts.Rmd</code></div>
@@ -179,7 +179,7 @@ Charts</a> section of the Altair Example Gallery.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/vegawidget/altair" class="external-link">"altair"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://tibble.tidyverse.org/" class="external-link">"tibble"</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://arxiv.org/abs/1403.2805" class="external-link">"jsonlite"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://jeroen.r-universe.dev/jsonlite" class="external-link">"jsonlite"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">vega_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_vega_data.html">import_vega_data</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
@@ -245,8 +245,8 @@ Definition
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">area1</span> <span class="op">+</span> <span class="va">area2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-fad5b4bb75eaf34c242c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-fad5b4bb75eaf34c242c">{"x":{
+<div id="htmlwidget-0849e7f60a57edb1248a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-0849e7f60a57edb1248a">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -473,8 +473,8 @@ chart.</p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">vconcat</span><span class="op">(</span><span class="va">upper</span>, <span class="va">lower</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-790ee9a4e1f5ca1842db" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-790ee9a4e1f5ca1842db">{"x":{
+<div id="htmlwidget-06813c107e8ee3337589" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-06813c107e8ee3337589">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -577,8 +577,8 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-daa2624fd6adbfeeb9c6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-daa2624fd6adbfeeb9c6">{"x":{
+<div id="htmlwidget-70fcf4382eb4dbd959bb" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-70fcf4382eb4dbd959bb">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -909,8 +909,8 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-db7d742d67190d38ab2d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-db7d742d67190d38ab2d">{"x":{
+<div id="htmlwidget-29a4bcb6e41e1580efc2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-29a4bcb6e41e1580efc2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1243,8 +1243,8 @@ example</a></p>
 <span>  <span class="fu">interactive</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-b83a742762b86daea521" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-b83a742762b86daea521">{"x":{
+<div id="htmlwidget-e92de552a5ebab5d24e4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-e92de552a5ebab5d24e4">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1337,8 +1337,8 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-329291f6395ecf16482c" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-329291f6395ecf16482c">{"x":{
+<div id="htmlwidget-9fe4eee3281819667b2d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-9fe4eee3281819667b2d">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1676,8 +1676,8 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-4b1de883034c9f57e599" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-4b1de883034c9f57e599">{"x":{
+<div id="htmlwidget-d719f414629940c56dc2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d719f414629940c56dc2">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {

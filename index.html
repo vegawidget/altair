@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.3</span>
       </span>
     </div>
 
@@ -209,11 +209,12 @@
 <p>Because of Python, there may be some additional installation steps, described in greater detail in the <a href="https://vegawidget.github.io/altair/articles/installation.html" class="external-link">Installation article</a>.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs" class="external-link">Conda</a>: in particular, <a href="https://conda.io/docs/user-guide/install/download.html#anaconda-or-miniconda" class="external-link">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
+<p>Python must be installed on your system. We have had success using <a href="https://conda.io/docs" class="external-link">Conda</a>: in particular, <a href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html#anaconda-or-miniconda" class="external-link">Miniconda</a> works well and installs more-quickly than Anaconda.</p>
 <p>If you work in a corporate or institutional environment, you may have to specify the location of your SSL certificate, or deal with a proxy. The installation article has a <a href="https://vegawidget.github.io/altair/articles/installation.html#proxies" class="external-link">section</a> on this.</p>
 </li>
 <li><p>Create a Conda environment called <code>"r-reticulate"</code>. The reticulate folks <a href="https://rstudio.github.io/reticulate/articles/python_packages.html" class="external-link">recommend</a> standardizing on a common name for all packages that use reticulate. For more information, there is a <a href="https://vegawidget.github.io/altair/articles/installation.html#python-env" class="external-link">section</a> in the installation article.</p></li>
 <li><p>Install Altair into your <code>"r-reticulate"</code> environment using <code><a href="reference/install_altair.html">altair::install_altair()</a></code>.</p></li>
+<li><p><strong>Important</strong>: (Python) Altair 4.2.0 does note work with Pandas 2.0; use Pandas 1.5.3 (for example). This is fixed for (Python) Altair 5, which will be made available in an upcoming release of (R) altair.</p></li>
 </ol>
 <p>You may wish to add a line like this to the <code>.First()</code> function in your <code>.Rprofile</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">

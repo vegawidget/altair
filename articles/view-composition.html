@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.3</span>
       </span>
     </div>
 
@@ -156,7 +156,7 @@
 
       
 
-      </header><script src="view-composition_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
+      </header><script src="view-composition_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
 <script src="view-composition_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="view-composition_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -164,7 +164,7 @@
                         <h4 data-toc-skip class="author">Alicia
 Schep</h4>
             
-            <h4 data-toc-skip class="date">2023-03-13</h4>
+            <h4 data-toc-skip class="date">2023-09-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/view-composition.Rmd" class="external-link"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
@@ -276,8 +276,8 @@ beaver over time:</p>
 <span><span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></span></code></pre></div>
-<div id="htmlwidget-3e54c35c407e800ea9c1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-3e54c35c407e800ea9c1">{"x":{
+<div id="htmlwidget-50587a020f7eb7c169d9" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-50587a020f7eb7c169d9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -1048,8 +1048,8 @@ plots, using the <code>|</code> operator:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></span></code></pre></div>
-<div id="htmlwidget-fd87b0dbfb0ac7edee8e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-fd87b0dbfb0ac7edee8e">{"x":{
+<div id="htmlwidget-926839e937ecba7230e6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-926839e937ecba7230e6">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -2453,8 +2453,8 @@ using <code>&amp;</code>:</p>
 <span><span class="va">combined_plot2</span> <span class="op">&lt;-</span> <span class="va">combined_plot2</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></span></code></pre></div>
-<div id="htmlwidget-75ea03b90d04d4234551" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-75ea03b90d04d4234551">{"x":{
+<div id="htmlwidget-5de120382b308d964906" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-5de120382b308d964906">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -3876,8 +3876,8 @@ compound plot with four panels:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="op">(</span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">hist_plot</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">combined_plot2</span> <span class="op">|</span> <span class="va">hist_plot2</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-a1ee4452f61fa9026bce" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a1ee4452f61fa9026bce">{"x":{
+<div id="htmlwidget-d9f8819d27b4251211fd" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d9f8819d27b4251211fd">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -5336,8 +5336,8 @@ gears:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="va">plot</span><span class="op">$</span><span class="fu">facet</span><span class="op">(</span>row <span class="op">=</span> <span class="st">"cyl:N"</span>, column <span class="op">=</span> <span class="st">"gear:N"</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-e0be9aaf4b086cc4ffc8" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e0be9aaf4b086cc4ffc8">{"x":{
+<div id="htmlwidget-c397bd08250d6c415621" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-c397bd08250d6c415621">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
@@ -5830,8 +5830,8 @@ the mtcars dataset:</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">plot2</span></span></code></pre></div>
-<div id="htmlwidget-c5e19bcad48ec72338b4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-c5e19bcad48ec72338b4">{"x":{
+<div id="htmlwidget-d1c582286da6d1718dd0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d1c582286da6d1718dd0">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "config": {
