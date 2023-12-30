@@ -2,7 +2,7 @@
 #' @rdname as_vegaspec
 #' @export
 #'
-as_vegaspec.altair.vegalite.v4.api.TopLevelMixin <- function(spec, ...) {
+as_vegaspec.altair.vegalite.v5.api.TopLevelMixin <- function(spec, ...) {
 
   spec <- spec$to_json()
 
@@ -11,7 +11,7 @@ as_vegaspec.altair.vegalite.v4.api.TopLevelMixin <- function(spec, ...) {
 
 #' @export
 #'
-print.altair.vegalite.v4.api.TopLevelMixin <- function(x, ...) {
+print.altair.vegalite.v5.api.TopLevelMixin <- function(x, ...) {
 
   x <- as_vegaspec(x)
 
@@ -20,7 +20,7 @@ print.altair.vegalite.v4.api.TopLevelMixin <- function(x, ...) {
 
 #' @export
 #'
-format.altair.vegalite.v4.api.TopLevelMixin <- function(x, ...) {
+format.altair.vegalite.v5.api.TopLevelMixin <- function(x, ...) {
 
   x <- as_vegaspec(x)
 
@@ -31,7 +31,7 @@ format.altair.vegalite.v4.api.TopLevelMixin <- function(x, ...) {
 #' @rdname knit_print.vegaspec
 #' @export
 #'
-knit_print.altair.vegalite.v4.api.TopLevelMixin <- function(spec, ..., options = NULL) {
+knit_print.altair.vegalite.v5.api.TopLevelMixin <- function(spec, ..., options = NULL) {
 
   spec <- as_vegaspec(spec)
 

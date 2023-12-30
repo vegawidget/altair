@@ -837,7 +837,7 @@ color <- alt$Color("weather:N", scale = scale)
 # - a brush that is active on the top panel
 # - a multi-click that is active on the bottom panel
 brush <- alt$selection_interval(encodings = list("x"))
-click <- alt$selection_multi(encodings = list("color"))
+click <- alt$selection_point(encodings = list("color"))
 
 # Top panel is scatter plot of temperature vs time
 points <- 
@@ -857,7 +857,8 @@ points <-
     color = alt$condition(brush, color, alt$value("lightgray")),
     size = alt$Size("precipitation:Q", scale = alt$Scale(range = list(5, 200)))
   )$
-  properties(width = 600, height = 300, selection = brush)$
+  properties(width = 600, height = 300)$
+  add_params(brush)$
   transform_filter(click)
 
 # Bottom panel is a bar chart of weather type
@@ -870,7 +871,8 @@ bars <-
     color = alt$condition(click, color, alt$value("lightgray"))
   )$
   transform_filter(brush)$
-  properties(width = 600, selection = click)
+  properties(width = 600)$
+  add_params(click)
 
 chart <- 
   (points & bars)$ 
@@ -1070,15 +1072,15 @@ capitals <- vega_data$us_state_capitals$url
 
 # US states background
 background <- 
-  alt$Chart(states)$
+  alt$
+  Chart(states)$
   mark_geoshape(fill = "lightgray",stroke = "white")$
   properties(title = "US State Capitols", width = 700, height = 400)$
   project("albersUsa")
 
 # Points and text
 hover <- 
-  alt$selection(
-    type = "single", 
+  alt$selection_point(
     on = "mouseover", 
     nearest = TRUE,
     fields = list("lat", "lon")
@@ -1108,7 +1110,7 @@ points <-
     # switched from reference
     size = alt$condition(hover, alt$value(100), alt$value(30))
   )$
-  properties(selection = hover)
+  add_params(hover)
 
 chart <- (background + points + text)
 
@@ -1131,30 +1133,34 @@ glimpse(vega_data$population())
 ```{r}
 pop <- vega_data$population$url
 
-pink_blue <- 
-  alt$Scale(
-    domain = list("Male", "Female"),
-    range = list("steelblue", "salmon")
-  )
-slider <- alt$binding_range(min = 1900, max = 2000, step = 10)
-year <- alt$selection_single(
-  name = "year", 
-  fields = list("year"), 
-  bind = slider
+select_year <- alt$selection_point(
+  name = "Year",
+  fields = list("year"),
+  bind = alt$binding_range(min = 1900, max = 2000, step = 10, name = "Year"),
+  value = list(year = 2000),
 )
 
 chart <- 
   alt$Chart(pop)$
   mark_bar()$
   encode(
-    x = alt$X("sex:N", axis = alt$Axis(title = NULL)),
-    y = alt$Y("people:Q", scale = alt$Scale(domain = c(0, 1.2e7))),
-    color = alt$Color("sex:N", scale = pink_blue),
-    column = "age:O"
+    alt$X("sex:N")$title("")$axis(labels = FALSE, ticks = FALSE),
+    alt$Y("people:Q")$scale(domain = c(0, 1.2e7))$title("Population"),
+    alt$Color("sex:N")$scale(
+        domain = list("Male", "Female"), 
+        range = list("steelblue", "salmon")
+      )$
+      title("Sex"),
+    alt$Column("age:O")$title("Age")
   )$
-  properties(width = 20, selection = year)$
-  transform_calculate("sex", "if(datum.sex == 1, 'Male', 'Female')")$
-  transform_filter(year$ref())
+  properties(width = 20, title = "U.S. Population by Age and Sex")$
+  add_params(select_year)$
+  transform_calculate(
+    "sex", 
+    alt$expr$if_(alt$datum$sex == 1, "Male", "Female")
+  )$
+  transform_filter(select_year)$
+  configure_facet(spacing = 8)
 
 chart
 ```
@@ -1180,17 +1186,17 @@ source <- vega_data$population$url
 slider <- alt$binding_range(min = 1850, max = 2000, step = 10)
 
 select_year <- 
-  alt$selection_single(
+  alt$selection_point(
     name = "year", 
     fields = list("year"),
     bind = slider,
-    init = list(year = 2000)
+    value = list(year = 2000)
   )
 
 base <-
   alt$
   Chart(source)$
-  add_selection(select_year)$
+  add_params(select_year)$
   transform_filter(select_year)$
   transform_calculate("gender", "if(datum.sex == 1, 'Male', 'Female')")$
   properties(width=250)
@@ -1316,12 +1322,20 @@ base_monarchs <-
 
 bars <-
   base_wheat$
-  mark_bar(fill = "#aaa", stroke = "#999")$
+  mark_bar(fill = "#aaa", stroke = "#999", orient = "vertical")$
   encode(
-    x = alt$X("year:Q", axis = alt$Axis(format = "d", tickCount = 5)),
-    y = alt$Y("wheat:Q", axis = alt$Axis(zindex = 1)),
-    x2 = alt$X2("year_end")
+    alt$X("year:Q")$axis(format = "d", tickCount = 5)$scale(zero = FALSE),
+    alt$Y("wheat:Q")$axis(zindex=1),
+    alt$X2("year_end")
   )
+
+section_data <- tibble(year = c(1600, 1650, 1700, 1750, 1800))
+
+section_line <- 
+  alt$
+  Chart(section_data)$
+  mark_rule(stroke = "#000", strokeWidth = 0.6, opacity = 0.7)$
+  encode(alt$X("year"))
 
 area <-
   base_wheat$
@@ -1359,7 +1373,7 @@ top_text <-
   )
 
 chart <- 
-  (bars + area + area_line_1 + area_line_2 + top_bars + top_text)$
+  (bars + section_line + area + area_line_1 + area_line_2 + top_bars + top_text)$
   properties(width = 900, height = 400)$
   configure_axis(
     title = NULL, 

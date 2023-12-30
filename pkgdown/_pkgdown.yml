@@ -32,7 +32,7 @@ reference:
       - vegawidget
       - vega_embed
       - vw_set_base_url
-      - knit_print.altair.vegalite.v4.api.TopLevelMixin
+      - knit_print.altair.vegalite.v5.api.TopLevelMixin
       - image
   - title: Package
     desc: Overview of the package

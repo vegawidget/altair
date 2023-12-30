@@ -38,7 +38,7 @@ glimpse(weather)
 #### Chart
 
 ```{r}
-brush <- alt$selection(type = "interval", encodings = list("x"))
+brush <- alt$selection_interval(encodings = list("x"))
 
 bars <- 
   alt$Chart()$
@@ -52,7 +52,7 @@ bars <-
       alt$OpacityValue(0.7)
     )
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 line <- 
   alt$Chart()$
@@ -61,7 +61,7 @@ line <-
     y = "mean(precipitation):Q",
     size = alt$SizeValue(3)
   )$
-  transform_filter(brush$ref())
+  transform_filter(brush)
 
 chart <- alt$layer(bars, line, data = weather)
 
@@ -83,7 +83,7 @@ glimpse(fromJSON(vega_data$movies$url))
 #### Chart
 
 ```{r}
-pts <- alt$selection(type = "single", encodings = list("x"))
+pts <- alt$selection_point(encodings = list("x"))
 
 rect <- 
   alt$Chart(vega_data$movies$url)$
@@ -108,7 +108,7 @@ circ <-
       legend = alt$Legend(title = "Records in Selection")
     )
   )$
-  transform_filter(pts$ref())
+  transform_filter(pts)
 
 bar <- 
   alt$Chart(vega_data$movies$url)$
@@ -122,10 +122,10 @@ bar <-
       alt$ColorValue("grey"))
   )$
   properties(
-    selection = pts,
     width = 550, 
     height = 200
-  )
+  )$
+  add_params(pts)
 
 chart <- 
   ((rect + circ) & bar)$ 
@@ -169,7 +169,7 @@ base <-
   properties(width = 160, height = 130)
 
 # blue background with selection
-background <- base$properties(selection = brush)
+background <- base$add_params(brush)
 
 # yellow highlights on the transformed data
 highlight <- 
@@ -177,7 +177,7 @@ highlight <-
   encode(
     color = alt$value("goldenrod")
   )$
-  transform_filter(brush$ref())
+  transform_filter(brush)
 
 # layer the two charts & repeat
 chart <- 
@@ -203,7 +203,7 @@ glimpse(vega_data$cars())
 #### Chart
 
 ```{r}
-brush <- alt$selection(type = "interval")
+brush <- alt$selection_interval()
 
 chart <- 
   alt$Chart(vega_data$cars())$
@@ -213,7 +213,7 @@ chart <-
     y = "Miles_per_Gallon:Q",
     color = alt$condition(brush, "Cylinders:O", alt$value("grey"))
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 chart
 ```
@@ -245,7 +245,7 @@ glimpse(source)
 #### Chart
 
 ```{r}
-selector <- alt$selection_single(empty = "all", fields = list("gender"))
+selector <- alt$selection_point(fields = list("gender"))
 
 color_scale <- 
   alt$Scale(
@@ -256,7 +256,7 @@ color_scale <-
 base <- 
   alt$Chart(source)$
   properties(width = 250, height = 250)$
-  add_selection(selector)
+  add_params(selector)
 
 points <-
   base$mark_point(filled=TRUE, size=200)$
@@ -274,8 +274,7 @@ points <-
         alt$value("lightgray"),
         scale = color_scale
     )
-  )$
-  interactive()
+  )
 
 hists <-
   base$
@@ -315,7 +314,7 @@ glimpse(vega_data$stocks())
 
 ```{r}
 highlight <- 
-  alt$selection_single(
+  alt$selection_point(
     on = "mouseover",
     fields = list("symbol"), 
     nearest = TRUE
@@ -334,7 +333,8 @@ points <-
   encode(
     opacity = alt$value(0)
   )$
-  properties(selection = highlight, width = 600)
+  properties(width = 600)$
+  add_params(highlight)
 
 lines <- 
   base$
@@ -386,12 +386,11 @@ glimpse(data)
 
 ```{r}
 # Create a selection that chooses the nearest point & selects based on x-value
-nearest <- alt$selection(
-  type = "single", 
+nearest <- alt$selection_point(
   nearest = TRUE, 
   on = "mouseover",
   fields = list("x"), 
-  empty = "none"
+  empty = FALSE
 )
 
 # The basic line
@@ -413,7 +412,7 @@ selectors <-
     x = "x:Q",
     opacity = alt$value(0)
   )$
-  properties(selection = nearest)$
+  add_params(nearest)$
   copy()
 
 # Draw points on the line, and highlight based on selection
@@ -439,7 +438,7 @@ rules <-
   encode(
     x = "x:Q"
   )$
-  transform_filter(nearest$ref())
+  transform_filter(nearest)
 
 # Put the five layers into a chart and bind the data
 chart <-  
@@ -467,7 +466,7 @@ glimpse(vega_data$cars())
 ```{r}
 source <- vega_data$cars()
 
-brush = alt$selection(type = "interval", resolve = "global")
+brush = alt$selection_interval(resolve = "global")
 
 base = alt$Chart(source)$
   mark_point()$
@@ -475,7 +474,7 @@ base = alt$Chart(source)$
     y = "Miles_per_Gallon",
     color=alt$condition(brush, "Origin", alt$ColorValue("gray"))
   )$
-  add_selection(brush)$
+  add_params(brush)$
   properties(width = 250, height = 250)
 
 base$encode(x = "Horsepower") | base$encode(x = "Acceleration")
@@ -528,52 +527,44 @@ base <-
   transform_filter(
     alt$FieldOneOfPredicate(field = "MPAA_Rating", oneOf = ratings)
   )$encode(
-    x = alt$X(
-      field = "Worldwide_Gross",
-      type = "quantitative",
-      scale = alt$Scale(domain = c(100000, 10**9), clamp = TRUE)
-    ),
-    y = alt$Y(field = "IMDB_Rating", type = "quantitative"),
+    x = alt$X("Worldwide_Gross:Q")$scale(domain = c(100000, 10**9), clamp = TRUE),
+    y = "IMDB_Rating:Q",
     tooltip = "Title:N"
   )
 
 # A slider filter
-year_slider <- alt$binding_range(min = 1969, max = 2018, step = 1)
+year_slider <- alt$binding_range(min = 1969, max = 2018, step = 1, name = "Release Year")
 slider_selection <- 
-  alt$selection_single(
+  alt$selection_point(
     bind = year_slider, 
-    fields = list("Release_Year"),
-    name = "Release Year_"
+    fields = list("Release_Year")
   )
 
 filter_year <- base$
-  add_selection(slider_selection)$
+  add_params(slider_selection)$
   transform_filter(slider_selection)$
   properties(title = "Slider Filtering")
 
 # A dropdown filter
-genre_dropdown <- alt$binding_select(options = genres)
+genre_dropdown <- alt$binding_select(options = genres, name = "Genre")
 genre_select <- 
-  alt$selection_single(
+  alt$selection_point(
     fields = list("Major_Genre"), 
-    bind = genre_dropdown,
-    name = "Genre"
+    bind = genre_dropdown
   )
 
 filter_genres <- 
   base$
-  add_selection(genre_select)$
+  add_params(genre_select)$
   transform_filter(genre_select)$
   properties(title = "Dropdown Filtering")
 
 #color changing marks
-rating_radio <- alt$binding_radio(options = ratings)
-
+rating_radio <- alt$binding_radio(options = ratings, name = "Rating")
 rating_select <- 
-  alt$selection_single(
+  alt$selection_point(
     fields = list("MPAA_Rating"), 
-    bind = rating_radio, 
-    name = "Rating"
+    bind = rating_radio
   )
 
 rating_color_condition <- 
@@ -585,29 +576,27 @@ rating_color_condition <-
 
 highlight_ratings <-
   base$
-  add_selection(rating_select)$
+  add_params(rating_select)$
   encode(
     color = rating_color_condition
   )$
   properties(title = "Radio Button Highlighting")
 
 # Boolean selection for format changes
-input_checkbox <- alt$binding_checkbox()
-checkbox_selection <-
-  alt$selection_single(bind = input_checkbox, name = "Big Budget Films")
+input_checkbox <- alt$binding_checkbox(name = "Big Budget Films ")
+checkbox_selection <- alt$param(bind = input_checkbox)
 
 size_checkbox_condition <-
   alt$condition(
     checkbox_selection,
-    alt$SizeValue(25),
-    alt$Size("Hundred_Million_Production:Q")
+    alt$Size("Hundred_Million_Production:Q"),
+    alt$SizeValue(25)
   )
 
 budget_sizing <-
   base$
-  add_selection(checkbox_selection)$
-  encode(
-    size = size_checkbox_condition)$
+  add_params(checkbox_selection)$
+  encode(size = size_checkbox_condition)$
   properties(title = "Checkbox Formatting")
 
 (filter_year | filter_genres) & (highlight_ratings | budget_sizing)
@@ -643,7 +632,7 @@ glimpse(source)
 
 ```{r}
 # interval selection in the scatter plot
-pts <- alt$selection(type = "interval", encodings = list("x"))
+pts <- alt$selection_interval(encodings = list("x"))
 
 # left panel: scatter plot
 points <- alt$Chart()$
@@ -664,7 +653,7 @@ mag <- alt$Chart()$
     color = alt$condition(pts, alt$value("black"), alt$value("lightgray"))
   )$
   properties(width = 300, height = 300)$
-  add_selection(pts)
+  add_params(pts)
 
 # build the chart:
 alt$hconcat(points, mag, data = source)$
@@ -721,7 +710,7 @@ glimpse(data)
 #### Chart
 
 ```{r}
-selector <- alt$selection_single(empty = "all", fields = list("id"))
+selector <- alt$selection_point(fields = list("id"))
 
 points <- 
   alt$Chart(data)$
@@ -736,7 +725,8 @@ points <-
       legend = NULL
     )
   )$
-  properties(selection = selector, width = 250, height = 250)
+  add_params(selector)$
+  properties(width = 250, height = 250)
 
 timeseries <- 
   alt$Chart(data)$
@@ -747,7 +737,8 @@ timeseries <-
     color = alt$Color("id:O", legend = NULL)
   )$
   transform_filter(selector)$
-  properties(selection = selector, width = 250, height = 250)
+  add_params(selector)$
+  properties(width = 250, height = 250)
 
 points | timeseries
 ```
@@ -770,7 +761,7 @@ glimpse(vega_data$cars())
 ```{r}
 cars <- vega_data$cars()
 
-brush <- alt$selection(type="interval")
+brush <- alt$selection_interval()
 
 points <- 
   alt$Chart()$
@@ -780,7 +771,7 @@ points <-
     y = "Miles_per_Gallon:Q",
     color = alt$condition(brush, "Origin:N", alt$value("lightgray"))
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 bars <- 
   alt$Chart()$
@@ -790,7 +781,7 @@ bars <-
     y = "Origin:N",
     color = "Origin:N"
   )$
-  transform_filter(brush$ref())
+  transform_filter(brush)
 
 chart <- alt$vconcat(points, bars, data = cars)
 
@@ -846,9 +837,9 @@ base <-
     y = "sum(count):Q"
   )
 
-brush <- alt$selection_interval(encodings = list("x"), empty = "all")
+brush <- alt$selection_interval(encodings = list("x"))
 
-background <- base$add_selection(brush)
+background <- base$add_params(brush)
 
 selected <- 
   base$

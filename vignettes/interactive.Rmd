@@ -45,7 +45,7 @@ brush <- alt$selection_interval()
 We can create a new chart where the brush is bound using the selection property:
 
 ```{r}
-chart_brush <- chart_static$add_selection(brush) 
+chart_brush <- chart_static$add_params(brush) 
 
 chart_brush
 ```
@@ -64,7 +64,7 @@ chart_selection <-
     color = alt$condition(brush, "Origin:N", alt$value("lightgray"))
   )$
   mark_point()$
-  add_selection(brush) 
+  add_params(brush) 
 
 # chart_selection
 ```
