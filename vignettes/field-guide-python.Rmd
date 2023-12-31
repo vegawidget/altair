@@ -253,8 +253,7 @@ You might come across this in an [Altair example](https://altair-viz.github.io/g
 
 ```python
 # Python
-highlight = alt.selection(type='single', on='mouseover',
-                          fields=['symbol'], nearest=True)
+highlight = alt.selection_single(on='mouseover', fields=['symbol'], nearest=True)
 
 alt.condition(~highlight, alt.value(1), alt.value(3))
 ```
@@ -264,8 +263,7 @@ There are a couple of alternatives available here, the first is to invoke the `$
 ```{r eval = FALSE}
 # R
 highlight <-
-  alt$selection(
-    type = "single", 
+  alt$selection_single(
     on = "mouseover",
     fields = list("symbol"), 
     nearest = TRUE
@@ -279,8 +277,7 @@ The second alternative is to swap the order of the `if_true` and `if_false` argu
 ```{r eval = FALSE}
 # R
 highlight <-
-  alt$selection(
-    type = "single", 
+  alt$selection_point(
     on = "mouseover",
     fields = list("symbol"), 
     nearest = TRUE
@@ -321,7 +318,7 @@ example_list <- list(1, 2, 3)
 example_dictionary <- list(a = 1, b = 2, c = 3)
 ```
 
-Consider this Altair [example](https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html) that uses lists and dictionaries. This is some of the Python bits:
+Consider this Altair [example](https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html) that uses lists and dictionaries. These are some of the Python bits:
 
 ```python
 import altair as alt
@@ -330,7 +327,7 @@ from vega_datasets import data
 flights = alt.UrlData(data.flights_2k.url,
                       format={'parse': {'date': 'date'}})
 
-brush = alt.selection(type='interval', encodings=['x'])
+brush = alt.selection_interval(encodings=['x'])
 ```
 
 Here's an R translation of the complete example, which demonstrates interactive cross-filtering.
@@ -342,31 +339,23 @@ flights <-
     format = list(parse = list(date = "date"))
   )
 
-brush <- alt$selection(type = "interval", encodings = list("x"))
+brush <- alt$selection_interval(encodings = list("x"))
 
 # Define the base chart, with the common parts of the
 # background and highlights
 base <- 
-  alt$Chart()$
+  alt$Chart(width = 180, height = 130)$
   mark_bar()$
   encode(
-    x = alt$X(
-      alt$`repeat`("column"), 
-      type = "quantitative", 
-      bin = alt$Bin(maxbins = 20)
-    ),
+    x = alt$X(alt$`repeat`("column"))$bin(maxbins = 20),
     y = "count()"
-  )$
-  properties(width = 180, height = 130)
+  )
 
-# blue background with selection
-background <- base$properties(selection = brush)
+# gray background with selection
+background <- base$encode(color = alt$value("#ddd"))$add_params(brush)
 
-# yellow highlights on the transformed data
-highlight <-
-  base$
-  encode(color=alt$value("goldenrod"))$
-  transform_filter(brush$ref())
+# blue highlights on the transformed data
+highlight <-base$transform_filter(brush)
 
 # layer the two charts & repeat
 alt$

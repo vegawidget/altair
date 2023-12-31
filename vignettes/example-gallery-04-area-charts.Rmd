@@ -103,26 +103,29 @@ glimpse(vega_data$sp500())
 #### Chart
 
 ```{r}
-brush <- alt$selection(type = "interval", encodings = list("x"))
+brush <- alt$selection_interval(encodings = list("x"))
 
-upper <- 
-  alt$Chart(vega_data$sp500$url)$
+base <- 
+  alt$
+  Chart(vega_data$sp500$url, width=600, height=200)$
   mark_area()$
   encode(
-    alt$X("date:T", scale = list("domain" = brush$ref())),
+    x = "date:T",
     y = "price:Q"
-  )$
-  properties(
-    width = 600,
-    height = 200
+  )
+
+upper <- 
+  base$
+  encode(
+    alt$X('date:T')$scale(domain = brush)
   )
 
 lower <- 
-  upper$
+  base$
   properties(
-    selection = brush,
     height=60
-  )
+  )$
+  add_params(brush)
 
 chart <- alt$vconcat(upper, lower)
 

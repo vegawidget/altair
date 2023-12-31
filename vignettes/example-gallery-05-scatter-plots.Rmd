@@ -72,7 +72,7 @@ glimpse(vega_data$cars())
 source <- vega_data$cars()
 
 # Brush for selection
-brush <- alt$selection(type = "interval")
+brush <- alt$selection_interval()
 
 # Scatter Plot
 points <- 
@@ -82,7 +82,8 @@ points <-
     x = "Horsepower:Q",
     y = "Miles_per_Gallon:Q",
     color = alt$condition(brush, "Cylinders:O", alt$value("grey"))
-  )$add_selection(brush)
+  )$
+  add_params(brush)
 
 # Base chart for data tables
 ranked_text <-
@@ -206,7 +207,7 @@ glimpse(vega_data$cars())
 ```{r}
 cars <- vega_data$cars()
 
-brush <- alt$selection(type = "interval")
+brush <- alt$selection_interval()
 
 tick_axis <- alt$Axis(labels=FALSE, domain=FALSE, ticks=FALSE)
 
@@ -221,7 +222,7 @@ points <-
     y = alt$Y("Horsepower", axis = alt$Axis(title = "")),
     color = alt$condition(brush, "Origin", alt$value("grey"))
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 x_ticks <- 
   alt$Chart(cars)$
@@ -231,7 +232,7 @@ x_ticks <-
     y = alt$Y("Origin", axis = tick_axis_notitle),
     color = alt$condition(brush, "Origin", alt$value("lightgrey"))
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 y_ticks <- 
   alt$Chart(cars)$
@@ -241,7 +242,7 @@ y_ticks <-
     alt$Y("Horsepower", axis = tick_axis),
     color=alt$condition(brush, "Origin", alt$value("lightgrey"))
   )$
-  properties(selection = brush)
+  add_params(brush)
 
 chart <- (y_ticks | (points & x_ticks))
 

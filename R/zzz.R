@@ -71,7 +71,7 @@ on_altair_error <- function(e) {
 .onLoad <- function(libname, pkgname) {
 
   # sets the supported version
-  options(altair.python.version = "4.2.0")
+  options(altair.python.version = "5.2.0")
 
   alt <<-
     reticulate::import(
@@ -84,6 +84,6 @@ on_altair_error <- function(e) {
 
   vegawidget::s3_register(
     "knitr::knit_print",
-    "altair.vegalite.v4.api.TopLevelMixin"
+    "altair.vegalite.v5.api.TopLevelMixin"
   )
 }
