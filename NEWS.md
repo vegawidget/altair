@@ -1,5 +1,9 @@
 # altair (development version)
 
+* Update to use Altair 5.2.0 (#168).
+
+* Temporarily uses dev version of vegawidget (#174).
+
 # altair 4.2.3
 
 * Update URLs in documentation. (#164)
