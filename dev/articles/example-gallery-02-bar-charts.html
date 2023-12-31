@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,15 +157,15 @@
 
       
 
-      </header><script src="example-gallery-02-bar-charts_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-02-bar-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-02-bar-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-02-bar-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-02-bar-charts_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="example-gallery-02-bar-charts_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="example-gallery-02-bar-charts_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="example-gallery-02-bar-charts_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-02-bar-charts_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="example-gallery-02-bar-charts_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Bar Charts</h1>
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-02-bar-charts.Rmd" class="external-link"><code>vignettes/example-gallery-02-bar-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-02-bar-charts.Rmd</code></div>
@@ -218,14 +218,14 @@ example</a></p>
 <span>  <span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width<span class="op">=</span><span class="fl">600</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-e3ee3a0a3855c36e0379" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e3ee3a0a3855c36e0379">{"x":{
+<div id="htmlwidget-c5aa1f72364d5749c2dc" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c5aa1f72364d5749c2dc">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -512,7 +512,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "bar",
+    "mark": {
+      "type": "bar"
+    },
     "width": 600
   },
   "embed_options": {
@@ -560,14 +562,14 @@ example</a></p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">bars</span> <span class="op">+</span> <span class="va">text</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">800</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-d5d03995536a3c848d3b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-d5d03995536a3c848d3b">{"x":{
+<div id="htmlwidget-34e58a255c9cfa5d62c5" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-34e58a255c9cfa5d62c5">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -850,7 +852,9 @@ example</a></p>
             "type": "ordinal"
           }
         },
-        "mark": "bar"
+        "mark": {
+          "type": "bar"
+        }
       },
       {
         "encoding": {
@@ -923,14 +927,14 @@ example</a></p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">bar</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-37eb9d9c7799099c7928" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-37eb9d9c7799099c7928">{"x":{
+<div id="htmlwidget-33951354da83e20985d0" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33951354da83e20985d0">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -1212,7 +1216,9 @@ example</a></p>
             "type": "quantitative"
           }
         },
-        "mark": "bar"
+        "mark": {
+          "type": "bar"
+        }
       },
       {
         "data": {
@@ -1288,14 +1294,14 @@ caution.</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-93dc6cb14205473e2ef4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-93dc6cb14205473e2ef4">{"x":{
+<div id="htmlwidget-0c5b20fb57addbe91229" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0c5b20fb57addbe91229">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -1577,7 +1583,9 @@ caution.</p>
             "type": "quantitative"
           }
         },
-        "mark": "bar"
+        "mark": {
+          "type": "bar"
+        }
       },
       {
         "encoding": {
@@ -1660,14 +1668,14 @@ example</a></p>
 <span>  <span class="op">)</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-68dff29d1d914170fb8a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-68dff29d1d914170fb8a">{"x":{
+<div id="htmlwidget-fb8f7804f9be21a81b86" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb8f7804f9be21a81b86">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -4814,7 +4822,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "bar",
+    "mark": {
+      "type": "bar"
+    },
     "width": 600
   },
   "embed_options": {
@@ -4877,14 +4887,14 @@ Definition
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">bar</span> <span class="op">+</span> <span class="va">tick</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-684d60462022e8e23d6f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-684d60462022e8e23d6f">{"x":{
+<div id="htmlwidget-e441445df5c017c49890" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e441445df5c017c49890">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -4941,9 +4951,8 @@ Definition
             "type": "quantitative"
           }
         },
-        "mark": "bar",
-        "width": {
-          "step": 40
+        "mark": {
+          "type": "bar"
         }
       },
       {
@@ -4967,7 +4976,10 @@ Definition
           "type": "tick"
         }
       }
-    ]
+    ],
+    "width": {
+      "step": 40
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -5024,14 +5036,14 @@ Definition
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-8c88704af628328ed975" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-8c88704af628328ed975">{"x":{
+<div id="htmlwidget-33631349a0d25049a4b6" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33631349a0d25049a4b6">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -5074,7 +5086,9 @@ Definition
         "type": "nominal"
       }
     },
-    "mark": "bar",
+    "mark": {
+      "type": "bar"
+    },
     "transform": [
       {
         "joinaggregate": [
@@ -5494,14 +5508,14 @@ Definition
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-14b38abd4dba1278d8b4" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-14b38abd4dba1278d8b4">{"x":{
+<div id="htmlwidget-e182cc2f76f381acc5c9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e182cc2f76f381acc5c9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -5874,7 +5888,9 @@ Definition
         "type": "nominal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -5917,14 +5933,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-4f83ad0387c1abd02520" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-4f83ad0387c1abd02520">{"x":{
+<div id="htmlwidget-e8d9eb864318568b3d93" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e8d9eb864318568b3d93">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -6673,7 +6689,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -6739,14 +6757,14 @@ of the mean</a>.</p>
 <span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-38562d2f6b153238a590" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-38562d2f6b153238a590">{"x":{
+<div id="htmlwidget-e86b45b35c672247e9a9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e86b45b35c672247e9a9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -7503,7 +7521,9 @@ of the mean</a>.</p>
               "type": "quantitative"
             }
           },
-          "mark": "bar"
+          "mark": {
+            "type": "bar"
+          }
         },
         {
           "encoding": {
@@ -7564,14 +7584,14 @@ data using the <code>datum.</code> prefix.</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-f11fd730f05e15cb6134" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-f11fd730f05e15cb6134">{"x":{
+<div id="htmlwidget-99bf97232900940c926b" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-99bf97232900940c926b">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -7852,7 +7872,9 @@ data using the <code>datum.</code> prefix.</p>
       }
     },
     "height": 700,
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -7893,14 +7915,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-6829f1881b2413a296df" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-6829f1881b2413a296df">{"x":{
+<div id="htmlwidget-4c0be3b63281967f8a22" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c0be3b63281967f8a22">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -8649,7 +8671,9 @@ example</a></p>
         "type": "ordinal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -8689,14 +8713,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-5b27a2472039377a6a68" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-5b27a2472039377a6a68">{"x":{
+<div id="htmlwidget-366a2d74f2826d001ca5" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-366a2d74f2826d001ca5">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -9441,7 +9465,9 @@ example</a></p>
         "type": "nominal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -9480,14 +9506,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-7502c58e7e2247fe04ba" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-7502c58e7e2247fe04ba">{"x":{
+<div id="htmlwidget-95a95119920adbb17078" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-95a95119920adbb17078">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -9810,14 +9836,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-b35fedbbe4428c9e7a05" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-b35fedbbe4428c9e7a05">{"x":{
+<div id="htmlwidget-72c7ec0f199b1577aceb" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-72c7ec0f199b1577aceb">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -10563,7 +10589,9 @@ example</a></p>
         "type": "nominal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -10605,14 +10633,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-2c1e52505fdee4a78643" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-2c1e52505fdee4a78643">{"x":{
+<div id="htmlwidget-06871472e0e78dad0325" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-06871472e0e78dad0325">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -11358,7 +11386,9 @@ example</a></p>
         "type": "nominal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -11394,14 +11424,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-e9f51edb70d75b164e21" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e9f51edb70d75b164e21">{"x":{
+<div id="htmlwidget-b42c19a6ea7804336c08" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b42c19a6ea7804336c08">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -12146,7 +12176,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -12187,14 +12219,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-5e9bceec3a8a5b577a8a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-5e9bceec3a8a5b577a8a">{"x":{
+<div id="htmlwidget-3f13e5760f511a668554" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f13e5760f511a668554">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -12944,7 +12976,9 @@ example</a></p>
         "type": "nominal"
       }
     },
-    "mark": "bar"
+    "mark": {
+      "type": "bar"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -12993,14 +13027,14 @@ example</a></p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">bars</span> <span class="op">+</span> <span class="va">text</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-ac2f1d5fac52d2e2b784" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-ac2f1d5fac52d2e2b784">{"x":{
+<div id="htmlwidget-baf81f1d9f765b621e8e" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-baf81f1d9f765b621e8e">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -13748,7 +13782,9 @@ example</a></p>
             "type": "nominal"
           }
         },
-        "mark": "bar"
+        "mark": {
+          "type": "bar"
+        }
       },
       {
         "data": {
@@ -13821,14 +13857,14 @@ example</a></p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">220</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-888826cce2d8cace47b6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-888826cce2d8cace47b6">{"x":{
+<div id="htmlwidget-51c7816c6aa24390d3a9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-51c7816c6aa24390d3a9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -14576,7 +14612,9 @@ example</a></p>
         "type": "nominal"
       }
     },
-    "mark": "bar",
+    "mark": {
+      "type": "bar"
+    },
     "width": 220
   },
   "embed_options": {

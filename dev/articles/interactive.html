@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,13 +157,13 @@
 
       
 
-      </header><script src="interactive_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="interactive_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="interactive_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="interactive_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="interactive_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="interactive_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="interactive_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="interactive_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="interactive_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="interactive_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="interactive_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="interactive_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Interactive Examples</h1>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/interactive.Rmd" class="external-link"><code>vignettes/interactive.Rmd</code></a></small>
       <div class="hidden name"><code>interactive.Rmd</code></div>
@@ -194,14 +194,14 @@ mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_static</span></span></code></pre></div>
-<div id="htmlwidget-45b1620da36806766a89" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-45b1620da36806766a89">{"x":{
+<div id="htmlwidget-5f2108434a623ec744e1" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5f2108434a623ec744e1">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -4691,7 +4691,9 @@ mechanisms are implemented in Vega-Lite and are provided by Altair.</p>
         "type": "quantitative"
       }
     },
-    "mark": "point"
+    "mark": {
+      "type": "point"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -4706,17 +4708,17 @@ reference</a>.</p>
 <p>We can create a new chart where the brush is bound using the
 selection property:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chart_brush</span> <span class="op">&lt;-</span> <span class="va">chart_static</span><span class="op">$</span><span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">chart_brush</span> <span class="op">&lt;-</span> <span class="va">chart_static</span><span class="op">$</span><span class="fu">add_params</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">chart_brush</span></span></code></pre></div>
-<div id="htmlwidget-850cf8375238679bc422" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-850cf8375238679bc422">{"x":{
+<div id="htmlwidget-5ca222dfb741a914d149" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5ca222dfb741a914d149">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -9206,12 +9208,17 @@ selection property:</p>
         "type": "quantitative"
       }
     },
-    "mark": "point",
-    "selection": {
-      "selector001": {
-        "type": "interval"
+    "mark": {
+      "type": "point"
+    },
+    "params": [
+      {
+        "name": "param_1",
+        "select": {
+          "type": "interval"
+        }
       }
-    }
+    ]
   },
   "embed_options": {
     "renderer": "canvas",
@@ -9234,7 +9241,7 @@ observations that are not selected.</p>
 <span>    color <span class="op">=</span> <span class="va">alt</span><span class="op">$</span><span class="fu">condition</span><span class="op">(</span><span class="va">brush</span>, <span class="st">"Origin:N"</span>, <span class="va">alt</span><span class="op">$</span><span class="fu">value</span><span class="op">(</span><span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
-<span>  <span class="fu">add_selection</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
+<span>  <span class="fu">add_params</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># chart_selection</span></span></code></pre></div>
 <p>This works, but it appears there is an easier way. It appears that
@@ -9248,14 +9255,14 @@ encodings for an existing chart. Thus, we have a chart where you can
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_selection</span></span></code></pre></div>
-<div id="htmlwidget-bb419d295988d7498e29" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-bb419d295988d7498e29">{"x":{
+<div id="htmlwidget-f2edd2963585eda9973f" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f2edd2963585eda9973f">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -13735,7 +13742,7 @@ encodings for an existing chart. Thus, we have a chart where you can
       "color": {
         "condition": {
           "field": "Origin",
-          "selection": "selector001",
+          "param": "param_1",
           "type": "nominal"
         },
         "value": "lightgray"
@@ -13749,12 +13756,17 @@ encodings for an existing chart. Thus, we have a chart where you can
         "type": "quantitative"
       }
     },
-    "mark": "point",
-    "selection": {
-      "selector001": {
-        "type": "interval"
+    "mark": {
+      "type": "point"
+    },
+    "params": [
+      {
+        "name": "param_1",
+        "select": {
+          "type": "interval"
+        }
       }
-    }
+    ]
   },
   "embed_options": {
     "renderer": "canvas",
@@ -13780,14 +13792,14 @@ mpg. It remains to compose these into a compound chart and display:</p>
 <code class="sourceCode R"><span><span class="va">chart_compound</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">chart_mpg</span> <span class="op">|</span> <span class="va">chart_disp</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_compound</span></span></code></pre></div>
-<div id="htmlwidget-6b44fff181505d4ceeec" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-6b44fff181505d4ceeec">{"x":{
+<div id="htmlwidget-92076d85c57e730a4378" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92076d85c57e730a4378">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -18269,7 +18281,7 @@ mpg. It remains to compose these into a compound chart and display:</p>
           "color": {
             "condition": {
               "field": "Origin",
-              "selection": "selector001",
+              "param": "param_1",
               "type": "nominal"
             },
             "value": "lightgray"
@@ -18284,12 +18296,10 @@ mpg. It remains to compose these into a compound chart and display:</p>
           }
         },
         "height": 250,
-        "mark": "point",
-        "selection": {
-          "selector001": {
-            "type": "interval"
-          }
+        "mark": {
+          "type": "point"
         },
+        "name": "view_1",
         "width": 250
       },
       {
@@ -18297,7 +18307,7 @@ mpg. It remains to compose these into a compound chart and display:</p>
           "color": {
             "condition": {
               "field": "Origin",
-              "selection": "selector001",
+              "param": "param_1",
               "type": "nominal"
             },
             "value": "lightgray"
@@ -18312,13 +18322,23 @@ mpg. It remains to compose these into a compound chart and display:</p>
           }
         },
         "height": 250,
-        "mark": "point",
-        "selection": {
-          "selector001": {
-            "type": "interval"
-          }
+        "mark": {
+          "type": "point"
         },
+        "name": "view_2",
         "width": 250
+      }
+    ],
+    "params": [
+      {
+        "name": "param_1",
+        "select": {
+          "type": "interval"
+        },
+        "views": [
+          "view_1",
+          "view_2"
+        ]
       }
     ]
   },

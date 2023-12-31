@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,15 +157,15 @@
 
       
 
-      </header><script src="example-gallery-03-line-charts_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-03-line-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-03-line-charts_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="example-gallery-03-line-charts_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="example-gallery-03-line-charts_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="example-gallery-03-line-charts_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-03-line-charts_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="example-gallery-03-line-charts_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Line Charts</h1>
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-03-line-charts.Rmd" class="external-link"><code>vignettes/example-gallery-03-line-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-03-line-charts.Rmd</code></div>
@@ -219,14 +219,14 @@ example</a></p>
 <span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-a29884368960604a3093" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a29884368960604a3093">{"x":{
+<div id="htmlwidget-9cce6fa7cd7855d87763" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9cce6fa7cd7855d87763">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -3120,14 +3120,14 @@ confidence interval band.</p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">confidence_interval</span> <span class="op">+</span> <span class="va">line</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-649ad04ed8db5cf6b9c1" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-649ad04ed8db5cf6b9c1">{"x":{
+<div id="htmlwidget-246bc38c65f3f9bcb1fa" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-246bc38c65f3f9bcb1fa">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -7643,7 +7643,9 @@ confidence interval band.</p>
             "type": "quantitative"
           }
         },
-        "mark": "line"
+        "mark": {
+          "type": "line"
+        }
       }
     ]
   },
@@ -7709,14 +7711,14 @@ and 2010, along with a layered rule showing the average values.</p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">line</span> <span class="op">+</span> <span class="va">rule</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-4d27451cdbae1e138c3a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-4d27451cdbae1e138c3a">{"x":{
+<div id="htmlwidget-b83982472b1de1f0f7ff" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b83982472b1de1f0f7ff">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -10542,9 +10544,10 @@ and 2010, along with a layered rule showing the average values.</p>
             "type": "quantitative"
           }
         },
-        "mark": "line",
-        "title": "Daily closing prices with their aggregate prices",
-        "width": 550
+        "mark": {
+          "type": "line"
+        },
+        "title": "Daily closing prices with their aggregate prices"
       },
       {
         "encoding": {
@@ -10561,11 +10564,13 @@ and 2010, along with a layered rule showing the average values.</p>
             "type": "quantitative"
           }
         },
-        "mark": "rule",
-        "title": "Daily closing prices with their aggregate prices",
-        "width": 550
+        "mark": {
+          "type": "rule"
+        },
+        "title": "Daily closing prices with their aggregate prices"
       }
-    ]
+    ],
+    "width": 550
   },
   "embed_options": {
     "renderer": "canvas",
@@ -10610,14 +10615,14 @@ example</a></p>
 <span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="st">"datum.job == 'Welder'"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-a9828f5dadfbe284602e" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a9828f5dadfbe284602e">{"x":{
+<div id="htmlwidget-f1aec8cd467f23196512" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f1aec8cd467f23196512">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -10640,7 +10645,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "line",
+    "mark": {
+      "type": "line"
+    },
     "title": "Percent of work-force working as Welders",
     "transform": [
       {
@@ -10688,14 +10695,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-0912633226b703a0af23" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-0912633226b703a0af23">{"x":{
+<div id="htmlwidget-2a489beee27b1b1e9768" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a489beee27b1b1e9768">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -11157,14 +11164,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-116c6f8cf1aa0b1d18bf" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-116c6f8cf1aa0b1d18bf">{"x":{
+<div id="htmlwidget-a13d784f74ba04e56ea9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a13d784f74ba04e56ea9">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -11448,7 +11455,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "trail"
+    "mark": {
+      "type": "trail"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -11490,14 +11499,14 @@ that you declare that the <code>date</code> variable is of type
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-6c22860db6fe2aaf5c10" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-6c22860db6fe2aaf5c10">{"x":{
+<div id="htmlwidget-714951d6fb6eda9ebcc8" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-714951d6fb6eda9ebcc8">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -14321,7 +14330,9 @@ that you declare that the <code>date</code> variable is of type
         "type": "quantitative"
       }
     },
-    "mark": "line"
+    "mark": {
+      "type": "line"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -14367,14 +14378,14 @@ datetime representation.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-cf28a39fd39a90d34f23" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-cf28a39fd39a90d34f23">{"x":{
+<div id="htmlwidget-7bfbb29e705177de7e20" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7bfbb29e705177de7e20">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -15119,7 +15130,9 @@ datetime representation.</p>
         "type": "quantitative"
       }
     },
-    "mark": "line"
+    "mark": {
+      "type": "line"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -15168,14 +15181,14 @@ interpolation options includes <code>linear</code>,
 <span>  <span class="fu">transform_filter</span><span class="op">(</span><span class="fu"><a href="../reference/JS.html">JS</a></span><span class="op">(</span><span class="st">"datum.symbol == 'GOOG'"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-5f86485db7c62dba7a56" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-5f86485db7c62dba7a56">{"x":{
+<div id="htmlwidget-cf2838b79607042cf567" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf2838b79607042cf567">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {

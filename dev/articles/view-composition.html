@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,15 +157,15 @@
 
       
 
-      </header><script src="view-composition_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="view-composition_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="view-composition_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="view-composition_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="view-composition_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="view-composition_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="view-composition_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="view-composition_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="view-composition_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="view-composition_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="view-composition_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="view-composition_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>View Composition</h1>
                         <h4 data-toc-skip class="author">Alicia
 Schep</h4>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/view-composition.Rmd" class="external-link"><code>vignettes/view-composition.Rmd</code></a></small>
       <div class="hidden name"><code>view-composition.Rmd</code></div>
@@ -277,14 +277,14 @@ beaver over time:</p>
 <span><span class="va">line_plot</span> <span class="op">&lt;-</span> <span class="va">base</span><span class="op">$</span><span class="fu">mark_line</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">scatter_plot</span> <span class="op">+</span> <span class="va">line_plot</span></span></code></pre></div>
-<div id="htmlwidget-cd4ee1cb4b1a20eab077" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-cd4ee1cb4b1a20eab077">{"x":{
+<div id="htmlwidget-0b84b761e662cdd81bcd" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b84b761e662cdd81bcd">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -993,7 +993,9 @@ beaver over time:</p>
             "type": "quantitative"
           }
         },
-        "mark": "point"
+        "mark": {
+          "type": "point"
+        }
       },
       {
         "encoding": {
@@ -1009,7 +1011,9 @@ beaver over time:</p>
             "type": "quantitative"
           }
         },
-        "mark": "line"
+        "mark": {
+          "type": "line"
+        }
       }
     ]
   },
@@ -1049,14 +1053,14 @@ plots, using the <code>|</code> operator:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Beaver 2"</span>, width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">combined_plot2</span></span></code></pre></div>
-<div id="htmlwidget-f87aac2736b24e175398" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-f87aac2736b24e175398">{"x":{
+<div id="htmlwidget-e4e33819671014924812" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e4e33819671014924812">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -2369,7 +2373,9 @@ plots, using the <code>|</code> operator:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "point"
+            "mark": {
+              "type": "point"
+            }
           },
           {
             "encoding": {
@@ -2385,7 +2391,9 @@ plots, using the <code>|</code> operator:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "line"
+            "mark": {
+              "type": "line"
+            }
           }
         ],
         "title": "Beaver 1",
@@ -2410,7 +2418,9 @@ plots, using the <code>|</code> operator:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "point"
+            "mark": {
+              "type": "point"
+            }
           },
           {
             "encoding": {
@@ -2426,7 +2436,9 @@ plots, using the <code>|</code> operator:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "line"
+            "mark": {
+              "type": "line"
+            }
           }
         ],
         "title": "Beaver 2",
@@ -2454,14 +2466,14 @@ using <code>&amp;</code>:</p>
 <span><span class="va">combined_plot2</span> <span class="op">&lt;-</span> <span class="va">combined_plot2</span><span class="op">$</span><span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">combined_plot</span> <span class="op">&amp;</span> <span class="va">combined_plot2</span></span></code></pre></div>
-<div id="htmlwidget-7b459637fc1d56857ab0" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-7b459637fc1d56857ab0">{"x":{
+<div id="htmlwidget-2f54c085b81e0402ea1f" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2f54c085b81e0402ea1f">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -3775,7 +3787,9 @@ using <code>&amp;</code>:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "point"
+            "mark": {
+              "type": "point"
+            }
           },
           {
             "encoding": {
@@ -3791,7 +3805,9 @@ using <code>&amp;</code>:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "line"
+            "mark": {
+              "type": "line"
+            }
           }
         ],
         "title": "Beaver 1",
@@ -3817,7 +3833,9 @@ using <code>&amp;</code>:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "point"
+            "mark": {
+              "type": "point"
+            }
           },
           {
             "encoding": {
@@ -3833,7 +3851,9 @@ using <code>&amp;</code>:</p>
                 "type": "quantitative"
               }
             },
-            "mark": "line"
+            "mark": {
+              "type": "line"
+            }
           }
         ],
         "title": "Beaver 2",
@@ -3877,14 +3897,14 @@ compound plot with four panels:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">200</span>, height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="op">(</span><span class="va">combined_plot</span> <span class="op">|</span> <span class="va">hist_plot</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">combined_plot2</span> <span class="op">|</span> <span class="va">hist_plot2</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-258392b3fc7f6c799d9f" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-258392b3fc7f6c799d9f">{"x":{
+<div id="htmlwidget-0518c07566202f38ecfd" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0518c07566202f38ecfd">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -5200,7 +5220,9 @@ compound plot with four panels:</p>
                     "type": "quantitative"
                   }
                 },
-                "mark": "point"
+                "mark": {
+                  "type": "point"
+                }
               },
               {
                 "encoding": {
@@ -5216,7 +5238,9 @@ compound plot with four panels:</p>
                     "type": "quantitative"
                   }
                 },
-                "mark": "line"
+                "mark": {
+                  "type": "line"
+                }
               }
             ],
             "title": "Beaver 1",
@@ -5238,7 +5262,9 @@ compound plot with four panels:</p>
               }
             },
             "height": 200,
-            "mark": "bar",
+            "mark": {
+              "type": "bar"
+            },
             "width": 200
           }
         ]
@@ -5265,7 +5291,9 @@ compound plot with four panels:</p>
                     "type": "quantitative"
                   }
                 },
-                "mark": "point"
+                "mark": {
+                  "type": "point"
+                }
               },
               {
                 "encoding": {
@@ -5281,7 +5309,9 @@ compound plot with four panels:</p>
                     "type": "quantitative"
                   }
                 },
-                "mark": "line"
+                "mark": {
+                  "type": "line"
+                }
               }
             ],
             "title": "Beaver 2",
@@ -5303,7 +5333,9 @@ compound plot with four panels:</p>
               }
             },
             "height": 200,
-            "mark": "bar",
+            "mark": {
+              "type": "bar"
+            },
             "width": 200
           }
         ]
@@ -5337,14 +5369,14 @@ gears:</p>
 <span>  <span class="fu">properties</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">150</span>, width <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="va">plot</span><span class="op">$</span><span class="fu">facet</span><span class="op">(</span>row <span class="op">=</span> <span class="st">"cyl:N"</span>, column <span class="op">=</span> <span class="st">"gear:N"</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-93d933f3c4006bf0419a" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-93d933f3c4006bf0419a">{"x":{
+<div id="htmlwidget-0afbb85fafcef77509d8" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0afbb85fafcef77509d8">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -5792,7 +5824,9 @@ gears:</p>
         }
       },
       "height": 150,
-      "mark": "point",
+      "mark": {
+        "type": "point"
+      },
       "width": 150
     }
   },
@@ -5831,14 +5865,14 @@ the mtcars dataset:</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">plot2</span></span></code></pre></div>
-<div id="htmlwidget-61158b15de6f24414fc6" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-61158b15de6f24414fc6">{"x":{
+<div id="htmlwidget-e49bd523c90450898edc" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e49bd523c90450898edc">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
@@ -6290,7 +6324,9 @@ the mtcars dataset:</p>
         }
       },
       "height": 150,
-      "mark": "point",
+      "mark": {
+        "type": "point"
+      },
       "width": 150
     }
   },

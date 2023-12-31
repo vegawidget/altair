@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,15 +157,15 @@
 
       
 
-      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-07-maps_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-07-maps_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-07-maps_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="example-gallery-07-maps_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="example-gallery-07-maps_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="example-gallery-07-maps_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-07-maps_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="example-gallery-07-maps_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Maps</h1>
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-07-maps.Rmd" class="external-link"><code>vignettes/example-gallery-07-maps.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-07-maps.Rmd</code></div>
@@ -222,14 +222,14 @@ format.</li>
 <span>  <span class="fu">properties</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">500</span>, height <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-1cf0c35f29b295901d42" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-1cf0c35f29b295901d42">{"x":{
+<div id="htmlwidget-208160b5683336819a86" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-208160b5683336819a86">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -246,7 +246,9 @@ format.</li>
       }
     },
     "height": 300,
-    "mark": "geoshape",
+    "mark": {
+      "type": "geoshape"
+    },
     "projection": {
       "type": "albersUsa"
     },
@@ -334,18 +336,18 @@ example</a></p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">background</span> <span class="op">+</span> <span class="va">points</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-df31fd197fa43a3da701" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-df31fd197fa43a3da701">{"x":{
+<div id="htmlwidget-1b82bfdb309494aa6aa5" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b82bfdb309494aa6aa5">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "datasets": {
-      "data-ba04140908c6a2183516d340540425c6": [
+      "data-14e6e98bbb078dcee875159e75a8b532": [
         {
           "city": "Bay Springs",
           "country": "USA",
@@ -10571,13 +10573,13 @@ example</a></p>
           "state": "AK"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "CLD",
           "latitude": 33.127231,
           "longitude": -117.278727,
           "name": "MC Clellan-Palomar Airport",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Cleveland",
@@ -15782,13 +15784,13 @@ example</a></p>
           "state": "IN"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "HHH",
           "latitude": 32.224384,
           "longitude": -80.697629,
           "name": "Hilton Head",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Hawthorne",
@@ -20606,13 +20608,13 @@ example</a></p>
           "state": "FL"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "MIB",
           "latitude": 48.415769,
           "longitude": -101.358039,
           "name": "Minot AFB",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Minneapolis",
@@ -21155,13 +21157,13 @@ example</a></p>
           "state": "IN"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "MQT",
           "latitude": 46.353639,
           "longitude": -87.395361,
           "name": "Marquette County Airport",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "McRae",
@@ -25115,13 +25117,13 @@ example</a></p>
           "state": "AK"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "RCA",
           "latitude": 44.145094,
           "longitude": -103.103567,
           "name": "Ellsworth AFB",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Rochester",
@@ -25178,13 +25180,13 @@ example</a></p>
           "state": "OR"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "RDR",
           "latitude": 47.961167,
           "longitude": -97.401167,
           "name": "Grand Forks AFB",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Raleigh",
@@ -25493,22 +25495,22 @@ example</a></p>
           "state": "AR"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "Thailand",
           "iata": "ROP",
           "latitude": 14.078333,
           "longitude": 101.378334,
           "name": "Prachinburi",
-          "state": "NA"
+          "state": null
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "Palau",
           "iata": "ROR",
           "latitude": 7.367222,
           "longitude": 134.544167,
           "name": "Babelthoup/Koror",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Rush City",
@@ -26447,13 +26449,13 @@ example</a></p>
           "state": "AL"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "SCE",
           "latitude": 40.851206,
           "longitude": -77.846302,
           "name": "University Park",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Schenectady",
@@ -27023,13 +27025,13 @@ example</a></p>
           "state": "MI"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "USA",
           "iata": "SKA",
           "latitude": 47.615058,
           "longitude": -117.655803,
           "name": "Fairchild AFB",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Sac City",
@@ -27356,13 +27358,13 @@ example</a></p>
           "state": "IL"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "N Mariana Islands",
           "iata": "SPN",
           "latitude": 14.996111,
           "longitude": 145.621384,
           "name": "Tinian International Airport",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Wichita Falls",
@@ -30542,13 +30544,13 @@ example</a></p>
           "state": "AK"
         },
         {
-          "city": "NA",
+          "city": null,
           "country": "Federated States of Micronesia",
           "iata": "YAP",
           "latitude": 9.5167,
           "longitude": 138.1,
           "name": "Yap International",
-          "state": "NA"
+          "state": null
         },
         {
           "city": "Detroit",
@@ -30732,6 +30734,7 @@ example</a></p>
         }
       ]
     },
+    "height": 300,
     "layer": [
       {
         "data": {
@@ -30741,7 +30744,6 @@ example</a></p>
           },
           "url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json"
         },
-        "height": 300,
         "mark": {
           "fill": "lightgray",
           "stroke": "white",
@@ -30749,12 +30751,11 @@ example</a></p>
         },
         "projection": {
           "type": "albersUsa"
-        },
-        "width": 500
+        }
       },
       {
         "data": {
-          "name": "data-ba04140908c6a2183516d340540425c6"
+          "name": "data-14e6e98bbb078dcee875159e75a8b532"
         },
         "encoding": {
           "color": {
@@ -30784,7 +30785,9 @@ example</a></p>
             }
           ]
         },
-        "mark": "circle",
+        "mark": {
+          "type": "circle"
+        },
         "title": "Number of airports in US",
         "transform": [
           {
@@ -30810,7 +30813,8 @@ example</a></p>
           }
         ]
       }
-    ]
+    ],
+    "width": 500
   },
   "embed_options": {
     "renderer": "canvas",
@@ -30861,14 +30865,14 @@ example</a></p>
 <span>  <span class="fu">resolve_scale</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"independent"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-80655a7fdae6dfb31b20" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-80655a7fdae6dfb31b20">{"x":{
+<div id="htmlwidget-d369e92db7ae87012e83" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d369e92db7ae87012e83">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "repeat": {
@@ -30900,7 +30904,9 @@ example</a></p>
         }
       },
       "height": 300,
-      "mark": "geoshape",
+      "mark": {
+        "type": "geoshape"
+      },
       "projection": {
         "type": "albersUsa"
       },
@@ -30953,14 +30959,14 @@ documentation</a> for more details on the projections available.</p>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">charts</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span> <span class="op">|</span> <span class="va">charts</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-0e5a851d3d2d432c9562" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-0e5a851d3d2d432c9562">{"x":{
+<div id="htmlwidget-c0c098807b4397950daf" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c0c098807b4397950daf">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {

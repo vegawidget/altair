@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">4.2.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9000</span>
       </span>
     </div>
 
@@ -157,15 +157,15 @@
 
       
 
-      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.17.0/vega@5.17.0.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-4.17.0/vega-lite@4.17.0.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-6.12.2/vega-embed.css" rel="stylesheet">
-<script src="example-gallery-04-area-charts_files/vega-embed-6.12.2/vega-embed@6.12.2.min.js"></script><script src="example-gallery-04-area-charts_files/vegawidget-vl4-binding-0.4.2/vegawidget-vl4.js"></script><div class="row">
+      </header><script src="example-gallery-04-area-charts_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="example-gallery-04-area-charts_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="example-gallery-04-area-charts_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="example-gallery-04-area-charts_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="example-gallery-04-area-charts_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="example-gallery-04-area-charts_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Area charts</h1>
                         <h4 data-toc-skip class="author">Haley
 Jeppson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-04</h4>
+            <h4 data-toc-skip class="date">2023-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/example-gallery-04-area-charts.Rmd" class="external-link"><code>vignettes/example-gallery-04-area-charts.Rmd</code></a></small>
       <div class="hidden name"><code>example-gallery-04-area-charts.Rmd</code></div>
@@ -246,14 +246,14 @@ Definition
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">area1</span> <span class="op">+</span> <span class="va">area2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-e75c0a69f2dcfa34ee69" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e75c0a69f2dcfa34ee69">{"x":{
+<div id="htmlwidget-411aec8ab15f7817adb4" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-411aec8ab15f7817adb4">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -343,6 +343,7 @@ Definition
         }
       ]
     },
+    "height": 75,
     "layer": [
       {
         "encoding": {
@@ -371,13 +372,11 @@ Definition
             "type": "quantitative"
           }
         },
-        "height": 75,
         "mark": {
           "clip": true,
           "interpolate": "monotone",
           "type": "area"
-        },
-        "width": 500
+        }
       },
       {
         "encoding": {
@@ -403,7 +402,6 @@ Definition
             "type": "quantitative"
           }
         },
-        "height": 75,
         "mark": {
           "clip": true,
           "interpolate": "monotone",
@@ -414,10 +412,10 @@ Definition
             "as": "ny",
             "calculate": "datum.y - 50"
           }
-        ],
-        "width": 500
+        ]
       }
-    ]
+    ],
+    "width": 500
   },
   "embed_options": {
     "renderer": "canvas",
@@ -450,43 +448,60 @@ chart.</p>
 <h4 id="chart-1">Chart<a class="anchor" aria-label="anchor" href="#chart-1"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"interval"</span>, encodings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">brush</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">selection_interval</span><span class="op">(</span>encodings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">upper</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">alt</span><span class="op">$</span><span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">sp500</span><span class="op">$</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">alt</span><span class="op">$</span></span>
+<span>  <span class="fu">Chart</span><span class="op">(</span><span class="va">vega_data</span><span class="op">$</span><span class="va">sp500</span><span class="op">$</span><span class="va">url</span>, width<span class="op">=</span><span class="fl">600</span>, height<span class="op">=</span><span class="fl">200</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">mark_area</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">encode</span><span class="op">(</span></span>
-<span>    <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">"date:T"</span>, scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"domain"</span> <span class="op">=</span> <span class="va">brush</span><span class="op">$</span><span class="fu">ref</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"date:T"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"price:Q"</span></span>
-<span>  <span class="op">)</span><span class="op">$</span></span>
-<span>  <span class="fu">properties</span><span class="op">(</span></span>
-<span>    width <span class="op">=</span> <span class="fl">600</span>,</span>
-<span>    height <span class="op">=</span> <span class="fl">200</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">upper</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">base</span><span class="op">$</span></span>
+<span>  <span class="fu">encode</span><span class="op">(</span></span>
+<span>    <span class="va">alt</span><span class="op">$</span><span class="fu">X</span><span class="op">(</span><span class="st">'date:T'</span><span class="op">)</span><span class="op">$</span><span class="fu">scale</span><span class="op">(</span>domain <span class="op">=</span> <span class="va">brush</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">lower</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">upper</span><span class="op">$</span></span>
+<span>  <span class="va">base</span><span class="op">$</span></span>
 <span>  <span class="fu">properties</span><span class="op">(</span></span>
-<span>    selection <span class="op">=</span> <span class="va">brush</span>,</span>
 <span>    height<span class="op">=</span><span class="fl">60</span></span>
-<span>  <span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">$</span></span>
+<span>  <span class="fu">add_params</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span> <span class="op">&lt;-</span> <span class="va">alt</span><span class="op">$</span><span class="fu">vconcat</span><span class="op">(</span><span class="va">upper</span>, <span class="va">lower</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-04dc6461cf6d864d5b6d" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-04dc6461cf6d864d5b6d">{"x":{
+<div id="htmlwidget-454b201d29c91384c42c" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-454b201d29c91384c42c">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
       "url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/sp500.csv"
     },
+    "params": [
+      {
+        "name": "param_1",
+        "select": {
+          "encodings": [
+            "x"
+          ],
+          "type": "interval"
+        },
+        "views": [
+          "view_1"
+        ]
+      }
+    ],
     "vconcat": [
       {
         "encoding": {
@@ -494,7 +509,7 @@ chart.</p>
             "field": "date",
             "scale": {
               "domain": {
-                "selection": "selector001"
+                "param": "param_1"
               }
             },
             "type": "temporal"
@@ -505,18 +520,15 @@ chart.</p>
           }
         },
         "height": 200,
-        "mark": "area",
+        "mark": {
+          "type": "area"
+        },
         "width": 600
       },
       {
         "encoding": {
           "x": {
             "field": "date",
-            "scale": {
-              "domain": {
-                "selection": "selector001"
-              }
-            },
             "type": "temporal"
           },
           "y": {
@@ -525,15 +537,10 @@ chart.</p>
           }
         },
         "height": 60,
-        "mark": "area",
-        "selection": {
-          "selector001": {
-            "encodings": [
-              "x"
-            ],
-            "type": "interval"
-          }
+        "mark": {
+          "type": "area"
         },
+        "name": "view_1",
         "width": 600
       }
     ]
@@ -578,14 +585,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-e1e5b6b325142d5b394b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e1e5b6b325142d5b394b">{"x":{
+<div id="htmlwidget-52cf2ce5cc9d6a4ca682" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-52cf2ce5cc9d6a4ca682">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -910,14 +917,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-fb4227de0a8ef763f6d2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-fb4227de0a8ef763f6d2">{"x":{
+<div id="htmlwidget-67d3ff8fe837f08d8b7a" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-67d3ff8fe837f08d8b7a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -1197,7 +1204,9 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "area"
+    "mark": {
+      "type": "area"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -1244,14 +1253,14 @@ example</a></p>
 <span>  <span class="fu">interactive</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-1db2d1b14c4a577d96f2" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-1db2d1b14c4a577d96f2">{"x":{
+<div id="htmlwidget-43978c0aba45d93e1b8a" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-43978c0aba45d93e1b8a">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -1283,17 +1292,22 @@ example</a></p>
         "type": "quantitative"
       }
     },
-    "mark": "area",
-    "selection": {
-      "selector002": {
+    "mark": {
+      "type": "area"
+    },
+    "params": [
+      {
         "bind": "scales",
-        "encodings": [
-          "x",
-          "y"
-        ],
-        "type": "interval"
+        "name": "param_2",
+        "select": {
+          "encodings": [
+            "x",
+            "y"
+          ],
+          "type": "interval"
+        }
       }
-    }
+    ]
   },
   "embed_options": {
     "renderer": "canvas",
@@ -1338,14 +1352,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-899c53ad4e42ae0f80ff" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-899c53ad4e42ae0f80ff">{"x":{
+<div id="htmlwidget-64815de91b33a6605384" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-64815de91b33a6605384">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -1629,7 +1643,9 @@ example</a></p>
       }
     },
     "height": 100,
-    "mark": "area"
+    "mark": {
+      "type": "area"
+    }
   },
   "embed_options": {
     "renderer": "canvas",
@@ -1677,14 +1693,14 @@ example</a></p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-9fc3d08b7dfab64c888b" style="width:auto;height:auto;" class="vegawidget-vl4 html-widget "></div>
-<script type="application/json" data-for="htmlwidget-9fc3d08b7dfab64c888b">{"x":{
+<div id="htmlwidget-a15750dd85e420cb12e5" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a15750dd85e420cb12e5">{"x":{
   "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
       "view": {
         "continuousHeight": 300,
-        "continuousWidth": 400
+        "continuousWidth": 300
       }
     },
     "data": {
@@ -4519,7 +4535,9 @@ example</a></p>
       }
     },
     "height": 50,
-    "mark": "area",
+    "mark": {
+      "type": "area"
+    },
     "transform": [
       {
         "filter": "datum.symbol != 'GOOG'"
