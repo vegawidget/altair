@@ -21,7 +21,6 @@ url_local <- function(x) {
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/altair)](https://cran.r-project.org/package=altair)
-[![R-CMD-check](https://github.com/vegawidget/altair/workflows/R-CMD-check/badge.svg)](https://github.com/vegawidget/altair/actions)
 [![R-CMD-check](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vegawidget/altair/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
