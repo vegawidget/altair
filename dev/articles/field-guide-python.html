@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">altair</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">5.2.0.9002</span>
       </span>
     </div>
 
@@ -157,13 +157,13 @@
 
       
 
-      </header><script src="field-guide-python_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.24.0/vega@5.24.0.min.js"></script><script src="field-guide-python_files/vega-lite-5.16.3/vega-lite@5.16.3.min.js"></script><link href="field-guide-python_files/vega-embed-6.22.2/vega-embed.css" rel="stylesheet">
-<script src="field-guide-python_files/vega-embed-6.22.2/vega-embed@6.22.2.min.js"></script><script src="field-guide-python_files/vegawidget-vl5-binding-0.4.3.9004/vegawidget-vl5.js"></script><div class="row">
+      </header><script src="field-guide-python_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="field-guide-python_files/vega-5.22.0/vega@5.22.0.min.js"></script><script src="field-guide-python_files/vega-lite-5.5.0/vega-lite@5.5.0.min.js"></script><link href="field-guide-python_files/vega-embed-6.20.8/vega-embed.css" rel="stylesheet">
+<script src="field-guide-python_files/vega-embed-6.20.8/vega-embed@6.20.8.min.js"></script><script src="field-guide-python_files/vegawidget-vl5-binding-0.4.3/vegawidget-vl5.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Field Guide to Python Issues</h1>
             
-            <h4 data-toc-skip class="date">2023-12-31</h4>
+            <h4 data-toc-skip class="date">2024-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vegawidget/altair/blob/HEAD/vignettes/field-guide-python.Rmd" class="external-link"><code>vignettes/field-guide-python.Rmd</code></a></small>
       <div class="hidden name"><code>field-guide-python.Rmd</code></div>
@@ -362,8 +362,8 @@ backslashes, <code>\\</code>:</p>
 <span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_freeny_r</span></span></code></pre></div>
-<div id="htmlwidget-7fe431e3924d29b1eaba" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7fe431e3924d29b1eaba">{"x":{
+<div id="htmlwidget-0934ec223d71d6abddbb" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0934ec223d71d6abddbb">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
@@ -697,8 +697,8 @@ slashes in the scale labels.</p>
 <span>  <span class="fu">mark_point</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_freeny_r</span></span></code></pre></div>
-<div id="htmlwidget-d9364412b4411d032ad9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d9364412b4411d032ad9">{"x":{
+<div id="htmlwidget-087eb95e49acc68c0968" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-087eb95e49acc68c0968">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
@@ -1054,8 +1054,8 @@ e.g. <code>$`repeat`()</code>.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart_repeat</span></span></code></pre></div>
-<div id="htmlwidget-8534bd7ee88dcfc325b6" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8534bd7ee88dcfc325b6">{"x":{
+<div id="htmlwidget-d1a40510b660c7cffe83" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d1a40510b660c7cffe83">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
@@ -1513,8 +1513,8 @@ interactive cross-filtering.</p>
 <span>  <span class="fu">layer</span><span class="op">(</span><span class="va">background</span>, <span class="va">highlight</span>, data <span class="op">=</span> <span class="va">flights</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">transform_calculate</span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"hours(datum.date)"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">`repeat`</span><span class="op">(</span>column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"distance"</span>, <span class="st">"delay"</span>, <span class="st">"time"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-1700973b013e93c739ab" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1700973b013e93c739ab">{"x":{
+<div id="htmlwidget-e8e062a5abd2d3e147b9" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e8e062a5abd2d3e147b9">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
@@ -1675,8 +1675,8 @@ the additional named argument in R:</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">chart</span></span></code></pre></div>
-<div id="htmlwidget-1be50eafd0e6f310ec8f" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1be50eafd0e6f310ec8f">{"x":{
+<div id="htmlwidget-685168df140811ca3805" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-685168df140811ca3805">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json",
     "config": {
